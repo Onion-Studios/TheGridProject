@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Managercombo : MonoBehaviour
 {
     //le combo di tasti che equivalgono ad un simbolo 2 per ora
-    List<char> Combo1 = new List<char>() {'d', 'd', 'r'};
-    List<char> Combo2 = new List<char>() {'f', 'f', 'l'};
+    List<char> Combo1 = new List<char>() {'s', 's', 'a', 'a'};
+    List<char> Combo2 = new List<char>() {'d', 's', 's', 'a'};
     Enemyspawnmanager enemyspawnmanager;
+    Enemybehaviour enemybehaviour;
+    UIManager UIManager;
+    
 
     private void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        enemybehaviour = FindObjectOfType<Enemybehaviour>();
+        UIManager = FindObjectOfType<UIManager>();    
     }
 
     private void Update()
@@ -25,30 +31,51 @@ public class Managercombo : MonoBehaviour
     {
         if (yourcombo.SequenceEqual(Combo1))
         {
-            foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[0])
+            for(int i=0; i<2; i++)
             {
-                if (nemicodadistruggere.activeInHierarchy == true)
+                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
-                    nemicodadistruggere.SetActive(false);
-                    Vector3 randomposition = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    nemicodadistruggere.transform.position = randomposition;
+                    if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 0)
+                    {
+                        nemicodadistruggere.SetActive(false);
+                      
+                    }
                 }
+
+                foreach(Image segno in UIManager.Dictionaryofsignsprite[0])
+                {
+                    if(segno.gameObject.activeInHierarchy == true)
+                    {
+                        segno.gameObject.SetActive(false);
+                    }
+                }
+
+                Debug.Log("ho attivato la combo1 e ho distrutto i nemici con il segno 0");
             }
-            Debug.Log("ho attivato la combo1 e ho distrutto il nemico viola");
         }
         else if (yourcombo.SequenceEqual(Combo2))
         {
-            foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[1])
+            for (int i = 0; i < 2; i++)
             {
-                if (nemicodadistruggere.activeInHierarchy == true)
+                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
-                    nemicodadistruggere.SetActive(false);
-                    Vector3 randomposition = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    nemicodadistruggere.transform.position = randomposition;
+                    if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 1)
+                    {
+                        nemicodadistruggere.SetActive(false);
+                   
+                    }
                 }
-            }
 
-            Debug.Log("ho attivato la combo2 e ho distrutto il nemico nero");
+                foreach (Image segno in UIManager.Dictionaryofsignsprite[1])
+                {
+                    if (segno.gameObject.activeInHierarchy == true)
+                    {
+                        segno.gameObject.SetActive(false);
+                    }
+                }
+
+                Debug.Log("ho attivato la combo1 e ho distrutto i nemici con il segno 1");
+            }
         }
         else
         {

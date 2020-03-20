@@ -21,12 +21,13 @@ public class Playerbehaviour : MonoBehaviour
     PowerupManager powerupmanager;
     #endregion
 
-    // Start is called before the first frame update
+    // prendo le referenze che mi servono quando inizia il gioco
     void Start()
     {
         powerupmanager = FindObjectOfType<PowerupManager>();
         managercombo = FindObjectOfType<Managercombo>();
         grigliamanager = FindObjectOfType<grigliamanager>();
+        
     }
 
     // Update is called once per frame
@@ -35,25 +36,25 @@ public class Playerbehaviour : MonoBehaviour
         //movimento ad ogni input corrisponde un metodo che fa l'azione di movimento corrispondente
         if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
         {
-            miosimbolo.Add('f');
+            miosimbolo.Add('d');
             forwardMove();
             Castraggio();
         }
         else if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
         {
-            miosimbolo.Add('d');
+            miosimbolo.Add('a');
             backmove();
             Castraggio();
         }
         else if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
         {
-            miosimbolo.Add('r');
+            miosimbolo.Add('s');
             rightmove();
             Castraggio();
         }
         else if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
         {
-            miosimbolo.Add('l');
+            miosimbolo.Add('w');
             leftmove();
             Castraggio();
         }
@@ -101,9 +102,10 @@ public class Playerbehaviour : MonoBehaviour
         istanza.transform.position = posizionepersonaggio;
     }
 
-#endregion
- 
+    #endregion
 
+
+    #region SPAWN PLAYER
     // metodo spawn che istanzia il player prefab e lo pone in una variabile di riferimento
     public void Spawn()
     {
@@ -111,7 +113,10 @@ public class Playerbehaviour : MonoBehaviour
         
         istanza = Instantiate(personaggio, posizionepersonaggio, Quaternion.Euler(0f, 180f, 0f), this.transform);
     }
-    
+
+    #endregion
+
+    #region RAYCAST CAMBIO COLORE GRIGLIA
     // metodo che dichiara il raggio e lo lancia in basso se trova qualcosa ci cambia il colore 
     void Castraggio()
     {
@@ -123,6 +128,7 @@ public class Playerbehaviour : MonoBehaviour
             hit.collider.GetComponent<Renderer>().material = colorecubonuovo; 
         }
     }
+    #endregion
 
-    
+
 }

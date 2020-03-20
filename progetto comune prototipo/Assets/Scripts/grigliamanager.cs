@@ -11,11 +11,15 @@ public class grigliamanager : MonoBehaviour
     List<GameObject> listadicubi = new List<GameObject>();
     [SerializeField]
     Material colorebasegriglia;
+    [SerializeField]
+    Material colorecentrogriglia;
+
 
 
     void Start()
     {
-        //quando parte il programma creo la la griglia di cubi e spawno il player in centro
+        //quando parte il programma creo la la griglia di cubi prendo una referenza al player
+        //setto la posizione del personaggio e spawno il player in centro
         //solo se le righe e le colonne sono dispari se no non abbiamo un centro nella griglia
 
 
@@ -23,7 +27,7 @@ public class grigliamanager : MonoBehaviour
         {
             Creagriglia();
             Playerbehaviour player = FindObjectOfType<Playerbehaviour>();
-            player.posizionepersonaggio = new Vector3((righe - 1) / 2, 1.05f, (colonne - 1) / 2);
+            player.posizionepersonaggio = new Vector3(2, 1.05f, 2);
             player.Spawn();
         }
         else
@@ -40,7 +44,8 @@ public class grigliamanager : MonoBehaviour
         
     }
 
-    //metodo che crea la griglia riga per riga istanziando i cubi 
+    //metodo che crea la griglia riga per riga istanziando i cubi e aggiungendo poi i cubi istanziati  
+    //alla lista ''listadicubi''
     void Creagriglia()
     {
         for (int c = 0; c < colonne; c++)
@@ -49,6 +54,10 @@ public class grigliamanager : MonoBehaviour
             {
                 Vector3 posizionerighe = new Vector3(r, 0f, c);
                 istanzacubo = Instantiate(cubogriglia, posizionerighe, Quaternion.identity, this.transform);
+                if(r == 2 && c == 2)
+                {
+                    istanzacubo.GetComponent<MeshRenderer>().material = colorecentrogriglia;
+                }
                 listadicubi.Add(istanzacubo);
             }
         }
@@ -60,7 +69,14 @@ public class grigliamanager : MonoBehaviour
     {
         foreach (var cube in listadicubi)
         {
-            cube.GetComponent<Renderer>().material = colorebasegriglia;
+            if (cube.transform.position == new Vector3(2f, 0, 2f))
+            {
+                cube.GetComponent<Renderer>().material = colorecentrogriglia;
+            }
+            else
+            {
+                cube.GetComponent<Renderer>().material = colorebasegriglia;
+            }
         }
     }
 }
