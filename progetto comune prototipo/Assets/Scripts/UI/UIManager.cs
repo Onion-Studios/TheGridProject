@@ -21,9 +21,9 @@ public class UIManager : MonoBehaviour
         SetCurrentPlayerLife();
     }
 
-    void ActiveUI()
+    public void ActiveUI()
     {
-        if(playerLife == 6)
+        if (playerLife == 6)
         {
             libePreFab1.SetActive(true);
             libePreFab2.SetActive(true);
@@ -91,7 +91,7 @@ public class UIManager : MonoBehaviour
     }
     public void SetCurrentPlayerLife()
     {
-        playerLife = GameManager.ActualPlayer.Life;
+        playerLife = GameManager.ActualPlayer.life;
     }
     
 

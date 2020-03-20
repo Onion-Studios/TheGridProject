@@ -276,7 +276,8 @@ MonoBehaviour:
   origineraggio: {x: 0, y: 1.05, z: 0}
   colorecubonuovo: {fileID: 2100000, guid: cdb380fb351beec4b9c17340d3ebe920, type: 2}
   GM: {fileID: 0}
-  Life: 0
+  life: 0
+  reciveDamage: 0
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -1088,7 +1089,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 73.54891
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1114,7 +1115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0.9800983, z: -0.19851261, w: 0}
-  m_LocalPosition: {x: -2.52, y: 4.94, z: 8.96}
+  m_LocalPosition: {x: -2.52, y: 4.95, z: 8.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

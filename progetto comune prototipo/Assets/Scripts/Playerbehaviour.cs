@@ -20,7 +20,8 @@ public class Playerbehaviour : MonoBehaviour
     Managercombo managercombo;
     PowerupManager powerupmanager;
     public GameManager GM;
-    public int Life;
+    public int life;
+    public bool reciveDamage;
     #endregion
 
     // Start is called before the first frame update
@@ -126,5 +127,26 @@ public class Playerbehaviour : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (reciveDamage)
+        {
+            if(life <= 1)
+            {
+                life -= 1;
+                GM.UI.SetCurrentPlayerLife();
+                GM.UI.ActiveUI();
+            }
+            else
+            {
+                life -= 1;
+                reciveDamage = false;
+                transform.position = new Vector3(27, 0, 0);
+                GM.UI.SetCurrentPlayerLife();
+                GM.UI.ActiveUI();
+
+            }
+        }
+    }
+
 }
