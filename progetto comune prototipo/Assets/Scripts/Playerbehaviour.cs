@@ -19,6 +19,8 @@ public class Playerbehaviour : MonoBehaviour
     List<char> miosimbolo = new List<char>();
     Managercombo managercombo;
     PowerupManager powerupmanager;
+    public GameManager GM;
+    public int Life;
     #endregion
 
     // Start is called before the first frame update
