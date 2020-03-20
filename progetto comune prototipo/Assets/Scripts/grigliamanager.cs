@@ -9,8 +9,7 @@ public class grigliamanager : MonoBehaviour
     public GameObject cubogriglia;
     private GameObject istanzacubo;
     List<GameObject> listadicubi = new List<GameObject>();
-    [SerializeField]
-    Material colorebasegriglia;
+    public Material colorebasegriglia;
     [SerializeField]
     Material colorecentrogriglia;
 
@@ -57,6 +56,7 @@ public class grigliamanager : MonoBehaviour
                 if(r == 2 && c == 2)
                 {
                     istanzacubo.GetComponent<MeshRenderer>().material = colorecentrogriglia;
+                    istanzacubo.GetComponent<cubeprefabehaviour>().iscoloured = true;
                 }
                 listadicubi.Add(istanzacubo);
             }
@@ -72,10 +72,12 @@ public class grigliamanager : MonoBehaviour
             if (cube.transform.position == new Vector3(2f, 0, 2f))
             {
                 cube.GetComponent<Renderer>().material = colorecentrogriglia;
+                cube.GetComponent<cubeprefabehaviour>().iscoloured = true;
             }
             else
             {
                 cube.GetComponent<Renderer>().material = colorebasegriglia;
+                cube.GetComponent<cubeprefabehaviour>().iscoloured = false;
             }
         }
     }

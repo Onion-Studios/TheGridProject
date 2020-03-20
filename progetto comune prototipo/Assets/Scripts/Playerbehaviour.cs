@@ -27,7 +27,6 @@ public class Playerbehaviour : MonoBehaviour
         powerupmanager = FindObjectOfType<PowerupManager>();
         managercombo = FindObjectOfType<Managercombo>();
         grigliamanager = FindObjectOfType<grigliamanager>();
-        
     }
 
     // Update is called once per frame
@@ -125,7 +124,16 @@ public class Playerbehaviour : MonoBehaviour
         float distanzaraggio = 10f;
         if(Physics.Raycast(downraycheck, out RaycastHit hit, distanzaraggio))
         {
-            hit.collider.GetComponent<Renderer>().material = colorecubonuovo; 
+            if (hit.collider.GetComponent<cubeprefabehaviour>().iscoloured == true)
+            {
+                hit.collider.GetComponent<Renderer>().material = grigliamanager.colorebasegriglia;
+                hit.collider.GetComponent<cubeprefabehaviour>().iscoloured = false;
+            }
+            else
+            {
+                hit.collider.GetComponent<Renderer>().material = colorecubonuovo;
+                hit.collider.GetComponent<cubeprefabehaviour>().iscoloured = true;
+            }
         }
     }
     #endregion
