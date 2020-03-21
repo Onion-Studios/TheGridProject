@@ -276,8 +276,8 @@ MonoBehaviour:
   origineraggio: {x: 0, y: 1.05, z: 0}
   colorecubonuovo: {fileID: 2100000, guid: cdb380fb351beec4b9c17340d3ebe920, type: 2}
   GM: {fileID: 0}
-  life: 0
-  reciveDamage: 0
+  life: 6
+  reciveDamage: 1
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -1459,6 +1459,9 @@ MonoBehaviour:
   cubogriglia: {fileID: 2222240871164890105, guid: 2374db3488e32fa4b97c3778c95ada30,
     type: 3}
   colorebasegriglia: {fileID: 2100000, guid: e53f0d0e8ade9fb45bf762c5369ffa2d, type: 2}
+  GM: {fileID: 0}
+  life: 0
+  reciveDamage: 0
 --- !u!4 &1619072385
 Transform:
   m_ObjectHideFlags: 0
