@@ -9,17 +9,37 @@ public class UIHUDManager : MonoBehaviour
     public Transform lifeToSpawn;
     public GameObject libePreFab1, libePreFab2, libePreFab3, libePreFab4, libePreFab5, libePreFab6;
     int playerLife;
+    Playerbehaviour Playerbehaviour;
+    [SerializeField]
+    Text gameover_text;
 
     private void Awake()
     {
         GameManager = FindObjectOfType<GameManager>();
+        Playerbehaviour = FindObjectOfType<Playerbehaviour>();
 
     }
 
     private void Start()
     {
-        SetCurrentPlayerLife();
+        playerLife = Playerbehaviour.life;
     }
+
+    private void Update()
+    {
+        if(playerLife > 0)
+        {
+            playerLife = Playerbehaviour.life;
+            ActiveUI();
+        }
+        else
+        {
+            ActiveUI();
+            gameover_text.gameObject.SetActive(true);
+        }
+        
+    }
+
 
     public void ActiveUI()
     {
@@ -89,10 +109,7 @@ public class UIHUDManager : MonoBehaviour
 
 
     }
-    public void SetCurrentPlayerLife()
-    {
-        playerLife = GameManager.ActualPlayer.life;
-    }
+    
     
 
 }

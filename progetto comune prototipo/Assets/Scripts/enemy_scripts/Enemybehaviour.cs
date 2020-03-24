@@ -8,11 +8,13 @@ public class Enemybehaviour : MonoBehaviour
     [SerializeField]
     float speed = 1f;
     Enemyspawnmanager enemyspawnmanager;
+    Playerbehaviour Playerbehaviour;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        Playerbehaviour = FindObjectOfType<Playerbehaviour>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class Enemybehaviour : MonoBehaviour
             if (this.transform.localPosition.x > -0.76)
             {
                 Death();
+                Playerbehaviour.life -= 1;
             }
         }
  

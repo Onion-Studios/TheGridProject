@@ -66,7 +66,8 @@ public class Enemyspawnmanager : MonoBehaviour
                 poolnemici.Add(nemicoID, listanemico0);
                 for (int i = 0; i < 5; i++)
                 {
-                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity);
+                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
 
@@ -77,7 +78,8 @@ public class Enemyspawnmanager : MonoBehaviour
                 poolnemici.Add(nemicoID, listanemico1);
                 for (int i = 0; i < 5; i++)
                 {
-                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity);
+                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
 

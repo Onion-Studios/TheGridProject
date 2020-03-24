@@ -68,7 +68,7 @@ public class grigliamanager : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (reciveDamage)
         {
@@ -88,5 +88,5 @@ public class grigliamanager : MonoBehaviour
 
             }
         }
-    }
+    }*/
 }
