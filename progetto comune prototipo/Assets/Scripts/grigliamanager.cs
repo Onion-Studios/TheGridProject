@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class grigliamanager : MonoBehaviour
 {
+    #region VARIABILI
     int colonne = 5;
     int righe = 5;
     public GameObject cubogriglia;
@@ -12,6 +13,11 @@ public class grigliamanager : MonoBehaviour
     public Material colorebasegriglia;
     [SerializeField]
     Material colorecentrogriglia;
+    Material colorebasegriglia;
+    public GameManager GM;
+    public int life;
+    public bool reciveDamage;
+    #endregion
 
 
 
@@ -81,4 +87,26 @@ public class grigliamanager : MonoBehaviour
             }
         }
     }
+
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        if (reciveDamage)
+        {
+            if (life <= 1)
+            {
+                life -= 1;
+                GM.UI.SetCurrentPlayerLife();
+                GM.UI.ActiveUI();
+            }
+            else
+            {
+                life -= 1;
+                reciveDamage = false;
+                transform.position = new Vector3(27, 0, 0);
+                GM.UI.SetCurrentPlayerLife();
+                GM.UI.ActiveUI();
+
+            }
+        }
+    }*/
 }

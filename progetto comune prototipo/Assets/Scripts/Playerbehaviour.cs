@@ -19,6 +19,9 @@ public class Playerbehaviour : MonoBehaviour
     List<char> miosimbolo = new List<char>();
     Managercombo managercombo;
     PowerupManager powerupmanager;
+    public GameManager GM;
+    public int life;
+    public bool reciveDamage;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -138,5 +141,7 @@ public class Playerbehaviour : MonoBehaviour
     }
     #endregion
 
+
+ 
 
 }

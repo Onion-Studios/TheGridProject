@@ -16,13 +16,20 @@ public class Enemybehaviour : MonoBehaviour
     void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        Playerbehaviour = FindObjectOfType<Playerbehaviour>();
     }
 
     void Update()
     {
         if(this.gameObject.activeInHierarchy == true)
         {
-            Enemymove();
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            
+            if (this.transform.localPosition.x > -0.76)
+            {
+                Death();
+                Playerbehaviour.life -= 1;
+            }
         }
     }
 
