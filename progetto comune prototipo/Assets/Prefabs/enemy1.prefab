@@ -107,3 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 1
   speed: 1
+  segnocorrispondente: 0

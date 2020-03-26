@@ -12,12 +12,13 @@ public class UIHUDManager : MonoBehaviour
     Playerbehaviour Playerbehaviour;
     [SerializeField]
     Text gameover_text;
+    GameManager Gamemanager;
 
     private void Awake()
     {
         GameManager = FindObjectOfType<GameManager>();
         Playerbehaviour = FindObjectOfType<Playerbehaviour>();
-
+        GameManager = FindObjectOfType<GameManager>();
     }
 
     private void Start()
@@ -35,7 +36,7 @@ public class UIHUDManager : MonoBehaviour
         else
         {
             ActiveUI();
-            gameover_text.gameObject.SetActive(true);
+            GameManager.GoToEndMenu();
         }
         
     }

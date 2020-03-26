@@ -13,7 +13,6 @@ public class grigliamanager : MonoBehaviour
     public Material colorebasegriglia;
     [SerializeField]
     Material colorecentrogriglia;
-    Material colorebasegriglia;
     public GameManager GM;
     public int life;
     public bool reciveDamage;

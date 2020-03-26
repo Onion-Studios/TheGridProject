@@ -10,7 +10,8 @@ public class Enemybehaviour : MonoBehaviour
     [SerializeField]
     float speed = 1f;
     Enemyspawnmanager enemyspawnmanager;
-    public int segnocorrispondente; 
+    public int segnocorrispondente;
+    Playerbehaviour Playerbehaviour;
     #endregion
 
     void Start()
@@ -23,13 +24,7 @@ public class Enemybehaviour : MonoBehaviour
     {
         if(this.gameObject.activeInHierarchy == true)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-            
-            if (this.transform.localPosition.x > -0.76)
-            {
-                Death();
-                Playerbehaviour.life -= 1;
-            }
+            Enemymove();
         }
     }
 
@@ -40,6 +35,7 @@ public class Enemybehaviour : MonoBehaviour
         enemyspawnmanager.nemicoucciso = 0;
         Vector3 randominitialposition = new Vector3(-9f, 1.3f, Random.Range(0, 5));
         transform.position = randominitialposition;
+        Playerbehaviour.life -= 1;
     }
 
     public void Deathforsign()
