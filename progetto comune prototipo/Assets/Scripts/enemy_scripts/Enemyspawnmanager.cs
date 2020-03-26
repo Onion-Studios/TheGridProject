@@ -13,7 +13,7 @@ public class Enemyspawnmanager : MonoBehaviour
     int nemicoID;
     UIManager UIManager;
     public bool cansignspawn = false;
-    public int nemicospawnato = 0;
+    public int nemicoucciso = 0;
     #endregion 
 
 
@@ -61,22 +61,18 @@ public class Enemyspawnmanager : MonoBehaviour
                     nemico.transform.position = enemyspawnposition;
                     nemico.GetComponent<Enemybehaviour>().segnocorrispondente = randomsegnoID;
                     nemico.SetActive(true);
-                    nemicospawnato += 1;
                     break;
                 }
                 
             }
 
-            if (nemicospawnato > 0 )
-            {   
-                foreach (Image segno in UIManager.Dictionaryofsignsprite[randomsegnoID])
+            foreach (Image segno in UIManager.Dictionaryofsignsprite[randomsegnoID])
+            {
+                if (segno.gameObject.activeInHierarchy == false)
                 {
-                    if (segno.gameObject.activeInHierarchy == false)
-                    {
-                        segno.transform.position = enemyspawnposition + new Vector3(0f, 1.5f, 0f);
-                        segno.gameObject.SetActive(true);
-                        break;
-                    }
+                    segno.transform.position = enemyspawnposition + new Vector3(0f, 1.5f, 0f);
+                    segno.gameObject.SetActive(true);
+                    break;
                 }
             }
 

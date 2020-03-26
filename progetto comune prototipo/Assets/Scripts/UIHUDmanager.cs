@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI2dmanager : MonoBehaviour
+public class UIHUDmanager : MonoBehaviour
 {
     [SerializeField]
     Text Enemycounter_text;
@@ -23,6 +23,6 @@ public class UI2dmanager : MonoBehaviour
 
     private void UpdateEnemycounter()
     {
-        Enemycounter_text.text = "Counter nemici: " + Enemyspawnmanager.nemicospawnato;
+        Enemycounter_text.text = "Counter nemici: " + Enemyspawnmanager.nemicoucciso;
     }
 }

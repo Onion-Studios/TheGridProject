@@ -49,7 +49,7 @@ public class Managercombo : MonoBehaviour
                 {
                     if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 0)
                     {
-                        nemicodadistruggere.GetComponent<Enemybehaviour>().Death();
+                        nemicodadistruggere.GetComponent<Enemybehaviour>().Deathforsign();
                       
                     }
                 }
@@ -73,7 +73,7 @@ public class Managercombo : MonoBehaviour
                 {
                     if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 1)
                     {
-                        nemicodadistruggere.GetComponent<Enemybehaviour>().Death();
+                        nemicodadistruggere.GetComponent<Enemybehaviour>().Deathforsign();
 
                     }
                 }

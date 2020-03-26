@@ -1038,7 +1038,7 @@ MonoBehaviour:
   - {fileID: 5107168194925000548, guid: 8870846be1f82334ab991985010fcc15, type: 3}
   - {fileID: 5961107180867319419, guid: 60ab3eaf0bdea0a4cadc4e6254d13be5, type: 3}
   cansignspawn: 0
-  nemicospawnato: 0
+  nemicoucciso: 0
 --- !u!4 &1471647699
 Transform:
   m_ObjectHideFlags: 0
