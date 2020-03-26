@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public void GoToLevel()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1);
     }
 
 }

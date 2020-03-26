@@ -8,7 +8,7 @@ public class EndMenu : MonoBehaviour
  
     public void GoToEndMenu()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1);
     }
 
 }
