@@ -24,13 +24,15 @@ public class Managercombo : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Enemybehaviour enemybehaviour;
     UIManager UIManager;
+    Playerbehaviour playerbehaviour;
     
 
     private void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         enemybehaviour = FindObjectOfType<Enemybehaviour>();
-        UIManager = FindObjectOfType<UIManager>();    
+        UIManager = FindObjectOfType<UIManager>();
+        playerbehaviour = FindObjectOfType<Playerbehaviour>();
     }
 
     private void Update()
@@ -43,13 +45,18 @@ public class Managercombo : MonoBehaviour
     {
         if (yourcombo.SequenceEqual(Combo1) | yourcombo.SequenceEqual(Combo2))
         {
-            for(int i=0; i<2; i++)
+            for(int i=0; i<4; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
                     if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 0)
                     {
                         nemicodadistruggere.GetComponent<Enemybehaviour>().Deathforsign();
+                        
+                        if(i == 3)
+                        {
+                            playerbehaviour.Gold += 10;
+                        }
                       
                     }
                 }
@@ -67,13 +74,18 @@ public class Managercombo : MonoBehaviour
         }
         else if (yourcombo.SequenceEqual(Combo3) | yourcombo.SequenceEqual(Combo4))
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
                     if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 1)
                     {
                         nemicodadistruggere.GetComponent<Enemybehaviour>().Deathforsign();
+                        
+                        if (i == 3)
+                        {
+                            playerbehaviour.Gold += 10;
+                        }
 
                     }
                 }

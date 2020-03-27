@@ -22,6 +22,7 @@ public class Playerbehaviour : MonoBehaviour
     public GameManager GM;
     public int life;
     public bool reciveDamage;
+    public int Gold;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
