@@ -14,20 +14,26 @@ public class Enemyspawnmanager : MonoBehaviour
     UIManager UIManager;
     public bool cansignspawn = false;
     public int nemicoucciso = 0;
+    public float spawntimer = 2.5f;
     #endregion 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //uimanager reference con nullcheck annesso
         UIManager = FindObjectOfType<UIManager>();
         if (UIManager == null)
         {
             Debug.LogError("UImanager is NULL!");
         }
+        //metodo che riempie le dictionary pool di nemici 
         RiempiDictionary(enemyarray);
+
+        //coroutine che spawnerà i nemici per tutta la durata del gioco 
         StartCoroutine(SpawnEnemyCoroutine());
 
+        //debug se tutto funziona nel riempimento delle dictionary
         foreach (KeyValuePair<int, List<GameObject>> pool in poolnemici)
         {
             Debug.Log("key: " + pool.Key);
@@ -52,7 +58,7 @@ public class Enemyspawnmanager : MonoBehaviour
         while (true)
         {
             int randomsegnoID = Random.Range(0, 2);
-            int randomnemicoID = Random.Range(0, 2);
+            int randomnemicoID = Random.Range(0, 4);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
             {
                 if (nemico.activeInHierarchy == false)
@@ -76,7 +82,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(Random.Range(2f, 3f));
+            yield return new WaitForSeconds(spawntimer);
         }
     }
     #endregion
@@ -111,6 +117,28 @@ public class Enemyspawnmanager : MonoBehaviour
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
 
+            }
+            else if (nemicoID == 2)
+            {
+                List<GameObject> listanemico2 = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemico2);
+                for (int i = 0; i < 5; i++)
+                {
+                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
+                    poolnemici[nemicoID].Add(enemyinscene);
+                }
+            }
+            else if (nemicoID == 3)
+            {
+                List<GameObject> listanemico3 = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemico3);
+                for (int i = 0; i < 5; i++)
+                {
+                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
+                    poolnemici[nemicoID].Add(enemyinscene);
+                }
             }
 
         }

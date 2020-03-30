@@ -7,17 +7,20 @@ public class signbehaviours : MonoBehaviour
     public int signID;
     Enemybehaviour enemybehaviour;
     public RectTransform RectTransform;
-    float signspeed = 1f;
+    public float signspeed;
 
     // Start is called before the first frame update
     void Start()
     {
         enemybehaviour = FindObjectOfType<Enemybehaviour>();
+        signspeed = enemybehaviour.speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        signspeed = enemybehaviour.speed;
+
         if (this.gameObject.activeInHierarchy == true)
         {
             SignMove();

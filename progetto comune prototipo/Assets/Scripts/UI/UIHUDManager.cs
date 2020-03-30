@@ -12,6 +12,7 @@ public class UIHUDManager : MonoBehaviour
     Playerbehaviour Playerbehaviour;
     [SerializeField]
     Text gameover_text;
+    public Text Gold_text; 
     GameManager Gamemanager;
 
     private void Awake()
@@ -28,6 +29,7 @@ public class UIHUDManager : MonoBehaviour
 
     private void Update()
     {
+        Gold_text.text = ("Gold: " + Playerbehaviour.Gold);
         if(playerLife > 0)
         {
             playerLife = Playerbehaviour.life;
