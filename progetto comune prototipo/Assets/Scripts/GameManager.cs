@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public UIHUDManager UI;
+    public UIManager UI;
     public Playerbehaviour ActualPlayer;
 
 

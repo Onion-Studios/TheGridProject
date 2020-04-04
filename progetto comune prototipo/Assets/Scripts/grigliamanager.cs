@@ -13,9 +13,6 @@ public class grigliamanager : MonoBehaviour
     public Material colorebasegriglia;
     [SerializeField]
     Material colorecentrogriglia;
-    public GameManager GM;
-    public int life;
-    public bool reciveDamage;
     #endregion
 
 
@@ -31,6 +28,10 @@ public class grigliamanager : MonoBehaviour
         {
             Creagriglia();
             Playerbehaviour player = FindObjectOfType<Playerbehaviour>();
+            if(player == null)
+            {
+                Debug.LogError("il playerbehaviour è NULL!");
+            }
             player.posizionepersonaggio = new Vector3(2, 1.05f, 2);
             player.Spawn();
         }
@@ -87,25 +88,4 @@ public class grigliamanager : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (reciveDamage)
-        {
-            if (life <= 1)
-            {
-                life -= 1;
-                GM.UI.SetCurrentPlayerLife();
-                GM.UI.ActiveUI();
-            }
-            else
-            {
-                life -= 1;
-                reciveDamage = false;
-                transform.position = new Vector3(27, 0, 0);
-                GM.UI.SetCurrentPlayerLife();
-                GM.UI.ActiveUI();
-
-            }
-        }
-    }*/
 }

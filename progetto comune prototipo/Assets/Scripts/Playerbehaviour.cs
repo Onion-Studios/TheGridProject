@@ -19,7 +19,6 @@ public class Playerbehaviour : MonoBehaviour
     List<char> miosimbolo = new List<char>();
     Managercombo managercombo;
     PowerupManager powerupmanager;
-    public GameManager GM;
     public int life;
     public bool reciveDamage;
     public int Gold;
@@ -29,8 +28,22 @@ public class Playerbehaviour : MonoBehaviour
     void Start()
     {
         powerupmanager = FindObjectOfType<PowerupManager>();
+        if(powerupmanager == null)
+        {
+            Debug.LogError("powerupmanager è null!");
+        }
+
         managercombo = FindObjectOfType<Managercombo>();
+        if (managercombo == null)
+        {
+            Debug.LogError("managercombo è null!");
+        }
+
         grigliamanager = FindObjectOfType<grigliamanager>();
+        if (grigliamanager == null)
+        {
+            Debug.LogError("grigliamanager è null!");
+        }
     }
 
     // Update is called once per frame

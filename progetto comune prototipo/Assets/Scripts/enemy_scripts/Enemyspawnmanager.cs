@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Enemyspawnmanager : MonoBehaviour
 {
     #region VARIABILI
+    [HideInInspector]
     public Vector3 enemyspawnposition;
     [SerializeField]
     private GameObject[] enemyarray;
@@ -15,6 +16,7 @@ public class Enemyspawnmanager : MonoBehaviour
     public bool cansignspawn = false;
     public int nemicoucciso = 0;
     public float spawntimer = 2.5f;
+    public Transform enemyparent;
     #endregion 
 
 
@@ -27,6 +29,7 @@ public class Enemyspawnmanager : MonoBehaviour
         {
             Debug.LogError("UImanager is NULL!");
         }
+
         //metodo che riempie le dictionary pool di nemici 
         RiempiDictionary(enemyarray);
 
@@ -57,29 +60,35 @@ public class Enemyspawnmanager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
-            int randomsegnoID = Random.Range(0, 2);
-            int randomnemicoID = Random.Range(0, 4);
+            int randomnemicoID = Random.Range(0, 3);
+            int randomsegno = Random.Range(0, 4);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
             {
                 if (nemico.activeInHierarchy == false)
                 {
                     enemyspawnposition = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     nemico.transform.position = enemyspawnposition;
-                    nemico.GetComponent<Enemybehaviour>().segnocorrispondente = randomsegnoID;
+
+                    switch (randomnemicoID)
+                    {
+                        case 0:
+                            nemico.GetComponent<NormalEnemy>().segninormalenemy[randomsegno].gameObject.SetActive(true);                            
+                            break;
+                        case 1:
+                            nemico.GetComponent<KamikazeEnemy>().segnikamikazenemy[randomsegno].gameObject.SetActive(true);
+                            break;
+                        case 2:
+                            nemico.GetComponent<GoldenEnemy>().segnigoldenenemy[randomsegno].gameObject.SetActive(true);
+                            break;
+                        default:
+                            break;
+                    }
+
                     nemico.SetActive(true);
+
                     break;
                 }
                 
-            }
-
-            foreach (Image segno in UIManager.Dictionaryofsignsprite[randomsegnoID])
-            {
-                if (segno.gameObject.activeInHierarchy == false)
-                {
-                    segno.transform.position = enemyspawnposition + new Vector3(0f, 1.5f, 0f);
-                    segno.gameObject.SetActive(true);
-                    break;
-                }
             }
 
             yield return new WaitForSeconds(spawntimer);
@@ -92,55 +101,44 @@ public class Enemyspawnmanager : MonoBehaviour
     {
         foreach (GameObject enemytospawn in prefabarray)
         {
-            nemicoID = enemytospawn.GetComponent<Enemybehaviour>().enemyID;
-
-            if (nemicoID == 0)
+            if (enemytospawn == prefabarray[0])
             {
-                List<GameObject> listanemico0 = new List<GameObject>();
-                poolnemici.Add(nemicoID, listanemico0);
+                nemicoID = prefabarray[0].GetComponent<NormalEnemy>().enemyID;
+                List<GameObject> listanemicoNormale = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicoNormale);
                 for (int i = 0; i < 5; i++)
                 {
                     Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
+                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
 
             }
-            else if (nemicoID == 1)
+            else if (enemytospawn == prefabarray[1])
             {
-                List<GameObject> listanemico1 = new List<GameObject>();
-                poolnemici.Add(nemicoID, listanemico1);
+                nemicoID = prefabarray[1].GetComponent<KamikazeEnemy>().enemyID;
+                List<GameObject> listanemicokamikaze = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicokamikaze);
                 for (int i = 0; i < 5; i++)
                 {
                     Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
+                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
 
             }
-            else if (nemicoID == 2)
+            else if (enemytospawn == prefabarray[2])
             {
-                List<GameObject> listanemico2 = new List<GameObject>();
-                poolnemici.Add(nemicoID, listanemico2);
+                nemicoID = prefabarray[2].GetComponent<GoldenEnemy>().enemyID;
+                List<GameObject> listanemicogolden = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicogolden);
                 for (int i = 0; i < 5; i++)
                 {
                     Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
+                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
             }
-            else if (nemicoID == 3)
-            {
-                List<GameObject> listanemico3 = new List<GameObject>();
-                poolnemici.Add(nemicoID, listanemico3);
-                for (int i = 0; i < 5; i++)
-                {
-                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity);
-                    poolnemici[nemicoID].Add(enemyinscene);
-                }
-            }
-
         }
     }
     #endregion
