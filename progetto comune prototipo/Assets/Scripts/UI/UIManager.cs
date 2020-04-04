@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour
             libePreFab5.SetActive(false);
             libePreFab6.SetActive(false);
         }
-        else if (Playerbehaviour.life == 0)
+        else if (Playerbehaviour.life < 1)
         {
             GameManager.GoToEndMenu();
         }
