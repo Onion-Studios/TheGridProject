@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public Text Gold_text;
     [SerializeField]
     Text Enemycounter_text;
+    [SerializeField]
+    Text yokaislayer_text;
     Enemyspawnmanager Enemyspawnmanager;
 
     private void Awake()
@@ -48,6 +50,8 @@ public class UIManager : MonoBehaviour
         UpdateGoldCounter();
 
         UpdateEnemycounter();
+
+        UpdateYokaiSlayerCounter();
     }
 
 
@@ -121,5 +125,10 @@ public class UIManager : MonoBehaviour
     void UpdateGoldCounter()
     {
         Gold_text.text = ("Gold: " + Playerbehaviour.Gold);
+    }
+
+    void UpdateYokaiSlayerCounter()
+    {
+        yokaislayer_text.text = ("Yokai Slayer: " + Playerbehaviour.yokaislayercount);
     }
 }
