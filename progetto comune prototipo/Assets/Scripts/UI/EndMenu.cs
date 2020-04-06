@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class EndMenu : MonoBehaviour
 {
  
-    public void GoToEndMenu()
+    public void GoToGameplay()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }

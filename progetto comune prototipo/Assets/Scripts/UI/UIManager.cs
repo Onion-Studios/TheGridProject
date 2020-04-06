@@ -3,50 +3,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIHUDManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     GameManager GameManager;
     public Transform lifeToSpawn;
     public GameObject libePreFab1, libePreFab2, libePreFab3, libePreFab4, libePreFab5, libePreFab6;
-    int playerLife;
     Playerbehaviour Playerbehaviour;
+    public Text Gold_text;
     [SerializeField]
-    Text gameover_text;
-    public Text Gold_text; 
-    GameManager Gamemanager;
+    Text Enemycounter_text;
+    [SerializeField]
+    Text yokaislayer_text;
+    Enemyspawnmanager Enemyspawnmanager;
 
     private void Awake()
     {
         GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("GameManager è null");
+        }
+
         Playerbehaviour = FindObjectOfType<Playerbehaviour>();
-        GameManager = FindObjectOfType<GameManager>();
+        if (Playerbehaviour == null)
+        {
+            Debug.LogError("playerbehaviour è null");
+        }
+
+        Enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        if (Enemyspawnmanager == null)
+        {
+            Debug.LogError("enemyspawnmanager è null");
+        }
+
     }
 
     private void Start()
     {
-        playerLife = Playerbehaviour.life;
+        
     }
 
     private void Update()
     {
-        Gold_text.text = ("Gold: " + Playerbehaviour.Gold);
-        if(playerLife > 0)
-        {
-            playerLife = Playerbehaviour.life;
-            ActiveUI();
-        }
-        else
-        {
-            ActiveUI();
-            GameManager.GoToEndMenu();
-        }
-        
+        UpdateLifeUI();
+
+        UpdateGoldCounter();
+
+        UpdateEnemycounter();
+
+        UpdateYokaiSlayerCounter();
     }
 
 
-    public void ActiveUI()
+    public void UpdateLifeUI()
     {
-        if (playerLife == 6)
+        if (Playerbehaviour.life == 6)
         {
             libePreFab1.SetActive(true);
             libePreFab2.SetActive(true);
@@ -55,7 +66,7 @@ public class UIHUDManager : MonoBehaviour
             libePreFab5.SetActive(true);
             libePreFab6.SetActive(true);
         }
-        if (playerLife == 5)
+        else if (Playerbehaviour.life == 5)
         {
             libePreFab1.SetActive(true);
             libePreFab2.SetActive(true);
@@ -64,7 +75,7 @@ public class UIHUDManager : MonoBehaviour
             libePreFab5.SetActive(true);
             libePreFab6.SetActive(false);
         }
-        if (playerLife == 4)
+        else if (Playerbehaviour.life == 4)
         {
             libePreFab1.SetActive(true);
             libePreFab2.SetActive(true);
@@ -73,7 +84,7 @@ public class UIHUDManager : MonoBehaviour
             libePreFab5.SetActive(false);
             libePreFab6.SetActive(false);
         }
-        if (playerLife == 3)
+        else if (Playerbehaviour.life == 3)
         {
             libePreFab1.SetActive(true);
             libePreFab2.SetActive(true);
@@ -82,7 +93,7 @@ public class UIHUDManager : MonoBehaviour
             libePreFab5.SetActive(false);
             libePreFab6.SetActive(false);
         }
-        if (playerLife == 2)
+        else if (Playerbehaviour.life == 2)
         {
             libePreFab1.SetActive(true);
             libePreFab2.SetActive(true);
@@ -91,7 +102,7 @@ public class UIHUDManager : MonoBehaviour
             libePreFab5.SetActive(false);
             libePreFab6.SetActive(false);
         }
-        if (playerLife == 1)
+        else if (Playerbehaviour.life == 1)
         {
             libePreFab1.SetActive(true);
             libePreFab2.SetActive(false);
@@ -100,19 +111,24 @@ public class UIHUDManager : MonoBehaviour
             libePreFab5.SetActive(false);
             libePreFab6.SetActive(false);
         }
-        if (playerLife == 0)
+        else if (Playerbehaviour.life < 1)
         {
-            libePreFab1.SetActive(false);
-            libePreFab2.SetActive(false);
-            libePreFab3.SetActive(false);
-            libePreFab4.SetActive(false);
-            libePreFab5.SetActive(false);
-            libePreFab6.SetActive(false);
+            GameManager.GoToEndMenu();
         }
-
-
     }
-    
-    
 
+    private void UpdateEnemycounter()
+    {
+        Enemycounter_text.text = "Counter nemici: " + Enemyspawnmanager.nemicoucciso;
+    }
+
+    void UpdateGoldCounter()
+    {
+        Gold_text.text = ("Gold: " + Playerbehaviour.Gold);
+    }
+
+    void UpdateYokaiSlayerCounter()
+    {
+        yokaislayer_text.text = ("Yokai Slayer: " + Playerbehaviour.yokaislayercount);
+    }
 }

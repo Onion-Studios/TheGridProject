@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Managercombo : MonoBehaviour
 {
+    #region Variabili
     #region COMBODATABASE
     //le combo di tasti che equivalgono ad un simbolo 2 per ora
     List<char> Combo1 = new List<char>() {'s', 's', 'a', 'a'}; // segno 1 nel gdd numero 5
@@ -22,17 +23,30 @@ public class Managercombo : MonoBehaviour
     List<char> Combo12 = new List<char>() {'w', 'a', 'w', 'a'}; // speculare segno 6
     #endregion
     Enemyspawnmanager enemyspawnmanager;
-    Enemybehaviour enemybehaviour;
     UIManager UIManager;
     Playerbehaviour playerbehaviour;
-    
+    #endregion
 
     private void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
-        enemybehaviour = FindObjectOfType<Enemybehaviour>();
+        if (enemyspawnmanager == null)
+        {
+            Debug.LogError("enemyspawnmanager è null");
+        }
+
         UIManager = FindObjectOfType<UIManager>();
+        if (UIManager == null)
+        {
+            Debug.LogError("UImanager è null");
+        }
+
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
+        if (playerbehaviour == null)
+        {
+            Debug.LogError("playerbehaviour è null");
+        }
+
     }
 
     private void Update()
@@ -45,60 +59,150 @@ public class Managercombo : MonoBehaviour
     {
         if (yourcombo.SequenceEqual(Combo1) | yourcombo.SequenceEqual(Combo2))
         {
-            for(int i=0; i<4; i++)
+            for(int i=0; i<3; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
-                    if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 0)
+                    if (nemicodadistruggere.activeInHierarchy == true)
                     {
-                        nemicodadistruggere.GetComponent<Enemybehaviour>().Deathforsign();
-                        
-                        if(i == 3)
+                        switch (i)
                         {
-                            playerbehaviour.Gold += 10;
+                            case 0:
+                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
+                                if (normalenemy.segninormalenemy[0].activeInHierarchy == true)
+                                {
+                                    normalenemy.Deathforsign();
+                                }
+                                break;
+                            case 1:
+                                KamikazeEnemy kamikazenemy  = nemicodadistruggere.GetComponent<KamikazeEnemy>();
+                                if (kamikazenemy.segnikamikazenemy[0].activeInHierarchy == true)
+                                {
+                                    kamikazenemy.Deathforsign();
+                                }
+                                break;
+                            case 2:
+                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
+                                if (goldenenemy.segnigoldenenemy[0].activeInHierarchy == true)
+                                {
+                                    goldenenemy.Deathforsign();
+                                }
+                                break;
                         }
-                      
+
                     }
                 }
-
-                foreach(Image segno in UIManager.Dictionaryofsignsprite[0])
-                {
-                    if(segno.gameObject.activeInHierarchy == true)
-                    {
-                        segno.gameObject.SetActive(false);
-                    }
-                }
-
-                Debug.Log("ho attivato la combo1 e ho distrutto i nemici con il segno 0");
             }
         }
         else if (yourcombo.SequenceEqual(Combo3) | yourcombo.SequenceEqual(Combo4))
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
-                    if (nemicodadistruggere.activeInHierarchy == true && nemicodadistruggere.GetComponent<Enemybehaviour>().segnocorrispondente == 1)
+                    if (nemicodadistruggere.activeInHierarchy == true)
                     {
-                        nemicodadistruggere.GetComponent<Enemybehaviour>().Deathforsign();
-                        
-                        if (i == 3)
+                        switch (i)
                         {
-                            playerbehaviour.Gold += 10;
+                            case 0:
+                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
+                                if (normalenemy.segninormalenemy[1].activeInHierarchy == true)
+                                {
+                                    normalenemy.Deathforsign();
+                                }
+                                break;
+                            case 1:
+                                KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
+                                if (kamikazenemy.segnikamikazenemy[1].activeInHierarchy == true)
+                                {
+                                    kamikazenemy.Deathforsign();
+                                }
+                                break;
+                            case 2:
+                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
+                                if (goldenenemy.segnigoldenenemy[1].activeInHierarchy == true)
+                                {
+                                    goldenenemy.Deathforsign();
+                                }
+                                break;
+                        }
+                    }
+                }
+
+            }
+        }
+        else if (yourcombo.SequenceEqual(Combo5) | yourcombo.SequenceEqual(Combo6))
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
+                {
+                    if (nemicodadistruggere.activeInHierarchy == true)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
+                                if (normalenemy.segninormalenemy[3].activeInHierarchy == true)
+                                {
+                                    normalenemy.Deathforsign();
+                                }
+                                break;
+                            case 1:
+                                KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
+                                if (kamikazenemy.segnikamikazenemy[3].activeInHierarchy == true)
+                                {
+                                    kamikazenemy.Deathforsign();
+                                }
+                                break;
+                            case 2:
+                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
+                                if (goldenenemy.segnigoldenenemy[3].activeInHierarchy == true)
+                                {
+                                    goldenenemy.Deathforsign();
+                                }
+                                break;
                         }
 
                     }
                 }
-
-                foreach (Image segno in UIManager.Dictionaryofsignsprite[1])
+            }
+        }
+        if (yourcombo.SequenceEqual(Combo7) | yourcombo.SequenceEqual(Combo8))
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
-                    if (segno.gameObject.activeInHierarchy == true)
+                    if (nemicodadistruggere.activeInHierarchy == true)
                     {
-                        segno.gameObject.SetActive(false);
+                        switch (i)
+                        {
+                            case 0:
+                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
+                                if (normalenemy.segninormalenemy[2].activeInHierarchy == true)
+                                {
+                                    normalenemy.Deathforsign();
+                                }
+                                break;
+                            case 1:
+                                KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
+                                if (kamikazenemy.segnikamikazenemy[2].activeInHierarchy == true)
+                                {
+                                    kamikazenemy.Deathforsign();
+                                }
+                                break;
+                            case 2:
+                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
+                                if (goldenenemy.segnigoldenenemy[2].activeInHierarchy == true)
+                                {
+                                    goldenenemy.Deathforsign();
+                                }
+                                break;
+                        }
+
                     }
                 }
-
-                Debug.Log("ho attivato la combo1 e ho distrutto i nemici con il segno 1");
             }
         }
         else
