@@ -11,6 +11,7 @@ public class GoldenEnemy : MonoBehaviour
     public int GoldGiven = 10;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    Inkstone Inkstone;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
 
@@ -28,6 +29,12 @@ public class GoldenEnemy : MonoBehaviour
         {
             Debug.LogError("enemyspawnmanager is NULL!");
         }
+
+        Inkstone = FindObjectOfType<Inkstone>();
+        if(Inkstone==null)
+        {
+            Debug.LogError("Inkstone is NULL!");
+        }
     }
 
     // Update is called once per frame
@@ -40,9 +47,19 @@ public class GoldenEnemy : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (this.transform.localPosition.x > -0.76)
+        if (this.transform.localPosition.x > 4.24)
         {
-            Deathforgriglia();
+            DeathForEndGrid();
+        }
+    }
+
+    public void DeathForEndGrid()
+    {
+        this.gameObject.SetActive(false);
+        Inkstone.Ink -= 10;
+        foreach (GameObject segno in segnigoldenenemy)
+        {
+            segno.SetActive(false);
         }
     }
 
@@ -60,6 +77,7 @@ public class GoldenEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
+        Inkstone.Ink += 10;
         playerbehaviour.Gold += GoldGiven;
         foreach (GameObject segno in segnigoldenenemy)
         {
