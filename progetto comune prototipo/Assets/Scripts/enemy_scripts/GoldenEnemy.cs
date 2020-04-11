@@ -56,7 +56,6 @@ public class GoldenEnemy : MonoBehaviour
     public void DeathForEndGrid()
     {
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= 10;
         foreach (GameObject segno in segnigoldenenemy)
         {
             segno.SetActive(false);
