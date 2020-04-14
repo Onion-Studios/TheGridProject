@@ -11,6 +11,7 @@ public class NormalEnemy : MonoBehaviour
     public int damage = 1;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    Inkstone Inkstone;
     public GameObject[] segninormalenemy;
 
     // Start is called before the first frame update
@@ -27,6 +28,12 @@ public class NormalEnemy : MonoBehaviour
         {
             Debug.LogError("enemyspawnmanager is NULL!");
         }
+
+        Inkstone = FindObjectOfType<Inkstone>();
+        if (Inkstone == null)
+        {
+            Debug.LogError("Inkstone is NULL!");
+        }
     }
 
     // Update is called once per frame
@@ -39,9 +46,19 @@ public class NormalEnemy : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (this.transform.localPosition.x > -0.76)
+        if (this.transform.localPosition.x > 4.24)
         {
-            Deathforgriglia();
+            DeathForEndGrid();
+        }
+    }
+
+    public void DeathForEndGrid()
+    {
+        this.gameObject.SetActive(false);
+        Inkstone.Ink -= 10;
+        foreach (GameObject segno in segninormalenemy)
+        {
+            segno.SetActive(false);
         }
     }
 
@@ -60,7 +77,8 @@ public class NormalEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
-        foreach(GameObject segno in segninormalenemy)
+        Inkstone.Ink += 10;
+        foreach (GameObject segno in segninormalenemy)
         {
             segno.SetActive(false);
         }

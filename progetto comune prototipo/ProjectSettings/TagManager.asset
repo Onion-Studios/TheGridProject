@@ -8,6 +8,9 @@ TagManager:
   - enemy1
   - powerup
   - enemy2
+  - NormalEnemy
+  - GoldenEnemy
+  - KamikazeEnemy
   layers:
   - Default
   - TransparentFX

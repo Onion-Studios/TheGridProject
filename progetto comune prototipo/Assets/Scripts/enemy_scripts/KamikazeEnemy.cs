@@ -10,6 +10,7 @@ public class KamikazeEnemy : MonoBehaviour
     public int damage = 2;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    Inkstone Inkstone;
     public GameObject[] segnikamikazenemy;
     public int segnocorrispondente;
 
@@ -29,6 +30,11 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("enemyspawnmanager is NULL!");
         }
 
+        Inkstone = FindObjectOfType<Inkstone>();
+        if (Inkstone == null)
+        {
+            Debug.LogError("Inkstone is NULL!");
+        }
     }
 
     // Update is called once per frame
@@ -41,9 +47,19 @@ public class KamikazeEnemy : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (this.transform.localPosition.x > -0.76)
+        if (this.transform.localPosition.x > 4.24)
         {
-            Deathforgriglia();
+            DeathForEndGrid();
+        }
+    }
+
+    public void DeathForEndGrid()
+    {
+        this.gameObject.SetActive(false);
+        Inkstone.Ink -= 10;
+        foreach (GameObject segno in segnikamikazenemy)
+        {
+            segno.SetActive(false);
         }
     }
 
@@ -62,6 +78,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
+        Inkstone.Ink += 10;
         foreach (GameObject segno in segnikamikazenemy)
         {
             segno.SetActive(false);

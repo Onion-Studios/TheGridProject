@@ -19,6 +19,8 @@ public class Playerbehaviour : MonoBehaviour
     List<char> miosimbolo = new List<char>();
     Managercombo managercombo;
     PowerupManager powerupmanager;
+    Inkstone Inkstone;
+    
     public int life;
     public bool reciveDamage;
     public int Gold;
@@ -45,6 +47,12 @@ public class Playerbehaviour : MonoBehaviour
         {
             Debug.LogError("grigliamanager è null!");
         }
+
+        Inkstone = FindObjectOfType<Inkstone>();
+        if (Inkstone == null)
+        {
+            Debug.LogError("Inkstone is NULL!");
+        }
     }
 
     // Update is called once per frame
@@ -56,24 +64,40 @@ public class Playerbehaviour : MonoBehaviour
             miosimbolo.Add('d');
             forwardMove();
             Castraggio();
+            if(Inkstone.Ink > 1)
+            {
+                Inkstone.Ink -= 1;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
         {
             miosimbolo.Add('a');
             backmove();
             Castraggio();
+            if (Inkstone.Ink > 1)
+            {
+                Inkstone.Ink -= 1;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
         {
             miosimbolo.Add('s');
             rightmove();
             Castraggio();
+            if (Inkstone.Ink > 1)
+            {
+                Inkstone.Ink -= 1;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
         {
             miosimbolo.Add('w');
             leftmove();
             Castraggio();
+            if (Inkstone.Ink > 1)
+            {
+                Inkstone.Ink -= 1;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -85,8 +109,10 @@ public class Playerbehaviour : MonoBehaviour
         }
     }
 
-    #region MOVEMENTS
     
+
+    #region MOVEMENTS
+
     // il giocatore ruota e poi si muove nella direzione in cui ha ruotato
 
     void forwardMove()
