@@ -64,7 +64,7 @@ public class Playerbehaviour : MonoBehaviour
             miosimbolo.Add('d');
             forwardMove();
             Castraggio();
-            if(Inkstone.Ink>1)
+            if(Inkstone.Ink > 1)
             {
                 Inkstone.Ink -= 1;
             }

@@ -17,6 +17,7 @@ public class Enemyspawnmanager : MonoBehaviour
     public int nemicoucciso = 0;
     public float spawntimer = 2.5f;
     public Transform enemyparent;
+    public float[] positionpossible = new float[5];
     #endregion 
 
 
@@ -62,23 +63,106 @@ public class Enemyspawnmanager : MonoBehaviour
         {
             int randomnemicoID = Random.Range(0, 3);
             int randomsegno = Random.Range(0, 4);
+            int randomposition = Random.Range(0, 5);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
             {
                 if (nemico.activeInHierarchy == false)
                 {
-                    enemyspawnposition = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    if (randomposition == 0)
+                    {
+                        enemyspawnposition = new Vector3(positionpossible[randomposition], 1.3f, 0f);
+                    }
+                    else if (randomposition == 1)
+                    {
+                        enemyspawnposition = new Vector3(positionpossible[randomposition], 1.3f, 1f);
+                    }
+                    else if (randomposition == 2)
+                    {
+                        enemyspawnposition = new Vector3(positionpossible[randomposition], 1.3f, 2f);
+                    }
+                    else if (randomposition == 3)
+                    {
+                        enemyspawnposition = new Vector3(positionpossible[randomposition], 1.3f, 3f);
+                    }
+                    else if (randomposition == 4)
+                    {
+                        enemyspawnposition = new Vector3(positionpossible[randomposition], 1.3f, 4f);
+                    }
                     nemico.transform.position = enemyspawnposition;
 
                     switch (randomnemicoID)
                     {
                         case 0:
-                            nemico.GetComponent<NormalEnemy>().segninormalenemy[randomsegno].gameObject.SetActive(true);                            
+                            NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
+                            NormalEnemy.segninormalenemy[randomsegno].gameObject.SetActive(true);
+                            if (randomposition == 0)
+                            {
+                                NormalEnemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1) 
+                            {
+                                NormalEnemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                NormalEnemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                NormalEnemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                NormalEnemy.speed = 1f;
+                            }
                             break;
                         case 1:
-                            nemico.GetComponent<KamikazeEnemy>().segnikamikazenemy[randomsegno].gameObject.SetActive(true);
+                            KamikazeEnemy kamikazeenemy = nemico.GetComponent<KamikazeEnemy>();
+                            kamikazeenemy.segnikamikazenemy[randomsegno].gameObject.SetActive(true);
+                            if (randomposition == 0)
+                            {
+                                kamikazeenemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1)
+                            {
+                                kamikazeenemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                kamikazeenemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                kamikazeenemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                kamikazeenemy.speed = 1f;
+                            }
                             break;
                         case 2:
-                            nemico.GetComponent<GoldenEnemy>().segnigoldenenemy[randomsegno].gameObject.SetActive(true);
+                            GoldenEnemy goldenEnemy = nemico.GetComponent<GoldenEnemy>();
+                            goldenEnemy.segnigoldenenemy[randomsegno].gameObject.SetActive(true);
+                            if (randomposition == 0)
+                            {
+                                goldenEnemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1)
+                            {
+                                goldenEnemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                goldenEnemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                goldenEnemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                goldenEnemy.speed = 1f;
+                            }
                             break;
                         default:
                             break;
@@ -108,8 +192,8 @@ public class Enemyspawnmanager : MonoBehaviour
                 poolnemici.Add(nemicoID, listanemicoNormale);
                 for (int i = 0; i < 5; i++)
                 {
-                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity, enemyparent);
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
 
@@ -121,8 +205,8 @@ public class Enemyspawnmanager : MonoBehaviour
                 poolnemici.Add(nemicoID, listanemicokamikaze);
                 for (int i = 0; i < 5; i++)
                 {
-                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity, enemyparent);
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
 
@@ -134,8 +218,8 @@ public class Enemyspawnmanager : MonoBehaviour
                 poolnemici.Add(nemicoID, listanemicogolden);
                 for (int i = 0; i < 5; i++)
                 {
-                    Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
-                    GameObject enemyinscene = Instantiate(enemytospawn, posizionetospawn, Quaternion.identity, enemyparent);
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
             }
