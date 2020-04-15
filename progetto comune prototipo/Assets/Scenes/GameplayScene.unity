@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6617a2484be96384eabbfe8bb5f6d6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personaggio: {fileID: 2897495621104690757, guid: ae8fbee9191aae4458e34a139126f2f9,
+  personaggio: {fileID: 6484247258613744673, guid: 8201e4249513b814ab08e9a6f11d0d0a,
     type: 3}
   posizionepersonaggio: {x: 0, y: 0, z: 0}
   speed: 0
