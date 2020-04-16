@@ -16,11 +16,11 @@ public class Playerbehaviour : MonoBehaviour
     [SerializeField]
     Material colorecubonuovo;
     grigliamanager grigliamanager;
-    List<char> miosimbolo = new List<char>();
     Managercombo managercombo;
     PowerupManager powerupmanager;
     Inkstone Inkstone;
-    
+    public Vector3 LastCubeChecked;
+
     public int life;
     public bool reciveDamage;
     public int Gold;
@@ -61,7 +61,6 @@ public class Playerbehaviour : MonoBehaviour
         //movimento ad ogni input corrisponde un metodo che fa l'azione di movimento corrispondente
         if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
         {
-            miosimbolo.Add('d');
             forwardMove();
             Castraggio();
             if(Inkstone.Ink > 1)
@@ -71,7 +70,6 @@ public class Playerbehaviour : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
         {
-            miosimbolo.Add('a');
             backmove();
             Castraggio();
             if (Inkstone.Ink > 1)
@@ -81,7 +79,6 @@ public class Playerbehaviour : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
         {
-            miosimbolo.Add('s');
             rightmove();
             Castraggio();
             if (Inkstone.Ink > 1)
@@ -91,7 +88,6 @@ public class Playerbehaviour : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
         {
-            miosimbolo.Add('w');
             leftmove();
             Castraggio();
             if (Inkstone.Ink > 1)
@@ -102,10 +98,11 @@ public class Playerbehaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            managercombo.checkcombo(miosimbolo);
+            CastCheckRay();
+            managercombo.Checksign();
             Gotocenter();
             grigliamanager.Resetcoloregriglia();
-            miosimbolo.Clear();
+            grigliamanager.ResetGrigliaLogica();
         }
     }
 
@@ -168,21 +165,28 @@ public class Playerbehaviour : MonoBehaviour
         float distanzaraggio = 10f;
         if(Physics.Raycast(downraycheck, out RaycastHit hit, distanzaraggio))
         {
-            if (hit.collider.GetComponent<cubeprefabehaviour>().iscoloured == true)
+            hit.collider.GetComponent<Renderer>().material = colorecubonuovo;
+
+            Debug.Log("cubo x: " + hit.collider.gameObject.transform.position.x + " cubo y: " + hit.collider.gameObject.transform.position.z);
+            if(grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
             {
-                hit.collider.GetComponent<Renderer>().material = grigliamanager.colorebasegriglia;
-                hit.collider.GetComponent<cubeprefabehaviour>().iscoloured = false;
-            }
-            else
-            {
-                hit.collider.GetComponent<Renderer>().material = colorecubonuovo;
-                hit.collider.GetComponent<cubeprefabehaviour>().iscoloured = true;
+                grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] = true;
             }
         }
     }
     #endregion
 
+    public void CastCheckRay()
+    {
+        origineraggio = (istanza.transform.position - new Vector3(0f, 0.5f, 0f));
+        downraycheck = new Ray(origineraggio, Vector3.down);
+        float distanzaraggio = 10f;
+        if (Physics.Raycast(downraycheck, out RaycastHit hit, distanzaraggio))
+        {
+            LastCubeChecked.x = hit.collider.gameObject.transform.position.x;
+            LastCubeChecked.z = hit.collider.gameObject.transform.position.z;
+        }
 
- 
+    }
 
 }

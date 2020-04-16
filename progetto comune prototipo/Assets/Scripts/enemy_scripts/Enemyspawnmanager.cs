@@ -38,7 +38,7 @@ public class Enemyspawnmanager : MonoBehaviour
         StartCoroutine(SpawnEnemyCoroutine());
 
         //debug se tutto funziona nel riempimento delle dictionary
-        foreach (KeyValuePair<int, List<GameObject>> pool in poolnemici)
+        /*foreach (KeyValuePair<int, List<GameObject>> pool in poolnemici)
         {
             Debug.Log("key: " + pool.Key);
             foreach (var value in pool.Value)
@@ -46,7 +46,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 Debug.Log(value);
             }
 
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -62,7 +62,7 @@ public class Enemyspawnmanager : MonoBehaviour
         while (true)
         {
             int randomnemicoID = Random.Range(0, 3);
-            int randomsegno = Random.Range(0, 4);
+            int randomsegno = Random.Range(0, 2);
             int randomposition = Random.Range(0, 5);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
             {
@@ -192,7 +192,6 @@ public class Enemyspawnmanager : MonoBehaviour
                 poolnemici.Add(nemicoID, listanemicoNormale);
                 for (int i = 0; i < 5; i++)
                 {
-                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
@@ -205,7 +204,6 @@ public class Enemyspawnmanager : MonoBehaviour
                 poolnemici.Add(nemicoID, listanemicokamikaze);
                 for (int i = 0; i < 5; i++)
                 {
-                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
