@@ -1916,7 +1916,7 @@ PlayableDirector:
     value: {fileID: 1078828625}
   - key: {fileID: 8899389545960235136, guid: 307fc347abb00fb4fb4273b5fa795d96, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 6422256351106333542, guid: 307fc347abb00fb4fb4273b5fa795d96, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -1985,8 +1985,6 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 8899389545960235136, guid: 307fc347abb00fb4fb4273b5fa795d96, type: 2}
     value: {fileID: 217094943}
-  - key: {fileID: 6422256351106333542, guid: 307fc347abb00fb4fb4273b5fa795d96, type: 2}
-    value: {fileID: 217094941}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &1078828625
