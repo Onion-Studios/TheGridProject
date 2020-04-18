@@ -36,6 +36,13 @@ public class KamikazeEnemy : MonoBehaviour
         {
             Debug.LogError("Inkstone is NULL!");
         }
+
+        SecretT = FindObjectOfType<Secret>();
+        if (SecretT == null)
+        {
+            Debug.LogError("Secret is NULL");
+        }
+
     }
 
     // Update is called once per frame
@@ -68,6 +75,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         playerbehaviour.life -= damage;
+        SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
         foreach (GameObject segno in segnikamikazenemy)
         {
@@ -80,7 +88,7 @@ public class KamikazeEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
-        SecretT.barra += 25;
+        SecretT.barra += SecretT.carica;
         foreach (GameObject segno in segnikamikazenemy)
         {
             segno.SetActive(false);
