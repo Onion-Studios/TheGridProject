@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Secret : MonoBehaviour
 {
-    [Range(0,100)] public int barra;
+    [Range(0,100)] public int barra = 0;
     public int carica;
 
     Enemyspawnmanager enemyspawnmanager;
@@ -20,10 +20,7 @@ public class Secret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Death();
-        }
+        Death();
     }
 
     void Death()
