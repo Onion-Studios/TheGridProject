@@ -12,8 +12,10 @@ public class Secret : MonoBehaviour
     Playerbehaviour playerbehaviour;
 
     public float currentTime = 0f;
-    float startTime = 5f;
+    public float timeMax = 5f;
     bool active = false;
+    Color cambiaColore = Color.white;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +27,8 @@ public class Secret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Colore();
         Timer();
-
     }
 
     
@@ -46,7 +48,7 @@ public class Secret : MonoBehaviour
             {
                 active = true;
 
-                currentTime = startTime;
+                currentTime = timeMax;
             }
             else
             {
@@ -105,6 +107,16 @@ public class Secret : MonoBehaviour
 
             }
         }
+
+    }
+
+
+
+    void Colore()
+    {
+        var cubeRenderer = this.GetComponent<Renderer>();
+        cambiaColore = Color.Lerp(Color.white, Color.red, 0f + barra / 100f);
+        cubeRenderer.material.SetColor("_Color", cambiaColore);
 
     }
 }

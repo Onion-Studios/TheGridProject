@@ -1274,6 +1274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barra: 0
   carica: 25
+  currentTime: 0
+  timeMax: 10
 --- !u!65 &553476034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1304,7 +1306,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cdb380fb351beec4b9c17340d3ebe920, type: 2}
+  - {fileID: 2100000, guid: 3fb3d9880cbbdc44881370980e0e0bf4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
