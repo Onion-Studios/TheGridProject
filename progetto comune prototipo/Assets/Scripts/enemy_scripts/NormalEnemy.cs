@@ -12,6 +12,7 @@ public class NormalEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
+    Secret SecretT;
     public GameObject[] segninormalenemy;
 
     // Start is called before the first frame update
@@ -78,6 +79,7 @@ public class NormalEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
+        SecretT.barra += 25;
         foreach (GameObject segno in segninormalenemy)
         {
             segno.SetActive(false);

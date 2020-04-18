@@ -11,6 +11,7 @@ public class KamikazeEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
+    Secret SecretT;
     public GameObject[] segnikamikazenemy;
     public int segnocorrispondente;
 
@@ -79,6 +80,7 @@ public class KamikazeEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
+        SecretT.barra += 25;
         foreach (GameObject segno in segnikamikazenemy)
         {
             segno.SetActive(false);

@@ -12,6 +12,7 @@ public class GoldenEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
+    Secret SecretT;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
 
@@ -77,6 +78,7 @@ public class GoldenEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
+        SecretT.barra += 25;
         playerbehaviour.Gold += GoldGiven;
         foreach (GameObject segno in segnigoldenenemy)
         {
