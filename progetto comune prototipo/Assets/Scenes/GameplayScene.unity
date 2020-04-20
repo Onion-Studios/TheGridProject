@@ -434,7 +434,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 062db5856ef6a56458842a1d40d80405,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 062db5856ef6a56458842a1d40d80405,
         type: 3}
@@ -1984,6 +1984,8 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 8899389545960235136, guid: 307fc347abb00fb4fb4273b5fa795d96, type: 2}
+    value: {fileID: 217094943}
+  - key: {fileID: -8598819459881133230, guid: 307fc347abb00fb4fb4273b5fa795d96, type: 2}
     value: {fileID: 217094943}
   m_ExposedReferences:
     m_References: []
