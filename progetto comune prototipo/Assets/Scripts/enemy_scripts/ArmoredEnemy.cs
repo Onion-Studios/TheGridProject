@@ -86,11 +86,18 @@ public class ArmoredEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
-        if(armoredLife == 2)
+        int randomsegno = Random.Range(0, 4);
+
+        if (armoredLife == 2)
         {
             speed = maxSpeed;
             armoredLife -= 1;
-           
+            foreach (GameObject segno in segniarmoredenemy)
+            {
+                segno.SetActive(false);
+            }
+
+            segniarmoredenemy[randomsegno].gameObject.SetActive(true);
         }
         else
         {

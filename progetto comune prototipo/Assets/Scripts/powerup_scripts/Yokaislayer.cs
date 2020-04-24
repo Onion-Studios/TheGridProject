@@ -49,6 +49,7 @@ public class Yokaislayer : MonoBehaviour
                             break;
                         case 3:
                             ArmoredEnemy armoredenemy = nemici.GetComponent<ArmoredEnemy>();
+                            armoredenemy.armoredLife = 1;
                             armoredenemy.Deathforsign();
                             break;
                     }
