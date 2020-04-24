@@ -64,7 +64,7 @@ public class Managercombo : MonoBehaviour
     {
         if (yourcombo.SequenceEqual(Combo1) | yourcombo.SequenceEqual(Combo2))
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -93,6 +93,20 @@ public class Managercombo : MonoBehaviour
                                     goldenenemy.Deathforsign();
                                 }
                                 break;
+                            case 3:
+                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
+                                if (armoredenemy.segniarmoredenemy[0].activeInHierarchy == true)
+                                {
+                                    armoredenemy.Deathforsign();
+                                }
+                                break;
+                            case 4:
+                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
+                                if (lastwillenemy.segnilastwillenemy[0].activeInHierarchy == true)
+                                {
+                                    lastwillenemy.Deathforsign();
+                                }
+                                break;
                         }
 
                     }
@@ -101,7 +115,7 @@ public class Managercombo : MonoBehaviour
         }
         else if (yourcombo.SequenceEqual(Combo3) | yourcombo.SequenceEqual(Combo4))
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -130,6 +144,20 @@ public class Managercombo : MonoBehaviour
                                     goldenenemy.Deathforsign();
                                 }
                                 break;
+                            case 3:
+                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
+                                if (armoredenemy.segniarmoredenemy[1].activeInHierarchy == true)
+                                {
+                                    armoredenemy.Deathforsign();
+                                }
+                                break;
+                            case 4:
+                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
+                                if (lastwillenemy.segnilastwillenemy[1].activeInHierarchy == true)
+                                {
+                                    lastwillenemy.Deathforsign();
+                                }
+                                break;
                         }
                     }
                 }
@@ -138,7 +166,7 @@ public class Managercombo : MonoBehaviour
         }
         else if (yourcombo.SequenceEqual(Combo5) | yourcombo.SequenceEqual(Combo6))
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -167,6 +195,20 @@ public class Managercombo : MonoBehaviour
                                     goldenenemy.Deathforsign();
                                 }
                                 break;
+                            case 3:
+                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
+                                if (armoredenemy.segniarmoredenemy[3].activeInHierarchy == true)
+                                {
+                                    armoredenemy.Deathforsign();
+                                }
+                                break;
+                            case 4:
+                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
+                                if (lastwillenemy.segnilastwillenemy[3].activeInHierarchy == true)
+                                {
+                                    lastwillenemy.Deathforsign();
+                                }
+                                break;
                         }
 
                     }
@@ -175,7 +217,7 @@ public class Managercombo : MonoBehaviour
         }
         if (yourcombo.SequenceEqual(Combo7) | yourcombo.SequenceEqual(Combo8))
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -204,6 +246,20 @@ public class Managercombo : MonoBehaviour
                                     goldenenemy.Deathforsign();
                                 }
                                 break;
+                            case 3:
+                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
+                                if (armoredenemy.segniarmoredenemy[2].activeInHierarchy == true)
+                                {
+                                    armoredenemy.Deathforsign();
+                                }
+                                break;
+                            case 4:
+                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
+                                if (lastwillenemy.segnilastwillenemy[2].activeInHierarchy == true)
+                                {
+                                    lastwillenemy.Deathforsign();
+                                }
+                                break;
                         }
 
                     }
@@ -217,7 +273,7 @@ public class Managercombo : MonoBehaviour
 
     }
 
-    public ABC _abc = ABC.a;
+    /*public ABC _abc = ABC.a;
     public void test(ABC _name) {
         switch (_name)
         {
@@ -265,5 +321,5 @@ public class Managercombo : MonoBehaviour
         }
     }
 
-    public enum ABC{a,b,c }
+    public enum ABC{a,b,c }*/
 }

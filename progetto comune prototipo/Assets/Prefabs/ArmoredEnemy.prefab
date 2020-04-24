@@ -108,8 +108,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 3
   speed: 1
-  damage: 1
-  segniarmoredenemy: []
+  inkDamage: 20
+  maxInkDamage: 10
+  segniarmoredenemy:
+  - {fileID: 4411038961816747145}
+  - {fileID: 5212911854588259684}
+  - {fileID: 7512939517770685282}
+  - {fileID: 8925111460997757421}
+  armoredLife: 2
 --- !u!1 &4411038961816747145
 GameObject:
   m_ObjectHideFlags: 0

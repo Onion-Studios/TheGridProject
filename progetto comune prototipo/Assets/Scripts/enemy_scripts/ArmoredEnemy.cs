@@ -7,12 +7,14 @@ public class ArmoredEnemy : MonoBehaviour
     public int enemyID = 3;
     [SerializeField]
     public float speed = 1;
-    public int damage = 1;
+    public int inkDamage = 20;
+    public int maxInkDamage = 10;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
     public GameObject[] segniarmoredenemy;
+    public int armoredLife =2;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +73,8 @@ public class ArmoredEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
-        playerbehaviour.life -= damage;
+        Inkstone.Ink -= inkDamage;
+        Inkstone.maxInk -= maxInkDamage;
         SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
         foreach (GameObject segno in segniarmoredenemy)
@@ -82,13 +85,21 @@ public class ArmoredEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
-        this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
-        Inkstone.Ink += 10;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segniarmoredenemy)
+        if(armoredLife == 2)
         {
-            segno.SetActive(false);
+            speed = 1.5f;
+            armoredLife -= 1;
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+            enemyspawnmanager.nemicoucciso += 2;
+            Inkstone.Ink += 10;
+            SecretT.barra += SecretT.carica;
+            foreach (GameObject segno in segniarmoredenemy)
+            {
+                segno.SetActive(false);
+            }
         }
     }
 }
