@@ -64,7 +64,7 @@ public class Managercombo : MonoBehaviour
     {
         if (yourcombo.SequenceEqual(Combo1) | yourcombo.SequenceEqual(Combo2))
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -100,6 +100,13 @@ public class Managercombo : MonoBehaviour
                                     armoredenemy.Deathforsign();
                                 }
                                 break;
+                            case 4:
+                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
+                                if (undyingenemy.segniundyingenemy[0].activeInHierarchy == true)
+                                {
+                                    undyingenemy.Deathforsign();
+                                }
+                                break;
                         }
 
                     }
@@ -108,7 +115,7 @@ public class Managercombo : MonoBehaviour
         }
         else if (yourcombo.SequenceEqual(Combo3) | yourcombo.SequenceEqual(Combo4))
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -144,6 +151,13 @@ public class Managercombo : MonoBehaviour
                                     armoredenemy.Deathforsign();
                                 }
                                 break;
+                            case 4:
+                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
+                                if (undyingenemy.segniundyingenemy[1].activeInHierarchy == true)
+                                {
+                                    undyingenemy.Deathforsign();
+                                }
+                                break;
                         }
                     }
                 }
@@ -152,7 +166,7 @@ public class Managercombo : MonoBehaviour
         }
         else if (yourcombo.SequenceEqual(Combo5) | yourcombo.SequenceEqual(Combo6))
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -188,6 +202,13 @@ public class Managercombo : MonoBehaviour
                                     armoredenemy.Deathforsign();
                                 }
                                 break;
+                            case 4:
+                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
+                                if (undyingenemy.segniundyingenemy[3].activeInHierarchy == true)
+                                {
+                                    undyingenemy.Deathforsign();
+                                }
+                                break;
                         }
 
                     }
@@ -196,7 +217,7 @@ public class Managercombo : MonoBehaviour
         }
         if (yourcombo.SequenceEqual(Combo7) | yourcombo.SequenceEqual(Combo8))
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -230,6 +251,13 @@ public class Managercombo : MonoBehaviour
                                 if (armoredenemy.segniarmoredenemy[2].activeInHierarchy == true)
                                 {
                                     armoredenemy.Deathforsign();
+                                }
+                                break;
+                            case 4:
+                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
+                                if (undyingenemy.segniundyingenemy[2].activeInHierarchy == true)
+                                {
+                                    undyingenemy.Deathforsign();
                                 }
                                 break;
                         }

@@ -106,6 +106,10 @@ public class Secret : MonoBehaviour
                             armoredenemy.armoredLife = 1;
                             armoredenemy.Deathforsign();
                             break;
+                        case 4:
+                            UndyingEnemy undyingenemy = nemici.GetComponent<UndyingEnemy>();
+                            undyingenemy.Deathforsign();
+                            break;
                     }
                 }
 

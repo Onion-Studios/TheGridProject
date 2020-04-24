@@ -33,5 +33,6 @@ public class PlayerCollider : MonoBehaviour
         {
             other.GetComponent<ArmoredEnemy>().Deathforgriglia();
         }
+        
     }
 }

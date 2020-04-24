@@ -13,6 +13,7 @@ TagManager:
   - KamikazeEnemy
   - ArmoredEnemy
   - LastWillEnemy
+  - UndyingEnemy
   layers:
   - Default
   - TransparentFX

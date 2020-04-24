@@ -61,7 +61,7 @@ public class Enemyspawnmanager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
-            int randomnemicoID = Random.Range(0, 4);
+            int randomnemicoID = Random.Range(4, 5);
             int randomsegno = Random.Range(0, 4);
             int randomposition = Random.Range(0, 5);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
@@ -189,26 +189,28 @@ public class Enemyspawnmanager : MonoBehaviour
                             }
                             break;
                         case 4:
-                            LastWillEnemy lastwillEnemy = nemico.GetComponent<LastWillEnemy>();
+                            UndyingEnemy undyingEnemy = nemico.GetComponent<UndyingEnemy>();
+                            undyingEnemy.segniundyingenemy[randomsegno].gameObject.SetActive(true);
+                            undyingEnemy.startingPosition = enemyspawnposition;
                             if (randomposition == 0)
                             {
-                                lastwillEnemy.speed = 1.35f;
+                                undyingEnemy.speed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                lastwillEnemy.speed = 1.27f;
+                                undyingEnemy.speed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                lastwillEnemy.speed = 1.17f;
+                                undyingEnemy.speed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                lastwillEnemy.speed = 1.07f;
+                                undyingEnemy.speed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                lastwillEnemy.speed = 1f;
+                                undyingEnemy.speed = 1f;
                             }
                             break;
                         default:
@@ -284,9 +286,9 @@ public class Enemyspawnmanager : MonoBehaviour
             }
             else if (enemytospawn == prefabarray[4])
             {
-                nemicoID = prefabarray[4].GetComponent<LastWillEnemy>().enemyID;
-                List<GameObject> listanemicolastwill = new List<GameObject>();
-                poolnemici.Add(nemicoID, listanemicolastwill);
+                nemicoID = prefabarray[4].GetComponent<UndyingEnemy>().enemyID;
+                List<GameObject> listanemicoundying = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicoundying);
                 for (int i = 0; i < 5; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
