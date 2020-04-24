@@ -24,7 +24,7 @@ public class Playerbehaviour : MonoBehaviour
     public int life;
     public bool reciveDamage;
     public int Gold;
-    public int yokaislayercount = 1;
+    public int yokaislayercount;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -181,8 +181,5 @@ public class Playerbehaviour : MonoBehaviour
         }
     }
     #endregion
-
-
- 
 
 }

@@ -27,7 +27,11 @@ public class Inkstone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Ink<1)
+        if(Ink < 0)
+        {
+            Ink = 0;
+        }
+        if(Ink == 0)
         {
             SceneManager.LoadScene(2);
         }

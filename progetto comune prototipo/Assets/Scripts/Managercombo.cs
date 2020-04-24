@@ -64,7 +64,7 @@ public class Managercombo : MonoBehaviour
     {
         if (yourcombo.SequenceEqual(Combo1) | yourcombo.SequenceEqual(Combo2))
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -100,13 +100,6 @@ public class Managercombo : MonoBehaviour
                                     armoredenemy.Deathforsign();
                                 }
                                 break;
-                            case 4:
-                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
-                                if (lastwillenemy.segnilastwillenemy[0].activeInHierarchy == true)
-                                {
-                                    lastwillenemy.Deathforsign();
-                                }
-                                break;
                         }
 
                     }
@@ -115,7 +108,7 @@ public class Managercombo : MonoBehaviour
         }
         else if (yourcombo.SequenceEqual(Combo3) | yourcombo.SequenceEqual(Combo4))
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -151,13 +144,6 @@ public class Managercombo : MonoBehaviour
                                     armoredenemy.Deathforsign();
                                 }
                                 break;
-                            case 4:
-                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
-                                if (lastwillenemy.segnilastwillenemy[1].activeInHierarchy == true)
-                                {
-                                    lastwillenemy.Deathforsign();
-                                }
-                                break;
                         }
                     }
                 }
@@ -166,7 +152,7 @@ public class Managercombo : MonoBehaviour
         }
         else if (yourcombo.SequenceEqual(Combo5) | yourcombo.SequenceEqual(Combo6))
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -202,13 +188,6 @@ public class Managercombo : MonoBehaviour
                                     armoredenemy.Deathforsign();
                                 }
                                 break;
-                            case 4:
-                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
-                                if (lastwillenemy.segnilastwillenemy[3].activeInHierarchy == true)
-                                {
-                                    lastwillenemy.Deathforsign();
-                                }
-                                break;
                         }
 
                     }
@@ -217,7 +196,7 @@ public class Managercombo : MonoBehaviour
         }
         if (yourcombo.SequenceEqual(Combo7) | yourcombo.SequenceEqual(Combo8))
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
                 {
@@ -251,13 +230,6 @@ public class Managercombo : MonoBehaviour
                                 if (armoredenemy.segniarmoredenemy[2].activeInHierarchy == true)
                                 {
                                     armoredenemy.Deathforsign();
-                                }
-                                break;
-                            case 4:
-                                LastWillEnemy lastwillenemy = nemicodadistruggere.GetComponent<LastWillEnemy>();
-                                if (lastwillenemy.segnilastwillenemy[2].activeInHierarchy == true)
-                                {
-                                    lastwillenemy.Deathforsign();
                                 }
                                 break;
                         }

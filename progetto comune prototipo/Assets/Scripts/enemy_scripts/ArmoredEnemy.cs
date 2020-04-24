@@ -7,6 +7,7 @@ public class ArmoredEnemy : MonoBehaviour
     public int enemyID = 3;
     [SerializeField]
     public float speed = 1;
+    public float maxSpeed;
     public int inkDamage = 20;
     public int maxInkDamage = 10;
     Playerbehaviour playerbehaviour;
@@ -87,11 +88,13 @@ public class ArmoredEnemy : MonoBehaviour
     {
         if(armoredLife == 2)
         {
-            speed = 1.5f;
+            speed = maxSpeed;
             armoredLife -= 1;
+           
         }
         else
         {
+            armoredLife = 2;
             this.gameObject.SetActive(false);
             enemyspawnmanager.nemicoucciso += 2;
             Inkstone.Ink += 10;

@@ -61,7 +61,7 @@ public class Enemyspawnmanager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
-            int randomnemicoID = Random.Range(0, 3);
+            int randomnemicoID = Random.Range(3, 4);
             int randomsegno = Random.Range(0, 4);
             int randomposition = Random.Range(0, 5);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
@@ -190,7 +190,6 @@ public class Enemyspawnmanager : MonoBehaviour
                             break;
                         case 4:
                             LastWillEnemy lastwillEnemy = nemico.GetComponent<LastWillEnemy>();
-                            lastwillEnemy.segnilastwillenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
                                 lastwillEnemy.speed = 1.35f;

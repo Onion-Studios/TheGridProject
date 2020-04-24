@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 3
   speed: 1
+  maxSpeed: 2
   inkDamage: 20
   maxInkDamage: 10
   segniarmoredenemy:

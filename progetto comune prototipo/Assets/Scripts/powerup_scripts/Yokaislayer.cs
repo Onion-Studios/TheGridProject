@@ -12,6 +12,7 @@ public class Yokaislayer : MonoBehaviour
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
+        
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class Yokaislayer : MonoBehaviour
 
     void ActivateYokaiSlayer()
     {
-        for(int i=0; i<3; i++)
+        for(int i=0; i<4; i++)
         {
             foreach(GameObject nemici in enemyspawnmanager.poolnemici[i])
             {
@@ -46,7 +47,10 @@ public class Yokaislayer : MonoBehaviour
                             GoldenEnemy goldenenemy = nemici.GetComponent<GoldenEnemy>();
                             goldenenemy.Deathforsign();
                             break;
-
+                        case 3:
+                            ArmoredEnemy armoredenemy = nemici.GetComponent<ArmoredEnemy>();
+                            armoredenemy.Deathforsign();
+                            break;
                     }
                 }
                 
