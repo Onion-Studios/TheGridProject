@@ -638,7 +638,7 @@ MonoBehaviour:
   personaggio: {fileID: 2897495621104690757, guid: ae8fbee9191aae4458e34a139126f2f9,
     type: 3}
   posizionepersonaggio: {x: 0, y: 0, z: 0}
-  speed: 0
+  speed: 1
   istanza: {fileID: 0}
   origineraggio: {x: 0, y: 1.05, z: 0}
   colorecubonuovo: {fileID: 2100000, guid: cdb380fb351beec4b9c17340d3ebe920, type: 2}
@@ -646,6 +646,8 @@ MonoBehaviour:
   reciveDamage: 0
   Gold: 0
   yokaislayercount: 3
+  movementState: 
+  finalDestination: 0
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -653,13 +655,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228951397}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &228951400
 MonoBehaviour:
   m_ObjectHideFlags: 0

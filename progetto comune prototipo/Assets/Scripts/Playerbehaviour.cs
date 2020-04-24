@@ -25,6 +25,8 @@ public class Playerbehaviour : MonoBehaviour
     public bool reciveDamage;
     public int Gold;
     public int yokaislayercount;
+    public string movementState;
+    public float finalDestination;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -53,13 +55,15 @@ public class Playerbehaviour : MonoBehaviour
         {
             Debug.LogError("Inkstone is NULL!");
         }
+
+        movementState = "readystate";
     }
 
     // Update is called once per frame
     void Update()
     {
         //movimento ad ogni input corrisponde un metodo che fa l'azione di movimento corrispondente
-        if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
+       /* if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
         {
             miosimbolo.Add('d');
             forwardMove();
@@ -98,7 +102,7 @@ public class Playerbehaviour : MonoBehaviour
             {
                 Inkstone.Ink -= 1;
             }
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -107,37 +111,125 @@ public class Playerbehaviour : MonoBehaviour
             grigliamanager.Resetcoloregriglia();
             miosimbolo.Clear();
         }
+
+        MovementHandler();
     }
 
+    void MovementHandler()
+    {
+       
+
+        if(movementState == "readystate")
+        {
+            if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
+            {
+                finalDestination = istanza.transform.position.z + 1;
+                movementState = "movingforward";
+                miosimbolo.Add('w');
+            }
+            if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
+            {
+                finalDestination = istanza.transform.position.z - 1;
+                movementState = "movingback";
+                miosimbolo.Add('s');
+            }
+            if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
+            {
+                finalDestination = istanza.transform.position.x + 1;
+                movementState = "movingleft";
+                miosimbolo.Add('a');
+            }
+            if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
+            {
+                finalDestination = istanza.transform.position.x - 1;
+                movementState = "movingright";
+                miosimbolo.Add('d');
+            }
+        }
+        else if (movementState  == "movingforward")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+            if(istanza.transform.position.z < finalDestination)
+            {
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
+            else
+            {
+                Castraggio();
+                if (Inkstone.Ink > 1)
+                {
+                    Inkstone.Ink -= 1;
+                }
+
+                movementState = "readystate";
+            }
+        }
+        else if (movementState == "movingback")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, -90, 0);
+
+            if (istanza.transform.position.z > finalDestination)
+            {
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
+            else
+            {
+                Castraggio();
+                if (Inkstone.Ink > 1)
+                {
+                    Inkstone.Ink -= 1;
+                }
+
+                movementState = "readystate";
+            }
+        }
+        else if (movementState == "movingleft")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            if (istanza.transform.position.x < finalDestination)
+            {
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
+            else
+            {
+                Castraggio();
+                if (Inkstone.Ink > 1)
+                {
+                    Inkstone.Ink -= 1;
+                }
+
+                movementState = "readystate";
+            }
+
+        }
+        else if (movementState == "movingright")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+            if (istanza.transform.position.x > finalDestination)
+            {
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
+            else
+            {
+                Castraggio();
+                if (Inkstone.Ink > 1)
+                {
+                    Inkstone.Ink -= 1;
+
+                }
+
+                movementState = "readystate";
+            }
+        }
+    }
     
 
     #region MOVEMENTS
 
     // il giocatore ruota e poi si muove nella direzione in cui ha ruotato
-
-    void forwardMove()
-    {
-        istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
-        istanza.transform.Translate(Vector3.right);   
-    }
-    
-    void backmove()
-    {
-        istanza.transform.rotation = Quaternion.Euler(0, 0, 0);
-        istanza.transform.Translate(Vector3.right);
-    }
-
-    void rightmove()
-    {
-        istanza.transform.rotation = Quaternion.Euler(0, -90, 0);
-        istanza.transform.Translate(Vector3.right);
-    }
-
-    void leftmove()
-    {
-        istanza.transform.rotation = Quaternion.Euler(0, 90, 0);
-        istanza.transform.Translate(Vector3.right);
-    }
 
     void Gotocenter()
     {
