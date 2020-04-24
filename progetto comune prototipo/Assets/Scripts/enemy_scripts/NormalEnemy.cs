@@ -12,6 +12,7 @@ public class NormalEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
+    Secret SecretT;
     public GameObject[] segninormalenemy;
 
     // Start is called before the first frame update
@@ -33,6 +34,12 @@ public class NormalEnemy : MonoBehaviour
         if (Inkstone == null)
         {
             Debug.LogError("Inkstone is NULL!");
+        }
+
+        SecretT = FindObjectOfType<Secret>();
+        if (SecretT == null)
+        {
+            Debug.LogError("Secret is NULL");
         }
     }
 
@@ -66,6 +73,7 @@ public class NormalEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         playerbehaviour.life -= damage;
+        SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
         foreach (GameObject segno in segninormalenemy)
         {
@@ -78,6 +86,7 @@ public class NormalEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
+        SecretT.barra += SecretT.carica;
         foreach (GameObject segno in segninormalenemy)
         {
             segno.SetActive(false);

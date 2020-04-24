@@ -12,6 +12,7 @@ public class GoldenEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
+    Secret SecretT;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
 
@@ -34,6 +35,12 @@ public class GoldenEnemy : MonoBehaviour
         if(Inkstone==null)
         {
             Debug.LogError("Inkstone is NULL!");
+        }
+
+        SecretT = FindObjectOfType<Secret>();
+        if (SecretT == null)
+        {
+            Debug.LogError("Secret is NULL");
         }
     }
 
@@ -77,6 +84,7 @@ public class GoldenEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
+        SecretT.barra += SecretT.carica;
         playerbehaviour.Gold += GoldGiven;
         foreach (GameObject segno in segnigoldenenemy)
         {
