@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public string Name;
-    public int damage;
+    public string Name,Description;
+    public int damage,points;
     public int speed;
+    public Transform spawnPosition;
     public List<GameObject> listadisegni;
 
     public void SetStats(string _name, int _damage, int _speed, List<GameObject> _listadisegni)

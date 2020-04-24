@@ -948,6 +948,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5830004341220944852, guid: 341a647d3cdc29f40b0a68cd70261a06,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 341a647d3cdc29f40b0a68cd70261a06, type: 3}
 --- !u!1 &311615528 stripped
@@ -997,6 +1002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1670959a708fbcd479cb1dfbfbcbbfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _abc: 0
 --- !u!4 &385580839
 Transform:
   m_ObjectHideFlags: 0
@@ -2654,6 +2660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89346b26f8bedc644b4fdbe62ace305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxInk: 100
   Ink: 100
   Layer1: {fileID: 172065574}
   Layer2: {fileID: 485894071}
@@ -2863,7 +2870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1956382207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2993,6 +3000,8 @@ MonoBehaviour:
   powerupspawnati: 0
   powerup_prefab: {fileID: 1826999073049883015, guid: 34789778c3e43e441b3db44125993e21,
     type: 3}
+  powerup_preafabs:
+  - {fileID: -5692082377695963061, guid: 34789778c3e43e441b3db44125993e21, type: 3}
 --- !u!4 &2063062827
 Transform:
   m_ObjectHideFlags: 0

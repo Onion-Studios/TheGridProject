@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class NormalEnemy : MonoBehaviour
 {
+    #region VARIABILI
     public int enemyID = 0;
     [SerializeField]
     public float speed = 1;
-    public int damage = 1;
+    public int inkDamage = 20;
+    public int maxInkDamage = 10;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
     public GameObject[] segninormalenemy;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +75,8 @@ public class NormalEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
-        playerbehaviour.life -= damage;
+        Inkstone.Ink -= inkDamage;
+        Inkstone.maxInk -= maxInkDamage;
         SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
         foreach (GameObject segno in segninormalenemy)

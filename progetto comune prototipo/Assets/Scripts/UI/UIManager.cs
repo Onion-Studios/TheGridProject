@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateLifeUI();
+      //  UpdateLifeUI();
 
         UpdateGoldCounter();
 
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void UpdateLifeUI()
+   /* public void UpdateLifeUI()
     {
         if (Playerbehaviour.life == 6)
         {
@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.GoToEndMenu();
         }
-    }
+    }*/
 
     private void UpdateEnemycounter()
     {

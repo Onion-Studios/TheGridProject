@@ -7,7 +7,8 @@ public class KamikazeEnemy : MonoBehaviour
     public int enemyID = 1;
     [SerializeField]
     public float speed = 1;
-    public int damage = 2;
+    public int inkDamage = 20;
+    public int maxInkDamage = 10;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
@@ -74,7 +75,8 @@ public class KamikazeEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
-        playerbehaviour.life -= damage;
+        Inkstone.Ink -= inkDamage;
+        Inkstone.maxInk -= maxInkDamage;
         SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
         foreach (GameObject segno in segnikamikazenemy)
