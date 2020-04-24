@@ -56,7 +56,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (this.transform.localPosition.x > 4.24)
+        if (this.transform.localPosition.x > 2)
         {
             DeathForEndGrid();
         }
