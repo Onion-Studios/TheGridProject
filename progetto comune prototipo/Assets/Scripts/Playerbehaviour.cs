@@ -16,11 +16,11 @@ public class Playerbehaviour : MonoBehaviour
     [SerializeField]
     Material colorecubonuovo;
     grigliamanager grigliamanager;
-    List<char> miosimbolo = new List<char>();
     Managercombo managercombo;
     PowerupManager powerupmanager;
     Inkstone Inkstone;
-    
+    public Vector3 LastCubeChecked;
+
     public int life;
     public bool reciveDamage;
     public int Gold;
@@ -112,19 +112,10 @@ public class Playerbehaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            managercombo.checkcombo(miosimbolo);
-            Gotocenter();
-            grigliamanager.Resetcoloregriglia();
-            miosimbolo.Clear();
-        }
-
-        
-    }
-
     void MovementHandler()
     {
-
         if(movementState == "readystate")
+
         {
             if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
             {
@@ -225,6 +216,12 @@ public class Playerbehaviour : MonoBehaviour
         {
             istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            managercombo.Checksign();
+            Gotocenter();
+            grigliamanager.Resetcoloregriglia();
+            grigliamanager.ResetGrigliaLogica();
             if (istanza.transform.position.x > finalDestination)
             {
                 istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
@@ -281,15 +278,12 @@ public class Playerbehaviour : MonoBehaviour
         float distanzaraggio = 10f;
         if(Physics.Raycast(downraycheck, out RaycastHit hit, distanzaraggio))
         {
-            if (hit.collider.GetComponent<cubeprefabehaviour>().iscoloured == true)
+            hit.collider.GetComponent<Renderer>().material = colorecubonuovo;
+
+            Debug.Log("cubo x: " + hit.collider.gameObject.transform.position.x + " cubo y: " + hit.collider.gameObject.transform.position.z);
+            if(grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
             {
-                hit.collider.GetComponent<Renderer>().material = grigliamanager.colorebasegriglia;
-                hit.collider.GetComponent<cubeprefabehaviour>().iscoloured = false;
-            }
-            else
-            {
-                hit.collider.GetComponent<Renderer>().material = colorecubonuovo;
-                hit.collider.GetComponent<cubeprefabehaviour>().iscoloured = true;
+                grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] = true;
             }
         }
     }

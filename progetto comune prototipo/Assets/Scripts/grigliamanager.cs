@@ -10,9 +10,11 @@ public class grigliamanager : MonoBehaviour
     public GameObject cubogriglia;
     private GameObject istanzacubo;
     List<GameObject> listadicubi = new List<GameObject>();
+    public bool[,] griglialogica = new bool[5, 5];
     public Material colorebasegriglia;
     [SerializeField]
     Material colorecentrogriglia;
+    Managercombo managercombo;
     #endregion
 
 
@@ -22,8 +24,6 @@ public class grigliamanager : MonoBehaviour
         //quando parte il programma creo la la griglia di cubi prendo una referenza al player
         //setto la posizione del personaggio e spawno il player in centro
         //solo se le righe e le colonne sono dispari se no non abbiamo un centro nella griglia
-
-
         if (colonne % 2 == 1 && righe % 2 == 1)
         {
             Creagriglia();
@@ -40,7 +40,12 @@ public class grigliamanager : MonoBehaviour
             Debug.Log("inserisci un numero di righe e colonne dispari");
         }
 
-
+        CentroGrigliaLogicaTrue();
+        managercombo = FindObjectOfType<Managercombo>();
+        if (managercombo == null)
+        {
+            Debug.LogError("il managercombo è NULL!");
+        }
     }
 
     // Update is called once per frame
@@ -86,6 +91,36 @@ public class grigliamanager : MonoBehaviour
                 cube.GetComponent<cubeprefabehaviour>().iscoloured = false;
             }
         }
+    }
+
+    void CentroGrigliaLogicaTrue()
+    {
+        griglialogica[2, 2] = true;
+    }
+
+    public void ResetGrigliaLogica() 
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            for (int z = 0; z < 5; z++)
+            {
+                if(griglialogica[x, z] == true)
+                {
+                    if(x == 2 && z == 2)
+                    {
+                        griglialogica[x, z] = true;
+                    }
+                    else
+                    {
+                        griglialogica[x, z] = false;
+                    }
+                    
+                }
+                
+            }
+        }
+
+        managercombo.CountCaselleAttivate = 0;
     }
 
 }

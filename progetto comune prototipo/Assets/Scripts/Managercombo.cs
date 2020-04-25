@@ -4,27 +4,35 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
+public struct nodes
+{
+    public int X;
+    public int Z;
+    public nodes(int x, int z)
+    {
+        X = x;
+        Z = z;
+    }
+
+}
 public class Managercombo : MonoBehaviour
 {
     #region Variabili
-    #region COMBODATABASE
-    //le combo di tasti che equivalgono ad un simbolo 2 per ora
-    List<char> Combo1 = new List<char>() { 's', 's', 'a', 'a' }; // segno 1 nel gdd numero 5
-    List<char> Combo2 = new List<char>() { 'd', 'd', 'w', 'w' }; // speculare segno 1
-    List<char> Combo3 = new List<char>() { 'd', 's', 's', 'a' }; // segno 2 nel gdd numero 4
-    List<char> Combo4 = new List<char>() { 'd', 'w', 'w', 'a' }; // speculare segno 2
-    List<char> Combo5 = new List<char>() { 'a', 'w', 'w', 'd' }; // segno 3 nel gdd numero 1
-    List<char> Combo6 = new List<char>() { 'a', 's', 's', 'd' }; // speculare segno 3
-    List<char> Combo7 = new List<char>() { 'a', 'a', 'w', 'w' }; // segno 4 nel gdd numero 2
-    List<char> Combo8 = new List<char>() { 's', 's', 'd', 'd' }; // speculare segno 4
-    List<char> Combo9 = new List<char>() { 'a', 's', 'a', 's' }; // segno 5 nel gdd numero 3
-    List<char> Combo10 = new List<char>() { 'w', 'd', 'w', 'd' }; // speculare segno 5
-    List<char> Combo11 = new List<char>() { 'd', 's', 'd', 's' }; // segno 6 nel gdd numero 6
-    List<char> Combo12 = new List<char>() { 'w', 'a', 'w', 'a' }; // speculare segno 6
+    public nodes[][] MatriceIrerregolareSegni = new nodes[12][];
+    #region Angoligriglia
+    nodes Angolo1 = new nodes(0, 0);
+    nodes Angolo2 = new nodes(4, 0);
+    nodes Angolo3 = new nodes(0, 4);
+    nodes Angolo4 = new nodes(4, 4);
     #endregion
+    nodes estremità = new nodes(0,0);
+    bool estremitàfound = false;
+    int countercaselleattiveattorno = 0;
     Enemyspawnmanager enemyspawnmanager;
     UIManager UIManager;
     Playerbehaviour playerbehaviour;
+    grigliamanager grigliamanager;
+    public int CountCaselleAttivate = 0;
     #endregion
 
     private void Start()
@@ -47,6 +55,13 @@ public class Managercombo : MonoBehaviour
             Debug.LogError("playerbehaviour è null");
         }
 
+        grigliamanager = FindObjectOfType<grigliamanager>();
+        if (grigliamanager == null)
+        {
+            Debug.LogError("grigliamanager è null");
+        }
+
+        setupsegnimatrice();
     }
 
     public void Init()
@@ -59,218 +74,363 @@ public class Managercombo : MonoBehaviour
 
     }
 
-    // il metodo vede se la combo tracciata è uguale a una che produce un effetto
-    public void checkcombo(List<char> yourcombo)
+    
+
+    public void setupsegnimatrice()
     {
-        if (yourcombo.SequenceEqual(Combo1) | yourcombo.SequenceEqual(Combo2))
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
-                {
-                    if (nemicodadistruggere.activeInHierarchy == true)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                                if (normalenemy.segninormalenemy[0].activeInHierarchy == true)
-                                {
-                                    normalenemy.Deathforsign();
-                                }
-                                break;
-                            case 1:
-                                KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                                if (kamikazenemy.segnikamikazenemy[0].activeInHierarchy == true)
-                                {
-                                    kamikazenemy.Deathforsign();
-                                }
-                                break;
-                            case 2:
-                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                                if (goldenenemy.segnigoldenenemy[0].activeInHierarchy == true)
-                                {
-                                    goldenenemy.Deathforsign();
-                                }
-                                break;
-                            case 3:
-                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
-                                if (armoredenemy.segniarmoredenemy[0].activeInHierarchy == true)
-                                {
-                                    armoredenemy.Deathforsign();
-                                }
-                                break;
-                            case 4:
-                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
-                                if (undyingenemy.segniundyingenemy[0].activeInHierarchy == true)
-                                {
-                                    undyingenemy.Deathforsign();
-                                }
-                                break;
-                        }
+        //2 casi del segno L
+        MatriceIrerregolareSegni[0] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(2, -2) };
+        MatriceIrerregolareSegni[1] = new nodes[4] { new nodes(0, 1), new nodes(0, 2), new nodes(-1, 2), new nodes(-2, 2) };
+        //2 casi del segno C
+        MatriceIrerregolareSegni[2] = new nodes[4] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2) };
+        MatriceIrerregolareSegni[3] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
 
-                    }
-                }
-            }
-        }
-        else if (yourcombo.SequenceEqual(Combo3) | yourcombo.SequenceEqual(Combo4))
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
-                {
-                    if (nemicodadistruggere.activeInHierarchy == true)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                                if (normalenemy.segninormalenemy[1].activeInHierarchy == true)
-                                {
-                                    normalenemy.Deathforsign();
-                                }
-                                break;
-                            case 1:
-                                KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                                if (kamikazenemy.segnikamikazenemy[1].activeInHierarchy == true)
-                                {
-                                    kamikazenemy.Deathforsign();
-                                }
-                                break;
-                            case 2:
-                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                                if (goldenenemy.segnigoldenenemy[1].activeInHierarchy == true)
-                                {
-                                    goldenenemy.Deathforsign();
-                                }
-                                break;
-                            case 3:
-                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
-                                if (armoredenemy.segniarmoredenemy[1].activeInHierarchy == true)
-                                {
-                                    armoredenemy.Deathforsign();
-                                }
-                                break;
-                            case 4:
-                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
-                                if (undyingenemy.segniundyingenemy[1].activeInHierarchy == true)
-                                {
-                                    undyingenemy.Deathforsign();
-                                }
-                                break;
-                        }
-                    }
-                }
+    }
 
-            }
-        }
-        else if (yourcombo.SequenceEqual(Combo5) | yourcombo.SequenceEqual(Combo6))
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
-                {
-                    if (nemicodadistruggere.activeInHierarchy == true)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                                if (normalenemy.segninormalenemy[3].activeInHierarchy == true)
-                                {
-                                    normalenemy.Deathforsign();
-                                }
-                                break;
-                            case 1:
-                                KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                                if (kamikazenemy.segnikamikazenemy[3].activeInHierarchy == true)
-                                {
-                                    kamikazenemy.Deathforsign();
-                                }
-                                break;
-                            case 2:
-                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                                if (goldenenemy.segnigoldenenemy[3].activeInHierarchy == true)
-                                {
-                                    goldenenemy.Deathforsign();
-                                }
-                                break;
-                            case 3:
-                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
-                                if (armoredenemy.segniarmoredenemy[3].activeInHierarchy == true)
-                                {
-                                    armoredenemy.Deathforsign();
-                                }
-                                break;
-                            case 4:
-                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
-                                if (undyingenemy.segniundyingenemy[3].activeInHierarchy == true)
-                                {
-                                    undyingenemy.Deathforsign();
-                                }
-                                break;
-                        }
+    public void Checksign()
+    {
+        CheckCountCaselleGrigliaLogica();
 
-                    }
-                }
-            }
-        }
-        if (yourcombo.SequenceEqual(Combo7) | yourcombo.SequenceEqual(Combo8))
+        if(CountCaselleAttivate == 5)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
-                {
-                    if (nemicodadistruggere.activeInHierarchy == true)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                                if (normalenemy.segninormalenemy[2].activeInHierarchy == true)
-                                {
-                                    normalenemy.Deathforsign();
-                                }
-                                break;
-                            case 1:
-                                KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                                if (kamikazenemy.segnikamikazenemy[2].activeInHierarchy == true)
-                                {
-                                    kamikazenemy.Deathforsign();
-                                }
-                                break;
-                            case 2:
-                                GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                                if (goldenenemy.segnigoldenenemy[2].activeInHierarchy == true)
-                                {
-                                    goldenenemy.Deathforsign();
-                                }
-                                break;
-                            case 3:
-                                ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
-                                if (armoredenemy.segniarmoredenemy[2].activeInHierarchy == true)
-                                {
-                                    armoredenemy.Deathforsign();
-                                }
-                                break;
-                            case 4:
-                                UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
-                                if (undyingenemy.segniundyingenemy[2].activeInHierarchy == true)
-                                {
-                                    undyingenemy.Deathforsign();
-                                }
-                                break;
-                        }
-
-                    }
-                }
-            }
+            SearchEstremità(grigliamanager.griglialogica);
+            //ControlloSegnoCorretto();
         }
         else
         {
-            Debug.Log("il segno tracciato non è un simbolo valido");
+            Debug.Log("nessun estremita trovata");
         }
 
+        if(estremitàfound == true)
+        {
+            ControlloSegnoCorretto();
+        }
+
+    }
+
+    void CheckCountCaselleGrigliaLogica()
+    {
+        foreach(bool casella in grigliamanager.griglialogica)
+        {
+            if(casella == true)
+            {
+                CountCaselleAttivate++;
+            }
+        }
+    }
+
+    void ControlloSegnoCorretto()
+    {
+        int CounterCaselleGiuste = 0;
+
+        for (int i = 0; i < 4; i++) 
+        {
+            if (CounterCaselleGiuste == 4)
+            {
+                CounterCaselleGiuste = 0;
+                break;
+            }
+
+            foreach (var nodo in MatriceIrerregolareSegni[i])
+            {
+                
+                if (estremità.X + nodo.X >= 0 &&
+                    estremità.X + nodo.X <= 4 &&
+                    estremità.Z + nodo.Z >= 0 &&
+                    estremità.Z + nodo.Z <= 4)
+                {
+                    if (grigliamanager.griglialogica[estremità.X + nodo.X, estremità.Z + nodo.Z] == true)
+                    {
+                        CounterCaselleGiuste++;
+
+                        if (CounterCaselleGiuste == 4)
+                        {
+                            if (i == 0 || i == 1)
+                            {
+                                SearchAndDestroySign0Enemy();
+                                estremitàfound = false;
+                            }
+                            else if (i == 2 || i == 3)
+                            {
+                                SearchAndDestroySign1Enemy();
+                                estremitàfound = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        estremitàfound = false;
+                        CounterCaselleGiuste = 0;
+                        break;
+                    }
+                }
+            }
+
+        }
+    }
+
+    void SearchEstremità(bool[,] griglia)
+    {
+        for(int x=0; x < griglia.GetLength(0); x++)
+        {
+            for (int z = 0; z < griglia.GetLength(1); z++)
+            {
+                if (griglia[x,z] == true)
+                {
+                    //casi angoli 
+                    if (x == Angolo1.X && z == Angolo1.Z)
+                    {
+                        if (griglia[x + 1, z] == true || griglia[x, z + 1] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    else if (x == Angolo2.X && z == Angolo2.Z)
+                    {
+                        if (griglia[x, z + 1] == true || griglia[x - 1, z] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    else if (x == Angolo3.X && z == Angolo3.Z)
+                    {
+                        if (griglia[x + 1, z] == true || griglia[x, z - 1] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    else if (x == Angolo4.X && z == Angolo4.Z)
+                    {
+                        if (griglia[x, z - 1] == true || griglia[x - 1, z] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    //casi lati
+                    //lato superiore
+                    else if (z - 1 < 0)
+                    {
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+                    //lato inferiore
+                    else if (z + 1 > 4)
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+                    //lato destro
+                    else if (x - 1 < 0)
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                    }
+                    //lato sinistro
+                    else if (x + 1 > 4)
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+                    //lato interno
+                    else
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+
+                }
+                
+            }
+        }
+    }
+
+
+    void SearchAndDestroySign0Enemy()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
+            {
+                if (nemicodadistruggere.activeInHierarchy == true)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
+                            if (normalenemy.segninormalenemy[0].activeInHierarchy == true)
+                            {
+                                normalenemy.Deathforsign();
+                            }
+                            break;
+                        case 1:
+                            KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
+                            if (kamikazenemy.segnikamikazenemy[0].activeInHierarchy == true)
+                            {
+                                kamikazenemy.Deathforsign();
+                            }
+                            break;
+                        case 2:
+                            GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
+                            if (goldenenemy.segnigoldenenemy[0].activeInHierarchy == true)
+                            {
+                                goldenenemy.Deathforsign();
+                            }
+                            break;
+                    }
+
+                }
+            }
+        }
+    }
+
+    void SearchAndDestroySign1Enemy()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
+            {
+                if (nemicodadistruggere.activeInHierarchy == true)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
+                            if (normalenemy.segninormalenemy[1].activeInHierarchy == true)
+                            {
+                                normalenemy.Deathforsign();
+                            }
+                            break;
+                        case 1:
+                            KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
+                            if (kamikazenemy.segnikamikazenemy[1].activeInHierarchy == true)
+                            {
+                                kamikazenemy.Deathforsign();
+                            }
+                            break;
+                        case 2:
+                            GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
+                            if (goldenenemy.segnigoldenenemy[1].activeInHierarchy == true)
+                            {
+                                goldenenemy.Deathforsign();
+                            }
+                            break;
+                    }
+                }
+            }
+
+        }
     }
 
     /*public ABC _abc = ABC.a;
