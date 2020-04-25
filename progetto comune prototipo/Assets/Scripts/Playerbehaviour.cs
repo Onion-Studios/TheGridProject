@@ -98,7 +98,6 @@ public class Playerbehaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            CastCheckRay();
             managercombo.Checksign();
             Gotocenter();
             grigliamanager.Resetcoloregriglia();
@@ -176,17 +175,6 @@ public class Playerbehaviour : MonoBehaviour
     }
     #endregion
 
-    public void CastCheckRay()
-    {
-        origineraggio = (istanza.transform.position - new Vector3(0f, 0.5f, 0f));
-        downraycheck = new Ray(origineraggio, Vector3.down);
-        float distanzaraggio = 10f;
-        if (Physics.Raycast(downraycheck, out RaycastHit hit, distanzaraggio))
-        {
-            LastCubeChecked.x = hit.collider.gameObject.transform.position.x;
-            LastCubeChecked.z = hit.collider.gameObject.transform.position.z;
-        }
 
-    }
 
 }

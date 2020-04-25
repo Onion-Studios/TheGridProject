@@ -18,7 +18,16 @@ public struct nodes
 public class Managercombo : MonoBehaviour
 {
     #region Variabili
-    public nodes[][] MatriceIrerregolareSegni = new nodes[12][];   
+    public nodes[][] MatriceIrerregolareSegni = new nodes[12][];
+    #region Angoligriglia
+    nodes Angolo1 = new nodes(0, 0);
+    nodes Angolo2 = new nodes(4, 0);
+    nodes Angolo3 = new nodes(0, 4);
+    nodes Angolo4 = new nodes(4, 4);
+    #endregion
+    nodes estremità = new nodes(0,0);
+    bool estremitàfound = false;
+    int countercaselleattiveattorno = 0;
     Enemyspawnmanager enemyspawnmanager;
     UIManager UIManager;
     Playerbehaviour playerbehaviour;
@@ -60,6 +69,8 @@ public class Managercombo : MonoBehaviour
         
     }
 
+    
+
     public void setupsegnimatrice()
     {
         //2 casi del segno L
@@ -77,12 +88,19 @@ public class Managercombo : MonoBehaviour
 
         if(CountCaselleAttivate == 5)
         {
-            ControlloSegnoCorretto();
+            SearchEstremità(grigliamanager.griglialogica);
+            //ControlloSegnoCorretto();
         }
         else
         {
-            Debug.Log("nessun segno valido tracciato");
+            Debug.Log("nessun estremita trovata");
         }
+
+        if(estremitàfound == true)
+        {
+            ControlloSegnoCorretto();
+        }
+
     }
 
     void CheckCountCaselleGrigliaLogica()
@@ -111,12 +129,12 @@ public class Managercombo : MonoBehaviour
             foreach (var nodo in MatriceIrerregolareSegni[i])
             {
                 
-                if ((int)playerbehaviour.LastCubeChecked.x + nodo.X >= 0 &&
-                    (int)playerbehaviour.LastCubeChecked.x + nodo.X <= 4 &&
-                    (int)playerbehaviour.LastCubeChecked.z + nodo.Z >= 0 &&
-                    (int)playerbehaviour.LastCubeChecked.z + nodo.Z <= 4)
+                if (estremità.X + nodo.X >= 0 &&
+                    estremità.X + nodo.X <= 4 &&
+                    estremità.Z + nodo.Z >= 0 &&
+                    estremità.Z + nodo.Z <= 4)
                 {
-                    if (grigliamanager.griglialogica[(int)playerbehaviour.LastCubeChecked.x + nodo.X, (int)playerbehaviour.LastCubeChecked.z + nodo.Z] == true)
+                    if (grigliamanager.griglialogica[estremità.X + nodo.X, estremità.Z + nodo.Z] == true)
                     {
                         CounterCaselleGiuste++;
 
@@ -125,15 +143,18 @@ public class Managercombo : MonoBehaviour
                             if (i == 0 || i == 1)
                             {
                                 SearchAndDestroySign0Enemy();
+                                estremitàfound = false;
                             }
                             else if (i == 2 || i == 3)
                             {
                                 SearchAndDestroySign1Enemy();
+                                estremitàfound = false;
                             }
                         }
                     }
                     else
                     {
+                        estremitàfound = false;
                         CounterCaselleGiuste = 0;
                         break;
                     }
@@ -142,6 +163,194 @@ public class Managercombo : MonoBehaviour
 
         }
     }
+
+    void SearchEstremità(bool[,] griglia)
+    {
+        for(int x=0; x < griglia.GetLength(0); x++)
+        {
+            for (int z = 0; z < griglia.GetLength(1); z++)
+            {
+                if (griglia[x,z] == true)
+                {
+                    //casi angoli 
+                    if (x == Angolo1.X && z == Angolo1.Z)
+                    {
+                        if (griglia[x + 1, z] == true || griglia[x, z + 1] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    else if (x == Angolo2.X && z == Angolo2.Z)
+                    {
+                        if (griglia[x, z + 1] == true || griglia[x - 1, z] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    else if (x == Angolo3.X && z == Angolo3.Z)
+                    {
+                        if (griglia[x + 1, z] == true || griglia[x, z - 1] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    else if (x == Angolo4.X && z == Angolo4.Z)
+                    {
+                        if (griglia[x, z - 1] == true || griglia[x - 1, z] == true)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                    }
+                    //casi lati
+                    //lato superiore
+                    else if (z - 1 < 0)
+                    {
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+                    //lato inferiore
+                    else if (z + 1 > 4)
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+                    //lato destro
+                    else if (x - 1 < 0)
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                    }
+                    //lato sinistro
+                    else if (x + 1 > 4)
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+                    //lato interno
+                    else
+                    {
+                        if (griglia[x, z - 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x - 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x, z + 1] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (griglia[x + 1, z] == true)
+                        {
+                            countercaselleattiveattorno++;
+                        }
+                        if (countercaselleattiveattorno == 1)
+                        {
+                            estremità.X = x;
+                            estremità.Z = z;
+                            estremitàfound = true;
+                        }
+                        else
+                        {
+                            countercaselleattiveattorno = 0;
+                        }
+                    }
+
+                }
+                
+            }
+        }
+    }
+
 
     void SearchAndDestroySign0Enemy()
     {
