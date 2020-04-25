@@ -11,6 +11,7 @@ public class NormalEnemy : MonoBehaviour
     public float speed = 1;
     public int inkDamage = 20;
     public int maxInkDamage = 10;
+    public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
@@ -65,7 +66,7 @@ public class NormalEnemy : MonoBehaviour
     public void DeathForEndGrid()
     {
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= 10;
+        Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in segninormalenemy)
         {
             segno.SetActive(false);

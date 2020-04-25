@@ -20,6 +20,7 @@ public class UndyingEnemy : MonoBehaviour
     public float maxTime;
     public bool repelled;
     public Vector3 startingPosition;
+    public float pushSpeed;
     #endregion
 
     // Start is called before the first frame update
@@ -96,7 +97,7 @@ public class UndyingEnemy : MonoBehaviour
 
     public void UndyingRepelled()
     {
-        transform.Translate(Vector3.left * speed * 3 * Time.deltaTime);
+        transform.Translate(Vector3.left * pushSpeed * Time.deltaTime);
         if (this.transform.localPosition.x < startingPosition.x)
         {
             repelled = false;
