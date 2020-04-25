@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44075555, g: 0.4894308, b: 0.5695514, a: 1}
+  m_IndirectSpecularColor: {r: 0.44075558, g: 0.48943096, b: 0.56955177, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -638,7 +638,7 @@ MonoBehaviour:
   personaggio: {fileID: 2897495621104690757, guid: ae8fbee9191aae4458e34a139126f2f9,
     type: 3}
   posizionepersonaggio: {x: 0, y: 0, z: 0}
-  speed: 1
+  speed: 10
   istanza: {fileID: 0}
   origineraggio: {x: 0, y: 1.05, z: 0}
   colorecubonuovo: {fileID: 2100000, guid: cdb380fb351beec4b9c17340d3ebe920, type: 2}
@@ -648,6 +648,8 @@ MonoBehaviour:
   yokaislayercount: 3
   movementState: 
   finalDestination: 0
+  zAxis: 0
+  xAxis: 0
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0

@@ -27,6 +27,8 @@ public class Playerbehaviour : MonoBehaviour
     public int yokaislayercount;
     public string movementState;
     public float finalDestination;
+    public float zAxis;
+    public float xAxis;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -62,47 +64,51 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        xAxis = istanza.transform.position.x;
+        zAxis = istanza.transform.position.z;
         //movimento ad ogni input corrisponde un metodo che fa l'azione di movimento corrispondente
-       /* if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
-        {
-            miosimbolo.Add('d');
-            forwardMove();
-            Castraggio();
-            if(Inkstone.Ink > 1)
-            {
-                Inkstone.Ink -= 1;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
-        {
-            miosimbolo.Add('a');
-            backmove();
-            Castraggio();
-            if (Inkstone.Ink > 1)
-            {
-                Inkstone.Ink -= 1;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
-        {
-            miosimbolo.Add('s');
-            rightmove();
-            Castraggio();
-            if (Inkstone.Ink > 1)
-            {
-                Inkstone.Ink -= 1;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
-        {
-            miosimbolo.Add('w');
-            leftmove();
-            Castraggio();
-            if (Inkstone.Ink > 1)
-            {
-                Inkstone.Ink -= 1;
-            }
-        }*/
+        /* if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
+         {
+             miosimbolo.Add('d');
+             forwardMove();
+             Castraggio();
+             if(Inkstone.Ink > 1)
+             {
+                 Inkstone.Ink -= 1;
+             }
+         }
+         else if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
+         {
+             miosimbolo.Add('a');
+             backmove();
+             Castraggio();
+             if (Inkstone.Ink > 1)
+             {
+                 Inkstone.Ink -= 1;
+             }
+         }
+         else if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
+         {
+             miosimbolo.Add('s');
+             rightmove();
+             Castraggio();
+             if (Inkstone.Ink > 1)
+             {
+                 Inkstone.Ink -= 1;
+             }
+         }
+         else if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
+         {
+             miosimbolo.Add('w');
+             leftmove();
+             Castraggio();
+             if (Inkstone.Ink > 1)
+             {
+                 Inkstone.Ink -= 1;
+             }
+         }*/
+
+        MovementHandler();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -112,24 +118,23 @@ public class Playerbehaviour : MonoBehaviour
             miosimbolo.Clear();
         }
 
-        MovementHandler();
+        
     }
 
     void MovementHandler()
     {
-       
 
         if(movementState == "readystate")
         {
             if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
             {
-                finalDestination = istanza.transform.position.z + 1;
+                finalDestination = istanza.transform.position.z - 1;
                 movementState = "movingforward";
                 miosimbolo.Add('w');
             }
             if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
             {
-                finalDestination = istanza.transform.position.z - 1;
+                finalDestination = istanza.transform.position.z + 1;
                 movementState = "movingback";
                 miosimbolo.Add('s');
             }
@@ -150,12 +155,16 @@ public class Playerbehaviour : MonoBehaviour
         {
             istanza.transform.rotation = Quaternion.Euler(0, 90, 0);
 
-            if(istanza.transform.position.z < finalDestination)
+            if(istanza.transform.position.z > finalDestination)
             {
                 istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
             else
             {
+                if (istanza.transform.position.z < finalDestination)
+                {
+                    istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
+                }
                 Castraggio();
                 if (Inkstone.Ink > 1)
                 {
@@ -169,13 +178,17 @@ public class Playerbehaviour : MonoBehaviour
         {
             istanza.transform.rotation = Quaternion.Euler(0, -90, 0);
 
-            if (istanza.transform.position.z > finalDestination)
+            if (istanza.transform.position.z < finalDestination)
             {
                 istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
             else
             {
-                Castraggio();
+                if (istanza.transform.position.z > finalDestination)
+                {
+                    istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
+                }
+                   Castraggio();
                 if (Inkstone.Ink > 1)
                 {
                     Inkstone.Ink -= 1;
@@ -194,6 +207,10 @@ public class Playerbehaviour : MonoBehaviour
             }
             else
             {
+                if (istanza.transform.position.x > finalDestination)
+                {
+                    istanza.transform.position = new Vector3(finalDestination, istanza.transform.position.y, istanza.transform.position.z);
+                }
                 Castraggio();
                 if (Inkstone.Ink > 1)
                 {
@@ -214,6 +231,10 @@ public class Playerbehaviour : MonoBehaviour
             }
             else
             {
+                if (istanza.transform.position.x < finalDestination)
+                {
+                    istanza.transform.position = new Vector3 (finalDestination, istanza.transform.position.y, istanza.transform.position.z);
+                }
                 Castraggio();
                 if (Inkstone.Ink > 1)
                 {
