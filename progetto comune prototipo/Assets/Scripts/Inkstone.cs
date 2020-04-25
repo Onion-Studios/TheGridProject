@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Inkstone : MonoBehaviour
 {
-    [Range(0, 100)]public int Ink = 100;
+    public int maxInk = 100;
+   // [Range(0, 100)]
+    public int Ink = 100;
     public GameObject Layer1;
     public GameObject Layer2;
     public GameObject Layer3;
     public GameObject Layer4;
     public GameObject Layer5;
+    
 
     void Start()
     {
@@ -24,7 +27,11 @@ public class Inkstone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Ink<1)
+        if(Ink < 0)
+        {
+            Ink = 0;
+        }
+        if(Ink == 0)
         {
             SceneManager.LoadScene(2);
         }
@@ -55,9 +62,9 @@ public class Inkstone : MonoBehaviour
         {
             Layer5.SetActive(true);
         }
-        if (Ink > 100)
+        if (Ink > maxInk)
         {
-            Ink = 100;
+            Ink = maxInk;
         }
     }
 }

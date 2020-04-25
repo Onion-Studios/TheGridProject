@@ -1,29 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class NormalEnemy : MonoBehaviour
+public class LastWillEnemy : MonoBehaviour
 {
-    #region VARIABILI
-    public int enemyID = 0;
+    public int enemyID = 4;
     [SerializeField]
     public float speed = 1;
-    public int inkDamage = 20;
-    public int maxInkDamage = 10;
-    public int inkstoneDamage;
+    public int damage = 1;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
-    public GameObject[] segninormalenemy;
-    #endregion
+    public GameObject[] segnilastwillenemy;
 
     // Start is called before the first frame update
     void Start()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
-        if(playerbehaviour == null)
+        if (playerbehaviour == null)
         {
             Debug.LogError("playerbehaviour is NULL!");
         }
@@ -66,8 +61,8 @@ public class NormalEnemy : MonoBehaviour
     public void DeathForEndGrid()
     {
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in segninormalenemy)
+        Inkstone.Ink -= 10;
+        foreach (GameObject segno in segnilastwillenemy)
         {
             segno.SetActive(false);
         }
@@ -76,11 +71,10 @@ public class NormalEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
+        playerbehaviour.life -= damage;
         SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segninormalenemy)
+        foreach (GameObject segno in segnilastwillenemy)
         {
             segno.SetActive(false);
         }
@@ -92,10 +86,9 @@ public class NormalEnemy : MonoBehaviour
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
         SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segninormalenemy)
+        foreach (GameObject segno in segnilastwillenemy)
         {
             segno.SetActive(false);
         }
     }
-
 }

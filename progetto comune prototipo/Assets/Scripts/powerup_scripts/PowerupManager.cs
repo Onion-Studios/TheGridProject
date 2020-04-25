@@ -7,7 +7,7 @@ public class PowerupManager : MonoBehaviour
     [SerializeField]
     public int powerupspawnati;
     public GameObject powerup_prefab;
-
+    public List<Powerupbehaviour> powerup_preafabs = new List<Powerupbehaviour>(); 
     // Start is called before the first frame update
     void Start()
     {

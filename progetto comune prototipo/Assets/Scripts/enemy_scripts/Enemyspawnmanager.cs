@@ -61,7 +61,7 @@ public class Enemyspawnmanager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
-            int randomnemicoID = Random.Range(0, 3);
+            int randomnemicoID = Random.Range(0, 5);
             int randomsegno = Random.Range(0, 4);
             int randomposition = Random.Range(0, 5);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
@@ -164,6 +164,55 @@ public class Enemyspawnmanager : MonoBehaviour
                                 goldenEnemy.speed = 1f;
                             }
                             break;
+                        case 3:
+                            ArmoredEnemy armoredEnemy = nemico.GetComponent<ArmoredEnemy>();
+                            armoredEnemy.segniarmoredenemy[randomsegno].gameObject.SetActive(true);
+                            if (randomposition == 0)
+                            {
+                                armoredEnemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1)
+                            {
+                                armoredEnemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                armoredEnemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                armoredEnemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                armoredEnemy.speed = 1f;
+                            }
+                            break;
+                        case 4:
+                            UndyingEnemy undyingEnemy = nemico.GetComponent<UndyingEnemy>();
+                            undyingEnemy.segniundyingenemy[randomsegno].gameObject.SetActive(true);
+                            undyingEnemy.startingPosition = enemyspawnposition;
+                            if (randomposition == 0)
+                            {
+                                undyingEnemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1)
+                            {
+                                undyingEnemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                undyingEnemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                undyingEnemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                undyingEnemy.speed = 1f;
+                            }
+                            break;
                         default:
                             break;
                     }
@@ -216,6 +265,30 @@ public class Enemyspawnmanager : MonoBehaviour
                 nemicoID = prefabarray[2].GetComponent<GoldenEnemy>().enemyID;
                 List<GameObject> listanemicogolden = new List<GameObject>();
                 poolnemici.Add(nemicoID, listanemicogolden);
+                for (int i = 0; i < 5; i++)
+                {
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
+                    poolnemici[nemicoID].Add(enemyinscene);
+                }
+            }
+            else if (enemytospawn == prefabarray[3])
+            {
+                nemicoID = prefabarray[3].GetComponent<ArmoredEnemy>().enemyID;
+                List<GameObject> listanemicoarmored = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicoarmored);
+                for (int i = 0; i < 5; i++)
+                {
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
+                    poolnemici[nemicoID].Add(enemyinscene);
+                }
+            }
+            else if (enemytospawn == prefabarray[4])
+            {
+                nemicoID = prefabarray[4].GetComponent<UndyingEnemy>().enemyID;
+                List<GameObject> listanemicoundying = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicoundying);
                 for (int i = 0; i < 5; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));

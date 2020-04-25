@@ -29,4 +29,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public Playerbehaviour GetPlayerBehaviur()
+    {
+        return FindObjectOfType<Playerbehaviour>(); 
+    }
 }

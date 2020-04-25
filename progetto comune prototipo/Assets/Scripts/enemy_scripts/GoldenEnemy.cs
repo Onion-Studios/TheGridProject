@@ -15,6 +15,7 @@ public class GoldenEnemy : MonoBehaviour
     Secret SecretT;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
+    public float endPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class GoldenEnemy : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (this.transform.localPosition.x > 4.24)
+        if (this.transform.localPosition.x > endPosition)
         {
             DeathForEndGrid();
         }

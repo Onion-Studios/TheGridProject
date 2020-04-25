@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class NormalEnemy : MonoBehaviour
+public class ArmoredEnemy : MonoBehaviour
 {
-    #region VARIABILI
-    public int enemyID = 0;
+    public int enemyID = 3;
     [SerializeField]
     public float speed = 1;
+    public float maxSpeed;
     public int inkDamage = 20;
     public int maxInkDamage = 10;
     public int inkstoneDamage;
@@ -16,14 +15,14 @@ public class NormalEnemy : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
-    public GameObject[] segninormalenemy;
-    #endregion
+    public GameObject[] segniarmoredenemy;
+    public int armoredLife =2;
 
     // Start is called before the first frame update
     void Start()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
-        if(playerbehaviour == null)
+        if (playerbehaviour == null)
         {
             Debug.LogError("playerbehaviour is NULL!");
         }
@@ -67,7 +66,7 @@ public class NormalEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in segninormalenemy)
+        foreach (GameObject segno in segniarmoredenemy)
         {
             segno.SetActive(false);
         }
@@ -80,7 +79,7 @@ public class NormalEnemy : MonoBehaviour
         Inkstone.maxInk -= maxInkDamage;
         SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segninormalenemy)
+        foreach (GameObject segno in segniarmoredenemy)
         {
             segno.SetActive(false);
         }
@@ -88,14 +87,30 @@ public class NormalEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
-        this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
-        Inkstone.Ink += 10;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segninormalenemy)
+        int randomsegno = Random.Range(0, 4);
+
+        if (armoredLife == 2)
         {
-            segno.SetActive(false);
+            speed = maxSpeed;
+            armoredLife -= 1;
+            foreach (GameObject segno in segniarmoredenemy)
+            {
+                segno.SetActive(false);
+            }
+
+            segniarmoredenemy[randomsegno].gameObject.SetActive(true);
+        }
+        else
+        {
+            armoredLife = 2;
+            this.gameObject.SetActive(false);
+            enemyspawnmanager.nemicoucciso += 2;
+            Inkstone.Ink += 10;
+            SecretT.barra += SecretT.carica;
+            foreach (GameObject segno in segniarmoredenemy)
+            {
+                segno.SetActive(false);
+            }
         }
     }
-
 }

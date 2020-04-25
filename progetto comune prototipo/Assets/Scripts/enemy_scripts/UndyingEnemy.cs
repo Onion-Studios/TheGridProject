@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KamikazeEnemy : MonoBehaviour
+public class UndyingEnemy : MonoBehaviour
 {
-    public int enemyID = 1;
+    #region VARIABILI
+    public int enemyID = 4;
     [SerializeField]
     public float speed = 1;
     public int inkDamage = 20;
@@ -13,9 +14,14 @@ public class KamikazeEnemy : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
-    public GameObject[] segnikamikazenemy;
-    public int segnocorrispondente;
-
+    public GameObject[] segniundyingenemy;
+    public float endPosition;
+    public float currentTime;
+    public float maxTime;
+    public bool repelled;
+    public Vector3 startingPosition;
+    public float pushSpeed;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -44,56 +50,87 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("Secret is NULL");
         }
 
+        currentTime = maxTime;
+        repelled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Enemymove();
+        DeathForTimer();
+
+        if(repelled == false)
+        {
+            
+           Enemymove();
+        }
+        else
+        {
+            UndyingRepelled();
+        }
     }
 
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (this.transform.localPosition.x > 2)
+        if (this.transform.localPosition.x > endPosition)
         {
-            DeathForEndGrid();
+            DeathForStartGrid();
         }
     }
 
-    public void DeathForEndGrid()
-    {
-        this.gameObject.SetActive(false);
-        Inkstone.Ink -= 10;
-        foreach (GameObject segno in segnikamikazenemy)
-        {
-            segno.SetActive(false);
-        }
-    }
+    
 
-    public void Deathforgriglia()
+    public void DeathForStartGrid()
     {
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segnikamikazenemy)
+        foreach (GameObject segno in segniundyingenemy)
         {
             segno.SetActive(false);
         }
     }
 
+    public void UndyingRepelled()
+    {
+        transform.Translate(Vector3.left * pushSpeed * Time.deltaTime);
+        if (this.transform.localPosition.x < startingPosition.x)
+        {
+            repelled = false;
+        }
+    }
+
     public void Deathforsign()
     {
-        this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
-        Inkstone.Ink += 10;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segnikamikazenemy)
+        repelled = true;
+    }
+
+    
+    public void DeathForTimer()
+    {
+
+        currentTime -= 1 * Time.deltaTime;
+
+        if (currentTime < 0)
         {
-            segno.SetActive(false);
+            currentTime = 0;
+        }
+
+        if(currentTime == 0)
+        {
+            this.gameObject.SetActive(false);
+            currentTime = maxTime;
+            enemyspawnmanager.nemicoucciso += 1;
+            Inkstone.Ink += 10;
+            SecretT.barra += SecretT.carica;
+            foreach (GameObject segno in segniundyingenemy)
+            {
+                segno.SetActive(false);
+            }
         }
     }
 }

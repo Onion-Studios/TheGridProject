@@ -11,6 +11,9 @@ TagManager:
   - NormalEnemy
   - GoldenEnemy
   - KamikazeEnemy
+  - ArmoredEnemy
+  - LastWillEnemy
+  - UndyingEnemy
   layers:
   - Default
   - TransparentFX
