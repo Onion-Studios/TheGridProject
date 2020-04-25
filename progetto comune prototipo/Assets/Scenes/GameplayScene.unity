@@ -1178,6 +1178,7 @@ MonoBehaviour:
   istanza: {fileID: 0}
   origineraggio: {x: 0, y: 1.05, z: 0}
   colorecubonuovo: {fileID: 2100000, guid: cdb380fb351beec4b9c17340d3ebe920, type: 2}
+  LastCubeChecked: {x: 0, y: 0, z: 0}
   life: 6
   reciveDamage: 0
   Gold: 0
@@ -1761,6 +1762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1670959a708fbcd479cb1dfbfbcbbfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CountCaselleAttivate: 0
 --- !u!4 &385580839
 Transform:
   m_ObjectHideFlags: 0
@@ -3629,7 +3631,7 @@ Transform:
   m_Children:
   - {fileID: 1666980935}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1526763644
 GameObject:
@@ -4635,7 +4637,7 @@ RectTransform:
   - {fileID: 1861402152}
   - {fileID: 130030029}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4944,8 +4946,7 @@ MonoBehaviour:
   powerupspawnati: 0
   powerup_prefab: {fileID: 1826999073049883015, guid: 34789778c3e43e441b3db44125993e21,
     type: 3}
-  powerup_preafabs:
-  - {fileID: -5692082377695963061, guid: 34789778c3e43e441b3db44125993e21, type: 3}
+  powerup_preafabs: []
 --- !u!4 &2063062827
 Transform:
   m_ObjectHideFlags: 0

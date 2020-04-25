@@ -62,7 +62,7 @@ public class Enemyspawnmanager : MonoBehaviour
         while (true)
         {
             int randomnemicoID = Random.Range(0, 5);
-            int randomsegno = Random.Range(0, 4);
+            int randomsegno = Random.Range(0, 2);
             int randomposition = Random.Range(0, 5);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
             {
