@@ -13,7 +13,7 @@ public class BufferEnemy : MonoBehaviour
     public GameObject[] ToBuff;
     public int segnocorrispondente;
     public int link = 5;
-    public float Boost = 3f;
+    public float Boost = 5f;
     public float Reset = 0.8f;
 
     // Start is called before the first frame update

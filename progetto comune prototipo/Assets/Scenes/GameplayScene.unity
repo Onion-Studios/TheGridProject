@@ -2968,7 +2968,7 @@ MonoBehaviour:
   - {fileID: 2548298405615903043, guid: 5ba8d7201943d5744974d0b7e6593fe5, type: 3}
   - {fileID: 4350198202335848692, guid: ff35079ffa0d76a499e9c88681eb30eb, type: 3}
   segnocorrispondente: 0
-  link: 3
+  link: 5
   Boost: 1.25
   Reset: 0.8
 --- !u!4 &1127784525
