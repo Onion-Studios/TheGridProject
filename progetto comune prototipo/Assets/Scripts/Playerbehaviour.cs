@@ -66,6 +66,9 @@ public class Playerbehaviour : MonoBehaviour
     {
         xAxis = istanza.transform.position.x;
         zAxis = istanza.transform.position.z;
+
+        MovementHandler();
+
         //movimento ad ogni input corrisponde un metodo che fa l'azione di movimento corrispondente
         /* if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
          {
@@ -108,44 +111,52 @@ public class Playerbehaviour : MonoBehaviour
              }
          }*/
 
-        MovementHandler();
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             managercombo.Checksign();
             Gotocenter();
             grigliamanager.Resetcoloregriglia();
             grigliamanager.ResetGrigliaLogica();
-        }
+        }*/
+
     }
 
         void MovementHandler()
         {
             if (movementState == "readystate")
-
             {
-                if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
+                if (Input.GetKey(KeyCode.W) && istanza.transform.position.z > 0.9)
                 {
                     finalDestination = istanza.transform.position.z - 1;
                     movementState = "movingforward";
 
                 }
-                if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
+                if (Input.GetKey(KeyCode.S) && istanza.transform.position.z < 3.1)
                 {
                     finalDestination = istanza.transform.position.z + 1;
                     movementState = "movingback";
 
                 }
-                if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
+                if (Input.GetKey(KeyCode.A) && istanza.transform.position.x < 3.1)
                 {
                     finalDestination = istanza.transform.position.x + 1;
                     movementState = "movingleft";
 
                 }
-                if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
+                if (Input.GetKey(KeyCode.D) && istanza.transform.position.x > 0.9)
                 {
                     finalDestination = istanza.transform.position.x - 1;
                     movementState = "movingright";
 
+                }
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    managercombo.Checksign();
+
+                    istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    istanza.transform.position = posizionepersonaggio;
+                    grigliamanager.Resetcoloregriglia();
+                    grigliamanager.ResetGrigliaLogica();
                 }
             }
             else if (movementState == "movingforward")
@@ -243,10 +254,11 @@ public class Playerbehaviour : MonoBehaviour
                     movementState = "readystate";
                 }
             }
+           
         }
 
 
-        #region MOVEMENTS
+      /*  #region MOVEMENTS
 
         // il giocatore ruota e poi si muove nella direzione in cui ha ruotato
 
@@ -256,7 +268,7 @@ public class Playerbehaviour : MonoBehaviour
             istanza.transform.position = posizionepersonaggio;
         }
 
-        #endregion
+        #endregion*/
 
 
         #region SPAWN PLAYER
