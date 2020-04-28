@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoldenEnemy : MonoBehaviour
 {
-    public int enemyID = 0;
+    public int enemyID = 2;
     [SerializeField]
     public float speed = 1;
     public int damage = 0;
