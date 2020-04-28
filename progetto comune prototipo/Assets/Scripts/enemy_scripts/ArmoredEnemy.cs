@@ -87,8 +87,6 @@ public class ArmoredEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
-        int randomsegno = Random.Range(0, 4);
-
         if (armoredLife == 2)
         {
             speed = maxSpeed;
@@ -97,13 +95,12 @@ public class ArmoredEnemy : MonoBehaviour
             {
                 segno.SetActive(false);
             }
-
+            int randomsegno = Random.Range(0, 2);
             segniarmoredenemy[randomsegno].gameObject.SetActive(true);
         }
         else
         {
             armoredLife = 2;
-            this.gameObject.SetActive(false);
             enemyspawnmanager.nemicoucciso += 2;
             Inkstone.Ink += 10;
             SecretT.barra += SecretT.carica;
@@ -111,6 +108,7 @@ public class ArmoredEnemy : MonoBehaviour
             {
                 segno.SetActive(false);
             }
+            this.gameObject.SetActive(false);
         }
     }
 }
