@@ -12,10 +12,9 @@ public class BufferEnemy : MonoBehaviour
     public GameObject[] segniBufferEnemy;
     public GameObject[] ToBuff;
     public int segnocorrispondente;
-    int EnemyID0;
-    int EnemyID1;
-    int EnemyID2;
-    public int link = 3;
+    public int link = 5;
+    public float Boost = 3f;
+    public float Reset = 0.8f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +38,6 @@ public class BufferEnemy : MonoBehaviour
         }
 
         StartCoroutine(Test());
-
-        EnemyID0 = FindObjectOfType<NormalEnemy>().enemyID;
-        EnemyID1 = FindObjectOfType<KamikazeEnemy>().enemyID;
-        EnemyID2 = FindObjectOfType<GoldenEnemy>().enemyID;
     }
 
     // Update is called once per frame
@@ -59,20 +54,28 @@ public class BufferEnemy : MonoBehaviour
             {
                 if (nemico.activeInHierarchy==true)
                 {
-                    if (EnemyID0==0)
+                    switch (i)
                     {
-                        NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
-                        NormalEnemy.speed = NormalEnemy.speed * 1.25f;
-                    }
-                    if(EnemyID1==1)
-                    {
-                        KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
-                        KamikazeEnemy.speed = KamikazeEnemy.speed * 1.25f;
-                    }
-                    if(EnemyID2==2)
-                    {
-                        GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
-                        GoldenEnemy.speed = GoldenEnemy.speed * 1.25f;
+                        case 0:
+                            NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
+                            NormalEnemy.speed = NormalEnemy.speed * Boost;
+                            break;
+                        case 1:
+                            KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
+                            KamikazeEnemy.speed = KamikazeEnemy.speed * Boost;
+                            break;
+                        case 2:
+                            GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
+                            GoldenEnemy.speed = GoldenEnemy.speed * Boost;
+                            break;
+                        case 3:
+                            ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
+                            ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
+                            break;
+                        case 4:
+                            UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
+                            UndiyngEnemy.speed = UndiyngEnemy.speed * Boost;
+                            break;
                     }
                 }
             }
@@ -87,20 +90,28 @@ public class BufferEnemy : MonoBehaviour
             {
                 if (nemico.activeInHierarchy == true)
                 {
-                    if (EnemyID0 == 0)
+                    switch(i)
                     {
-                        NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
-                        NormalEnemy.speed = NormalEnemy.speed * 0.8f;
-                    }
-                    if (EnemyID1 == 1)
-                    {
-                        KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
-                        KamikazeEnemy.speed = KamikazeEnemy.speed * 0.8f;
-                    }
-                    if (EnemyID2 == 2)
-                    {
-                        GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
-                        GoldenEnemy.speed = GoldenEnemy.speed * 0.8f;
+                        case 0:
+                            NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
+                            NormalEnemy.speed = NormalEnemy.speed * (1/Boost);
+                            break;
+                        case 1:
+                            KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
+                            KamikazeEnemy.speed = KamikazeEnemy.speed * (1 / Boost);
+                            break;
+                        case 2:
+                            GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
+                            GoldenEnemy.speed = GoldenEnemy.speed * (1 / Boost);
+                            break;
+                        case 3:
+                            ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
+                            ArmoredEnemy.speed = ArmoredEnemy.speed * (1 / Boost);
+                            break;
+                        case 4:
+                            UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
+                            UndiyngEnemy.speed = UndiyngEnemy.speed * (1 / Boost);
+                            break;
                     }
                 }
             }
