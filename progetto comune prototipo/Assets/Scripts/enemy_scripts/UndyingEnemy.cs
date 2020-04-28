@@ -84,15 +84,23 @@ public class UndyingEnemy : MonoBehaviour
 
     public void DeathForStartGrid()
     {
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         SecretT.barra = 0;
         enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segniundyingenemy)
+
+        currentTime -= 1 * Time.deltaTime;
+
+        if (currentTime < 0)
+        {
+            currentTime = 0;
+        }
+
+       /* foreach (GameObject segno in segniundyingenemy)
         {
             segno.SetActive(false);
-        }
+        }*/
     }
 
     public void UndyingRepelled()
