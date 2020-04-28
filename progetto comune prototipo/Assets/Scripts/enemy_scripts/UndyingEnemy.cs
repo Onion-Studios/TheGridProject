@@ -18,6 +18,8 @@ public class UndyingEnemy : MonoBehaviour
     public float endPosition;
     public float currentTime;
     public float maxTime;
+    public float attackTimer;
+    public float maxAttacktimer;
     public bool repelled;
     public Vector3 startingPosition;
     public float pushSpeed;
@@ -72,11 +74,14 @@ public class UndyingEnemy : MonoBehaviour
 
     public void Enemymove()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         if (this.transform.localPosition.x > endPosition)
         {
             DeathForStartGrid();
+        }
+        else
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
     }
 
@@ -85,22 +90,24 @@ public class UndyingEnemy : MonoBehaviour
     public void DeathForStartGrid()
     {
         //this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        SecretT.barra = 0;
-        enemyspawnmanager.nemicoucciso = 0;
 
-        currentTime -= 1 * Time.deltaTime;
+        attackTimer -= 1 * Time.deltaTime;
 
-        if (currentTime < 0)
+        if (attackTimer < 0)
         {
-            currentTime = 0;
+            attackTimer = 0;
         }
 
-       /* foreach (GameObject segno in segniundyingenemy)
+        if(attackTimer == 0)
         {
-            segno.SetActive(false);
-        }*/
+            attackTimer = maxAttacktimer;
+
+            Inkstone.Ink -= inkDamage;
+            Inkstone.maxInk -= maxInkDamage;
+            SecretT.barra = 0;
+            enemyspawnmanager.nemicoucciso = 0;
+
+        }
     }
 
     public void UndyingRepelled()
@@ -109,18 +116,19 @@ public class UndyingEnemy : MonoBehaviour
         if (this.transform.localPosition.x < startingPosition.x)
         {
             repelled = false;
+            
         }
     }
 
     public void Deathforsign()
     {
         repelled = true;
+        attackTimer = 0;
     }
 
     
     public void DeathForTimer()
     {
-
         currentTime -= 1 * Time.deltaTime;
 
         if (currentTime < 0)
@@ -131,6 +139,7 @@ public class UndyingEnemy : MonoBehaviour
         if(currentTime == 0)
         {
             this.gameObject.SetActive(false);
+            attackTimer = 0;
             currentTime = maxTime;
             enemyspawnmanager.nemicoucciso += 1;
             Inkstone.Ink += 10;
