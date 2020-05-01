@@ -47,46 +47,15 @@ public class MalevolentEnemy : MonoBehaviour
         {
             Debug.LogError("Secret is NULL");
         }
+
+        transform.position = new Vector3(-1.3f, 4f, 6.5f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Enemymove();
-    }
 
-    public void Enemymove()
-    {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
-        if (this.transform.localPosition.x > position.x)
-        {
-           
-        }
-    }
-
-
-
-    public void DeathForEndGrid()
-    {
-        this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in segnimalevolentenemy)
-        {
-            segno.SetActive(false);
-        }
-    }
-
-    public void Deathforgriglia()
-    {
-        this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        SecretT.barra = 0;
-        enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segnimalevolentenemy)
-        {
-            segno.SetActive(false);
-        }
     }
 
     public void Deathforsign()
@@ -101,27 +70,4 @@ public class MalevolentEnemy : MonoBehaviour
         }
     }
 
-    public void SpawnTimer()
-    {
-        spawntimer -= 1 * Time.deltaTime;
-
-        if (spawntimer < 0)
-        {
-            spawntimer = 0;
-        }
-
-        if (spawntimer == 0)
-        {
-            this.gameObject.SetActive(false);
-           
-            spawntimer = maxspawntimer;
-            enemyspawnmanager.nemicoucciso += 1;
-            Inkstone.Ink += 10;
-            SecretT.barra += SecretT.carica;
-            foreach (GameObject segno in segnimalevolentenemy)
-            {
-                segno.SetActive(false);
-            }
-        }
-    }
 }

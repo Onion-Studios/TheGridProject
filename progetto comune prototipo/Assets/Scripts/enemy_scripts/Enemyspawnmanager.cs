@@ -328,7 +328,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 nemicoID = prefabarray[5].GetComponent<MalevolentEnemy>().enemyID;
                 List<GameObject> listanemicomalevolent = new List<GameObject>();
                 poolnemici.Add(nemicoID, listanemicomalevolent);
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 1; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);

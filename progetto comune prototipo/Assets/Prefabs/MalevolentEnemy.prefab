@@ -288,7 +288,6 @@ MonoBehaviour:
   inkstoneDamage: 0
   segnimalevolentenemy:
   - {fileID: 2860521588014726426}
-  - {fileID: 6567542370518307136}
   position: {x: -1.3, y: 4, z: 6.5}
   spawntimer: 0
   maxspawntimer: 5
