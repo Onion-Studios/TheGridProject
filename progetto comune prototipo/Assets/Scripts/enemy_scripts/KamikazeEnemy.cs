@@ -13,6 +13,7 @@ public class KamikazeEnemy : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
+    PointSystem pointsystem;
     public GameObject[] segnikamikazenemy;
     public int segnocorrispondente;
 
@@ -44,6 +45,11 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("Secret is NULL");
         }
 
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
+        }
     }
 
     // Update is called once per frame

@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldenEnemy : MonoBehaviour
+public class FrighteningEnemy : MonoBehaviour
 {
-    public int enemyID = 2;
+    #region VARIABILI
+    public int enemyID = 6;
     [SerializeField]
     public float speed = 1;
-    public int damage = 0;
-    public int GoldGiven = 10;
+    public float playerSpeed;
+    public float reduceSpeed;
+    public int inkDamage = 20;
+    public int maxInkDamage = 10;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
-    public GameObject[] segnigoldenenemy;
-    public int segnocorrispondente;
-    public float endPosition;
+    public GameObject[] segnifrighteningenemy;
+    #endregion
+
 
     // Start is called before the first frame update
     void Start()
     {
+
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -34,7 +38,7 @@ public class GoldenEnemy : MonoBehaviour
         }
 
         Inkstone = FindObjectOfType<Inkstone>();
-        if(Inkstone==null)
+        if (Inkstone == null)
         {
             Debug.LogError("Inkstone is NULL!");
         }
@@ -56,13 +60,25 @@ public class GoldenEnemy : MonoBehaviour
     void Update()
     {
         Enemymove();
+
+        Frate();
+    }
+
+    public void Frate()
+    {
+        if(reduceSpeed != playerbehaviour.speed)
+        {
+            playerbehaviour.speed = reduceSpeed;
+
+        }
+
     }
 
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (this.transform.localPosition.x > endPosition)
+        if (this.transform.localPosition.x > 4.24)
         {
             DeathForEndGrid();
         }
@@ -71,20 +87,28 @@ public class GoldenEnemy : MonoBehaviour
     public void DeathForEndGrid()
     {
         this.gameObject.SetActive(false);
-        foreach (GameObject segno in segnigoldenenemy)
+        Inkstone.Ink -= 10;
+        foreach (GameObject segno in segnifrighteningenemy)
         {
             segno.SetActive(false);
         }
+
+        playerbehaviour.speed = playerSpeed;
     }
 
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
-        playerbehaviour.life -= damage;
-        foreach (GameObject segno in segnigoldenenemy)
+        Inkstone.Ink -= inkDamage;
+        Inkstone.maxInk -= maxInkDamage;
+        SecretT.barra = 0;
+        enemyspawnmanager.nemicoucciso = 0;
+        foreach (GameObject segno in segnifrighteningenemy)
         {
             segno.SetActive(false);
         }
+
+        playerbehaviour.speed = playerSpeed;
     }
 
     public void Deathforsign()
@@ -93,10 +117,12 @@ public class GoldenEnemy : MonoBehaviour
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
         SecretT.barra += SecretT.carica;
-        playerbehaviour.Gold += GoldGiven;
-        foreach (GameObject segno in segnigoldenenemy)
+        foreach (GameObject segno in segnifrighteningenemy)
         {
             segno.SetActive(false);
         }
+
+        playerbehaviour.speed = playerSpeed;
+
     }
 }

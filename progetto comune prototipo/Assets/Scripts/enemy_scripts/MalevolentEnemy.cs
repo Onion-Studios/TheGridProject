@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldenEnemy : MonoBehaviour
+public class MalevolentEnemy : MonoBehaviour
 {
-    public int enemyID = 2;
+    #region VARIABILI
+    public int enemyID = 5;
     [SerializeField]
     public float speed = 1;
-    public int damage = 0;
-    public int GoldGiven = 10;
+    public int inkDamage = 20;
+    public int maxInkDamage = 10;
+    public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
-    public GameObject[] segnigoldenenemy;
-    public int segnocorrispondente;
-    public float endPosition;
+    public GameObject[] segnimalevolentenemy;
+    public Vector3 position;
+    public float spawntimer;
+    public float maxspawntimer;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +38,7 @@ public class GoldenEnemy : MonoBehaviour
         }
 
         Inkstone = FindObjectOfType<Inkstone>();
-        if(Inkstone==null)
+        if (Inkstone == null)
         {
             Debug.LogError("Inkstone is NULL!");
         }
@@ -50,41 +54,15 @@ public class GoldenEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
+        transform.position = new Vector3(-1.3f, 4f, 6.5f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Enemymove();
-    }
 
-    public void Enemymove()
-    {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-        if (this.transform.localPosition.x > endPosition)
-        {
-            DeathForEndGrid();
-        }
-    }
-
-    public void DeathForEndGrid()
-    {
-        this.gameObject.SetActive(false);
-        foreach (GameObject segno in segnigoldenenemy)
-        {
-            segno.SetActive(false);
-        }
-    }
-
-    public void Deathforgriglia()
-    {
-        this.gameObject.SetActive(false);
-        playerbehaviour.life -= damage;
-        foreach (GameObject segno in segnigoldenenemy)
-        {
-            segno.SetActive(false);
-        }
     }
 
     public void Deathforsign()
@@ -93,10 +71,10 @@ public class GoldenEnemy : MonoBehaviour
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
         SecretT.barra += SecretT.carica;
-        playerbehaviour.Gold += GoldGiven;
-        foreach (GameObject segno in segnigoldenenemy)
+        foreach (GameObject segno in segnimalevolentenemy)
         {
             segno.SetActive(false);
         }
     }
+
 }
