@@ -15,6 +15,7 @@ public class ArmoredEnemy : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
+    PointSystem pointsystem;
     public GameObject[] segniarmoredenemy;
     public int armoredLife =2;
 
@@ -43,6 +44,12 @@ public class ArmoredEnemy : MonoBehaviour
         if (SecretT == null)
         {
             Debug.LogError("Secret is NULL");
+        }
+
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
         }
     }
 

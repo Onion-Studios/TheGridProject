@@ -13,6 +13,7 @@ public class GoldenEnemy : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
+    PointSystem pointsystem;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
     public float endPosition;
@@ -42,6 +43,12 @@ public class GoldenEnemy : MonoBehaviour
         if (SecretT == null)
         {
             Debug.LogError("Secret is NULL");
+        }
+
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
         }
     }
 

@@ -15,6 +15,7 @@ public class MalevolentEnemy : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
+    PointSystem pointsystem;
     public GameObject[] segnimalevolentenemy;
     public Vector3 position;
     public float spawntimer;
@@ -46,6 +47,12 @@ public class MalevolentEnemy : MonoBehaviour
         if (SecretT == null)
         {
             Debug.LogError("Secret is NULL");
+        }
+
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
         }
 
         transform.position = new Vector3(-1.3f, 4f, 6.5f);

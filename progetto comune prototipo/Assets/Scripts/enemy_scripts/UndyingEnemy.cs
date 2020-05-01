@@ -14,6 +14,7 @@ public class UndyingEnemy : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
+    PointSystem pointsystem;
     public GameObject[] segniundyingenemy;
     public float endPosition;
     public float currentTime;
@@ -50,6 +51,12 @@ public class UndyingEnemy : MonoBehaviour
         if (SecretT == null)
         {
             Debug.LogError("Secret is NULL");
+        }
+
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
         }
 
         currentTime = maxTime;
