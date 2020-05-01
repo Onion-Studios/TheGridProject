@@ -68,57 +68,6 @@ public class Playerbehaviour : MonoBehaviour
         zAxis = istanza.transform.position.z;
 
         MovementHandler();
-
-        //movimento ad ogni input corrisponde un metodo che fa l'azione di movimento corrispondente
-        /* if (Input.GetKeyDown(KeyCode.D) && istanza.transform.position.x > 0.9)
-         {
-             miosimbolo.Add('d');
-             forwardMove();
-             Castraggio();
-             if(Inkstone.Ink > 1)
-             {
-                 Inkstone.Ink -= 1;
-             }
-         }
-         else if (Input.GetKeyDown(KeyCode.A) && istanza.transform.position.x < 3.1)
-         {
-             miosimbolo.Add('a');
-             backmove();
-             Castraggio();
-             if (Inkstone.Ink > 1)
-             {
-                 Inkstone.Ink -= 1;
-             }
-         }
-         else if (Input.GetKeyDown(KeyCode.S) && istanza.transform.position.z < 3.1)
-         {
-             miosimbolo.Add('s');
-             rightmove();
-             Castraggio();
-             if (Inkstone.Ink > 1)
-             {
-                 Inkstone.Ink -= 1;
-             }
-         }
-         else if (Input.GetKeyDown(KeyCode.W) && istanza.transform.position.z > 0.9)
-         {
-             miosimbolo.Add('w');
-             leftmove();
-             Castraggio();
-             if (Inkstone.Ink > 1)
-             {
-                 Inkstone.Ink -= 1;
-             }
-         }*/
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            managercombo.Checksign();
-            Gotocenter();
-            grigliamanager.Resetcoloregriglia();
-            grigliamanager.ResetGrigliaLogica();
-        }*/
-
     }
 
         void MovementHandler()
@@ -256,19 +205,6 @@ public class Playerbehaviour : MonoBehaviour
             }
            
         }
-
-
-      /*  #region MOVEMENTS
-
-        // il giocatore ruota e poi si muove nella direzione in cui ha ruotato
-
-        void Gotocenter()
-        {
-            istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
-            istanza.transform.position = posizionepersonaggio;
-        }
-
-        #endregion*/
 
 
         #region SPAWN PLAYER

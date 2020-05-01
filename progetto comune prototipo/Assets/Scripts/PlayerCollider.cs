@@ -33,6 +33,10 @@ public class PlayerCollider : MonoBehaviour
         {
             other.GetComponent<ArmoredEnemy>().Deathforgriglia();
         }
-        
+        if (other.gameObject.CompareTag("FrighteningEnemy"))
+        {
+            other.GetComponent<FrighteningEnemy>().Deathforgriglia();
+        }
+
     }
 }

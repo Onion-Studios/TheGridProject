@@ -61,7 +61,7 @@ public class Enemyspawnmanager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
-            int randomnemicoID = Random.Range(0, 5);
+            int randomnemicoID = Random.Range(0, 7);
             int randomsegno = Random.Range(0, 2);
             int randomposition = Random.Range(0, 5);
             foreach (GameObject nemico in poolnemici[randomnemicoID])
@@ -213,6 +213,35 @@ public class Enemyspawnmanager : MonoBehaviour
                                 undyingEnemy.speed = 1f;
                             }
                             break;
+                        case 5:
+                            MalevolentEnemy malevolentEnemy = nemico.GetComponent <MalevolentEnemy>();
+                            malevolentEnemy.segnimalevolentenemy[randomsegno].gameObject.SetActive(true);
+                            malevolentEnemy.position = enemyspawnposition;
+                            break;
+                        case 6:
+                            FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
+                            frighteningEnemy.segnifrighteningenemy[randomsegno].gameObject.SetActive(true);
+                            if (randomposition == 0)
+                            {
+                                frighteningEnemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1)
+                            {
+                                frighteningEnemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                frighteningEnemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                frighteningEnemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                frighteningEnemy.speed = 1f;
+                            }
+                            break;
                         default:
                             break;
                     }
@@ -287,6 +316,30 @@ public class Enemyspawnmanager : MonoBehaviour
                 nemicoID = prefabarray[4].GetComponent<UndyingEnemy>().enemyID;
                 List<GameObject> listanemicoundying = new List<GameObject>();
                 poolnemici.Add(nemicoID, listanemicoundying);
+                for (int i = 0; i < 5; i++)
+                {
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
+                    poolnemici[nemicoID].Add(enemyinscene);
+                }
+            }
+            else if (enemytospawn == prefabarray[5])
+            {
+                nemicoID = prefabarray[5].GetComponent<MalevolentEnemy>().enemyID;
+                List<GameObject> listanemicomalevolent = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicomalevolent);
+                for (int i = 0; i < 5; i++)
+                {
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
+                    GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
+                    poolnemici[nemicoID].Add(enemyinscene);
+                }
+            }
+            else if (enemytospawn == prefabarray[6])
+            {
+                nemicoID = prefabarray[6].GetComponent<FrighteningEnemy>().enemyID;
+                List<GameObject> listanemicofrightening = new List<GameObject>();
+                poolnemici.Add(nemicoID, listanemicofrightening);
                 for (int i = 0; i < 5; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));

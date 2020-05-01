@@ -116,6 +116,7 @@ public class UndyingEnemy : MonoBehaviour
         if (this.transform.localPosition.x < startingPosition.x)
         {
             repelled = false;
+
             
         }
     }

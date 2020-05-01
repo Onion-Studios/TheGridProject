@@ -189,8 +189,8 @@ GameObject:
   - component: {fileID: 2702387971456190608}
   - component: {fileID: 3854296121195123293}
   m_Layer: 0
-  m_Name: MalevolentEnemy 1
-  m_TagString: Untagged
+  m_Name: MalevolentEnemy
+  m_TagString: MalevolentEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614f6d841e21e3342a859120b0b74a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: 0
+  enemyID: 5
   speed: 1
   inkDamage: 20
   maxInkDamage: 10

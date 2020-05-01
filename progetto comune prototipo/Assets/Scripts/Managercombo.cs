@@ -359,7 +359,7 @@ public class Managercombo : MonoBehaviour
 
     void SearchAndDestroySign0Enemy()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 7; i++)
         {
             foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
             {
@@ -388,6 +388,34 @@ public class Managercombo : MonoBehaviour
                                 goldenenemy.Deathforsign();
                             }
                             break;
+                        case 3:
+                            ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
+                            if (armoredenemy.segniarmoredenemy[0].activeInHierarchy == true)
+                            {
+                                armoredenemy.Deathforsign();
+                            }
+                            break;
+                        case 4:
+                            UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
+                            if (undyingenemy.segniundyingenemy[0].activeInHierarchy == true)
+                            {
+                                undyingenemy.Deathforsign();
+                            }
+                            break;
+                        case 5:
+                            MalevolentEnemy malevolentenemy = nemicodadistruggere.GetComponent<MalevolentEnemy>();
+                            if (malevolentenemy.segnimalevolentenemy[0].activeInHierarchy == true)
+                            {
+                                malevolentenemy.Deathforsign();
+                            }
+                            break;
+                        case 6:
+                            FrighteningEnemy frighteningenemy = nemicodadistruggere.GetComponent<FrighteningEnemy>();
+                            if (frighteningenemy.segnifrighteningenemy[0].activeInHierarchy == true)
+                            {
+                                frighteningenemy.Deathforsign();
+                            }
+                            break;
                     }
 
                 }
@@ -397,7 +425,7 @@ public class Managercombo : MonoBehaviour
 
     void SearchAndDestroySign1Enemy()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 7; i++)
         {
             foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
             {
@@ -426,60 +454,38 @@ public class Managercombo : MonoBehaviour
                                 goldenenemy.Deathforsign();
                             }
                             break;
+                        case 3:
+                            ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
+                            if (armoredenemy.segniarmoredenemy[1].activeInHierarchy == true)
+                            {
+                                armoredenemy.Deathforsign();
+                            }
+                            break;
+                        case 4:
+                            UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
+                            if (undyingenemy.segniundyingenemy[1].activeInHierarchy == true)
+                            {
+                                undyingenemy.Deathforsign();
+                            }
+                            break;
+                        case 5:
+                            MalevolentEnemy malevolentenemy = nemicodadistruggere.GetComponent<MalevolentEnemy>();
+                            if (malevolentenemy.segnimalevolentenemy[1].activeInHierarchy == true)
+                            {
+                                malevolentenemy.Deathforsign();
+                            }
+                            break;
+                        case 6:
+                            FrighteningEnemy frighteningenemy = nemicodadistruggere.GetComponent<FrighteningEnemy>();
+                            if (frighteningenemy.segnifrighteningenemy[1].activeInHierarchy == true)
+                            {
+                                frighteningenemy.Deathforsign();
+                            }
+                            break;
                     }
                 }
             }
 
         }
     }
-
-    /*public ABC _abc = ABC.a;
-    public void test(ABC _name) {
-        switch (_name)
-        {
-            case ABC.a:
-            case ABC.b:
-                for (int i = 0; i < 3; i++)
-                {
-                    foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
-                    {
-                        if (nemicodadistruggere.activeInHierarchy == true)
-                        {
-                            switch (i)
-                            {
-                                case 0:
-                                    NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                                    if (normalenemy.segninormalenemy[0].activeInHierarchy == true)
-                                    {
-                                        normalenemy.Deathforsign();
-                                    }
-                                    break;
-                                case 1:
-                                    KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                                    if (kamikazenemy.segnikamikazenemy[0].activeInHierarchy == true)
-                                    {
-                                        kamikazenemy.Deathforsign();
-                                    }
-                                    break;
-                                case 2:
-                                    GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                                    if (goldenenemy.segnigoldenenemy[0].activeInHierarchy == true)
-                                    {
-                                        goldenenemy.Deathforsign();
-                                    }
-                                    break;
-                            }
-
-                        }
-                    }
-                }
-                break;
-            case ABC.c:
-                break;
-            default:
-                break;
-        }
-    }
-
-    public enum ABC{a,b,c }*/
 }

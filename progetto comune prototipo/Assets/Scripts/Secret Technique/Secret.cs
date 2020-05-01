@@ -81,7 +81,7 @@ public class Secret : MonoBehaviour
     //Muoiono tutti i nemici presenti sulla lane 
     void Death()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 7; i++)
         {
             foreach (GameObject nemici in enemyspawnmanager.poolnemici[i])
             {
@@ -109,6 +109,14 @@ public class Secret : MonoBehaviour
                         case 4:
                             UndyingEnemy undyingenemy = nemici.GetComponent<UndyingEnemy>();
                             undyingenemy.Deathforsign();
+                            break;
+                        case 5:
+                            MalevolentEnemy malevolentenemy = nemici.GetComponent<MalevolentEnemy>();
+                            malevolentenemy.Deathforsign();
+                            break;
+                        case 6:
+                            FrighteningEnemy frighteningenemy = nemici.GetComponent<FrighteningEnemy>();
+                            frighteningenemy.Deathforsign();
                             break;
                     }
                 }
