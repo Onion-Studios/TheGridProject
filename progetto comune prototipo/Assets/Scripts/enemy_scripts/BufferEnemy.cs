@@ -13,6 +13,7 @@ public class BufferEnemy : MonoBehaviour
     public GameObject[] ToBuff;
     public int segnocorrispondente;
     public int link = 5;
+    public int enemyID = 5;
     public float Boost = 5f;
     public float Reset = 0.8f;
 
@@ -37,7 +38,11 @@ public class BufferEnemy : MonoBehaviour
             Debug.LogError("Inkstone is NULL!");
         }
 
-        StartCoroutine(Test());
+        //StartCoroutine(Test());
+
+        SpeedBoost();
+
+        transform.Translate(6, 0, 0);
     }
 
     // Update is called once per frame
@@ -120,7 +125,6 @@ public class BufferEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
-        Buff = false;
         SpeedReset();
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
