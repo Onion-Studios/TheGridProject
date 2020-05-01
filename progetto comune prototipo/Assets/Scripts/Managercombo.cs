@@ -468,13 +468,6 @@ public class Managercombo : MonoBehaviour
                                 undyingenemy.Deathforsign();
                             }
                             break;
-                        case 5:
-                            MalevolentEnemy malevolentenemy = nemicodadistruggere.GetComponent<MalevolentEnemy>();
-                            if (malevolentenemy.segnimalevolentenemy[1].activeInHierarchy == true)
-                            {
-                                malevolentenemy.Deathforsign();
-                            }
-                            break;
                         case 6:
                             FrighteningEnemy frighteningenemy = nemicodadistruggere.GetComponent<FrighteningEnemy>();
                             if (frighteningenemy.segnifrighteningenemy[1].activeInHierarchy == true)

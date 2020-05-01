@@ -215,7 +215,7 @@ public class Enemyspawnmanager : MonoBehaviour
                             break;
                         case 5:
                             MalevolentEnemy malevolentEnemy = nemico.GetComponent <MalevolentEnemy>();
-                            malevolentEnemy.segnimalevolentenemy[randomsegno].gameObject.SetActive(true);
+                            malevolentEnemy.segnimalevolentenemy[0].gameObject.SetActive(true);
                             malevolentEnemy.position = enemyspawnposition;
                             break;
                         case 6:
