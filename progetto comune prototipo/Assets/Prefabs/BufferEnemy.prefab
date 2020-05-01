@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 4350198202335848692, guid: ff35079ffa0d76a499e9c88681eb30eb, type: 3}
   segnocorrispondente: 0
   link: 5
-  enemyID: 5
+  enemyID: 7
   Boost: 2
   Reset: 0.8
 --- !u!1 &8973156641114663985
