@@ -9,11 +9,11 @@ public class BufferEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
-    public GameObject[] segniBufferEnemy;
+    public GameObject[] segnibufferenemy;
     public GameObject[] ToBuff;
     public int segnocorrispondente;
     public int link = 5;
-    public int enemyID = 5;
+    public int enemyID = 7;
     public float Boost = 5f;
     public float Reset = 0.8f;
 
@@ -117,6 +117,7 @@ public class BufferEnemy : MonoBehaviour
                             UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
                             UndiyngEnemy.speed = UndiyngEnemy.speed * (1 / Boost);
                             break;
+                     
                     }
                 }
             }
@@ -129,7 +130,7 @@ public class BufferEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
-        foreach (GameObject segno in segniBufferEnemy)
+        foreach (GameObject segno in segnibufferenemy)
         {
             segno.SetActive(false);
         }

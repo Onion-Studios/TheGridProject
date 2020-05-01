@@ -243,8 +243,8 @@ public class Enemyspawnmanager : MonoBehaviour
                             }
                             break;
                         case 7:
-                            BufferEnemy BufferEnemy = nemico.GetComponent<BufferEnemy>();
-                            //BufferEnemy.segniBufferEnemy[randomsegno].gameObject.SetActive(true);
+                            BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                            bufferEnemy.segnibufferenemy[randomsegno].gameObject.SetActive(true);
                             break;
                         default:
                             break;
@@ -356,12 +356,14 @@ public class Enemyspawnmanager : MonoBehaviour
                 nemicoID = prefabarray[7].GetComponent<BufferEnemy>().enemyID;
                 List<GameObject> listanemicobuffer = new List<GameObject>();
                 poolnemici.Add(nemicoID, listanemicobuffer);
-                for(int i=0; i<5; i++)
+                for(int i = 0; i < 5; i++)
                 {
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
             }
+
             //else if (enemytospawn == prefabarray[6])
             //{
             //    nemicoID = prefabarray[6].GetComponent<BufferEnemy>().enemyID;

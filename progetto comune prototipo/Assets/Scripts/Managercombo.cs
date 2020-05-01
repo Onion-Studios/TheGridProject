@@ -359,7 +359,7 @@ public class Managercombo : MonoBehaviour
 
     void SearchAndDestroySign0Enemy()
     {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
             {
@@ -416,6 +416,13 @@ public class Managercombo : MonoBehaviour
                                 frighteningenemy.Deathforsign();
                             }
                             break;
+                        case 7:
+                            BufferEnemy bufferenemy = nemicodadistruggere.GetComponent<BufferEnemy>();
+                            if (bufferenemy.segnibufferenemy[0].activeInHierarchy == true)
+                            {
+                                bufferenemy.Deathforsign();
+                            }
+                            break;
                     }
 
                 }
@@ -425,7 +432,7 @@ public class Managercombo : MonoBehaviour
 
     void SearchAndDestroySign1Enemy()
     {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
             {
@@ -473,6 +480,13 @@ public class Managercombo : MonoBehaviour
                             if (frighteningenemy.segnifrighteningenemy[1].activeInHierarchy == true)
                             {
                                 frighteningenemy.Deathforsign();
+                            }
+                            break;
+                        case 7:
+                            BufferEnemy bufferenemy = nemicodadistruggere.GetComponent<BufferEnemy>();
+                            if (bufferenemy.segnibufferenemy[0].activeInHierarchy == true)
+                            {
+                                bufferenemy.Deathforsign();
                             }
                             break;
                     }

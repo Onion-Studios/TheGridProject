@@ -55,14 +55,14 @@ public class MalevolentEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-        transform.position = new Vector3(-1.3f, 4f, 6.5f);
+       // transform.position = new Vector3(-1.3f, 4f, 6.5f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = new Vector3(-1.3f, 4f, 6.5f);
     }
 
     public void Deathforsign()
