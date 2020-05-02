@@ -17,8 +17,10 @@ public class NormalEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segninormalenemy;
+    public bool isbuffed;
     #endregion
 
     // Start is called before the first frame update
@@ -54,6 +56,13 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        bufferenemy = FindObjectOfType<BufferEnemy>();
+        if (bufferenemy == null)
+        {
+            Debug.LogError("BufferEnemy is NULL");
+        }
+
+        isbuffed = false;
 
     }
 
@@ -81,6 +90,12 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 
     public void Deathforgriglia()
@@ -93,6 +108,12 @@ public class NormalEnemy : MonoBehaviour
         foreach (GameObject segno in segninormalenemy)
         {
             segno.SetActive(false);
+        }
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
         }
     }
 
@@ -114,6 +135,12 @@ public class NormalEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 
 }

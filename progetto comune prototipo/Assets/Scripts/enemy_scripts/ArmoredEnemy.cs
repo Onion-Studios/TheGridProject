@@ -16,9 +16,11 @@ public class ArmoredEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segniarmoredenemy;
     public int armoredLife =2;
+    public bool isbuffed;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,14 @@ public class ArmoredEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
+        bufferenemy = FindObjectOfType<BufferEnemy>();
+        if (bufferenemy == null)
+        {
+            Debug.LogError("BufferEnemy is NULL");
+        }
+
+        isbuffed = false;
     }
 
     // Update is called once per frame
@@ -78,6 +88,12 @@ public class ArmoredEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 
     public void Deathforgriglia()
@@ -90,6 +106,12 @@ public class ArmoredEnemy : MonoBehaviour
         foreach (GameObject segno in segniarmoredenemy)
         {
             segno.SetActive(false);
+        }
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
         }
     }
 
@@ -125,5 +147,11 @@ public class ArmoredEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 }

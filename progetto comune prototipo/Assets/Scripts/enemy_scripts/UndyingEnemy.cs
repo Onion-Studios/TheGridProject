@@ -15,6 +15,7 @@ public class UndyingEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segniundyingenemy;
     public float endPosition;
@@ -25,6 +26,7 @@ public class UndyingEnemy : MonoBehaviour
     public bool repelled;
     public Vector3 startingPosition;
     public float pushSpeed;
+    public bool isbuffed;
     #endregion
 
     // Start is called before the first frame update
@@ -60,6 +62,13 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        bufferenemy = FindObjectOfType<BufferEnemy>();
+        if (bufferenemy == null)
+        {
+            Debug.LogError("BufferEnemy is NULL");
+        }
+
+        isbuffed = false;
         currentTime = maxTime;
         repelled = false;
     }
@@ -116,6 +125,12 @@ public class UndyingEnemy : MonoBehaviour
             enemyspawnmanager.nemicoucciso = 0;
 
         }
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 
     public void UndyingRepelled()
@@ -165,6 +180,12 @@ public class UndyingEnemy : MonoBehaviour
             pointsystem.Combo();
 
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+            if (isbuffed == true)
+            {
+                speed = speed / bufferenemy.Boost;
+                isbuffed = false;
+            }
         }
 
        

@@ -17,8 +17,10 @@ public class FrighteningEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segnifrighteningenemy;
+    public bool isbuffed;
     #endregion
 
 
@@ -55,6 +57,14 @@ public class FrighteningEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
+        bufferenemy = FindObjectOfType<BufferEnemy>();
+        if (bufferenemy == null)
+        {
+            Debug.LogError("BufferEnemy is NULL");
+        }
+
+        isbuffed = false;
     }
 
     // Update is called once per frame
@@ -95,6 +105,13 @@ public class FrighteningEnemy : MonoBehaviour
         }
 
         playerbehaviour.speed = playerSpeed;
+
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 
     public void Deathforgriglia()
@@ -110,6 +127,12 @@ public class FrighteningEnemy : MonoBehaviour
         }
 
         playerbehaviour.speed = playerSpeed;
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 
     public void Deathforsign()
@@ -129,5 +152,11 @@ public class FrighteningEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 }
