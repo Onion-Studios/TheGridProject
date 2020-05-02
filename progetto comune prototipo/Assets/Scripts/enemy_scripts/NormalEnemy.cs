@@ -17,6 +17,7 @@ public class NormalEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segninormalenemy;
     #endregion
 
@@ -105,6 +106,14 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
     }
 
 }

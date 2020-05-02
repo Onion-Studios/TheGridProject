@@ -16,6 +16,7 @@ public class ArmoredEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segniarmoredenemy;
     public int armoredLife =2;
 
@@ -117,5 +118,12 @@ public class ArmoredEnemy : MonoBehaviour
             }
             this.gameObject.SetActive(false);
         }
+
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
     }
 }

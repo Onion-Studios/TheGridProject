@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Buff: 0
+  scoreEnemy: 1000
   segnibufferenemy:
   - {fileID: 4915558911084899880}
   - {fileID: 3096689922224723311}
@@ -366,8 +367,13 @@ MonoBehaviour:
   - {fileID: 9177895455755635927, guid: 8903cee2cbe3da74a825f9f841223d51, type: 3}
   - {fileID: 2548298405615903043, guid: 5ba8d7201943d5744974d0b7e6593fe5, type: 3}
   - {fileID: 4350198202335848692, guid: ff35079ffa0d76a499e9c88681eb30eb, type: 3}
+  - {fileID: 6702554330211458573, guid: dd64aee7426306b41934b168b1c9399d, type: 3}
+  - {fileID: 8376121018324102043}
   segnocorrispondente: 0
   link: 5
   enemyID: 7
   Boost: 2
   Reset: 0.8
+  speed: 0
+  endPosition: -6.5
+  buffcheck: 0

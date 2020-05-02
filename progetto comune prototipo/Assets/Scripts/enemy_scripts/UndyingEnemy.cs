@@ -15,6 +15,7 @@ public class UndyingEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segniundyingenemy;
     public float endPosition;
     public float currentTime;
@@ -155,7 +156,17 @@ public class UndyingEnemy : MonoBehaviour
             foreach (GameObject segno in segniundyingenemy)
             {
                 segno.SetActive(false);
+
             }
+
+            pointsystem.currentTimer = pointsystem.maxTimer;
+            pointsystem.countercombo++;
+
+            pointsystem.Combo();
+
+            pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
         }
+
+       
     }
 }

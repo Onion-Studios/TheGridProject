@@ -17,6 +17,7 @@ public class FrighteningEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segnifrighteningenemy;
     #endregion
 
@@ -122,7 +123,11 @@ public class FrighteningEnemy : MonoBehaviour
             segno.SetActive(false);
         }
 
-        playerbehaviour.speed = playerSpeed;
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
 
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
     }
 }

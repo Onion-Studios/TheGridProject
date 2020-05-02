@@ -14,6 +14,7 @@ public class GoldenEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
     public float endPosition;
@@ -98,5 +99,12 @@ public class GoldenEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
     }
 }

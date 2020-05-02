@@ -245,6 +245,26 @@ public class Enemyspawnmanager : MonoBehaviour
                         case 7:
                             BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
                             bufferEnemy.segnibufferenemy[randomsegno].gameObject.SetActive(true);
+                            if (randomposition == 0)
+                            {
+                                bufferEnemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1)
+                            {
+                                bufferEnemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                bufferEnemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                bufferEnemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                bufferEnemy.speed = 1f;
+                            }
                             break;
                         default:
                             break;
@@ -351,7 +371,7 @@ public class Enemyspawnmanager : MonoBehaviour
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
             }
-            else if(enemytospawn==prefabarray[7])
+            else if(enemytospawn == prefabarray[7])
             {
                 nemicoID = prefabarray[7].GetComponent<BufferEnemy>().enemyID;
                 List<GameObject> listanemicobuffer = new List<GameObject>();

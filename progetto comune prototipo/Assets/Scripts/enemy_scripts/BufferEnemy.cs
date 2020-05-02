@@ -9,6 +9,8 @@ public class BufferEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
+    PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segnibufferenemy;
     public GameObject[] ToBuff;
     public int segnocorrispondente;
@@ -16,6 +18,9 @@ public class BufferEnemy : MonoBehaviour
     public int enemyID = 7;
     public float Boost = 5f;
     public float Reset = 0.8f;
+    public float speed;
+    public float endPosition;
+    public bool buffcheck;
 
     // Start is called before the first frame update
     void Start()
@@ -38,22 +43,46 @@ public class BufferEnemy : MonoBehaviour
             Debug.LogError("Inkstone is NULL!");
         }
 
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
+        }
+
         //StartCoroutine(Test());
 
-        SpeedBoost();
+        buffcheck = false;
 
-        transform.Translate(6, 0, 0);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Enemymove();   
+    }
+
+    public void Enemymove()
+    {
+        if (this.transform.localPosition.x > endPosition)
+        {
+
+            if (buffcheck == false)
+            {
+                SpeedBoost();
+                buffcheck = true;
+            }
+        }
+        else
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        }
     }
 
     public void SpeedBoost()
     {
-        for(int i=0; i<link; i++)
+        for(int i=0; i < link; i++)
         {
             foreach(GameObject nemico in enemyspawnmanager.poolnemici[i])
             {
@@ -80,6 +109,14 @@ public class BufferEnemy : MonoBehaviour
                         case 4:
                             UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
                             UndiyngEnemy.speed = UndiyngEnemy.speed * Boost;
+                            break;
+                        case 5:
+                            FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
+                            frighteningEnemy.speed = frighteningEnemy.speed * Boost;
+                            break;
+                        case 6:
+                            BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                            bufferEnemy.speed = bufferEnemy.speed * Boost;
                             break;
                     }
                 }
@@ -117,7 +154,15 @@ public class BufferEnemy : MonoBehaviour
                             UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
                             UndiyngEnemy.speed = UndiyngEnemy.speed * (1 / Boost);
                             break;
-                     
+                        case 5:
+                            FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
+                            frighteningEnemy.speed = frighteningEnemy.speed * (1 / Boost);
+                            break;
+                        case 6:
+                            BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                            bufferEnemy.speed = bufferEnemy.speed * (1 /Boost);
+                            break;
+
                     }
                 }
             }
@@ -134,6 +179,13 @@ public class BufferEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
     }
 
     IEnumerator Test()

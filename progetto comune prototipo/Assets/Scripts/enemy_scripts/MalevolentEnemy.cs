@@ -16,6 +16,7 @@ public class MalevolentEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segnimalevolentenemy;
     public Vector3 position;
     public float spawntimer;
@@ -75,6 +76,12 @@ public class MalevolentEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
     }
 
 }

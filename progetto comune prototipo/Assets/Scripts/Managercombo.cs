@@ -484,7 +484,7 @@ public class Managercombo : MonoBehaviour
                             break;
                         case 7:
                             BufferEnemy bufferenemy = nemicodadistruggere.GetComponent<BufferEnemy>();
-                            if (bufferenemy.segnibufferenemy[0].activeInHierarchy == true)
+                            if (bufferenemy.segnibufferenemy[1].activeInHierarchy == true)
                             {
                                 bufferenemy.Deathforsign();
                             }

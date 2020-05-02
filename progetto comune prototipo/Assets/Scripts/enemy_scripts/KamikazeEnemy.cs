@@ -14,6 +14,7 @@ public class KamikazeEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    public int scoreEnemy;
     public GameObject[] segnikamikazenemy;
     public int segnocorrispondente;
 
@@ -101,5 +102,12 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
     }
 }
