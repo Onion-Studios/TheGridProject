@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44075575, g: 0.48943144, b: 0.56955254, a: 1}
+  m_IndirectSpecularColor: {r: 0.44075558, g: 0.48943096, b: 0.56955177, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4818,7 +4818,7 @@ MonoBehaviour:
   sounds:
   - clipName: MainTrack
     clip: {fileID: 8300000, guid: 8885eca846a872e42a504bb55d518332, type: 3}
-    volume: 1
+    volume: 0
     pitch: 1
     loop: 1
     playOnAwake: 1
