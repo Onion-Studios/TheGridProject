@@ -146,6 +146,8 @@ public class FrighteningEnemy : MonoBehaviour
             segno.SetActive(false);
         }
 
+        playerbehaviour.speed = playerSpeed;
+
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
 
