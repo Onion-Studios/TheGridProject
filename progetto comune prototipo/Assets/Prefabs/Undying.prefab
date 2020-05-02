@@ -260,6 +260,7 @@ MonoBehaviour:
   speed: 1
   inkDamage: 20
   maxInkDamage: 10
+  scoreEnemy: 1000
   segniundyingenemy:
   - {fileID: 719161590171113951}
   - {fileID: 1570016774213505568}

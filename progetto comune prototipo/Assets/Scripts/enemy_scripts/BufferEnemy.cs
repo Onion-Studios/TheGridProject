@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class BufferEnemy : MonoBehaviour
 {
+    public int enemyID = 7;
     public bool Buff;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
-    public GameObject[] segniBufferEnemy;
+    PointSystem pointsystem;
+    public int scoreEnemy;
+    public GameObject[] segnibufferenemy;
     public GameObject[] ToBuff;
     public int segnocorrispondente;
     public int link = 5;
-    public int enemyID = 5;
     public float Boost = 5f;
     public float Reset = 0.8f;
+    public float speed;
+    public float endPosition;
+    public bool isbuffed;
 
     // Start is called before the first frame update
     void Start()
@@ -38,22 +43,41 @@ public class BufferEnemy : MonoBehaviour
             Debug.LogError("Inkstone is NULL!");
         }
 
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
+        }
+
         //StartCoroutine(Test());
 
-        SpeedBoost();
+        isbuffed = false;
 
-        transform.Translate(6, 0, 0);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Enemymove();   
+    }
+
+    public void Enemymove()
+    {
+        if (this.transform.localPosition.x > endPosition)
+        {
+            SpeedBoost();
+        }
+        else
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        }
     }
 
     public void SpeedBoost()
     {
-        for(int i=0; i<link; i++)
+        for(int i=0; i < link; i++)
         {
             foreach(GameObject nemico in enemyspawnmanager.poolnemici[i])
             {
@@ -62,24 +86,60 @@ public class BufferEnemy : MonoBehaviour
                     switch (i)
                     {
                         case 0:
-                            NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
-                            NormalEnemy.speed = NormalEnemy.speed * Boost;
+                            if (isbuffed == false)
+                            {
+                                NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
+                                NormalEnemy.speed = NormalEnemy.speed * Boost;
+                                isbuffed = true;
+                            }
                             break;
                         case 1:
-                            KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
-                            KamikazeEnemy.speed = KamikazeEnemy.speed * Boost;
+                            if (isbuffed == false)
+                            {
+                                KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
+                                KamikazeEnemy.speed = KamikazeEnemy.speed * Boost;
+                                isbuffed = true;
+                            }
                             break;
                         case 2:
-                            GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
-                            GoldenEnemy.speed = GoldenEnemy.speed * Boost;
+                            if (isbuffed == false)
+                            {
+                                GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
+                                GoldenEnemy.speed = GoldenEnemy.speed * Boost;
+                                isbuffed = true;
+                            }
                             break;
                         case 3:
-                            ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
-                            ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
+                            if (isbuffed == false)
+                            {
+                                ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
+                                ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
+                                isbuffed = true;
+                            }
                             break;
                         case 4:
-                            UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
-                            UndiyngEnemy.speed = UndiyngEnemy.speed * Boost;
+                            if (isbuffed == false)
+                            {
+                                UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
+                                UndiyngEnemy.speed = UndiyngEnemy.speed * Boost;
+                                isbuffed = true;
+                            }
+                            break;
+                        case 5:
+                            if (isbuffed == false)
+                            {
+                                FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
+                                frighteningEnemy.speed = frighteningEnemy.speed * Boost;
+                                isbuffed = true;
+                            }
+                            break;
+                        case 6:
+                            if (isbuffed == false)
+                            {
+                                BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                                bufferEnemy.speed = bufferEnemy.speed * Boost;
+                                isbuffed = true;
+                            }
                             break;
                     }
                 }
@@ -98,25 +158,62 @@ public class BufferEnemy : MonoBehaviour
                     switch(i)
                     {
                         case 0:
-                            NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
-                            NormalEnemy.speed = NormalEnemy.speed * (1/Boost);
+                            if (isbuffed == true)
+                            {
+                                NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
+                                NormalEnemy.speed = NormalEnemy.speed * (1/Boost);
+                                isbuffed = false;
+                            }
                             break;
                         case 1:
-                            KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
-                            KamikazeEnemy.speed = KamikazeEnemy.speed * (1 / Boost);
+                            if (isbuffed == true)
+                            {
+                                KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
+                                KamikazeEnemy.speed = KamikazeEnemy.speed * (1 / Boost);
+                                isbuffed = false;
+                            }
                             break;
                         case 2:
-                            GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
-                            GoldenEnemy.speed = GoldenEnemy.speed * (1 / Boost);
+                            if (isbuffed == true)
+                            {
+                                GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
+                                GoldenEnemy.speed = GoldenEnemy.speed * (1 / Boost);
+                                isbuffed = false;
+                            }
                             break;
                         case 3:
-                            ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
-                            ArmoredEnemy.speed = ArmoredEnemy.speed * (1 / Boost);
+                            if (isbuffed == true)
+                            {
+                                ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
+                                ArmoredEnemy.speed = ArmoredEnemy.speed * (1 / Boost);
+                                isbuffed = false;
+                            }
                             break;
                         case 4:
-                            UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
-                            UndiyngEnemy.speed = UndiyngEnemy.speed * (1 / Boost);
+                            if (isbuffed == true)
+                            {
+                                UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
+                                UndiyngEnemy.speed = UndiyngEnemy.speed * (1 / Boost);
+                                isbuffed = false;
+                            }
                             break;
+                        case 5:
+                            if (isbuffed == true)
+                            {
+                                FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
+                                frighteningEnemy.speed = frighteningEnemy.speed * (1 / Boost);
+                                isbuffed = false;
+                            }
+                            break;
+                        case 6:
+                            if (isbuffed == true)
+                            {
+                                BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                                bufferEnemy.speed = bufferEnemy.speed * (1 /Boost);
+                                isbuffed = false;
+                            }
+                            break;
+
                     }
                 }
             }
@@ -129,9 +226,22 @@ public class BufferEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         enemyspawnmanager.nemicoucciso += 1;
         Inkstone.Ink += 10;
-        foreach (GameObject segno in segniBufferEnemy)
+        foreach (GameObject segno in segnibufferenemy)
         {
             segno.SetActive(false);
+        }
+
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+        if (isbuffed == true)
+        {
+            speed = speed / Boost;
+            isbuffed = false;
         }
     }
 

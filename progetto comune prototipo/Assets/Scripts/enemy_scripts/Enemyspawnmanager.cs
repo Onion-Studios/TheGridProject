@@ -243,8 +243,28 @@ public class Enemyspawnmanager : MonoBehaviour
                             }
                             break;
                         case 7:
-                            BufferEnemy BufferEnemy = nemico.GetComponent<BufferEnemy>();
-                            //BufferEnemy.segniBufferEnemy[randomsegno].gameObject.SetActive(true);
+                            BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                            bufferEnemy.segnibufferenemy[randomsegno].gameObject.SetActive(true);
+                            if (randomposition == 0)
+                            {
+                                bufferEnemy.speed = 1.35f;
+                            }
+                            else if (randomposition == 1)
+                            {
+                                bufferEnemy.speed = 1.27f;
+                            }
+                            else if (randomposition == 2)
+                            {
+                                bufferEnemy.speed = 1.17f;
+                            }
+                            else if (randomposition == 3)
+                            {
+                                bufferEnemy.speed = 1.07f;
+                            }
+                            else if (randomposition == 4)
+                            {
+                                bufferEnemy.speed = 1f;
+                            }
                             break;
                         default:
                             break;
@@ -351,17 +371,19 @@ public class Enemyspawnmanager : MonoBehaviour
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
             }
-            else if(enemytospawn==prefabarray[7])
+            else if(enemytospawn == prefabarray[7])
             {
                 nemicoID = prefabarray[7].GetComponent<BufferEnemy>().enemyID;
                 List<GameObject> listanemicobuffer = new List<GameObject>();
                 poolnemici.Add(nemicoID, listanemicobuffer);
-                for(int i=0; i<5; i++)
+                for(int i = 0; i < 5; i++)
                 {
+                    //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
             }
+
             //else if (enemytospawn == prefabarray[6])
             //{
             //    nemicoID = prefabarray[6].GetComponent<BufferEnemy>().enemyID;

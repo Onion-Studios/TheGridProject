@@ -27,7 +27,7 @@ public class Yokaislayer : MonoBehaviour
 
     void ActivateYokaiSlayer()
     {
-        for(int i=0; i < 7; i++)
+        for(int i=0; i < 8; i++)
         {
             foreach(GameObject nemici in enemyspawnmanager.poolnemici[i])
             {
@@ -63,6 +63,10 @@ public class Yokaislayer : MonoBehaviour
                         case 6:
                             FrighteningEnemy frighteningenemy = nemici.GetComponent<FrighteningEnemy>();
                             frighteningenemy.Deathforsign();
+                            break;
+                        case 7:
+                            BufferEnemy bufferenemy = nemici.GetComponent<BufferEnemy>();
+                            bufferenemy.Deathforsign();
                             break;
                     }
                 }

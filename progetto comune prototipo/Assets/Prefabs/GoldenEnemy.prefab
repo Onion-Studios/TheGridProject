@@ -360,6 +360,7 @@ MonoBehaviour:
   speed: 1
   damage: 0
   GoldGiven: 10
+  scoreEnemy: 1000
   segnigoldenenemy:
   - {fileID: 828596285153171540}
   - {fileID: 8471293264160980416}

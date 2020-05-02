@@ -286,6 +286,7 @@ MonoBehaviour:
   inkDamage: 20
   maxInkDamage: 10
   inkstoneDamage: 5
+  scoreEnemy: 1000
   segninormalenemy:
   - {fileID: 6582825359787811251}
   - {fileID: 3917648417848363794}

@@ -16,10 +16,13 @@ public class MalevolentEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    BufferEnemy bufferenemy;
+    public int scoreEnemy;
     public GameObject[] segnimalevolentenemy;
     public Vector3 position;
     public float spawntimer;
     public float maxspawntimer;
+    public bool isbuffed;
     #endregion
 
     // Start is called before the first frame update
@@ -55,14 +58,22 @@ public class MalevolentEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-        transform.position = new Vector3(-1.3f, 4f, 6.5f);
+        bufferenemy = FindObjectOfType<BufferEnemy>();
+        if (bufferenemy == null)
+        {
+            Debug.LogError("BufferEnemy is NULL");
+        }
+
+        isbuffed = false;
+
+        // transform.position = new Vector3(-1.3f, 4f, 6.5f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = new Vector3(-1.3f, 4f, 6.5f);
     }
 
     public void Deathforsign()
@@ -74,6 +85,18 @@ public class MalevolentEnemy : MonoBehaviour
         foreach (GameObject segno in segnimalevolentenemy)
         {
             segno.SetActive(false);
+        }
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
         }
     }
 

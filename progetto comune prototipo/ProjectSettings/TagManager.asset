@@ -16,6 +16,7 @@ TagManager:
   - UndyingEnemy
   - FrighteningEnemy
   - MalevolentEnemy
+  - BufferEnemy
   layers:
   - Default
   - TransparentFX

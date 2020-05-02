@@ -14,9 +14,12 @@ public class GoldenEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    BufferEnemy bufferenemy;
+    public int scoreEnemy;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
     public float endPosition;
+    public bool isbuffed;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,14 @@ public class GoldenEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
+        bufferenemy = FindObjectOfType<BufferEnemy>();
+        if (bufferenemy == null)
+        {
+            Debug.LogError("BufferEnemy is NULL");
+        }
+
+        isbuffed = false;
     }
 
     // Update is called once per frame
@@ -75,6 +86,12 @@ public class GoldenEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
+        }
     }
 
     public void Deathforgriglia()
@@ -84,6 +101,12 @@ public class GoldenEnemy : MonoBehaviour
         foreach (GameObject segno in segnigoldenenemy)
         {
             segno.SetActive(false);
+        }
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
         }
     }
 
@@ -97,6 +120,19 @@ public class GoldenEnemy : MonoBehaviour
         foreach (GameObject segno in segnigoldenenemy)
         {
             segno.SetActive(false);
+        }
+
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
+
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+        if (isbuffed == true)
+        {
+            speed = speed / bufferenemy.Boost;
+            isbuffed = false;
         }
     }
 }

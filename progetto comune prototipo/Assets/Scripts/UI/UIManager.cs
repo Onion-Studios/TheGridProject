@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     public Text ink_text;
     Inkstone Ink;
     Enemyspawnmanager Enemyspawnmanager;
+    PointSystem pointsystem;
+    public Text score_text;
+    public Text scoremultiplier_text;
 
     private void Awake()
     {
@@ -43,6 +46,12 @@ public class UIManager : MonoBehaviour
             Debug.LogError("inkstone è null");
         }
 
+        pointsystem = FindObjectOfType<PointSystem>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("PointSystem is NULL");
+        }
+
     }
 
     private void Start()
@@ -60,6 +69,10 @@ public class UIManager : MonoBehaviour
         UpdateYokaiSlayerCounter();
 
         UpdateInkCounter();
+
+        UpdateScore();
+
+        UpdateScoreMultiplier();
     }
 
 
@@ -81,6 +94,16 @@ public class UIManager : MonoBehaviour
     void UpdateInkCounter()
     {
         ink_text.text = (Ink.Ink + "/" + Ink.maxInk);
+    }
+
+    void UpdateScore()
+    {
+        score_text.text = pointsystem.score.ToString();
+    }
+
+    void UpdateScoreMultiplier()
+    {
+        scoremultiplier_text.text = "x" + pointsystem.scoreMultiplier.ToString(); 
     }
 
 }
