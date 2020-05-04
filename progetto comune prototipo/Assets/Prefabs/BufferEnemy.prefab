@@ -356,6 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2382807ef601a543a4d6a0c1251788c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyID: 7
   Buff: 0
   scoreEnemy: 1000
   segnibufferenemy:
@@ -370,10 +371,9 @@ MonoBehaviour:
   - {fileID: 6702554330211458573, guid: dd64aee7426306b41934b168b1c9399d, type: 3}
   - {fileID: 8376121018324102043}
   segnocorrispondente: 0
-  link: 5
-  enemyID: 7
+  link: 8
   Boost: 2
   Reset: 0.8
   speed: 0
   endPosition: -6.5
-  buffcheck: 0
+  basespeed: 0

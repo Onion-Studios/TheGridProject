@@ -223,23 +223,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             frighteningEnemy.segnifrighteningenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
-                                frighteningEnemy.speed = 1.35f;
+                                frighteningEnemy.baseSpeed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                frighteningEnemy.speed = 1.27f;
+                                frighteningEnemy.baseSpeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                frighteningEnemy.speed = 1.17f;
+                                frighteningEnemy.baseSpeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                frighteningEnemy.speed = 1.07f;
+                                frighteningEnemy.baseSpeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                frighteningEnemy.speed = 1f;
+                                frighteningEnemy.baseSpeed = 1f;
                             }
                             break;
                         case 7:
@@ -247,23 +247,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             bufferEnemy.segnibufferenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
-                                bufferEnemy.speed = 1.35f;
+                                bufferEnemy.basespeed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                bufferEnemy.speed = 1.27f;
+                                bufferEnemy.basespeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                bufferEnemy.speed = 1.17f;
+                                bufferEnemy.basespeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                bufferEnemy.speed = 1.07f;
+                                bufferEnemy.basespeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                bufferEnemy.speed = 1f;
+                                bufferEnemy.basespeed = 1f;
                             }
                             break;
                         default:

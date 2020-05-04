@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BufferEnemy : MonoBehaviour
 {
+    #region VARIABILI
     public int enemyID = 7;
     public bool Buff;
     Playerbehaviour playerbehaviour;
@@ -20,7 +21,8 @@ public class BufferEnemy : MonoBehaviour
     public float Reset = 0.8f;
     public float speed;
     public float endPosition;
-    public bool isbuffed;
+    public float basespeed;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +53,7 @@ public class BufferEnemy : MonoBehaviour
 
         //StartCoroutine(Test());
 
-        isbuffed = false;
-
+        speed = basespeed;
        
     }
 
@@ -86,59 +87,60 @@ public class BufferEnemy : MonoBehaviour
                     switch (i)
                     {
                         case 0:
-                            if (isbuffed == false)
                             {
                                 NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
                                 NormalEnemy.speed = NormalEnemy.speed * Boost;
-                                isbuffed = true;
+                               
                             }
                             break;
                         case 1:
-                            if (isbuffed == false)
                             {
                                 KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
                                 KamikazeEnemy.speed = KamikazeEnemy.speed * Boost;
-                                isbuffed = true;
+                             
                             }
                             break;
                         case 2:
-                            if (isbuffed == false)
                             {
                                 GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
                                 GoldenEnemy.speed = GoldenEnemy.speed * Boost;
-                                isbuffed = true;
+                            
                             }
                             break;
                         case 3:
-                            if (isbuffed == false)
                             {
                                 ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
                                 ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
-                                isbuffed = true;
+                                
                             }
                             break;
                         case 4:
-                            if (isbuffed == false)
                             {
                                 UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
                                 UndiyngEnemy.speed = UndiyngEnemy.speed * Boost;
-                                isbuffed = true;
+                          
                             }
                             break;
                         case 5:
-                            if (isbuffed == false)
                             {
                                 FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
-                                frighteningEnemy.speed = frighteningEnemy.speed * Boost;
-                                isbuffed = true;
+
+                                if(frighteningEnemy.speed == frighteningEnemy.baseSpeed)
+                                {
+                                    frighteningEnemy.speed = frighteningEnemy.speed * Boost;
+                                }
+                                
                             }
                             break;
                         case 6:
-                            if (isbuffed == false)
                             {
                                 BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
-                                bufferEnemy.speed = bufferEnemy.speed * Boost;
-                                isbuffed = true;
+                                if(bufferEnemy.speed == bufferEnemy.basespeed)
+                                {
+                                    bufferEnemy.speed = bufferEnemy.speed * Boost;
+
+                                }
+                          
                             }
                             break;
                     }
@@ -158,59 +160,59 @@ public class BufferEnemy : MonoBehaviour
                     switch(i)
                     {
                         case 0:
-                            if (isbuffed == true)
                             {
                                 NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
                                 NormalEnemy.speed = NormalEnemy.speed * (1/Boost);
-                                isbuffed = false;
+                              
                             }
                             break;
                         case 1:
-                            if (isbuffed == true)
                             {
                                 KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
                                 KamikazeEnemy.speed = KamikazeEnemy.speed * (1 / Boost);
-                                isbuffed = false;
+                               
                             }
                             break;
                         case 2:
-                            if (isbuffed == true)
                             {
                                 GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
                                 GoldenEnemy.speed = GoldenEnemy.speed * (1 / Boost);
-                                isbuffed = false;
+                               
                             }
                             break;
                         case 3:
-                            if (isbuffed == true)
                             {
                                 ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
                                 ArmoredEnemy.speed = ArmoredEnemy.speed * (1 / Boost);
-                                isbuffed = false;
+                               
                             }
                             break;
                         case 4:
-                            if (isbuffed == true)
                             {
                                 UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
                                 UndiyngEnemy.speed = UndiyngEnemy.speed * (1 / Boost);
-                                isbuffed = false;
+                              
                             }
                             break;
                         case 5:
-                            if (isbuffed == true)
                             {
                                 FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
-                                frighteningEnemy.speed = frighteningEnemy.speed * (1 / Boost);
-                                isbuffed = false;
+
+                                if (frighteningEnemy.speed != frighteningEnemy.baseSpeed)
+                                {
+                                    frighteningEnemy.speed = frighteningEnemy.baseSpeed;
+                                }
+                              
                             }
                             break;
                         case 6:
-                            if (isbuffed == true)
                             {
                                 BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
-                                bufferEnemy.speed = bufferEnemy.speed * (1 /Boost);
-                                isbuffed = false;
+                                if(bufferEnemy.speed != bufferEnemy.basespeed)
+                                {
+                                    bufferEnemy.speed = bufferEnemy.basespeed;
+                                }
+                                
                             }
                             break;
 
@@ -237,12 +239,6 @@ public class BufferEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
-
-        if (isbuffed == true)
-        {
-            speed = speed / Boost;
-            isbuffed = false;
-        }
     }
 
     IEnumerator Test()
