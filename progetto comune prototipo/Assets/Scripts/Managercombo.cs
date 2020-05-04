@@ -96,6 +96,9 @@ public class Managercombo : MonoBehaviour
         //2 casi del segno S
         MatriceIrerregolareSegni[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
         MatriceIrerregolareSegni[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
+        //1 caso segno Malevolent
+        MatriceIrerregolareSegni[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
+
     }
 
     public void Checksign()
@@ -134,7 +137,7 @@ public class Managercombo : MonoBehaviour
     {
         int CounterCaselleGiuste = 0;
 
-        for (int i = 0; i < 12; i++) 
+        for (int i = 0; i < 13; i++) 
         {
             if (CounterCaselleGiuste == 4)
             {
@@ -184,6 +187,11 @@ public class Managercombo : MonoBehaviour
                             else if (i == 10 || i == 11)
                             {
                                 SearchAndDestroy(5);
+                                estremitàfound = false;
+                            }
+                            else if(i == 12)
+                            {
+                                SearchAndDestroy(6);
                                 estremitàfound = false;
                             }
                         }
