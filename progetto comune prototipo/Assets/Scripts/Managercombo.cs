@@ -84,7 +84,18 @@ public class Managercombo : MonoBehaviour
         //2 casi del segno C
         MatriceIrerregolareSegni[2] = new nodes[4] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2) };
         MatriceIrerregolareSegni[3] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
-
+        //2 casi del segno S rovesciata
+        MatriceIrerregolareSegni[4] = new nodes[4] { new nodes(0, -1), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, -2) };
+        MatriceIrerregolareSegni[5] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 2) };
+        //2 casi del segno L capovolto
+        MatriceIrerregolareSegni[6] = new nodes[4] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2) };
+        MatriceIrerregolareSegni[7] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, 1), new nodes(2, 2) };
+        //2 casi del segno vasino (senza la cacca)
+        MatriceIrerregolareSegni[8] = new nodes[4] { new nodes(0, 1), new nodes(-1, 1), new nodes(-2, 1), new nodes(-2, 0) };
+        MatriceIrerregolareSegni[9] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, -1) };
+        //2 casi del segno S
+        MatriceIrerregolareSegni[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
+        MatriceIrerregolareSegni[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
     }
 
     public void Checksign()
@@ -123,7 +134,7 @@ public class Managercombo : MonoBehaviour
     {
         int CounterCaselleGiuste = 0;
 
-        for (int i = 0; i < 4; i++) 
+        for (int i = 0; i < 12; i++) 
         {
             if (CounterCaselleGiuste == 4)
             {
@@ -147,12 +158,32 @@ public class Managercombo : MonoBehaviour
                         {
                             if (i == 0 || i == 1)
                             {
-                                SearchAndDestroySign0Enemy();
+                                SearchAndDestroy(0);
                                 estremitàfound = false;
                             }
                             else if (i == 2 || i == 3)
                             {
-                                SearchAndDestroySign1Enemy();
+                                SearchAndDestroy(1);
+                                estremitàfound = false;
+                            }
+                            else if (i == 4 || i == 5)
+                            {
+                                SearchAndDestroy(2);
+                                estremitàfound = false;
+                            }
+                            else if (i == 6 || i == 7)
+                            {
+                                SearchAndDestroy(3);
+                                estremitàfound = false;
+                            }
+                            else if (i == 8 || i == 9)
+                            {
+                                SearchAndDestroy(4);
+                                estremitàfound = false;
+                            }
+                            else if (i == 10 || i == 11)
+                            {
+                                SearchAndDestroy(5);
                                 estremitàfound = false;
                             }
                         }
@@ -357,7 +388,7 @@ public class Managercombo : MonoBehaviour
     }
 
 
-    void SearchAndDestroySign0Enemy()
+    void SearchAndDestroy(int valoreIndice)
     {
         for (int i = 0; i < 8; i++)
         {
@@ -369,56 +400,56 @@ public class Managercombo : MonoBehaviour
                     {
                         case 0:
                             NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                            if (normalenemy.segninormalenemy[0].activeInHierarchy == true)
+                            if (normalenemy.segninormalenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 normalenemy.Deathforsign();
                             }
                             break;
                         case 1:
                             KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                            if (kamikazenemy.segnikamikazenemy[0].activeInHierarchy == true)
+                            if (kamikazenemy.segnikamikazenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 kamikazenemy.Deathforsign();
                             }
                             break;
                         case 2:
                             GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                            if (goldenenemy.segnigoldenenemy[0].activeInHierarchy == true)
+                            if (goldenenemy.segnigoldenenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 goldenenemy.Deathforsign();
                             }
                             break;
                         case 3:
                             ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
-                            if (armoredenemy.segniarmoredenemy[0].activeInHierarchy == true)
+                            if (armoredenemy.segniarmoredenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 armoredenemy.Deathforsign();
                             }
                             break;
                         case 4:
                             UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
-                            if (undyingenemy.segniundyingenemy[0].activeInHierarchy == true)
+                            if (undyingenemy.segniundyingenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 undyingenemy.Deathforsign();
                             }
                             break;
                         case 5:
                             MalevolentEnemy malevolentenemy = nemicodadistruggere.GetComponent<MalevolentEnemy>();
-                            if (malevolentenemy.segnimalevolentenemy[0].activeInHierarchy == true)
+                            if (malevolentenemy.segnimalevolentenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 malevolentenemy.Deathforsign();
                             }
                             break;
                         case 6:
                             FrighteningEnemy frighteningenemy = nemicodadistruggere.GetComponent<FrighteningEnemy>();
-                            if (frighteningenemy.segnifrighteningenemy[0].activeInHierarchy == true)
+                            if (frighteningenemy.segnifrighteningenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 frighteningenemy.Deathforsign();
                             }
                             break;
                         case 7:
                             BufferEnemy bufferenemy = nemicodadistruggere.GetComponent<BufferEnemy>();
-                            if (bufferenemy.segnibufferenemy[0].activeInHierarchy == true)
+                            if (bufferenemy.segnibufferenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 bufferenemy.Deathforsign();
                             }
@@ -427,72 +458,6 @@ public class Managercombo : MonoBehaviour
 
                 }
             }
-        }
-    }
-
-    void SearchAndDestroySign1Enemy()
-    {
-        for (int i = 0; i < 8; i++)
-        {
-            foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
-            {
-                if (nemicodadistruggere.activeInHierarchy == true)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                            if (normalenemy.segninormalenemy[1].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                            break;
-                        case 1:
-                            KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                            if (kamikazenemy.segnikamikazenemy[1].activeInHierarchy == true)
-                            {
-                                kamikazenemy.Deathforsign();
-                            }
-                            break;
-                        case 2:
-                            GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                            if (goldenenemy.segnigoldenenemy[1].activeInHierarchy == true)
-                            {
-                                goldenenemy.Deathforsign();
-                            }
-                            break;
-                        case 3:
-                            ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
-                            if (armoredenemy.segniarmoredenemy[1].activeInHierarchy == true)
-                            {
-                                armoredenemy.Deathforsign();
-                            }
-                            break;
-                        case 4:
-                            UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
-                            if (undyingenemy.segniundyingenemy[1].activeInHierarchy == true)
-                            {
-                                undyingenemy.Deathforsign();
-                            }
-                            break;
-                        case 6:
-                            FrighteningEnemy frighteningenemy = nemicodadistruggere.GetComponent<FrighteningEnemy>();
-                            if (frighteningenemy.segnifrighteningenemy[1].activeInHierarchy == true)
-                            {
-                                frighteningenemy.Deathforsign();
-                            }
-                            break;
-                        case 7:
-                            BufferEnemy bufferenemy = nemicodadistruggere.GetComponent<BufferEnemy>();
-                            if (bufferenemy.segnibufferenemy[1].activeInHierarchy == true)
-                            {
-                                bufferenemy.Deathforsign();
-                            }
-                            break;
-                    }
-                }
-            }
-
         }
     }
 }
