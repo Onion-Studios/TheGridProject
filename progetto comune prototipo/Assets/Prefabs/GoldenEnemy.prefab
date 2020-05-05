@@ -366,3 +366,4 @@ MonoBehaviour:
   - {fileID: 8471293264160980416}
   segnocorrispondente: 0
   endPosition: -0.7
+  baseSpeed: 0

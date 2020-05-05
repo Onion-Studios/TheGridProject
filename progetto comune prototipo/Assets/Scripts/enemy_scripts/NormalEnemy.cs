@@ -19,13 +19,13 @@ public class NormalEnemy : MonoBehaviour
     PointSystem pointsystem;
     public int scoreEnemy;
     public GameObject[] segninormalenemy;
+    public float baseSpeed;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
-        if(playerbehaviour == null)
+        if (playerbehaviour == null)
         {
             Debug.LogError("playerbehaviour is NULL!");
         }
@@ -49,11 +49,20 @@ public class NormalEnemy : MonoBehaviour
         }
 
         pointsystem = FindObjectOfType<PointSystem>();
-        if(pointsystem == null)
+        if (pointsystem == null)
         {
             Debug.LogError("PointSystem is NULL");
         }
 
+        speed = baseSpeed;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+    
+
+        
     }
 
     // Update is called once per frame

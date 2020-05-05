@@ -20,10 +20,11 @@ public class ArmoredEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] segniarmoredenemy;
     public int armoredLife =2;
+    public float baseSpeed;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -54,6 +55,13 @@ public class ArmoredEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
+        speed = baseSpeed;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
 
     }
 

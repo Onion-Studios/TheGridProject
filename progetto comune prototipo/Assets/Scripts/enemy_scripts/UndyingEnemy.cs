@@ -25,10 +25,10 @@ public class UndyingEnemy : MonoBehaviour
     public bool repelled;
     public Vector3 startingPosition;
     public float pushSpeed;
+    public float baseSpeed;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -60,9 +60,17 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        speed = baseSpeed;
 
         currentTime = maxTime;
         repelled = false;
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -116,6 +124,8 @@ public class UndyingEnemy : MonoBehaviour
             SecretT.barra = 0;
             enemyspawnmanager.nemicoucciso = 0;
 
+           
+
         }
     }
 
@@ -125,6 +135,7 @@ public class UndyingEnemy : MonoBehaviour
         if (this.transform.localPosition.x < startingPosition.x)
         {
             repelled = false;
+            speed = baseSpeed;
         }
     }
 
@@ -132,6 +143,7 @@ public class UndyingEnemy : MonoBehaviour
     {
         repelled = true;
         attackTimer = 0;
+     
     }
 
     
@@ -157,6 +169,8 @@ public class UndyingEnemy : MonoBehaviour
                 segno.SetActive(false);
 
             }
+
+           
 
             pointsystem.currentTimer = pointsystem.maxTimer;
             pointsystem.countercombo++;

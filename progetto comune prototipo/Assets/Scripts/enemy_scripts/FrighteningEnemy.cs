@@ -22,11 +22,8 @@ public class FrighteningEnemy : MonoBehaviour
     public float baseSpeed;
     #endregion
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -58,6 +55,12 @@ public class FrighteningEnemy : MonoBehaviour
         }
 
         speed = baseSpeed;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame

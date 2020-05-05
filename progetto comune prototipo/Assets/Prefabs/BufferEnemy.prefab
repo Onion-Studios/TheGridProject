@@ -376,4 +376,4 @@ MonoBehaviour:
   Reset: 0.8
   speed: 0
   endPosition: -6.5
-  basespeed: 0
+  baseSpeed: 0

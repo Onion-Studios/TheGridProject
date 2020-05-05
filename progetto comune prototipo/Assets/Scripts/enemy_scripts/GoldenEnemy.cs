@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoldenEnemy : MonoBehaviour
 {
+    #region VARIBILI
     public int enemyID = 2;
     [SerializeField]
     public float speed = 1;
@@ -18,9 +19,10 @@ public class GoldenEnemy : MonoBehaviour
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
     public float endPosition;
+    public float baseSpeed;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -35,7 +37,7 @@ public class GoldenEnemy : MonoBehaviour
         }
 
         Inkstone = FindObjectOfType<Inkstone>();
-        if(Inkstone==null)
+        if (Inkstone == null)
         {
             Debug.LogError("Inkstone is NULL!");
         }
@@ -51,6 +53,14 @@ public class GoldenEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
+        speed = baseSpeed;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame

@@ -97,23 +97,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             NormalEnemy.segninormalenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
-                                NormalEnemy.speed = 1.35f;
+                                NormalEnemy.baseSpeed = 1.35f;
                             }
                             else if (randomposition == 1) 
                             {
-                                NormalEnemy.speed = 1.27f;
+                                NormalEnemy.baseSpeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                NormalEnemy.speed = 1.17f;
+                                NormalEnemy.baseSpeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                NormalEnemy.speed = 1.07f;
+                                NormalEnemy.baseSpeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                NormalEnemy.speed = 1f;
+                                NormalEnemy.baseSpeed = 1f;
                             }
                             break;
                         case 1:
@@ -121,23 +121,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             kamikazeenemy.segnikamikazenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
-                                kamikazeenemy.speed = 1.35f;
+                                kamikazeenemy.baseSpeed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                kamikazeenemy.speed = 1.27f;
+                                kamikazeenemy.baseSpeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                kamikazeenemy.speed = 1.17f;
+                                kamikazeenemy.baseSpeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                kamikazeenemy.speed = 1.07f;
+                                kamikazeenemy.baseSpeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                kamikazeenemy.speed = 1f;
+                                kamikazeenemy.baseSpeed = 1f;
                             }
                             break;
                         case 2:
@@ -145,23 +145,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             goldenEnemy.segnigoldenenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
-                                goldenEnemy.speed = 1.35f;
+                                goldenEnemy.baseSpeed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                goldenEnemy.speed = 1.27f;
+                                goldenEnemy.baseSpeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                goldenEnemy.speed = 1.17f;
+                                goldenEnemy.baseSpeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                goldenEnemy.speed = 1.07f;
+                                goldenEnemy.baseSpeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                goldenEnemy.speed = 1f;
+                                goldenEnemy.baseSpeed = 1f;
                             }
                             break;
                         case 3:
@@ -169,23 +169,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             armoredEnemy.segniarmoredenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
-                                armoredEnemy.speed = 1.35f;
+                                armoredEnemy.baseSpeed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                armoredEnemy.speed = 1.27f;
+                                armoredEnemy.baseSpeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                armoredEnemy.speed = 1.17f;
+                                armoredEnemy.baseSpeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                armoredEnemy.speed = 1.07f;
+                                armoredEnemy.baseSpeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                armoredEnemy.speed = 1f;
+                                armoredEnemy.baseSpeed = 1f;
                             }
                             break;
                         case 4:
@@ -194,23 +194,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             undyingEnemy.startingPosition = enemyspawnposition;
                             if (randomposition == 0)
                             {
-                                undyingEnemy.speed = 1.35f;
+                                undyingEnemy.baseSpeed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                undyingEnemy.speed = 1.27f;
+                                undyingEnemy.baseSpeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                undyingEnemy.speed = 1.17f;
+                                undyingEnemy.baseSpeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                undyingEnemy.speed = 1.07f;
+                                undyingEnemy.baseSpeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                undyingEnemy.speed = 1f;
+                                undyingEnemy.baseSpeed = 1f;
                             }
                             break;
                         case 5:
@@ -247,23 +247,23 @@ public class Enemyspawnmanager : MonoBehaviour
                             bufferEnemy.segnibufferenemy[randomsegno].gameObject.SetActive(true);
                             if (randomposition == 0)
                             {
-                                bufferEnemy.basespeed = 1.35f;
+                                bufferEnemy.baseSpeed = 1.35f;
                             }
                             else if (randomposition == 1)
                             {
-                                bufferEnemy.basespeed = 1.27f;
+                                bufferEnemy.baseSpeed = 1.27f;
                             }
                             else if (randomposition == 2)
                             {
-                                bufferEnemy.basespeed = 1.17f;
+                                bufferEnemy.baseSpeed = 1.17f;
                             }
                             else if (randomposition == 3)
                             {
-                                bufferEnemy.basespeed = 1.07f;
+                                bufferEnemy.baseSpeed = 1.07f;
                             }
                             else if (randomposition == 4)
                             {
-                                bufferEnemy.basespeed = 1f;
+                                bufferEnemy.baseSpeed = 1f;
                             }
                             break;
                         default:
