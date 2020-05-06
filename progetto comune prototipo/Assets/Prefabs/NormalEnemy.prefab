@@ -290,6 +290,7 @@ MonoBehaviour:
   segninormalenemy:
   - {fileID: 6582825359787811251}
   - {fileID: 3917648417848363794}
+  baseSpeed: 0
 --- !u!1 &6582825359787811251
 GameObject:
   m_ObjectHideFlags: 0

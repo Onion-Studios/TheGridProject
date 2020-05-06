@@ -15,15 +15,13 @@ public class KamikazeEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
-    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segnikamikazenemy;
     public int segnocorrispondente;
-    public bool isbuffed;
+    public float baseSpeed;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -55,13 +53,13 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-        bufferenemy = FindObjectOfType<BufferEnemy>();
-        if (bufferenemy == null)
-        {
-            Debug.LogError("BufferEnemy is NULL");
-        }
+        speed = baseSpeed;
+    }
 
-        isbuffed = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -88,12 +86,6 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
-        }
     }
 
     public void Deathforgriglia()
@@ -106,12 +98,6 @@ public class KamikazeEnemy : MonoBehaviour
         foreach (GameObject segno in segnikamikazenemy)
         {
             segno.SetActive(false);
-        }
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
         }
     }
 
@@ -133,11 +119,5 @@ public class KamikazeEnemy : MonoBehaviour
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
 
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
-        }
     }
 }

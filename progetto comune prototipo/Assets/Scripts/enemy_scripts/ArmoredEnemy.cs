@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArmoredEnemy : MonoBehaviour
 {
+    #region VARIABILI
     public int enemyID = 3;
     [SerializeField]
     public float speed = 1;
@@ -16,14 +17,14 @@ public class ArmoredEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
-    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segniarmoredenemy;
     public int armoredLife =2;
-    public bool isbuffed;
+    public float baseSpeed;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -55,13 +56,13 @@ public class ArmoredEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-        bufferenemy = FindObjectOfType<BufferEnemy>();
-        if (bufferenemy == null)
-        {
-            Debug.LogError("BufferEnemy is NULL");
-        }
+        speed = baseSpeed;
+    }
 
-        isbuffed = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -88,12 +89,6 @@ public class ArmoredEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
-        }
     }
 
     public void Deathforgriglia()
@@ -106,12 +101,6 @@ public class ArmoredEnemy : MonoBehaviour
         foreach (GameObject segno in segniarmoredenemy)
         {
             segno.SetActive(false);
-        }
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
         }
     }
 
@@ -148,10 +137,5 @@ public class ArmoredEnemy : MonoBehaviour
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
 
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
-        }
     }
 }

@@ -15,7 +15,6 @@ public class UndyingEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
-    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segniundyingenemy;
     public float endPosition;
@@ -26,11 +25,10 @@ public class UndyingEnemy : MonoBehaviour
     public bool repelled;
     public Vector3 startingPosition;
     public float pushSpeed;
-    public bool isbuffed;
+    public float baseSpeed;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -62,15 +60,17 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-        bufferenemy = FindObjectOfType<BufferEnemy>();
-        if (bufferenemy == null)
-        {
-            Debug.LogError("BufferEnemy is NULL");
-        }
+        speed = baseSpeed;
 
-        isbuffed = false;
         currentTime = maxTime;
         repelled = false;
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -124,12 +124,8 @@ public class UndyingEnemy : MonoBehaviour
             SecretT.barra = 0;
             enemyspawnmanager.nemicoucciso = 0;
 
-        }
+           
 
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
         }
     }
 
@@ -139,8 +135,7 @@ public class UndyingEnemy : MonoBehaviour
         if (this.transform.localPosition.x < startingPosition.x)
         {
             repelled = false;
-
-            
+            speed = baseSpeed;
         }
     }
 
@@ -148,6 +143,7 @@ public class UndyingEnemy : MonoBehaviour
     {
         repelled = true;
         attackTimer = 0;
+     
     }
 
     
@@ -174,18 +170,14 @@ public class UndyingEnemy : MonoBehaviour
 
             }
 
+           
+
             pointsystem.currentTimer = pointsystem.maxTimer;
             pointsystem.countercombo++;
 
             pointsystem.Combo();
 
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
-
-            if (isbuffed == true)
-            {
-                speed = speed / bufferenemy.Boost;
-                isbuffed = false;
-            }
         }
 
        

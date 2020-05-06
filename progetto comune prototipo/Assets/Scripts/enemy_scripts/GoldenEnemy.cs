@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoldenEnemy : MonoBehaviour
 {
+    #region VARIBILI
     public int enemyID = 2;
     [SerializeField]
     public float speed = 1;
@@ -14,15 +15,14 @@ public class GoldenEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
-    BufferEnemy bufferenemy;
     public int scoreEnemy;
     public GameObject[] segnigoldenenemy;
     public int segnocorrispondente;
     public float endPosition;
-    public bool isbuffed;
+    public float baseSpeed;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -37,7 +37,7 @@ public class GoldenEnemy : MonoBehaviour
         }
 
         Inkstone = FindObjectOfType<Inkstone>();
-        if(Inkstone==null)
+        if (Inkstone == null)
         {
             Debug.LogError("Inkstone is NULL!");
         }
@@ -54,13 +54,13 @@ public class GoldenEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-        bufferenemy = FindObjectOfType<BufferEnemy>();
-        if (bufferenemy == null)
-        {
-            Debug.LogError("BufferEnemy is NULL");
-        }
+        speed = baseSpeed;
+    }
 
-        isbuffed = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -86,12 +86,6 @@ public class GoldenEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
-        }
     }
 
     public void Deathforgriglia()
@@ -101,12 +95,6 @@ public class GoldenEnemy : MonoBehaviour
         foreach (GameObject segno in segnigoldenenemy)
         {
             segno.SetActive(false);
-        }
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
         }
     }
 
@@ -128,11 +116,5 @@ public class GoldenEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
-
-        if (isbuffed == true)
-        {
-            speed = speed / bufferenemy.Boost;
-            isbuffed = false;
-        }
     }
 }

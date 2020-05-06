@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 4411038961816747145}
   - {fileID: 5212911854588259684}
   armoredLife: 2
+  baseSpeed: 0
 --- !u!1 &4411038961816747145
 GameObject:
   m_ObjectHideFlags: 0

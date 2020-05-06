@@ -282,6 +282,7 @@ MonoBehaviour:
   - {fileID: 5374539537690858291}
   - {fileID: 2294316781314020558}
   segnocorrispondente: 0
+  baseSpeed: 0
 --- !u!1 &5948120941683113332
 GameObject:
   m_ObjectHideFlags: 0

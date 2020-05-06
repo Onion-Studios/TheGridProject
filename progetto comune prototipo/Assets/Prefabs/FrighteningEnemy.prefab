@@ -366,3 +366,4 @@ MonoBehaviour:
   segnifrighteningenemy:
   - {fileID: 3250650709829629116}
   - {fileID: 2569510924925054229}
+  baseSpeed: 0
