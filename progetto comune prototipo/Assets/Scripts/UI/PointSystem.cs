@@ -5,17 +5,19 @@ using UnityEngine;
 public class PointSystem : MonoBehaviour
 {
     public int score;
-    public int scoreOvertime;
+    public float scoreSeconds;
     public int scoreMultiplier;
     public float currentTimer;
     public float maxTimer;
     public int soglia1, soglia2, soglia3, soglia4;
     public int countercombo = 0;
+    public float floatscore;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        floatscore = 0;
     }
 
     // Update is called once per frame
@@ -24,11 +26,14 @@ public class PointSystem : MonoBehaviour
         IncreaseOverTime();
 
         Timer();
+
+      
     }
 
     void IncreaseOverTime()
     {
-        score = (score + scoreOvertime);
+        floatscore += scoreSeconds / 60;
+        score = (int)floatscore;
     }
 
     void Timer()
