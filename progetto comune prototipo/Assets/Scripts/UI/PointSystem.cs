@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PointSystem : MonoBehaviour
 {
-    public int score;
+    public float score;
     public float scoreSeconds;
     public int scoreMultiplier;
     public float currentTimer;
@@ -32,8 +32,8 @@ public class PointSystem : MonoBehaviour
 
     void IncreaseOverTime()
     {
-        floatscore += scoreSeconds / 60;
-        score = (int)floatscore;
+
+        score += scoreSeconds / 60;
     }
 
     void Timer()
