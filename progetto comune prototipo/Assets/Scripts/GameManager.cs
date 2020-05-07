@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public UIManager UI;
     public Playerbehaviour ActualPlayer;
+    public int GameIntensity = 1;
 
 
     private void Awake()
