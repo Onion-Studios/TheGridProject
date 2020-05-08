@@ -20,6 +20,8 @@ public class NormalEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] segninormalenemy;
     public float baseSpeed;
+    bool m_Started;
+    public LayerMask m_LayerMask;
     #endregion
 
     private void OnEnable()
@@ -60,9 +62,9 @@ public class NormalEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
 
-        
+        m_Started = true;
+
     }
 
     // Update is called once per frame
@@ -89,6 +91,8 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        
     }
 
     public void Deathforgriglia()
@@ -102,6 +106,8 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+      
     }
 
     public void Deathforsign()
@@ -122,6 +128,28 @@ public class NormalEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);
+        int i = 0;
+
+        while (i < hitColliders.Length)
+        {
+
+            Debug.Log("Hit : " + hitColliders[i].name + i);
+
+            i++;
+        }
+
+       
+
     }
 
 }
+
+

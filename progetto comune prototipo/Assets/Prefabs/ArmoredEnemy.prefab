@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8152094260671033151}
   - component: {fileID: 7413975179395711436}
   - component: {fileID: -9115293104699890498}
+  - component: {fileID: 8172587831837169310}
   m_Layer: 0
   m_Name: ArmoredEnemy
   m_TagString: ArmoredEnemy
@@ -118,6 +119,22 @@ MonoBehaviour:
   - {fileID: 5212911854588259684}
   armoredLife: 2
   baseSpeed: 0
+--- !u!54 &8172587831837169310
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548298405615903043}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4411038961816747145
 GameObject:
   m_ObjectHideFlags: 0
