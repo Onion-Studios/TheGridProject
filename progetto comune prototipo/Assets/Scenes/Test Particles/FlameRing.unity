@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c1d4c3855b8144da7dbef6b63c9e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 100}
+  speed: {x: 0, y: 0, z: 50}
 --- !u!199 &481405671
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5339,7 +5339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c1d4c3855b8144da7dbef6b63c9e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 100}
+  speed: {x: 0, y: 0, z: 50}
 --- !u!4 &588891592813944584
 Transform:
   m_ObjectHideFlags: 0
