@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct wave 
+public class wave 
 {
     public int[] enemyID;
     public int[] Signgroup;
@@ -16,4 +16,6 @@ public struct wave
         this.lanes = Lanes;
         this.delays = Delays;
     }
+
+    public wave() { }
 }

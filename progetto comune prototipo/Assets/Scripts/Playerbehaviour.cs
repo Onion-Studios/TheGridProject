@@ -229,7 +229,6 @@ public class Playerbehaviour : MonoBehaviour
             {
                 hit.collider.GetComponent<Renderer>().material = colorecubonuovo;
 
-                Debug.Log("cubo x: " + hit.collider.gameObject.transform.position.x + " cubo y: " + hit.collider.gameObject.transform.position.z);
                 if (grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
                 {
                     grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] = true;
