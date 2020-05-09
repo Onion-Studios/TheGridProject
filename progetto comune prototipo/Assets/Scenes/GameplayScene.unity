@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   scoreSeconds: 1
-  scoreMultiplier: 0
+  scoreMultiplier: 1
   currentTimer: 0
   maxTimer: 5
   soglia1: 10
