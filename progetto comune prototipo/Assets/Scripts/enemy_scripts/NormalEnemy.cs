@@ -20,8 +20,7 @@ public class NormalEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] segninormalenemy;
     public float baseSpeed;
-    bool m_Started;
-    public LayerMask m_LayerMask;
+    
     #endregion
 
     private void OnEnable()
@@ -63,7 +62,7 @@ public class NormalEnemy : MonoBehaviour
     void Start()
     {
 
-        m_Started = true;
+        
 
     }
 
@@ -132,23 +131,7 @@ public class NormalEnemy : MonoBehaviour
        
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
 
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);
-        int i = 0;
-
-        while (i < hitColliders.Length)
-        {
-
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-
-            i++;
-        }
-
-       
-
-    }
 
 }
 

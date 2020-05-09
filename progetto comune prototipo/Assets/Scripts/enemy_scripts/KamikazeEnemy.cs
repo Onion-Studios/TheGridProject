@@ -19,8 +19,7 @@ public class KamikazeEnemy : MonoBehaviour
     public GameObject[] segnikamikazenemy;
     public int segnocorrispondente;
     public float baseSpeed;
-    bool m_Started;
-    public LayerMask m_LayerMask;
+    
     #endregion
 
     private void OnEnable()
@@ -61,7 +60,7 @@ public class KamikazeEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Started = true;
+     
     }
 
     // Update is called once per frame
@@ -130,24 +129,7 @@ public class KamikazeEnemy : MonoBehaviour
     
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-
- 
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);
-        int i = 0;
-
-        while (i < hitColliders.Length)
-        {
-      
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-      
-            i++;
-        }
-
-       
-
-    }    
+   
 
 }
 
