@@ -114,7 +114,7 @@ public class ArmoredEnemy : MonoBehaviour
             {
                 segno.SetActive(false);
             }
-            int randomsegno = Random.Range(0, 2);
+            int randomsegno = Random.Range(0, 6);
             segniarmoredenemy[randomsegno].gameObject.SetActive(true);
         }
         else
