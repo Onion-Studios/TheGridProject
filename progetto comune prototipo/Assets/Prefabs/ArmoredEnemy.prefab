@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1735294687029251882}
   - component: {fileID: 8152094260671033151}
   - component: {fileID: 7413975179395711436}
-  - component: {fileID: -9115293104699890498}
+  - component: {fileID: 46297737641777989}
   m_Layer: 0
   m_Name: ArmoredEnemy
   m_TagString: ArmoredEnemy
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &
+--- !u!114 &46297737641777989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,11 +108,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 3
   speed: 1
-  maxSpeed: 2
+  maxSpeed: 0
   inkDamage: 20
   maxInkDamage: 10
-  inkstoneDamage: 5
-  scoreEnemy: 1000
+  inkstoneDamage: 0
+  scoreEnemy: 0
   segniarmoredenemy:
   - {fileID: 4411038961816747145}
   - {fileID: 5212911854588259684}
@@ -121,7 +121,6 @@ MonoBehaviour:
   - {fileID: 8990134154294543793}
   - {fileID: 2862626446979439224}
   armoredLife: 2
-  isbuffed: 0
   baseSpeed: 0
 --- !u!1 &2862626446979439224
 GameObject:
