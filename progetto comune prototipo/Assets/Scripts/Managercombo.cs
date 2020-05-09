@@ -108,7 +108,6 @@ public class Managercombo : MonoBehaviour
         if(CountCaselleAttivate == 5)
         {
             SearchEstremità(grigliamanager.griglialogica);
-            //ControlloSegnoCorretto();
         }
         else
         {

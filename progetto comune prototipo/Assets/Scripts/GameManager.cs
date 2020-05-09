@@ -7,11 +7,18 @@ public class GameManager : MonoBehaviour
 {
     public UIManager UI;
     public Playerbehaviour ActualPlayer;
-
+    public int GameIntensity = 1;
+    Enemyspawnmanager Enemyspawnmanager;
 
     private void Awake()
     {
         ActualPlayer = FindObjectOfType<Playerbehaviour>();
+        Enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+    }
+
+    private void Update()
+    {
+        ChangeIntensity(Enemyspawnmanager.nemicoucciso);
     }
 
     public void GoToMainMenu()
@@ -32,5 +39,21 @@ public class GameManager : MonoBehaviour
     public Playerbehaviour GetPlayerBehaviur()
     {
         return FindObjectOfType<Playerbehaviour>(); 
+    }
+
+    void ChangeIntensity(int enemykilled)
+    {
+        if(enemykilled >= 0 && enemykilled < 5)
+        {
+            GameIntensity = 1;
+        }
+        else if (enemykilled >= 5 && enemykilled < 10)
+        {
+            GameIntensity = 2;
+        }
+        else if (enemykilled >= 10)
+        {
+            GameIntensity = 3;
+        }
     }
 }
