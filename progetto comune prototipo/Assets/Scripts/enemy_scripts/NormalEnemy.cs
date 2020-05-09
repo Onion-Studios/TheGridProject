@@ -20,6 +20,7 @@ public class NormalEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] segninormalenemy;
     public float baseSpeed;
+    
     #endregion
 
     private void OnEnable()
@@ -60,9 +61,9 @@ public class NormalEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
 
         
+
     }
 
     // Update is called once per frame
@@ -89,6 +90,8 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        
     }
 
     public void Deathforgriglia()
@@ -102,6 +105,8 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+      
     }
 
     public void Deathforsign()
@@ -122,6 +127,12 @@ public class NormalEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
+       
     }
 
+
+
 }
+
+

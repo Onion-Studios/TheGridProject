@@ -135,7 +135,7 @@ public class ArmoredEnemy : MonoBehaviour
 
         pointsystem.Combo();
 
-        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+        pointsystem.score += scoreEnemy;
 
     }
 }

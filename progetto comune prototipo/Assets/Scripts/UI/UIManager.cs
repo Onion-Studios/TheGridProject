@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    #region VARIABILI
     GameManager GameManager;
     public Transform lifeToSpawn;
     Playerbehaviour Playerbehaviour;
@@ -19,6 +20,8 @@ public class UIManager : MonoBehaviour
     PointSystem pointsystem;
     public Text score_text;
     public Text scoremultiplier_text;
+    #endregion
+
 
     private void Awake()
     {
@@ -98,7 +101,8 @@ public class UIManager : MonoBehaviour
 
     void UpdateScore()
     {
-        score_text.text = pointsystem.score.ToString();
+        int convertedscore = (int)pointsystem.score;
+        score_text.text = convertedscore.ToString();
     }
 
     void UpdateScoreMultiplier()

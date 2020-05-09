@@ -19,6 +19,7 @@ public class KamikazeEnemy : MonoBehaviour
     public GameObject[] segnikamikazenemy;
     public int segnocorrispondente;
     public float baseSpeed;
+    
     #endregion
 
     private void OnEnable()
@@ -59,13 +60,14 @@ public class KamikazeEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+     
     }
 
     // Update is called once per frame
     void Update()
     {
         Enemymove();
+
     }
 
     public void Enemymove()
@@ -86,6 +88,9 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+       
+
     }
 
     public void Deathforgriglia()
@@ -99,6 +104,8 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+      
+
     }
 
     public void Deathforsign()
@@ -119,5 +126,11 @@ public class KamikazeEnemy : MonoBehaviour
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
 
+    
     }
+
+   
+
 }
+
+
