@@ -660,20 +660,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2382807ef601a543a4d6a0c1251788c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: 7
-  Buff: 0
+  enemyID: 6
   scoreEnemy: 1000
-  signbufferenemy: []
+  signbufferenemy:
+  - {fileID: 4915558911084899880}
+  - {fileID: 3096689922224723311}
+  - {fileID: 727442965937671184}
+  - {fileID: 4699012051440646452}
+  - {fileID: 758612988932128825}
+  - {fileID: 1822107805446073672}
   ToBuff:
   - {fileID: 5107168194925000548, guid: 8870846be1f82334ab991985010fcc15, type: 3}
   - {fileID: 5789317877869633906, guid: bcdc087bceefb5749991c816d98a1df5, type: 3}
-  - {fileID: 9177895455755635927, guid: 8903cee2cbe3da74a825f9f841223d51, type: 3}
   - {fileID: 2548298405615903043, guid: 5ba8d7201943d5744974d0b7e6593fe5, type: 3}
   - {fileID: 4350198202335848692, guid: ff35079ffa0d76a499e9c88681eb30eb, type: 3}
   - {fileID: 6702554330211458573, guid: dd64aee7426306b41934b168b1c9399d, type: 3}
   - {fileID: 8376121018324102043}
   segnocorrispondente: 0
-  link: 8
+  link: 7
   Boost: 2
   Reset: 0.8
   speed: 0

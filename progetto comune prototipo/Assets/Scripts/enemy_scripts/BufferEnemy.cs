@@ -7,7 +7,6 @@ public class BufferEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 6;
-    public bool Buff;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
@@ -17,7 +16,7 @@ public class BufferEnemy : MonoBehaviour
     public GameObject[] signbufferenemy;
     public GameObject[] ToBuff;
     public int segnocorrispondente;
-    public int link = 8;
+    public int link = 7;
     public float Boost = 5f;
     public float Reset = 0.8f;
     public float speed;

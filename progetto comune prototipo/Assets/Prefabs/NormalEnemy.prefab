@@ -366,7 +366,13 @@ MonoBehaviour:
   maxInkDamage: 10
   inkstoneDamage: 5
   scoreEnemy: 1000
-  signnormalenemy: []
+  signnormalenemy:
+  - {fileID: 6582825359787811251}
+  - {fileID: 3917648417848363794}
+  - {fileID: 6210717834288358121}
+  - {fileID: 7931372762387147413}
+  - {fileID: 7833069976597115173}
+  - {fileID: 3849260898203632313}
   baseSpeed: 1
 --- !u!1 &6210717834288358121
 GameObject:

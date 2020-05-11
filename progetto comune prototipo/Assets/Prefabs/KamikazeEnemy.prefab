@@ -503,7 +503,13 @@ MonoBehaviour:
   inkDamage: 20
   maxInkDamage: 10
   scoreEnemy: 1000
-  signkamikazenemy: []
+  signkamikazenemy:
+  - {fileID: 5374539537690858291}
+  - {fileID: 2294316781314020558}
+  - {fileID: 4392337801288130184}
+  - {fileID: 3058656775447563521}
+  - {fileID: 4248889033623794808}
+  - {fileID: 8483640345975747758}
   baseSpeed: 1
 --- !u!1 &5948120941683113332
 GameObject:

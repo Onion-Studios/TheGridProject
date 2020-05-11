@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
 {
     #region VARIABLES
     GameManager GameManager;
-    public Transform lifeToSpawn;
     Playerbehaviour Playerbehaviour;
     [SerializeField]
     Text Enemycounter_text;

@@ -27,13 +27,13 @@ public class grigliamanager : MonoBehaviour
         if (columnns % 2 == 1 && lines % 2 == 1)
         {
             CreateGrid();
-            Playerbehaviour player = FindObjectOfType<Playerbehaviour>();
-            if(player == null)
+            Playerbehaviour character = FindObjectOfType<Playerbehaviour>();
+            if(character == null)
             {
                 Debug.LogError("il playerbehaviour è NULL!");
             }
-            player.playerposition = new Vector3(2, 1.05f, 2);
-            player.Spawn();
+            character.playerposition = new Vector3(2, 1.05f, 2);
+            character.Spawn();
         }
         else
         {

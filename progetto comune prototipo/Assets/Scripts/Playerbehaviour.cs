@@ -5,7 +5,7 @@ using UnityEngine;
 public class Playerbehaviour : MonoBehaviour
 {
     #region VARIABILI 
-    public GameObject player;
+    public GameObject character;
     [HideInInspector]
     public Vector3 playerposition;
     public float speed;
@@ -20,12 +20,9 @@ public class Playerbehaviour : MonoBehaviour
     PowerupManager powerupmanager;
     Inkstone Inkstone;
     public Vector3 LastCubeChecked;
-
     public int yokaislayercount;
     public string movementState;
     public float finalDestination;
-    public float zAxis;
-    public float xAxis;
     public float waitTimer;
     public float maxWaitTimer;
     #endregion
@@ -232,7 +229,7 @@ public class Playerbehaviour : MonoBehaviour
         {
             //istanzio il player sopra al cubo sommando un vettore
 
-            istanze = Instantiate(player, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
+            istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
         }
 
         #endregion
@@ -243,8 +240,8 @@ public class Playerbehaviour : MonoBehaviour
         {
             originray = (istanze.transform.position - new Vector3(0f, 0.5f, 0f));
             downraycheck = new Ray(originray, Vector3.down);
-            float distanzeraggio = 10f;
-            if (Physics.Raycast(downraycheck, out RaycastHit hit, distanzeraggio))
+            float raydistance = 10f;
+            if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance))
             {
                 hit.collider.GetComponent<Renderer>().material = colorcube;
 
