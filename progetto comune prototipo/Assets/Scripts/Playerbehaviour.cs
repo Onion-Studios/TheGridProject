@@ -29,6 +29,8 @@ public class Playerbehaviour : MonoBehaviour
     public float finalDestination;
     public float zAxis;
     public float xAxis;
+    public float waitTimer;
+    public float maxWaitTimer;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -59,6 +61,8 @@ public class Playerbehaviour : MonoBehaviour
         }
 
         movementState = "readystate";
+
+        waitTimer = maxWaitTimer;
     }
 
     // Update is called once per frame
@@ -70,144 +74,165 @@ public class Playerbehaviour : MonoBehaviour
         MovementHandler();
     }
 
-        void MovementHandler()
+    void MovementHandler()
+    {
+         
+        if (movementState == "readystate")
         {
-            if (movementState == "readystate")
+        
+            if (Input.GetKey(KeyCode.W) && istanza.transform.position.z > 0.9)
             {
-                if (Input.GetKey(KeyCode.W) && istanza.transform.position.z > 0.9)
-                {
-                    finalDestination = istanza.transform.position.z - 1;
-                    movementState = "movingforward";
+                finalDestination = istanza.transform.position.z - 1;
+                movementState = "movingforward";
 
-                }
-                if (Input.GetKey(KeyCode.S) && istanza.transform.position.z < 3.1)
-                {
-                    finalDestination = istanza.transform.position.z + 1;
-                    movementState = "movingback";
+            }
+            if (Input.GetKey(KeyCode.S) && istanza.transform.position.z < 3.1)
+            {
+                finalDestination = istanza.transform.position.z + 1;
+                movementState = "movingback";
 
-                }
-                if (Input.GetKey(KeyCode.A) && istanza.transform.position.x < 3.1)
-                {
-                    finalDestination = istanza.transform.position.x + 1;
-                    movementState = "movingleft";
+            }
+            if (Input.GetKey(KeyCode.A) && istanza.transform.position.x < 3.1)
+            {
+                finalDestination = istanza.transform.position.x + 1;
+                movementState = "movingleft";
 
-                }
-                if (Input.GetKey(KeyCode.D) && istanza.transform.position.x > 0.9)
-                {
-                    finalDestination = istanza.transform.position.x - 1;
-                    movementState = "movingright";
+            }
+            if (Input.GetKey(KeyCode.D) && istanza.transform.position.x > 0.9)
+            {
+                finalDestination = istanza.transform.position.x - 1;
+                movementState = "movingright";
 
-                }
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    managercombo.Checksign();
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                managercombo.Checksign();
 
-                    istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    istanza.transform.position = posizionepersonaggio;
-                    grigliamanager.Resetcoloregriglia();
-                    grigliamanager.ResetGrigliaLogica();
+                istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
+                istanza.transform.position = posizionepersonaggio;
+                grigliamanager.Resetcoloregriglia();
+                grigliamanager.ResetGrigliaLogica();
+            }
+        }
+        else if (movementState == "waitstate")
+        {
+            if (waitTimer > 0)
+            {
+                waitTimer -= 1 * Time.deltaTime;
+
+                if (waitTimer < 0)
+                {
+                    waitTimer = 0;
+
+                    if (waitTimer == 0)
+                    {
+                        waitTimer = maxWaitTimer;
+                        movementState = "readystate";
+                    }
                 }
             }
-            else if (movementState == "movingforward")
+
+        }
+        else if (movementState == "movingforward")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+            if (istanza.transform.position.z > finalDestination)
             {
-                istanza.transform.rotation = Quaternion.Euler(0, 90, 0);
-
-                if (istanza.transform.position.z > finalDestination)
-                {
-                    istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
-                }
-                else
-                {
-                    if (istanza.transform.position.z < finalDestination)
-                    {
-                        istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
-                    }
-                    Castraggio();
-                    if (Inkstone.Ink > 1)
-                    {
-                        Inkstone.Ink -= 1;
-                    }
-
-                    movementState = "readystate";
-                }
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
-            else if (movementState == "movingback")
+            else
             {
-                istanza.transform.rotation = Quaternion.Euler(0, -90, 0);
-
                 if (istanza.transform.position.z < finalDestination)
                 {
-                    istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                    istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
                 }
-                else
+                Castraggio();
+                if (Inkstone.Ink > 1)
                 {
-                    if (istanza.transform.position.z > finalDestination)
-                    {
-                        istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
-                    }
-                    Castraggio();
-                    if (Inkstone.Ink > 1)
-                    {
-                        Inkstone.Ink -= 1;
-                    }
-
-                    movementState = "readystate";
+                    Inkstone.Ink -= 1;
                 }
+
+                movementState = "waitstate";
             }
-            else if (movementState == "movingleft")
+        }
+        else if (movementState == "movingback")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, -90, 0);
+
+            if (istanza.transform.position.z < finalDestination)
             {
-                istanza.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-                if (istanza.transform.position.x < finalDestination)
-                {
-                    istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
-                }
-                else
-                {
-                    if (istanza.transform.position.x > finalDestination)
-                    {
-                        istanza.transform.position = new Vector3(finalDestination, istanza.transform.position.y, istanza.transform.position.z);
-                    }
-                    Castraggio();
-                    if (Inkstone.Ink > 1)
-                    {
-                        Inkstone.Ink -= 1;
-                    }
-
-                    movementState = "readystate";
-                }
-
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
-            else if (movementState == "movingright")
+            else
             {
-                istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
+                if (istanza.transform.position.z > finalDestination)
+                {
+                    istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
+                }
+                Castraggio();
+                if (Inkstone.Ink > 1)
+                {
+                    Inkstone.Ink -= 1;
+                }
 
+                movementState = "waitstate";
+            }
+        }
+        else if (movementState == "movingleft")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, 0, 0);
 
+            if (istanza.transform.position.x < finalDestination)
+            {
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
+            else
+            {
                 if (istanza.transform.position.x > finalDestination)
                 {
-                    istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                    istanza.transform.position = new Vector3(finalDestination, istanza.transform.position.y, istanza.transform.position.z);
                 }
-                else
+                Castraggio();
+                if (Inkstone.Ink > 1)
                 {
-                    if (istanza.transform.position.x < finalDestination)
-                    {
-                        istanza.transform.position = new Vector3(finalDestination, istanza.transform.position.y, istanza.transform.position.z);
-                    }
-                    Castraggio();
-                    if (Inkstone.Ink > 1)
-                    {
-                        Inkstone.Ink -= 1;
-
-                    }
-
-                    movementState = "readystate";
+                    Inkstone.Ink -= 1;
                 }
+
+                movementState = "waitstate";
             }
-           
+
         }
+        else if (movementState == "movingright")
+        {
+            istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
 
 
-        #region SPAWN PLAYER
+            if (istanza.transform.position.x > finalDestination)
+            {
+                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
+            else
+            {
+                if (istanza.transform.position.x < finalDestination)
+                {
+                    istanza.transform.position = new Vector3(finalDestination, istanza.transform.position.y, istanza.transform.position.z);
+                }
+                Castraggio();
+                if (Inkstone.Ink > 1)
+                {
+                    Inkstone.Ink -= 1;
+
+                }
+
+                movementState = "waitstate";
+            }
+        }
+       
+    }
+
+
+    #region SPAWN PLAYER
         // metodo spawn che istanzia il player prefab e lo pone in una variabile di riferimento
         public void Spawn()
         {
@@ -218,7 +243,7 @@ public class Playerbehaviour : MonoBehaviour
 
         #endregion
 
-        #region RAYCAST CAMBIO COLORE GRIGLIA
+    #region RAYCAST CAMBIO COLORE GRIGLIA
         // metodo che dichiara il raggio e lo lancia in basso se trova qualcosa ci cambia il colore 
         void Castraggio()
         {
