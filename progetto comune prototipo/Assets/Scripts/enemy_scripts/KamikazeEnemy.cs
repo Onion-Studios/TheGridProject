@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KamikazeEnemy : MonoBehaviour
 {
-    #region VARIABILI
+    #region VARIABLES
     public int enemyID = 1;
     [SerializeField]
     public float speed = 1;
@@ -16,8 +16,7 @@ public class KamikazeEnemy : MonoBehaviour
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] segnikamikazenemy;
-    public int segnocorrispondente;
+    public GameObject[] signkamikazenemy;
     public float baseSpeed;
     
     #endregion
@@ -84,7 +83,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         Inkstone.Ink -= 10;
-        foreach (GameObject segno in segnikamikazenemy)
+        foreach (GameObject segno in signkamikazenemy)
         {
             segno.SetActive(false);
         }
@@ -98,9 +97,9 @@ public class KamikazeEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.barra = 0;
-        enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segnikamikazenemy)
+        SecretT.bar = 0;
+        enemyspawnmanager.enemykilled  = 0;
+        foreach (GameObject segno in signkamikazenemy)
         {
             segno.SetActive(false);
         }
@@ -111,10 +110,10 @@ public class KamikazeEnemy : MonoBehaviour
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
+        enemyspawnmanager.enemykilled  += 1;
         Inkstone.Ink += 10;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segnikamikazenemy)
+        SecretT.bar += SecretT.charge;
+        foreach (GameObject segno in signkamikazenemy)
         {
             segno.SetActive(false);
         }

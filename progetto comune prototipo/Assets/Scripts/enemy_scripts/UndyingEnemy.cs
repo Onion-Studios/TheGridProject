@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UndyingEnemy : MonoBehaviour
 {
-    #region VARIABILI
-    public int enemyID = 4;
+    #region VARIABLES
+    public int enemyID = 3;
     [SerializeField]
     public float speed = 1;
     public int inkDamage = 20;
@@ -16,7 +16,7 @@ public class UndyingEnemy : MonoBehaviour
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] segniundyingenemy;
+    public GameObject[] signundyingenemy;
     public float endPosition;
     public float currentTime;
     public float maxTime;
@@ -121,8 +121,8 @@ public class UndyingEnemy : MonoBehaviour
 
             Inkstone.Ink -= inkDamage;
             Inkstone.maxInk -= maxInkDamage;
-            SecretT.barra = 0;
-            enemyspawnmanager.nemicoucciso = 0;
+            SecretT.bar = 0;
+            enemyspawnmanager.enemykilled  = 0;
 
            
 
@@ -161,10 +161,10 @@ public class UndyingEnemy : MonoBehaviour
             this.gameObject.SetActive(false);
             attackTimer = 0;
             currentTime = maxTime;
-            enemyspawnmanager.nemicoucciso += 1;
+            enemyspawnmanager.enemykilled  += 1;
             Inkstone.Ink += 10;
-            SecretT.barra += SecretT.carica;
-            foreach (GameObject segno in segniundyingenemy)
+            SecretT.bar += SecretT.charge;
+            foreach (GameObject segno in signundyingenemy)
             {
                 segno.SetActive(false);
 

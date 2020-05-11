@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    #region VARIABILI
+    #region VARIABLES
     GameManager GameManager;
-    public Transform lifeToSpawn;
     Playerbehaviour Playerbehaviour;
-    public Text Gold_text;
     [SerializeField]
     Text Enemycounter_text;
     [SerializeField]
@@ -65,8 +63,6 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
 
-        UpdateGoldCounter();
-
         UpdateEnemycounter();
 
         UpdateYokaiSlayerCounter();
@@ -81,12 +77,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateEnemycounter()
     {
-        Enemycounter_text.text = "Counter nemici: " + Enemyspawnmanager.nemicoucciso;
-    }
-
-    void UpdateGoldCounter()
-    {
-        Gold_text.text = ("Gold: " + Playerbehaviour.Gold);
+        Enemycounter_text.text = "Counter nemici: " + Enemyspawnmanager.enemykilled;
     }
 
     void UpdateYokaiSlayerCounter()

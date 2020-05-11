@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ArmoredEnemy : MonoBehaviour
 {
-    #region VARIABILI
-    public int enemyID = 3;
+    #region VARIABLES
+    public int enemyID = 2;
     [SerializeField]
     public float speed = 1;
     public float maxSpeed;
@@ -18,7 +18,7 @@ public class ArmoredEnemy : MonoBehaviour
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] segniarmoredenemy;
+    public GameObject[] signarmoredenemy;
     public int armoredLife =2;
     public float baseSpeed;
     #endregion
@@ -85,7 +85,7 @@ public class ArmoredEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in segniarmoredenemy)
+        foreach (GameObject segno in signarmoredenemy)
         {
             segno.SetActive(false);
         }
@@ -96,9 +96,9 @@ public class ArmoredEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.barra = 0;
-        enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segniarmoredenemy)
+        SecretT.bar = 0;
+        enemyspawnmanager.enemykilled = 0;
+        foreach (GameObject segno in signarmoredenemy)
         {
             segno.SetActive(false);
         }
@@ -110,20 +110,20 @@ public class ArmoredEnemy : MonoBehaviour
         {
             speed = maxSpeed;
             armoredLife -= 1;
-            foreach (GameObject segno in segniarmoredenemy)
+            foreach (GameObject segno in signarmoredenemy)
             {
                 segno.SetActive(false);
             }
             int randomsegno = Random.Range(0, 6);
-            segniarmoredenemy[randomsegno].gameObject.SetActive(true);
+            signarmoredenemy[randomsegno].gameObject.SetActive(true);
         }
         else
         {
             armoredLife = 2;
-            enemyspawnmanager.nemicoucciso += 2;
+            enemyspawnmanager.enemykilled += 2;
             Inkstone.Ink += 10;
-            SecretT.barra += SecretT.carica;
-            foreach (GameObject segno in segniarmoredenemy)
+            SecretT.bar += SecretT.charge;
+            foreach (GameObject segno in signarmoredenemy)
             {
                 segno.SetActive(false);
             }
