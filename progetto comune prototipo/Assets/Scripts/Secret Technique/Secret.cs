@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class Secret : MonoBehaviour
 {
-
+    #region VARIABLES
     [Range(0,100)] public int bar = 0;
     public int charge;
-
+    public Material startMaterial;
+    public Material endMaterial;
+    Renderer renderer_;
     Enemyspawnmanager enemyspawnmanager;
     Playerbehaviour playerbehaviour;
-
     public float currentTime = 0f;
     public float timeMax = 5f;
     bool active = false;
-    Color changeColor = Color.white;
-   
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
+
+
+        renderer_ = GetComponent<Renderer>();
+        renderer_.material = startMaterial;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Colore();
+        Color();
         Timer();
     }
 
@@ -81,7 +86,7 @@ public class Secret : MonoBehaviour
     //Muoiono tutti i enemy presenti sulla lane 
     void Death()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
             {
@@ -127,11 +132,9 @@ public class Secret : MonoBehaviour
     }
 
 
-    void Colore()
+    void Color()
     {
-        var cubeRenderer = this.GetComponent<Renderer>();
-        changeColor = Color.Lerp(Color.white, Color.red, 0f + bar / 100f);
-        cubeRenderer.material.SetColor("_Color", changeColor);
-
+        
+        this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
     }
 }
