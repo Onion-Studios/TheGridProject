@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MalevolentEnemy : MonoBehaviour
 {
-    #region VARIABILI
-    public int enemyID = 5;
+    #region VARIABLES
+    public int enemyID = 4;
     [SerializeField]
     public float speed = 1;
     public int inkDamage = 20;
@@ -17,7 +17,7 @@ public class MalevolentEnemy : MonoBehaviour
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] segnimalevolentenemy;
+    public GameObject[] signmalevolentenemy;
     public Vector3 position;
     public float spawntimer;
     public float maxspawntimer;
@@ -69,10 +69,10 @@ public class MalevolentEnemy : MonoBehaviour
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
+        enemyspawnmanager.enemykilled  += 1;
         Inkstone.Ink += 10;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segnimalevolentenemy)
+        SecretT.bar += SecretT.charge;
+        foreach (GameObject segno in signmalevolentenemy)
         {
             segno.SetActive(false);
         }

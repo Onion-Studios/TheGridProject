@@ -9,7 +9,7 @@ public class PointSystem : MonoBehaviour
     public int scoreMultiplier;
     public float currentTimer;
     public float maxTimer;
-    public int soglia1, soglia2, soglia3, soglia4;
+    public int threshold1, threshold2, threshold3, threshold4;
     public int countercombo = 0;
     public float floatscore;
 
@@ -60,23 +60,23 @@ public class PointSystem : MonoBehaviour
 
     public void Combo()
     {
-        if(countercombo >= 0 && countercombo < soglia1)
+        if(countercombo >= 0 && countercombo < threshold1)
         {
             scoreMultiplier = 1;
         }
-        if(countercombo >= soglia1 && countercombo < soglia2)
+        if(countercombo >= threshold1 && countercombo < threshold2)
         {
             scoreMultiplier = 2;
         }
-        if(countercombo >= soglia2 && countercombo < soglia3)
+        if(countercombo >= threshold2 && countercombo < threshold3)
         {
             scoreMultiplier = 3;
         }
-        if(countercombo >= soglia3 && countercombo < soglia4)
+        if(countercombo >= threshold3 && countercombo < threshold4)
         {
             scoreMultiplier = 4; 
         }
-        if(countercombo >= soglia4)
+        if(countercombo >= threshold4)
         {
             scoreMultiplier = 5;
         }

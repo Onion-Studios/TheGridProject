@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NormalEnemy : MonoBehaviour
 {
-    #region VARIABILI
+    #region VARIABLES
     public int enemyID = 0;
     [SerializeField]
     public float speed = 1;
@@ -18,9 +18,8 @@ public class NormalEnemy : MonoBehaviour
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] segninormalenemy;
+    public GameObject[] signnormalenemy;
     public float baseSpeed;
-    
     #endregion
 
     private void OnEnable()
@@ -86,7 +85,7 @@ public class NormalEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in segninormalenemy)
+        foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
         }
@@ -99,9 +98,9 @@ public class NormalEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.barra = 0;
-        enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segninormalenemy)
+        SecretT.bar = 0;
+        enemyspawnmanager.enemykilled  = 0;
+        foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
         }
@@ -112,10 +111,10 @@ public class NormalEnemy : MonoBehaviour
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
+        enemyspawnmanager.enemykilled  += 1;
         Inkstone.Ink += 10;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segninormalenemy)
+        SecretT.bar += SecretT.charge;
+        foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
         }

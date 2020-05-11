@@ -17,22 +17,22 @@ public struct nodes
 }
 public class Managercombo : MonoBehaviour
 {
-    #region Variabili
-    public nodes[][] MatriceIrerregolareSegni = new nodes[12][];
-    #region Angoligriglia
-    nodes Angolo1 = new nodes(0, 0);
-    nodes Angolo2 = new nodes(4, 0);
-    nodes Angolo3 = new nodes(0, 4);
-    nodes Angolo4 = new nodes(4, 4);
+    #region VARIABLES
+    public nodes[][] IrregularSignMatrix = new nodes[12][];
+    #region GRID CORNERS
+    nodes Angle1 = new nodes(0, 0);
+    nodes Angle2 = new nodes(4, 0);
+    nodes Angle3 = new nodes(0, 4);
+    nodes Angle4 = new nodes(4, 4);
     #endregion
-    nodes estremità = new nodes(0,0);
-    bool estremitàfound = false;
-    int countercaselleattiveattorno = 0;
+    nodes extremity = new nodes(0,0);
+    bool foundextremity = false;
+    int countactiveboxesaround = 0;
     Enemyspawnmanager enemyspawnmanager;
     UIManager UIManager;
     Playerbehaviour playerbehaviour;
     grigliamanager grigliamanager;
-    public int CountCaselleAttivate = 0;
+    public int CountBoxesActive = 0;
     #endregion
 
     private void Start()
@@ -61,7 +61,7 @@ public class Managercombo : MonoBehaviour
             Debug.LogError("grigliamanager è null");
         }
 
-        setupsegnimatrice();
+        SetupMatrixSign();
     }
 
     public void Init()
@@ -76,129 +76,129 @@ public class Managercombo : MonoBehaviour
 
     
 
-    public void setupsegnimatrice()
+    public void SetupMatrixSign()
     {
         //2 casi del segno L
-        MatriceIrerregolareSegni[0] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(2, -2) };
-        MatriceIrerregolareSegni[1] = new nodes[4] { new nodes(0, 1), new nodes(0, 2), new nodes(-1, 2), new nodes(-2, 2) };
+        IrregularSignMatrix[0] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(2, -2) };
+        IrregularSignMatrix[1] = new nodes[4] { new nodes(0, 1), new nodes(0, 2), new nodes(-1, 2), new nodes(-2, 2) };
         //2 casi del segno C
-        MatriceIrerregolareSegni[2] = new nodes[4] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2) };
-        MatriceIrerregolareSegni[3] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
+        IrregularSignMatrix[2] = new nodes[4] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2) };
+        IrregularSignMatrix[3] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
         //2 casi del segno S rovesciata
-        MatriceIrerregolareSegni[4] = new nodes[4] { new nodes(0, -1), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, -2) };
-        MatriceIrerregolareSegni[5] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 2) };
+        IrregularSignMatrix[4] = new nodes[4] { new nodes(0, -1), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, -2) };
+        IrregularSignMatrix[5] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 2) };
         //2 casi del segno L capovolto
-        MatriceIrerregolareSegni[6] = new nodes[4] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2) };
-        MatriceIrerregolareSegni[7] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, 1), new nodes(2, 2) };
+        IrregularSignMatrix[6] = new nodes[4] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2) };
+        IrregularSignMatrix[7] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, 1), new nodes(2, 2) };
         //2 casi del segno vasino (senza la cacca)
-        MatriceIrerregolareSegni[8] = new nodes[4] { new nodes(0, 1), new nodes(-1, 1), new nodes(-2, 1), new nodes(-2, 0) };
-        MatriceIrerregolareSegni[9] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, -1) };
+        IrregularSignMatrix[8] = new nodes[4] { new nodes(0, 1), new nodes(-1, 1), new nodes(-2, 1), new nodes(-2, 0) };
+        IrregularSignMatrix[9] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, -1) };
         //2 casi del segno S
-        MatriceIrerregolareSegni[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
-        MatriceIrerregolareSegni[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
+        IrregularSignMatrix[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
+        IrregularSignMatrix[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
         //1 caso segno Malevolent
-       // MatriceIrerregolareSegni[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
+       // IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
 
     }
 
-    public void Checksign()
+    public void CheckSign()
     {
-        CheckCountCaselleGrigliaLogica();
+        CheckCountBoxesLogicGrid();
 
-        if(CountCaselleAttivate == 5)
+        if(CountBoxesActive == 5)
         {
-            SearchEstremità(grigliamanager.griglialogica);
+            Searchextremity(grigliamanager.logicgrid);
         }
         else
         {
             Debug.Log("nessun estremita trovata");
         }
 
-        if(estremitàfound == true)
+        if(foundextremity == true)
         {
-            ControlloSegnoCorretto();
+            CheckCorrectSign();
         }
 
     }
 
-    void CheckCountCaselleGrigliaLogica()
+    void CheckCountBoxesLogicGrid()
     {
-        foreach(bool casella in grigliamanager.griglialogica)
+        foreach(bool box in grigliamanager.logicgrid)
         {
-            if(casella == true)
+            if(box == true)
             {
-                CountCaselleAttivate++;
+                CountBoxesActive++;
             }
         }
     }
 
-    void ControlloSegnoCorretto()
+    void CheckCorrectSign()
     {
-        int CounterCaselleGiuste = 0;
+        int countercorrectbox = 0;
 
         for (int i = 0; i < 12; i++) 
         {
-            if (CounterCaselleGiuste == 4)
+            if (countercorrectbox == 4)
             {
-                CounterCaselleGiuste = 0;
+                countercorrectbox = 0;
                 break;
             }
 
-            foreach (var nodo in MatriceIrerregolareSegni[i])
+            foreach (var nodo in IrregularSignMatrix[i])
             {
                 
-                if (estremità.X + nodo.X >= 0 &&
-                    estremità.X + nodo.X <= 4 &&
-                    estremità.Z + nodo.Z >= 0 &&
-                    estremità.Z + nodo.Z <= 4)
+                if (extremity.X + nodo.X >= 0 &&
+                    extremity.X + nodo.X <= 4 &&
+                    extremity.Z + nodo.Z >= 0 &&
+                    extremity.Z + nodo.Z <= 4)
                 {
-                    if (grigliamanager.griglialogica[estremità.X + nodo.X, estremità.Z + nodo.Z] == true)
+                    if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
                     {
-                        CounterCaselleGiuste++;
+                        countercorrectbox++;
 
-                        if (CounterCaselleGiuste == 4)
+                        if (countercorrectbox == 4)
                         {
                             if (i == 0 || i == 1)
                             {
                                 SearchAndDestroy(0);
-                                estremitàfound = false;
+                                foundextremity = false;
                             }
                             else if (i == 2 || i == 3)
                             {
                                 SearchAndDestroy(1);
-                                estremitàfound = false;
+                                foundextremity = false;
                             }
                             else if (i == 4 || i == 5)
                             {
                                 SearchAndDestroy(2);
-                                estremitàfound = false;
+                                foundextremity = false;
                             }
                             else if (i == 6 || i == 7)
                             {
                                 SearchAndDestroy(3);
-                                estremitàfound = false;
+                                foundextremity = false;
                             }
                             else if (i == 8 || i == 9)
                             {
                                 SearchAndDestroy(4);
-                                estremitàfound = false;
+                                foundextremity = false;
                             }
                             else if (i == 10 || i == 11)
                             {
                                 SearchAndDestroy(5);
-                                estremitàfound = false;
+                                foundextremity = false;
                             }
                             /*else if(i == 12)
                             {
                                 SearchAndDestroy(6);
-                                estremitàfound = false;
+                                foundextremity = false;
                             }*/
                         }
                     }
                     else
                     {
-                        estremitàfound = false;
-                        CounterCaselleGiuste = 0;
+                        foundextremity = false;
+                        countercorrectbox = 0;
                         break;
                     }
                 }
@@ -207,184 +207,184 @@ public class Managercombo : MonoBehaviour
         }
     }
 
-    void SearchEstremità(bool[,] griglia)
+    void Searchextremity(bool[,] grid)
     {
-        for(int x=0; x < griglia.GetLength(0); x++)
+        for(int x=0; x < grid.GetLength(0); x++)
         {
-            for (int z = 0; z < griglia.GetLength(1); z++)
+            for (int z = 0; z < grid.GetLength(1); z++)
             {
-                if (griglia[x,z] == true)
+                if (grid[x,z] == true)
                 {
                     //casi angoli 
-                    if (x == Angolo1.X && z == Angolo1.Z)
+                    if (x == Angle1.X && z == Angle1.Z)
                     {
-                        if (griglia[x + 1, z] == true || griglia[x, z + 1] == true)
+                        if (grid[x + 1, z] == true || grid[x, z + 1] == true)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                     }
-                    else if (x == Angolo2.X && z == Angolo2.Z)
+                    else if (x == Angle2.X && z == Angle2.Z)
                     {
-                        if (griglia[x, z + 1] == true || griglia[x - 1, z] == true)
+                        if (grid[x, z + 1] == true || grid[x - 1, z] == true)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                     }
-                    else if (x == Angolo3.X && z == Angolo3.Z)
+                    else if (x == Angle3.X && z == Angle3.Z)
                     {
-                        if (griglia[x + 1, z] == true || griglia[x, z - 1] == true)
+                        if (grid[x + 1, z] == true || grid[x, z - 1] == true)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                     }
-                    else if (x == Angolo4.X && z == Angolo4.Z)
+                    else if (x == Angle4.X && z == Angle4.Z)
                     {
-                        if (griglia[x, z - 1] == true || griglia[x - 1, z] == true)
+                        if (grid[x, z - 1] == true || grid[x - 1, z] == true)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                     }
                     //casi lati
                     //lato superiore
                     else if (z - 1 < 0)
                     {
-                        if (griglia[x - 1, z] == true)
+                        if (grid[x - 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x, z + 1] == true)
+                        if (grid[x, z + 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x + 1, z] == true)
+                        if (grid[x + 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (countercaselleattiveattorno == 1)
+                        if (countactiveboxesaround == 1)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                         else
                         {
-                            countercaselleattiveattorno = 0;
+                            countactiveboxesaround = 0;
                         }
                     }
                     //lato inferiore
                     else if (z + 1 > 4)
                     {
-                        if (griglia[x, z - 1] == true)
+                        if (grid[x, z - 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x - 1, z] == true)
+                        if (grid[x - 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x + 1, z] == true)
+                        if (grid[x + 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (countercaselleattiveattorno == 1)
+                        if (countactiveboxesaround == 1)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                         else
                         {
-                            countercaselleattiveattorno = 0;
+                            countactiveboxesaround = 0;
                         }
                     }
                     //lato destro
                     else if (x - 1 < 0)
                     {
-                        if (griglia[x, z - 1] == true)
+                        if (grid[x, z - 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x, z + 1] == true)
+                        if (grid[x, z + 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x + 1, z] == true)
+                        if (grid[x + 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (countercaselleattiveattorno == 1)
+                        if (countactiveboxesaround == 1)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                         else
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
                     }
                     //lato sinistro
                     else if (x + 1 > 4)
                     {
-                        if (griglia[x, z - 1] == true)
+                        if (grid[x, z - 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x - 1, z] == true)
+                        if (grid[x - 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x, z + 1] == true)
+                        if (grid[x, z + 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (countercaselleattiveattorno == 1)
+                        if (countactiveboxesaround == 1)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                         else
                         {
-                            countercaselleattiveattorno = 0;
+                            countactiveboxesaround = 0;
                         }
                     }
                     //lato interno
                     else
                     {
-                        if (griglia[x, z - 1] == true)
+                        if (grid[x, z - 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x - 1, z] == true)
+                        if (grid[x - 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x, z + 1] == true)
+                        if (grid[x, z + 1] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (griglia[x + 1, z] == true)
+                        if (grid[x + 1, z] == true)
                         {
-                            countercaselleattiveattorno++;
+                            countactiveboxesaround++;
                         }
-                        if (countercaselleattiveattorno == 1)
+                        if (countactiveboxesaround == 1)
                         {
-                            estremità.X = x;
-                            estremità.Z = z;
-                            estremitàfound = true;
+                            extremity.X = x;
+                            extremity.Z = z;
+                            foundextremity = true;
                         }
                         else
                         {
-                            countercaselleattiveattorno = 0;
+                            countactiveboxesaround = 0;
                         }
                     }
 
@@ -397,66 +397,59 @@ public class Managercombo : MonoBehaviour
 
     void SearchAndDestroy(int valoreIndice)
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
-            foreach (GameObject nemicodadistruggere in enemyspawnmanager.poolnemici[i])
+            foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
             {
-                if (nemicodadistruggere.activeInHierarchy == true)
+                if (enemytodestroy.activeInHierarchy == true)
                 {
                     switch (i)
                     {
                         case 0:
-                            NormalEnemy normalenemy = nemicodadistruggere.GetComponent<NormalEnemy>();
-                            if (normalenemy.segninormalenemy[valoreIndice].activeInHierarchy == true)
+                            NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
+                            if (normalenemy.signnormalenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 normalenemy.Deathforsign();
                             }
                             break;
                         case 1:
-                            KamikazeEnemy kamikazenemy = nemicodadistruggere.GetComponent<KamikazeEnemy>();
-                            if (kamikazenemy.segnikamikazenemy[valoreIndice].activeInHierarchy == true)
+                            KamikazeEnemy kamikazenemy = enemytodestroy.GetComponent<KamikazeEnemy>();
+                            if (kamikazenemy.signkamikazenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 kamikazenemy.Deathforsign();
                             }
                             break;
                         case 2:
-                            GoldenEnemy goldenenemy = nemicodadistruggere.GetComponent<GoldenEnemy>();
-                            if (goldenenemy.segnigoldenenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                goldenenemy.Deathforsign();
-                            }
-                            break;
-                        case 3:
-                            ArmoredEnemy armoredenemy = nemicodadistruggere.GetComponent<ArmoredEnemy>();
-                            if (armoredenemy.segniarmoredenemy[valoreIndice].activeInHierarchy == true)
+                            ArmoredEnemy armoredenemy = enemytodestroy.GetComponent<ArmoredEnemy>();
+                            if (armoredenemy.signarmoredenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 armoredenemy.Deathforsign();
                             }
                             break;
-                        case 4:
-                            UndyingEnemy undyingenemy = nemicodadistruggere.GetComponent<UndyingEnemy>();
-                            if (undyingenemy.segniundyingenemy[valoreIndice].activeInHierarchy == true)
+                        case 3:
+                            UndyingEnemy undyingenemy = enemytodestroy.GetComponent<UndyingEnemy>();
+                            if (undyingenemy.signundyingenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 undyingenemy.Deathforsign();
                             }
                             break;
-                        case 5:
-                            MalevolentEnemy malevolentenemy = nemicodadistruggere.GetComponent<MalevolentEnemy>();
-                            if (malevolentenemy.segnimalevolentenemy[valoreIndice].activeInHierarchy == true)
+                        case 4:
+                            MalevolentEnemy malevolentenemy = enemytodestroy.GetComponent<MalevolentEnemy>();
+                            if (malevolentenemy.signmalevolentenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 malevolentenemy.Deathforsign();
                             }
                             break;
-                        case 6:
-                            FrighteningEnemy frighteningenemy = nemicodadistruggere.GetComponent<FrighteningEnemy>();
-                            if (frighteningenemy.segnifrighteningenemy[valoreIndice].activeInHierarchy == true)
+                        case 5:
+                            FrighteningEnemy frighteningenemy = enemytodestroy.GetComponent<FrighteningEnemy>();
+                            if (frighteningenemy.signfrighteningenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 frighteningenemy.Deathforsign();
                             }
                             break;
-                        case 7:
-                            BufferEnemy bufferenemy = nemicodadistruggere.GetComponent<BufferEnemy>();
-                            if (bufferenemy.segnibufferenemy[valoreIndice].activeInHierarchy == true)
+                        case 6:
+                            BufferEnemy bufferenemy = enemytodestroy.GetComponent<BufferEnemy>();
+                            if (bufferenemy.signbufferenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 bufferenemy.Deathforsign();
                             }

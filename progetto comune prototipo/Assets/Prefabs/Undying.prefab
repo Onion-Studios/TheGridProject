@@ -481,12 +481,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283464ce1361180498e4e536d0efc0b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: 4
+  enemyID: 3
   speed: 1
   inkDamage: 20
   maxInkDamage: 10
   scoreEnemy: 1000
-  segniundyingenemy:
+  signundyingenemy:
   - {fileID: 719161590171113951}
   - {fileID: 1570016774213505568}
   - {fileID: 2151446184214044029}
@@ -501,8 +501,7 @@ MonoBehaviour:
   repelled: 0
   startingPosition: {x: 0, y: 0, z: 0}
   pushSpeed: 5
-  isbuffed: 0
-  baseSpeed: 0
+  baseSpeed: 1
 --- !u!1 &6929704817576082879
 GameObject:
   m_ObjectHideFlags: 0

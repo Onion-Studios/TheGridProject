@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class BufferEnemy : MonoBehaviour
 {
-    #region VARIABILI
-    public int enemyID = 7;
-    public bool Buff;
+    #region VARIABLES
+    public int enemyID = 6;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     PointSystem pointsystem;
     Secret SecretT;
     public int scoreEnemy;
-    public GameObject[] segnibufferenemy;
+    public GameObject[] signbufferenemy;
     public GameObject[] ToBuff;
     public int segnocorrispondente;
-    public int link = 8;
+    public int link = 7;
     public float Boost = 5f;
     public float Reset = 0.8f;
     public float speed;
@@ -90,15 +89,15 @@ public class BufferEnemy : MonoBehaviour
 
         for (int i = 0; i < link; i++)
         {
-            foreach (GameObject nemico in enemyspawnmanager.poolnemici[i])
+            foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
             {
-                if (nemico.activeInHierarchy == true)
+                if (enemy.activeInHierarchy == true)
                 {
                     switch (i)
                     {
                         case 0:
                             {
-                                NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
+                                NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 if (NormalEnemy.speed == NormalEnemy.baseSpeed)
                                 {
                                     NormalEnemy.speed = NormalEnemy.speed * Boost;
@@ -109,7 +108,7 @@ public class BufferEnemy : MonoBehaviour
                             break;
                         case 1:
                             {
-                                KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
+                                KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
                                 if (KamikazeEnemy.speed == KamikazeEnemy.baseSpeed)
                                 {
                                     KamikazeEnemy.speed = KamikazeEnemy.speed * Boost;
@@ -120,18 +119,7 @@ public class BufferEnemy : MonoBehaviour
                             break;
                         case 2:
                             {
-                                GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
-                                if (GoldenEnemy.speed == GoldenEnemy.baseSpeed)
-                                {
-                                    GoldenEnemy.speed = GoldenEnemy.speed * Boost;
-
-                                }
-
-                            }
-                            break;
-                        case 3:
-                            {
-                                ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
+                                ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 if (ArmoredEnemy.speed == ArmoredEnemy.baseSpeed)
                                 {
                                     ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
@@ -140,9 +128,9 @@ public class BufferEnemy : MonoBehaviour
 
                             }
                             break;
-                        case 4:
+                        case 3:
                             {
-                                UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
+                                UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
 
                                 if (UndiyngEnemy.speed == UndiyngEnemy.baseSpeed)
                                 {
@@ -151,9 +139,9 @@ public class BufferEnemy : MonoBehaviour
 
                             }
                             break;
-                        case 6:
+                        case 5:
                             {
-                                FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
+                                FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
 
                                 if (frighteningEnemy.speed == frighteningEnemy.baseSpeed)
                                 {
@@ -162,9 +150,9 @@ public class BufferEnemy : MonoBehaviour
 
                             }
                             break;
-                        case 7:
+                        case 6:
                             {
-                                BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                                BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
 
                                 if (bufferEnemy.speed == bufferEnemy.baseSpeed)
                                 {
@@ -183,17 +171,17 @@ public class BufferEnemy : MonoBehaviour
     public void SpeedReset()
     {
        
-        for (int i = 0; i > link; i++)
+        for (int i = 0; i < link; i++)
         {
-            foreach (GameObject nemico in enemyspawnmanager.poolnemici[i])
+            foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
             {
-                if (nemico.activeInHierarchy == true)
+                if (enemy.activeInHierarchy == true)
                 {
                     switch (i)
                     {
                         case 0:
                             {
-                                NormalEnemy NormalEnemy = nemico.GetComponent<NormalEnemy>();
+                                NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 if (NormalEnemy.speed != NormalEnemy.baseSpeed)
                                 {
                                     NormalEnemy.speed = NormalEnemy.baseSpeed;
@@ -203,7 +191,7 @@ public class BufferEnemy : MonoBehaviour
                             break;
                         case 1:
                             {
-                                KamikazeEnemy KamikazeEnemy = nemico.GetComponent<KamikazeEnemy>();
+                                KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
                                 if (KamikazeEnemy.speed != KamikazeEnemy.baseSpeed)
                                 {
                                     KamikazeEnemy.speed = KamikazeEnemy.baseSpeed;
@@ -214,18 +202,7 @@ public class BufferEnemy : MonoBehaviour
                             break;
                         case 2:
                             {
-                                GoldenEnemy GoldenEnemy = nemico.GetComponent<GoldenEnemy>();
-                                if (GoldenEnemy.speed != GoldenEnemy.baseSpeed)
-                                {
-                                    GoldenEnemy.speed = GoldenEnemy.baseSpeed;
-
-                                }
-
-                            }
-                            break;
-                        case 3:
-                            {
-                                ArmoredEnemy ArmoredEnemy = nemico.GetComponent<ArmoredEnemy>();
+                                ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 if (ArmoredEnemy.speed != ArmoredEnemy.baseSpeed)
                                 {
                                     ArmoredEnemy.speed = ArmoredEnemy.baseSpeed;
@@ -234,9 +211,9 @@ public class BufferEnemy : MonoBehaviour
 
                             }
                             break;
-                        case 4:
+                        case 3:
                             {
-                                UndyingEnemy UndiyngEnemy = nemico.GetComponent<UndyingEnemy>();
+                                UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
                                 if (UndiyngEnemy.speed != UndiyngEnemy.baseSpeed)
                                 {
                                     UndiyngEnemy.speed = UndiyngEnemy.baseSpeed;
@@ -245,9 +222,9 @@ public class BufferEnemy : MonoBehaviour
 
                             }
                             break;
-                        case 6:
+                        case 5:
                             {
-                                FrighteningEnemy frighteningEnemy = nemico.GetComponent<FrighteningEnemy>();
+                                FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
 
                                 if (frighteningEnemy.speed != frighteningEnemy.baseSpeed)
                                 {
@@ -256,9 +233,9 @@ public class BufferEnemy : MonoBehaviour
 
                             }
                             break;
-                        case 7:
+                        case 6:
                             {
-                                BufferEnemy bufferEnemy = nemico.GetComponent<BufferEnemy>();
+                                BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
 
                                 if (bufferEnemy.speed != bufferEnemy.baseSpeed)
                                 {
@@ -286,29 +263,14 @@ public class BufferEnemy : MonoBehaviour
 
 
         this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segnibufferenemy)
+        enemyspawnmanager.enemykilled  += 1;
+        SecretT.bar += SecretT.charge;
+        foreach (GameObject segno in signbufferenemy)
         {
             segno.SetActive(false);
         }
 
         SpeedReset();
 
-
-    }
-
-    IEnumerator Test()
-    {
-        yield return new WaitForSeconds(5.0f);
-        while(true)
-        {
-            yield return new WaitForSeconds(2.0f);
-            SpeedBoost();
-            Debug.Log("Boost");
-            yield return new WaitForSeconds(2.0f);
-            SpeedReset();
-            Debug.Log("Reset");
-        }
     }
 }

@@ -88,7 +88,7 @@ public class WaveManager : MonoBehaviour
 
         for(int i = 0; i < wavetospawn.enemyID.Length ; i++)
         {
-            foreach (var enemy in enemyspawnmanager.poolnemici[enemyIDWave1[i]])
+            foreach (var enemy in enemyspawnmanager.poolenemy[enemyIDWave1[i]])
             {
                 if(enemy.gameObject.activeInHierarchy == false)
                 {
@@ -97,7 +97,7 @@ public class WaveManager : MonoBehaviour
                     {
                         case 0:
                             NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
-                            NormalEnemy.segninormalenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            NormalEnemy.signnormalenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             if (LanesWave1[i] == 0)
                             {
                                 NormalEnemy.speed = 1.35f;
@@ -121,7 +121,7 @@ public class WaveManager : MonoBehaviour
                             break;
                         case 1:
                             KamikazeEnemy kamikazeenemy = enemy.GetComponent<KamikazeEnemy>();
-                            kamikazeenemy.segnikamikazenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            kamikazeenemy.signkamikazenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             if (LanesWave1[i] == 0)
                             {
                                 kamikazeenemy.speed = 1.35f;
@@ -144,32 +144,8 @@ public class WaveManager : MonoBehaviour
                             }
                             break;
                         case 2:
-                            GoldenEnemy goldenEnemy = enemy.GetComponent<GoldenEnemy>();
-                            goldenEnemy.segnigoldenenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
-                            if (LanesWave1[i] == 0)
-                            {
-                                goldenEnemy.speed = 1.35f;
-                            }
-                            else if (LanesWave1[i] == 1)
-                            {
-                                goldenEnemy.speed = 1.27f;
-                            }
-                            else if (LanesWave1[i] == 2)
-                            {
-                                goldenEnemy.speed = 1.17f;
-                            }
-                            else if (LanesWave1[i] == 3)
-                            {
-                                goldenEnemy.speed = 1.07f;
-                            }
-                            else if (LanesWave1[i] == 4)
-                            {
-                                goldenEnemy.speed = 1f;
-                            }
-                            break;
-                        case 3:
                             ArmoredEnemy armoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                            armoredEnemy.segniarmoredenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            armoredEnemy.signarmoredenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             if (LanesWave1[i] == 0)
                             {
                                 armoredEnemy.speed = 1.35f;
@@ -191,9 +167,9 @@ public class WaveManager : MonoBehaviour
                                 armoredEnemy.speed = 1f;
                             }
                             break;
-                        case 4:
+                        case 3:
                             UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
-                            undyingEnemy.segniundyingenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            undyingEnemy.signundyingenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             //undyingEnemy.startingPosition = enemyspawnposition;
                             if (LanesWave1[i] == 0)
                             {
@@ -231,7 +207,7 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < dictionarywaves[waveintesnity][wavenumber].enemyID.Length; i++)
         {
-            foreach (var enemy in enemyspawnmanager.poolnemici[enemyIDWave1[i]])
+            foreach (var enemy in enemyspawnmanager.poolenemy[enemyIDWave1[i]])
             {
                 if (enemy.gameObject.activeInHierarchy == false)
                 {
@@ -240,7 +216,7 @@ public class WaveManager : MonoBehaviour
                     {
                         case 0:
                             NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
-                            NormalEnemy.segninormalenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            NormalEnemy.signnormalenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             if (LanesWave1[i] == 0)
                             {
                                 NormalEnemy.speed = 1.35f;
@@ -264,7 +240,7 @@ public class WaveManager : MonoBehaviour
                             break;
                         case 1:
                             KamikazeEnemy kamikazeenemy = enemy.GetComponent<KamikazeEnemy>();
-                            kamikazeenemy.segnikamikazenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            kamikazeenemy.signkamikazenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             if (LanesWave1[i] == 0)
                             {
                                 kamikazeenemy.speed = 1.35f;
@@ -286,33 +262,9 @@ public class WaveManager : MonoBehaviour
                                 kamikazeenemy.speed = 1f;
                             }
                             break;
-                        case 2:
-                            GoldenEnemy goldenEnemy = enemy.GetComponent<GoldenEnemy>();
-                            goldenEnemy.segnigoldenenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
-                            if (LanesWave1[i] == 0)
-                            {
-                                goldenEnemy.speed = 1.35f;
-                            }
-                            else if (LanesWave1[i] == 1)
-                            {
-                                goldenEnemy.speed = 1.27f;
-                            }
-                            else if (LanesWave1[i] == 2)
-                            {
-                                goldenEnemy.speed = 1.17f;
-                            }
-                            else if (LanesWave1[i] == 3)
-                            {
-                                goldenEnemy.speed = 1.07f;
-                            }
-                            else if (LanesWave1[i] == 4)
-                            {
-                                goldenEnemy.speed = 1f;
-                            }
-                            break;
                         case 3:
                             ArmoredEnemy armoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                            armoredEnemy.segniarmoredenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            armoredEnemy.signarmoredenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             if (LanesWave1[i] == 0)
                             {
                                 armoredEnemy.speed = 1.35f;
@@ -336,7 +288,7 @@ public class WaveManager : MonoBehaviour
                             break;
                         case 4:
                             UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
-                            undyingEnemy.segniundyingenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
+                            undyingEnemy.signundyingenemy[SignGroup[SignGroupwave1[i]]].gameObject.SetActive(true);
                             //undyingEnemy.startingPosition = enemyspawnposition;
                             if (LanesWave1[i] == 0)
                             {

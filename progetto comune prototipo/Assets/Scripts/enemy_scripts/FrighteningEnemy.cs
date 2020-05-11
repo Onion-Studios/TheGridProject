@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FrighteningEnemy : MonoBehaviour
 {
-    #region VARIABILI
-    public int enemyID = 6;
+    #region VARIABLES
+    public int enemyID = 5;
     [SerializeField]
     public float speed = 1;
     public float playerSpeed;
@@ -18,7 +18,7 @@ public class FrighteningEnemy : MonoBehaviour
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] segnifrighteningenemy;
+    public GameObject[] signfrighteningenemy;
     public float baseSpeed;
     #endregion
 
@@ -68,10 +68,10 @@ public class FrighteningEnemy : MonoBehaviour
     {
         Enemymove();
 
-        Frate();
+        Frightening();
     }
 
-    public void Frate()
+    public void Frightening()
     {
         if(reduceSpeed != playerbehaviour.speed)
         {
@@ -94,7 +94,7 @@ public class FrighteningEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         Inkstone.Ink -= 10;
-        foreach (GameObject segno in segnifrighteningenemy)
+        foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);
         }
@@ -107,9 +107,9 @@ public class FrighteningEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.barra = 0;
-        enemyspawnmanager.nemicoucciso = 0;
-        foreach (GameObject segno in segnifrighteningenemy)
+        SecretT.bar = 0;
+        enemyspawnmanager.enemykilled  = 0;
+        foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);
         }
@@ -122,10 +122,10 @@ public class FrighteningEnemy : MonoBehaviour
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.nemicoucciso += 1;
+        enemyspawnmanager.enemykilled  += 1;
         Inkstone.Ink += 10;
-        SecretT.barra += SecretT.carica;
-        foreach (GameObject segno in segnifrighteningenemy)
+        SecretT.bar += SecretT.charge;
+        foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);
         }
