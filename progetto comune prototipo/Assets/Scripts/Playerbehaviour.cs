@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Playerbehaviour : MonoBehaviour
 {
@@ -31,7 +29,7 @@ public class Playerbehaviour : MonoBehaviour
     void Start()
     {
         powerupmanager = FindObjectOfType<PowerupManager>();
-        if(powerupmanager == null)
+        if (powerupmanager == null)
         {
             Debug.LogError("powerupmanager è null!");
         }
@@ -67,10 +65,10 @@ public class Playerbehaviour : MonoBehaviour
 
     void MovementHandler()
     {
-         
+
         if (movementState == "readystate")
         {
-        
+
             if (Input.GetKey(KeyCode.W) && istanze.transform.position.z > 0.9)
             {
                 finalDestination = istanze.transform.position.z - 1;
@@ -219,39 +217,39 @@ public class Playerbehaviour : MonoBehaviour
                 movementState = "waitstate";
             }
         }
-       
+
     }
 
 
     #region SPAWN PLAYER
-        // metodo spawn che istanzia il player prefab e lo pone in una variabile di riferimento
-        public void Spawn()
-        {
-            //istanzio il player sopra al cubo sommando un vettore
+    // metodo spawn che istanzia il player prefab e lo pone in una variabile di riferimento
+    public void Spawn()
+    {
+        //istanzio il player sopra al cubo sommando un vettore
 
-            istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
-        }
+        istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
+    }
 
-        #endregion
+    #endregion
 
     #region RAYCAST CHANGE COLOR GRID
-        // metodo che dichiara il raggio e lo lancia in basso se trova qualcosa ci cambia il colore 
-        void ColorGrid()
+    // metodo che dichiara il raggio e lo lancia in basso se trova qualcosa ci cambia il colore 
+    void ColorGrid()
+    {
+        originray = (istanze.transform.position - new Vector3(0f, 0.5f, 0f));
+        downraycheck = new Ray(originray, Vector3.down);
+        float raydistance = 10f;
+        if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance))
         {
-            originray = (istanze.transform.position - new Vector3(0f, 0.5f, 0f));
-            downraycheck = new Ray(originray, Vector3.down);
-            float raydistance = 10f;
-            if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance))
-            {
-                hit.collider.GetComponent<Renderer>().material = colorcube;
+            hit.collider.GetComponent<Renderer>().material = colorcube;
 
-                if (grigliamanager.logicgrid[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
-                {
-                    grigliamanager.logicgrid[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] = true;
-                }
+            if (grigliamanager.logicgrid[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
+            {
+                grigliamanager.logicgrid[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] = true;
             }
         }
-    
+    }
+
     #endregion
 
 }
