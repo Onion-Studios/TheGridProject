@@ -136,7 +136,7 @@ public class Managercombo : MonoBehaviour
     {
         int CounterCaselleGiuste = 0;
 
-        for (int i = 0; i < 13; i++) 
+        for (int i = 0; i < 12; i++) 
         {
             if (CounterCaselleGiuste == 4)
             {
