@@ -5,8 +5,8 @@ using UnityEngine;
 public class Secret : MonoBehaviour
 {
 
-    [Range(0,100)] public int barra = 0;
-    public int carica;
+    [Range(0,100)] public int bar = 0;
+    public int charge;
 
     Enemyspawnmanager enemyspawnmanager;
     Playerbehaviour playerbehaviour;
@@ -14,7 +14,7 @@ public class Secret : MonoBehaviour
     public float currentTime = 0f;
     public float timeMax = 5f;
     bool active = false;
-    Color cambiaColore = Color.white;
+    Color changeColor = Color.white;
    
 
     // Start is called before the first frame update
@@ -35,13 +35,13 @@ public class Secret : MonoBehaviour
     void Timer()
     {
         
-        if (barra > 100)
+        if (bar > 100)
         {
-            barra = 100;
+            bar = 100;
         }
 
         //se la barra arriva a 100 
-        if (barra == 100)
+        if (bar == 100)
         {
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
@@ -52,7 +52,7 @@ public class Secret : MonoBehaviour
             }
             else
             {
-                //se premo E i nemici sulle lane muoiono 
+                //se premo E i enemy sulle lane muoiono 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     Death();
@@ -69,7 +69,7 @@ public class Secret : MonoBehaviour
                 //reset barra e si disattiva la secret 
                 if (currentTime == 0)
                 {
-                    barra = 0;
+                    bar = 0;
 
                     active = false;
                 }
@@ -78,48 +78,44 @@ public class Secret : MonoBehaviour
         }
     }
 
-    //Muoiono tutti i nemici presenti sulla lane 
+    //Muoiono tutti i enemy presenti sulla lane 
     void Death()
     {
         for (int i = 0; i < 8; i++)
         {
-            foreach (GameObject nemici in enemyspawnmanager.poolnemici[i])
+            foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
             {
-                if (nemici.activeInHierarchy == true)
+                if (enemy.activeInHierarchy == true)
                 {
                     switch (i)
                     {
                         case 0:
-                            NormalEnemy normalenemy = nemici.GetComponent<NormalEnemy>();
+                            NormalEnemy normalenemy = enemy.GetComponent<NormalEnemy>();
                             normalenemy.Deathforsign();
                             break;
                         case 1:
-                            KamikazeEnemy kamikazenemy = nemici.GetComponent<KamikazeEnemy>();
+                            KamikazeEnemy kamikazenemy = enemy.GetComponent<KamikazeEnemy>();
                             kamikazenemy.Deathforsign();
                             break;
                         case 2:
-                            GoldenEnemy goldenenemy = nemici.GetComponent<GoldenEnemy>();
-                            goldenenemy.Deathforsign();
-                            break;
-                        case 3:
-                            ArmoredEnemy armoredenemy = nemici.GetComponent<ArmoredEnemy>();
+                            ArmoredEnemy armoredenemy = enemy.GetComponent<ArmoredEnemy>();
                             armoredenemy.armoredLife = 1;
                             armoredenemy.Deathforsign();
                             break;
-                        case 4:
-                            UndyingEnemy undyingenemy = nemici.GetComponent<UndyingEnemy>();
+                        case 3:
+                            UndyingEnemy undyingenemy = enemy.GetComponent<UndyingEnemy>();
                             undyingenemy.Deathforsign();
                             break;
-                        case 5:
-                            MalevolentEnemy malevolentenemy = nemici.GetComponent<MalevolentEnemy>();
+                        case 4:
+                            MalevolentEnemy malevolentenemy = enemy.GetComponent<MalevolentEnemy>();
                             malevolentenemy.Deathforsign();
                             break;
-                        case 6:
-                            FrighteningEnemy frighteningenemy = nemici.GetComponent<FrighteningEnemy>();
+                        case 5:
+                            FrighteningEnemy frighteningenemy = enemy.GetComponent<FrighteningEnemy>();
                             frighteningenemy.Deathforsign();
                             break;
-                        case 7:
-                            BufferEnemy bufferenemy = nemici.GetComponent<BufferEnemy>();
+                        case 6:
+                            BufferEnemy bufferenemy = enemy.GetComponent<BufferEnemy>();
                             bufferenemy.Deathforsign();
                             break;
                     }
@@ -131,12 +127,11 @@ public class Secret : MonoBehaviour
     }
 
 
-
     void Colore()
     {
         var cubeRenderer = this.GetComponent<Renderer>();
-        cambiaColore = Color.Lerp(Color.white, Color.red, 0f + barra / 100f);
-        cubeRenderer.material.SetColor("_Color", cambiaColore);
+        changeColor = Color.Lerp(Color.white, Color.red, 0f + bar / 100f);
+        cubeRenderer.material.SetColor("_Color", changeColor);
 
     }
 }

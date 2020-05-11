@@ -593,15 +593,8 @@ MonoBehaviour:
   inkDamage: 20
   maxInkDamage: 10
   scoreEnemy: 1000
-  segnifrighteningenemy:
-  - {fileID: 3250650709829629116}
-  - {fileID: 2569510924925054229}
-  - {fileID: 2071178612055138558}
-  - {fileID: 8021004444373799540}
-  - {fileID: 5763490521501441068}
-  - {fileID: 5288535271106822655}
-  isbuffed: 0
-  baseSpeed: 0
+  signfrighteningenemy: []
+  baseSpeed: 1
 --- !u!54 &1734876840858482977
 Rigidbody:
   m_ObjectHideFlags: 0

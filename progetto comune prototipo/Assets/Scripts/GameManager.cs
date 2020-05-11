@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        ChangeIntensity(Enemyspawnmanager.nemicoucciso);
+        ChangeIntensity(Enemyspawnmanager.enemykilled);
     }
 
     public void GoToMainMenu()

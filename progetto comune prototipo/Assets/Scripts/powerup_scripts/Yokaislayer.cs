@@ -27,9 +27,9 @@ public class Yokaislayer : MonoBehaviour
 
     void ActivateYokaiSlayer()
     {
-        for(int i=0; i < 8; i++)
+        for(int i=0; i < 7; i++)
         {
-            foreach(GameObject nemici in enemyspawnmanager.poolnemici[i])
+            foreach(GameObject nemici in enemyspawnmanager.poolenemy[i])
             {
                 if(nemici.activeInHierarchy == true)
                 {
@@ -44,27 +44,23 @@ public class Yokaislayer : MonoBehaviour
                             kamikazenemy.Deathforsign();
                             break;
                         case 2:
-                            GoldenEnemy goldenenemy = nemici.GetComponent<GoldenEnemy>();
-                            goldenenemy.Deathforsign();
-                            break;
-                        case 3:
                             ArmoredEnemy armoredenemy = nemici.GetComponent<ArmoredEnemy>();
                             armoredenemy.armoredLife = 1;
                             armoredenemy.Deathforsign();
                             break;
-                        case 4:
+                        case 3:
                             UndyingEnemy undyingenemy = nemici.GetComponent<UndyingEnemy>();
                             undyingenemy.Deathforsign();
                             break;
-                        case 5:
+                        case 4:
                             MalevolentEnemy malevolentenemy = nemici.GetComponent<MalevolentEnemy>();
                             malevolentenemy.Deathforsign();
                             break;
-                        case 6:
+                        case 5:
                             FrighteningEnemy frighteningenemy = nemici.GetComponent<FrighteningEnemy>();
                             frighteningenemy.Deathforsign();
                             break;
-                        case 7:
+                        case 6:
                             BufferEnemy bufferenemy = nemici.GetComponent<BufferEnemy>();
                             bufferenemy.Deathforsign();
                             break;

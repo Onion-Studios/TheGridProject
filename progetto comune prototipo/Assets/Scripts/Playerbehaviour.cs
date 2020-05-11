@@ -5,25 +5,22 @@ using UnityEngine;
 public class Playerbehaviour : MonoBehaviour
 {
     #region VARIABILI 
-    public GameObject personaggio;
+    public GameObject player;
     [HideInInspector]
-    public Vector3 posizionepersonaggio;
+    public Vector3 playerposition;
     public float speed;
-    public GameObject istanza;
+    public GameObject istanze;
     [HideInInspector]
-    public Vector3 origineraggio;
+    public Vector3 originray;
     Ray downraycheck;
     [SerializeField]
-    Material colorecubonuovo;
+    Material colorcube;
     grigliamanager grigliamanager;
     Managercombo managercombo;
     PowerupManager powerupmanager;
     Inkstone Inkstone;
     public Vector3 LastCubeChecked;
 
-    public int life;
-    public bool reciveDamage;
-    public int Gold;
     public int yokaislayercount;
     public string movementState;
     public float finalDestination;
@@ -68,9 +65,6 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xAxis = istanza.transform.position.x;
-        zAxis = istanza.transform.position.z;
-
         MovementHandler();
     }
 
@@ -80,38 +74,38 @@ public class Playerbehaviour : MonoBehaviour
         if (movementState == "readystate")
         {
         
-            if (Input.GetKey(KeyCode.W) && istanza.transform.position.z > 0.9)
+            if (Input.GetKey(KeyCode.W) && istanze.transform.position.z > 0.9)
             {
-                finalDestination = istanza.transform.position.z - 1;
+                finalDestination = istanze.transform.position.z - 1;
                 movementState = "movingforward";
 
             }
-            if (Input.GetKey(KeyCode.S) && istanza.transform.position.z < 3.1)
+            if (Input.GetKey(KeyCode.S) && istanze.transform.position.z < 3.1)
             {
-                finalDestination = istanza.transform.position.z + 1;
+                finalDestination = istanze.transform.position.z + 1;
                 movementState = "movingback";
 
             }
-            if (Input.GetKey(KeyCode.A) && istanza.transform.position.x < 3.1)
+            if (Input.GetKey(KeyCode.A) && istanze.transform.position.x < 3.1)
             {
-                finalDestination = istanza.transform.position.x + 1;
+                finalDestination = istanze.transform.position.x + 1;
                 movementState = "movingleft";
 
             }
-            if (Input.GetKey(KeyCode.D) && istanza.transform.position.x > 0.9)
+            if (Input.GetKey(KeyCode.D) && istanze.transform.position.x > 0.9)
             {
-                finalDestination = istanza.transform.position.x - 1;
+                finalDestination = istanze.transform.position.x - 1;
                 movementState = "movingright";
 
             }
             if (Input.GetKey(KeyCode.Space))
             {
-                managercombo.Checksign();
+                managercombo.CheckSign();
 
-                istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
-                istanza.transform.position = posizionepersonaggio;
-                grigliamanager.Resetcoloregriglia();
-                grigliamanager.ResetGrigliaLogica();
+                istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
+                istanze.transform.position = playerposition;
+                grigliamanager.ResetColorGrid();
+                grigliamanager.ResetGridLogic();
             }
         }
         else if (movementState == "waitstate")
@@ -135,19 +129,19 @@ public class Playerbehaviour : MonoBehaviour
         }
         else if (movementState == "movingforward")
         {
-            istanza.transform.rotation = Quaternion.Euler(0, 90, 0);
+            istanze.transform.rotation = Quaternion.Euler(0, 90, 0);
 
-            if (istanza.transform.position.z > finalDestination)
+            if (istanze.transform.position.z > finalDestination)
             {
-                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
             else
             {
-                if (istanza.transform.position.z < finalDestination)
+                if (istanze.transform.position.z < finalDestination)
                 {
-                    istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
+                    istanze.transform.position = new Vector3(istanze.transform.position.x, istanze.transform.position.y, finalDestination);
                 }
-                Castraggio();
+                ColorGrid();
                 if (Inkstone.Ink > 1)
                 {
                     Inkstone.Ink -= 1;
@@ -158,19 +152,19 @@ public class Playerbehaviour : MonoBehaviour
         }
         else if (movementState == "movingback")
         {
-            istanza.transform.rotation = Quaternion.Euler(0, -90, 0);
+            istanze.transform.rotation = Quaternion.Euler(0, -90, 0);
 
-            if (istanza.transform.position.z < finalDestination)
+            if (istanze.transform.position.z < finalDestination)
             {
-                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
             else
             {
-                if (istanza.transform.position.z > finalDestination)
+                if (istanze.transform.position.z > finalDestination)
                 {
-                    istanza.transform.position = new Vector3(istanza.transform.position.x, istanza.transform.position.y, finalDestination);
+                    istanze.transform.position = new Vector3(istanze.transform.position.x, istanze.transform.position.y, finalDestination);
                 }
-                Castraggio();
+                ColorGrid();
                 if (Inkstone.Ink > 1)
                 {
                     Inkstone.Ink -= 1;
@@ -181,19 +175,19 @@ public class Playerbehaviour : MonoBehaviour
         }
         else if (movementState == "movingleft")
         {
-            istanza.transform.rotation = Quaternion.Euler(0, 0, 0);
+            istanze.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-            if (istanza.transform.position.x < finalDestination)
+            if (istanze.transform.position.x < finalDestination)
             {
-                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
             else
             {
-                if (istanza.transform.position.x > finalDestination)
+                if (istanze.transform.position.x > finalDestination)
                 {
-                    istanza.transform.position = new Vector3(finalDestination, istanza.transform.position.y, istanza.transform.position.z);
+                    istanze.transform.position = new Vector3(finalDestination, istanze.transform.position.y, istanze.transform.position.z);
                 }
-                Castraggio();
+                ColorGrid();
                 if (Inkstone.Ink > 1)
                 {
                     Inkstone.Ink -= 1;
@@ -205,20 +199,20 @@ public class Playerbehaviour : MonoBehaviour
         }
         else if (movementState == "movingright")
         {
-            istanza.transform.rotation = Quaternion.Euler(0, 180, 0);
+            istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
 
 
-            if (istanza.transform.position.x > finalDestination)
+            if (istanze.transform.position.x > finalDestination)
             {
-                istanza.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
             else
             {
-                if (istanza.transform.position.x < finalDestination)
+                if (istanze.transform.position.x < finalDestination)
                 {
-                    istanza.transform.position = new Vector3(finalDestination, istanza.transform.position.y, istanza.transform.position.z);
+                    istanze.transform.position = new Vector3(finalDestination, istanze.transform.position.y, istanze.transform.position.z);
                 }
-                Castraggio();
+                ColorGrid();
                 if (Inkstone.Ink > 1)
                 {
                     Inkstone.Ink -= 1;
@@ -238,25 +232,25 @@ public class Playerbehaviour : MonoBehaviour
         {
             //istanzio il player sopra al cubo sommando un vettore
 
-            istanza = Instantiate(personaggio, posizionepersonaggio, Quaternion.Euler(0f, 180f, 0f), this.transform);
+            istanze = Instantiate(player, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
         }
 
         #endregion
 
-    #region RAYCAST CAMBIO COLORE GRIGLIA
+    #region RAYCAST CHANGE COLOR GRID
         // metodo che dichiara il raggio e lo lancia in basso se trova qualcosa ci cambia il colore 
-        void Castraggio()
+        void ColorGrid()
         {
-            origineraggio = (istanza.transform.position - new Vector3(0f, 0.5f, 0f));
-            downraycheck = new Ray(origineraggio, Vector3.down);
-            float distanzaraggio = 10f;
-            if (Physics.Raycast(downraycheck, out RaycastHit hit, distanzaraggio))
+            originray = (istanze.transform.position - new Vector3(0f, 0.5f, 0f));
+            downraycheck = new Ray(originray, Vector3.down);
+            float distanzeraggio = 10f;
+            if (Physics.Raycast(downraycheck, out RaycastHit hit, distanzeraggio))
             {
-                hit.collider.GetComponent<Renderer>().material = colorecubonuovo;
+                hit.collider.GetComponent<Renderer>().material = colorcube;
 
-                if (grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
+                if (grigliamanager.logicgrid[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
                 {
-                    grigliamanager.griglialogica[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] = true;
+                    grigliamanager.logicgrid[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] = true;
                 }
             }
         }

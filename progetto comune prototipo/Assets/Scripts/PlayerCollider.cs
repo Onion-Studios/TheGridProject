@@ -25,10 +25,6 @@ public class PlayerCollider : MonoBehaviour
         {
             other.GetComponent<KamikazeEnemy>().Deathforgriglia();
         }
-        if (other.gameObject.CompareTag("GoldenEnemy"))
-        {
-            other.GetComponent<GoldenEnemy>().Deathforgriglia();
-        }
         if (other.gameObject.CompareTag("ArmoredEnemy"))
         {
             other.GetComponent<ArmoredEnemy>().Deathforgriglia();

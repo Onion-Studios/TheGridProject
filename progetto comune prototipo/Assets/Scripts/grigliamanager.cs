@@ -5,15 +5,15 @@ using UnityEngine;
 public class grigliamanager : MonoBehaviour
 {
     #region VARIABILI
-    int colonne = 5;
-    int righe = 5;
-    public GameObject cubogriglia;
-    private GameObject istanzacubo;
+    int columnns = 5;
+    int lines = 5;
+    public GameObject cubegrid;
+    private GameObject istanzecube;
     List<GameObject> listadicubi = new List<GameObject>();
-    public bool[,] griglialogica = new bool[5, 5];
-    public Material colorebasegriglia;
+    public bool[,] logicgrid = new bool[5, 5];
+    public Material colorbasegrid;
     [SerializeField]
-    Material colorecentrogriglia;
+    Material colormidgrid;
     Managercombo managercombo;
     #endregion
 
@@ -23,24 +23,24 @@ public class grigliamanager : MonoBehaviour
     {
         //quando parte il programma creo la la griglia di cubi prendo una referenza al player
         //setto la posizione del personaggio e spawno il player in centro
-        //solo se le righe e le colonne sono dispari se no non abbiamo un centro nella griglia
-        if (colonne % 2 == 1 && righe % 2 == 1)
+        //solo se le lines e le columnns sono dispari se no non abbiamo un centro nella griglia
+        if (columnns % 2 == 1 && lines % 2 == 1)
         {
-            Creagriglia();
+            CreateGrid();
             Playerbehaviour player = FindObjectOfType<Playerbehaviour>();
             if(player == null)
             {
                 Debug.LogError("il playerbehaviour è NULL!");
             }
-            player.posizionepersonaggio = new Vector3(2, 1.05f, 2);
+            player.playerposition = new Vector3(2, 1.05f, 2);
             player.Spawn();
         }
         else
         {
-            Debug.Log("inserisci un numero di righe e colonne dispari");
+            Debug.Log("inserisci un numero di lines e columnns dispari");
         }
 
-        CentroGrigliaLogicaTrue();
+        MidGridLogicTrue();
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
         {
@@ -56,63 +56,63 @@ public class grigliamanager : MonoBehaviour
 
     //metodo che crea la griglia riga per riga istanziando i cubi e aggiungendo poi i cubi istanziati  
     //alla lista ''listadicubi''
-    void Creagriglia()
+    void CreateGrid()
     {
-        for (int c = 0; c < colonne; c++)
+        for (int c = 0; c < columnns; c++)
         {
-            for (int r = 0; r < righe; r++)
+            for (int r = 0; r < lines; r++)
             {
-                Vector3 posizionerighe = new Vector3(r, 0f, c);
-                istanzacubo = Instantiate(cubogriglia, posizionerighe, Quaternion.identity, this.transform);
+                Vector3 posizionelines = new Vector3(r, 0f, c);
+                istanzecube = Instantiate(cubegrid, posizionelines, Quaternion.identity, this.transform);
                 if(r == 2 && c == 2)
                 {
-                    istanzacubo.GetComponent<MeshRenderer>().material = colorecentrogriglia;
-                    istanzacubo.GetComponent<cubeprefabehaviour>().iscoloured = true;
+                    istanzecube.GetComponent<MeshRenderer>().material = colormidgrid;
+                    istanzecube.GetComponent<cubeprefabehaviour>().iscoloured = true;
                 }
-                listadicubi.Add(istanzacubo);
+                listadicubi.Add(istanzecube);
             }
         }
     }
 
     // cerca ogni elemento della lista dei cubi della gliglia
     // e fa tornare le caselle al colore bianco originale
-    public void Resetcoloregriglia()
+    public void ResetColorGrid()
     {
         foreach (var cube in listadicubi)
         {
             if (cube.transform.position == new Vector3(2f, 0, 2f))
             {
-                cube.GetComponent<Renderer>().material = colorecentrogriglia;
+                cube.GetComponent<Renderer>().material = colormidgrid;
                 cube.GetComponent<cubeprefabehaviour>().iscoloured = true;
             }
             else
             {
-                cube.GetComponent<Renderer>().material = colorebasegriglia;
+                cube.GetComponent<Renderer>().material = colorbasegrid;
                 cube.GetComponent<cubeprefabehaviour>().iscoloured = false;
             }
         }
     }
 
-    void CentroGrigliaLogicaTrue()
+    void MidGridLogicTrue()
     {
-        griglialogica[2, 2] = true;
+        logicgrid[2, 2] = true;
     }
 
-    public void ResetGrigliaLogica() 
+    public void ResetGridLogic() 
     {
         for (int x = 0; x < 5; x++)
         {
             for (int z = 0; z < 5; z++)
             {
-                if(griglialogica[x, z] == true)
+                if(logicgrid[x, z] == true)
                 {
                     if(x == 2 && z == 2)
                     {
-                        griglialogica[x, z] = true;
+                        logicgrid[x, z] = true;
                     }
                     else
                     {
-                        griglialogica[x, z] = false;
+                        logicgrid[x, z] = false;
                     }
                     
                 }
@@ -120,7 +120,7 @@ public class grigliamanager : MonoBehaviour
             }
         }
 
-        managercombo.CountCaselleAttivate = 0;
+        managercombo.CountBoxesActive = 0;
     }
 
 }
