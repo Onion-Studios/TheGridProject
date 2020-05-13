@@ -109,18 +109,18 @@ public class Playerbehaviour : MonoBehaviour
             {
                 waitTimer -= 1 * Time.deltaTime;
 
-                if (waitTimer < 0)
-                {
-                    waitTimer = 0;
-
-                    if (waitTimer == 0)
-                    {
-                        waitTimer = maxWaitTimer;
-                        movementState = "readystate";
-                    }
-                }
+               
             }
+            if (waitTimer < 0)
+            {
+                waitTimer = 0;
 
+            }
+            if (waitTimer == 0)
+            {
+                waitTimer = maxWaitTimer;
+                movementState = "readystate";
+            }
         }
         else if (movementState == "movingforward")
         {
