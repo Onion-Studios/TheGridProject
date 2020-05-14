@@ -33,6 +33,16 @@ public class GameManager : MonoBehaviour
 
     public void GoToEndMenu()
     {
+        SceneManager.LoadScene(4);
+    }
+
+    public void GoToMenuScreen()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void GoToSplashStart()
+    {
         SceneManager.LoadScene(2);
     }
 

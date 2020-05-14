@@ -32,8 +32,10 @@ public class PointSystem : MonoBehaviour
 
     void IncreaseOverTime()
     {
-
-        score += scoreSeconds / 60;
+        if(PauseMenu.GameIsPaused==false)
+        {
+            score += scoreSeconds / 60;
+        }
     }
 
     void Timer()
