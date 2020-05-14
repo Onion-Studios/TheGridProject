@@ -127,7 +127,8 @@ public class NormalEnemy : MonoBehaviour
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
 
-       
+       // score = baseScore + baseScore * 2 / 8.5 * enemyspawnmanager * 0.5;
+
     }
 
 

@@ -56,6 +56,7 @@ public class PointSystem : MonoBehaviour
             countercombo = 0;
         }
 
+
     }
 
     public void Combo()
