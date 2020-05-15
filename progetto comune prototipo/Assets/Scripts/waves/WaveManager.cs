@@ -374,7 +374,7 @@ public class WaveManager : MonoBehaviour
                                 break;
                             case 4:
                                 MalevolentEnemy malevolentEnemy = enemy.GetComponent<MalevolentEnemy>();
-                                malevolentEnemy.signmalevolentenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                /*malevolentEnemy.signmalevolentenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
                                 if (wavetospawn.lanes[i] == 0)
                                 {
                                     malevolentEnemy.speed = 1.35f;
@@ -394,7 +394,7 @@ public class WaveManager : MonoBehaviour
                                 else if (wavetospawn.lanes[i] == 4)
                                 {
                                     malevolentEnemy.speed = 1f;
-                                }
+                                }*/
                                 break;
                             case 5:
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
@@ -568,7 +568,7 @@ public class WaveManager : MonoBehaviour
                             break;
                         case 4:
                             MalevolentEnemy malevolentEnemy = enemy.GetComponent<MalevolentEnemy>();
-                            malevolentEnemy.signmalevolentenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
+                            /*malevolentEnemy.signmalevolentenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
                             if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
                             {
                                 malevolentEnemy.speed = 1.35f;
@@ -588,7 +588,7 @@ public class WaveManager : MonoBehaviour
                             else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
                             {
                                 malevolentEnemy.speed = 1f;
-                            }
+                            }*/
                             break;
                         case 5:
                             FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
