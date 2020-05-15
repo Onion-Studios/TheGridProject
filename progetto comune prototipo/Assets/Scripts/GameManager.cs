@@ -21,19 +21,25 @@ public class GameManager : MonoBehaviour
         ChangeIntensity(Enemyspawnmanager.enemykilled);
     }
 
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
 
     public void GoToGameplay()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void GoToEndMenu()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
+    }
+
+    public void GoToMenuScreen()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void GoToSplashStart()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public Playerbehaviour GetPlayerBehaviur()

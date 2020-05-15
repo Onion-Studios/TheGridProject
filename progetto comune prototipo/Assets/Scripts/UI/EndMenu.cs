@@ -8,11 +8,12 @@ public class EndMenu : MonoBehaviour
  
     public void GoToGameplay()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void QuitGame()
     {
+        Debug.Log("Quit");
         Application.Quit();
     }
 

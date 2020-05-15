@@ -33,7 +33,7 @@ public class Inkstone : MonoBehaviour
         }
         if(Ink == 0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
         if (Ink == 1)
         {

@@ -65,7 +65,8 @@ public class Playerbehaviour : MonoBehaviour
 
     void MovementHandler()
     {
-
+if(PauseMenu.GameIsPaused==false)
+    {
         if (movementState == "readystate")
         {
 
@@ -190,8 +191,9 @@ public class Playerbehaviour : MonoBehaviour
 
                 movementState = "waitstate";
             }
-
         }
+
+        
         else if (movementState == "movingright")
         {
             istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -216,7 +218,10 @@ public class Playerbehaviour : MonoBehaviour
 
                 movementState = "waitstate";
             }
+            
+           
         }
+     }
 
     }
 
