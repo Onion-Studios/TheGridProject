@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Playerbehaviour ActualPlayer;
     public int GameIntensity = 1;
     Enemyspawnmanager Enemyspawnmanager;
+    public int StartIntensity2 = 15;
+    public int StartIntensity3 = 25;
 
     private void Awake()
     {
@@ -43,15 +45,15 @@ public class GameManager : MonoBehaviour
 
     void ChangeIntensity(int enemykilled)
     {
-        if(enemykilled >= 0 && enemykilled < 5)
+        if(enemykilled >= 0 && enemykilled < StartIntensity2)
         {
             GameIntensity = 1;
         }
-        else if (enemykilled >= 5 && enemykilled < 10)
+        else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3)
         {
             GameIntensity = 2;
         }
-        else if (enemykilled >= 10)
+        else if (enemykilled >= StartIntensity3)
         {
             GameIntensity = 3;
         }
