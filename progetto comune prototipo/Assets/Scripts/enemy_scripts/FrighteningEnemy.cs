@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FrighteningEnemy : MonoBehaviour
 {
@@ -66,14 +64,13 @@ public class FrighteningEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Enemymove();
-
         Frightening();
+        Enemymove();
     }
 
     public void Frightening()
     {
-        if(reduceSpeed != playerbehaviour.speed)
+        if (reduceSpeed != playerbehaviour.speed)
         {
             playerbehaviour.speed = reduceSpeed;
         }
@@ -82,11 +79,14 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void Enemymove()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         if (this.transform.localPosition.x > 4.24)
         {
             DeathForEndGrid();
+        }
+        else
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
     }
 
@@ -108,7 +108,7 @@ public class FrighteningEnemy : MonoBehaviour
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         SecretT.bar = 0;
-        enemyspawnmanager.enemykilled  = 0;
+        enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);
@@ -122,7 +122,7 @@ public class FrighteningEnemy : MonoBehaviour
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.enemykilled  += 1;
+        enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += 10;
         SecretT.bar += SecretT.charge;
         foreach (GameObject segno in signfrighteningenemy)

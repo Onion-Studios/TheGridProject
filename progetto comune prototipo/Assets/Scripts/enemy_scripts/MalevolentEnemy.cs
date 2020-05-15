@@ -64,6 +64,10 @@ public class MalevolentEnemy : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(-1.3f, 4f, 6.5f);
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Deathforsign();
+        }
     }
 
     public void Deathforsign()

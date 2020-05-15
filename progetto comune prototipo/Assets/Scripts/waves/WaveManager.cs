@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
     public int[] SignGroup = new int[6];
     //LEGENDA il primo numero rappresenta l'intensita e il secondo la wave relativa a quell'intensita
     #region databasewave1
+    [Header("Intesità 1")]
     //data wave 1-1
     public int[] enemyIDWave1_1 = new int[10];
     public int[] LanesWave1_1 = new int[10];
@@ -40,6 +41,7 @@ public class WaveManager : MonoBehaviour
     public int[] SignGroupwave1_6 = new int[12];
     #endregion
     #region databasewave2
+    [Header("Intesità 2")]
     //data wave 2-1
     public int[] enemyIDWave2_1 = new int[12];
     public int[] LanesWave2_1 = new int[12];
@@ -72,6 +74,7 @@ public class WaveManager : MonoBehaviour
     public int[] SignGroupwave2_6 = new int[13];
     #endregion
     #region databasewave3
+    [Header("Intesità 3")]
     //data wave 3-1
     public int[] enemyIDWave3_1 = new int[13];
     public int[] LanesWave3_1 = new int[13];
@@ -139,7 +142,7 @@ public class WaveManager : MonoBehaviour
     public int Activewave_number;
     public bool TEST_WaveActive = false;
     public int TEST_waveintesity = 0;
-    public int TEST_wavenumber = 0;    
+    public int TEST_wavenumber = 0;
     wave wavetospawn;
     int casualwave;
 
@@ -151,7 +154,7 @@ public class WaveManager : MonoBehaviour
         Initializewaves();
         Initializeintensitywave();
         Initializedictionarywaves();
-        if(TEST_WaveActive == false)
+        if (TEST_WaveActive == false)
         {
             StartCoroutine(SpawnWaveCoroutine());
         }
@@ -164,13 +167,13 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+
     }
 
     void ShuffleAlgorithm(int[] array)
     {
-        for(int i = array.Length - 1; i > 0; i--)
+        for (int i = array.Length - 1; i > 0; i--)
         {
             int j = Random.Range(0, i);
             int tempvariable = array[i];
@@ -239,8 +242,8 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator SpawnWaveCoroutine()
     {
-        yield return new WaitForSeconds(3f); 
-        while(true)
+        yield return new WaitForSeconds(3f);
+        while (true)
         {
             ShuffleAlgorithm(SignGroup);
 
@@ -374,7 +377,7 @@ public class WaveManager : MonoBehaviour
                                 break;
                             case 4:
                                 MalevolentEnemy malevolentEnemy = enemy.GetComponent<MalevolentEnemy>();
-                                malevolentEnemy.signmalevolentenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                /*malevolentEnemy.signmalevolentenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
                                 if (wavetospawn.lanes[i] == 0)
                                 {
                                     malevolentEnemy.speed = 1.35f;
@@ -394,7 +397,7 @@ public class WaveManager : MonoBehaviour
                                 else if (wavetospawn.lanes[i] == 4)
                                 {
                                     malevolentEnemy.speed = 1f;
-                                }
+                                }*/
                                 break;
                             case 5:
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
@@ -454,10 +457,10 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(wavetospawn.delays[i]);
             }
         }
-        
+
     }
 
-     IEnumerator Testspawncoroutine(int waveintesnity, int wavenumber)
+    IEnumerator Testspawncoroutine(int waveintesnity, int wavenumber)
     {
         yield return new WaitForSeconds(3f);
         for (int i = 0; i < dictionarywaves[waveintesnity][wavenumber].enemyID.Length; i++)
@@ -568,7 +571,7 @@ public class WaveManager : MonoBehaviour
                             break;
                         case 4:
                             MalevolentEnemy malevolentEnemy = enemy.GetComponent<MalevolentEnemy>();
-                            malevolentEnemy.signmalevolentenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
+                            /*malevolentEnemy.signmalevolentenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
                             if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
                             {
                                 malevolentEnemy.speed = 1.35f;
@@ -588,7 +591,7 @@ public class WaveManager : MonoBehaviour
                             else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
                             {
                                 malevolentEnemy.speed = 1f;
-                            }
+                            }*/
                             break;
                         case 5:
                             FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
