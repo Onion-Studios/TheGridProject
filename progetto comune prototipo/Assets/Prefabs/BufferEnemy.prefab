@@ -678,7 +678,7 @@ MonoBehaviour:
   - {fileID: 8376121018324102043}
   segnocorrispondente: 0
   link: 7
-  Boost: 2
+  Boost: 1.25
   Reset: 0.8
   speed: 0
   endPosition: -6.5
