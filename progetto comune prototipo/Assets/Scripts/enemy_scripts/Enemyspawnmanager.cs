@@ -51,7 +51,7 @@ public class Enemyspawnmanager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
-            int randomenemyID = Random.Range(0, 7);
+            int randomenemyID = Random.Range(0, 8);
             int randomsegno = Random.Range(0, 6);
             int randomposition = Random.Range(0, 5);
             foreach (GameObject enemy in poolenemy[randomenemyID])

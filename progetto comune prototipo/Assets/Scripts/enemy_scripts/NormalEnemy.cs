@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class NormalEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signnormalenemy;
     public float baseSpeed;
+    public float startPosition;
+    public float totalScore;
     #endregion
 
     private void OnEnable()
@@ -55,6 +58,9 @@ public class NormalEnemy : MonoBehaviour
         }
 
         speed = baseSpeed;
+
+        startPosition = transform.position.x;
+        
     }
 
     // Start is called before the first frame update
@@ -69,6 +75,8 @@ public class NormalEnemy : MonoBehaviour
     void Update()
     {
         Enemymove();
+        PointOverDistance();
+
     }
 
     public void Enemymove()
@@ -125,12 +133,36 @@ public class NormalEnemy : MonoBehaviour
 
         pointsystem.Combo();
 
-        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+        pointsystem.score += (totalScore + scoreEnemy) * pointsystem.scoreMultiplier;
+        
+    }
 
-       // score = baseScore + baseScore * 2 / 8.5 * enemyspawnmanager * 0.5;
+
+    void PointOverDistance()
+    {
+
+        if(this.transform.position.x < -0.5f)
+        {
+
+            totalScore = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) -0.5f) * transform.position.x;
+        }
+        else
+        {
+            totalScore = scoreEnemy;
+        }
 
     }
 
+    void ExplosionDamage(Vector3 center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            hitColliders[i].SendMessage("AddDamage");
+            i++;
+        }
+    }
 
 
 }

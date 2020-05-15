@@ -65,6 +65,7 @@ public class UndyingEnemy : MonoBehaviour
         currentTime = maxTime;
         repelled = false;
 
+    
     }
 
     // Start is called before the first frame update
@@ -87,6 +88,7 @@ public class UndyingEnemy : MonoBehaviour
         {
             UndyingRepelled();
         }
+
     }
 
     public void Enemymove()
@@ -170,8 +172,6 @@ public class UndyingEnemy : MonoBehaviour
 
             }
 
-           
-
             pointsystem.currentTimer = pointsystem.maxTimer;
             pointsystem.countercombo++;
 
@@ -182,4 +182,5 @@ public class UndyingEnemy : MonoBehaviour
 
        
     }
+
 }

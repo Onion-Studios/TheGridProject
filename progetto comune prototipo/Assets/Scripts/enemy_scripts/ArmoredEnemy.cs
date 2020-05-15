@@ -21,6 +21,8 @@ public class ArmoredEnemy : MonoBehaviour
     public GameObject[] signarmoredenemy;
     public int armoredLife =2;
     public float baseSpeed;
+    public float startPosition;
+    public float totalScore;
     #endregion
 
 
@@ -57,6 +59,8 @@ public class ArmoredEnemy : MonoBehaviour
         }
 
         speed = baseSpeed;
+
+        startPosition = transform.position.x;
     }
 
     // Start is called before the first frame update
@@ -69,6 +73,8 @@ public class ArmoredEnemy : MonoBehaviour
     void Update()
     {
         Enemymove();
+
+        PointOverDistance();
     }
 
     public void Enemymove()
@@ -135,7 +141,23 @@ public class ArmoredEnemy : MonoBehaviour
 
         pointsystem.Combo();
 
-        pointsystem.score += scoreEnemy;
+        pointsystem.score += (totalScore + scoreEnemy) * pointsystem.scoreMultiplier;
 
     }
+
+    void PointOverDistance()
+    {
+
+        if (this.transform.position.x < -0.5f)
+        {
+
+            totalScore = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) - 0.5f) * transform.position.x;
+        }
+        else
+        {
+            totalScore = scoreEnemy;
+        }
+
+    }
+
 }
