@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Enemyspawnmanager : MonoBehaviour
 {
@@ -47,12 +46,13 @@ public class Enemyspawnmanager : MonoBehaviour
             }
 
         }*/
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     #region SPAWN ENEMY ROUTINE
@@ -99,7 +99,7 @@ public class Enemyspawnmanager : MonoBehaviour
                             {
                                 NormalEnemy.speed = 1.35f;
                             }
-                            else if (randomposition == 1) 
+                            else if (randomposition == 1)
                             {
                                 NormalEnemy.speed = 1.27f;
                             }
@@ -214,7 +214,7 @@ public class Enemyspawnmanager : MonoBehaviour
                             }
                             break;
                         case 5:
-                            MalevolentEnemy malevolentEnemy = nemico.GetComponent <MalevolentEnemy>();
+                            MalevolentEnemy malevolentEnemy = nemico.GetComponent<MalevolentEnemy>();
                             malevolentEnemy.segnimalevolentenemy[0].gameObject.SetActive(true);
                             malevolentEnemy.position = enemyspawnposition;
                             break;
@@ -274,7 +274,7 @@ public class Enemyspawnmanager : MonoBehaviour
 
                     break;
                 }
-                
+
             }
 
             yield return new WaitForSeconds(spawntimer);
@@ -371,12 +371,12 @@ public class Enemyspawnmanager : MonoBehaviour
                     poolnemici[nemicoID].Add(enemyinscene);
                 }
             }
-            else if(enemytospawn == prefabarray[7])
+            else if (enemytospawn == prefabarray[7])
             {
                 nemicoID = prefabarray[7].GetComponent<BufferEnemy>().enemyID;
                 List<GameObject> listanemicobuffer = new List<GameObject>();
                 poolnemici.Add(nemicoID, listanemicobuffer);
-                for(int i = 0; i < 5; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
