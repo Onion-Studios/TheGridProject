@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44075558, g: 0.48943096, b: 0.56955177, a: 1}
+  m_IndirectSpecularColor: {r: 0.44075575, g: 0.48943144, b: 0.56955254, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1492,14 +1492,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 310846701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0671ea918b29a4b9a94d157a2a58d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 112e1761c08c8b442987250af7d4a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
-  - name: Effect1
-    particleEffect: {fileID: 7432434404149713889, guid: ba2e735cf78c3e745a5b89286df31328,
-      type: 3}
-    instantiated: 0
+  particles: []
 --- !u!4 &310846703
 Transform:
   m_ObjectHideFlags: 0
