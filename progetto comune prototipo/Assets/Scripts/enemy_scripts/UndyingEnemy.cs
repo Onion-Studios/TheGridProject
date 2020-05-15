@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UndyingEnemy : MonoBehaviour
 {
@@ -64,24 +62,19 @@ public class UndyingEnemy : MonoBehaviour
 
         currentTime = maxTime;
         repelled = false;
-
+        startingPosition = this.transform.localPosition;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         DeathForTimer();
 
-        if(repelled == false)
+        if (repelled == false)
         {
-            
-           Enemymove();
+
+            Enemymove();
         }
         else
         {
@@ -102,29 +95,33 @@ public class UndyingEnemy : MonoBehaviour
         }
     }
 
-    
+
 
     public void DeathForStartGrid()
     {
         //this.gameObject.SetActive(false);
 
-        attackTimer -= 1 * Time.deltaTime;
+
+        if (attackTimer > 0)
+        {
+            attackTimer -= 1 * Time.deltaTime;
+        }
 
         if (attackTimer < 0)
         {
             attackTimer = 0;
         }
 
-        if(attackTimer == 0)
+        if (attackTimer == 0)
         {
             attackTimer = maxAttacktimer;
 
             Inkstone.Ink -= inkDamage;
             Inkstone.maxInk -= maxInkDamage;
             SecretT.bar = 0;
-            enemyspawnmanager.enemykilled  = 0;
+            enemyspawnmanager.enemykilled = 0;
 
-           
+
 
         }
     }
@@ -143,25 +140,28 @@ public class UndyingEnemy : MonoBehaviour
     {
         repelled = true;
         attackTimer = 0;
-     
+
     }
 
-    
+
     public void DeathForTimer()
     {
-        currentTime -= 1 * Time.deltaTime;
+        if (currentTime > 0)
+        {
+            currentTime -= 1 * Time.deltaTime;
+        }
 
         if (currentTime < 0)
         {
             currentTime = 0;
         }
 
-        if(currentTime == 0)
+        if (currentTime == 0)
         {
             this.gameObject.SetActive(false);
             attackTimer = 0;
             currentTime = maxTime;
-            enemyspawnmanager.enemykilled  += 1;
+            enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += 10;
             SecretT.bar += SecretT.charge;
             foreach (GameObject segno in signundyingenemy)
@@ -170,7 +170,7 @@ public class UndyingEnemy : MonoBehaviour
 
             }
 
-           
+
 
             pointsystem.currentTimer = pointsystem.maxTimer;
             pointsystem.countercombo++;
@@ -180,6 +180,6 @@ public class UndyingEnemy : MonoBehaviour
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
         }
 
-       
+
     }
 }
