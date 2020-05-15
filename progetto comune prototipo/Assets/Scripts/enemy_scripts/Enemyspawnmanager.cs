@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Enemyspawnmanager : MonoBehaviour
 {
@@ -42,7 +41,7 @@ public class Enemyspawnmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     #region SPAWN ENEMY ROUTINE
@@ -89,7 +88,7 @@ public class Enemyspawnmanager : MonoBehaviour
                             {
                                 NormalEnemy.baseSpeed = 1.35f;
                             }
-                            else if (randomposition == 1) 
+                            else if (randomposition == 1)
                             {
                                 NormalEnemy.baseSpeed = 1.27f;
                             }
@@ -240,7 +239,7 @@ public class Enemyspawnmanager : MonoBehaviour
 
                     break;
                 }
-                
+
             }
 
             yield return new WaitForSeconds(spawntimer);
