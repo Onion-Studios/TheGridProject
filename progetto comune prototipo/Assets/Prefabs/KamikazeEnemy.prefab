@@ -498,11 +498,13 @@ MonoBehaviour:
   - {fileID: 4248889033623794808}
   - {fileID: 8483640345975747758}
   baseSpeed: 1
-  blastRadius: 0
-  explosionPower: 0
+  blastRadius: 1
+  explosionPower: 100
   explosionLayers:
     serializedVersion: 2
     m_Bits: 0
+  startPosition: 0
+  totalScore: 0
 --- !u!135 &3900983130998621868
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -514,7 +516,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.75
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5948120941683113332
 GameObject:
