@@ -17,7 +17,7 @@ public class Enemyspawnmanager : MonoBehaviour
     public float spawntimer = 2.5f;
     public Transform enemyparent;
     public float[] positionpossible = new float[5];
-    #endregion 
+    #endregion
 
 
     // Start is called before the first frame update

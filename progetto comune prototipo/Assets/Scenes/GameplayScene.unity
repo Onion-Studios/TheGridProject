@@ -2007,10 +2007,10 @@ MonoBehaviour:
   scoreMultiplier: 1
   currentTimer: 0
   maxTimer: 5
-  threshold1: 0
-  threshold2: 0
-  threshold3: 0
-  threshold4: 0
+  threshold1: 10
+  threshold2: 20
+  threshold3: 30
+  threshold4: 40
   countercombo: 0
   floatscore: 0
 --- !u!4 &305775847

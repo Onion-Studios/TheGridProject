@@ -601,6 +601,9 @@ MonoBehaviour:
   - {fileID: 5763490521501441068}
   - {fileID: 5288535271106822655}
   baseSpeed: 1
+  startPosition: 0
+  extrapointsoverdistance: 0
+  startGrid: -1
 --- !u!54 &1734876840858482977
 Rigidbody:
   m_ObjectHideFlags: 0

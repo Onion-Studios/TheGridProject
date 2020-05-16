@@ -18,6 +18,9 @@ public class FrighteningEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signfrighteningenemy;
     public float baseSpeed;
+    public float startPosition;
+    public float extrapointsoverdistance;
+    public float startGrid;
     #endregion
 
     private void OnEnable()
@@ -53,6 +56,8 @@ public class FrighteningEnemy : MonoBehaviour
         }
 
         speed = baseSpeed;
+
+        startPosition = transform.position.x;
     }
 
     // Start is called before the first frame update
@@ -66,6 +71,8 @@ public class FrighteningEnemy : MonoBehaviour
     {
         Frightening();
         Enemymove();
+
+        PointOverDistance();
     }
 
     public void Frightening()
@@ -137,6 +144,18 @@ public class FrighteningEnemy : MonoBehaviour
 
         pointsystem.Combo();
 
-        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+        pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+    }
+
+    void PointOverDistance()
+    {
+        if (this.transform.position.x < startGrid)
+        {
+            extrapointsoverdistance = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) - Mathf.Abs(startGrid)) * transform.position.x;
+        }
+        else
+        {
+            extrapointsoverdistance = scoreEnemy;
+        }
     }
 }

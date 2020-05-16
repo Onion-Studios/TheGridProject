@@ -80,6 +80,7 @@ public class UndyingEnemy : MonoBehaviour
         {
             UndyingRepelled();
         }
+
     }
 
     public void Enemymove()
@@ -170,8 +171,6 @@ public class UndyingEnemy : MonoBehaviour
 
             }
 
-
-
             pointsystem.currentTimer = pointsystem.maxTimer;
             pointsystem.countercombo++;
 
@@ -182,4 +181,5 @@ public class UndyingEnemy : MonoBehaviour
 
 
     }
+
 }

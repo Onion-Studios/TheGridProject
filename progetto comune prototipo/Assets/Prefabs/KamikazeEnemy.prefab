@@ -386,9 +386,9 @@ GameObject:
   - component: {fileID: 6873361951499052415}
   - component: {fileID: 6142851999336339452}
   - component: {fileID: 2858506562521603973}
-  - component: {fileID: 8968755045172085044}
   - component: {fileID: 2080394046562330456}
   - component: {fileID: 6542175078783933593}
+  - component: {fileID: 3900983130998621868}
   m_Layer: 0
   m_Name: KamikazeEnemy
   m_TagString: KamikazeEnemy
@@ -457,19 +457,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8968755045172085044
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5789317877869633906}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8, y: 1, z: 8}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2080394046562330456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -511,6 +498,27 @@ MonoBehaviour:
   - {fileID: 4248889033623794808}
   - {fileID: 8483640345975747758}
   baseSpeed: 1
+  blastRadius: 1
+  explosionPower: 100
+  explosionLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  startPosition: 0
+  extrapointsoverdistance: 0
+  startGrid: -1
+--- !u!135 &3900983130998621868
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789317877869633906}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5948120941683113332
 GameObject:
   m_ObjectHideFlags: 0

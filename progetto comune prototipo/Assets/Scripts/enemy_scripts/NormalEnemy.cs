@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,9 @@ public class NormalEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signnormalenemy;
     public float baseSpeed;
+    public float startPosition;
+    public float extrapointsoverdistance;
+    public float startGrid;
     #endregion
 
     private void OnEnable()
@@ -55,6 +59,9 @@ public class NormalEnemy : MonoBehaviour
         }
 
         speed = baseSpeed;
+
+        startPosition = transform.position.x;
+        
     }
 
     // Start is called before the first frame update
@@ -69,6 +76,8 @@ public class NormalEnemy : MonoBehaviour
     void Update()
     {
         Enemymove();
+        PointOverDistance();
+
     }
 
     public void Enemymove()
@@ -125,12 +134,24 @@ public class NormalEnemy : MonoBehaviour
 
         pointsystem.Combo();
 
-        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
-
-       
+        pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        
     }
 
 
+    void PointOverDistance()
+    {
+        if(this.transform.position.x < startGrid)
+        {
+            extrapointsoverdistance = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) - Mathf.Abs(startGrid)) * transform.position.x;
+        }
+        else
+        {
+            extrapointsoverdistance = scoreEnemy;
+        }
+
+    }
+ 
 
 }
 

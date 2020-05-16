@@ -123,6 +123,9 @@ MonoBehaviour:
   - {fileID: 2862626446979439224}
   armoredLife: 2
   baseSpeed: 1
+  startPosition: 0
+  extrapointsoverdistance: 0
+  startGrid: -1
 --- !u!54 &8172587831837169310
 Rigidbody:
   m_ObjectHideFlags: 0

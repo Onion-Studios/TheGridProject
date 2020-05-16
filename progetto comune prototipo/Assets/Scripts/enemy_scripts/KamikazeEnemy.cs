@@ -18,7 +18,14 @@ public class KamikazeEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signkamikazenemy;
     public float baseSpeed;
-    
+
+    private Collider[] hitColliders;
+    public float blastRadius;
+    public float explosionPower;
+    public LayerMask explosionLayers;
+    public float startPosition;
+    public float extrapointsoverdistance;
+    public float startGrid;
     #endregion
 
     private void OnEnable()
@@ -54,6 +61,9 @@ public class KamikazeEnemy : MonoBehaviour
         }
 
         speed = baseSpeed;
+
+        startPosition = transform.position.x;
+
     }
 
     // Start is called before the first frame update
@@ -67,7 +77,9 @@ public class KamikazeEnemy : MonoBehaviour
     {
         Enemymove();
 
+        PointOverDistance();
     }
+        
 
     public void Enemymove()
     {
@@ -87,9 +99,6 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-
-       
-
     }
 
     public void Deathforgriglia()
@@ -103,8 +112,6 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-      
-
     }
 
     public void Deathforsign()
@@ -118,17 +125,45 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
 
+       
+
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
 
         pointsystem.Combo();
 
-        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
-
-    
+        pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
     }
 
-   
+    void PointOverDistance()
+    {
+        if (this.transform.position.x < startGrid)
+        {
+            extrapointsoverdistance = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) - Mathf.Abs(startGrid)) * transform.position.x;
+        }
+        else
+        {
+            extrapointsoverdistance = scoreEnemy;
+        }
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        Destroy(gameObject);
+        ExplosionWork(col.contacts[0].point);
+    }
+
+    void ExplosionWork(Vector3 explosionPoint)
+    {
+        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);
+        foreach (Collider hitCol in hitColliders)
+        {
+            if (hitCol.GetComponent<Rigidbody>() != null)
+            {
+                hitCol.GetComponent<Rigidbody>().AddExplosionForce(explosionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
+            }
+        }
+    }
 
 }
 
