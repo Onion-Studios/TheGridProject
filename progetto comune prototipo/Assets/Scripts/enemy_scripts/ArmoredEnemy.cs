@@ -22,7 +22,8 @@ public class ArmoredEnemy : MonoBehaviour
     public int armoredLife =2;
     public float baseSpeed;
     public float startPosition;
-    public float totalScore;
+    public float extrapointsoverdistance;
+    public float startGrid;
     #endregion
 
 
@@ -141,23 +142,20 @@ public class ArmoredEnemy : MonoBehaviour
 
         pointsystem.Combo();
 
-        pointsystem.score += (totalScore + scoreEnemy) * pointsystem.scoreMultiplier;
+        pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
 
     }
 
     void PointOverDistance()
     {
-
-        if (this.transform.position.x < -0.5f)
+        if (this.transform.position.x < startGrid)
         {
-
-            totalScore = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) - 0.5f) * transform.position.x;
+            extrapointsoverdistance = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) - Mathf.Abs(startGrid)) * transform.position.x;
         }
         else
         {
-            totalScore = scoreEnemy;
+            extrapointsoverdistance = scoreEnemy;
         }
-
     }
 
 }

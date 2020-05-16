@@ -504,7 +504,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   startPosition: 0
-  totalScore: 0
+  extrapointsoverdistance: 0
+  startGrid: -1
 --- !u!135 &3900983130998621868
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -363,6 +363,7 @@ MonoBehaviour:
   baseSpeed: 1
   startPosition: 0
   totalScore: 0
+  startGrid: -1
 --- !u!135 &8343927349969848656
 SphereCollider:
   m_ObjectHideFlags: 0
