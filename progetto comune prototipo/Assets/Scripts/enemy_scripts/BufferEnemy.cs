@@ -264,13 +264,12 @@ public class BufferEnemy : MonoBehaviour
 
         this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled  += 1;
+        Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         foreach (GameObject segno in signbufferenemy)
         {
             segno.SetActive(false);
         }
-
         SpeedReset();
-
     }
 }

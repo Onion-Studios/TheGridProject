@@ -23,6 +23,7 @@ public class Playerbehaviour : MonoBehaviour
     public float finalDestination;
     public float waitTimer;
     public float maxWaitTimer;
+    public int inkGained;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco

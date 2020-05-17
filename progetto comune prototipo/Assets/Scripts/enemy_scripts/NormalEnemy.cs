@@ -121,7 +121,7 @@ public class NormalEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled  += 1;
-        Inkstone.Ink += 10;
+        Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         foreach (GameObject segno in signnormalenemy)
         {

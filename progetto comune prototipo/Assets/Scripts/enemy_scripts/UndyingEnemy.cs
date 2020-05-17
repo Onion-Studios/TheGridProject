@@ -119,11 +119,9 @@ public class UndyingEnemy : MonoBehaviour
 
             Inkstone.Ink -= inkDamage;
             Inkstone.maxInk -= maxInkDamage;
+            Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar = 0;
             enemyspawnmanager.enemykilled = 0;
-
-
-
         }
     }
 
@@ -163,7 +161,7 @@ public class UndyingEnemy : MonoBehaviour
             attackTimer = 0;
             currentTime = maxTime;
             enemyspawnmanager.enemykilled += 1;
-            Inkstone.Ink += 10;
+            Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
             foreach (GameObject segno in signundyingenemy)
             {
@@ -178,8 +176,5 @@ public class UndyingEnemy : MonoBehaviour
 
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
         }
-
-
     }
-
 }

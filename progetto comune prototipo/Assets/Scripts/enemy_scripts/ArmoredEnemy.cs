@@ -128,7 +128,7 @@ public class ArmoredEnemy : MonoBehaviour
         {
             armoredLife = 2;
             enemyspawnmanager.enemykilled += 2;
-            Inkstone.Ink += 10;
+            Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
             foreach (GameObject segno in signarmoredenemy)
             {
