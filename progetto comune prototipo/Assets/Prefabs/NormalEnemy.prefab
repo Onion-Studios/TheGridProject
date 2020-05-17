@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 8875055199266658808}
   - component: {fileID: 2016865028719667809}
   - component: {fileID: 7286310110183585125}
-  - component: {fileID: 8343927349969848656}
+  - component: {fileID: -5915257153677035356}
   m_Layer: 0
   m_Name: NormalEnemy
   m_TagString: NormalEnemy
@@ -362,10 +362,10 @@ MonoBehaviour:
   - {fileID: 3849260898203632313}
   baseSpeed: 1
   startPosition: 0
-  totalScore: 0
+  extrapointsoverdistance: 0
   startGrid: -1
---- !u!135 &8343927349969848656
-SphereCollider:
+--- !u!65 &-5915257153677035356
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -375,7 +375,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6210717834288358121
 GameObject:
