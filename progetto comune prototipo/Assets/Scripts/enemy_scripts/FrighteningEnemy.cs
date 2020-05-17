@@ -5,11 +5,12 @@ public class FrighteningEnemy : MonoBehaviour
     #region VARIABLES
     public int enemyID = 5;
     [SerializeField]
-    public float speed = 1;
+    public float speed;
     public float playerSpeed;
     public float reduceSpeed;
-    public int inkDamage = 20;
-    public int maxInkDamage = 10;
+    public int inkDamage;
+    public int maxInkDamage;
+    public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
@@ -100,7 +101,7 @@ public class FrighteningEnemy : MonoBehaviour
     public void DeathForEndGrid()
     {
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= 10;
+        Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);

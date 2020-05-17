@@ -112,8 +112,8 @@ MonoBehaviour:
   maxSpeed: 2
   inkDamage: 20
   maxInkDamage: 10
-  inkstoneDamage: 5
-  scoreEnemy: 0
+  inkstoneDamage: 15
+  scoreEnemy: 1000
   signarmoredenemy:
   - {fileID: 4411038961816747145}
   - {fileID: 5212911854588259684}

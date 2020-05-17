@@ -7,10 +7,10 @@ public class ArmoredEnemy : MonoBehaviour
     #region VARIABLES
     public int enemyID = 2;
     [SerializeField]
-    public float speed = 1;
+    public float speed;
     public float maxSpeed;
-    public int inkDamage = 20;
-    public int maxInkDamage = 10;
+    public int inkDamage;
+    public int maxInkDamage;
     public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;

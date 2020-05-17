@@ -9,9 +9,9 @@ public class NormalEnemy : MonoBehaviour
     #region VARIABLES
     public int enemyID = 0;
     [SerializeField]
-    public float speed = 1;
-    public int inkDamage = 20;
-    public int maxInkDamage = 10;
+    public float speed;
+    public int inkDamage;
+    public int maxInkDamage;
     public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
