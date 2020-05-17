@@ -1443,7 +1443,7 @@ MonoBehaviour:
   movementState: 
   finalDestination: 0
   waitTimer: 0
-  maxWaitTimer: 0.06
+  maxWaitTimer: 0.03
   inkGained: 4
 --- !u!4 &228951399
 Transform:
