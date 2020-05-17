@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3721451648942152997}
   - component: {fileID: 7286310110183585125}
+  - component: {fileID: 8261789596862575091}
   m_Layer: 0
   m_Name: NormalEnemy
   m_TagString: NormalEnemy
@@ -316,6 +317,19 @@ MonoBehaviour:
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1
+--- !u!65 &8261789596862575091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107168194925000548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6210717834288358121
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,19 +630,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!65 &6059686572457220115
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8296172669468159691}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &284915650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,12 +709,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4c60ff57049efc84cba02cd0b69c6f9e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98cf6d77af28e704aa763f86dbc14245, type: 3}
---- !u!1 &8296172669468159691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 98cf6d77af28e704aa763f86dbc14245,
-    type: 3}
-  m_PrefabInstance: {fileID: 284915650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5006512735071165656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 98cf6d77af28e704aa763f86dbc14245,
