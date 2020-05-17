@@ -592,6 +592,7 @@ MonoBehaviour:
   reduceSpeed: 7
   inkDamage: 20
   maxInkDamage: 10
+  inkstoneDamage: 15
   scoreEnemy: 1000
   signfrighteningenemy:
   - {fileID: 3250650709829629116}

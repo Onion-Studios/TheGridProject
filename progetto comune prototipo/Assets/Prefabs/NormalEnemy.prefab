@@ -351,7 +351,7 @@ MonoBehaviour:
   speed: 1
   inkDamage: 20
   maxInkDamage: 10
-  inkstoneDamage: 5
+  inkstoneDamage: 15
   scoreEnemy: 1000
   signnormalenemy:
   - {fileID: 6582825359787811251}

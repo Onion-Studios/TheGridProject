@@ -7,9 +7,9 @@ public class KamikazeEnemy : MonoBehaviour
     #region VARIABLES
     public int enemyID = 1;
     [SerializeField]
-    public float speed = 1;
-    public int inkDamage = 20;
-    public int maxInkDamage = 10;
+    public float speed;
+    public int inkDamage;
+    public int maxInkDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;

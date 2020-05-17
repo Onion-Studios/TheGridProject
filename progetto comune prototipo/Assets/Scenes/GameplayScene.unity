@@ -2015,10 +2015,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  scoreSeconds: 1
+  scoreSeconds: 30
   scoreMultiplier: 1
   currentTimer: 0
-  maxTimer: 5
+  maxTimer: 2
   threshold1: 10
   threshold2: 20
   threshold3: 30
