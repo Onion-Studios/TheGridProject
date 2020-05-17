@@ -15,7 +15,6 @@ public class Playerbehaviour : MonoBehaviour
     Material colorcube;
     grigliamanager grigliamanager;
     Managercombo managercombo;
-    PowerupManager powerupmanager;
     Inkstone Inkstone;
     public Vector3 LastCubeChecked;
     public int yokaislayercount;
@@ -29,11 +28,6 @@ public class Playerbehaviour : MonoBehaviour
     // prendo le referenze che mi servono quando inizia il gioco
     void Start()
     {
-        powerupmanager = FindObjectOfType<PowerupManager>();
-        if (powerupmanager == null)
-        {
-            Debug.LogError("powerupmanager è null!");
-        }
 
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
