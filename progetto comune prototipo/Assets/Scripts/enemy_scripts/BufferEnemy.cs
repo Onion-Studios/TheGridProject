@@ -120,11 +120,12 @@ public class BufferEnemy : MonoBehaviour
                         case 2:
                             {
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                                if (ArmoredEnemy.speed == ArmoredEnemy.baseSpeed)
+                                if (ArmoredEnemy.speed == ArmoredEnemy.baseSpeed || ArmoredEnemy.speed == ArmoredEnemy.baseSpeedMax)
                                 {
                                     ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
 
                                 }
+                                
 
                             }
                             break;
@@ -203,12 +204,19 @@ public class BufferEnemy : MonoBehaviour
                         case 2:
                             {
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                                if (ArmoredEnemy.speed != ArmoredEnemy.baseSpeed)
+                                if (ArmoredEnemy.speed != ArmoredEnemy.baseSpeed && ArmoredEnemy.speed != ArmoredEnemy.baseSpeedMax)
                                 {
-                                    ArmoredEnemy.speed = ArmoredEnemy.baseSpeed;
+                                    if (ArmoredEnemy.armoredLife == 2)
+                                    {
+                                        ArmoredEnemy.speed = ArmoredEnemy.baseSpeed;
+                                    }
+                                    else 
+                                    {
+                                        ArmoredEnemy.speed = ArmoredEnemy.baseSpeedMax;
+                                    }
+
 
                                 }
-
                             }
                             break;
                         case 3:
