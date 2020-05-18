@@ -99,6 +99,7 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+        ExplosionWork(this.transform.position);
     }
 
     public void Deathforgriglia()
@@ -112,6 +113,8 @@ public class KamikazeEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+
+        ExplosionWork(this.transform.position);
     }
 
     public void Deathforsign()
