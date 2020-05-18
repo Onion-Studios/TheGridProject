@@ -281,99 +281,23 @@ public class WaveManager : MonoBehaviour
                             case 0:
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 NormalEnemy.signnormalenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
-                                if (wavetospawn.lanes[i] == 0)
-                                {
-                                    NormalEnemy.speed = 1.35f;
-                                }
-                                else if (wavetospawn.lanes[i] == 1)
-                                {
-                                    NormalEnemy.speed = 1.27f;
-                                }
-                                else if (wavetospawn.lanes[i] == 2)
-                                {
-                                    NormalEnemy.speed = 1.17f;
-                                }
-                                else if (wavetospawn.lanes[i] == 3)
-                                {
-                                    NormalEnemy.speed = 1.07f;
-                                }
-                                else if (wavetospawn.lanes[i] == 4)
-                                {
-                                    NormalEnemy.speed = 1f;
-                                }
+                                NormalEnemy.speed = NormalEnemy.baseSpeed;
                                 break;
                             case 1:
                                 KamikazeEnemy kamikazeenemy = enemy.GetComponent<KamikazeEnemy>();
                                 kamikazeenemy.signkamikazenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
-                                if (wavetospawn.lanes[i] == 0)
-                                {
-                                    kamikazeenemy.speed = 1.35f;
-                                }
-                                else if (wavetospawn.lanes[i] == 1)
-                                {
-                                    kamikazeenemy.speed = 1.27f;
-                                }
-                                else if (wavetospawn.lanes[i] == 2)
-                                {
-                                    kamikazeenemy.speed = 1.17f;
-                                }
-                                else if (wavetospawn.lanes[i] == 3)
-                                {
-                                    kamikazeenemy.speed = 1.07f;
-                                }
-                                else if (wavetospawn.lanes[i] == 4)
-                                {
-                                    kamikazeenemy.speed = 1f;
-                                }
+                                kamikazeenemy.speed = kamikazeenemy.baseSpeed;
                                 break;
                             case 2:
                                 ArmoredEnemy armoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 armoredEnemy.signarmoredenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
-                                if (wavetospawn.lanes[i] == 0)
-                                {
-                                    armoredEnemy.speed = 1.35f;
-                                }
-                                else if (wavetospawn.lanes[i] == 1)
-                                {
-                                    armoredEnemy.speed = 1.27f;
-                                }
-                                else if (wavetospawn.lanes[i] == 2)
-                                {
-                                    armoredEnemy.speed = 1.17f;
-                                }
-                                else if (wavetospawn.lanes[i] == 3)
-                                {
-                                    armoredEnemy.speed = 1.07f;
-                                }
-                                else if (wavetospawn.lanes[i] == 4)
-                                {
-                                    armoredEnemy.speed = 1f;
-                                }
+                                armoredEnemy.speed = armoredEnemy.baseSpeed;
                                 break;
                             case 3:
                                 UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
                                 undyingEnemy.signundyingenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
                                 //undyingEnemy.startingPosition = enemyspawnposition;
-                                if (wavetospawn.lanes[i] == 0)
-                                {
-                                    undyingEnemy.speed = 1.35f;
-                                }
-                                else if (wavetospawn.lanes[i] == 1)
-                                {
-                                    undyingEnemy.speed = 1.27f;
-                                }
-                                else if (wavetospawn.lanes[i] == 2)
-                                {
-                                    undyingEnemy.speed = 1.17f;
-                                }
-                                else if (wavetospawn.lanes[i] == 3)
-                                {
-                                    undyingEnemy.speed = 1.07f;
-                                }
-                                else if (wavetospawn.lanes[i] == 4)
-                                {
-                                    undyingEnemy.speed = 1f;
-                                }
+                                undyingEnemy.speed = undyingEnemy.baseSpeed;
                                 break;
                             case 4:
                                 MalevolentEnemy malevolentEnemy = enemy.GetComponent<MalevolentEnemy>();
@@ -402,50 +326,12 @@ public class WaveManager : MonoBehaviour
                             case 5:
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
                                 frighteningEnemy.signfrighteningenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
-                                if (wavetospawn.lanes[i] == 0)
-                                {
-                                    frighteningEnemy.speed = 1.35f;
-                                }
-                                else if (wavetospawn.lanes[i] == 1)
-                                {
-                                    frighteningEnemy.speed = 1.27f;
-                                }
-                                else if (wavetospawn.lanes[i] == 2)
-                                {
-                                    frighteningEnemy.speed = 1.17f;
-                                }
-                                else if (wavetospawn.lanes[i] == 3)
-                                {
-                                    frighteningEnemy.speed = 1.07f;
-                                }
-                                else if (wavetospawn.lanes[i] == 4)
-                                {
-                                    frighteningEnemy.speed = 1f;
-                                }
+                                frighteningEnemy.speed = frighteningEnemy.baseSpeed;
                                 break;
                             case 6:
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
                                 bufferEnemy.signbufferenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
-                                if (wavetospawn.lanes[i] == 0)
-                                {
-                                    bufferEnemy.speed = 1.35f;
-                                }
-                                else if (wavetospawn.lanes[i] == 1)
-                                {
-                                    bufferEnemy.speed = 1.27f;
-                                }
-                                else if (wavetospawn.lanes[i] == 2)
-                                {
-                                    bufferEnemy.speed = 1.17f;
-                                }
-                                else if (wavetospawn.lanes[i] == 3)
-                                {
-                                    bufferEnemy.speed = 1.07f;
-                                }
-                                else if (wavetospawn.lanes[i] == 4)
-                                {
-                                    bufferEnemy.speed = 1f;
-                                }
+                                bufferEnemy.speed = bufferEnemy.baseSpeed;
                                 break;
                             default:
                                 break;
@@ -475,99 +361,23 @@ public class WaveManager : MonoBehaviour
                         case 0:
                             NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                             NormalEnemy.signnormalenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
-                            if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
-                            {
-                                NormalEnemy.speed = 1.35f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 1)
-                            {
-                                NormalEnemy.speed = 1.27f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 2)
-                            {
-                                NormalEnemy.speed = 1.17f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 3)
-                            {
-                                NormalEnemy.speed = 1.07f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
-                            {
-                                NormalEnemy.speed = 1f;
-                            }
+                            NormalEnemy.speed = NormalEnemy.baseSpeed;
                             break;
                         case 1:
                             KamikazeEnemy kamikazeenemy = enemy.GetComponent<KamikazeEnemy>();
                             kamikazeenemy.signkamikazenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
-                            if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
-                            {
-                                kamikazeenemy.speed = 1.35f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 1)
-                            {
-                                kamikazeenemy.speed = 1.27f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 2)
-                            {
-                                kamikazeenemy.speed = 1.17f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 3)
-                            {
-                                kamikazeenemy.speed = 1.07f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
-                            {
-                                kamikazeenemy.speed = 1f;
-                            }
+                            kamikazeenemy.speed = kamikazeenemy.baseSpeed;
                             break;
                         case 2:
                             ArmoredEnemy armoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                             armoredEnemy.signarmoredenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
-                            if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
-                            {
-                                armoredEnemy.speed = 1.35f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 1)
-                            {
-                                armoredEnemy.speed = 1.27f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 2)
-                            {
-                                armoredEnemy.speed = 1.17f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 3)
-                            {
-                                armoredEnemy.speed = 1.07f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
-                            {
-                                armoredEnemy.speed = 1f;
-                            }
+                            armoredEnemy.speed = armoredEnemy.baseSpeed;
                             break;
                         case 3:
                             UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
                             undyingEnemy.signundyingenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
                             //undyingEnemy.startingPosition = enemyspawnposition;
-                            if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
-                            {
-                                undyingEnemy.speed = 1.35f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 1)
-                            {
-                                undyingEnemy.speed = 1.27f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 2)
-                            {
-                                undyingEnemy.speed = 1.17f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 3)
-                            {
-                                undyingEnemy.speed = 1.07f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
-                            {
-                                undyingEnemy.speed = 1f;
-                            }
+                            undyingEnemy.speed = undyingEnemy.baseSpeed;
                             break;
                         case 4:
                             MalevolentEnemy malevolentEnemy = enemy.GetComponent<MalevolentEnemy>();
@@ -596,50 +406,12 @@ public class WaveManager : MonoBehaviour
                         case 5:
                             FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
                             frighteningEnemy.signfrighteningenemy[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1].gameObject.SetActive(true);
-                            if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
-                            {
-                                frighteningEnemy.speed = 1.35f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 1)
-                            {
-                                frighteningEnemy.speed = 1.27f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 2)
-                            {
-                                frighteningEnemy.speed = 1.17f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 3)
-                            {
-                                frighteningEnemy.speed = 1.07f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
-                            {
-                                frighteningEnemy.speed = 1f;
-                            }
+                            frighteningEnemy.speed = frighteningEnemy.baseSpeed;
                             break;
                         case 6:
                             BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
                             bufferEnemy.signbufferenemy[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1].gameObject.SetActive(true);
-                            if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 0)
-                            {
-                                bufferEnemy.speed = 1.35f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 1)
-                            {
-                                bufferEnemy.speed = 1.27f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 2)
-                            {
-                                bufferEnemy.speed = 1.17f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 3)
-                            {
-                                bufferEnemy.speed = 1.07f;
-                            }
-                            else if (dictionarywaves[waveintesnity][wavenumber].lanes[i] == 4)
-                            {
-                                bufferEnemy.speed = 1f;
-                            }
+                            bufferEnemy.speed = bufferEnemy.baseSpeed;
                             break;
                         default:
                             break;
