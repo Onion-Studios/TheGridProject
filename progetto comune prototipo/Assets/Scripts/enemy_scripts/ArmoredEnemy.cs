@@ -8,7 +8,7 @@ public class ArmoredEnemy : MonoBehaviour
     public int enemyID = 2;
     [SerializeField]
     public float speed;
-    public float maxSpeed;
+    public float baseSpeedMax;
     public int inkDamage;
     public int maxInkDamage;
     public int inkstoneDamage;
@@ -115,7 +115,7 @@ public class ArmoredEnemy : MonoBehaviour
     {
         if (armoredLife == 2)
         {
-            speed = maxSpeed;
+            speed = baseSpeedMax;
             armoredLife -= 1;
             foreach (GameObject segno in signarmoredenemy)
             {
