@@ -393,7 +393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6873361951499052415
 Transform:
   m_ObjectHideFlags: 0
@@ -451,11 +451,11 @@ MonoBehaviour:
   - {fileID: 4248889033623794808}
   - {fileID: 8483640345975747758}
   baseSpeed: 1
-  blastRadius: 1
+  blastRadius: 1.5
   explosionPower: 100
   explosionLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1

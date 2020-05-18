@@ -125,7 +125,7 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
 
-       
+        ExplosionWork(this.transform.position);
 
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
@@ -150,7 +150,6 @@ public class KamikazeEnemy : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         Destroy(gameObject);
-        ExplosionWork(col.contacts[0].point);
     }
 
     void ExplosionWork(Vector3 explosionPoint)
@@ -158,9 +157,21 @@ public class KamikazeEnemy : MonoBehaviour
         hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);
         foreach (Collider hitCol in hitColliders)
         {
-            if (hitCol.GetComponent<Rigidbody>() != null)
+            if (hitCol.gameObject.GetComponent<NormalEnemy>() != null)
             {
-                hitCol.GetComponent<Rigidbody>().AddExplosionForce(explosionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
+                hitCol.gameObject.GetComponent<NormalEnemy>().Deathforsign();
+            }
+            else if(hitCol.gameObject.GetComponent<ArmoredEnemy>() != null)
+            {
+                hitCol.gameObject.GetComponent<ArmoredEnemy>().Deathforsign();
+            }
+            else if (hitCol.gameObject.GetComponent<FrighteningEnemy>() != null)
+            {
+                hitCol.gameObject.GetComponent<FrighteningEnemy>().Deathforsign();
+            }
+            else if (hitCol.gameObject.GetComponent<BufferEnemy>() != null)
+            {
+                hitCol.gameObject.GetComponent<BufferEnemy>().Deathforsign();
             }
         }
     }
