@@ -451,11 +451,11 @@ MonoBehaviour:
   - {fileID: 4248889033623794808}
   - {fileID: 8483640345975747758}
   baseSpeed: 1
-  blastRadius: 1
+  blastRadius: 2
   explosionPower: 100
   explosionLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1
@@ -470,7 +470,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5948120941683113332
 GameObject:
@@ -658,6 +658,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6873361951499052415}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a4f70015cd9b7724195f442b906821ac,
+        type: 3}
+      propertyPath: m_Name
+      value: kamikaze_LP_UV
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a4f70015cd9b7724195f442b906821ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -718,11 +723,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a5ef896e9fd2fcd439120a69ace30618, type: 2}
-    - target: {fileID: -927199367670048503, guid: a4f70015cd9b7724195f442b906821ac,
-        type: 3}
-      propertyPath: m_Name
-      value: kamikaze_LP_UV
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f70015cd9b7724195f442b906821ac, type: 3}
 --- !u!4 &7003343941378039410 stripped
