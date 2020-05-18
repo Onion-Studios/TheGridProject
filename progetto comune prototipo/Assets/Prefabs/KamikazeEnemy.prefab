@@ -658,11 +658,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6873361951499052415}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a4f70015cd9b7724195f442b906821ac,
-        type: 3}
-      propertyPath: m_Name
-      value: kamikaze_LP_UV
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a4f70015cd9b7724195f442b906821ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -723,6 +718,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a5ef896e9fd2fcd439120a69ace30618, type: 2}
+    - target: {fileID: -927199367670048503, guid: a4f70015cd9b7724195f442b906821ac,
+        type: 3}
+      propertyPath: m_Name
+      value: kamikaze_LP_UV
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f70015cd9b7724195f442b906821ac, type: 3}
 --- !u!4 &7003343941378039410 stripped

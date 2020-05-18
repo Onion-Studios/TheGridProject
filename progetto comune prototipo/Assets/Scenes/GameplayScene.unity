@@ -5494,11 +5494,11 @@ MonoBehaviour:
   spawntimer: 2.5
   enemyparent: {fileID: 273346414}
   positionpossible:
-  - -13.7
-  - -12.6
-  - -11.3
-  - -10.2
-  - -9
+  - -13
+  - -13
+  - -13
+  - -13
+  - -13
 --- !u!4 &1471647699
 Transform:
   m_ObjectHideFlags: 0
