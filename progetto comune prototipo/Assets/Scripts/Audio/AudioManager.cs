@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System;
 using UnityEngine.Audio;
 
 [System.Serializable]
@@ -10,7 +8,7 @@ public class Sound
     private AudioSource source;
     public string clipName;
     public AudioClip clip;
-    [Range(0f,1f)]
+    [Range(0f, 1f)]
     public float volume;
     [Range(0f, 2f)]
     public float pitch;
@@ -33,6 +31,23 @@ public class Sound
     {
         source.Play();
     }
+
+    public void StopAudio()
+    {
+        source.Stop();
+    }
+
+    public void SetLoop(bool loop)
+    {
+        source.loop = loop;
+    }
+
+    public bool IsPlaying()
+    {
+        return source.isPlaying;
+    }
+
+
 }
 
 
@@ -62,17 +77,50 @@ public class AudioManager : MonoBehaviour
             soundObj.transform.SetParent(this.transform);
             sounds[i].SetSource(soundObj.AddComponent<AudioSource>());
         }
-        PlaySound("MainTrack");
+        PlaySound("MenuTheme");
     }
 
     public void PlaySound(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.clipName == name);
-        if ( s == null)
+        if (s == null)
         {
             Debug.LogError("Sound: " + name + " NotFound");
             return;
         }
         s.PlayAudio();
+    }
+
+    public void StopSound(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.clipName == name);
+        if (s == null)
+        {
+            Debug.LogError("Sound: " + name + " NotFound");
+            return;
+        }
+        s.StopAudio();
+    }
+
+    public void SetLoop(string name, bool loop)
+    {
+        Sound s = Array.Find(sounds, sound => sound.clipName == name);
+        if (s == null)
+        {
+            Debug.LogError("Sound: " + name + " NotFound");
+            return;
+        }
+        s.SetLoop(loop);
+    }
+
+    public bool IsPlaying(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.clipName == name);
+        if (s == null)
+        {
+            Debug.LogError("Sound: " + name + " NotFound");
+            return false;
+        }
+        return s.IsPlaying();
     }
 }
