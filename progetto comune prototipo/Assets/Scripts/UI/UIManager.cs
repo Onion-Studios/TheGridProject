@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
 
     void UpdateScoreMultiplier()
     {
-        scoremultiplier_text.text = "x" + pointsystem.scoreMultiplier.ToString(); 
+        scoremultiplier_text.text = "X" + pointsystem.scoreMultiplier.ToString(); 
     }
 
 }
