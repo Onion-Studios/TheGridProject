@@ -704,3 +704,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816350424}
   m_CullTransparentMesh: 0
+--- !u!1 &1831106252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831106254}
+  - component: {fileID: 1831106253}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1831106253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831106252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ce12f74b7bd2045bafc8d241e08f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clipName: MainTrack
+    clip: {fileID: 8300000, guid: 8885eca846a872e42a504bb55d518332, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: MenuTheme
+    clip: {fileID: 8300000, guid: f5b4036651cb17e48b456b5ffcf5b17d, type: 3}
+    volume: 0.05
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: MenuCancel
+    clip: {fileID: 8300000, guid: 271a84d031da0a04b9304c309c20e708, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: MenuConfirm
+    clip: {fileID: 8300000, guid: 5b62bb44aad1a4b4b9869dcd00599252, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: MenuSelect
+    clip: {fileID: 8300000, guid: 271a84d031da0a04b9304c309c20e708, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Armored Walk
+    clip: {fileID: 8300000, guid: 1c65dbb188951d8448ad5ba25a1b6b00, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+--- !u!4 &1831106254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831106252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
