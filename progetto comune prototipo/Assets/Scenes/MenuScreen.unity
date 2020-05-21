@@ -8203,10 +8203,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1043606787}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 125266949}, m_MethodName: ConfirmSound, m_Mode: 1,
-          m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '',
-            m_BoolArgument: 0}, m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 125266949}
+        m_MethodName: ConfirmSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1043606787
@@ -9407,7 +9415,6 @@ Transform:
   - {fileID: 107715834}
   - {fileID: 427509458}
   - {fileID: 428641861}
-  - {fileID: 1405434841}
   m_Father: {fileID: 1286029701}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10264,6 +10271,7 @@ RectTransform:
   - {fileID: 7418807}
   - {fileID: 1208476050}
   - {fileID: 1148165762}
+  - {fileID: 1405434841}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10901,12 +10909,12 @@ RectTransform:
   - {fileID: 848714624}
   - {fileID: 2009625832}
   - {fileID: 1445597474}
-  m_Father: {fileID: 1208476050}
-  m_RootOrder: 4
+  m_Father: {fileID: 1286029701}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 224, y: 153}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1407225217
@@ -13825,10 +13833,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1709624270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 125266949}, m_MethodName: ConfirmSound, m_Mode: 1,
-          m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '',
-            m_BoolArgument: 0}, m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 125266949}
+        m_MethodName: ConfirmSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1709624270
