@@ -454,7 +454,7 @@ MonoBehaviour:
   repelled: 0
   startingPosition: {x: 0, y: 0, z: 0}
   pushSpeed: 5
-  baseSpeed: 1
+  baseSpeed: 1.2
 --- !u!1 &6929704817576082879
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +646,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DioCristo_LOw
       objectReference: {fileID: 0}
+    - target: {fileID: -7491684613940444260, guid: 382eaf111b665eb4e80b16bc2aec1bbe,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 521786e94c6bdf14a9b3c3b9826f35da, type: 2}
     - target: {fileID: -4216859302048453862, guid: 382eaf111b665eb4e80b16bc2aec1bbe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -706,17 +711,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 521786e94c6bdf14a9b3c3b9826f35da, type: 2}
-    - target: {fileID: 5341642691470566641, guid: 382eaf111b665eb4e80b16bc2aec1bbe,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 521786e94c6bdf14a9b3c3b9826f35da, type: 2}
     - target: {fileID: -197015719409141145, guid: 382eaf111b665eb4e80b16bc2aec1bbe,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 521786e94c6bdf14a9b3c3b9826f35da, type: 2}
-    - target: {fileID: -7491684613940444260, guid: 382eaf111b665eb4e80b16bc2aec1bbe,
+    - target: {fileID: 5341642691470566641, guid: 382eaf111b665eb4e80b16bc2aec1bbe,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

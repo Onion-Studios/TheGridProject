@@ -554,7 +554,7 @@ MonoBehaviour:
   - {fileID: 8021004444373799540}
   - {fileID: 5763490521501441068}
   - {fileID: 5288535271106822655}
-  baseSpeed: 1
+  baseSpeed: 1.6
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1
@@ -656,6 +656,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1610379253688785732}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: ed5ead8e18662e44abbc1807a5338d1e,
+        type: 3}
+      propertyPath: m_Name
+      value: Frightening_Low
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ed5ead8e18662e44abbc1807a5338d1e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -716,11 +721,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3d130ddb242e4ee44a33e489054e81a7, type: 2}
-    - target: {fileID: -927199367670048503, guid: ed5ead8e18662e44abbc1807a5338d1e,
-        type: 3}
-      propertyPath: m_Name
-      value: Frightening_Low
-      objectReference: {fileID: 0}
     - target: {fileID: 6306971017694268109, guid: ed5ead8e18662e44abbc1807a5338d1e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
