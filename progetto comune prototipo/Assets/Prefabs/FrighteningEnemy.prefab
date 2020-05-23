@@ -554,7 +554,7 @@ MonoBehaviour:
   - {fileID: 8021004444373799540}
   - {fileID: 5763490521501441068}
   - {fileID: 5288535271106822655}
-  baseSpeed: 2.4
+  baseSpeed: 1.6
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1

@@ -454,7 +454,7 @@ MonoBehaviour:
   repelled: 0
   startingPosition: {x: 0, y: 0, z: 0}
   pushSpeed: 5
-  baseSpeed: 2
+  baseSpeed: 1.2
 --- !u!1 &6929704817576082879
 GameObject:
   m_ObjectHideFlags: 0

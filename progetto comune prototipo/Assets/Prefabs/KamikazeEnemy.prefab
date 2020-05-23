@@ -450,7 +450,7 @@ MonoBehaviour:
   - {fileID: 3058656775447563521}
   - {fileID: 4248889033623794808}
   - {fileID: 8483640345975747758}
-  baseSpeed: 2.4
+  baseSpeed: 1.6
   blastRadius: 2
   explosionPower: 100
   explosionLayers:
