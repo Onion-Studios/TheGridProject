@@ -631,10 +631,10 @@ MonoBehaviour:
   - {fileID: 8376121018324102043}
   segnocorrispondente: 0
   link: 7
-  Boost: 1.25
+  Boost: 1.1
   Reset: 0.8
   speed: 0
-  endPosition: -6.5
+  endPosition: -11
   baseSpeed: 1
 --- !u!1001 &7587910043308471849
 PrefabInstance:

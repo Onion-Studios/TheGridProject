@@ -313,7 +313,7 @@ MonoBehaviour:
   - {fileID: 7931372762387147413}
   - {fileID: 7833069976597115173}
   - {fileID: 3849260898203632313}
-  baseSpeed: 1.2
+  baseSpeed: 2
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1

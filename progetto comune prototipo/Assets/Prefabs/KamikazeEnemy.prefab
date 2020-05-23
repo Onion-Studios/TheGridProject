@@ -440,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 1
   speed: 1
-  inkDamage: 20
+  inkDamage: 40
   maxInkDamage: 10
   scoreEnemy: 1000
   signkamikazenemy:
@@ -450,7 +450,7 @@ MonoBehaviour:
   - {fileID: 3058656775447563521}
   - {fileID: 4248889033623794808}
   - {fileID: 8483640345975747758}
-  baseSpeed: 1.6
+  baseSpeed: 2.4
   blastRadius: 2
   explosionPower: 100
   explosionLayers:
