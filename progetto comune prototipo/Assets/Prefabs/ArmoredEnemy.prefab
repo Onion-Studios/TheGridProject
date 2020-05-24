@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 2
   speed: 1
-  baseSpeedMax: 1.5
+  baseSpeedMax: 1.6
   inkDamage: 20
   maxInkDamage: 10
   inkstoneDamage: 15
@@ -75,7 +75,7 @@ MonoBehaviour:
   - {fileID: 8990134154294543793}
   - {fileID: 2862626446979439224}
   armoredLife: 2
-  baseSpeed: 1
+  baseSpeed: 0.8
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1
