@@ -10,8 +10,6 @@ public class UIManager : MonoBehaviour
     Playerbehaviour Playerbehaviour;
     [SerializeField]
     Text Enemycounter_text;
-    [SerializeField]
-    Text yokaislayer_text;
     public Text ink_text;
     Inkstone Ink;
     Enemyspawnmanager Enemyspawnmanager;
@@ -65,8 +63,6 @@ public class UIManager : MonoBehaviour
 
         UpdateEnemycounter();
 
-        UpdateYokaiSlayerCounter();
-
         UpdateInkCounter();
 
         UpdateScore();
@@ -78,11 +74,6 @@ public class UIManager : MonoBehaviour
     private void UpdateEnemycounter()
     {
         Enemycounter_text.text = "Counter nemici: " + Enemyspawnmanager.enemykilled;
-    }
-
-    void UpdateYokaiSlayerCounter()
-    {
-        yokaislayer_text.text = ("Yokai Slayer: " + Playerbehaviour.yokaislayercount);
     }
 
     void UpdateInkCounter()
