@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MalevolentEnemy : MonoBehaviour
 {
@@ -71,13 +69,9 @@ public class MalevolentEnemy : MonoBehaviour
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.enemykilled  += 1;
+        enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signmalevolentenemy)
-        {
-            segno.SetActive(false);
-        }
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
     Enemyspawnmanager Enemyspawnmanager;
     public int StartIntensity2 = 15;
     public int StartIntensity3 = 25;
+    public PlayableDirector dragonTimeline;
+    public GameObject dragon1;
+    public GameObject dragon2;
+    public GameObject dragon3;
 
     private bool soundPlayed1;
     private bool soundPlayed2;
@@ -62,6 +67,11 @@ public class GameManager : MonoBehaviour
             soundPlayed2 = false;
             soundPlayed3 = false;
 
+            dragon1.SetActive(true);
+            dragon2.SetActive(false);
+            dragon3.SetActive(false);
+            dragonTimeline.Play();
+
         }
         else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
         {
@@ -72,6 +82,11 @@ public class GameManager : MonoBehaviour
             soundPlayed2 = true;
             soundPlayed1 = false;
             soundPlayed3 = false;
+
+            dragon1.SetActive(false);
+            dragon2.SetActive(true);
+            dragon3.SetActive(false);
+            dragonTimeline.Play();
         }
         else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
         {
@@ -82,6 +97,11 @@ public class GameManager : MonoBehaviour
             soundPlayed3 = true;
             soundPlayed1 = false;
             soundPlayed2 = false;
+
+            dragon1.SetActive(false);
+            dragon2.SetActive(false);
+            dragon3.SetActive(true);
+            dragonTimeline.Play();
         }
     }
 }
