@@ -1,18 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using UnityEditor;
 using UnityEngine;
 
 public class Yokaislayer : MonoBehaviour
 {
     Enemyspawnmanager enemyspawnmanager;
     Playerbehaviour playerbehaviour;
+    bool opencurtain;
+    public Vector3 closecurtain;
+    public Vector3 actualPosition;
+    public float currentTime = 0f;
+    public float timeMax = 2f;
+    bool active;
+    public int speed;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
+
         
+        opencurtain = true;
+
     }
 
     // Update is called once per frame
@@ -22,6 +34,57 @@ public class Yokaislayer : MonoBehaviour
         {
             ActivateYokaiSlayer();
             ReduceYokaiSlayerCount();
+
+            TimerCurtain();
+
+            closecurtain = transform.position;
+
+        }
+    }
+
+    void TimerCurtain()
+    {
+        if (opencurtain == true)
+        {
+            
+            if (active == false)
+            {
+                active = true;
+
+                currentTime = timeMax;
+                
+               // transform.position = transform.position + transform.right * speed * Time.deltaTime;
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.X) && playerbehaviour.yokaislayercount > 0)
+                {
+                
+                    actualPosition = transform.position;
+
+                    //Timer
+                    currentTime -= 1 * Time.deltaTime;
+
+                    if (currentTime < 0)
+                    {
+                        currentTime = 0;
+
+                        closecurtain = transform.position;
+
+                    }
+
+                    //reset barra e si disattiva la secret 
+                    if (currentTime == 0)
+                    {
+                        opencurtain = true;
+
+                        active = false;
+
+                        closecurtain = transform.position;
+                    }
+                }
+
+            }
         }
     }
 
