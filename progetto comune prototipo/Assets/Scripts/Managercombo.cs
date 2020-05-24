@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public struct nodes
 {
@@ -25,7 +21,7 @@ public class Managercombo : MonoBehaviour
     nodes Angle3 = new nodes(0, 4);
     nodes Angle4 = new nodes(4, 4);
     #endregion
-    nodes extremity = new nodes(0,0);
+    nodes extremity = new nodes(0, 0);
     bool foundextremity = false;
     int countactiveboxesaround = 0;
     Enemyspawnmanager enemyspawnmanager;
@@ -66,7 +62,7 @@ public class Managercombo : MonoBehaviour
 
     public void Init()
     {
-         //GameManager.Instantiate.GetPlayerBehaviur();
+        //GameManager.Instantiate.GetPlayerBehaviur();
     }
 
     private void Update()
@@ -74,7 +70,7 @@ public class Managercombo : MonoBehaviour
 
     }
 
-    
+
 
     public void SetupMatrixSign()
     {
@@ -97,7 +93,7 @@ public class Managercombo : MonoBehaviour
         IrregularSignMatrix[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
         IrregularSignMatrix[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
         //1 caso segno Malevolent
-       // IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
+        // IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
 
     }
 
@@ -105,7 +101,7 @@ public class Managercombo : MonoBehaviour
     {
         CheckCountBoxesLogicGrid();
 
-        if(CountBoxesActive == 5)
+        if (CountBoxesActive == 5)
         {
             Searchextremity(grigliamanager.logicgrid);
         }
@@ -114,7 +110,7 @@ public class Managercombo : MonoBehaviour
             Debug.Log("nessun estremita trovata");
         }
 
-        if(foundextremity == true)
+        if (foundextremity == true)
         {
             CheckCorrectSign();
         }
@@ -123,9 +119,9 @@ public class Managercombo : MonoBehaviour
 
     void CheckCountBoxesLogicGrid()
     {
-        foreach(bool box in grigliamanager.logicgrid)
+        foreach (bool box in grigliamanager.logicgrid)
         {
-            if(box == true)
+            if (box == true)
             {
                 CountBoxesActive++;
             }
@@ -136,7 +132,7 @@ public class Managercombo : MonoBehaviour
     {
         int countercorrectbox = 0;
 
-        for (int i = 0; i < 12; i++) 
+        for (int i = 0; i < 12; i++)
         {
             if (countercorrectbox == 4)
             {
@@ -146,7 +142,7 @@ public class Managercombo : MonoBehaviour
 
             foreach (var nodo in IrregularSignMatrix[i])
             {
-                
+
                 if (extremity.X + nodo.X >= 0 &&
                     extremity.X + nodo.X <= 4 &&
                     extremity.Z + nodo.Z >= 0 &&
@@ -209,11 +205,11 @@ public class Managercombo : MonoBehaviour
 
     void Searchextremity(bool[,] grid)
     {
-        for(int x=0; x < grid.GetLength(0); x++)
+        for (int x = 0; x < grid.GetLength(0); x++)
         {
             for (int z = 0; z < grid.GetLength(1); z++)
             {
-                if (grid[x,z] == true)
+                if (grid[x, z] == true)
                 {
                     //casi angoli 
                     if (x == Angle1.X && z == Angle1.Z)
@@ -389,7 +385,7 @@ public class Managercombo : MonoBehaviour
                     }
 
                 }
-                
+
             }
         }
     }
@@ -434,11 +430,11 @@ public class Managercombo : MonoBehaviour
                             }
                             break;
                         case 4:
-                            MalevolentEnemy malevolentenemy = enemytodestroy.GetComponent<MalevolentEnemy>();
+                            /*MalevolentEnemy malevolentenemy = enemytodestroy.GetComponent<MalevolentEnemy>();
                             if (malevolentenemy.signmalevolentenemy[valoreIndice].activeInHierarchy == true)
                             {
                                 malevolentenemy.Deathforsign();
-                            }
+                            }*/
                             break;
                         case 5:
                             FrighteningEnemy frighteningenemy = enemytodestroy.GetComponent<FrighteningEnemy>();
