@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: 94e77302d36b16949bcf107d2c0cc72f
+guid: 738c4554b42ed9445a0813e396f1c036
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4352476407217406577
-    second: malevolent 2.1_0
+      213: -3301964573549459048
+    second: malevolent 2_0
   - first:
-      213: -5042346858646651655
-    second: malevolent 2.1_1
+      213: -5785399797381193648
+    second: malevolent 2_1
   - first:
-      213: 3449483499958516930
-    second: malevolent 2.1_2
+      213: -8710281174317259702
+    second: malevolent 2_2
   - first:
-      213: 5595632235790536904
-    second: malevolent 2.1_3
+      213: 8556857732453498649
+    second: malevolent 2_3
   - first:
-      213: 5395421940053738043
-    second: malevolent 2.1_4
+      213: 8055802041954822105
+    second: malevolent 2_4
+  - first:
+      213: -1439073830315644458
+    second: malevolent 2_5
+  - first:
+      213: 5517249533864438374
+    second: malevolent 2_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -75,7 +81,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -87,7 +93,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -99,7 +105,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Windows Store Apps
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -111,7 +117,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: tvOS
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -123,7 +129,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -135,7 +141,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Lumin
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -147,7 +153,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -159,7 +165,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -173,12 +179,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: malevolent 2.1_0
+      name: malevolent 2_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 1807
-        width: 4
+        x: 111
+        y: 3476
+        width: 6
         height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b2ba2f27ce0f1b42a835d76c02fc4a9
-      internalID: 4352476407217406577
+      spriteID: 98a176a17ca497248a2eec571ad3123e
+      internalID: -3301964573549459048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: malevolent 2.1_1
+      name: malevolent 2_1
       rect:
         serializedVersion: 2
-        x: 124
-        y: 427
-        width: 924
-        height: 1555
+        x: 122
+        y: 2097
+        width: 926
+        height: 1554
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,19 +214,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3faa319e5f24d2e458209cb9ade89b49
-      internalID: -5042346858646651655
+      spriteID: 39fa8a0848680844c9f5d8d4773b8fc6
+      internalID: -5785399797381193648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: malevolent 2.1_2
+      name: malevolent 2_2
       rect:
         serializedVersion: 2
         x: 1125
-        y: 425
-        width: 919
+        y: 2093
+        width: 921
         height: 1557
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -229,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc09e6d8353d8d64780d7c6bb0139ce6
-      internalID: 3449483499958516930
+      spriteID: f82df55abaa47024f97c0f5c89095906
+      internalID: -8710281174317259702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: malevolent 2.1_3
+      name: malevolent 2_3
       rect:
         serializedVersion: 2
-        x: 2201
-        y: 434
+        x: 2202
+        y: 2105
         width: 437
-        height: 1593
+        height: 1591
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,19 +256,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9762dedae568334a9c8de6f30eaa98a
-      internalID: 5595632235790536904
+      spriteID: 320ace0017be3004bb06852b769e911b
+      internalID: 8556857732453498649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: malevolent 2.1_4
+      name: malevolent 2_4
       rect:
         serializedVersion: 2
         x: 2817
-        y: 440
-        width: 724
+        y: 2110
+        width: 725
         height: 1617
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -271,8 +277,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9adc627f01e643d41878c65191121216
-      internalID: 5395421940053738043
+      spriteID: d1fe75d6614f59c47bc579c2d165f737
+      internalID: 8055802041954822105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: malevolent 2_5
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 255
+        width: 726
+        height: 1619
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea36fee4ddad6294a85098e79196da7b
+      internalID: -1439073830315644458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: malevolent 2_6
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 249
+        width: 439
+        height: 1594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ab905d67e47574cb733edcab534890
+      internalID: 5517249533864438374
       vertices: []
       indices: 
       edges: []
@@ -280,7 +328,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1e7dddb753bf7274eb94ef296675e05d
+    spriteID: b405a7db021e69743ac80f700d06b46e
     internalID: 0
     vertices: []
     indices: 
