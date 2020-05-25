@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEditor;
 using UnityEngine;
@@ -8,13 +10,13 @@ public class Yokaislayer : MonoBehaviour
 {
     Enemyspawnmanager enemyspawnmanager;
     Playerbehaviour playerbehaviour;
-    bool opencurtain;
     public Vector3 closecurtain;
-    public Vector3 actualPosition;
-    public float currentTime = 0f;
-    public float timeMax = 2f;
     bool active;
-    public int speed;
+    public GameObject tenda, tenda2;
+    private int yokaiSlayerSequenceNumber;
+    public float curtainspeed;
+    public Vector3 opencurtain1, opencurtain2;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -22,70 +24,97 @@ public class Yokaislayer : MonoBehaviour
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
 
-        
-        opencurtain = true;
 
+        active = false;
+
+        yokaiSlayerSequenceNumber = 0;
+
+        opencurtain1 = tenda.transform.position;
+        opencurtain2 = tenda2.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && playerbehaviour.yokaislayercount > 0)
+        if (Input.GetKeyDown(KeyCode.X) && playerbehaviour.yokaislayercount > 0 && active == false)
         {
-            ActivateYokaiSlayer();
-            ReduceYokaiSlayerCount();
+            active = true;
+        }
 
-            TimerCurtain();
-
-            closecurtain = transform.position;
-
+        if (active == true)
+        {
+            YokaiSlayerSequence();
         }
     }
 
-    void TimerCurtain()
+
+    void YokaiSlayerSequence()
     {
-        if (opencurtain == true)
+
+         switch(yokaiSlayerSequenceNumber)
+         {
+              case 0:
+                 CloseCurtains();
+                  break;
+              case 1:
+                TimeStop();
+                  break;
+            case 2:
+                ActivateYokaiSlayer();
+                break;
+            case 3:
+                ResumeTime();
+                break;
+            case 4:
+                OpenCurtains();
+                break;
+            case 5:
+                FinalizeSequence();
+                break;
+         }
+        
+    }
+    
+    void CloseCurtains()
+    {
+        if(tenda.transform.localPosition.x > closecurtain.x)
         {
-            
-            if (active == false)
-            {
-                active = true;
+           tenda.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
+           tenda2.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
 
-                currentTime = timeMax;
-                
-               // transform.position = transform.position + transform.right * speed * Time.deltaTime;
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.X) && playerbehaviour.yokaislayercount > 0)
-                {
-                
-                    actualPosition = transform.position;
-
-                    //Timer
-                    currentTime -= 1 * Time.deltaTime;
-
-                    if (currentTime < 0)
-                    {
-                        currentTime = 0;
-
-                        closecurtain = transform.position;
-
-                    }
-
-                    //reset barra e si disattiva la secret 
-                    if (currentTime == 0)
-                    {
-                        opencurtain = true;
-
-                        active = false;
-
-                        closecurtain = transform.position;
-                    }
-                }
-
-            }
         }
+        else
+        {
+            tenda.transform.position = closecurtain; 
+            yokaiSlayerSequenceNumber++;
+        }
+    }
+
+    void OpenCurtains()
+    {
+        if (tenda.transform.localPosition.x < opencurtain1.x)
+        {
+            tenda.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
+            tenda2.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
+        }
+        else
+        {
+            tenda.transform.position = opencurtain1;
+            tenda2.transform.position = opencurtain2;
+            yokaiSlayerSequenceNumber++;
+        }
+    }
+
+    void TimeStop()
+    {
+        Time.timeScale = 0f;
+        yokaiSlayerSequenceNumber++;
+    }
+
+    void ResumeTime()
+    {
+        Time.timeScale = 1f;
+        yokaiSlayerSequenceNumber++;
     }
 
     void ActivateYokaiSlayer()
@@ -129,13 +158,16 @@ public class Yokaislayer : MonoBehaviour
                             break;
                     }
                 }
-                
             }
         }
+        yokaiSlayerSequenceNumber++;
     }
 
-    void ReduceYokaiSlayerCount()
+    void FinalizeSequence()
     {
         playerbehaviour.yokaislayercount -= 1;
+        yokaiSlayerSequenceNumber = 0;
+
+        active = false;
     }
 }
