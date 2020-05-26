@@ -11,8 +11,6 @@ public class Playerbehaviour : MonoBehaviour
     [HideInInspector]
     public Vector3 originray;
     Ray downraycheck;
-    [SerializeField]
-    Material colorcube;
     grigliamanager grigliamanager;
     Managercombo managercombo;
     Inkstone Inkstone;
@@ -60,7 +58,7 @@ public class Playerbehaviour : MonoBehaviour
 
     void MovementHandler()
     {
-if(PauseMenu.GameIsPaused==false)
+    if(PauseMenu.GameIsPaused==false)
     {
         if (movementState == "readystate")
         {
@@ -92,7 +90,6 @@ if(PauseMenu.GameIsPaused==false)
             if (Input.GetKey(KeyCode.Space))
             {
                 managercombo.CheckSign();
-
                 istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
                 istanze.transform.position = playerposition;
                 grigliamanager.ResetColorGrid();
@@ -186,9 +183,7 @@ if(PauseMenu.GameIsPaused==false)
 
                 movementState = "waitstate";
             }
-        }
-
-        
+        }   
         else if (movementState == "movingright")
         {
             istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -241,7 +236,7 @@ if(PauseMenu.GameIsPaused==false)
         float raydistance = 10f;
         if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance))
         {
-            hit.collider.GetComponent<Renderer>().material = colorcube;
+            hit.collider.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = grigliamanager.inksplash;
 
             if (grigliamanager.logicgrid[(int)hit.collider.gameObject.transform.position.x, (int)hit.collider.gameObject.transform.position.z] == false)
             {

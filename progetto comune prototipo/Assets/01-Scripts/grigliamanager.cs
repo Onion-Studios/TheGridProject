@@ -9,11 +9,11 @@ public class grigliamanager : MonoBehaviour
     int lines = 5;
     public GameObject cubegrid;
     private GameObject istanzecube;
+    public GameObject[] prefabcubigriglia;
     List<GameObject> listadicubi = new List<GameObject>();
     public bool[,] logicgrid = new bool[5, 5];
+    public Material inksplash;
     public Material colorbasegrid;
-    [SerializeField]
-    Material colormidgrid;
     Managercombo managercombo;
     #endregion
 
@@ -21,25 +21,18 @@ public class grigliamanager : MonoBehaviour
 
     void Start()
     {
-        //quando parte il programma creo la la griglia di cubi prendo una referenza al player
-        //setto la posizione del personaggio e spawno il player in centro
-        //solo se le lines e le columnns sono dispari se no non abbiamo un centro nella griglia
-        if (columnns % 2 == 1 && lines % 2 == 1)
-        {
-            CreateGrid();
-            Playerbehaviour character = FindObjectOfType<Playerbehaviour>();
-            if(character == null)
-            {
-                Debug.LogError("il playerbehaviour è NULL!");
-            }
-            character.playerposition = new Vector3(2, 1.05f, 2);
-            character.Spawn();
-        }
-        else
-        {
-            Debug.Log("inserisci un numero di lines e columnns dispari");
-        }
+        //quando parte il programma creo la la griglia di cubi, prendo una referenza al player + null check
+        //setto la posizione (Playerposition) del personaggio e spawno il player in centro
+        //midlogictrue cosi il pezzo in mezzo dov'è la kitsune è attivo, referenza al manager combo + null check
 
+        CreateGrid();
+        Playerbehaviour character = FindObjectOfType<Playerbehaviour>();
+        if (character == null)
+        {
+            Debug.LogError("il playerbehaviour è NULL!");
+        }
+        character.playerposition = new Vector3(2, 1.05f, 2);
+        character.Spawn();
         MidGridLogicTrue();
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
@@ -48,7 +41,6 @@ public class grigliamanager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -60,13 +52,13 @@ public class grigliamanager : MonoBehaviour
     {
         for (int c = 0; c < columnns; c++)
         {
-            for (int r = 0; r < lines; r++)
+            for (int r = lines-1; r > -1; r--)
             {
-                Vector3 posizionelines = new Vector3(r, 0f, c);
-                istanzecube = Instantiate(cubegrid, posizionelines, Quaternion.identity, this.transform);
+                Vector3 posizionelines = new Vector3(r, 0.5f, c);
+                istanzecube = Instantiate(prefabcubigriglia[(((int)posizionelines.z) * 5)+ (4 - (int)posizionelines.x)], posizionelines, Quaternion.identity, this.transform);
                 if(r == 2 && c == 2)
                 {
-                    istanzecube.GetComponent<MeshRenderer>().material = colormidgrid;
+                    istanzecube.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = inksplash;
                     istanzecube.GetComponent<cubeprefabehaviour>().iscoloured = true;
                 }
                 listadicubi.Add(istanzecube);
@@ -80,24 +72,26 @@ public class grigliamanager : MonoBehaviour
     {
         foreach (var cube in listadicubi)
         {
-            if (cube.transform.position == new Vector3(2f, 0, 2f))
+            if (cube.transform.position == new Vector3(2f, 0.5f, 2f))
             {
-                cube.GetComponent<Renderer>().material = colormidgrid;
+                cube.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = inksplash;
                 cube.GetComponent<cubeprefabehaviour>().iscoloured = true;
             }
             else
             {
-                cube.GetComponent<Renderer>().material = colorbasegrid;
+                cube.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = colorbasegrid;
                 cube.GetComponent<cubeprefabehaviour>().iscoloured = false;
             }
         }
     }
 
+    //make the middle piece of the logic grid true, because 
     void MidGridLogicTrue()
     {
         logicgrid[2, 2] = true;
     }
 
+    //reset all the piece in the logic grid , exept the center, and turn the boxes active count to zero
     public void ResetGridLogic() 
     {
         for (int x = 0; x < 5; x++)
