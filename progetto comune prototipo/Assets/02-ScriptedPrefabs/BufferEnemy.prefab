@@ -634,7 +634,7 @@ MonoBehaviour:
   Boost: 1.15
   Reset: 0.8
   speed: 0
-  endPosition: -11
+  endPosition: -10
   baseSpeed: 1
 --- !u!1001 &9151773905948716815
 PrefabInstance:
@@ -718,12 +718,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4550136219795037415, guid: 9b230d6d85964f741b6737f2d25251e9,
+    - target: {fileID: 8044873714236266051, guid: 9b230d6d85964f741b6737f2d25251e9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 91adfff5a95b992439880a94c8d721dd, type: 2}
-    - target: {fileID: 8044873714236266051, guid: 9b230d6d85964f741b6737f2d25251e9,
+    - target: {fileID: 4550136219795037415, guid: 9b230d6d85964f741b6737f2d25251e9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
