@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    //database dei dati contenuti in ciascuna wave
     #region Database Wave
     public int[] SignGroup = new int[6];
     //LEGENDA il primo numero rappresenta l'intensita e il secondo la wave relativa a quell'intensita
@@ -108,6 +109,7 @@ public class WaveManager : MonoBehaviour
     #endregion
     #endregion
 
+    //database delle varie wave
     #region Wavesvariable
     wave[] waveintensity1 = new wave[6];
     wave[] waveintensity2 = new wave[6];
@@ -149,11 +151,22 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //referenza spawnmanager + null check
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        if(enemyspawnmanager == null)
+        {
+            Debug.Log("enemyspawnmanager is null");
+        }
+        //referenza gamemanager + null check
         gamemanager = FindObjectOfType<GameManager>();
+        if (gamemanager == null)
+        {
+            Debug.Log("gamemanager is null");
+        }
         Initializewaves();
         Initializeintensitywave();
         Initializedictionarywaves();
+        //check sulla partenza della wave di test oppure no
         if (TEST_WaveActive == false)
         {
             StartCoroutine(SpawnWaveCoroutine());
@@ -171,6 +184,7 @@ public class WaveManager : MonoBehaviour
 
     }
 
+    //algoritmo di shuffle di fisher-yates per un array finito
     void ShuffleAlgorithm(int[] array)
     {
         for (int i = array.Length - 1; i > 0; i--)
@@ -182,6 +196,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    //inizializza le wave mettendo i dati delle wave al loro interno
     void Initializewaves()
     {
         //wave intensity 1
@@ -207,6 +222,7 @@ public class WaveManager : MonoBehaviour
         Wave3_6 = new wave(enemyIDWave3_6, SignGroupwave3_6, LanesWave3_6, delayswave3_6);
     }
 
+    //inizializza le wave nelle corrette intensita
     void Initializeintensitywave()
     {
         //intensity1
@@ -232,6 +248,7 @@ public class WaveManager : MonoBehaviour
         waveintensity3[5] = Wave3_6;
     }
 
+    //inizializza le wave di determinata intensita con la loro key di relativa intensita
     void Initializedictionarywaves()
     {
 
@@ -240,6 +257,10 @@ public class WaveManager : MonoBehaviour
         dictionarywaves.Add(3, waveintensity3);
     }
 
+    /// <summary>
+    /// coroutine di spawn delle wave 
+    /// </summary>
+    /// <returns></returns>
     IEnumerator SpawnWaveCoroutine()
     {
         yield return new WaitForSeconds(3f);
@@ -346,6 +367,12 @@ public class WaveManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// coroutine di spawn della wave di test
+    /// </summary>
+    /// <param name="waveintesnity"></param>
+    /// <param name="wavenumber"></param>
+    /// <returns></returns>
     IEnumerator Testspawncoroutine(int waveintesnity, int wavenumber)
     {
         yield return new WaitForSeconds(3f);
