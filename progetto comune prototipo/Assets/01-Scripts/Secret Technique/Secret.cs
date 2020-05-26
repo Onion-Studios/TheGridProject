@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Secret : MonoBehaviour
 {
     #region VARIABLES
-    [Range(0,100)] public int bar = 0;
+    [Range(0, 100)] public int bar = 0;
     public int charge;
     public Material startMaterial;
     public Material endMaterial;
@@ -36,10 +34,10 @@ public class Secret : MonoBehaviour
         Timer();
     }
 
-    
+
     void Timer()
     {
-        
+
         if (bar > 100)
         {
             bar = 100;
@@ -51,6 +49,7 @@ public class Secret : MonoBehaviour
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
             {
+                AudioManager.Instance.PlaySound("PaintingCompleted");
                 active = true;
 
                 currentTime = timeMax;
@@ -74,6 +73,7 @@ public class Secret : MonoBehaviour
                 //reset barra e si disattiva la secret 
                 if (currentTime == 0)
                 {
+                    AudioManager.Instance.PlaySound("PaintingReset");
                     bar = 0;
 
                     active = false;
@@ -134,7 +134,7 @@ public class Secret : MonoBehaviour
 
     void Color()
     {
-        
+
         this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
     }
 }

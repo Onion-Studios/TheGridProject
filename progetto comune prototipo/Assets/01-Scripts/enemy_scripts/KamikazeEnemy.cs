@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KamikazeEnemy : MonoBehaviour
 {
@@ -69,7 +67,7 @@ public class KamikazeEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+
     }
 
     // Update is called once per frame
@@ -79,7 +77,7 @@ public class KamikazeEnemy : MonoBehaviour
 
         PointOverDistance();
     }
-        
+
 
     public void Enemymove()
     {
@@ -108,19 +106,20 @@ public class KamikazeEnemy : MonoBehaviour
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         SecretT.bar = 0;
-        enemyspawnmanager.enemykilled  = 0;
+        enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signkamikazenemy)
         {
             segno.SetActive(false);
         }
 
+        AudioManager.Instance.PlaySound("PlayerGetsHit");
         ExplosionWork(this.transform.position);
     }
 
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.enemykilled  += 1;
+        enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         foreach (GameObject segno in signkamikazenemy)
@@ -164,7 +163,7 @@ public class KamikazeEnemy : MonoBehaviour
             {
                 hitCol.gameObject.GetComponent<NormalEnemy>().Deathforsign();
             }
-            else if(hitCol.gameObject.GetComponent<ArmoredEnemy>() != null)
+            else if (hitCol.gameObject.GetComponent<ArmoredEnemy>() != null)
             {
                 hitCol.gameObject.GetComponent<ArmoredEnemy>().Deathforsign();
             }
@@ -180,5 +179,3 @@ public class KamikazeEnemy : MonoBehaviour
     }
 
 }
-
-

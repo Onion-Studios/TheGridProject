@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class NormalEnemy : MonoBehaviour
 {
@@ -61,14 +57,14 @@ public class NormalEnemy : MonoBehaviour
         speed = baseSpeed;
 
         startPosition = transform.position.x;
-        
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
 
-        
+
 
     }
 
@@ -99,7 +95,7 @@ public class NormalEnemy : MonoBehaviour
             segno.SetActive(false);
         }
 
-        
+
     }
 
     public void Deathforgriglia()
@@ -108,19 +104,19 @@ public class NormalEnemy : MonoBehaviour
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         SecretT.bar = 0;
-        enemyspawnmanager.enemykilled  = 0;
+        enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
         }
+        AudioManager.Instance.PlaySound("PlayerGetsHit");
 
-      
     }
 
     public void Deathforsign()
     {
         this.gameObject.SetActive(false);
-        enemyspawnmanager.enemykilled  += 1;
+        enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         foreach (GameObject segno in signnormalenemy)
@@ -135,13 +131,13 @@ public class NormalEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
-        
+
     }
 
 
     void PointOverDistance()
     {
-        if(this.transform.position.x < startGrid)
+        if (this.transform.position.x < startGrid)
         {
             extrapointsoverdistance = scoreEnemy + scoreEnemy / (Mathf.Abs(startPosition) - Mathf.Abs(startGrid)) * transform.position.x;
         }
@@ -151,8 +147,6 @@ public class NormalEnemy : MonoBehaviour
         }
 
     }
- 
+
 
 }
-
-
