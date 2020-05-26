@@ -809,7 +809,6 @@ MonoBehaviour:
   speed: 10
   istanze: {fileID: 0}
   originray: {x: 0, y: 0, z: 0}
-  colorcube: {fileID: 2100000, guid: 12f2fe2adb0e24a4fb8885d153db5618, type: 2}
   LastCubeChecked: {x: 0, y: 0, z: 0}
   yokaislayercount: 3
   movementState: 
@@ -5583,8 +5582,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubegrid: {fileID: 2222240871164890105, guid: 2374db3488e32fa4b97c3778c95ada30,
     type: 3}
-  colorbasegrid: {fileID: 2100000, guid: e53f0d0e8ade9fb45bf762c5369ffa2d, type: 2}
-  colormidgrid: {fileID: 2100000, guid: 12f2fe2adb0e24a4fb8885d153db5618, type: 2}
+  prefabcubigriglia:
+  - {fileID: 8319856140458152917, guid: c9b0d3f8acddb59458a914f690260a36, type: 3}
+  - {fileID: 3201985670727625920, guid: 22943c7d1ac162b439b47fed543090f3, type: 3}
+  - {fileID: 7986039225907233863, guid: ec9b3510b4d07674a96ebc519d07e17d, type: 3}
+  - {fileID: 5509058767392559819, guid: 874be8d575fb2134fafd4637b247d875, type: 3}
+  - {fileID: 5350228879691236426, guid: 8c07709385414c54e95ab85b398ab2cc, type: 3}
+  - {fileID: 2782819605026611337, guid: 2673ed7c26d63194ca7377a999706f35, type: 3}
+  - {fileID: 195855836448556228, guid: 848b5e546aea2fc43ab60be9afb69381, type: 3}
+  - {fileID: 4847423867156713696, guid: 48e9bf083bff2754c8c9fbe184d5d4c6, type: 3}
+  - {fileID: 5196639670670891215, guid: b22352c28d72f174498bfbd3133db7ce, type: 3}
+  - {fileID: 6532872126719804006, guid: 3928359bab6e67a4c80150fdc9443f5a, type: 3}
+  - {fileID: 6039778120365415878, guid: db67038bdb2b92c469023fdd3655620d, type: 3}
+  - {fileID: 2907338746993853801, guid: fd6d3a8ea946c6140af51cab0eae16c8, type: 3}
+  - {fileID: 4405714485668177451, guid: c225c9f0e22d3f447b3c8835e6de4a09, type: 3}
+  - {fileID: 4090618314040240048, guid: 96ba76dc63a52ac48b79273f843bb8b4, type: 3}
+  - {fileID: 650436283675209010, guid: 0e1934f9a48df004ab1190586622fe87, type: 3}
+  - {fileID: 2844691420952674262, guid: 1f19cf29a5730294ba4dfa87a570bd7f, type: 3}
+  - {fileID: 2374652370179355672, guid: 5fce2b58a6bf1e843ae16659ff5bd96c, type: 3}
+  - {fileID: 4601740575274100239, guid: 149fd95b24c57a94cbb793c27ddb1c0a, type: 3}
+  - {fileID: 7989353581253301997, guid: 01178bef1952dc34cb301f27b8b2786b, type: 3}
+  - {fileID: 6860797582098596669, guid: af1e41647d9dfa1428f46d62895fc282, type: 3}
+  - {fileID: 4124542943366771145, guid: 452520271f876594fa82587c032d54ff, type: 3}
+  - {fileID: 211677397731400703, guid: 573f82105f9d50648b423603db78fc21, type: 3}
+  - {fileID: 2115912590312382758, guid: 6aee568593cf6da46a041a6cc193cb8e, type: 3}
+  - {fileID: 9173725355192119144, guid: 2620778d25876914b9064d25b19179c1, type: 3}
+  - {fileID: 6399335623646570827, guid: 037bb1bc3e9da5346bc0de80992895f0, type: 3}
+  inksplash: {fileID: 2100000, guid: 89ba84c3543bf1c429dab2acde5d70b9, type: 2}
+  colorbasegrid: {fileID: 2100000, guid: e90c95cdb2de9bd4f88b4016ece68e1f, type: 2}
 --- !u!4 &1619072385
 Transform:
   m_ObjectHideFlags: 0
