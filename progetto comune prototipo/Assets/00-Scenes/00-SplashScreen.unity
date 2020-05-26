@@ -790,6 +790,110 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
+  - clipName: ArmoredRun
+    clip: {fileID: 8300000, guid: 1722bceca32b3a944bd2322bcec67661, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ArmoredWalk
+    clip: {fileID: 8300000, guid: debc41f991f630841a49b7fdd0c19186, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: ac898820236dd534095ff04eb55fbd07, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: ClappingSound
+    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
 --- !u!4 &1831106254
 Transform:
   m_ObjectHideFlags: 0
