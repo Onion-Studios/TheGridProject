@@ -983,6 +983,7 @@ MonoBehaviour:
   curtainspeed: 10
   opencurtain1: {x: 0, y: 0, z: 0}
   opencurtain2: {x: 0, y: 0, z: 0}
+  timestop: 2
 --- !u!54 &228951401
 Rigidbody:
   m_ObjectHideFlags: 0

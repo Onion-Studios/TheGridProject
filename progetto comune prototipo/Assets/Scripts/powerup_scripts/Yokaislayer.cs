@@ -16,7 +16,8 @@ public class Yokaislayer : MonoBehaviour
     private int yokaiSlayerSequenceNumber;
     public float curtainspeed;
     public Vector3 opencurtain1, opencurtain2;
-   
+    IEnumerator waiting;
+    public float timestop;
 
     // Start is called before the first frame update
     void Start()
@@ -63,12 +64,24 @@ public class Yokaislayer : MonoBehaviour
                 ActivateYokaiSlayer();
                 break;
             case 3:
-                ResumeTime();
+                if(waiting == null)
+                {
+                    waiting = Waiting();
+                    StartCoroutine(waiting);
+                }
                 break;
             case 4:
-                OpenCurtains();
+                if(waiting != null)
+                {
+                    StopCoroutine(waiting);
+                    waiting = null;
+                }
+                ResumeTime();
                 break;
             case 5:
+                OpenCurtains();
+                break;
+            case 6:
                 FinalizeSequence();
                 break;
          }
@@ -117,6 +130,12 @@ public class Yokaislayer : MonoBehaviour
         yokaiSlayerSequenceNumber++;
     }
 
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSecondsRealtime(timestop);
+        yokaiSlayerSequenceNumber++;
+
+    }
     void ActivateYokaiSlayer()
     {
         for(int i=0; i < 7; i++)
