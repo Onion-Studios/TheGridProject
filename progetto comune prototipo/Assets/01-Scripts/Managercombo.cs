@@ -107,6 +107,7 @@ public class Managercombo : MonoBehaviour
         }
         else
         {
+
             Debug.Log("nessun estremita trovata");
         }
 
@@ -114,6 +115,7 @@ public class Managercombo : MonoBehaviour
         {
             CheckCorrectSign();
         }
+
 
     }
 
@@ -190,6 +192,7 @@ public class Managercombo : MonoBehaviour
                                 foundextremity = false;
                             }*/
                         }
+
                     }
                     else
                     {
@@ -198,6 +201,7 @@ public class Managercombo : MonoBehaviour
                         break;
                     }
                 }
+
             }
 
         }

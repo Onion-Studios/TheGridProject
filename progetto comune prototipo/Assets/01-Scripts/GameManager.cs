@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
         firstGameStart = true;
     }
 
+    private void Start()
+    {
+        AudioManager.Instance.PlaySound("MainTrack");
+    }
+
     private void Update()
     {
         ChangeIntensity(Enemyspawnmanager.enemykilled);

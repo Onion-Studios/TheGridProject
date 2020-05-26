@@ -736,7 +736,7 @@ MonoBehaviour:
   sounds:
   - clipName: MainTrack
     clip: {fileID: 8300000, guid: 8885eca846a872e42a504bb55d518332, type: 3}
-    volume: 0
+    volume: 0.05
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -854,13 +854,13 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: ClappingSound
-    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
-    volume: 0.38
+  - clipName: WrongSymbol
+    clip: {fileID: 8300000, guid: 19497badf3f2b09478550e66bd517d29, type: 3}
+    volume: 0.74
     pitch: 1
-    loop: 1
+    loop: 0
     playOnAwake: 0
-    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: ClappingSound
     clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
