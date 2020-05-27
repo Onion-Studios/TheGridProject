@@ -21,6 +21,8 @@ public class Playerbehaviour : MonoBehaviour
     public float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
+
+    private static Vector3 gridCenter;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -48,6 +50,8 @@ public class Playerbehaviour : MonoBehaviour
         movementState = "readystate";
 
         waitTimer = maxWaitTimer;
+
+        gridCenter = new Vector3(2f, istanze.transform.position.y, 2f);
     }
 
     // Update is called once per frame
@@ -87,7 +91,7 @@ public class Playerbehaviour : MonoBehaviour
                     movementState = "movingright";
 
                 }
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && istanze.transform.position != gridCenter)
                 {
                     managercombo.CheckSign();
                     istanze.transform.rotation = Quaternion.Euler(0, 180, 0);

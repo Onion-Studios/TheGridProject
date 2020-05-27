@@ -65,11 +65,6 @@ public class Managercombo : MonoBehaviour
         //GameManager.Instantiate.GetPlayerBehaviur();
     }
 
-    private void Update()
-    {
-
-    }
-
 
 
     public void SetupMatrixSign()
@@ -94,7 +89,6 @@ public class Managercombo : MonoBehaviour
         IrregularSignMatrix[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
         //1 caso segno Malevolent
         // IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
-
     }
 
     public void CheckSign()
@@ -107,6 +101,7 @@ public class Managercombo : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlaySound("WrongSymbol");
 
             Debug.Log("nessun estremita trovata");
         }
@@ -115,8 +110,6 @@ public class Managercombo : MonoBehaviour
         {
             CheckCorrectSign();
         }
-
-
     }
 
     void CheckCountBoxesLogicGrid()
@@ -133,18 +126,16 @@ public class Managercombo : MonoBehaviour
     void CheckCorrectSign()
     {
         int countercorrectbox = 0;
-
-        for (int i = 0; i < 12; i++)
+        int i;
+        for (i = 0; i < 12; i++)
         {
             if (countercorrectbox == 4)
             {
                 countercorrectbox = 0;
                 break;
             }
-
             foreach (var nodo in IrregularSignMatrix[i])
             {
-
                 if (extremity.X + nodo.X >= 0 &&
                     extremity.X + nodo.X <= 4 &&
                     extremity.Z + nodo.Z >= 0 &&
@@ -186,24 +177,28 @@ public class Managercombo : MonoBehaviour
                                 SearchAndDestroy(5);
                                 foundextremity = false;
                             }
+
                             /*else if(i == 12)
                             {
                                 SearchAndDestroy(6);
                                 foundextremity = false;
                             }*/
                         }
-
                     }
                     else
                     {
+
                         foundextremity = false;
                         countercorrectbox = 0;
                         break;
                     }
                 }
-
             }
+        }
+        if (i == 12)
+        {
 
+            AudioManager.Instance.PlaySound("WrongSymbol");
         }
     }
 
