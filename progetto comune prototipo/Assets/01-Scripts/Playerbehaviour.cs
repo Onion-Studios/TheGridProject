@@ -50,8 +50,6 @@ public class Playerbehaviour : MonoBehaviour
         movementState = "readystate";
 
         waitTimer = maxWaitTimer;
-
-        gridCenter = new Vector3(2f, istanze.transform.position.y, 2f);
     }
 
     // Update is called once per frame
@@ -62,6 +60,7 @@ public class Playerbehaviour : MonoBehaviour
 
     void MovementHandler()
     {
+        gridCenter = new Vector3(2f, istanze.transform.position.y, 2f);
         if (PauseMenu.GameIsPaused == false)
         {
             if (movementState == "readystate")

@@ -862,21 +862,21 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: ClappingSound
-    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+  - clipName: MalevolentSpawn
+    clip: {fileID: 8300000, guid: 2d90a5bc846165741bb814358757340c, type: 3}
     volume: 0.38
     pitch: 1
-    loop: 1
+    loop: 0
     playOnAwake: 0
     mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: ClappingSound
-    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+  - clipName: KamikazeExplosion
+    clip: {fileID: 8300000, guid: 7f52ec58a527694449a47e1db7669e5a, type: 3}
     volume: 0.38
     pitch: 1
-    loop: 1
+    loop: 0
     playOnAwake: 0
-    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: ClappingSound
     clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}

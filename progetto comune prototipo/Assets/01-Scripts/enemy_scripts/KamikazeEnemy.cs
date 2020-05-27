@@ -19,8 +19,7 @@ public class KamikazeEnemy : MonoBehaviour
 
     private Collider[] hitColliders;
     public float blastRadius;
-    public float explosionPower;
-    public LayerMask explosionLayers;
+    //public LayerMask explosionLayers;
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
@@ -61,12 +60,6 @@ public class KamikazeEnemy : MonoBehaviour
         speed = baseSpeed;
 
         startPosition = transform.position.x;
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
 
     }
 
@@ -156,12 +149,17 @@ public class KamikazeEnemy : MonoBehaviour
 
     void ExplosionWork(Vector3 explosionPoint)
     {
-        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);
+        AudioManager.Instance.PlaySound("KamikazeExplosion");
+        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius);
         foreach (Collider hitCol in hitColliders)
         {
             if (hitCol.gameObject.GetComponent<NormalEnemy>() != null)
             {
                 hitCol.gameObject.GetComponent<NormalEnemy>().Deathforsign();
+            }
+            else if (hitCol.gameObject.GetComponent<KamikazeEnemy>() != null)
+            {
+                hitCol.gameObject.GetComponent<KamikazeEnemy>().Deathforsign();
             }
             else if (hitCol.gameObject.GetComponent<ArmoredEnemy>() != null)
             {
