@@ -101,7 +101,7 @@ public class Managercombo : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlaySound("WrongSymbol");
+            AudioManager.Instance.PlaySound("BooSound");
 
             Debug.Log("nessun estremita trovata");
         }
@@ -198,7 +198,7 @@ public class Managercombo : MonoBehaviour
         if (i == 12)
         {
 
-            AudioManager.Instance.PlaySound("WrongSymbol");
+            AudioManager.Instance.PlaySound("BooSound");
         }
     }
 
