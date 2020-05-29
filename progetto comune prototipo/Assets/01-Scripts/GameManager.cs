@@ -18,11 +18,18 @@ public class GameManager : MonoBehaviour
     private bool soundPlayed1;
     private bool soundPlayed2;
     private bool soundPlayed3;
+    private bool firstGameStart;
 
     private void Awake()
     {
         ActualPlayer = FindObjectOfType<Playerbehaviour>();
         Enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        firstGameStart = true;
+    }
+
+    private void Start()
+    {
+        AudioManager.Instance.PlaySound("MainTrack");
     }
 
     private void Update()
@@ -61,8 +68,18 @@ public class GameManager : MonoBehaviour
         if (enemykilled >= 0 && enemykilled < StartIntensity2 && soundPlayed1 == false)
         {
             GameIntensity = 1;
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
+            if (firstGameStart)
+            {
+                AudioManager.Instance.SetLoop("GongSound", false);
+                AudioManager.Instance.PlaySound("GongSound");
+                firstGameStart = false;
+            }
+            else
+            {
+                AudioManager.Instance.SetLoop("BooSound", false);
+                AudioManager.Instance.PlaySound("BooSound");
+            }
+
             soundPlayed1 = true;
             soundPlayed2 = false;
             soundPlayed3 = false;

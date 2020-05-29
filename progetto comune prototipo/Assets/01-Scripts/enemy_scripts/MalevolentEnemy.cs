@@ -56,6 +56,11 @@ public class MalevolentEnemy : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        AudioManager.Instance.PlaySound("MalevolentSpawn");
+    }
+
     // Update is called once per frame
     void Update()
     {

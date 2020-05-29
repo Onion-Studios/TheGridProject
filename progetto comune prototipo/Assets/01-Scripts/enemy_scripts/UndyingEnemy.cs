@@ -115,6 +115,7 @@ public class UndyingEnemy : MonoBehaviour
 
         if (attackTimer == 0)
         {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
             attackTimer = maxAttacktimer;
 
             Inkstone.Ink -= inkDamage;

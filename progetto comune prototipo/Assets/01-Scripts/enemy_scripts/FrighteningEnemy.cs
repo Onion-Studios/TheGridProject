@@ -123,6 +123,7 @@ public class FrighteningEnemy : MonoBehaviour
         }
 
         playerbehaviour.speed = playerSpeed;
+        AudioManager.Instance.PlaySound("PlayerGetsHit");
 
 
     }
