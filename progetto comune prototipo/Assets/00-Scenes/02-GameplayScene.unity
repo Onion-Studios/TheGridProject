@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314479, g: 0.2164075, b: 0.29842636, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314449, g: 0.21640714, b: 0.29842559, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1294,10 +1294,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75907ecb69055bd4fbac9c04f672a413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: [{name: BufferInkDeath, particleEffect: {fileID: 0}, instantiated: 0},
-    {name: NormalInkDeath, particleEffect: {fileID: 0}, instantiated: 0}, {name: FrighteningInkDeath,
-      particleEffect: {fileID: 0}, instantiated: 0}, {name: ArmoredInkDeath, particleEffect: {
-        fileID: 0}, instantiated: 0}]
+  particles:
+  - name: BufferInkDeath
+    particleEffect: {fileID: 4497573916813592135, guid: ab736854858004c468da7879a7c4ee3f,
+      type: 3}
+    instantiated: 0
+  - name: NormalInkDeath
+    particleEffect: {fileID: 4093381821116623578, guid: e1626a8b6ffc0454baa774af41ff092e,
+      type: 3}
+    instantiated: 0
+  - name: FrighteningInkDeath
+    particleEffect: {fileID: 6748548307750283501, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
+      type: 3}
+    instantiated: 0
+  - name: ArmoredInkDeath
+    particleEffect: {fileID: 8490493624454473775, guid: e0a59dde52152ba40a5edbc0d3eb11e9,
+      type: 3}
+    instantiated: 0
 --- !u!4 &310846703
 Transform:
   m_ObjectHideFlags: 0
@@ -3738,54 +3751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 963194228}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 1
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!1 &965168075
 GameObject:
   m_ObjectHideFlags: 0
@@ -7020,11 +6985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 68404d0942db2634fbb4d8b701988ffe, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!4 &1895447670
 Transform:
   m_ObjectHideFlags: 0
@@ -7074,7 +7034,7 @@ Transform:
   - {fileID: 650901393}
   - {fileID: 1895447670}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1970739544 stripped
 Transform:
@@ -7624,6 +7584,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2086276541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 60c52c2fa124b284596c370ecb1788ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133260305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2088278365
 GameObject:
   m_ObjectHideFlags: 0
@@ -7715,12 +7681,6 @@ Transform:
   m_Father: {fileID: 1921250620}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 104.05499, y: 9.340988, z: 11.8619995}
---- !u!1 &2086276541 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 60c52c2fa124b284596c370ecb1788ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 2133260305}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2106480422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12710,7 +12670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &7080095712709949691
 ParticleSystemRenderer:
   serializedVersion: 6
