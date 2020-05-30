@@ -95,12 +95,12 @@ public class Managercombo : MonoBehaviour
         IrregularSignMatrix[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
         IrregularSignMatrix[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
         //2 casi segno Malevolent
-        IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
-        IrregularSignMatrix[13] = new nodes[6] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 0), new nodes(2, -1), new nodes(1,-1)};
+        IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1, 1) };
+        IrregularSignMatrix[13] = new nodes[6] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 0), new nodes(2, -1), new nodes(1, -1) };
         //2 casi di secret tecnique
-        IrregularSignMatrix[14] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(1, -2)};
-        IrregularSignMatrix[15] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-1, -2), new nodes(-1, -3), new nodes(0, -3), new nodes(0, -2), new nodes(1, -2)};
-    } 
+        IrregularSignMatrix[14] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(1, -2) };
+        IrregularSignMatrix[15] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-1, -2), new nodes(-1, -3), new nodes(0, -3), new nodes(0, -2), new nodes(1, -2) };
+    }
 
     public void CheckSign()
     {
@@ -110,7 +110,7 @@ public class Managercombo : MonoBehaviour
         {
             Searchextremity(grigliamanager.logicgrid);
         }
-        else if(CountBoxesActive == 7)
+        else if (CountBoxesActive == 7)
         {
             Searchextremity(grigliamanager.logicgrid);
         }
@@ -200,7 +200,7 @@ public class Managercombo : MonoBehaviour
                                 foundextremity = false;
                             }
                         }
-                        else if(CountBoxesActive == 8 && countercorrectbox == CountBoxesActive - 1)
+                        else if (CountBoxesActive == 8 && countercorrectbox == CountBoxesActive - 1)
                         {
                             if (i == 14 || i == 15)
                             {
@@ -218,17 +218,15 @@ public class Managercombo : MonoBehaviour
                     }
                 }
             }
-        }
-        if (i == 12)
-        {
 
-            AudioManager.Instance.PlaySound("BooSound");
             if (countercorrectbox == CountBoxesActive - 1)
             {
                 countercorrectbox = 0;
                 break;
             }
         }
+
+
     }
 
     void Searchextremity(bool[,] grid)
@@ -496,6 +494,6 @@ public class Managercombo : MonoBehaviour
                 }
             }
         }
-        
+
     }
 }
