@@ -323,26 +323,7 @@ public class WaveManager : MonoBehaviour
                             case 4:
                                 MalevolentEnemy malevolentEnemy = enemy.GetComponent<MalevolentEnemy>();
                                 /*malevolentEnemy.signmalevolentenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
-                                if (wavetospawn.lanes[i] == 0)
-                                {
-                                    malevolentEnemy.speed = 1.35f;
-                                }
-                                else if (wavetospawn.lanes[i] == 1)
-                                {
-                                    malevolentEnemy.speed = 1.27f;
-                                }
-                                else if (wavetospawn.lanes[i] == 2)
-                                {
-                                    malevolentEnemy.speed = 1.17f;
-                                }
-                                else if (wavetospawn.lanes[i] == 3)
-                                {
-                                    malevolentEnemy.speed = 1.07f;
-                                }
-                                else if (wavetospawn.lanes[i] == 4)
-                                {
-                                    malevolentEnemy.speed = 1f;
-                                }*/
+                                */
                                 break;
                             case 5:
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();

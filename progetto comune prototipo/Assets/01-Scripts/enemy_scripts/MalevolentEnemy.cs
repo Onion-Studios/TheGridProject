@@ -65,10 +65,6 @@ public class MalevolentEnemy : MonoBehaviour
     void Update()
     {
         transform.position = position;
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Deathforsign();
-        }
     }
 
     public void Deathforsign()
