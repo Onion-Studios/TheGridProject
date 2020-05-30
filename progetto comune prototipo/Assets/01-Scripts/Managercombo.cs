@@ -14,7 +14,7 @@ public struct nodes
 public class Managercombo : MonoBehaviour
 {
     #region VARIABLES
-    public nodes[][] IrregularSignMatrix = new nodes[12][];
+    public nodes[][] IrregularSignMatrix = new nodes[16][];
     #region GRID CORNERS
     nodes Angle1 = new nodes(0, 0);
     nodes Angle2 = new nodes(4, 0);
@@ -28,6 +28,7 @@ public class Managercombo : MonoBehaviour
     UIManager UIManager;
     Playerbehaviour playerbehaviour;
     grigliamanager grigliamanager;
+    Secret secretscript;
     public int CountBoxesActive = 0;
     #endregion
 
@@ -55,6 +56,12 @@ public class Managercombo : MonoBehaviour
         if (grigliamanager == null)
         {
             Debug.LogError("grigliamanager è null");
+        }
+
+        secretscript = FindObjectOfType<Secret>();
+        if (secretscript == null)
+        {
+            Debug.LogError("secretscript è null");
         }
 
         SetupMatrixSign();
@@ -92,16 +99,27 @@ public class Managercombo : MonoBehaviour
         //2 casi del segno S
         IrregularSignMatrix[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
         IrregularSignMatrix[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
-        //1 caso segno Malevolent
-        // IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
-
-    }
+        //2 casi segno Malevolent
+        IrregularSignMatrix[12] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1,1)};
+        IrregularSignMatrix[13] = new nodes[6] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 0), new nodes(2, -1), new nodes(1,-1)};
+        //2 casi di secret tecnique
+        IrregularSignMatrix[14] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(1, -2)};
+        IrregularSignMatrix[15] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-1, -2), new nodes(-1, -3), new nodes(0, -3), new nodes(0, -2), new nodes(1, -2)};
+    } 
 
     public void CheckSign()
     {
         CheckCountBoxesLogicGrid();
 
         if (CountBoxesActive == 5)
+        {
+            Searchextremity(grigliamanager.logicgrid);
+        }
+        else if(CountBoxesActive == 7)
+        {
+            Searchextremity(grigliamanager.logicgrid);
+        }
+        else if (CountBoxesActive == 8 && secretscript.active == true)
         {
             Searchextremity(grigliamanager.logicgrid);
         }
@@ -132,14 +150,8 @@ public class Managercombo : MonoBehaviour
     {
         int countercorrectbox = 0;
 
-        for (int i = 0; i < 12; i++)
+        for (int i = 15; i < 16; i++)
         {
-            if (countercorrectbox == 4)
-            {
-                countercorrectbox = 0;
-                break;
-            }
-
             foreach (var nodo in IrregularSignMatrix[i])
             {
 
@@ -152,7 +164,7 @@ public class Managercombo : MonoBehaviour
                     {
                         countercorrectbox++;
 
-                        if (countercorrectbox == 4)
+                        if (CountBoxesActive == 5 && countercorrectbox == CountBoxesActive - 1)
                         {
                             if (i == 0 || i == 1)
                             {
@@ -184,11 +196,22 @@ public class Managercombo : MonoBehaviour
                                 SearchAndDestroy(5);
                                 foundextremity = false;
                             }
-                            /*else if(i == 12)
+                        }
+                        else if (CountBoxesActive == 7 && countercorrectbox == CountBoxesActive - 1)
+                        {
+                            if (i == 12 || i == 13)
                             {
                                 SearchAndDestroy(6);
                                 foundextremity = false;
-                            }*/
+                            }
+                        }
+                        else if(CountBoxesActive == 8 && countercorrectbox == CountBoxesActive - 1)
+                        {
+                            if (i == 14 || i == 15)
+                            {
+                                secretscript.Death();
+                                foundextremity = false;
+                            }
                         }
                     }
                     else
@@ -200,6 +223,11 @@ public class Managercombo : MonoBehaviour
                 }
             }
 
+            if (countercorrectbox == CountBoxesActive - 1)
+            {
+                countercorrectbox = 0;
+                break;
+            }
         }
     }
 
@@ -390,70 +418,84 @@ public class Managercombo : MonoBehaviour
         }
     }
 
-
     void SearchAndDestroy(int valoreIndice)
     {
-        for (int i = 0; i < 7; i++)
+        if (valoreIndice == 6)
         {
-            foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
+            foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[4])
             {
                 if (enemytodestroy.activeInHierarchy == true)
                 {
-                    switch (i)
-                    {
-                        case 0:
-                            NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
-                            if (normalenemy.signnormalenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                            break;
-                        case 1:
-                            KamikazeEnemy kamikazenemy = enemytodestroy.GetComponent<KamikazeEnemy>();
-                            if (kamikazenemy.signkamikazenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                kamikazenemy.Deathforsign();
-                            }
-                            break;
-                        case 2:
-                            ArmoredEnemy armoredenemy = enemytodestroy.GetComponent<ArmoredEnemy>();
-                            if (armoredenemy.signarmoredenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                armoredenemy.Deathforsign();
-                            }
-                            break;
-                        case 3:
-                            UndyingEnemy undyingenemy = enemytodestroy.GetComponent<UndyingEnemy>();
-                            if (undyingenemy.signundyingenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                undyingenemy.Deathforsign();
-                            }
-                            break;
-                        case 4:
-                            /*MalevolentEnemy malevolentenemy = enemytodestroy.GetComponent<MalevolentEnemy>();
-                            if (malevolentenemy.signmalevolentenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                malevolentenemy.Deathforsign();
-                            }*/
-                            break;
-                        case 5:
-                            FrighteningEnemy frighteningenemy = enemytodestroy.GetComponent<FrighteningEnemy>();
-                            if (frighteningenemy.signfrighteningenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                frighteningenemy.Deathforsign();
-                            }
-                            break;
-                        case 6:
-                            BufferEnemy bufferenemy = enemytodestroy.GetComponent<BufferEnemy>();
-                            if (bufferenemy.signbufferenemy[valoreIndice].activeInHierarchy == true)
-                            {
-                                bufferenemy.Deathforsign();
-                            }
-                            break;
-                    }
-
+                    MalevolentEnemy malevolentenemy = enemytodestroy.GetComponent<MalevolentEnemy>();
+                    malevolentenemy.Deathforsign();
                 }
             }
         }
+        else
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
+                {
+                    if (enemytodestroy.activeInHierarchy == true)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
+                                if (normalenemy.signnormalenemy[valoreIndice].activeInHierarchy == true)
+                                {
+                                    normalenemy.Deathforsign();
+                                }
+                                break;
+                            case 1:
+                                KamikazeEnemy kamikazenemy = enemytodestroy.GetComponent<KamikazeEnemy>();
+                                if (kamikazenemy.signkamikazenemy[valoreIndice].activeInHierarchy == true)
+                                {
+                                    kamikazenemy.Deathforsign();
+                                }
+                                break;
+                            case 2:
+                                ArmoredEnemy armoredenemy = enemytodestroy.GetComponent<ArmoredEnemy>();
+                                if (armoredenemy.signarmoredenemy[valoreIndice].activeInHierarchy == true)
+                                {
+                                    armoredenemy.Deathforsign();
+                                }
+                                break;
+                            case 3:
+                                UndyingEnemy undyingenemy = enemytodestroy.GetComponent<UndyingEnemy>();
+                                if (undyingenemy.signundyingenemy[valoreIndice].activeInHierarchy == true)
+                                {
+                                    undyingenemy.Deathforsign();
+                                }
+                                break;
+                            case 4:
+                                /*MalevolentEnemy malevolentenemy = enemytodestroy.GetComponent<MalevolentEnemy>();
+                                if (malevolentenemy.signmalevolentenemy[valoreIndice].activeInHierarchy == true)
+                                {
+                                    malevolentenemy.Deathforsign();
+                                }*/
+                                break;
+                            case 5:
+                                FrighteningEnemy frighteningenemy = enemytodestroy.GetComponent<FrighteningEnemy>();
+                                if (frighteningenemy.signfrighteningenemy[valoreIndice].activeInHierarchy == true)
+                                {
+                                    frighteningenemy.Deathforsign();
+                                }
+                                break;
+                            case 6:
+                                BufferEnemy bufferenemy = enemytodestroy.GetComponent<BufferEnemy>();
+                                if (bufferenemy.signbufferenemy[valoreIndice].activeInHierarchy == true)
+                                {
+                                    bufferenemy.Deathforsign();
+                                }
+                                break;
+                        }
+
+                    }
+                }
+            }
+        }
+        
     }
 }

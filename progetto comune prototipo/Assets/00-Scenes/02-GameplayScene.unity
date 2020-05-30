@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44075558, g: 0.48943096, b: 0.56955177, a: 1}
+  m_IndirectSpecularColor: {r: 0.44075575, g: 0.48943144, b: 0.56955254, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2444,8 +2444,8 @@ MonoBehaviour:
   Activewave_intensity: 0
   Activewave_number: 0
   TEST_WaveActive: 0
-  TEST_waveintesity: 1
-  TEST_wavenumber: 0
+  TEST_waveintesity: 2
+  TEST_wavenumber: 1
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -6243,6 +6243,7 @@ MonoBehaviour:
   endMaterial: {fileID: 2100000, guid: 3ba45537acad6394fa866da09a3e2951, type: 2}
   currentTime: 0
   timeMax: 10
+  active: 0
 --- !u!1 &1798934804
 GameObject:
   m_ObjectHideFlags: 0

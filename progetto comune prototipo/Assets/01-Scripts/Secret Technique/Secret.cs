@@ -14,7 +14,7 @@ public class Secret : MonoBehaviour
     Playerbehaviour playerbehaviour;
     public float currentTime = 0f;
     public float timeMax = 5f;
-    bool active = false;
+    public bool active = false;
     #endregion
 
     // Start is called before the first frame update
@@ -57,11 +57,6 @@ public class Secret : MonoBehaviour
             }
             else
             {
-                //se premo E i enemy sulle lane muoiono 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    Death();
-                }
 
                 //Timer
                 currentTime -= 1 * Time.deltaTime;
@@ -84,7 +79,7 @@ public class Secret : MonoBehaviour
     }
 
     //Muoiono tutti i enemy presenti sulla lane 
-    void Death()
+    public void Death()
     {
         for (int i = 0; i < 7; i++)
         {
