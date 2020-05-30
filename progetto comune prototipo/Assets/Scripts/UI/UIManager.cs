@@ -16,7 +16,9 @@ public class UIManager : MonoBehaviour
     Inkstone Ink;
     Enemyspawnmanager Enemyspawnmanager;
     PointSystem pointsystem;
+    HighScore HighScore;
     public Text score_text;
+    public Text ScoreRecord;
     public Text scoremultiplier_text;
     #endregion
 
@@ -53,11 +55,13 @@ public class UIManager : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        HighScore = FindObjectOfType<HighScore>();
     }
 
     private void Start()
     {
-        
+        //score_text.text = PersistantManagerScript.Instance.ScoreRecord.ToString();
+        PersistantManagerScript.Instance.ScoreRecord = int.Parse(score_text.text);
     }
 
     private void Update()
@@ -90,10 +94,16 @@ public class UIManager : MonoBehaviour
         ink_text.text = (Ink.Ink + "/" + Ink.maxInk);
     }
 
-    void UpdateScore()
+    public void UpdateScore()
     {
         int convertedscore = (int)pointsystem.score;
         score_text.text = convertedscore.ToString();
+
+        if(convertedscore>PlayerPrefs.GetInt("HighScore", 000000000))
+        {
+            PlayerPrefs.SetInt("HighScore", convertedscore);
+            PersistantManagerScript.Instance.ScoreRecord=convertedscore;
+        }
     }
 
     void UpdateScoreMultiplier()
