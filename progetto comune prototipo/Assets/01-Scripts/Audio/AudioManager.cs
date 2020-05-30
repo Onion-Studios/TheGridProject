@@ -82,45 +82,32 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.clipName == name);
-        if (s == null)
-        {
-            Debug.LogError("Sound: " + name + " NotFound");
-            return;
-        }
-        s.PlayAudio();
+        SearchSound(name).PlayAudio();
     }
 
     public void StopSound(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.clipName == name);
-        if (s == null)
-        {
-            Debug.LogError("Sound: " + name + " NotFound");
-            return;
-        }
-        s.StopAudio();
+        SearchSound(name).StopAudio();
     }
 
     public void SetLoop(string name, bool loop)
     {
-        Sound s = Array.Find(sounds, sound => sound.clipName == name);
-        if (s == null)
-        {
-            Debug.LogError("Sound: " + name + " NotFound");
-            return;
-        }
-        s.SetLoop(loop);
+        SearchSound(name).SetLoop(loop);
     }
 
     public bool IsPlaying(string name)
+    {
+        return SearchSound(name).IsPlaying();
+    }
+
+    private Sound SearchSound(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.clipName == name);
         if (s == null)
         {
             Debug.LogError("Sound: " + name + " NotFound");
-            return false;
+            return null;
         }
-        return s.IsPlaying();
+        return s;
     }
 }

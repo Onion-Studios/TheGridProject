@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ArmoredEnemy : MonoBehaviour
 {
@@ -19,7 +17,7 @@ public class ArmoredEnemy : MonoBehaviour
     PointSystem pointsystem;
     public int scoreEnemy;
     public GameObject[] signarmoredenemy;
-    public int armoredLife =2;
+    public int armoredLife = 2;
     public float baseSpeed;
     public float startPosition;
     public float extrapointsoverdistance;
@@ -109,6 +107,7 @@ public class ArmoredEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+        AudioManager.Instance.PlaySound("PlayerGetsHit");
     }
 
     public void Deathforsign()

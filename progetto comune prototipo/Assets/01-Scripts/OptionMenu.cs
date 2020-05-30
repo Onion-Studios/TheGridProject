@@ -11,4 +11,9 @@ public class OptionMenu : MonoBehaviour
     {
         AudioManager.Instance.PlaySound("MenuCancel");
     }
+
+    public void StopMenuMusic()
+    {
+        AudioManager.Instance.StopSound("MenuTheme");
+    }
 }
