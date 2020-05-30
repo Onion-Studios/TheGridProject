@@ -90,7 +90,7 @@ public class Playerbehaviour : MonoBehaviour
                     movementState = "movingright";
 
                 }
-                if (Input.GetKeyDown(KeyCode.Space) && istanze.transform.position != gridCenter)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     managercombo.CheckSign();
                     istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
