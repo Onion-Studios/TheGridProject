@@ -910,7 +910,15 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: EnemyDeath
+  - clipName: SingsongBuffer
+    clip: {fileID: 8300000, guid: 5c59bc03fcae87246aea02f3c3fb38f6, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: 
     clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
     volume: 0.38
     pitch: 1
@@ -918,15 +926,7 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: EnemyDeath
-    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
-    volume: 0.38
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
-  - clipName: EnemyDeath
+  - clipName: 
     clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
     volume: 0.38
     pitch: 1

@@ -73,6 +73,10 @@ public class BufferEnemy : MonoBehaviour
         if (this.transform.localPosition.x > endPosition)
         {
             SpeedBoost();
+            if (AudioManager.Instance.IsPlaying("SingsongBuffer") == false)
+            {
+                AudioManager.Instance.PlaySound("SingsongBuffer");
+            }
         }
         else
         {
@@ -276,6 +280,7 @@ public class BufferEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         SpeedReset();
+        AudioManager.Instance.StopSound("SingsongBuffer");
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
 }
