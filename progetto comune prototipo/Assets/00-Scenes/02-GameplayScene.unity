@@ -2466,8 +2466,8 @@ MonoBehaviour:
   SignGroupwave3_6: 0500000002000000040000000100000001000000030000000100000005000000020000000500000004000000
   Activewave_intensity: 0
   Activewave_number: 0
-  TEST_WaveActive: 0
-  TEST_waveintesity: 2
+  TEST_WaveActive: 1
+  TEST_waveintesity: 3
   TEST_wavenumber: 1
 --- !u!4 &629502101
 Transform:

@@ -63,6 +63,10 @@ public class UndyingEnemy : MonoBehaviour
         currentTime = maxTime;
         repelled = false;
         startingPosition = this.transform.localPosition;
+        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        {
+            AudioManager.Instance.PlaySound("UndyingWarcry");
+        }
     }
 
 
