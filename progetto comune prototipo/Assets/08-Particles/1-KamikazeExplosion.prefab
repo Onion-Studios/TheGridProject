@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5484824041119663430}
   - component: {fileID: 5289540674421786672}
   m_Layer: 0
-  m_Name: KamikazeExplosion
+  m_Name: 1-KamikazeExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,7 +602,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 40
     size3D: 0
     rotation3D: 0
     gravityModifier:
