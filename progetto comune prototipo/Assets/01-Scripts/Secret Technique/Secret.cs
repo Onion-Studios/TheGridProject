@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Secret : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Secret : MonoBehaviour
     public float currentTime = 0f;
     public float timeMax = 5f;
     public bool active = false;
+    [SerializeField]
+    float symbolShowDuration;
+    public GameObject secretSymbol;
+    IEnumerator symboldisplay;
     #endregion
 
     // Start is called before the first frame update
@@ -22,10 +27,9 @@ public class Secret : MonoBehaviour
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
 
-
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
-
+        
     }
 
     // Update is called once per frame
@@ -50,6 +54,11 @@ public class Secret : MonoBehaviour
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
             {
+                if (symboldisplay != null)
+                {
+                    symboldisplay = null;
+                    StopCoroutine(symboldisplay);
+                }
                 AudioManager.Instance.PlaySound("PaintingCompleted");
                 active = true;
                 symbol.SetActive(active);
@@ -57,21 +66,26 @@ public class Secret : MonoBehaviour
             }
             else
             {
-
                 //Timer
-                currentTime -= 1 * Time.deltaTime;
-
+                if (currentTime > 0)
+                {
+                    if (symboldisplay == null)
+                    {
+                        symboldisplay = SymbolDisplay();
+                        StartCoroutine(symboldisplay);
+                    }
+                    currentTime -= 1 * Time.deltaTime;
+                }
                 if (currentTime < 0)
                 {
                     currentTime = 0;
                 }
-
                 //reset barra e si disattiva la secret 
                 if (currentTime == 0)
                 {
                     AudioManager.Instance.PlaySound("PaintingReset");
                     bar = 0;
-
+                    
                     active = false;
                     symbol.SetActive(active);
                 }
@@ -121,16 +135,19 @@ public class Secret : MonoBehaviour
                             break;
                     }
                 }
-
             }
         }
-
     }
 
-
+    private IEnumerator SymbolDisplay() {
+        secretSymbol.SetActive(true);
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(symbolShowDuration);
+        Time.timeScale = 1f;
+        secretSymbol.SetActive(false);
+    }
     void Color()
     {
-
         this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
     }
 }
