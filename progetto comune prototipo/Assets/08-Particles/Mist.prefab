@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1706435077795407448}
   - component: {fileID: 1706435077795407449}
   - component: {fileID: 1706435077795407430}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mist
   m_TagString: Untagged
   m_Icon: {fileID: 0}

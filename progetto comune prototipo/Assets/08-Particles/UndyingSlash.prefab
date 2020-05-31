@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1889346601385941587}
   - component: {fileID: 1889346601385941588}
   - component: {fileID: 1889346601385941589}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UndyingSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4766,7 +4766,7 @@ GameObject:
   - component: {fileID: 1889346602129990899}
   - component: {fileID: 1889346602129990897}
   - component: {fileID: 1889346602129990898}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9587,7 +9587,7 @@ GameObject:
   - component: {fileID: 1968765616493655684}
   - component: {fileID: 1968765616493655685}
   - component: {fileID: 1968765616493655682}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WaveSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14357,7 +14357,7 @@ GameObject:
   - component: {fileID: 1968765616551828879}
   - component: {fileID: 1968765616551828864}
   - component: {fileID: 1968765616551828865}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19110,7 +19110,7 @@ GameObject:
   - component: {fileID: 1968765617315278545}
   - component: {fileID: 1968765617315278559}
   - component: {fileID: 1968765617315278544}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23863,7 +23863,7 @@ GameObject:
   - component: {fileID: 1968765617503334760}
   - component: {fileID: 1968765617503334761}
   - component: {fileID: 1968765617503334762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
