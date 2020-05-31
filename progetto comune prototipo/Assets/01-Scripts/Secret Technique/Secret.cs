@@ -9,6 +9,7 @@ public class Secret : MonoBehaviour
     public Material endMaterial;
     Renderer renderer_;
     Enemyspawnmanager enemyspawnmanager;
+    public GameObject symbol;
     Playerbehaviour playerbehaviour;
     public float currentTime = 0f;
     public float timeMax = 5f;
@@ -22,7 +23,7 @@ public class Secret : MonoBehaviour
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
 
 
-        renderer_ = GetComponent<Renderer>();
+        renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
 
     }
@@ -51,7 +52,7 @@ public class Secret : MonoBehaviour
             {
                 AudioManager.Instance.PlaySound("PaintingCompleted");
                 active = true;
-
+                symbol.SetActive(active);
                 currentTime = timeMax;
             }
             else
@@ -72,8 +73,8 @@ public class Secret : MonoBehaviour
                     bar = 0;
 
                     active = false;
+                    symbol.SetActive(active);
                 }
-
             }
         }
     }
