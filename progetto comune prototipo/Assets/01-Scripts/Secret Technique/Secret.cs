@@ -58,7 +58,10 @@ public class Secret : MonoBehaviour
             {
 
                 //Timer
-                currentTime -= 1 * Time.deltaTime;
+                if (currentTime > 0)
+                {
+                    currentTime -= 1 * Time.deltaTime;
+                }
 
                 if (currentTime < 0)
                 {

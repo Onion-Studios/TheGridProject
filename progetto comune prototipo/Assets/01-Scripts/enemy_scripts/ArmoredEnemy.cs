@@ -22,6 +22,7 @@ public class ArmoredEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+
     #endregion
 
 
@@ -107,7 +108,15 @@ public class ArmoredEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+        }
+        else
+        {
+            // Insert THUD Sound
+        }
+
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
 

@@ -23,6 +23,7 @@ public class KamikazeEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+
     #endregion
 
     private void OnEnable()
@@ -56,6 +57,7 @@ public class KamikazeEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
 
         speed = baseSpeed;
 
@@ -105,7 +107,15 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
 
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+        }
+        else
+        {
+            // Insert THUD Sound
+        }
+
         ExplosionWork(this.transform.position);
     }
 

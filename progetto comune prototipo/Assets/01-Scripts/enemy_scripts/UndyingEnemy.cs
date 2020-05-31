@@ -119,7 +119,14 @@ public class UndyingEnemy : MonoBehaviour
 
         if (attackTimer == 0)
         {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            if (SecretT.bar == 100)
+            {
+                AudioManager.Instance.PlaySound("PlayerGetsHit");
+            }
+            else
+            {
+                // Insert THUD Sound
+            }
             attackTimer = maxAttacktimer;
 
             Inkstone.Ink -= inkDamage;

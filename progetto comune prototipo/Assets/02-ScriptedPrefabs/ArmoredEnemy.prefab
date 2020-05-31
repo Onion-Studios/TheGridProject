@@ -79,6 +79,7 @@ MonoBehaviour:
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1
+  secret: {fileID: 0}
 --- !u!54 &8172587831837169310
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -656,6 +657,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6253756492134926068}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: dd34cf49a5444094b8bc0f28f3991980,
+        type: 3}
+      propertyPath: m_Name
+      value: ArmoredComplete
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dd34cf49a5444094b8bc0f28f3991980,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -710,11 +716,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: dd34cf49a5444094b8bc0f28f3991980,
-        type: 3}
-      propertyPath: m_Name
-      value: ArmoredComplete
       objectReference: {fileID: 0}
     - target: {fileID: 6306971017694268109, guid: dd34cf49a5444094b8bc0f28f3991980,
         type: 3}

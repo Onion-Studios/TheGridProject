@@ -840,7 +840,7 @@ MonoBehaviour:
       type: 2}
   - clipName: PlayerGetsHit
     clip: {fileID: 8300000, guid: 566ac208c58681641afc07a383ac000d, type: 3}
-    volume: 0.38
+    volume: 0.9
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -888,7 +888,7 @@ MonoBehaviour:
       type: 2}
   - clipName: EnemyDeath
     clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
-    volume: 0.38
+    volume: 0.1
     pitch: 1
     loop: 0
     playOnAwake: 0

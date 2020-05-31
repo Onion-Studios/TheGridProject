@@ -123,7 +123,17 @@ public class FrighteningEnemy : MonoBehaviour
         }
 
         playerbehaviour.speed = playerSpeed;
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+        }
+        else
+        {
+
+            // Insert THUD Sound
+        }
+
         AudioManager.Instance.PlaySound("EnemyDeath");
 
 
