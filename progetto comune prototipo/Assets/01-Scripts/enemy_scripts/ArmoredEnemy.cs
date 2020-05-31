@@ -108,6 +108,7 @@ public class ArmoredEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         AudioManager.Instance.PlaySound("PlayerGetsHit");
+        AudioManager.Instance.PlaySound("EnemyDeath");
     }
 
     public void Deathforsign()
@@ -134,6 +135,7 @@ public class ArmoredEnemy : MonoBehaviour
                 segno.SetActive(false);
             }
             this.gameObject.SetActive(false);
+            AudioManager.Instance.PlaySound("EnemyDeath");
         }
 
         pointsystem.currentTimer = pointsystem.maxTimer;

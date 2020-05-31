@@ -878,21 +878,61 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: ClappingSound
-    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
-    volume: 0.38
+  - clipName: PlayerMovement
+    clip: {fileID: 8300000, guid: 357a50b259a9a674b9d350f9b1111b30, type: 3}
+    volume: 0.16
     pitch: 1
-    loop: 1
+    loop: 0
     playOnAwake: 0
-    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: ClappingSound
-    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
+  - clipName: EnemyDeath
+    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
     volume: 0.38
     pitch: 1
-    loop: 1
+    loop: 0
     playOnAwake: 0
-    mixer: {fileID: -7087817749709163436, guid: 26df92cc8f87f2d4ba47b84443289948,
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: YokaiSlayerBrawl
+    clip: {fileID: 8300000, guid: 26953638157284f4f914ef9968f37298, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: EnemyDeath
+    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: EnemyDeath
+    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: EnemyDeath
+    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: EnemyDeath
+    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
+    volume: 0.38
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
 --- !u!4 &1831106254
 Transform:

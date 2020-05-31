@@ -110,6 +110,7 @@ public class NormalEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         AudioManager.Instance.PlaySound("PlayerGetsHit");
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
 
@@ -131,6 +132,7 @@ public class NormalEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
 

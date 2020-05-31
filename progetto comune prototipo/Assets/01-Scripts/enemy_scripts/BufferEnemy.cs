@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class BufferEnemy : MonoBehaviour
 {
@@ -62,13 +59,13 @@ public class BufferEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Enemymove();   
+        Enemymove();
     }
 
     public void Enemymove()
@@ -125,7 +122,7 @@ public class BufferEnemy : MonoBehaviour
                                     ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
 
                                 }
-                                
+
 
                             }
                             break;
@@ -157,13 +154,13 @@ public class BufferEnemy : MonoBehaviour
 
                                 if (bufferEnemy.speed == bufferEnemy.baseSpeed)
                                 {
-                                   bufferEnemy.speed = bufferEnemy.speed * Boost;
+                                    bufferEnemy.speed = bufferEnemy.speed * Boost;
                                 }
 
                             }
                             break;
 
-                    }     
+                    }
                 }
             }
         }
@@ -171,7 +168,7 @@ public class BufferEnemy : MonoBehaviour
 
     public void SpeedReset()
     {
-       
+
         for (int i = 0; i < link; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
@@ -210,7 +207,7 @@ public class BufferEnemy : MonoBehaviour
                                     {
                                         ArmoredEnemy.speed = ArmoredEnemy.baseSpeed;
                                     }
-                                    else 
+                                    else
                                     {
                                         ArmoredEnemy.speed = ArmoredEnemy.baseSpeedMax;
                                     }
@@ -267,11 +264,11 @@ public class BufferEnemy : MonoBehaviour
 
         pointsystem.Combo();
 
-        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier; 
+        pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
 
 
         this.gameObject.SetActive(false);
-        enemyspawnmanager.enemykilled  += 1;
+        enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         foreach (GameObject segno in signbufferenemy)
@@ -279,5 +276,6 @@ public class BufferEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         SpeedReset();
+        AudioManager.Instance.PlaySound("EnemyDeath");
     }
 }

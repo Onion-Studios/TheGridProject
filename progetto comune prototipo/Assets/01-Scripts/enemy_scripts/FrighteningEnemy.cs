@@ -124,6 +124,7 @@ public class FrighteningEnemy : MonoBehaviour
 
         playerbehaviour.speed = playerSpeed;
         AudioManager.Instance.PlaySound("PlayerGetsHit");
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
 
     }
@@ -147,6 +148,7 @@ public class FrighteningEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        AudioManager.Instance.PlaySound("EnemyDeath");
     }
 
     void PointOverDistance()
