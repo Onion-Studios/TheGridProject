@@ -63,12 +63,6 @@ public class ArmoredEnemy : MonoBehaviour
         startPosition = transform.position.x;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -111,6 +105,8 @@ public class ArmoredEnemy : MonoBehaviour
         if (SecretT.bar == 100)
         {
             AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.active = false;
+            SecretT.currentTime = SecretT.timeMax;
         }
         else
         {

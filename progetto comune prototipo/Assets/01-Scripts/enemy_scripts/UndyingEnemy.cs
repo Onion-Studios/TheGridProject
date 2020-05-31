@@ -122,6 +122,8 @@ public class UndyingEnemy : MonoBehaviour
             if (SecretT.bar == 100)
             {
                 AudioManager.Instance.PlaySound("PlayerGetsHit");
+                SecretT.active = false;
+                SecretT.currentTime = SecretT.timeMax;
             }
             else
             {

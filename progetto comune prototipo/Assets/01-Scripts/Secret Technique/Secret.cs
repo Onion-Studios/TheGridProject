@@ -3,28 +3,24 @@
 public class Secret : MonoBehaviour
 {
     #region VARIABLES
-    [Range(0, 100)] public int bar = 0;
+    [Range(0, 100)] public int bar;
     public int charge;
     public Material startMaterial;
     public Material endMaterial;
     Renderer renderer_;
     Enemyspawnmanager enemyspawnmanager;
-    Playerbehaviour playerbehaviour;
-    public float currentTime = 0f;
-    public float timeMax = 5f;
-    public bool active = false;
+    public float currentTime;
+    public float timeMax;
+    public bool active;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
-        playerbehaviour = FindObjectOfType<Playerbehaviour>();
-
-
         renderer_ = GetComponent<Renderer>();
         renderer_.material = startMaterial;
-
     }
 
     // Update is called once per frame
@@ -37,7 +33,6 @@ public class Secret : MonoBehaviour
 
     void Timer()
     {
-
         if (bar > 100)
         {
             bar = 100;
@@ -51,37 +46,28 @@ public class Secret : MonoBehaviour
             {
                 AudioManager.Instance.PlaySound("PaintingCompleted");
                 active = true;
-
                 currentTime = timeMax;
             }
             else
             {
-
                 //Timer
                 if (currentTime > 0)
                 {
                     currentTime -= 1 * Time.deltaTime;
                 }
-
-                if (currentTime < 0)
+                //reset barra e si disattiva la secret 
+                else
                 {
                     currentTime = 0;
-                }
-
-                //reset barra e si disattiva la secret 
-                if (currentTime == 0)
-                {
                     AudioManager.Instance.PlaySound("PaintingReset");
                     bar = 0;
-
                     active = false;
                 }
-
             }
         }
     }
 
-    //Muoiono tutti i enemy presenti sulla lane 
+    //Muoiono tutti i nemici presenti sulla lane 
     public void Death()
     {
         for (int i = 0; i < 7; i++)
@@ -123,16 +109,12 @@ public class Secret : MonoBehaviour
                             break;
                     }
                 }
-
             }
         }
-
     }
-
 
     void Color()
     {
-
         this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
     }
 }

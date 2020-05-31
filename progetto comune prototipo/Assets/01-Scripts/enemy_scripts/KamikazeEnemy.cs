@@ -16,14 +16,12 @@ public class KamikazeEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signkamikazenemy;
     public float baseSpeed;
-
     private Collider[] hitColliders;
     public float blastRadius;
     //public LayerMask explosionLayers;
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
-
     #endregion
 
     private void OnEnable()
@@ -110,6 +108,8 @@ public class KamikazeEnemy : MonoBehaviour
         if (SecretT.bar == 100)
         {
             AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.active = false;
+            SecretT.currentTime = SecretT.timeMax;
         }
         else
         {
