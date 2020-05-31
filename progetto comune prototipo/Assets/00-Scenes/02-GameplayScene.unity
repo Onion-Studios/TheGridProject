@@ -2467,7 +2467,7 @@ MonoBehaviour:
   Activewave_intensity: 0
   Activewave_number: 0
   TEST_WaveActive: 1
-  TEST_waveintesity: 3
+  TEST_waveintesity: 2
   TEST_wavenumber: 1
 --- !u!4 &629502101
 Transform:

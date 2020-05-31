@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MalevolentEnemy : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class MalevolentEnemy : MonoBehaviour
     public Vector3 position;
     public float spawntimer;
     public float maxspawntimer;
+
     #endregion
 
     // Start is called before the first frame update
@@ -54,17 +56,29 @@ public class MalevolentEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+
+
     }
 
     private void OnEnable()
     {
         AudioManager.Instance.PlaySound("MalevolentSpawn");
+        StartCoroutine("MalevolentSound");
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = position;
+    }
+
+    private IEnumerator MalevolentSound()
+    {
+        while (this.isActiveAndEnabled)
+        {
+            yield return new WaitForSeconds(3.50f);
+            AudioManager.Instance.PlaySound("MalevolentSpawn");
+        }
     }
 
     public void Deathforsign()
