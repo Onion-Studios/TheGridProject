@@ -13,6 +13,8 @@ public class Inkstone : MonoBehaviour
     public GameObject Layer3;
     public GameObject Layer4;
     public GameObject Layer5;
+    public static int FinalScore;
+    PointSystem PointSystem;
     
 
     void Start()
@@ -22,6 +24,7 @@ public class Inkstone : MonoBehaviour
             Layer3.SetActive(true);
             Layer4.SetActive(true);
             Layer5.SetActive(true);
+        PointSystem = FindObjectOfType<PointSystem>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class Inkstone : MonoBehaviour
         }
         if(Ink == 0)
         {
+            FinalScore = (int)PointSystem.score;
             SceneManager.LoadScene(3);
         }
         if (Ink == 1)

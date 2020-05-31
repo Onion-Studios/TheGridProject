@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class PersistantManagerScript : MonoBehaviour
 {
-    public static PersistantManagerScript Instance { get; private set; }
-    public int ScoreRecord;
+    public static int HighScore;
 
-    private void Awake()
+    public void Start()
     {
-        if(Instance==null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        HighScore=PlayerPrefs.GetInt("HighScore");
     }
 }
