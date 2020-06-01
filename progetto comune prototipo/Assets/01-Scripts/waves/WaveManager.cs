@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -140,6 +141,7 @@ public class WaveManager : MonoBehaviour
 
     Enemyspawnmanager enemyspawnmanager;
     GameManager gamemanager;
+    StartEndSequence startEndSequence;
     public int Activewave_intensity;
     public int Activewave_number;
     public bool TEST_WaveActive = false;
@@ -147,6 +149,7 @@ public class WaveManager : MonoBehaviour
     public int TEST_wavenumber = 0;
     wave wavetospawn;
     int casualwave;
+    int count;
 
     // Start is called before the first frame update
     void Start()
@@ -163,24 +166,38 @@ public class WaveManager : MonoBehaviour
         {
             Debug.Log("gamemanager is null");
         }
+        startEndSequence = FindObjectOfType<StartEndSequence>();
+        if (startEndSequence == null)
+        {
+            Debug.LogError("StartEndSequence is NULL!");
+        }
+
         Initializewaves();
         Initializeintensitywave();
         Initializedictionarywaves();
         //check sulla partenza della wave di test oppure no
-        if (TEST_WaveActive == false)
-        {
-            StartCoroutine(SpawnWaveCoroutine());
-        }
-        else
-        {
-            StartCoroutine(Testspawncoroutine(TEST_waveintesity, TEST_wavenumber));
-        }
+        
+             
+    
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (startEndSequence.starting == false && startEndSequence.ending == false && count == 0)
+        {
+            
+            if (TEST_WaveActive == false)
+            {
+                StartCoroutine(SpawnWaveCoroutine());
+            }
+            else
+            {
+                StartCoroutine(Testspawncoroutine(TEST_waveintesity, TEST_wavenumber));
+            }
+            count++;
+        }
 
     }
 
@@ -344,6 +361,7 @@ public class WaveManager : MonoBehaviour
                 }
                 yield return new WaitForSeconds(wavetospawn.delays[i]);
             }
+         
         }
 
     }

@@ -31,7 +31,7 @@ public class grigliamanager : MonoBehaviour
         {
             Debug.LogError("il playerbehaviour è NULL!");
         }
-        character.playerposition = new Vector3(2, 1.05f, 2);
+        character.playerposition = new Vector3(-3.24f, 1.05f, 3.16f);
         character.Spawn();
         MidGridLogicTrue();
         managercombo = FindObjectOfType<Managercombo>();

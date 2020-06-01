@@ -4,7 +4,6 @@ public class Playerbehaviour : MonoBehaviour
 {
     #region VARIABILI 
     public GameObject character;
-    [HideInInspector]
     public Vector3 playerposition;
     public float speed;
     public GameObject istanze;
@@ -14,6 +13,7 @@ public class Playerbehaviour : MonoBehaviour
     grigliamanager grigliamanager;
     Managercombo managercombo;
     Inkstone Inkstone;
+    StartEndSequence startEndSequence;
     public Vector3 LastCubeChecked;
     public int yokaislayercount;
     public string movementState;
@@ -21,9 +21,7 @@ public class Playerbehaviour : MonoBehaviour
     public float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
-
-    private static Vector3 gridCenter;
-    private AudioManager audioManager;
+    public Vector3 gridCenter;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -46,6 +44,12 @@ public class Playerbehaviour : MonoBehaviour
         if (Inkstone == null)
         {
             Debug.LogError("Inkstone is NULL!");
+        }
+
+        startEndSequence = FindObjectOfType<StartEndSequence>();
+        if (startEndSequence == null)
+        {
+            Debug.LogError("StartEndSequence is NULL!");
         }
 
         movementState = "readystate";
@@ -57,7 +61,10 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovementHandler();
+       if(startEndSequence.starting == false)
+       {
+           MovementHandler();
+       }
     }
 
     void MovementHandler()
@@ -100,7 +107,7 @@ public class Playerbehaviour : MonoBehaviour
                 {
                     managercombo.CheckSign();
                     istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    istanze.transform.position = playerposition;
+                    istanze.transform.position = gridCenter;
                     grigliamanager.ResetColorGrid();
                     grigliamanager.ResetGridLogic();
                     AudioManager.Instance.PlaySound("ConfirmSound");
@@ -232,7 +239,8 @@ public class Playerbehaviour : MonoBehaviour
     {
         //istanzio il player sopra al cubo sommando un vettore
 
-        istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
+        istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, -90f, 0f), this.transform);
+
     }
 
     #endregion
