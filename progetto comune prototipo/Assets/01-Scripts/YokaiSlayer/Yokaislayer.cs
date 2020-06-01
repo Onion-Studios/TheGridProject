@@ -1,9 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,7 +44,7 @@ public class Yokaislayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && playerbehaviour.yokaislayercount > 0 && active == false)
         {
             active = true;
-           
+
         }
 
         if (active == true)
@@ -62,11 +57,11 @@ public class Yokaislayer : MonoBehaviour
     void YokaiSlayerSequence()
     {
 
-         switch(yokaiSlayerSequenceNumber)
-         {
-              case 0:
+        switch (yokaiSlayerSequenceNumber)
+        {
+            case 0:
                 SwitchUI();
-                  break;
+                break;
             case 1:
                 SaveInk();
                 break;
@@ -75,20 +70,21 @@ public class Yokaislayer : MonoBehaviour
                 break;
             case 3:
                 TimeStop();
-                  break;
+                AudioManager.Instance.PlaySound("YokaiSlayerBrawl");
+                break;
             case 4:
                 ActivateYokaiSlayer();
                 SignYS();
                 break;
             case 5:
-                if(waiting == null)
+                if (waiting == null)
                 {
                     waiting = Waiting();
                     StartCoroutine(waiting);
                 }
                 break;
             case 6:
-                if(waiting != null)
+                if (waiting != null)
                 {
                     StopCoroutine(waiting);
                     waiting = null;
@@ -109,21 +105,21 @@ public class Yokaislayer : MonoBehaviour
                 break;
 
 
-         }
-        
+        }
+
     }
-    
+
     void CloseCurtains()
     {
-        if(tenda.transform.localPosition.x > closecurtain.x)
+        if (tenda.transform.localPosition.x > closecurtain.x)
         {
-           tenda.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
-           tenda2.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
+            tenda.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
+            tenda2.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
 
         }
         else
         {
-            tenda.transform.position = closecurtain; 
+            tenda.transform.position = closecurtain;
             yokaiSlayerSequenceNumber++;
         }
     }
@@ -209,11 +205,11 @@ public class Yokaislayer : MonoBehaviour
     {
         playerbehaviour.yokaislayercount--;
 
-        for (int i=0; i < 7; i++)
+        for (int i = 0; i < 7; i++)
         {
-            foreach(GameObject nemici in enemyspawnmanager.poolenemy[i])
+            foreach (GameObject nemici in enemyspawnmanager.poolenemy[i])
             {
-                if(nemici.activeInHierarchy == true)
+                if (nemici.activeInHierarchy == true)
                 {
                     switch (i)
                     {
@@ -255,7 +251,7 @@ public class Yokaislayer : MonoBehaviour
 
     void FinalizeSequence()
     {
-       
+
         yokaiSlayerSequenceNumber = 0;
 
         active = false;

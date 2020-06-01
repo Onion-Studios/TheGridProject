@@ -61,12 +61,6 @@ public class FrighteningEnemy : MonoBehaviour
         startPosition = transform.position.x;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -123,7 +117,20 @@ public class FrighteningEnemy : MonoBehaviour
         }
 
         playerbehaviour.speed = playerSpeed;
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.active = false;
+            SecretT.currentTime = SecretT.timeMax;
+        }
+        else
+        {
+
+            // Insert THUD Sound
+        }
+
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
 
     }
@@ -147,6 +154,7 @@ public class FrighteningEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        AudioManager.Instance.PlaySound("EnemyDeath");
     }
 
     void PointOverDistance()

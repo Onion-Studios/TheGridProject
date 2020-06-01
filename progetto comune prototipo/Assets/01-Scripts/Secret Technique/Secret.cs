@@ -4,7 +4,7 @@ using UnityEngine;
 public class Secret : MonoBehaviour
 {
     #region VARIABLES
-    [Range(0, 100)] public int bar = 0;
+    [Range(0, 100)] public int bar;
     public int charge;
     public Material startMaterial;
     public Material endMaterial;
@@ -19,17 +19,21 @@ public class Secret : MonoBehaviour
     float symbolShowDuration;
     public GameObject secretSymbol;
     IEnumerator symboldisplay;
+    public float currentTime;
+    public float timeMax;
+    public bool active;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
 
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
-        
+
     }
 
     // Update is called once per frame
@@ -42,7 +46,6 @@ public class Secret : MonoBehaviour
 
     void Timer()
     {
-
         if (bar > 100)
         {
             bar = 100;
@@ -78,14 +81,15 @@ public class Secret : MonoBehaviour
                 }
                 if (currentTime < 0)
                 {
-                    currentTime = 0;
+                    currentTime -= 1 * Time.deltaTime;
                 }
                 //reset barra e si disattiva la secret 
-                if (currentTime == 0)
+                else
                 {
+                    currentTime = 0;
                     AudioManager.Instance.PlaySound("PaintingReset");
                     bar = 0;
-                    
+
                     active = false;
                     symbol.SetActive(active);
                 }
@@ -93,7 +97,7 @@ public class Secret : MonoBehaviour
         }
     }
 
-    //Muoiono tutti i enemy presenti sulla lane 
+    //Muoiono tutti i nemici presenti sulla lane 
     public void Death()
     {
         for (int i = 0; i < 7; i++)
@@ -146,6 +150,8 @@ public class Secret : MonoBehaviour
         Time.timeScale = 1f;
         secretSymbol.SetActive(false);
     }
+
+
     void Color()
     {
         this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);

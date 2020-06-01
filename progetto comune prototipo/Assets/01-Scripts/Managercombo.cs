@@ -120,7 +120,10 @@ public class Managercombo : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlaySound("BooSound");
+            if (AudioManager.Instance.IsPlaying("BooSound") == false)
+            {
+                AudioManager.Instance.PlaySound("BooSound");
+            }
 
             Debug.Log("nessun estremita trovata");
         }
@@ -145,8 +148,8 @@ public class Managercombo : MonoBehaviour
     void CheckCorrectSign()
     {
         int countercorrectbox = 0;
-
-        for (int i = 0; i < 16; i++)
+        int i;
+        for (i = 0; i < 16; i++)
         {
             foreach (var nodo in IrregularSignMatrix[i])
             {
@@ -225,7 +228,10 @@ public class Managercombo : MonoBehaviour
                 break;
             }
         }
-
+        if (i == IrregularSignMatrix.Length && AudioManager.Instance.IsPlaying("BooSound") == false)
+        {
+            AudioManager.Instance.PlaySound("BooSound");
+        }
 
     }
 

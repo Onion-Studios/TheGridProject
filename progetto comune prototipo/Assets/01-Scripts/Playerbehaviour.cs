@@ -23,6 +23,7 @@ public class Playerbehaviour : MonoBehaviour
     public int inkGained;
 
     private static Vector3 gridCenter;
+    private AudioManager audioManager;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -50,6 +51,7 @@ public class Playerbehaviour : MonoBehaviour
         movementState = "readystate";
 
         waitTimer = maxWaitTimer;
+        audioManager = AudioManager.Instance;
     }
 
     // Update is called once per frame
@@ -68,24 +70,28 @@ public class Playerbehaviour : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.W) && istanze.transform.position.z > 0.9)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z - 1;
                     movementState = "movingforward";
 
                 }
                 if (Input.GetKey(KeyCode.S) && istanze.transform.position.z < 3.1)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z + 1;
                     movementState = "movingback";
 
                 }
                 if (Input.GetKey(KeyCode.A) && istanze.transform.position.x < 3.1)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x + 1;
                     movementState = "movingleft";
 
                 }
                 if (Input.GetKey(KeyCode.D) && istanze.transform.position.x > 0.9)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x - 1;
                     movementState = "movingright";
 

@@ -16,7 +16,6 @@ public class KamikazeEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signkamikazenemy;
     public float baseSpeed;
-
     private Collider[] hitColliders;
     public float blastRadius;
     //public LayerMask explosionLayers;
@@ -56,6 +55,7 @@ public class KamikazeEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
 
         speed = baseSpeed;
 
@@ -105,7 +105,17 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
 
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.active = false;
+            SecretT.currentTime = SecretT.timeMax;
+        }
+        else
+        {
+            // Insert THUD Sound
+        }
+
         ExplosionWork(this.transform.position);
     }
 

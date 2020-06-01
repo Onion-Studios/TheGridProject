@@ -63,6 +63,10 @@ public class UndyingEnemy : MonoBehaviour
         currentTime = maxTime;
         repelled = false;
         startingPosition = this.transform.localPosition;
+        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        {
+            AudioManager.Instance.PlaySound("UndyingWarcry");
+        }
     }
 
 
@@ -115,7 +119,16 @@ public class UndyingEnemy : MonoBehaviour
 
         if (attackTimer == 0)
         {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            if (SecretT.bar == 100)
+            {
+                AudioManager.Instance.PlaySound("PlayerGetsHit");
+                SecretT.active = false;
+                SecretT.currentTime = SecretT.timeMax;
+            }
+            else
+            {
+                // Insert THUD Sound
+            }
             attackTimer = maxAttacktimer;
 
             Inkstone.Ink -= inkDamage;

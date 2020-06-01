@@ -20,6 +20,7 @@ public class NormalEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+
     #endregion
 
     private void OnEnable()
@@ -54,13 +55,13 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+
+
         speed = baseSpeed;
 
         startPosition = transform.position.x;
 
     }
-
-    // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
@@ -103,7 +104,20 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.active = false;
+            SecretT.currentTime = SecretT.timeMax;
+        }
+        else
+        {
+            // Insert THUD Sound
+        }
+
+
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
 
@@ -125,6 +139,7 @@ public class NormalEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
 

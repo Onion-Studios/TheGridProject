@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,12 +13,12 @@ public class LoadToGameplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator Loading()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2);
     }
 }
