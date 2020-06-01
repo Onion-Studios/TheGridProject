@@ -98,7 +98,6 @@ public class KamikazeEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.bar = 0;
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signkamikazenemy)
         {
@@ -116,6 +115,7 @@ public class KamikazeEnemy : MonoBehaviour
             // Insert THUD Sound
         }
 
+        SecretT.bar = 0;
         ExplosionWork(this.transform.position);
     }
 

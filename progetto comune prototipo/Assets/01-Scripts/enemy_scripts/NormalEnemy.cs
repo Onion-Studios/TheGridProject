@@ -98,7 +98,6 @@ public class NormalEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.bar = 0;
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signnormalenemy)
         {
@@ -116,6 +115,7 @@ public class NormalEnemy : MonoBehaviour
             // Insert THUD Sound
         }
 
+        SecretT.bar = 0;
 
         AudioManager.Instance.PlaySound("EnemyDeath");
 

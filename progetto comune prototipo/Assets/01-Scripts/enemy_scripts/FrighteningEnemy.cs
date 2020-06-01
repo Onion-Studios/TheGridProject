@@ -109,7 +109,6 @@ public class FrighteningEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.bar = 0;
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signfrighteningenemy)
         {
@@ -130,6 +129,7 @@ public class FrighteningEnemy : MonoBehaviour
             // Insert THUD Sound
         }
 
+        SecretT.bar = 0;
         AudioManager.Instance.PlaySound("EnemyDeath");
 
 

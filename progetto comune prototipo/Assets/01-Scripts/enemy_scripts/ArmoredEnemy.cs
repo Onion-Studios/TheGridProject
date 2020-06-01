@@ -96,7 +96,6 @@ public class ArmoredEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.bar = 0;
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signarmoredenemy)
         {
@@ -113,6 +112,7 @@ public class ArmoredEnemy : MonoBehaviour
             // Insert THUD Sound
         }
 
+        SecretT.bar = 0;
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
 

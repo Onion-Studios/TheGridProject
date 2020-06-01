@@ -12,16 +12,13 @@ public class Secret : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     public GameObject symbol;
     Playerbehaviour playerbehaviour;
-    public float currentTime = 0f;
-    public float timeMax = 5f;
-    public bool active = false;
+    public float currentTime;
+    public float timeMax;
+    public bool active;
     [SerializeField]
     float symbolShowDuration;
     public GameObject secretSymbol;
     IEnumerator symboldisplay;
-    public float currentTime;
-    public float timeMax;
-    public bool active;
     #endregion
 
     // Start is called before the first frame update
@@ -33,6 +30,7 @@ public class Secret : MonoBehaviour
 
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
+        active = false;
 
     }
 
@@ -59,8 +57,8 @@ public class Secret : MonoBehaviour
             {
                 if (symboldisplay != null)
                 {
-                    symboldisplay = null;
                     StopCoroutine(symboldisplay);
+                    symboldisplay = null;
                 }
                 AudioManager.Instance.PlaySound("PaintingCompleted");
                 active = true;
@@ -77,10 +75,6 @@ public class Secret : MonoBehaviour
                         symboldisplay = SymbolDisplay();
                         StartCoroutine(symboldisplay);
                     }
-                    currentTime -= 1 * Time.deltaTime;
-                }
-                if (currentTime < 0)
-                {
                     currentTime -= 1 * Time.deltaTime;
                 }
                 //reset barra e si disattiva la secret 
@@ -143,7 +137,8 @@ public class Secret : MonoBehaviour
         }
     }
 
-    private IEnumerator SymbolDisplay() {
+    private IEnumerator SymbolDisplay()
+    {
         secretSymbol.SetActive(true);
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(symbolShowDuration);
