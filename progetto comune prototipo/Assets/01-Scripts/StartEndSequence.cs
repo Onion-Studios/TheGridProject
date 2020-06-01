@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,17 +31,17 @@ public class StartEndSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       playerbehaviour = FindObjectOfType<Playerbehaviour>();
-       if (playerbehaviour == null)
-       {
+        playerbehaviour = FindObjectOfType<Playerbehaviour>();
+        if (playerbehaviour == null)
+        {
             Debug.LogError("Playerbehaviour is NULL!");
-       }
+        }
 
-       GM = FindObjectOfType<GameManager>();
-       if(GM == null)
-       {
-           Debug.LogError("GameMaster is NULL!");
-       }
+        GM = FindObjectOfType<GameManager>();
+        if (GM == null)
+        {
+            Debug.LogError("GameMaster is NULL!");
+        }
 
         playerLight = null;
         switchui = true;
@@ -65,14 +64,14 @@ public class StartEndSequence : MonoBehaviour
         switch (startSequencePosition)
         {
             case 0:
-                if(playerLight == null)
+                if (playerLight == null)
                 {
                     playerLight = PlayerLight();
                     StartCoroutine(playerLight);
                 }
                 break;
             case 1:
-                if(playerLight != null)
+                if (playerLight != null)
                 {
                     StopCoroutine(playerLight);
                     playerLight = null;
@@ -85,15 +84,15 @@ public class StartEndSequence : MonoBehaviour
             case 3:
                 CloseCurtains();
                 break;
-            case 4: 
-                if(lightsON == null)
+            case 4:
+                if (lightsON == null)
                 {
                     lightsON = LightsON();
                     StartCoroutine(lightsON);
                 }
                 break;
             case 5:
-                if(lightsON != null)
+                if (lightsON != null)
                 {
                     StopCoroutine(lightsON);
                     lightsON = null;
@@ -119,7 +118,7 @@ public class StartEndSequence : MonoBehaviour
         yield return new WaitForSeconds(activateLight);
         light[2].SetActive(true);
         startSequencePosition++;
-        
+
     }
 
     IEnumerator LightsON()
@@ -143,7 +142,7 @@ public class StartEndSequence : MonoBehaviour
     {
         starting = false;
 
-        if(soundNotLooping == false)
+        if (soundNotLooping == false)
         {
             AudioManager.Instance.SetLoop("GongSound", false);
             AudioManager.Instance.PlaySound("GongSound");
@@ -154,6 +153,7 @@ public class StartEndSequence : MonoBehaviour
         GM.dragon2.SetActive(false);
         GM.dragon3.SetActive(false);
         GM.dragonTimeline.Play();
+        startSequencePosition++;
 
     }
 

@@ -74,20 +74,19 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                AudioManager.Instance.SetLoop("BooSound", false);
-                AudioManager.Instance.PlaySound("BooSound");
-
-                 soundPlayed1 = true;
-                 soundPlayed2 = false;
-                 soundPlayed3 = false;
-
                 dragon1.SetActive(true);
                 dragon2.SetActive(false);
                 dragon3.SetActive(false);
                 dragonTimeline.Play();
+                AudioManager.Instance.SetLoop("BooSound", false);
+                AudioManager.Instance.PlaySound("BooSound");
+
             }
 
-            
+            soundPlayed1 = true;
+            soundPlayed2 = false;
+            soundPlayed3 = false;
+
 
         }
         else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
