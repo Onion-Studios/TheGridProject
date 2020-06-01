@@ -109,6 +109,7 @@ public class KamikazeEnemy : MonoBehaviour
             AudioManager.Instance.PlaySound("PlayerGetsHit");
             SecretT.active = false;
             SecretT.currentTime = SecretT.timeMax;
+            SecretT.symbol.SetActive(false);
         }
         else
         {
