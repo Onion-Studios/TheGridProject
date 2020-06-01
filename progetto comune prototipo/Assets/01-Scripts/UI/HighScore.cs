@@ -15,18 +15,11 @@ public class HighScore : MonoBehaviour
             PersistantManagerScript.HighScore = Inkstone.FinalScore;
             PlayerPrefs.SetInt("HighScore", PersistantManagerScript.HighScore);
             PlayerPrefs.Save();
+            ScoreRecord.text = "NEW RECORD!\n" + PersistantManagerScript.HighScore;
         }
-    }
-    void Start()
-    {
-        //ScoreRecord.text = PersistantManagerScript.HighScore.ToString();
-        //ScoreRecord.text = PersistantManagerScript.Instance.ScoreRecord.ToString();
-        //ScoreRecord.text = PlayerPrefs.GetInt("HighScore", 000000000).ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        else
+        {
+            ScoreRecord.text = "FINAL SCORE:\n" + Inkstone.FinalScore + "\nPREVIOUS RECORD:\n" + PersistantManagerScript.HighScore;
+        }
     }
 }

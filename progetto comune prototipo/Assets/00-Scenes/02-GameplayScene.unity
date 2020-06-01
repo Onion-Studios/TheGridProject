@@ -482,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemycounter_text: {fileID: 891387950}
+  yokaislayer_text: {fileID: 0}
   ink_text: {fileID: 61982072}
   score_text: {fileID: 1445118228}
   scoremultiplier_text: {fileID: 575600977}
