@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class EndMenu : MonoBehaviour
 {
- 
+    public void Start()
+    {
+       
+    }
+
     public void GoToGameplay()
     {
         SceneManager.LoadScene(2);
@@ -13,8 +17,7 @@ public class EndMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit");
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
 
 }
