@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314428, g: 0.21640716, b: 0.2984252, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314449, g: 0.21640714, b: 0.29842559, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1245,7 +1245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310846701
 GameObject:
@@ -2448,9 +2448,9 @@ MonoBehaviour:
   SignGroupwave3_6: 0500000002000000040000000100000001000000030000000100000005000000020000000500000004000000
   Activewave_intensity: 0
   Activewave_number: 0
-  TEST_WaveActive: 1
-  TEST_waveintesity: 2
-  TEST_wavenumber: 5
+  TEST_WaveActive: 0
+  TEST_waveintesity: 0
+  TEST_wavenumber: 0
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
