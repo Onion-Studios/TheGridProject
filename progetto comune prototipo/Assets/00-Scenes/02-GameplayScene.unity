@@ -2447,9 +2447,9 @@ MonoBehaviour:
   SignGroupwave3_6: 0500000002000000040000000100000001000000030000000100000005000000020000000500000004000000
   Activewave_intensity: 0
   Activewave_number: 0
-  TEST_WaveActive: 0
-  TEST_waveintesity: 2
-  TEST_wavenumber: 5
+  TEST_WaveActive: 1
+  TEST_waveintesity: 3
+  TEST_wavenumber: 2
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -7231,7 +7231,7 @@ PrefabInstance:
     - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}
       propertyPath: symbolShowDuration
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7655c98483d4dd84f98bb883106f5087, type: 3}
