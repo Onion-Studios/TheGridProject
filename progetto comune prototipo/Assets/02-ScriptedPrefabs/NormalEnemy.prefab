@@ -213,6 +213,7 @@ MonoBehaviour:
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1
+  timeToDespawn: 2
 --- !u!65 &8261789596862575091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -637,6 +638,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3721451648942152997}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 98cf6d77af28e704aa763f86dbc14245,
+        type: 3}
+      propertyPath: m_Name
+      value: Normal_Animazioni
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703792516394243370, guid: 98cf6d77af28e704aa763f86dbc14245,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 98cf6d77af28e704aa763f86dbc14245,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -692,11 +703,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 98cf6d77af28e704aa763f86dbc14245,
+    - target: {fileID: -6057140222963153312, guid: 98cf6d77af28e704aa763f86dbc14245,
         type: 3}
-      propertyPath: m_Name
-      value: Normal_Animazioni
-      objectReference: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 113765e8abf2dfb4abeccaaec5a577d8, type: 2}
     - target: {fileID: 898606835246669508, guid: 98cf6d77af28e704aa763f86dbc14245,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
