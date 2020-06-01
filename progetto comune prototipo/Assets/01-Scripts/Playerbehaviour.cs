@@ -22,6 +22,7 @@ public class Playerbehaviour : MonoBehaviour
     public float maxWaitTimer;
     public int inkGained;
     public Vector3 gridCenter;
+    private AudioManager audioManager;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -44,8 +45,10 @@ public class Playerbehaviour : MonoBehaviour
         if (Inkstone == null)
         {
             Debug.LogError("Inkstone is NULL!");
-        }
-
+        }
+
+
+
         startEndSequence = FindObjectOfType<StartEndSequence>();
         if (startEndSequence == null)
         {
@@ -61,10 +64,12 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(startEndSequence.starting == false)
-       {
-           MovementHandler();
-       }
+        if (startEndSequence.starting == false)
+
+        {
+
+            MovementHandler();
+        }
     }
 
     void MovementHandler()
