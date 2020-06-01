@@ -140,6 +140,7 @@ public class WaveManager : MonoBehaviour
 
     Enemyspawnmanager enemyspawnmanager;
     GameManager gamemanager;
+    StartEndSequence startEndSequence;
     public int Activewave_intensity;
     public int Activewave_number;
     public bool TEST_WaveActive = false;
@@ -163,17 +164,26 @@ public class WaveManager : MonoBehaviour
         {
             Debug.Log("gamemanager is null");
         }
+        startEndSequence = FindObjectOfType<StartEndSequence>();
+        if (startEndSequence == null)
+        {
+            Debug.LogError("StartEndSequence is NULL!");
+        }
+
         Initializewaves();
         Initializeintensitywave();
         Initializedictionarywaves();
         //check sulla partenza della wave di test oppure no
-        if (TEST_WaveActive == false)
-        {
-            StartCoroutine(SpawnWaveCoroutine());
-        }
-        else
-        {
-            StartCoroutine(Testspawncoroutine(TEST_waveintesity, TEST_wavenumber));
+        if(startEndSequence.starting == false && startEndSequence.ending == false)
+        {           
+            if (TEST_WaveActive == false)
+            {
+                StartCoroutine(SpawnWaveCoroutine());
+            }
+            else
+            {
+                StartCoroutine(Testspawncoroutine(TEST_waveintesity, TEST_wavenumber));
+            }
         }
     }
 

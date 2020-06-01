@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314449, g: 0.21640714, b: 0.29842559, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314428, g: 0.21640716, b: 0.2984252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2578,7 +2578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -3574,6 +3574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 986519607}
   - component: {fileID: 986519606}
+  - component: {fileID: 986519608}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -3616,6 +3617,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &986519608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986519605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09ae47718514d34c9701a402ff67d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light:
+  - {fileID: 705507993}
+  - {fileID: 1285716665482516912}
+  - {fileID: 6767957439699615888}
+  - {fileID: 5663952131858811522}
+  - {fileID: 5745035819581269592}
+  - {fileID: 7376227483655758829}
+  - {fileID: 3934872077085919843}
+  activateLight: 1
 --- !u!1 &1046932371
 GameObject:
   m_ObjectHideFlags: 0
@@ -7235,7 +7257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2106107538706341742
 Transform:
   m_ObjectHideFlags: 0
@@ -7548,7 +7570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &3999273212428100858
 Light:
   m_ObjectHideFlags: 0
@@ -7684,7 +7706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &5676569597194104331
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7709,7 +7731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6441519076496892785
 GameObject:
   m_ObjectHideFlags: 0
@@ -7809,7 +7831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!198 &7080095712709949668
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -12637,7 +12659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7877918382431704319
 Transform:
   m_ObjectHideFlags: 0

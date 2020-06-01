@@ -4,7 +4,6 @@ public class Playerbehaviour : MonoBehaviour
 {
     #region VARIABILI 
     public GameObject character;
-    [HideInInspector]
     public Vector3 playerposition;
     public float speed;
     public GameObject istanze;
@@ -14,6 +13,7 @@ public class Playerbehaviour : MonoBehaviour
     grigliamanager grigliamanager;
     Managercombo managercombo;
     Inkstone Inkstone;
+    StartEndSequence startEndSequence;
     public Vector3 LastCubeChecked;
     public int yokaislayercount;
     public string movementState;
@@ -47,6 +47,12 @@ public class Playerbehaviour : MonoBehaviour
             Debug.LogError("Inkstone is NULL!");
         }
 
+        startEndSequence = FindObjectOfType<StartEndSequence>();
+        if (startEndSequence == null)
+        {
+            Debug.LogError("StartEndSequence is NULL!");
+        }
+
         movementState = "readystate";
 
         waitTimer = maxWaitTimer;
@@ -55,7 +61,10 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovementHandler();
+       if(startEndSequence.starting == false)
+       {
+           MovementHandler();
+       }
     }
 
     void MovementHandler()
@@ -226,7 +235,8 @@ public class Playerbehaviour : MonoBehaviour
     {
         //istanzio il player sopra al cubo sommando un vettore
 
-        istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
+        istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, -90f, 0f), this.transform);
+
     }
 
     #endregion
