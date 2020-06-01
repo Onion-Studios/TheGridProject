@@ -21,8 +21,7 @@ public class Playerbehaviour : MonoBehaviour
     public float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
-
-    private static Vector3 gridCenter;
+    public Vector3 gridCenter;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -103,7 +102,7 @@ public class Playerbehaviour : MonoBehaviour
                 {
                     managercombo.CheckSign();
                     istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    istanze.transform.position = playerposition;
+                    istanze.transform.position = gridCenter;
                     grigliamanager.ResetColorGrid();
                     grigliamanager.ResetGridLogic();
                     AudioManager.Instance.PlaySound("ConfirmSound");

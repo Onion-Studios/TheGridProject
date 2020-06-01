@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314449, g: 0.21640714, b: 0.29842559, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314428, g: 0.21640716, b: 0.2984252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -816,6 +816,7 @@ MonoBehaviour:
   waitTimer: 0
   maxWaitTimer: 0.03
   inkGained: 4
+  gridCenter: {x: 2, y: 1.05, z: 2}
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -3637,14 +3638,18 @@ MonoBehaviour:
   starting: 0
   ending: 0
   switchui: 0
+  closedTime: 3
   tenda: {fileID: 1138158313}
   tenda2: {fileID: 554469085}
   curtainspeed: 5
   closecurtain: {x: 6, y: 4.3, z: 4.53}
+  opencurtain1: {x: 0, y: 0, z: 0}
+  opencurtain2: {x: 0, y: 0, z: 0}
   ink_text: {fileID: 61982072}
   counter_text: {fileID: 891387950}
   score_text: {fileID: 1445118228}
   scoremultiplier_text: {fileID: 575600977}
+  centerGrid: {x: 2, y: 1.05, z: 2}
 --- !u!1 &1046932371
 GameObject:
   m_ObjectHideFlags: 0

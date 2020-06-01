@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -148,6 +149,7 @@ public class WaveManager : MonoBehaviour
     public int TEST_wavenumber = 0;
     wave wavetospawn;
     int casualwave;
+    int count;
 
     // Start is called before the first frame update
     void Start()
@@ -174,8 +176,18 @@ public class WaveManager : MonoBehaviour
         Initializeintensitywave();
         Initializedictionarywaves();
         //check sulla partenza della wave di test oppure no
-        if(startEndSequence.starting == false && startEndSequence.ending == false)
-        {           
+        
+             
+    
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (startEndSequence.starting == false && startEndSequence.ending == false && count == 0)
+        {
+            
             if (TEST_WaveActive == false)
             {
                 StartCoroutine(SpawnWaveCoroutine());
@@ -184,13 +196,8 @@ public class WaveManager : MonoBehaviour
             {
                 StartCoroutine(Testspawncoroutine(TEST_waveintesity, TEST_wavenumber));
             }
+            count++;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
 
     }
 
@@ -354,6 +361,7 @@ public class WaveManager : MonoBehaviour
                 }
                 yield return new WaitForSeconds(wavetospawn.delays[i]);
             }
+         
         }
 
     }
