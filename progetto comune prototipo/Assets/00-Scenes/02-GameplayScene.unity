@@ -820,6 +820,8 @@ MonoBehaviour:
   inkGained: 4
   gridCenter: {x: 2, y: 1.05, z: 2}
   frightenedPlayer: {fileID: 0}
+  smokeBomb: {fileID: 0}
+  smokeBombCenter: {fileID: 0}
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -7340,6 +7342,41 @@ PrefabInstance:
       propertyPath: secretSymbol
       value: 
       objectReference: {fileID: 1576811752}
+    - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: charge
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115627, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412837076985438, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412837503003451, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7655c98483d4dd84f98bb883106f5087, type: 3}
 --- !u!4 &2106107538706341742

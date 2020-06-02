@@ -25,6 +25,7 @@ public class KamikazeEnemy : MonoBehaviour
     public float explosionDelay;
     [SerializeField]
     private ParticleSystem explosion;
+    public ParticleSystem buffEffect;
     #endregion
 
     private void OnEnable()

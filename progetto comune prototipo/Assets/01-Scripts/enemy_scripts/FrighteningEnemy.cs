@@ -29,6 +29,7 @@ public class FrighteningEnemy : MonoBehaviour
     private GameObject hair;
     [SerializeField]
     private ParticleSystem inkDeath;
+    public ParticleSystem buffEffect;
 
     #endregion
 

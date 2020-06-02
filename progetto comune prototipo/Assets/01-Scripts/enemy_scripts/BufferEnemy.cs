@@ -26,6 +26,8 @@ public class BufferEnemy : MonoBehaviour
     private GameObject hat;
     [SerializeField]
     private ParticleSystem inkDeath;
+    [SerializeField]
+    private ParticleSystem buffPower;
     #endregion
 
     private void OnEnable()
@@ -66,7 +68,6 @@ public class BufferEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -79,6 +80,7 @@ public class BufferEnemy : MonoBehaviour
     {
         if (this.transform.localPosition.x > endPosition)
         {
+            buffPower.Play();
             SpeedBoost();
             if (AudioManager.Instance.IsPlaying("SingsongBuffer") == false)
             {
@@ -108,8 +110,8 @@ public class BufferEnemy : MonoBehaviour
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 if (NormalEnemy.speed == NormalEnemy.baseSpeed)
                                 {
+                                    NormalEnemy.buffEffect.Play();
                                     NormalEnemy.speed = NormalEnemy.speed * Boost;
-
                                 }
 
                             }
@@ -119,8 +121,8 @@ public class BufferEnemy : MonoBehaviour
                                 KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
                                 if (KamikazeEnemy.speed == KamikazeEnemy.baseSpeed)
                                 {
+                                    KamikazeEnemy.buffEffect.Play();
                                     KamikazeEnemy.speed = KamikazeEnemy.speed * Boost;
-
                                 }
 
                             }
@@ -130,8 +132,8 @@ public class BufferEnemy : MonoBehaviour
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 if (ArmoredEnemy.speed == ArmoredEnemy.baseSpeed || ArmoredEnemy.speed == ArmoredEnemy.baseSpeedMax)
                                 {
+                                    ArmoredEnemy.buffEffect.Play();
                                     ArmoredEnemy.speed = ArmoredEnemy.speed * Boost;
-
                                 }
 
 
@@ -143,6 +145,7 @@ public class BufferEnemy : MonoBehaviour
 
                                 if (UndiyngEnemy.speed == UndiyngEnemy.baseSpeed)
                                 {
+                                    UndiyngEnemy.buffEffect.Play();
                                     UndiyngEnemy.speed = UndiyngEnemy.speed * Boost;
                                 }
 
@@ -150,22 +153,24 @@ public class BufferEnemy : MonoBehaviour
                             break;
                         case 5:
                             {
-                                FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
+                                FrighteningEnemy FrighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
 
-                                if (frighteningEnemy.speed == frighteningEnemy.baseSpeed)
+                                if (FrighteningEnemy.speed == FrighteningEnemy.baseSpeed)
                                 {
-                                    frighteningEnemy.speed = frighteningEnemy.speed * Boost;
+                                    FrighteningEnemy.buffEffect.Play();
+                                    FrighteningEnemy.speed = FrighteningEnemy.speed * Boost;
+                                    
                                 }
 
                             }
                             break;
                         case 6:
                             {
-                                BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
+                                BufferEnemy BufferEnemy = enemy.GetComponent<BufferEnemy>();
 
-                                if (bufferEnemy.speed == bufferEnemy.baseSpeed)
+                                if (BufferEnemy.speed == BufferEnemy.baseSpeed)
                                 {
-                                    bufferEnemy.speed = bufferEnemy.speed * Boost;
+                                    BufferEnemy.speed = BufferEnemy.speed * Boost;
                                 }
 
                             }
@@ -194,7 +199,7 @@ public class BufferEnemy : MonoBehaviour
                                 if (NormalEnemy.speed != NormalEnemy.baseSpeed)
                                 {
                                     NormalEnemy.speed = NormalEnemy.baseSpeed;
-
+                                    NormalEnemy.buffEffect.Stop();
                                 }
                             }
                             break;
@@ -204,7 +209,7 @@ public class BufferEnemy : MonoBehaviour
                                 if (KamikazeEnemy.speed != KamikazeEnemy.baseSpeed)
                                 {
                                     KamikazeEnemy.speed = KamikazeEnemy.baseSpeed;
-
+                                    KamikazeEnemy.buffEffect.Stop();
                                 }
 
                             }
@@ -222,8 +227,7 @@ public class BufferEnemy : MonoBehaviour
                                     {
                                         ArmoredEnemy.speed = ArmoredEnemy.baseSpeedMax;
                                     }
-
-
+                                    ArmoredEnemy.buffEffect.Stop();
                                 }
                             }
                             break;
@@ -233,7 +237,7 @@ public class BufferEnemy : MonoBehaviour
                                 if (UndiyngEnemy.speed != UndiyngEnemy.baseSpeed)
                                 {
                                     UndiyngEnemy.speed = UndiyngEnemy.baseSpeed;
-
+                                    UndiyngEnemy.buffEffect.Stop();
                                 }
 
                             }
@@ -245,6 +249,7 @@ public class BufferEnemy : MonoBehaviour
                                 if (frighteningEnemy.speed != frighteningEnemy.baseSpeed)
                                 {
                                     frighteningEnemy.speed = frighteningEnemy.baseSpeed;
+                                    frighteningEnemy.buffEffect.Stop();
                                 }
 
                             }
@@ -269,6 +274,7 @@ public class BufferEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        buffPower.Stop();
         inkDeath.Play();
         enemy.GetComponent<Renderer>().material.color = Color.black;
         hat.GetComponent<Renderer>().material.color = Color.black;

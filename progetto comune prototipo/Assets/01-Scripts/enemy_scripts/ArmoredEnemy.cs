@@ -29,6 +29,7 @@ public class ArmoredEnemy : MonoBehaviour
     //private GameObject armor;
     [SerializeField]
     private ParticleSystem inkDeath;
+    public ParticleSystem buffEffect;
 
     #endregion
 

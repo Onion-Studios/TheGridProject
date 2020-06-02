@@ -19,6 +19,8 @@ public class Secret : MonoBehaviour
     float symbolShowDuration;
     public GameObject secretSymbol;
     IEnumerator symboldisplay;
+    [SerializeField]
+    private ParticleSystem inkStroke;
     #endregion
 
     // Start is called before the first frame update
@@ -94,6 +96,7 @@ public class Secret : MonoBehaviour
     //Muoiono tutti i nemici presenti sulla lane 
     public void Death()
     {
+        inkStroke.Play();
         for (int i = 0; i < 7; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])

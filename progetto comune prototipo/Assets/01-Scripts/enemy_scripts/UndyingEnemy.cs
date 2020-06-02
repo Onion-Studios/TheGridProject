@@ -24,6 +24,7 @@ public class UndyingEnemy : MonoBehaviour
     public Vector3 startingPosition;
     public float pushSpeed;
     public float baseSpeed;
+    public ParticleSystem buffEffect;
     #endregion
 
     private void OnEnable()

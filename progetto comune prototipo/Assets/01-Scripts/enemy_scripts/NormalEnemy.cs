@@ -27,6 +27,7 @@ public class NormalEnemy : MonoBehaviour
     private GameObject band;
     [SerializeField]
     private ParticleSystem inkDeath;
+    public ParticleSystem buffEffect;
 
     #endregion
 
