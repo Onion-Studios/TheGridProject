@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 1227817829833239080}
   - component: {fileID: 1227817829833239087}
   m_Layer: 0
-  m_Name: 2-InkDeath
+  m_Name: 1-InkDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5431,7 +5431,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10
     size3D: 0
     rotation3D: 0
     gravityModifier:

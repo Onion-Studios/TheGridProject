@@ -19,6 +19,13 @@ public class BufferEnemy : MonoBehaviour
     public float speed;
     public float endPosition;
     public float baseSpeed;
+    public float BlackToDeath;
+    [SerializeField]
+    private GameObject enemy;
+    [SerializeField]
+    private GameObject hat;
+    [SerializeField]
+    private ParticleSystem inkDeath;
     #endregion
 
     private void OnEnable()
@@ -262,6 +269,13 @@ public class BufferEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        hat.GetComponent<Renderer>().material.color = Color.black;
+        Invoke("Death", BlackToDeath);
+    }
+    public void Death()
+    {
 
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
@@ -272,6 +286,8 @@ public class BufferEnemy : MonoBehaviour
 
 
         this.gameObject.SetActive(false);
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        hat.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;

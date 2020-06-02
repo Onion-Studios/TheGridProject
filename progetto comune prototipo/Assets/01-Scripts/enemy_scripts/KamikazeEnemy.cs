@@ -22,6 +22,9 @@ public class KamikazeEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+    public float explosionDelay;
+    [SerializeField]
+    private ParticleSystem explosion;
     #endregion
 
     private void OnEnable()
@@ -122,6 +125,8 @@ public class KamikazeEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        explosion.transform.SetParent(null);
+        explosion.Play();
         this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
@@ -139,6 +144,12 @@ public class KamikazeEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        Invoke("ParentReassignment", explosionDelay);
+    }
+
+    public void ParentReassignment()
+    {
+        explosion.transform.SetParent(this.transform);
     }
 
     void PointOverDistance()

@@ -20,6 +20,13 @@ public class NormalEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+    public float BlackToDeath;
+    [SerializeField]
+    private GameObject enemy;
+    [SerializeField]
+    private GameObject band;
+    [SerializeField]
+    private ParticleSystem inkDeath;
 
     #endregion
 
@@ -124,7 +131,17 @@ public class NormalEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        band.GetComponent<Renderer>().material.color = Color.black;
+        Invoke("Death", BlackToDeath);
+    }
+
+    private void Death()
+    {
         this.gameObject.SetActive(false);
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        band.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
@@ -143,7 +160,6 @@ public class NormalEnemy : MonoBehaviour
         AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
-
 
     void PointOverDistance()
     {

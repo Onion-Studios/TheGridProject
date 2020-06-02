@@ -23,6 +23,8 @@ public class Playerbehaviour : MonoBehaviour
     public int inkGained;
     public Vector3 gridCenter;
     private AudioManager audioManager;
+    public ParticleSystem frightenedPlayer;
+
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco

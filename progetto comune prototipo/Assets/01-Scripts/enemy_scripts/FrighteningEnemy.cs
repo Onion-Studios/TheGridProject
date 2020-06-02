@@ -22,6 +22,14 @@ public class FrighteningEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+    public float BlackToDeath;
+    [SerializeField]
+    private GameObject enemy;
+    [SerializeField]
+    private GameObject hair;
+    [SerializeField]
+    private ParticleSystem inkDeath;
+
     #endregion
 
     private void OnEnable()
@@ -66,8 +74,11 @@ public class FrighteningEnemy : MonoBehaviour
     {
         Frightening();
         Enemymove();
-
         PointOverDistance();
+        if (!playerbehaviour.frightenedPlayer.isPlaying)
+        {
+            playerbehaviour.frightenedPlayer.Play();
+        }
     }
 
     public void Frightening()
@@ -95,6 +106,7 @@ public class FrighteningEnemy : MonoBehaviour
     public void DeathForEndGrid()
     {
         this.gameObject.SetActive(false);
+        playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signfrighteningenemy)
         {
@@ -107,6 +119,7 @@ public class FrighteningEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
+        playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         enemyspawnmanager.enemykilled = 0;
@@ -138,7 +151,17 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        hair.GetComponent<Renderer>().material.color = Color.black;
+        Invoke("Death", BlackToDeath);
+    }
+    public void Death()
+    {
         this.gameObject.SetActive(false);
+        playerbehaviour.frightenedPlayer.Stop();
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        hair.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
