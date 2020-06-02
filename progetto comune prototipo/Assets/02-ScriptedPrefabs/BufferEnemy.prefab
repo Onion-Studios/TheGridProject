@@ -556,7 +556,7 @@ MonoBehaviour:
   - {fileID: 8376121018324102043}
   segnocorrispondente: 0
   link: 7
-  Boost: 1.15
+  Boost: 0.2
   Reset: 0.8
   speed: 0
   endPosition: -10
@@ -643,6 +643,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2232610865829794053}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 9b230d6d85964f741b6737f2d25251e9,
+        type: 3}
+      propertyPath: m_Name
+      value: Buffer_Low
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9b230d6d85964f741b6737f2d25251e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -712,11 +717,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 9b230d6d85964f741b6737f2d25251e9,
-        type: 3}
-      propertyPath: m_Name
-      value: Buffer_Low
       objectReference: {fileID: 0}
     - target: {fileID: 8044873714236266051, guid: 9b230d6d85964f741b6737f2d25251e9,
         type: 3}
