@@ -819,6 +819,7 @@ MonoBehaviour:
   maxWaitTimer: 0.03
   inkGained: 4
   gridCenter: {x: 2, y: 1.05, z: 2}
+  frightenedPlayer: {fileID: 0}
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -1690,6 +1691,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TendaCentrale (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b2228d7b497f66043a4d4012ba727785,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b2228d7b497f66043a4d4012ba727785,
         type: 3}
@@ -3795,6 +3801,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TendaCentrale
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b2228d7b497f66043a4d4012ba727785,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b2228d7b497f66043a4d4012ba727785,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4251,7 +4262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1258046351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tende
   m_TagString: Untagged
   m_Icon: {fileID: 0}
