@@ -343,7 +343,7 @@ public class StartEndSequence : MonoBehaviour
 
         skipping = false;
 
-        startSequencePosition = 4;
+        startSequencePosition = 3;
 
     }
 
