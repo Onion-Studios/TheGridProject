@@ -39,6 +39,7 @@ public class grigliamanager : MonoBehaviour
         {
             Debug.LogError("il managercombo è NULL!");
         }
+        character.frightenedPlayer = character.GetComponentsInChildren<ParticleSystem>()[0];
     }
 
     void Update()

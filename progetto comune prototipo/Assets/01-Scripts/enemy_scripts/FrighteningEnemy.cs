@@ -154,12 +154,12 @@ public class FrighteningEnemy : MonoBehaviour
         inkDeath.Play();
         enemy.GetComponent<Renderer>().material.color = Color.black;
         hair.GetComponent<Renderer>().material.color = Color.black;
+        playerbehaviour.frightenedPlayer.Stop();
         Invoke("Death", BlackToDeath);
     }
     public void Death()
     {
         this.gameObject.SetActive(false);
-        playerbehaviour.frightenedPlayer.Stop();
         enemy.GetComponent<Renderer>().material.color = Color.white;
         hair.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;

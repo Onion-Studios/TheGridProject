@@ -24,13 +24,11 @@ public class Playerbehaviour : MonoBehaviour
     public Vector3 gridCenter;
     private AudioManager audioManager;
     public ParticleSystem frightenedPlayer;
-
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
     void Start()
     {
-
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
         {
@@ -67,9 +65,7 @@ public class Playerbehaviour : MonoBehaviour
     void Update()
     {
         if (startEndSequence.starting == false)
-
         {
-
             MovementHandler();
         }
     }
