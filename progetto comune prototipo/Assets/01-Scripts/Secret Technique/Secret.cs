@@ -21,6 +21,7 @@ public class Secret : MonoBehaviour
     IEnumerator symboldisplay;
     [SerializeField]
     private ParticleSystem inkStroke;
+    public ParticleSystem paintParticles;
     #endregion
 
     // Start is called before the first frame update
@@ -63,6 +64,7 @@ public class Secret : MonoBehaviour
                     symboldisplay = null;
                 }
                 AudioManager.Instance.PlaySound("PaintingCompleted");
+                paintParticles.Play();
                 active = true;
                 symbol.SetActive(active);
                 currentTime = timeMax;
@@ -84,6 +86,7 @@ public class Secret : MonoBehaviour
                 {
                     currentTime = 0;
                     AudioManager.Instance.PlaySound("PaintingReset");
+                    paintParticles.Stop();
                     bar = 0;
 
                     active = false;

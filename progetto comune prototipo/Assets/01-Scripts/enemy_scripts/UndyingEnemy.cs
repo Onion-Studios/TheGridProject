@@ -22,11 +22,25 @@ public class UndyingEnemy : MonoBehaviour
     public float maxAttacktimer;
     public bool repelled;
     public Vector3 startingPosition;
+    private Vector3 waveSlashPosition;
     public float pushSpeed;
     public float baseSpeed;
     public ParticleSystem buffEffect;
+    [SerializeField]
+    private ParticleSystem undyingSlash;
+    [SerializeField]
+    private ParticleSystem undyingSlashWave;
+    [SerializeField]
+    private float speedSlashWave;
+    [SerializeField]
+    private float stopSlashWaveTime;
     #endregion
 
+    private void Start()
+    {
+        waveSlashPosition = GetComponentsInChildren<Transform>()[12].localPosition;
+        Debug.Log(GetComponentsInChildren<Transform>()[12].localPosition);
+    }
     private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
@@ -74,6 +88,11 @@ public class UndyingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (undyingSlashWave.isPlaying)
+        {
+            undyingSlashWave.transform.Translate(speedSlashWave, 0, 0);
+            Invoke("StopSlash", stopSlashWaveTime);
+        }
         DeathForTimer();
 
         if (repelled == false)
@@ -85,6 +104,13 @@ public class UndyingEnemy : MonoBehaviour
         {
             UndyingRepelled();
         }
+
+    }
+
+    private void StopSlash()
+    {
+        undyingSlashWave.Stop();
+        undyingSlashWave.transform.localPosition = waveSlashPosition;
 
     }
 
@@ -123,6 +149,7 @@ public class UndyingEnemy : MonoBehaviour
             if (SecretT.bar == 100)
             {
                 AudioManager.Instance.PlaySound("PlayerGetsHit");
+                SecretT.paintParticles.Stop();
                 SecretT.active = false;
                 SecretT.currentTime = SecretT.timeMax;
                 SecretT.symbol.SetActive(false);
@@ -132,7 +159,8 @@ public class UndyingEnemy : MonoBehaviour
                 // Insert THUD Sound
             }
             attackTimer = maxAttacktimer;
-
+            undyingSlash.Play();
+            undyingSlashWave.Play();
             Inkstone.Ink -= inkDamage;
             Inkstone.maxInk -= maxInkDamage;
             Inkstone.Ink += playerbehaviour.inkGained;

@@ -112,6 +112,7 @@ public class ArmoredEnemy : MonoBehaviour
         if (SecretT.bar == 100)
         {
             AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.paintParticles.Stop();
             SecretT.active = false;
             SecretT.currentTime = SecretT.timeMax;
             SecretT.symbol.SetActive(false);
