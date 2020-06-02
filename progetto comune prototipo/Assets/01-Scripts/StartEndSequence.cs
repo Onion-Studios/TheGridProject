@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class StartEndSequence : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class StartEndSequence : MonoBehaviour
     int endSequencePosition;
     public GameObject[] light;
     public float activateLight;
-    public bool starting, ending, switchui;
+    public bool starting, ending, switchui, skipping;
     IEnumerator playerLight;
     IEnumerator lightsON;
     IEnumerator lightsOFF;
@@ -31,6 +32,7 @@ public class StartEndSequence : MonoBehaviour
     public int enemynumber;
     public GameObject endImage;
     public float time;
+    public Vector3 closeCurtain2;
     #endregion
 
     void Awake()
@@ -39,6 +41,7 @@ public class StartEndSequence : MonoBehaviour
         endSequencePosition = 0;
         starting = true;
         ending = false;
+        skipping = false;
     }
 
     // Start is called before the first frame update
@@ -81,7 +84,15 @@ public class StartEndSequence : MonoBehaviour
     void Update()
     {
         StartSequence();
-        
+        if(skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return))
+        {
+            skipping = true;
+        }
+
+        if(skipping == true)
+        {
+            Skip();
+        }
     }
 
 
@@ -317,6 +328,25 @@ public class StartEndSequence : MonoBehaviour
 
     }
 
+    void Skip()
+    {
+        if(switchui == true)
+        {
+            SwitchUI();
+        }
+        tenda.transform.position = closecurtain;
+        tenda2.transform.position = closeCurtain2;
+        
+        light[2].SetActive(false);
+        light[0].SetActive(true);
+        light[1].SetActive(true);
+
+        skipping = false;
+
+        startSequencePosition = 4;
+
+    }
+
     void CloseCurtains()
     {
         if (tenda.transform.localPosition.x > closecurtain.x)
@@ -361,7 +391,8 @@ public class StartEndSequence : MonoBehaviour
         score_text.gameObject.SetActive(switchui);
         counter_text.gameObject.SetActive(switchui);
         scoremultiplier_text.gameObject.SetActive(switchui);
-        if (starting == true)
+
+        if (starting == true && skipping == false)
         {
             startSequencePosition++;
         }
