@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartEndSequence : MonoBehaviour
 {
+    #region VARIABLES
     Playerbehaviour playerbehaviour;
     GameManager GM;
+    PointSystem pointSystem;
+    Enemyspawnmanager enemyspawnmanager;
     int startSequencePosition;
+    int endSequencePosition;
     public GameObject[] light;
     public float activateLight;
     public bool starting, ending, switchui;
@@ -20,10 +25,14 @@ public class StartEndSequence : MonoBehaviour
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
     public Vector3 centerGrid;
     bool soundNotLooping;
+    public int enemynumber;
+
+    #endregion
 
     void Awake()
     {
         startSequencePosition = 0;
+        endSequencePosition = 0;
         starting = true;
         ending = false;
     }
@@ -43,6 +52,18 @@ public class StartEndSequence : MonoBehaviour
             Debug.LogError("GameMaster is NULL!");
         }
 
+        pointSystem = FindObjectOfType<PointSystem>();
+        if(pointSystem == null)
+        {
+            Debug.LogError("PointSystem is NULL!");
+        }
+
+        enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        if (enemyspawnmanager == null)
+        {
+            Debug.LogError("EnemySpawnManager is NULL!");
+        }
+
         playerLight = null;
         switchui = true;
         lightsON = null;
@@ -56,6 +77,7 @@ public class StartEndSequence : MonoBehaviour
     void Update()
     {
         StartSequence();
+        
     }
 
 
@@ -111,6 +133,86 @@ public class StartEndSequence : MonoBehaviour
 
         }
 
+    }
+
+   public void EndSequence()
+   {
+        switch (endSequencePosition)
+        {
+            case 0:
+                StopAllEnemies();
+                break;
+            case 1:
+
+                break;
+        }
+   }
+
+    void GameOver()
+    {
+        Inkstone.FinalScore = (int)pointSystem.score;
+        SceneManager.LoadScene(3);
+    }
+
+    void StopAllEnemies()
+    {
+        ending = true;
+        StopEnemiesMovement();
+        endSequencePosition++;
+
+    }
+
+    void StopEnemiesMovement()
+    {
+        for (int i = 0; i < enemynumber; i++)
+        {
+            foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
+            {
+                if (enemy.activeInHierarchy == true)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            {
+                                NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
+                                NormalEnemy.speed = 0;
+                            }
+                            break;
+                        case 1:
+                            {
+                                KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
+                                KamikazeEnemy.speed = 0;
+                            }
+                            break;
+                        case 2:
+                            {
+                                ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
+                                ArmoredEnemy.speed = 0;
+                            }
+                            break;
+                        case 3:
+                            {
+                                UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
+                                UndiyngEnemy.speed = 0;
+                            }
+                            break;
+                        case 5:
+                            {
+                                FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
+                                frighteningEnemy.speed = 0;
+                            }
+                            break;
+                        case 6:
+                            {
+                                BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
+                                bufferEnemy.speed = 0;
+                            }
+                            break;
+
+                    }
+                }
+            }
+        }
     }
 
     IEnumerator PlayerLight()

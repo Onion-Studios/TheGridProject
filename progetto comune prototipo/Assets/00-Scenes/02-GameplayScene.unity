@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314449, g: 0.21640714, b: 0.29842559, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314428, g: 0.21640716, b: 0.2984252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3632,6 +3632,7 @@ MonoBehaviour:
   score_text: {fileID: 1445118228}
   scoremultiplier_text: {fileID: 575600977}
   centerGrid: {x: 2, y: 1.05, z: 2}
+  enemynumber: 7
 --- !u!1 &1046932371
 GameObject:
   m_ObjectHideFlags: 0

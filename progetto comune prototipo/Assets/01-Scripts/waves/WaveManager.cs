@@ -150,6 +150,7 @@ public class WaveManager : MonoBehaviour
     wave wavetospawn;
     int casualwave;
     int count;
+    IEnumerator normalWaves, testWaves;
 
     // Start is called before the first frame update
     void Start()
@@ -176,25 +177,40 @@ public class WaveManager : MonoBehaviour
         Initializeintensitywave();
         Initializedictionarywaves();
         //check sulla partenza della wave di test oppure no
-        
-             
-    
+
+        normalWaves = SpawnWaveCoroutine();
+        testWaves = Testspawncoroutine(TEST_waveintesity, TEST_wavenumber);
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (startEndSequence.starting == false && startEndSequence.ending == false && count == 0)
+        if (startEndSequence.starting == false && count == 0)
         {
             
             if (TEST_WaveActive == false)
             {
-                StartCoroutine(SpawnWaveCoroutine());
+                StartCoroutine(normalWaves);
             }
             else
             {
-                StartCoroutine(Testspawncoroutine(TEST_waveintesity, TEST_wavenumber));
+                StartCoroutine(testWaves);
+            }
+            count++;
+        }
+        if(startEndSequence.ending == true && count == 1)
+        {
+            if (TEST_WaveActive == false)
+            {
+                StopCoroutine(normalWaves);
+            }
+            else
+            {
+                StopCoroutine(testWaves);
             }
             count++;
         }
