@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314449, g: 0.21640714, b: 0.29842559, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314428, g: 0.21640716, b: 0.2984252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3712,6 +3712,7 @@ MonoBehaviour:
   starting: 0
   ending: 0
   switchui: 0
+  lightsStopTime: 1
   closedTime: 3
   tenda: {fileID: 1138158313}
   tenda2: {fileID: 554469085}

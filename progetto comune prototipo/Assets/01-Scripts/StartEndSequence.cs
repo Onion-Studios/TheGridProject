@@ -17,6 +17,8 @@ public class StartEndSequence : MonoBehaviour
     public bool starting, ending, switchui;
     IEnumerator playerLight;
     IEnumerator lightsON;
+    IEnumerator lightsOFF;
+    public float lightsStopTime;
     public float closedTime;
     public GameObject tenda, tenda2;
     public float curtainspeed;
@@ -26,7 +28,6 @@ public class StartEndSequence : MonoBehaviour
     public Vector3 centerGrid;
     bool soundNotLooping;
     public int enemynumber;
-
     #endregion
 
     void Awake()
@@ -143,7 +144,28 @@ public class StartEndSequence : MonoBehaviour
                 StopAllEnemies();
                 break;
             case 1:
-
+                if(lightsOFF == null)
+                {
+                    lightsOFF = LightsOFF();
+                    StartCoroutine(lightsOFF);
+                }
+                break;
+            case 2:
+                if(lightsOFF != null)
+                {
+                    StopCoroutine(lightsOFF);
+                    lightsOFF = null;
+                }
+                Seppuku();
+                break;
+            case 3:
+                SwitchUI();
+                break;
+            case 4:
+                CloseCurtains();
+                break;
+            case 5:
+                GameOver();
                 break;
         }
    }
@@ -215,6 +237,18 @@ public class StartEndSequence : MonoBehaviour
         }
     }
 
+    IEnumerator LightsOFF()
+    {
+        yield return new WaitForSeconds(lightsStopTime);
+        light[1].SetActive(false);
+        yield return new WaitForSeconds(lightsStopTime);
+        light[0].SetActive(false);
+        yield return new WaitForSeconds(lightsStopTime);
+        light[3].SetActive(true);
+        yield return new WaitForSeconds(lightsStopTime);
+        endSequencePosition++;
+    }
+
     IEnumerator PlayerLight()
     {
         yield return new WaitForSeconds(activateLight);
@@ -270,7 +304,14 @@ public class StartEndSequence : MonoBehaviour
         else
         {
             tenda.transform.position = closecurtain;
-            startSequencePosition++;
+            if(starting == true)
+            {
+                startSequencePosition++;
+            }
+            if(ending == true)
+            {
+                endSequencePosition++;
+            }
         }
     }
 
@@ -296,7 +337,14 @@ public class StartEndSequence : MonoBehaviour
         score_text.gameObject.SetActive(switchui);
         counter_text.gameObject.SetActive(switchui);
         scoremultiplier_text.gameObject.SetActive(switchui);
-        startSequencePosition++;
+        if (starting == true)
+        {
+            startSequencePosition++;
+        }
+        if (ending == true)
+        {
+            endSequencePosition++;
+        }
     }
 
 
@@ -304,5 +352,11 @@ public class StartEndSequence : MonoBehaviour
     void Bowing()
     {
         startSequencePosition++;
+    }
+
+    //TODO Animazione seppuku
+    void Seppuku()
+    {
+        endSequencePosition++;
     }
 }
