@@ -128,7 +128,7 @@ public class ArmoredEnemy : MonoBehaviour
     {
         if (armoredLife == 2)
         {
-            speed = baseSpeedMax + (GM.intensitySpeed * GM.GameIntensity - 1);
+            speed = baseSpeedMax + GM.intensitySpeedIncrease;
             armoredLife -= 1;
             foreach (GameObject segno in signarmoredenemy)
             {

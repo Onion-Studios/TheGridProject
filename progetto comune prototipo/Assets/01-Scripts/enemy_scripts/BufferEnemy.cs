@@ -106,7 +106,7 @@ public class BufferEnemy : MonoBehaviour
                         case 0:
                             {
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
-                                if (NormalEnemy.speed == NormalEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (NormalEnemy.speed == NormalEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     NormalEnemy.speed = NormalEnemy.speed + Boost;
 
@@ -117,7 +117,7 @@ public class BufferEnemy : MonoBehaviour
                         case 1:
                             {
                                 KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
-                                if (KamikazeEnemy.speed == KamikazeEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (KamikazeEnemy.speed == KamikazeEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     KamikazeEnemy.speed = KamikazeEnemy.speed + Boost;
 
@@ -128,10 +128,9 @@ public class BufferEnemy : MonoBehaviour
                         case 2:
                             {
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                                if (ArmoredEnemy.speed == ArmoredEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1) || ArmoredEnemy.speed == ArmoredEnemy.baseSpeedMax + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (ArmoredEnemy.speed == ArmoredEnemy.baseSpeed + GM.intensitySpeedIncrease || ArmoredEnemy.speed == ArmoredEnemy.baseSpeedMax + GM.intensitySpeedIncrease)
                                 {
                                     ArmoredEnemy.speed = ArmoredEnemy.speed + Boost;
-
                                 }
 
 
@@ -141,7 +140,7 @@ public class BufferEnemy : MonoBehaviour
                             {
                                 UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
 
-                                if (UndiyngEnemy.speed == UndiyngEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (UndiyngEnemy.speed == UndiyngEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     UndiyngEnemy.speed = UndiyngEnemy.speed + Boost;
                                 }
@@ -152,7 +151,7 @@ public class BufferEnemy : MonoBehaviour
                             {
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
 
-                                if (frighteningEnemy.speed == frighteningEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (frighteningEnemy.speed == frighteningEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     frighteningEnemy.speed = frighteningEnemy.speed + Boost;
                                 }
@@ -163,7 +162,7 @@ public class BufferEnemy : MonoBehaviour
                             {
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
 
-                                if (bufferEnemy.speed == bufferEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (bufferEnemy.speed == bufferEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     bufferEnemy.speed = bufferEnemy.speed + Boost;
                                 }
@@ -191,37 +190,37 @@ public class BufferEnemy : MonoBehaviour
                         case 0:
                             {
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
-                                if (NormalEnemy.speed != NormalEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (NormalEnemy.speed != NormalEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
-                                    NormalEnemy.speed = NormalEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1);
+                                    NormalEnemy.speed = NormalEnemy.baseSpeed + GM.intensitySpeedIncrease;
 
-    }
+                                }
                             }
                             break;
                         case 1:
                             {
                                 KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
-                                if (KamikazeEnemy.speed != KamikazeEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (KamikazeEnemy.speed != KamikazeEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
-                                    KamikazeEnemy.speed = KamikazeEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1);
+                                    KamikazeEnemy.speed = KamikazeEnemy.baseSpeed + GM.intensitySpeedIncrease;
 
-    }
+                                }
 
                             }
                             break;
                         case 2:
                             {
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                                if (ArmoredEnemy.speed != ArmoredEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1) && ArmoredEnemy.speed != ArmoredEnemy.baseSpeedMax + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (ArmoredEnemy.speed != ArmoredEnemy.baseSpeed + GM.intensitySpeedIncrease && ArmoredEnemy.speed != ArmoredEnemy.baseSpeedMax + GM.intensitySpeedIncrease)
                                 {
                                     if (ArmoredEnemy.armoredLife == 2)
                                     {
-                                        ArmoredEnemy.speed = ArmoredEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1);
-    }
+                                        ArmoredEnemy.speed = ArmoredEnemy.baseSpeed + GM.intensitySpeedIncrease;
+                                    }
                                     else
                                     {
-                                        ArmoredEnemy.speed = ArmoredEnemy.baseSpeedMax + (GM.intensitySpeed * GM.GameIntensity - 1);
-    }
+                                        ArmoredEnemy.speed = ArmoredEnemy.baseSpeedMax + GM.intensitySpeedIncrease;
+                                    }
 
 
                                 }
@@ -230,11 +229,11 @@ public class BufferEnemy : MonoBehaviour
                         case 3:
                             {
                                 UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
-                                if (UndiyngEnemy.speed != UndiyngEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (UndiyngEnemy.speed != UndiyngEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
-                                    UndiyngEnemy.speed = UndiyngEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1);
+                                    UndiyngEnemy.speed = UndiyngEnemy.baseSpeed + GM.intensitySpeedIncrease;
 
-    }
+                                }
 
                             }
                             break;
@@ -242,10 +241,10 @@ public class BufferEnemy : MonoBehaviour
                             {
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
 
-                                if (frighteningEnemy.speed != frighteningEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (frighteningEnemy.speed != frighteningEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
-                                    frighteningEnemy.speed = frighteningEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1);
-    }
+                                    frighteningEnemy.speed = frighteningEnemy.baseSpeed + GM.intensitySpeedIncrease;
+                                }
 
                             }
                             break;
@@ -253,14 +252,13 @@ public class BufferEnemy : MonoBehaviour
                             {
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
 
-                                if (bufferEnemy.speed != bufferEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1))
+                                if (bufferEnemy.speed != bufferEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
-                                    bufferEnemy.speed = bufferEnemy.baseSpeed + (GM.intensitySpeed * GM.GameIntensity - 1);
+                                    bufferEnemy.speed = bufferEnemy.baseSpeed + GM.intensitySpeedIncrease;
                                 }
 
                             }
                             break;
-
                     }
                 }
             }
