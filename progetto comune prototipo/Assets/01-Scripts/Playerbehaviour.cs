@@ -64,11 +64,10 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startEndSequence.starting == false)
-
+        if (startEndSequence.starting == false && startEndSequence.ending == false)
         {
-
             MovementHandler();
+            
         }
     }
 

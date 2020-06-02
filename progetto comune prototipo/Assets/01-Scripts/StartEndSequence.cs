@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartEndSequence : MonoBehaviour
 {
+    #region VARIABLES
     Playerbehaviour playerbehaviour;
     GameManager GM;
+    PointSystem pointSystem;
+    Enemyspawnmanager enemyspawnmanager;
     int startSequencePosition;
+    int endSequencePosition;
     public GameObject[] light;
     public float activateLight;
     public bool starting, ending, switchui;
     IEnumerator playerLight;
     IEnumerator lightsON;
+    IEnumerator lightsOFF;
+    IEnumerator blackScreen;
+    public float lightsStopTime;
     public float closedTime;
     public GameObject tenda, tenda2;
     public float curtainspeed;
@@ -20,10 +28,15 @@ public class StartEndSequence : MonoBehaviour
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
     public Vector3 centerGrid;
     bool soundNotLooping;
+    public int enemynumber;
+    public GameObject endImage;
+    public float time;
+    #endregion
 
     void Awake()
     {
         startSequencePosition = 0;
+        endSequencePosition = 0;
         starting = true;
         ending = false;
     }
@@ -43,6 +56,18 @@ public class StartEndSequence : MonoBehaviour
             Debug.LogError("GameMaster is NULL!");
         }
 
+        pointSystem = FindObjectOfType<PointSystem>();
+        if(pointSystem == null)
+        {
+            Debug.LogError("PointSystem is NULL!");
+        }
+
+        enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        if (enemyspawnmanager == null)
+        {
+            Debug.LogError("EnemySpawnManager is NULL!");
+        }
+
         playerLight = null;
         switchui = true;
         lightsON = null;
@@ -56,6 +81,7 @@ public class StartEndSequence : MonoBehaviour
     void Update()
     {
         StartSequence();
+        
     }
 
 
@@ -113,6 +139,140 @@ public class StartEndSequence : MonoBehaviour
 
     }
 
+   public void EndSequence()
+   {
+        switch (endSequencePosition)
+        {
+            case 0:
+                StopAllEnemies();
+                break;
+            case 1:
+                if(lightsOFF == null)
+                {
+                    lightsOFF = LightsOFF();
+                    StartCoroutine(lightsOFF);
+                }
+                break;
+            case 2:
+                if(lightsOFF != null)
+                {
+                    StopCoroutine(lightsOFF);
+                    lightsOFF = null;
+                }
+                Seppuku();
+                break;
+            case 3:
+                SwitchUI();
+                break;
+            case 4:
+                CloseCurtains();
+                break;
+            case 5:
+                if(blackScreen == null)
+                {
+                    blackScreen = BlackScreen();
+                    StartCoroutine(blackScreen);
+                }
+                break;
+            case 6:
+                if(blackScreen != null)
+                {
+                    StopCoroutine(blackScreen);
+                    blackScreen = null;
+                }
+                GameOver();
+                break;
+
+        }
+   }
+
+    void GameOver()
+    {
+        Inkstone.FinalScore = (int)pointSystem.score;
+        SceneManager.LoadScene(3);
+    }
+
+    IEnumerator BlackScreen()
+    {
+        yield return new WaitForSeconds(time);
+        endImage.SetActive(true);
+        yield return new WaitForSeconds(time);
+        endSequencePosition++;
+    }
+
+    void StopAllEnemies()
+    {
+        ending = true;
+        StopEnemiesMovement();
+        endSequencePosition++;
+
+    }
+
+    void StopEnemiesMovement()
+    {
+        for (int i = 0; i < enemynumber; i++)
+        {
+            foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
+            {
+                if (enemy.activeInHierarchy == true)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            {
+                                NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
+                                NormalEnemy.speed = 0;
+                            }
+                            break;
+                        case 1:
+                            {
+                                KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
+                                KamikazeEnemy.speed = 0;
+                            }
+                            break;
+                        case 2:
+                            {
+                                ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
+                                ArmoredEnemy.speed = 0;
+                            }
+                            break;
+                        case 3:
+                            {
+                                UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
+                                UndiyngEnemy.speed = 0;
+                            }
+                            break;
+                        case 5:
+                            {
+                                FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
+                                frighteningEnemy.speed = 0;
+                            }
+                            break;
+                        case 6:
+                            {
+                                BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
+                                bufferEnemy.speed = 0;
+                            }
+                            break;
+
+                    }
+                }
+            }
+        }
+    }
+
+    IEnumerator LightsOFF()
+    {
+        yield return new WaitForSeconds(lightsStopTime);
+        light[1].SetActive(false);
+        yield return new WaitForSeconds(lightsStopTime);
+        light[0].SetActive(false);
+        yield return new WaitForSeconds(lightsStopTime);
+        light[3].SetActive(true);
+        yield return new WaitForSeconds(lightsStopTime);
+        endSequencePosition++;
+    }
+
     IEnumerator PlayerLight()
     {
         yield return new WaitForSeconds(activateLight);
@@ -168,7 +328,14 @@ public class StartEndSequence : MonoBehaviour
         else
         {
             tenda.transform.position = closecurtain;
-            startSequencePosition++;
+            if(starting == true)
+            {
+                startSequencePosition++;
+            }
+            if(ending == true)
+            {
+                endSequencePosition++;
+            }
         }
     }
 
@@ -194,7 +361,14 @@ public class StartEndSequence : MonoBehaviour
         score_text.gameObject.SetActive(switchui);
         counter_text.gameObject.SetActive(switchui);
         scoremultiplier_text.gameObject.SetActive(switchui);
-        startSequencePosition++;
+        if (starting == true)
+        {
+            startSequencePosition++;
+        }
+        if (ending == true)
+        {
+            endSequencePosition++;
+        }
     }
 
 
@@ -202,5 +376,11 @@ public class StartEndSequence : MonoBehaviour
     void Bowing()
     {
         startSequencePosition++;
+    }
+
+    //TODO Animazione seppuku
+    void Seppuku()
+    {
+        endSequencePosition++;
     }
 }
