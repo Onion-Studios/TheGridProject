@@ -18,6 +18,7 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator playerLight;
     IEnumerator lightsON;
     IEnumerator lightsOFF;
+    IEnumerator blackScreen;
     public float lightsStopTime;
     public float closedTime;
     public GameObject tenda, tenda2;
@@ -28,6 +29,8 @@ public class StartEndSequence : MonoBehaviour
     public Vector3 centerGrid;
     bool soundNotLooping;
     public int enemynumber;
+    public GameObject endImage;
+    public float time;
     #endregion
 
     void Awake()
@@ -165,8 +168,21 @@ public class StartEndSequence : MonoBehaviour
                 CloseCurtains();
                 break;
             case 5:
+                if(blackScreen == null)
+                {
+                    blackScreen = BlackScreen();
+                    StartCoroutine(blackScreen);
+                }
+                break;
+            case 6:
+                if(blackScreen != null)
+                {
+                    StopCoroutine(blackScreen);
+                    blackScreen = null;
+                }
                 GameOver();
                 break;
+
         }
    }
 
@@ -174,6 +190,14 @@ public class StartEndSequence : MonoBehaviour
     {
         Inkstone.FinalScore = (int)pointSystem.score;
         SceneManager.LoadScene(3);
+    }
+
+    IEnumerator BlackScreen()
+    {
+        yield return new WaitForSeconds(time);
+        endImage.SetActive(true);
+        yield return new WaitForSeconds(time);
+        endSequencePosition++;
     }
 
     void StopAllEnemies()
