@@ -15,6 +15,7 @@ public class ArmoredEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    GameManager GM;
     public int scoreEnemy;
     public GameObject[] signarmoredenemy;
     public int armoredLife = 2;
@@ -56,6 +57,12 @@ public class ArmoredEnemy : MonoBehaviour
         if (pointsystem == null)
         {
             Debug.LogError("PointSystem is NULL");
+        }
+
+        GM = FindObjectOfType<GameManager>();
+        if (pointsystem == null)
+        {
+            Debug.LogError("GameManager is NULL");
         }
 
         speed = baseSpeed;
@@ -121,7 +128,7 @@ public class ArmoredEnemy : MonoBehaviour
     {
         if (armoredLife == 2)
         {
-            speed = baseSpeedMax;
+            speed = baseSpeedMax + GM.intensitySpeedIncrease;
             armoredLife -= 1;
             foreach (GameObject segno in signarmoredenemy)
             {
