@@ -30,6 +30,9 @@ public class FrighteningEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem inkDeath;
     public ParticleSystem buffEffect;
+    [SerializeField]
+    private ParticleSystem inkAbsorb;
+    public float stopTime;
 
     #endregion
 
@@ -94,9 +97,10 @@ public class FrighteningEnemy : MonoBehaviour
     public void Enemymove()
     {
 
-        if (this.transform.localPosition.x > 4.24)
+        if (this.transform.localPosition.x > 2.5)
         {
-            DeathForEndGrid();
+            inkAbsorb.Play();
+            Invoke("DeathForEndGrid", stopTime);
         }
         else
         {
@@ -106,6 +110,7 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void DeathForEndGrid()
     {
+        inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkstoneDamage;

@@ -706,6 +706,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelInk_5
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 67d0fe3831b7e97499d03082d1b91d86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 67d0fe3831b7e97499d03082d1b91d86,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5944,6 +5949,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SuzuriContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0610bcf92a718e44bdaa0720ce76ccf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4488112039536436691, guid: c0610bcf92a718e44bdaa0720ce76ccf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0610bcf92a718e44bdaa0720ce76ccf,
         type: 3}

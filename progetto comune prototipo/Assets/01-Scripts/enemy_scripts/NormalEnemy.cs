@@ -28,6 +28,9 @@ public class NormalEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem inkDeath;
     public ParticleSystem buffEffect;
+    [SerializeField]
+    private ParticleSystem inkAbsorb;
+    public float stopTime;
 
     #endregion
 
@@ -81,16 +84,21 @@ public class NormalEnemy : MonoBehaviour
 
     public void Enemymove()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-        if (this.transform.localPosition.x > 4.24)
+        if (this.transform.localPosition.x <= 3.5)
         {
-            DeathForEndGrid();
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        }
+
+        if (this.transform.localPosition.x > 3.5)
+        {
+            inkAbsorb.Play();
+            Invoke ("DeathForEndGrid", stopTime);
         }
     }
 
     public void DeathForEndGrid()
     {
+        inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signnormalenemy)
