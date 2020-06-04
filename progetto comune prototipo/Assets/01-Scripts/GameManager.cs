@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject dragon1;
     public GameObject dragon2;
     public GameObject dragon3;
+    public float intensitySpeed, intensitySpeedIncrease;
 
     private bool soundPlayed1;
     private bool soundPlayed2;
@@ -70,24 +71,22 @@ public class GameManager : MonoBehaviour
             GameIntensity = 1;
             if (firstGameStart)
             {
-                AudioManager.Instance.SetLoop("GongSound", false);
-                AudioManager.Instance.PlaySound("GongSound");
                 firstGameStart = false;
             }
             else
             {
+                dragon1.SetActive(true);
+                dragon2.SetActive(false);
+                dragon3.SetActive(false);
+                dragonTimeline.Play();
                 AudioManager.Instance.SetLoop("BooSound", false);
                 AudioManager.Instance.PlaySound("BooSound");
+
             }
 
             soundPlayed1 = true;
             soundPlayed2 = false;
             soundPlayed3 = false;
-
-            dragon1.SetActive(true);
-            dragon2.SetActive(false);
-            dragon3.SetActive(false);
-            dragonTimeline.Play();
 
         }
         else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
@@ -120,5 +119,6 @@ public class GameManager : MonoBehaviour
             dragon3.SetActive(true);
             dragonTimeline.Play();
         }
+        intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
     }
 }

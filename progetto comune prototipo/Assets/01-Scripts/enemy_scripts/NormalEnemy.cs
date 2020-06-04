@@ -20,10 +20,30 @@ public class NormalEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+    public float timeToDespawn = 2f;
+    private Animator normalAnimator;
+    private bool destinationReached;
+    public float BlackToDeath;
+    [SerializeField]
+    private GameObject enemy;
+    [SerializeField]
+    private GameObject band;
+    [SerializeField]
+    private ParticleSystem inkDeath;
+    public ParticleSystem buffEffect;
+    [SerializeField]
+    private ParticleSystem inkAbsorb;
+    public float stopTime;
+
     #endregion
 
+    private void Start()
+    {
+        normalAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
+        destinationReached = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -54,17 +74,11 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+
+
         speed = baseSpeed;
 
         startPosition = transform.position.x;
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-
 
     }
 
@@ -73,21 +87,27 @@ public class NormalEnemy : MonoBehaviour
     {
         Enemymove();
         PointOverDistance();
-
+        normalAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
 
     public void Enemymove()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-        if (this.transform.localPosition.x > 4.24)
+        if (destinationReached == false)
         {
-            DeathForEndGrid();
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        }
+
+        if (this.transform.localPosition.x > 3.5)
+        {
+            destinationReached = true;
+            Invoke("DeathForEndGrid", timeToDespawn);
+            inkAbsorb.Play();
         }
     }
 
     public void DeathForEndGrid()
     {
+        inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signnormalenemy)
@@ -103,19 +123,44 @@ public class NormalEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.bar = 0;
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
         }
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.paintParticles.Stop();
+            SecretT.active = false;
+            SecretT.currentTime = SecretT.timeMax;
+            SecretT.symbol.SetActive(false);
+        }
+        else
+        {
+            // Insert THUD Sound
+        }
+
+        SecretT.bar = 0;
+
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
 
     public void Deathforsign()
     {
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        band.GetComponent<Renderer>().material.color = Color.black;
+        Invoke("Death", BlackToDeath);
+    }
+
+    private void Death()
+    {
         this.gameObject.SetActive(false);
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        band.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
@@ -131,9 +176,9 @@ public class NormalEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
-
 
     void PointOverDistance()
     {

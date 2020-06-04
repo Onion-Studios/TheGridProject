@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -10,6 +8,8 @@ public class UIManager : MonoBehaviour
     Playerbehaviour Playerbehaviour;
     [SerializeField]
     Text Enemycounter_text;
+    [SerializeField]
+    Text yokaislayer_text;
     public Text ink_text;
     Inkstone Ink;
     Enemyspawnmanager Enemyspawnmanager;
@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
         }
 
         Ink = FindObjectOfType<Inkstone>();
-        if(Ink == null)
+        if (Ink == null)
         {
             Debug.LogError("inkstone è null");
         }
@@ -50,17 +50,10 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
-
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
     {
-
         UpdateEnemycounter();
 
         UpdateInkCounter();
@@ -81,7 +74,7 @@ public class UIManager : MonoBehaviour
         ink_text.text = (Ink.Ink + "/" + Ink.maxInk);
     }
 
-    void UpdateScore()
+    public void UpdateScore()
     {
         int convertedscore = (int)pointsystem.score;
         score_text.text = convertedscore.ToString();
@@ -89,7 +82,7 @@ public class UIManager : MonoBehaviour
 
     void UpdateScoreMultiplier()
     {
-        scoremultiplier_text.text = "X" + pointsystem.scoreMultiplier.ToString(); 
+        scoremultiplier_text.text = "x" + pointsystem.scoreMultiplier.ToString();
     }
 
 }

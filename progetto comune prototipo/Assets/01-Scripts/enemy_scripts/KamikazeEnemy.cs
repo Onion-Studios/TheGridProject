@@ -16,13 +16,16 @@ public class KamikazeEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signkamikazenemy;
     public float baseSpeed;
-
     private Collider[] hitColliders;
     public float blastRadius;
     //public LayerMask explosionLayers;
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+    public float explosionDelay;
+    [SerializeField]
+    private ParticleSystem explosion;
+    public ParticleSystem buffEffect;
     #endregion
 
     private void OnEnable()
@@ -56,6 +59,7 @@ public class KamikazeEnemy : MonoBehaviour
         {
             Debug.LogError("PointSystem is NULL");
         }
+
 
         speed = baseSpeed;
 
@@ -98,19 +102,33 @@ public class KamikazeEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
-        SecretT.bar = 0;
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signkamikazenemy)
         {
             segno.SetActive(false);
         }
 
-        AudioManager.Instance.PlaySound("PlayerGetsHit");
+        if (SecretT.bar == 100)
+        {
+            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.paintParticles.Stop();
+            SecretT.active = false;
+            SecretT.currentTime = SecretT.timeMax;
+            SecretT.symbol.SetActive(false);
+        }
+        else
+        {
+            // Insert THUD Sound
+        }
+
+        SecretT.bar = 0;
         ExplosionWork(this.transform.position);
     }
 
     public void Deathforsign()
     {
+        explosion.transform.SetParent(null);
+        explosion.Play();
         this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
@@ -128,6 +146,12 @@ public class KamikazeEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+        Invoke("ParentReassignment", explosionDelay);
+    }
+
+    public void ParentReassignment()
+    {
+        explosion.transform.SetParent(this.transform);
     }
 
     void PointOverDistance()

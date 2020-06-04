@@ -12,21 +12,30 @@ public class PointSystem : MonoBehaviour
     public int threshold1, threshold2, threshold3, threshold4;
     public int countercombo = 0;
     public float floatscore;
+    StartEndSequence startEndSequence;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        startEndSequence = FindObjectOfType<StartEndSequence>();
+        if (startEndSequence == null)
+        {
+            Debug.LogError("StartEndSequence is NULL!");
+        }
+       
+
         floatscore = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        IncreaseOverTime();
-
-        Timer();
-
+        if(startEndSequence.starting==false && startEndSequence.ending == false)
+        {
+            IncreaseOverTime();
+        }
+            Timer();
       
     }
 

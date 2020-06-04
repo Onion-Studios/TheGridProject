@@ -1,29 +1,39 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Secret : MonoBehaviour
 {
     #region VARIABLES
-    [Range(0, 100)] public int bar = 0;
+    [Range(0, 100)] public int bar;
     public int charge;
     public Material startMaterial;
     public Material endMaterial;
     Renderer renderer_;
     Enemyspawnmanager enemyspawnmanager;
+    public GameObject symbol;
     Playerbehaviour playerbehaviour;
-    public float currentTime = 0f;
-    public float timeMax = 5f;
-    public bool active = false;
+    public float currentTime;
+    public float timeMax;
+    public bool active;
+    [SerializeField]
+    float symbolShowDuration;
+    public GameObject secretSymbol;
+    IEnumerator symboldisplay;
+    [SerializeField]
+    private ParticleSystem inkStroke;
+    public ParticleSystem paintParticles;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
 
-
-        renderer_ = GetComponent<Renderer>();
+        renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
+        active = false;
 
     }
 
@@ -37,7 +47,6 @@ public class Secret : MonoBehaviour
 
     void Timer()
     {
-
         if (bar > 100)
         {
             bar = 100;
@@ -49,38 +58,48 @@ public class Secret : MonoBehaviour
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
             {
+                if (symboldisplay != null)
+                {
+                    StopCoroutine(symboldisplay);
+                    symboldisplay = null;
+                }
                 AudioManager.Instance.PlaySound("PaintingCompleted");
+                paintParticles.Play();
                 active = true;
-
+                symbol.SetActive(active);
                 currentTime = timeMax;
             }
             else
             {
-
                 //Timer
-                currentTime -= 1 * Time.deltaTime;
-
-                if (currentTime < 0)
+                if (currentTime > 0)
+                {
+                    if (symboldisplay == null)
+                    {
+                        symboldisplay = SymbolDisplay();
+                        StartCoroutine(symboldisplay);
+                    }
+                    currentTime -= 1 * Time.deltaTime;
+                }
+                //reset barra e si disattiva la secret 
+                else
                 {
                     currentTime = 0;
-                }
-
-                //reset barra e si disattiva la secret 
-                if (currentTime == 0)
-                {
                     AudioManager.Instance.PlaySound("PaintingReset");
+                    paintParticles.Stop();
                     bar = 0;
 
                     active = false;
+                    symbol.SetActive(active);
                 }
-
             }
         }
     }
 
-    //Muoiono tutti i enemy presenti sulla lane 
+    //Muoiono tutti i nemici presenti sulla lane 
     public void Death()
     {
+        inkStroke.Play();
         for (int i = 0; i < 7; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
@@ -120,16 +139,22 @@ public class Secret : MonoBehaviour
                             break;
                     }
                 }
-
             }
         }
+    }
 
+    private IEnumerator SymbolDisplay()
+    {
+        secretSymbol.SetActive(true);
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(symbolShowDuration);
+        Time.timeScale = 1f;
+        secretSymbol.SetActive(false);
     }
 
 
     void Color()
     {
-
         this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
     }
 }

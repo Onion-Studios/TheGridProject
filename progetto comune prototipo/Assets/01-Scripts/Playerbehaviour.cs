@@ -4,7 +4,6 @@ public class Playerbehaviour : MonoBehaviour
 {
     #region VARIABILI 
     public GameObject character;
-    [HideInInspector]
     public Vector3 playerposition;
     public float speed;
     public GameObject istanze;
@@ -14,6 +13,7 @@ public class Playerbehaviour : MonoBehaviour
     grigliamanager grigliamanager;
     Managercombo managercombo;
     Inkstone Inkstone;
+    StartEndSequence startEndSequence;
     public Vector3 LastCubeChecked;
     public int yokaislayercount;
     public string movementState;
@@ -21,14 +21,17 @@ public class Playerbehaviour : MonoBehaviour
     public float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
-
-    private static Vector3 gridCenter;
+    public Vector3 gridCenter;
+    private AudioManager audioManager;
+    public ParticleSystem frightenedPlayer;
+    public ParticleSystem smokeBomb;
+    public ParticleSystem smokeBombCenter;
+    private Vector3 confirmPosition;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
     void Start()
     {
-
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
         {
@@ -47,15 +50,28 @@ public class Playerbehaviour : MonoBehaviour
             Debug.LogError("Inkstone is NULL!");
         }
 
+
+
+        startEndSequence = FindObjectOfType<StartEndSequence>();
+        if (startEndSequence == null)
+        {
+            Debug.LogError("StartEndSequence is NULL!");
+        }
+
         movementState = "readystate";
 
         waitTimer = maxWaitTimer;
+        audioManager = AudioManager.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovementHandler();
+        if (startEndSequence.starting == false && startEndSequence.ending == false)
+        {
+            MovementHandler();
+            
+        }
     }
 
     void MovementHandler()
@@ -68,36 +84,46 @@ public class Playerbehaviour : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.W) && istanze.transform.position.z > 0.9)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z - 1;
                     movementState = "movingforward";
 
                 }
                 if (Input.GetKey(KeyCode.S) && istanze.transform.position.z < 3.1)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z + 1;
                     movementState = "movingback";
 
                 }
                 if (Input.GetKey(KeyCode.A) && istanze.transform.position.x < 3.1)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x + 1;
                     movementState = "movingleft";
 
                 }
                 if (Input.GetKey(KeyCode.D) && istanze.transform.position.x > 0.9)
                 {
+                    audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x - 1;
                     movementState = "movingright";
 
                 }
-                if (Input.GetKeyDown(KeyCode.Space) && istanze.transform.position != gridCenter)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    confirmPosition = istanze.transform.position;
+                    smokeBomb.transform.position = confirmPosition;
+                    smokeBomb.Play();
+                    //smokeBomb.transform.SetParent(null);
+                    smokeBombCenter.Play();
                     managercombo.CheckSign();
                     istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    istanze.transform.position = playerposition;
+                    istanze.transform.position = gridCenter;
                     grigliamanager.ResetColorGrid();
                     grigliamanager.ResetGridLogic();
                     AudioManager.Instance.PlaySound("ConfirmSound");
+                    //smokeBomb.transform.SetParent(istanze.transform);
                 }
             }
             else if (movementState == "waitstate")
@@ -226,7 +252,7 @@ public class Playerbehaviour : MonoBehaviour
     {
         //istanzio il player sopra al cubo sommando un vettore
 
-        istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, 180f, 0f), this.transform);
+        istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, -90f, 0f), this.transform);
     }
 
     #endregion
