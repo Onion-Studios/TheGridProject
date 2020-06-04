@@ -8,6 +8,7 @@ public class Yokaislayer : MonoBehaviour
     int ink, maxInk;
     Enemyspawnmanager enemyspawnmanager;
     Playerbehaviour playerbehaviour;
+    StartEndSequence startendsequence;
     Inkstone inkStone_;
     public Vector3 closecurtain;
     bool active, switchui;
@@ -26,6 +27,7 @@ public class Yokaislayer : MonoBehaviour
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
+        startendsequence = FindObjectOfType<StartEndSequence>();
         inkStone_ = FindObjectOfType<Inkstone>();
 
         active = false;
@@ -41,10 +43,9 @@ public class Yokaislayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && playerbehaviour.yokaislayercount > 0 && active == false)
+        if (Input.GetKeyDown(KeyCode.X) && playerbehaviour.yokaislayercount > 0 && active == false && startendsequence.starting == false && startendsequence.ending == false)
         {
             active = true;
-
         }
 
         if (active == true)
