@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314428, g: 0.21640716, b: 0.2984252, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314479, g: 0.2164075, b: 0.29842636, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -707,6 +707,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelInk_5
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 67d0fe3831b7e97499d03082d1b91d86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 67d0fe3831b7e97499d03082d1b91d86,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -820,6 +825,9 @@ MonoBehaviour:
   maxWaitTimer: 0.03
   inkGained: 4
   gridCenter: {x: 2, y: 1.05, z: 2}
+  frightenedPlayer: {fileID: 0}
+  smokeBomb: {fileID: 0}
+  smokeBombCenter: {fileID: 0}
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -1339,66 +1347,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &310846701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 310846703}
-  - component: {fileID: 310846702}
-  m_Layer: 0
-  m_Name: Particle System Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &310846702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310846701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75907ecb69055bd4fbac9c04f672a413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles:
-  - name: BufferInkDeath
-    particleEffect: {fileID: 4497573916813592135, guid: ab736854858004c468da7879a7c4ee3f,
-      type: 3}
-    instantiated: 0
-  - name: NormalInkDeath
-    particleEffect: {fileID: 4093381821116623578, guid: e1626a8b6ffc0454baa774af41ff092e,
-      type: 3}
-    instantiated: 0
-  - name: FrighteningInkDeath
-    particleEffect: {fileID: 6748548307750283501, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
-      type: 3}
-    instantiated: 0
-  - name: ArmoredInkDeath
-    particleEffect: {fileID: 8490493624454473775, guid: e0a59dde52152ba40a5edbc0d3eb11e9,
-      type: 3}
-    instantiated: 0
---- !u!4 &310846703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310846701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &311615527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1842,6 +1790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TendaCentrale (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b2228d7b497f66043a4d4012ba727785,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b2228d7b497f66043a4d4012ba727785,
         type: 3}
@@ -2540,9 +2493,9 @@ MonoBehaviour:
   SignGroupwave3_6: 0500000002000000040000000100000001000000030000000100000005000000020000000500000004000000
   Activewave_intensity: 0
   Activewave_number: 0
-  TEST_WaveActive: 0
-  TEST_waveintesity: 0
-  TEST_wavenumber: 0
+  TEST_WaveActive: 1
+  TEST_waveintesity: 3
+  TEST_wavenumber: 2
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -2555,7 +2508,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632886154
 GameObject:
@@ -2652,7 +2605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -3955,6 +3908,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TendaCentrale
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b2228d7b497f66043a4d4012ba727785,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b2228d7b497f66043a4d4012ba727785,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4411,7 +4369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1258046351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tende
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6167,6 +6125,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuzuriContainer
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0610bcf92a718e44bdaa0720ce76ccf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4488112039536436691, guid: c0610bcf92a718e44bdaa0720ce76ccf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c0610bcf92a718e44bdaa0720ce76ccf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7566,8 +7534,38 @@ PrefabInstance:
       objectReference: {fileID: 1576811752}
     - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}
-      propertyPath: symbolShowDuration
-      value: 1.2
+      propertyPath: charge
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412836388115627, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412837076985438, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653412837503003451, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7655c98483d4dd84f98bb883106f5087, type: 3}
@@ -8080,7 +8078,7 @@ Transform:
   - {fileID: 277944431}
   - {fileID: 3165575557532552886}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6539381000972644842
 Camera:

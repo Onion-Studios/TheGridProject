@@ -33,12 +33,18 @@ public class grigliamanager : MonoBehaviour
         }
         character.playerposition = new Vector3(-3.24f, 1.05f, 3.16f);
         character.Spawn();
-        MidGridLogicTrue();
+                MidGridLogicTrue();
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
         {
             Debug.LogError("il managercombo è NULL!");
         }
+        character.frightenedPlayer = character.GetComponentsInChildren<ParticleSystem>()[0];
+        character.smokeBomb = character.GetComponentsInChildren<ParticleSystem>()[3];
+        character.smokeBombCenter = character.GetComponentsInChildren<ParticleSystem>()[4];
+        character.smokeBombCenter.transform.position = character.gridCenter;
+        character.smokeBombCenter.transform.SetParent(null);
+        character.smokeBomb.transform.SetParent(null);
     }
 
     void Update()

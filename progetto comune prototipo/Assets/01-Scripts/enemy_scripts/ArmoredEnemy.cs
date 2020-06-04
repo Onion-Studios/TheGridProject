@@ -23,6 +23,17 @@ public class ArmoredEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+    public float BlackToDeath;
+    [SerializeField]
+    private GameObject enemy;
+    //[SerializeField]
+    //private GameObject armor;
+    [SerializeField]
+    private ParticleSystem inkDeath;
+    public ParticleSystem buffEffect;
+    [SerializeField]
+    private ParticleSystem inkAbsorb;
+    public float stopTime;
 
     #endregion
 
@@ -80,16 +91,21 @@ public class ArmoredEnemy : MonoBehaviour
 
     public void Enemymove()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-        if (this.transform.localPosition.x > 4.24)
+        if (this.transform.localPosition.x <= 3.5)
         {
-            DeathForEndGrid();
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+        }
+
+        if (this.transform.localPosition.x > 3.5)
+        {
+            inkAbsorb.Play();
+            Invoke("DeathForEndGrid", stopTime);
         }
     }
 
     public void DeathForEndGrid()
     {
+        inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signarmoredenemy)
@@ -111,6 +127,7 @@ public class ArmoredEnemy : MonoBehaviour
         if (SecretT.bar == 100)
         {
             AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.paintParticles.Stop();
             SecretT.active = false;
             SecretT.currentTime = SecretT.timeMax;
             SecretT.symbol.SetActive(false);
@@ -123,7 +140,6 @@ public class ArmoredEnemy : MonoBehaviour
         SecretT.bar = 0;
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
-
     public void Deathforsign()
     {
         if (armoredLife == 2)
@@ -139,17 +155,27 @@ public class ArmoredEnemy : MonoBehaviour
         }
         else
         {
-            armoredLife = 2;
-            enemyspawnmanager.enemykilled += 2;
-            Inkstone.Ink += playerbehaviour.inkGained;
-            SecretT.bar += SecretT.charge;
-            foreach (GameObject segno in signarmoredenemy)
-            {
-                segno.SetActive(false);
-            }
-            this.gameObject.SetActive(false);
-            AudioManager.Instance.PlaySound("EnemyDeath");
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            //armor.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("Death", BlackToDeath);
         }
+    }
+
+    public void Death()
+    {
+        armoredLife = 2;
+        enemyspawnmanager.enemykilled += 2;
+        Inkstone.Ink += playerbehaviour.inkGained;
+        SecretT.bar += SecretT.charge;
+        foreach (GameObject segno in signarmoredenemy)
+        {
+            segno.SetActive(false);
+        }
+        this.gameObject.SetActive(false);
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        //armor.GetComponent<Renderer>().material.color = Color.white;
+        AudioManager.Instance.PlaySound("EnemyDeath");
 
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
@@ -157,7 +183,6 @@ public class ArmoredEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
-
     }
 
     void PointOverDistance()

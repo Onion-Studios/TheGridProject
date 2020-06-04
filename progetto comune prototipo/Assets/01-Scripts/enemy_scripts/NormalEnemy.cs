@@ -23,6 +23,18 @@ public class NormalEnemy : MonoBehaviour
     public float timeToDespawn = 2f;
     private Animator normalAnimator;
     private bool destinationReached;
+    public float BlackToDeath;
+    [SerializeField]
+    private GameObject enemy;
+    [SerializeField]
+    private GameObject band;
+    [SerializeField]
+    private ParticleSystem inkDeath;
+    public ParticleSystem buffEffect;
+    [SerializeField]
+    private ParticleSystem inkAbsorb;
+    public float stopTime;
+
     #endregion
 
     private void Start()
@@ -82,18 +94,20 @@ public class NormalEnemy : MonoBehaviour
     {
         if (destinationReached == false)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
 
         if (this.transform.localPosition.x > 3.5)
         {
             destinationReached = true;
             Invoke("DeathForEndGrid", timeToDespawn);
+            inkAbsorb.Play();
         }
     }
 
     public void DeathForEndGrid()
     {
+        inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signnormalenemy)
@@ -118,6 +132,7 @@ public class NormalEnemy : MonoBehaviour
         if (SecretT.bar == 100)
         {
             AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.paintParticles.Stop();
             SecretT.active = false;
             SecretT.currentTime = SecretT.timeMax;
             SecretT.symbol.SetActive(false);
@@ -135,7 +150,17 @@ public class NormalEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        band.GetComponent<Renderer>().material.color = Color.black;
+        Invoke("Death", BlackToDeath);
+    }
+
+    private void Death()
+    {
         this.gameObject.SetActive(false);
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        band.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
@@ -154,7 +179,6 @@ public class NormalEnemy : MonoBehaviour
         AudioManager.Instance.PlaySound("EnemyDeath");
 
     }
-
 
     void PointOverDistance()
     {

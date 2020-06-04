@@ -23,12 +23,15 @@ public class Playerbehaviour : MonoBehaviour
     public int inkGained;
     public Vector3 gridCenter;
     private AudioManager audioManager;
+    public ParticleSystem frightenedPlayer;
+    public ParticleSystem smokeBomb;
+    public ParticleSystem smokeBombCenter;
+    private Vector3 confirmPosition;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
     void Start()
     {
-
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
         {
@@ -109,12 +112,18 @@ public class Playerbehaviour : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    confirmPosition = istanze.transform.position;
+                    smokeBomb.transform.position = confirmPosition;
+                    smokeBomb.Play();
+                    //smokeBomb.transform.SetParent(null);
+                    smokeBombCenter.Play();
                     managercombo.CheckSign();
                     istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
                     istanze.transform.position = gridCenter;
                     grigliamanager.ResetColorGrid();
                     grigliamanager.ResetGridLogic();
                     AudioManager.Instance.PlaySound("ConfirmSound");
+                    //smokeBomb.transform.SetParent(istanze.transform);
                 }
             }
             else if (movementState == "waitstate")
@@ -244,7 +253,6 @@ public class Playerbehaviour : MonoBehaviour
         //istanzio il player sopra al cubo sommando un vettore
 
         istanze = Instantiate(character, playerposition, Quaternion.Euler(0f, -90f, 0f), this.transform);
-
     }
 
     #endregion

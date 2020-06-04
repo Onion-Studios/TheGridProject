@@ -22,6 +22,18 @@ public class FrighteningEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
+    public float BlackToDeath;
+    [SerializeField]
+    private GameObject enemy;
+    [SerializeField]
+    private GameObject hair;
+    [SerializeField]
+    private ParticleSystem inkDeath;
+    public ParticleSystem buffEffect;
+    [SerializeField]
+    private ParticleSystem inkAbsorb;
+    public float stopTime;
+
     #endregion
 
     private void OnEnable()
@@ -66,8 +78,11 @@ public class FrighteningEnemy : MonoBehaviour
     {
         Frightening();
         Enemymove();
-
         PointOverDistance();
+        if (!playerbehaviour.frightenedPlayer.isPlaying)
+        {
+            playerbehaviour.frightenedPlayer.Play();
+        }
     }
 
     public void Frightening()
@@ -82,9 +97,10 @@ public class FrighteningEnemy : MonoBehaviour
     public void Enemymove()
     {
 
-        if (this.transform.localPosition.x > 4.24)
+        if (this.transform.localPosition.x > 2.5)
         {
-            DeathForEndGrid();
+            inkAbsorb.Play();
+            Invoke("DeathForEndGrid", stopTime);
         }
         else
         {
@@ -94,7 +110,9 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void DeathForEndGrid()
     {
+        inkAbsorb.Stop();
         this.gameObject.SetActive(false);
+        playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signfrighteningenemy)
         {
@@ -107,6 +125,7 @@ public class FrighteningEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
+        playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         enemyspawnmanager.enemykilled = 0;
@@ -120,6 +139,7 @@ public class FrighteningEnemy : MonoBehaviour
         if (SecretT.bar == 100)
         {
             AudioManager.Instance.PlaySound("PlayerGetsHit");
+            SecretT.paintParticles.Stop();
             SecretT.active = false;
             SecretT.currentTime = SecretT.timeMax;
             SecretT.symbol.SetActive(false);
@@ -138,7 +158,17 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        hair.GetComponent<Renderer>().material.color = Color.black;
+        playerbehaviour.frightenedPlayer.Stop();
+        Invoke("Death", BlackToDeath);
+    }
+    public void Death()
+    {
         this.gameObject.SetActive(false);
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        hair.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;

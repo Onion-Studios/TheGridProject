@@ -19,6 +19,9 @@ public class Secret : MonoBehaviour
     float symbolShowDuration;
     public GameObject secretSymbol;
     IEnumerator symboldisplay;
+    [SerializeField]
+    private ParticleSystem inkStroke;
+    public ParticleSystem paintParticles;
     #endregion
 
     // Start is called before the first frame update
@@ -61,6 +64,7 @@ public class Secret : MonoBehaviour
                     symboldisplay = null;
                 }
                 AudioManager.Instance.PlaySound("PaintingCompleted");
+                paintParticles.Play();
                 active = true;
                 symbol.SetActive(active);
                 currentTime = timeMax;
@@ -82,6 +86,7 @@ public class Secret : MonoBehaviour
                 {
                     currentTime = 0;
                     AudioManager.Instance.PlaySound("PaintingReset");
+                    paintParticles.Stop();
                     bar = 0;
 
                     active = false;
@@ -94,6 +99,7 @@ public class Secret : MonoBehaviour
     //Muoiono tutti i nemici presenti sulla lane 
     public void Death()
     {
+        inkStroke.Play();
         for (int i = 0; i < 7; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
