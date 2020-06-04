@@ -20,11 +20,18 @@ public class NormalEnemy : MonoBehaviour
     public float startPosition;
     public float extrapointsoverdistance;
     public float startGrid;
-
+    public float timeToDespawn = 2f;
+    private Animator normalAnimator;
+    private bool destinationReached;
     #endregion
 
+    private void Start()
+    {
+        normalAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
+        destinationReached = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -68,16 +75,20 @@ public class NormalEnemy : MonoBehaviour
     {
         Enemymove();
         PointOverDistance();
-
+        normalAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
 
     public void Enemymove()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-        if (this.transform.localPosition.x > 4.24)
+        if (destinationReached == false)
         {
-            DeathForEndGrid();
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+        }
+
+        if (this.transform.localPosition.x > 3.5)
+        {
+            destinationReached = true;
+            Invoke("DeathForEndGrid", timeToDespawn);
         }
     }
 

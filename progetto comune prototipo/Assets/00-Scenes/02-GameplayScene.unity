@@ -7564,6 +7564,11 @@ PrefabInstance:
       propertyPath: secretSymbol
       value: 
       objectReference: {fileID: 1576811752}
+    - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: symbolShowDuration
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7655c98483d4dd84f98bb883106f5087, type: 3}
 --- !u!4 &2106107538706341742
