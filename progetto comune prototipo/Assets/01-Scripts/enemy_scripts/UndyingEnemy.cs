@@ -37,6 +37,8 @@ public class UndyingEnemy : MonoBehaviour
     private bool stopSlashPlayed;
     private int count;
     private bool destinationReached;
+    public int laneID;
+
     #endregion
 
     private void Start()
@@ -91,14 +93,32 @@ public class UndyingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stopSlashPlayed == false)
+        switch (laneID)
         {
-            undyingSlashWave.transform.Translate(speedSlashWave, 0, 0);
-            if (destinationReached)
-            {
-                Invoke("StopSlash", stopSlashWaveTime);
-            }
+            case 0:
+                undyingSlashWave.transform.rotation =  Quaternion.Euler(0, -45, 0);
+                StopSlashPlayed();
+                break;
+            case 1:
+                undyingSlashWave.transform.rotation = Quaternion.Euler(0, -30, 0);
+                StopSlashPlayed();
+                break;
+            case 2:
+                StopSlashPlayed();
+                break;
+            case 3:
+                undyingSlashWave.transform.rotation = Quaternion.Euler(0, 30, 0);
+                StopSlashPlayed();
+                break;
+            case 4:
+                undyingSlashWave.transform.rotation = Quaternion.Euler(0, 45, 0);
+                StopSlashPlayed();
+                break;
+            default:
+                break;
         }
+
+
         DeathForTimer();
 
         if (repelled == false)
@@ -111,6 +131,18 @@ public class UndyingEnemy : MonoBehaviour
             UndyingRepelled();
         }
 
+    }
+
+    private void StopSlashPlayed()
+    {
+        if (stopSlashPlayed == false)
+        {
+            undyingSlashWave.transform.Translate(speedSlashWave, 0, 0);
+            if (destinationReached)
+            {
+                Invoke("StopSlash", stopSlashWaveTime);
+            }
+        }
     }
 
     private void StopSlash()

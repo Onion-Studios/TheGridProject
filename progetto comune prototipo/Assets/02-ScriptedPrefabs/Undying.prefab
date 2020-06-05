@@ -312,6 +312,7 @@ MonoBehaviour:
   undyingSlashWave: {fileID: 3865364742968042024}
   speedSlashWave: 0.1
   stopSlashWaveTime: 0.8
+  laneID: 0
 --- !u!1 &4954826441296877078
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,11 +795,6 @@ PrefabInstance:
       propertyPath: startDelay.scalar
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 1968765616493655683, guid: 7306989e25c22a542be613ab61d952c2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.74
-      objectReference: {fileID: 0}
     - target: {fileID: 1889346602129990899, guid: 7306989e25c22a542be613ab61d952c2,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -808,6 +804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968765616493655683, guid: 7306989e25c22a542be613ab61d952c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.74
       objectReference: {fileID: 0}
     - target: {fileID: 1968765616551828864, guid: 7306989e25c22a542be613ab61d952c2,
         type: 3}
@@ -926,12 +927,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 521786e94c6bdf14a9b3c3b9826f35da, type: 2}
-    - target: {fileID: 4501100170392308184, guid: 85b885456c98732498c522a741aab875,
+    - target: {fileID: 5341642691470566641, guid: 85b885456c98732498c522a741aab875,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 521786e94c6bdf14a9b3c3b9826f35da, type: 2}
-    - target: {fileID: 5341642691470566641, guid: 85b885456c98732498c522a741aab875,
+    - target: {fileID: 4501100170392308184, guid: 85b885456c98732498c522a741aab875,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
