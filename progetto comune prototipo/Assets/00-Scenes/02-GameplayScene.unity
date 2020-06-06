@@ -2494,8 +2494,8 @@ MonoBehaviour:
   Activewave_intensity: 0
   Activewave_number: 0
   TEST_WaveActive: 0
-  TEST_waveintesity: 3
-  TEST_wavenumber: 2
+  TEST_waveintesity: 0
+  TEST_wavenumber: 0
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -7536,7 +7536,7 @@ PrefabInstance:
     - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}
       propertyPath: charge
-      value: 25
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}

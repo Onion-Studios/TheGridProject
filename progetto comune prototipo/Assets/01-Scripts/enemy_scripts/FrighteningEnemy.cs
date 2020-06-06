@@ -1,16 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FrighteningEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 5;
     [SerializeField]
-    public float speed;
-    public float playerSpeed;
-    public float reduceSpeed;
-    public int inkDamage;
-    public int maxInkDamage;
-    public int inkstoneDamage;
+    public float speed, playerSpeed, reduceSpeed;
+    public int inkDamage, maxInkDamage, inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
@@ -18,11 +15,7 @@ public class FrighteningEnemy : MonoBehaviour
     PointSystem pointsystem;
     public int scoreEnemy;
     public GameObject[] signfrighteningenemy;
-    public float baseSpeed;
-    public float startPosition;
-    public float extrapointsoverdistance;
-    public float startGrid;
-    public float BlackToDeath;
+    public float baseSpeed, startPosition, extrapointsoverdistance ,startGrid, BlackToDeath;
     [SerializeField]
     private GameObject enemy;
     [SerializeField]
@@ -32,7 +25,9 @@ public class FrighteningEnemy : MonoBehaviour
     public ParticleSystem buffEffect;
     [SerializeField]
     private ParticleSystem inkAbsorb;
-    public float stopTime;
+    public float stopTime, waitTime;
+    IEnumerator deathforendgrid;
+    bool destinationReached;
 
     #endregion
 
@@ -71,13 +66,26 @@ public class FrighteningEnemy : MonoBehaviour
         speed = baseSpeed;
 
         startPosition = transform.position.x;
+
+        deathforendgrid = null;
     }
 
     // Update is called once per frame
     void Update()
     {
         Frightening();
-        Enemymove();
+        if (destinationReached == false)
+        {
+            Enemymove();
+        }
+        else
+        {
+            if (deathforendgrid == null)
+            {
+                deathforendgrid = DeathForEndGrid();
+                StartCoroutine(deathforendgrid);
+            }
+        }
         PointOverDistance();
         if (!playerbehaviour.frightenedPlayer.isPlaying)
         {
@@ -96,20 +104,18 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void Enemymove()
     {
-
-        if (this.transform.localPosition.x > 2.5)
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if (this.transform.localPosition.x > 2.75)
         {
             inkAbsorb.Play();
             Invoke("DeathForEndGrid", stopTime);
-        }
-        else
-        {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            destinationReached = true;
         }
     }
 
-    public void DeathForEndGrid()
+    public IEnumerator DeathForEndGrid()
     {
+        yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         playerbehaviour.frightenedPlayer.Stop();
