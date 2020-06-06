@@ -88,6 +88,8 @@ public class KamikazeEnemy : MonoBehaviour
 
     public void DeathForEndGrid()
     {
+        explosion.transform.SetParent(null);
+        explosion.Play();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= 10;
         foreach (GameObject segno in signkamikazenemy)
@@ -99,6 +101,8 @@ public class KamikazeEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
+        explosion.transform.SetParent(null);
+        explosion.Play();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
