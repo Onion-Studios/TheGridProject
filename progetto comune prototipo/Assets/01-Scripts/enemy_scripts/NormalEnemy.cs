@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class NormalEnemy : MonoBehaviour
 {
@@ -33,7 +34,8 @@ public class NormalEnemy : MonoBehaviour
     public ParticleSystem buffEffect;
     [SerializeField]
     private ParticleSystem inkAbsorb;
-    public float stopTime;
+    public float stopTime, waitTime;
+    IEnumerator deathforendgrid;
 
     #endregion
 
@@ -74,39 +76,47 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-
-
         speed = baseSpeed;
 
         startPosition = transform.position.x;
 
+        deathforendgrid = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Enemymove();
+        if (destinationReached == false)
+        {
+            Enemymove();
+        }
+        else
+        {
+            if (deathforendgrid == null)
+            {
+                deathforendgrid = DeathForEndGrid();
+                StartCoroutine(deathforendgrid);
+            }
+        }
         PointOverDistance();
         normalAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
 
     public void Enemymove()
     {
-        if (destinationReached == false)
-        {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
 
-        if (this.transform.localPosition.x > 3.5)
+        if (this.transform.localPosition.x > 3.75)
         {
-            destinationReached = true;
             Invoke("DeathForEndGrid", timeToDespawn);
             inkAbsorb.Play();
+            destinationReached = true;
         }
     }
 
-    public void DeathForEndGrid()
+    public IEnumerator DeathForEndGrid()
     {
+        yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
@@ -114,8 +124,6 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
-
-
     }
 
     public void Deathforgriglia()
@@ -192,6 +200,4 @@ public class NormalEnemy : MonoBehaviour
         }
 
     }
-
-
 }

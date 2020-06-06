@@ -160,22 +160,27 @@ public class Enemyspawnmanager : MonoBehaviour
                             if (randomposition == 0)
                             {
                                 undyingEnemy.baseSpeed = 1.35f;
+                                undyingEnemy.laneID = randomposition;
                             }
                             else if (randomposition == 1)
                             {
                                 undyingEnemy.baseSpeed = 1.27f;
+                                undyingEnemy.laneID = randomposition;
                             }
                             else if (randomposition == 2)
                             {
                                 undyingEnemy.baseSpeed = 1.17f;
+                                undyingEnemy.laneID = randomposition;
                             }
                             else if (randomposition == 3)
                             {
                                 undyingEnemy.baseSpeed = 1.07f;
+                                undyingEnemy.laneID = randomposition;
                             }
                             else if (randomposition == 4)
                             {
                                 undyingEnemy.baseSpeed = 1f;
+                                undyingEnemy.laneID = randomposition;
                             }
                             break;
                         case 4:

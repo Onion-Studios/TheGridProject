@@ -1,29 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ArmoredEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 2;
     [SerializeField]
-    public float speed;
-    public float baseSpeedMax;
-    public int inkDamage;
-    public int maxInkDamage;
-    public int inkstoneDamage;
+    public float speed, baseSpeedMax;
+    public int inkDamage, maxInkDamage, inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     GameManager GM;
-    public int scoreEnemy;
+    public int scoreEnemy, armoredLife;
     public GameObject[] signarmoredenemy;
-    public int armoredLife = 2;
-    public float baseSpeed;
-    public float startPosition;
-    public float extrapointsoverdistance;
-    public float startGrid;
-    public float BlackToDeath;
+    public float baseSpeed, startPosition, extrapointsoverdistance, startGrid, BlackToDeath;
     [SerializeField]
     private GameObject enemy;
     //[SerializeField]
@@ -33,7 +26,9 @@ public class ArmoredEnemy : MonoBehaviour
     public ParticleSystem buffEffect;
     [SerializeField]
     private ParticleSystem inkAbsorb;
-    public float stopTime;
+    public float stopTime, waitTime;
+    IEnumerator deathforendgrid;
+    bool destinationReached;
 
     #endregion
 
@@ -79,32 +74,47 @@ public class ArmoredEnemy : MonoBehaviour
         speed = baseSpeed;
 
         startPosition = transform.position.x;
+
+        armoredLife = 2;
+
+        deathforendgrid = null;
+
+        destinationReached = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Enemymove();
+        if (destinationReached == false)
+        {
+            Enemymove();
+        }
+        else
+        {
+            if (deathforendgrid == null)
+            {
+                deathforendgrid = DeathForEndGrid();
+                StartCoroutine(deathforendgrid);
+            }
+        }
 
         PointOverDistance();
     }
 
     public void Enemymove()
     {
-        if (this.transform.localPosition.x <= 3.5)
-        {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
-
-        if (this.transform.localPosition.x > 3.5)
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if (this.transform.localPosition.x > 3.75)
         {
             inkAbsorb.Play();
             Invoke("DeathForEndGrid", stopTime);
+            destinationReached = true;
         }
     }
 
-    public void DeathForEndGrid()
+    public IEnumerator DeathForEndGrid()
     {
+        yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
