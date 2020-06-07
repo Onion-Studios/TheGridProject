@@ -83,7 +83,9 @@ MonoBehaviour:
   extrapointsoverdistance: 0
   startGrid: -1
   BlackToDeath: 0.2
-  enemy: {fileID: 0}
+  enemy: {fileID: 6950711425459132717}
+  armor: {fileID: 6189164260992592702}
+  bandana: {fileID: 8318991601524694717}
   inkDeath: {fileID: 7968206971313714385}
   buffEffect: {fileID: 3764715829142674677}
   inkAbsorb: {fileID: 3107637836837578954}
@@ -749,6 +751,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1070462082272635455}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6189164260992592702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2648292996434165503, guid: 4788dfdb083a69140a3137887fa73c99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1070462082272635455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6950711425459132717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7975567766526571282, guid: 4788dfdb083a69140a3137887fa73c99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1070462082272635455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8318991601524694717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -168333723799587710, guid: 4788dfdb083a69140a3137887fa73c99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1070462082272635455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1963720012118236414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -818,15 +838,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0a59dde52152ba40a5edbc0d3eb11e9, type: 3}
---- !u!198 &7968206971313714385 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8490493624454473775, guid: e0a59dde52152ba40a5edbc0d3eb11e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1963720012118236414}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7968206971313714384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8490493624454473774, guid: e0a59dde52152ba40a5edbc0d3eb11e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963720012118236414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7968206971313714385 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8490493624454473775, guid: e0a59dde52152ba40a5edbc0d3eb11e9,
     type: 3}
   m_PrefabInstance: {fileID: 1963720012118236414}
   m_PrefabAsset: {fileID: 0}

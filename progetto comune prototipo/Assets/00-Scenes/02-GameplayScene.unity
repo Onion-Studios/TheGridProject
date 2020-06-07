@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17314449, g: 0.21640714, b: 0.29842559, a: 1}
+  m_IndirectSpecularColor: {r: 0.17314479, g: 0.2164075, b: 0.29842636, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2450,7 +2450,7 @@ MonoBehaviour:
   enemyIDWave3_3: 0300000000000000000000000000000000000000020000000200000000000000000000000200000002000000010000000500000005000000
   LanesWave3_3: 0200000001000000030000000000000004000000010000000300000000000000040000000100000003000000020000000100000003000000
   delayswave3_3:
-  - 100
+  - 0
   - 1
   - 0
   - 1
@@ -2515,7 +2515,7 @@ MonoBehaviour:
   SignGroupwave3_6: 0500000002000000040000000100000001000000030000000100000005000000020000000500000004000000
   Activewave_intensity: 0
   Activewave_number: 0
-  TEST_WaveActive: 1
+  TEST_WaveActive: 0
   TEST_waveintesity: 3
   TEST_wavenumber: 2
 --- !u!4 &629502101

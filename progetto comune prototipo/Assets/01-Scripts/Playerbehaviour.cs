@@ -78,7 +78,7 @@ public class Playerbehaviour : MonoBehaviour
 
             if (movementState == "waitstate")
             {
-                Invoke("DashRecoveryTime", 0.5f);
+                Invoke("DashRecoveryTime", 0.1f);
             }
         }
     }
