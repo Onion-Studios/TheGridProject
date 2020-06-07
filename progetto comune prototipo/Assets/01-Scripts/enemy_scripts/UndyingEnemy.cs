@@ -38,12 +38,14 @@ public class UndyingEnemy : MonoBehaviour
     private int count;
     private bool destinationReached;
     public int laneID;
+    private Animator undyingAnimator;
 
     #endregion
 
     private void Start()
     {
         waveSlashPosition = GetComponentsInChildren<Transform>()[2].localPosition;
+        undyingAnimator = GetComponentInChildren<Animator>();
     }
     private void OnEnable()
     {
@@ -130,6 +132,8 @@ public class UndyingEnemy : MonoBehaviour
             UndyingRepelled();
         }
 
+
+
     }
 
     private void StopSlashPlayed()
@@ -157,7 +161,7 @@ public class UndyingEnemy : MonoBehaviour
 
         if (this.transform.localPosition.x > endPosition)
         {
-            DeathForStartGrid();
+            StartGridAttack();
             destinationReached = true;
         }
         else
@@ -169,11 +173,8 @@ public class UndyingEnemy : MonoBehaviour
 
 
 
-    public void DeathForStartGrid()
+    public void StartGridAttack()
     {
-        //this.gameObject.SetActive(false);
-
-
         if (attackTimer > 0)
         {
             attackTimer -= 1 * Time.deltaTime;
@@ -186,6 +187,8 @@ public class UndyingEnemy : MonoBehaviour
 
         if (attackTimer == 0)
         {
+            undyingAnimator.SetBool("Attacking", true);
+            Invoke("AnimationDelayAttack", 1.5f);
             undyingSlashWave.transform.localPosition = waveSlashPosition;
             stopSlashPlayed = false;
             if (SecretT.bar == 100)
@@ -211,6 +214,11 @@ public class UndyingEnemy : MonoBehaviour
         }
     }
 
+    private void AnimationDelayAttack()
+    {
+        undyingAnimator.SetBool("Attacking", false);
+    }
+
     public void UndyingRepelled()
     {
         transform.Translate(Vector3.left * pushSpeed * Time.deltaTime);
@@ -218,12 +226,14 @@ public class UndyingEnemy : MonoBehaviour
         {
             repelled = false;
             speed = baseSpeed;
+            undyingAnimator.SetBool("IsRepelled", repelled);
         }
     }
 
     public void Deathforsign()
     {
         repelled = true;
+        undyingAnimator.SetBool("IsRepelled", repelled);
         attackTimer = 0;
 
     }

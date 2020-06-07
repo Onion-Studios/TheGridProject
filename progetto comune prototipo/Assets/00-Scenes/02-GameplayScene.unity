@@ -2428,7 +2428,7 @@ MonoBehaviour:
   enemyIDWave3_3: 0300000000000000000000000000000000000000020000000200000000000000000000000200000002000000010000000500000005000000
   LanesWave3_3: 0200000001000000030000000000000004000000010000000300000000000000040000000100000003000000020000000100000003000000
   delayswave3_3:
-  - 0
+  - 802
   - 1
   - 0
   - 1
@@ -2494,8 +2494,8 @@ MonoBehaviour:
   Activewave_intensity: 0
   Activewave_number: 0
   TEST_WaveActive: 1
-  TEST_waveintesity: 2
-  TEST_wavenumber: 0
+  TEST_waveintesity: 3
+  TEST_wavenumber: 2
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -6246,8 +6246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89346b26f8bedc644b4fdbe62ace305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInk: 100
-  Ink: 100
+  maxInk: 10000
+  Ink: 10000
   Layer1: {fileID: 172065574}
   Layer2: {fileID: 485894071}
   Layer3: {fileID: 490766976}
