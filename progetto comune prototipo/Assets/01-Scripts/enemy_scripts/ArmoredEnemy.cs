@@ -82,6 +82,15 @@ public class ArmoredEnemy : MonoBehaviour
         destinationReached = false;
     }
 
+    private void OnDisable()
+    {
+        if (deathforendgrid != null)
+        {
+            StopCoroutine(deathforendgrid);
+            deathforendgrid = null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -116,12 +125,12 @@ public class ArmoredEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signarmoredenemy)
         {
             segno.SetActive(false);
         }
+        this.gameObject.SetActive(false);
     }
 
     public void Deathforgriglia()
