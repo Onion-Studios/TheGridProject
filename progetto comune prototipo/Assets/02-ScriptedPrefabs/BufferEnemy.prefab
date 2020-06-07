@@ -730,11 +730,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2232610865829794053}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: f5489cc9ef4dfa04284a224ed0d314e6,
-        type: 3}
-      propertyPath: m_Name
-      value: Buffer_Animation
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f5489cc9ef4dfa04284a224ed0d314e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -805,6 +800,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f5489cc9ef4dfa04284a224ed0d314e6,
+        type: 3}
+      propertyPath: m_Name
+      value: Buffer_Animation
+      objectReference: {fileID: 0}
     - target: {fileID: 1009858529527559622, guid: f5489cc9ef4dfa04284a224ed0d314e6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -815,6 +815,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 91adfff5a95b992439880a94c8d721dd, type: 2}
+    - target: {fileID: -6057140222963153312, guid: f5489cc9ef4dfa04284a224ed0d314e6,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 229af9007c4d383428533074235de82a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5489cc9ef4dfa04284a224ed0d314e6, type: 3}
 --- !u!4 &2250735212567895603 stripped
@@ -842,11 +847,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2232610865829794053}
     m_Modifications:
-    - target: {fileID: 4497573916813592129, guid: ab736854858004c468da7879a7c4ee3f,
-        type: 3}
-      propertyPath: m_Name
-      value: Buffer_InkDeath
-      objectReference: {fileID: 0}
     - target: {fileID: 4497573916813592134, guid: ab736854858004c468da7879a7c4ee3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -901,6 +901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497573916813592129, guid: ab736854858004c468da7879a7c4ee3f,
+        type: 3}
+      propertyPath: m_Name
+      value: Buffer_InkDeath
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab736854858004c468da7879a7c4ee3f, type: 3}

@@ -23,8 +23,13 @@ public class BufferEnemy : MonoBehaviour
     private ParticleSystem inkDeath;
     [SerializeField]
     private ParticleSystem buffPower;
+    private Animator bufferAnimator;
     #endregion
 
+    private void Start()
+    {
+        bufferAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
@@ -72,6 +77,7 @@ public class BufferEnemy : MonoBehaviour
     void Update()
     {
         Enemymove();
+        bufferAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
 
     public void Enemymove()

@@ -44,7 +44,6 @@ public class UndyingEnemy : MonoBehaviour
     private void Start()
     {
         waveSlashPosition = GetComponentsInChildren<Transform>()[2].localPosition;
-        Debug.Log(GetComponentsInChildren<Transform>()[2].localPosition);
     }
     private void OnEnable()
     {
@@ -96,7 +95,7 @@ public class UndyingEnemy : MonoBehaviour
         switch (laneID)
         {
             case 0:
-                undyingSlashWave.transform.rotation =  Quaternion.Euler(0, -45, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(0, -45, 0);
                 StopSlashPlayed();
                 break;
             case 1:

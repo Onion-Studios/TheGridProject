@@ -83,6 +83,15 @@ public class NormalEnemy : MonoBehaviour
         deathforendgrid = null;
     }
 
+    private void OnDisable()
+    {
+        if (deathforendgrid != null)
+        {
+            StopCoroutine(deathforendgrid);
+            deathforendgrid = null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -114,16 +123,17 @@ public class NormalEnemy : MonoBehaviour
         }
     }
 
+
     public IEnumerator DeathForEndGrid()
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        this.gameObject.SetActive(false);
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
         }
+        this.gameObject.SetActive(false);
     }
 
     public void Deathforgriglia()

@@ -15,7 +15,7 @@ public class FrighteningEnemy : MonoBehaviour
     PointSystem pointsystem;
     public int scoreEnemy;
     public GameObject[] signfrighteningenemy;
-    public float baseSpeed, startPosition, extrapointsoverdistance ,startGrid, BlackToDeath;
+    public float baseSpeed, startPosition, extrapointsoverdistance, startGrid, BlackToDeath;
     [SerializeField]
     private GameObject enemy;
     [SerializeField]
@@ -28,9 +28,14 @@ public class FrighteningEnemy : MonoBehaviour
     public float stopTime, waitTime;
     IEnumerator deathforendgrid;
     bool destinationReached;
+    private Animator frighteningAnimator;
 
     #endregion
 
+    private void Start()
+    {
+        frighteningAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
@@ -70,6 +75,15 @@ public class FrighteningEnemy : MonoBehaviour
         deathforendgrid = null;
     }
 
+    private void OnDisable()
+    {
+        if (deathforendgrid != null)
+        {
+            StopCoroutine(deathforendgrid);
+            deathforendgrid = null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -91,6 +105,7 @@ public class FrighteningEnemy : MonoBehaviour
         {
             playerbehaviour.frightenedPlayer.Play();
         }
+        frighteningAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
 
     public void Frightening()
@@ -117,15 +132,14 @@ public class FrighteningEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        this.gameObject.SetActive(false);
         playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkstoneDamage;
         foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);
         }
-
         playerbehaviour.speed = playerSpeed;
+        this.gameObject.SetActive(false);
     }
 
     public void Deathforgriglia()
