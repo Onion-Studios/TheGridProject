@@ -13,14 +13,8 @@ public class BufferEnemy : MonoBehaviour
     public int scoreEnemy;
     public GameObject[] signbufferenemy;
     public GameObject[] ToBuff;
-    public int segnocorrispondente;
-    public int link = 7;
-    public float Boost = 5f;
-    public float Reset = 0.8f;
-    public float speed;
-    public float endPosition;
-    public float baseSpeed;
-    public float BlackToDeath;
+    public int segnocorrispondente, link = 7;
+    public float Boost, speed, endPosition, baseSpeed, BlackToDeath;
     [SerializeField]
     private GameObject enemy;
     [SerializeField]
@@ -74,11 +68,6 @@ public class BufferEnemy : MonoBehaviour
         speed = baseSpeed;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -99,7 +88,6 @@ public class BufferEnemy : MonoBehaviour
         else
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
-
         }
     }
 
@@ -120,9 +108,8 @@ public class BufferEnemy : MonoBehaviour
                                 if (NormalEnemy.speed == NormalEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     NormalEnemy.buffEffect.Play();
-                                    NormalEnemy.speed = NormalEnemy.speed + Boost;
+                                    NormalEnemy.speed += Boost;
                                 }
-
                             }
                             break;
                         case 1:
@@ -131,9 +118,8 @@ public class BufferEnemy : MonoBehaviour
                                 if (KamikazeEnemy.speed == KamikazeEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     KamikazeEnemy.buffEffect.Play();
-                                    KamikazeEnemy.speed = KamikazeEnemy.speed + Boost;
+                                    KamikazeEnemy.speed += Boost;
                                 }
-
                             }
                             break;
                         case 2:
@@ -142,10 +128,8 @@ public class BufferEnemy : MonoBehaviour
                                 if (ArmoredEnemy.speed == ArmoredEnemy.baseSpeed + GM.intensitySpeedIncrease || ArmoredEnemy.speed == ArmoredEnemy.baseSpeedMax + GM.intensitySpeedIncrease)
                                 {
                                     ArmoredEnemy.buffEffect.Play();
-                                    ArmoredEnemy.speed = ArmoredEnemy.speed + Boost;
+                                    ArmoredEnemy.speed += Boost;
                                 }
-
-
                             }
                             break;
                         case 3:
@@ -155,9 +139,8 @@ public class BufferEnemy : MonoBehaviour
                                 if (UndiyngEnemy.speed == UndiyngEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     UndiyngEnemy.buffEffect.Play();
-                                    UndiyngEnemy.speed = UndiyngEnemy.speed + Boost;
+                                    UndiyngEnemy.speed += Boost;
                                 }
-
                             }
                             break;
                         case 5:
@@ -167,9 +150,8 @@ public class BufferEnemy : MonoBehaviour
                                 if (FrighteningEnemy.speed == FrighteningEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
                                     FrighteningEnemy.buffEffect.Play();
-                                    FrighteningEnemy.speed = FrighteningEnemy.speed + Boost;
+                                    FrighteningEnemy.speed += Boost;
                                 }
-
                             }
                             break;
                         case 6:
@@ -178,12 +160,10 @@ public class BufferEnemy : MonoBehaviour
 
                                 if (BufferEnemy.speed == BufferEnemy.baseSpeed + GM.intensitySpeedIncrease)
                                 {
-                                    BufferEnemy.speed = BufferEnemy.speed + Boost;
+                                    BufferEnemy.speed += Boost;
                                 }
-
                             }
                             break;
-
                     }
                 }
             }
@@ -208,7 +188,6 @@ public class BufferEnemy : MonoBehaviour
                                 {
                                     NormalEnemy.buffEffect.Stop();
                                     NormalEnemy.speed = NormalEnemy.baseSpeed + GM.intensitySpeedIncrease;
-
                                 }
                             }
                             break;
@@ -219,9 +198,7 @@ public class BufferEnemy : MonoBehaviour
                                 {
                                     KamikazeEnemy.buffEffect.Stop();
                                     KamikazeEnemy.speed = KamikazeEnemy.baseSpeed + GM.intensitySpeedIncrease;
-
                                 }
-
                             }
                             break;
                         case 2:
@@ -232,12 +209,10 @@ public class BufferEnemy : MonoBehaviour
                                     if (ArmoredEnemy.armoredLife == 2)
                                     {
                                         ArmoredEnemy.speed = ArmoredEnemy.baseSpeed + GM.intensitySpeedIncrease;
-
                                     }
                                     else
                                     {
                                         ArmoredEnemy.speed = ArmoredEnemy.baseSpeedMax + GM.intensitySpeedIncrease;
-
                                     }
                                     ArmoredEnemy.buffEffect.Stop();
                                 }
@@ -252,7 +227,6 @@ public class BufferEnemy : MonoBehaviour
 
                                     UndiyngEnemy.buffEffect.Stop();
                                 }
-
                             }
                             break;
                         case 5:
@@ -265,7 +239,6 @@ public class BufferEnemy : MonoBehaviour
 
                                     frighteningEnemy.buffEffect.Stop();
                                 }
-
                             }
                             break;
                         case 6:
@@ -276,7 +249,6 @@ public class BufferEnemy : MonoBehaviour
                                 {
                                     bufferEnemy.speed = bufferEnemy.baseSpeed + GM.intensitySpeedIncrease;
                                 }
-
                             }
                             break;
                     }
@@ -295,7 +267,6 @@ public class BufferEnemy : MonoBehaviour
     }
     public void Death()
     {
-
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
 
