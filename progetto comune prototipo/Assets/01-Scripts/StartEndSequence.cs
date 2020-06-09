@@ -11,9 +11,10 @@ public class StartEndSequence : MonoBehaviour
     GameManager GM;
     PointSystem pointSystem;
     Enemyspawnmanager enemyspawnmanager;
+    Curtains curtains;
     int startSequencePosition;
     int endSequencePosition;
-    public GameObject[] light;
+    public GameObject[] lightObjects;
     public float activateLight;
     public bool starting, ending, switchui, skipping;
     IEnumerator playerLight;
@@ -24,8 +25,6 @@ public class StartEndSequence : MonoBehaviour
     public float closedTime;
     public GameObject tenda, tenda2;
     public float curtainspeed;
-    public Vector3 closecurtain;
-    public Vector3 opencurtain1, opencurtain2;
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
     public Vector3 centerGrid;
     bool soundNotLooping;
@@ -71,16 +70,18 @@ public class StartEndSequence : MonoBehaviour
             Debug.LogError("EnemySpawnManager is NULL!");
         }
 
+        curtains = FindObjectOfType<Curtains>();
+        if (curtains == null)
+        {
+            Debug.LogError("Curtains is NULL!");
+        }
+
         playerLight = null;
         switchui = true;
         lightsON = null;
 
-        opencurtain1 = tenda.transform.position;
-        opencurtain2 = tenda2.transform.position;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         StartSequence();
@@ -94,7 +95,6 @@ public class StartEndSequence : MonoBehaviour
             Skip();
         }
     }
-
 
     void StartSequence()
     {
@@ -119,7 +119,7 @@ public class StartEndSequence : MonoBehaviour
                 SwitchUI();
                 break;
             case 3:
-                CloseCurtains();
+                startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                 break;
             case 4:
                 if (lightsON == null)
@@ -137,7 +137,7 @@ public class StartEndSequence : MonoBehaviour
                 PlayerToCenter();
                 break;
             case 6:
-                OpenCurtains();
+                startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
                 break;
             case 7:
                 SwitchUI();
@@ -176,7 +176,7 @@ public class StartEndSequence : MonoBehaviour
                 SwitchUI();
                 break;
             case 4:
-                CloseCurtains();
+                endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
                 break;
             case 5:
                 if(blackScreen == null)
@@ -193,7 +193,6 @@ public class StartEndSequence : MonoBehaviour
                 }
                 GameOver();
                 break;
-
         }
    }
 
@@ -216,7 +215,6 @@ public class StartEndSequence : MonoBehaviour
         ending = true;
         StopEnemiesMovement();
         endSequencePosition++;
-
     }
 
     void StopEnemiesMovement()
@@ -275,11 +273,11 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator LightsOFF()
     {
         yield return new WaitForSeconds(lightsStopTime);
-        light[1].SetActive(false);
+        lightObjects[1].SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
-        light[0].SetActive(false);
+        lightObjects[0].SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
-        light[3].SetActive(true);
+        lightObjects[3].SetActive(true);
         yield return new WaitForSeconds(lightsStopTime);
         endSequencePosition++;
     }
@@ -287,7 +285,7 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator PlayerLight()
     {
         yield return new WaitForSeconds(activateLight);
-        light[2].SetActive(true);
+        lightObjects[2].SetActive(true);
         startSequencePosition++;
 
     }
@@ -295,9 +293,9 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator LightsON()
     {
         yield return new WaitForSeconds(closedTime);
-        light[2].SetActive(false);
-        light[0].SetActive(true);
-        light[1].SetActive(true);
+        lightObjects[2].SetActive(false);
+        lightObjects[0].SetActive(true);
+        lightObjects[1].SetActive(true);
         startSequencePosition++;
     }
 
@@ -334,54 +332,16 @@ public class StartEndSequence : MonoBehaviour
         {
             SwitchUI();
         }
-        tenda.transform.position = closecurtain;
-        tenda2.transform.position = closeCurtain2;
-        
-        light[2].SetActive(false);
-        light[0].SetActive(true);
-        light[1].SetActive(true);
+        curtains.CloseTeleport();
+
+        lightObjects[2].SetActive(false);
+        lightObjects[0].SetActive(true);
+        lightObjects[1].SetActive(true);
 
         skipping = false;
 
         startSequencePosition = 3;
 
-    }
-
-    void CloseCurtains()
-    {
-        if (tenda.transform.localPosition.x > closecurtain.x)
-        {
-            tenda.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
-            tenda2.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
-
-        }
-        else
-        {
-            tenda.transform.position = closecurtain;
-            if(starting == true)
-            {
-                startSequencePosition++;
-            }
-            if(ending == true)
-            {
-                endSequencePosition++;
-            }
-        }
-    }
-
-    void OpenCurtains()
-    {
-        if (tenda.transform.localPosition.x < opencurtain1.x)
-        {
-            tenda.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
-            tenda2.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
-        }
-        else
-        {
-            tenda.transform.position = opencurtain1;
-            tenda2.transform.position = opencurtain2;
-            startSequencePosition++;
-        }
     }
 
     void SwitchUI()
