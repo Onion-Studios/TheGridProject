@@ -851,7 +851,7 @@ MonoBehaviour:
       type: 2}
   - clipName: BooSound
     clip: {fileID: 8300000, guid: f4b009b8ecc69024dbd13e9228656a83, type: 3}
-    volume: 0.38
+    volume: 0.6
     pitch: 1
     loop: 0
     playOnAwake: 0
