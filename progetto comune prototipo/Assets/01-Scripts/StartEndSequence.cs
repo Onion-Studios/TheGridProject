@@ -93,6 +93,7 @@ public class StartEndSequence : MonoBehaviour
         if(skipping == true)
         {
             Skip();
+            AudioManager.Instance.StopSound("Yoo");
         }
     }
 
@@ -278,6 +279,7 @@ public class StartEndSequence : MonoBehaviour
         lightObjects[0].SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
         lightObjects[3].SetActive(true);
+        AudioManager.Instance.PlaySound("Spotlight");
         yield return new WaitForSeconds(lightsStopTime);
         endSequencePosition++;
     }
@@ -286,6 +288,10 @@ public class StartEndSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(activateLight);
         lightObjects[2].SetActive(true);
+        if (skipping == false)
+        {
+            AudioManager.Instance.PlaySound("Spotlight");
+        }
         startSequencePosition++;
 
     }
