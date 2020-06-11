@@ -38,9 +38,9 @@ public class SettingsMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetMaster (float master)
+    public void SetVoice (float voice)
     {
-        AudioMixer.SetFloat("Master", master);
+        AudioMixer.SetFloat("Voice", voice);
     }
     public void SetMusic(float music)
     {
