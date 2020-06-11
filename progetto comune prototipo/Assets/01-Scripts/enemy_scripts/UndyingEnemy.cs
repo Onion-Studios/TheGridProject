@@ -21,6 +21,7 @@ public class UndyingEnemy : MonoBehaviour
     public float attackTimer;
     public float maxAttacktimer;
     public bool repelled;
+    private bool undyingStopped;
     public Vector3 startingPosition;
     private Vector3 waveSlashPosition;
     public float pushSpeed;
@@ -35,16 +36,17 @@ public class UndyingEnemy : MonoBehaviour
     [SerializeField]
     private float stopSlashWaveTime;
     private bool stopSlashPlayed;
-    private int count;
     private bool destinationReached;
     public int laneID;
+    private Animator undyingAnimator;
+    private bool alreadyDead;
 
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         waveSlashPosition = GetComponentsInChildren<Transform>()[2].localPosition;
-        Debug.Log(GetComponentsInChildren<Transform>()[2].localPosition);
+        undyingAnimator = GetComponentInChildren<Animator>();
     }
     private void OnEnable()
     {
@@ -82,7 +84,9 @@ public class UndyingEnemy : MonoBehaviour
 
         currentTime = maxTime;
         repelled = false;
+        alreadyDead = false;
         startingPosition = this.transform.localPosition;
+        undyingAnimator.SetBool("UndyingDeath", false);
         if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
@@ -96,7 +100,7 @@ public class UndyingEnemy : MonoBehaviour
         switch (laneID)
         {
             case 0:
-                undyingSlashWave.transform.rotation =  Quaternion.Euler(0, -45, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(0, -45, 0);
                 StopSlashPlayed();
                 break;
             case 1:
@@ -131,6 +135,8 @@ public class UndyingEnemy : MonoBehaviour
             UndyingRepelled();
         }
 
+
+
     }
 
     private void StopSlashPlayed()
@@ -149,8 +155,6 @@ public class UndyingEnemy : MonoBehaviour
     {
         undyingSlashWave.Stop();
         stopSlashPlayed = true;
-        count++;
-        Debug.Log(count);
     }
 
     public void Enemymove()
@@ -158,10 +162,10 @@ public class UndyingEnemy : MonoBehaviour
 
         if (this.transform.localPosition.x > endPosition)
         {
-            DeathForStartGrid();
+            StartGridAttack();
             destinationReached = true;
         }
-        else
+        else if (undyingAnimator.GetBool("UndyingDeath") == false && undyingStopped == false)
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
             destinationReached = false;
@@ -170,11 +174,8 @@ public class UndyingEnemy : MonoBehaviour
 
 
 
-    public void DeathForStartGrid()
+    public void StartGridAttack()
     {
-        //this.gameObject.SetActive(false);
-
-
         if (attackTimer > 0)
         {
             attackTimer -= 1 * Time.deltaTime;
@@ -185,8 +186,10 @@ public class UndyingEnemy : MonoBehaviour
             attackTimer = 0;
         }
 
-        if (attackTimer == 0)
+        if (attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
         {
+            undyingAnimator.SetBool("Attacking", true);
+            Invoke("AnimationDelayAttack", 0.5f);
             undyingSlashWave.transform.localPosition = waveSlashPosition;
             stopSlashPlayed = false;
             if (SecretT.bar == 100)
@@ -212,19 +215,36 @@ public class UndyingEnemy : MonoBehaviour
         }
     }
 
+    private void AnimationDelayAttack()
+    {
+        undyingAnimator.SetBool("Attacking", false);
+    }
+
     public void UndyingRepelled()
     {
-        transform.Translate(Vector3.left * pushSpeed * Time.deltaTime);
-        if (this.transform.localPosition.x < startingPosition.x)
+        if (undyingAnimator.GetBool("UndyingDeath") == false)
+        {
+            transform.Translate(Vector3.left * pushSpeed * Time.deltaTime);
+        }
+        if (this.transform.localPosition.x < startingPosition.x + 2)
         {
             repelled = false;
+            undyingStopped = true;
+            Invoke("RestartMovement", 1f);
             speed = baseSpeed;
+            undyingAnimator.SetBool("IsRepelled", false);
         }
+    }
+
+    private void RestartMovement()
+    {
+        undyingStopped = false;
     }
 
     public void Deathforsign()
     {
         repelled = true;
+        undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;
 
     }
@@ -244,7 +264,18 @@ public class UndyingEnemy : MonoBehaviour
 
         if (currentTime == 0)
         {
+            undyingAnimator.SetBool("UndyingDeath", true);
+            Invoke("Death", 2.6f);
+        }
+    }
+
+    private void Death()
+    {
+        if (alreadyDead == false)
+        {
+            alreadyDead = true;
             this.gameObject.SetActive(false);
+
             attackTimer = 0;
             currentTime = maxTime;
             enemyspawnmanager.enemykilled += 1;
