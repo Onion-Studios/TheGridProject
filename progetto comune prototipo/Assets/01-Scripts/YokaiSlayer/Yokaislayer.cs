@@ -10,12 +10,12 @@ public class Yokaislayer : MonoBehaviour
     Playerbehaviour playerbehaviour;
     StartEndSequence startendsequence;
     Inkstone inkStone_;
+    Curtains curtains;
     public Vector3 closecurtain;
     bool active, switchui;
     public GameObject tenda, tenda2;
     private int yokaiSlayerSequenceNumber;
     public float curtainspeed;
-    public Vector3 opencurtain1, opencurtain2;
     IEnumerator waiting;
     public float timestop;
     public GameObject signYS1, signYS2, signYS3;
@@ -26,18 +26,39 @@ public class Yokaislayer : MonoBehaviour
     void Start()
     {
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
-        playerbehaviour = FindObjectOfType<Playerbehaviour>();
-        startendsequence = FindObjectOfType<StartEndSequence>();
-        inkStone_ = FindObjectOfType<Inkstone>();
+        if (enemyspawnmanager == null)
+        {
+            Debug.LogError("EnemySpawnManager is NULL!");
+        }
 
+        playerbehaviour = FindObjectOfType<Playerbehaviour>();
+        if (playerbehaviour == null)
+        {
+            Debug.LogError("Playerbehaviour is NULL!");
+        }
+
+        startendsequence = FindObjectOfType<StartEndSequence>();
+        if (startendsequence == null)
+        {
+            Debug.LogError("StartEndSequence is NULL!");
+        }
+
+        inkStone_ = FindObjectOfType<Inkstone>();
+        if (inkStone_ == null)
+        {
+            Debug.LogError("Inkstone is NULL!");
+        }
+        curtains = FindObjectOfType<Curtains>();
+
+        if (curtains == null)
+        {
+            Debug.LogError("Curtains is NULL!");
+        }
         active = false;
 
         switchui = true;
 
         yokaiSlayerSequenceNumber = 0;
-
-        opencurtain1 = tenda.transform.position;
-        opencurtain2 = tenda2.transform.position;
     }
 
     // Update is called once per frame
@@ -67,7 +88,7 @@ public class Yokaislayer : MonoBehaviour
                 SaveInk();
                 break;
             case 2:
-                CloseCurtains();
+                yokaiSlayerSequenceNumber = curtains.CloseCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
             case 3:
                 TimeStop();
@@ -93,7 +114,7 @@ public class Yokaislayer : MonoBehaviour
                 ResumeTime();
                 break;
             case 7:
-                OpenCurtains();
+                yokaiSlayerSequenceNumber = curtains.OpenCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
             case 8:
                 ReloadInk();
@@ -108,36 +129,6 @@ public class Yokaislayer : MonoBehaviour
 
         }
 
-    }
-
-    void CloseCurtains()
-    {
-        if (tenda.transform.localPosition.x > closecurtain.x)
-        {
-            tenda.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
-            tenda2.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
-
-        }
-        else
-        {
-            tenda.transform.position = closecurtain;
-            yokaiSlayerSequenceNumber++;
-        }
-    }
-
-    void OpenCurtains()
-    {
-        if (tenda.transform.localPosition.x < opencurtain1.x)
-        {
-            tenda.transform.Translate(Vector3.right * curtainspeed * Time.deltaTime);
-            tenda2.transform.Translate(Vector3.left * curtainspeed * Time.deltaTime);
-        }
-        else
-        {
-            tenda.transform.position = opencurtain1;
-            tenda2.transform.position = opencurtain2;
-            yokaiSlayerSequenceNumber++;
-        }
     }
 
     void TimeStop()

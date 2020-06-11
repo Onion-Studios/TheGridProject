@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class grigliamanager : MonoBehaviour
@@ -33,7 +32,7 @@ public class grigliamanager : MonoBehaviour
         }
         character.playerposition = new Vector3(-3.24f, 1.05f, 3.16f);
         character.Spawn();
-                MidGridLogicTrue();
+        MidGridLogicTrue();
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
         {
@@ -45,11 +44,12 @@ public class grigliamanager : MonoBehaviour
         character.smokeBombCenter.transform.position = character.gridCenter;
         character.smokeBombCenter.transform.SetParent(null);
         character.smokeBomb.transform.SetParent(null);
+        character.kitsuneAnimator = character.istanze.GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        
+
     }
 
     //metodo che crea la griglia riga per riga istanziando i cubi e aggiungendo poi i cubi istanziati  
@@ -58,11 +58,11 @@ public class grigliamanager : MonoBehaviour
     {
         for (int c = 0; c < columnns; c++)
         {
-            for (int r = lines-1; r > -1; r--)
+            for (int r = lines - 1; r > -1; r--)
             {
                 Vector3 posizionelines = new Vector3(r, 0.5f, c);
-                istanzecube = Instantiate(prefabcubigriglia[(((int)posizionelines.z) * 5)+ (4 - (int)posizionelines.x)], posizionelines, Quaternion.identity, this.transform);
-                if(r == 2 && c == 2)
+                istanzecube = Instantiate(prefabcubigriglia[(((int)posizionelines.z) * 5) + (4 - (int)posizionelines.x)], posizionelines, Quaternion.identity, this.transform);
+                if (r == 2 && c == 2)
                 {
                     istanzecube.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = inksplash;
                     istanzecube.GetComponent<cubeprefabehaviour>().iscoloured = true;
@@ -98,15 +98,15 @@ public class grigliamanager : MonoBehaviour
     }
 
     //reset all the piece in the logic grid , exept the center, and turn the boxes active count to zero
-    public void ResetGridLogic() 
+    public void ResetGridLogic()
     {
         for (int x = 0; x < 5; x++)
         {
             for (int z = 0; z < 5; z++)
             {
-                if(logicgrid[x, z] == true)
+                if (logicgrid[x, z] == true)
                 {
-                    if(x == 2 && z == 2)
+                    if (x == 2 && z == 2)
                     {
                         logicgrid[x, z] = true;
                     }
@@ -114,9 +114,9 @@ public class grigliamanager : MonoBehaviour
                     {
                         logicgrid[x, z] = false;
                     }
-                    
+
                 }
-                
+
             }
         }
 

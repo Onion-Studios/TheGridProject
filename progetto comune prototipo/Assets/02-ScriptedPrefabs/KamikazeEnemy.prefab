@@ -720,6 +720,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 39e9424b45c3db243b748496586f516b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c1a1ef7415ac4b94eb47dddd09cd0437, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39e9424b45c3db243b748496586f516b, type: 3}
 --- !u!4 &4979675139936788799 stripped
@@ -816,11 +821,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6873361951499052415}
     m_Modifications:
-    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
-        type: 3}
-      propertyPath: m_Name
-      value: BufferParticle
-      objectReference: {fileID: 0}
     - target: {fileID: 2913130311404328408, guid: df27e923b87ad7548ab20fefb1d41a7f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -876,6 +876,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
+        type: 3}
+      propertyPath: m_Name
+      value: BufferParticle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df27e923b87ad7548ab20fefb1d41a7f, type: 3}
 --- !u!4 &2135336544219491853 stripped
@@ -897,16 +902,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6873361951499052415}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: af756046a3053f545b61b01941fda32d,
-        type: 3}
-      propertyPath: m_Name
-      value: ring_Kamikaze (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: af756046a3053f545b61b01941fda32d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: af756046a3053f545b61b01941fda32d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -971,6 +966,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: af756046a3053f545b61b01941fda32d,
+        type: 3}
+      propertyPath: m_Name
+      value: ring_Kamikaze (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: af756046a3053f545b61b01941fda32d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: af756046a3053f545b61b01941fda32d,
         type: 3}

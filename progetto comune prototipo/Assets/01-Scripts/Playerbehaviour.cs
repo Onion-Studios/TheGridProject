@@ -27,6 +27,7 @@ public class Playerbehaviour : MonoBehaviour
     public ParticleSystem smokeBomb;
     public ParticleSystem smokeBombCenter;
     private Vector3 confirmPosition;
+    public Animator kitsuneAnimator;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -70,8 +71,21 @@ public class Playerbehaviour : MonoBehaviour
         if (startEndSequence.starting == false && startEndSequence.ending == false)
         {
             MovementHandler();
-            
+            if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
+            {
+                kitsuneAnimator.SetBool("MovementKeyPressed", true);
+            }
+
+            if (movementState == "waitstate")
+            {
+                Invoke("DashRecoveryTime", 0.1f);
+            }
         }
+    }
+
+    private void DashRecoveryTime()
+    {
+        kitsuneAnimator.SetBool("MovementKeyPressed", false);
     }
 
     void MovementHandler()

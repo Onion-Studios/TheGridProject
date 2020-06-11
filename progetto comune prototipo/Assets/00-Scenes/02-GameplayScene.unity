@@ -828,6 +828,7 @@ MonoBehaviour:
   frightenedPlayer: {fileID: 0}
   smokeBomb: {fileID: 0}
   smokeBombCenter: {fileID: 0}
+  kitsuneAnimator: {fileID: 0}
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -858,8 +859,6 @@ MonoBehaviour:
   tenda: {fileID: 1138158313}
   tenda2: {fileID: 554469085}
   curtainspeed: 10
-  opencurtain1: {x: 0, y: 0, z: 0}
-  opencurtain2: {x: 0, y: 0, z: 0}
   timestop: 2
   signYS1: {fileID: 1413445896}
   signYS2: {fileID: 1195484348}
@@ -3624,6 +3623,7 @@ GameObject:
   - component: {fileID: 986519607}
   - component: {fileID: 986519606}
   - component: {fileID: 986519608}
+  - component: {fileID: 986519609}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -3680,7 +3680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09ae47718514d34c9701a402ff67d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light:
+  lightObjects:
   - {fileID: 705507993}
   - {fileID: 1252317078}
   - {fileID: 1860168234}
@@ -3695,9 +3695,6 @@ MonoBehaviour:
   tenda: {fileID: 1138158313}
   tenda2: {fileID: 554469085}
   curtainspeed: 5
-  closecurtain: {x: 6, y: 4.3, z: 4.53}
-  opencurtain1: {x: 0, y: 0, z: 0}
-  opencurtain2: {x: 0, y: 0, z: 0}
   ink_text: {fileID: 61982072}
   counter_text: {fileID: 891387950}
   score_text: {fileID: 1445118228}
@@ -3706,7 +3703,23 @@ MonoBehaviour:
   enemynumber: 7
   endImage: {fileID: 1447169287}
   time: 2
-  closeCurtain2: {x: -11.45719, y: 4.3, z: 4.93}
+  closeCurtain2: {x: -11.45, y: 4.3, z: 4.93}
+--- !u!114 &986519609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986519605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3eb133adc820041a6d760f16108575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curtainLeft: {fileID: 1138158313}
+  curtainRight: {fileID: 554469085}
+  closedCurtainLeft: {x: 5.95, y: 4.3, z: 4.53}
+  closedCurtainRight: {x: -11.45, y: 4.3, z: 4.93}
 --- !u!1 &1046932371
 GameObject:
   m_ObjectHideFlags: 0
@@ -6267,8 +6280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89346b26f8bedc644b4fdbe62ace305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInk: 10000
-  Ink: 10000
+  maxInk: 1
+  Ink: 1
   Layer1: {fileID: 172065574}
   Layer2: {fileID: 485894071}
   Layer3: {fileID: 490766976}

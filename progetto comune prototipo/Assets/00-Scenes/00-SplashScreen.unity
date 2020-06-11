@@ -851,7 +851,7 @@ MonoBehaviour:
       type: 2}
   - clipName: BooSound
     clip: {fileID: 8300000, guid: f4b009b8ecc69024dbd13e9228656a83, type: 3}
-    volume: 0.38
+    volume: 0.6
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -961,17 +961,25 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: 
-    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
-    volume: 0.38
+  - clipName: Spotlight
+    clip: {fileID: 8300000, guid: ae956b05d505c974bbc8a2b25fc30b6c, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: 
-    clip: {fileID: 8300000, guid: a5367086c7f7861429204c07b834ac4b, type: 3}
-    volume: 0.38
+  - clipName: Curtains
+    clip: {fileID: 8300000, guid: 53213775dbe8e8f40b339c44c652a3cf, type: 3}
+    volume: 1
+    pitch: 0.7
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Yoo
+    clip: {fileID: 8300000, guid: fca4cd83b070da4468fd32409c9c48da, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     playOnAwake: 0

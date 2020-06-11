@@ -19,8 +19,10 @@ public class ArmoredEnemy : MonoBehaviour
     public float baseSpeed, startPosition, extrapointsoverdistance, startGrid, BlackToDeath;
     [SerializeField]
     private GameObject enemy;
-    //[SerializeField]
-    //private GameObject armor;
+    [SerializeField]
+    private GameObject armor;
+    [SerializeField]
+    private GameObject bandana;
     [SerializeField]
     private ParticleSystem inkDeath;
     public ParticleSystem buffEffect;
@@ -176,7 +178,8 @@ public class ArmoredEnemy : MonoBehaviour
         {
             inkDeath.Play();
             enemy.GetComponent<Renderer>().material.color = Color.black;
-            //armor.GetComponent<Renderer>().material.color = Color.black;
+            armor.GetComponent<Renderer>().material.color = Color.black;
+            bandana.GetComponent<Renderer>().material.color = Color.black;
             Invoke("Death", BlackToDeath);
         }
     }
@@ -193,7 +196,8 @@ public class ArmoredEnemy : MonoBehaviour
         }
         this.gameObject.SetActive(false);
         enemy.GetComponent<Renderer>().material.color = Color.white;
-        //armor.GetComponent<Renderer>().material.color = Color.white;
+        armor.GetComponent<Renderer>().material.color = Color.white;
+        bandana.GetComponent<Renderer>().material.color = Color.white;
         AudioManager.Instance.PlaySound("EnemyDeath");
 
         pointsystem.currentTimer = pointsystem.maxTimer;
