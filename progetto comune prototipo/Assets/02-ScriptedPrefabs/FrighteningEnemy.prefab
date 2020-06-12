@@ -454,8 +454,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 1}
-  m_Center: {x: 0, y: -0.3, z: 0}
+  m_Size: {x: 1.25, y: 0.25, z: 0.25}
+  m_Center: {x: 0.15, y: -0.3, z: 0}
 --- !u!114 &3844718435111391319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +668,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1610379253688785732}
     m_Modifications:
+    - target: {fileID: 1345089895595821025, guid: 5fdfd9298948c1e4b98da12f0d150643,
+        type: 3}
+      propertyPath: m_Name
+      value: Inkflow
+      objectReference: {fileID: 0}
     - target: {fileID: 1345089895595821037, guid: 5fdfd9298948c1e4b98da12f0d150643,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -723,11 +728,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 1345089895595821025, guid: 5fdfd9298948c1e4b98da12f0d150643,
-        type: 3}
-      propertyPath: m_Name
-      value: Inkflow
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fdfd9298948c1e4b98da12f0d150643, type: 3}
 --- !u!4 &2427490435468496651 stripped
@@ -749,6 +749,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1610379253688785732}
     m_Modifications:
+    - target: {fileID: 196875717423235806, guid: d131fceccc76da94a866f7f2091170bb,
+        type: 3}
+      propertyPath: m_Name
+      value: FrighteningEffect
+      objectReference: {fileID: 0}
     - target: {fileID: 196875717423235803, guid: d131fceccc76da94a866f7f2091170bb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -804,11 +809,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 196875717423235806, guid: d131fceccc76da94a866f7f2091170bb,
-        type: 3}
-      propertyPath: m_Name
-      value: FrighteningEffect
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d131fceccc76da94a866f7f2091170bb, type: 3}
 --- !u!4 &3860730936742416093 stripped
@@ -824,6 +824,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1610379253688785732}
     m_Modifications:
+    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
+        type: 3}
+      propertyPath: m_Name
+      value: BufferParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 2913130311404328408, guid: df27e923b87ad7548ab20fefb1d41a7f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -879,11 +884,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
-        type: 3}
-      propertyPath: m_Name
-      value: BufferParticle
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df27e923b87ad7548ab20fefb1d41a7f, type: 3}
 --- !u!4 &1256278433973511129 stripped
@@ -905,6 +905,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1610379253688785732}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: edeb9a7e3320aec46aa6357487527472,
+        type: 3}
+      propertyPath: m_Name
+      value: Frightening_animation
+      objectReference: {fileID: 0}
+    - target: {fileID: -8148406570304664081, guid: edeb9a7e3320aec46aa6357487527472,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: edeb9a7e3320aec46aa6357487527472,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -960,22 +970,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: edeb9a7e3320aec46aa6357487527472,
-        type: 3}
-      propertyPath: m_Name
-      value: Frightening_animation
-      objectReference: {fileID: 0}
-    - target: {fileID: -8148406570304664081, guid: edeb9a7e3320aec46aa6357487527472,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1333954819266137790, guid: edeb9a7e3320aec46aa6357487527472,
+    - target: {fileID: 6306971017694268109, guid: edeb9a7e3320aec46aa6357487527472,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3d130ddb242e4ee44a33e489054e81a7, type: 2}
-    - target: {fileID: 6306971017694268109, guid: edeb9a7e3320aec46aa6357487527472,
+    - target: {fileID: -1333954819266137790, guid: edeb9a7e3320aec46aa6357487527472,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1012,6 +1012,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1610379253688785732}
     m_Modifications:
+    - target: {fileID: 6748548307750283499, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
+        type: 3}
+      propertyPath: m_Name
+      value: Frighteningl_InkDeath
+      objectReference: {fileID: 0}
     - target: {fileID: 6748548307750283500, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1066,11 +1071,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6748548307750283499, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
-        type: 3}
-      propertyPath: m_Name
-      value: Frighteningl_InkDeath
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0fded562c89ecf4aa6d74dc7bc672eb, type: 3}

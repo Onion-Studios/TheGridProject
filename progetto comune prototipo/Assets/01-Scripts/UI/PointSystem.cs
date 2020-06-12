@@ -36,7 +36,6 @@ public class PointSystem : MonoBehaviour
             IncreaseOverTime();
         }
             Timer();
-      
     }
 
     void IncreaseOverTime()

@@ -84,16 +84,22 @@ public class StartEndSequence : MonoBehaviour
 
     void Update()
     {
-        StartSequence();
+        if (starting == true)
+        {
+            StartSequence();
+        }
         if(skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return))
         {
             skipping = true;
         }
-
         if(skipping == true)
         {
             Skip();
             AudioManager.Instance.StopSound("Yoo");
+        }
+        if (ending == true)
+        {
+            EndSequence();
         }
     }
 
