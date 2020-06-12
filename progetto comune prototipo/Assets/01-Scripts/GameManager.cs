@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlaySound("MainTrack");
+        //AudioManager.Instance.PlaySound("MainTrack");
     }
 
     private void Update()
@@ -93,8 +93,8 @@ public class GameManager : MonoBehaviour
         {
             GameIntensity = 2;
 
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
+            //AudioManager.Instance.SetLoop("ClappingSound", false);
+            //AudioManager.Instance.PlaySound("ClappingSound");
             soundPlayed2 = true;
             soundPlayed1 = false;
             soundPlayed3 = false;
@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
         {
             GameIntensity = 3;
 
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
+            //AudioManager.Instance.SetLoop("ClappingSound", false);
+            //AudioManager.Instance.PlaySound("ClappingSound");
             soundPlayed3 = true;
             soundPlayed1 = false;
             soundPlayed2 = false;

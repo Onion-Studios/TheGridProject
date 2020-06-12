@@ -10,6 +10,7 @@ public class ArmoredEnemy : MonoBehaviour
     public int inkDamage, maxInkDamage, inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
@@ -32,6 +33,15 @@ public class ArmoredEnemy : MonoBehaviour
     IEnumerator deathforendgrid;
     bool destinationReached;
 
+    public int scoreEnemy;
+    public GameObject[] SignIntensity1Armored;
+    public GameObject[] SignIntensity1PlusArmored;
+    public GameObject[] SignIntensity2Armored;
+    public int armoredLife = 2;
+    public float baseSpeed;
+    public float startPosition;
+    public float extrapointsoverdistance;
+    public float startGrid;
     #endregion
 
 
@@ -65,6 +75,12 @@ public class ArmoredEnemy : MonoBehaviour
         if (pointsystem == null)
         {
             Debug.LogError("PointSystem is NULL");
+        }
+
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
         }
 
         GM = FindObjectOfType<GameManager>();
@@ -128,9 +144,26 @@ public class ArmoredEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in signarmoredenemy)
-        {
-            segno.SetActive(false);
+        switch (GameManager.GameIntensity)
+        {
+            case 1:
+                foreach (GameObject segno in SignIntensity1Armored)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusArmored)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Armored)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
         this.gameObject.SetActive(false);
     }
@@ -141,9 +174,26 @@ public class ArmoredEnemy : MonoBehaviour
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         enemyspawnmanager.enemykilled = 0;
-        foreach (GameObject segno in signarmoredenemy)
-        {
-            segno.SetActive(false);
+        switch (GameManager.GameIntensity)
+        {
+            case 1:
+                foreach (GameObject segno in SignIntensity1Armored)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusArmored)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Armored)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
         if (SecretT.bar == 100)
         {
@@ -167,15 +217,70 @@ public class ArmoredEnemy : MonoBehaviour
         {
             speed = baseSpeedMax + GM.intensitySpeedIncrease;
             armoredLife -= 1;
-            foreach (GameObject segno in signarmoredenemy)
-            {
-                segno.SetActive(false);
+            switch (GameManager.GameIntensity)
+            {
+                case 1:
+                    foreach (GameObject segno in SignIntensity1Armored)
+                    {
+                        segno.SetActive(false);
+                    }
+                    break;
+                case 2:
+                    foreach (GameObject segno in SignIntensity1PlusArmored)
+                    {
+                        segno.SetActive(false);
+                    }
+                    break;
+                case 3:
+                    foreach (GameObject segno in SignIntensity2Armored)
+                    {
+                        segno.SetActive(false);
+                    }
+                    break;
             }
             int randomsegno = Random.Range(0, 6);
-            signarmoredenemy[randomsegno].gameObject.SetActive(true);
+            int randomsegnofour = Random.Range(0, 4);
+            switch (GameManager.GameIntensity)
+            {
+                case 1:
+                    SignIntensity1Armored[randomsegno].gameObject.SetActive(true);
+                    break;
+                case 2:
+                    SignIntensity1PlusArmored[randomsegno].gameObject.SetActive(true);
+                    break;
+                case 3:
+                    SignIntensity2Armored[randomsegnofour].gameObject.SetActive(true);
+                    break;
+            }
         }
         else
         {
+            armoredLife = 2;
+            enemyspawnmanager.enemykilled += 2;
+            Inkstone.Ink += playerbehaviour.inkGained;
+            SecretT.bar += SecretT.charge;
+            switch (GameManager.GameIntensity)
+            {
+                case 1:
+                    foreach (GameObject segno in SignIntensity1Armored)
+                    {
+                        segno.SetActive(false);
+                    }
+                    break;
+                case 2:
+                    foreach (GameObject segno in SignIntensity1PlusArmored)
+                    {
+                        segno.SetActive(false);
+                    }
+                    break;
+                case 3:
+                    foreach (GameObject segno in SignIntensity2Armored)
+                    {
+                        segno.SetActive(false);
+                    }
+                    break;
+            }
+            this.gameObject.SetActive(false);
             inkDeath.Play();
             enemy.GetComponent<Renderer>().material.color = Color.black;
             armor.GetComponent<Renderer>().material.color = Color.black;
