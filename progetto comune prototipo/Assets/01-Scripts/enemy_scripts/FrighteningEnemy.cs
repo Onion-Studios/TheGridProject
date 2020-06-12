@@ -33,10 +33,6 @@ public class FrighteningEnemy : MonoBehaviour
 
     public GameObject[] SignIntensity2Frightening;
     public GameObject[] SignIntensity2PlusFrightening;
-    public float baseSpeed;
-    public float startPosition;
-    public float extrapointsoverdistance;
-    public float startGrid;
     #endregion
 
     private void Start()
@@ -73,8 +69,10 @@ public class FrighteningEnemy : MonoBehaviour
         if (pointsystem == null)
         {
             Debug.LogError("PointSystem is NULL");
-        }
-
+        }
+
+
+
         GameManager = FindObjectOfType<GameManager>();
         if (GameManager == null)
         {
@@ -147,20 +145,34 @@ public class FrighteningEnemy : MonoBehaviour
         inkAbsorb.Stop();
         playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkstoneDamage;
-        switch (GameManager.GameIntensity)
-        {
-            case 2:
-                foreach (GameObject segno in SignIntensity2Frightening)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity2PlusFrightening)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+        switch (GameManager.GameIntensity)
+
+        {
+
+            case 2:
+
+                foreach (GameObject segno in SignIntensity2Frightening)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
+
+                break;
+
+            case 3:
+
+                foreach (GameObject segno in SignIntensity2PlusFrightening)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
+
+                break;
+
         }
         playerbehaviour.speed = playerSpeed;
         this.gameObject.SetActive(false);
@@ -173,20 +185,34 @@ public class FrighteningEnemy : MonoBehaviour
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         enemyspawnmanager.enemykilled = 0;
-        switch (GameManager.GameIntensity)
-        {
-            case 2:
-                foreach (GameObject segno in SignIntensity2Frightening)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity2PlusFrightening)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+        switch (GameManager.GameIntensity)
+
+        {
+
+            case 2:
+
+                foreach (GameObject segno in SignIntensity2Frightening)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
+
+                break;
+
+            case 3:
+
+                foreach (GameObject segno in SignIntensity2PlusFrightening)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
+
+                break;
+
         }
 
         playerbehaviour.speed = playerSpeed;
@@ -227,20 +253,34 @@ public class FrighteningEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        switch (GameManager.GameIntensity)
-        {
-            case 2:
-                foreach (GameObject segno in SignIntensity2Frightening)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity2PlusFrightening)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+        switch (GameManager.GameIntensity)
+
+        {
+
+            case 2:
+
+                foreach (GameObject segno in SignIntensity2Frightening)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
+
+                break;
+
+            case 3:
+
+                foreach (GameObject segno in SignIntensity2PlusFrightening)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
+
+                break;
+
         }
 
         playerbehaviour.speed = playerSpeed;

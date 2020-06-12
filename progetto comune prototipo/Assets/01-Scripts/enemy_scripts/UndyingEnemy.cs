@@ -79,8 +79,10 @@ public class UndyingEnemy : MonoBehaviour
         if (pointsystem == null)
         {
             Debug.LogError("PointSystem is NULL");
-        }
-
+        }
+
+
+
         GameManager = FindObjectOfType<GameManager>();
         if (GameManager == null)
         {
@@ -94,16 +96,17 @@ public class UndyingEnemy : MonoBehaviour
         alreadyDead = false;
         startingPosition = this.transform.localPosition;
         undyingAnimator.SetBool("UndyingDeath", false);
-        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        /*if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
-        }
+        }*/
     }
 
 
     // Update is called once per frame
     void Update()
     {
+
         switch (laneID)
         {
             case 0:
@@ -288,12 +291,18 @@ public class UndyingEnemy : MonoBehaviour
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            if(GameManager.GameIntensity == 3)
-            {
-                foreach (GameObject segno in SignIntensity3Undying)
-                {
-                    segno.SetActive(false);
-                }
+            if (GameManager.GameIntensity == 3)
+
+            {
+
+                foreach (GameObject segno in SignIntensity3Undying)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
+
             }
 
             pointsystem.currentTimer = pointsystem.maxTimer;
