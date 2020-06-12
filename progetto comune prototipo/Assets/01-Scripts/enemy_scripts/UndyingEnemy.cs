@@ -10,11 +10,12 @@ public class UndyingEnemy : MonoBehaviour
     public int maxInkDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signundyingenemy;
+    public GameObject[] SignIntensity3Undying;
     public float endPosition;
     public float currentTime;
     public float maxTime;
@@ -56,6 +57,12 @@ public class UndyingEnemy : MonoBehaviour
         if (pointsystem == null)
         {
             Debug.LogError("PointSystem is NULL");
+        }
+
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
         }
 
         speed = baseSpeed;
@@ -115,7 +122,7 @@ public class UndyingEnemy : MonoBehaviour
 
         if (attackTimer == 0)
         {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
+            //AudioManager.Instance.PlaySound("PlayerGetsHit");
             attackTimer = maxAttacktimer;
 
             Inkstone.Ink -= inkDamage;
@@ -164,10 +171,12 @@ public class UndyingEnemy : MonoBehaviour
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            foreach (GameObject segno in signundyingenemy)
+            if(GameManager.GameIntensity == 3)
             {
-                segno.SetActive(false);
-
+                foreach (GameObject segno in SignIntensity3Undying)
+                {
+                    segno.SetActive(false);
+                }
             }
 
             pointsystem.currentTimer = pointsystem.maxTimer;

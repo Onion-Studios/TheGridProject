@@ -9,11 +9,14 @@ public class BufferEnemy : MonoBehaviour
     public int enemyID = 6;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     PointSystem pointsystem;
     Secret SecretT;
     public int scoreEnemy;
-    public GameObject[] signbufferenemy;
+    public GameObject[] SignIntensity1Buffer;
+    public GameObject[] SignIntensity1PlusBuffer;
+    public GameObject[] SignIntensity2Buffer;
     public GameObject[] ToBuff;
     public int segnocorrispondente;
     public int link = 7;
@@ -56,6 +59,12 @@ public class BufferEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
+        }
+
         speed = baseSpeed;
     }
 
@@ -86,7 +95,6 @@ public class BufferEnemy : MonoBehaviour
 
     public void SpeedBoost()
     {
-
         for (int i = 0; i < link; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
@@ -170,8 +178,7 @@ public class BufferEnemy : MonoBehaviour
     }
 
     public void SpeedReset()
-    {
-       
+    {       
         for (int i = 0; i < link; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
@@ -274,9 +281,26 @@ public class BufferEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled  += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signbufferenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignIntensity1Buffer)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusBuffer)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Buffer)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
         SpeedReset();
     }

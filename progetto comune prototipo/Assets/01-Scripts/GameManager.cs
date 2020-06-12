@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlaySound("MainTrack");
+        //AudioManager.Instance.PlaySound("MainTrack");
     }
 
     private void Update()
@@ -70,14 +70,14 @@ public class GameManager : MonoBehaviour
             GameIntensity = 1;
             if (firstGameStart)
             {
-                AudioManager.Instance.SetLoop("GongSound", false);
-                AudioManager.Instance.PlaySound("GongSound");
+                //AudioManager.Instance.SetLoop("GongSound", false);
+                //AudioManager.Instance.PlaySound("GongSound");
                 firstGameStart = false;
             }
             else
             {
-                AudioManager.Instance.SetLoop("BooSound", false);
-                AudioManager.Instance.PlaySound("BooSound");
+                //AudioManager.Instance.SetLoop("BooSound", false);
+                //AudioManager.Instance.PlaySound("BooSound");
             }
 
             soundPlayed1 = true;
@@ -94,8 +94,8 @@ public class GameManager : MonoBehaviour
         {
             GameIntensity = 2;
 
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
+            //AudioManager.Instance.SetLoop("ClappingSound", false);
+            //AudioManager.Instance.PlaySound("ClappingSound");
             soundPlayed2 = true;
             soundPlayed1 = false;
             soundPlayed3 = false;
@@ -109,8 +109,8 @@ public class GameManager : MonoBehaviour
         {
             GameIntensity = 3;
 
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
+            //AudioManager.Instance.SetLoop("ClappingSound", false);
+            //AudioManager.Instance.PlaySound("ClappingSound");
             soundPlayed3 = true;
             soundPlayed1 = false;
             soundPlayed2 = false;

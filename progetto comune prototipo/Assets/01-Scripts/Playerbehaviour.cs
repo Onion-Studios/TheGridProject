@@ -97,7 +97,7 @@ public class Playerbehaviour : MonoBehaviour
                     istanze.transform.position = playerposition;
                     grigliamanager.ResetColorGrid();
                     grigliamanager.ResetGridLogic();
-                    AudioManager.Instance.PlaySound("ConfirmSound");
+                    //AudioManager.Instance.PlaySound("ConfirmSound");
                 }
             }
             else if (movementState == "waitstate")

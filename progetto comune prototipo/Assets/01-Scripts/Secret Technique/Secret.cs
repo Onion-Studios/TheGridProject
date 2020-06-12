@@ -49,7 +49,7 @@ public class Secret : MonoBehaviour
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
             {
-                AudioManager.Instance.PlaySound("PaintingCompleted");
+                //AudioManager.Instance.PlaySound("PaintingCompleted");
                 active = true;
 
                 currentTime = timeMax;
@@ -68,7 +68,7 @@ public class Secret : MonoBehaviour
                 //reset barra e si disattiva la secret 
                 if (currentTime == 0)
                 {
-                    AudioManager.Instance.PlaySound("PaintingReset");
+                    //AudioManager.Instance.PlaySound("PaintingReset");
                     bar = 0;
 
                     active = false;

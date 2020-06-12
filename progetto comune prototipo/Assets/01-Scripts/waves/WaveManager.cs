@@ -6,7 +6,9 @@ public class WaveManager : MonoBehaviour
 {
     //database dei dati contenuti in ciascuna wave
     #region Database Wave
-    public int[] SignGroup = new int[6];
+    public int[] SixSignGroup = new int[6];
+    public int[] FourSignGroup = new int[4];
+    public int[] ThreeSignGroup = new int[3];
     //LEGENDA il primo numero rappresenta l'intensita e il secondo la wave relativa a quell'intensita
     #region databasewave1
     [Header("Intesità 1")]
@@ -266,7 +268,9 @@ public class WaveManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         while (true)
         {
-            ShuffleAlgorithm(SignGroup);
+            ShuffleAlgorithm(SixSignGroup);
+            ShuffleAlgorithm(FourSignGroup);
+            ShuffleAlgorithm(ThreeSignGroup);
 
             switch (gamemanager.GameIntensity)
             {
@@ -301,22 +305,60 @@ public class WaveManager : MonoBehaviour
                         {
                             case 0:
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
-                                NormalEnemy.signnormalenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                switch(gamemanager.GameIntensity)
+                                {
+                                    case 1:
+                                        NormalEnemy.SignNormalYokai[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 2:
+                                        NormalEnemy.SignIntensity1Normal[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 3:
+                                        NormalEnemy.SignIntensity1PlusNormal[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                }
                                 NormalEnemy.speed = NormalEnemy.baseSpeed;
                                 break;
                             case 1:
                                 KamikazeEnemy kamikazeenemy = enemy.GetComponent<KamikazeEnemy>();
-                                kamikazeenemy.signkamikazenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                switch (gamemanager.GameIntensity)
+                                {
+                                    case 1:
+                                        kamikazeenemy.SignIntensity1Kamikaze[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 2:
+                                        kamikazeenemy.SignIntensity1PlusKamikaze[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 3:
+                                        kamikazeenemy.SignIntensity2Kamikaze[FourSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                }
                                 kamikazeenemy.speed = kamikazeenemy.baseSpeed;
                                 break;
                             case 2:
                                 ArmoredEnemy armoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                                armoredEnemy.signarmoredenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                switch (gamemanager.GameIntensity)
+                                {
+                                    case 1:
+                                        armoredEnemy.SignIntensity1Armored[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 2:
+                                        armoredEnemy.SignIntensity1PlusArmored[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 3:
+                                        armoredEnemy.SignIntensity2Armored[FourSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                }
                                 armoredEnemy.speed = armoredEnemy.baseSpeed;
                                 break;
                             case 3:
                                 UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
-                                undyingEnemy.signundyingenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                switch (gamemanager.GameIntensity)
+                                {
+                                    case 3:
+                                        undyingEnemy.SignIntensity3Undying[ThreeSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                }
                                 //undyingEnemy.startingPosition = enemyspawnposition;
                                 undyingEnemy.speed = undyingEnemy.baseSpeed;
                                 break;
@@ -327,12 +369,31 @@ public class WaveManager : MonoBehaviour
                                 break;
                             case 5:
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
-                                frighteningEnemy.signfrighteningenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                switch (gamemanager.GameIntensity)
+                                {
+                                    case 2:
+                                        frighteningEnemy.SignIntensity2Frightening[FourSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 3:
+                                        frighteningEnemy.SignIntensity2PlusFrightening[FourSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                }
                                 frighteningEnemy.speed = frighteningEnemy.baseSpeed;
                                 break;
                             case 6:
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
-                                bufferEnemy.signbufferenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                switch (gamemanager.GameIntensity)
+                                {
+                                    case 1:
+                                        bufferEnemy.SignIntensity1Buffer[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 2:
+                                        bufferEnemy.SignIntensity1PlusBuffer[SixSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                    case 3:
+                                        bufferEnemy.SignIntensity2Buffer[FourSignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                        break;
+                                }
                                 bufferEnemy.speed = bufferEnemy.baseSpeed;
                                 break;
                             default:
@@ -368,22 +429,22 @@ public class WaveManager : MonoBehaviour
                     {
                         case 0:
                             NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
-                            NormalEnemy.signnormalenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
+                            //NormalEnemy.signnormalenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
                             NormalEnemy.speed = NormalEnemy.baseSpeed;
                             break;
                         case 1:
                             KamikazeEnemy kamikazeenemy = enemy.GetComponent<KamikazeEnemy>();
-                            kamikazeenemy.signkamikazenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
+                            //kamikazeenemy.signkamikazenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
                             kamikazeenemy.speed = kamikazeenemy.baseSpeed;
                             break;
                         case 2:
                             ArmoredEnemy armoredEnemy = enemy.GetComponent<ArmoredEnemy>();
-                            armoredEnemy.signarmoredenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
+                            //armoredEnemy.signarmoredenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
                             armoredEnemy.speed = armoredEnemy.baseSpeed;
                             break;
                         case 3:
                             UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
-                            undyingEnemy.signundyingenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
+                            //undyingEnemy.signundyingenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
                             //undyingEnemy.startingPosition = enemyspawnposition;
                             undyingEnemy.speed = undyingEnemy.baseSpeed;
                             break;
@@ -413,12 +474,12 @@ public class WaveManager : MonoBehaviour
                             break;
                         case 5:
                             FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
-                            frighteningEnemy.signfrighteningenemy[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1].gameObject.SetActive(true);
+                            //frighteningEnemy.signfrighteningenemy[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1].gameObject.SetActive(true);
                             frighteningEnemy.speed = frighteningEnemy.baseSpeed;
                             break;
                         case 6:
                             BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
-                            bufferEnemy.signbufferenemy[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1].gameObject.SetActive(true);
+                            //bufferEnemy.signbufferenemy[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1].gameObject.SetActive(true);
                             bufferEnemy.speed = bufferEnemy.baseSpeed;
                             break;
                         default:
