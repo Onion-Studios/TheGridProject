@@ -97,25 +97,32 @@ public class UndyingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        WaveSlashRotation();
+    }
+
+    private void WaveSlashRotation()
+    {
+
         switch (laneID)
         {
             case 0:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, -45, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, -10, 0);
                 StopSlashPlayed();
                 break;
             case 1:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, -30, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 0, 0);
                 StopSlashPlayed();
                 break;
             case 2:
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 0, 0);
                 StopSlashPlayed();
                 break;
             case 3:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, 30, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 0, 0);
                 StopSlashPlayed();
                 break;
             case 4:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, 45, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 10, 0);
                 StopSlashPlayed();
                 break;
             default:
@@ -134,9 +141,6 @@ public class UndyingEnemy : MonoBehaviour
         {
             UndyingRepelled();
         }
-
-
-
     }
 
     private void StopSlashPlayed()

@@ -350,6 +350,7 @@ public class WaveManager : MonoBehaviour
                             case 3:
                                 UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
                                 undyingEnemy.signundyingenemy[SignGroup[wavetospawn.Signgroup[i] - 1]].gameObject.SetActive(true);
+                                undyingEnemy.laneID = wavetospawn.lanes[i];
                                 //undyingEnemy.startingPosition = enemyspawnposition;
                                 undyingEnemy.speed = undyingEnemy.baseSpeed + gamemanager.intensitySpeedIncrease;
                                 break;
@@ -416,6 +417,7 @@ public class WaveManager : MonoBehaviour
                         case 3:
                             UndyingEnemy undyingEnemy = enemy.GetComponent<UndyingEnemy>();
                             undyingEnemy.signundyingenemy[SignGroup[dictionarywaves[waveintesnity][wavenumber].Signgroup[i] - 1]].gameObject.SetActive(true);
+                            undyingEnemy.laneID = dictionarywaves[waveintesnity][wavenumber].lanes[i];
                             //undyingEnemy.startingPosition = enemyspawnposition;
                             undyingEnemy.speed = undyingEnemy.baseSpeed + gamemanager.intensitySpeedIncrease;
                             break;

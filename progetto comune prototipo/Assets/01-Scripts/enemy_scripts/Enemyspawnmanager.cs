@@ -45,7 +45,7 @@ public class Enemyspawnmanager : MonoBehaviour
     }
 
     #region SPAWN ENEMY ROUTINE
-    IEnumerator SpawnEnemyCoroutine()
+    /*IEnumerator SpawnEnemyCoroutine()
     {
         yield return new WaitForSeconds(2.0f);
         while (true)
@@ -250,6 +250,7 @@ public class Enemyspawnmanager : MonoBehaviour
             yield return new WaitForSeconds(spawntimer);
         }
     }
+    */
     #endregion
 
     #region FILL ENEMIES POOL
