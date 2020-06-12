@@ -40,6 +40,7 @@ public class UndyingEnemy : MonoBehaviour
     public int laneID;
     private Animator undyingAnimator;
     private bool alreadyDead;
+    private bool wavePositionSet;
 
     #endregion
 
@@ -194,6 +195,35 @@ public class UndyingEnemy : MonoBehaviour
         {
             undyingAnimator.SetBool("Attacking", true);
             Invoke("AnimationDelayAttack", 0.5f);
+
+            /*if (wavePositionSet == false && attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
+            {
+                switch (laneID)
+                {
+                    case 0:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    case 1:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    case 2:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    case 3:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    case 4:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    default:
+                        break;
+                }
+            }*/
             undyingSlashWave.transform.localPosition = waveSlashPosition;
             stopSlashPlayed = false;
             if (SecretT.bar == 100)
