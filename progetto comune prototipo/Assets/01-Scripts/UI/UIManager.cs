@@ -71,7 +71,12 @@ public class UIManager : MonoBehaviour
 
     void UpdateInkCounter()
     {
-        ink_text.text = (Ink.Ink + "/" + Ink.maxInk);
+        int ink, maxink;
+        if (Ink.Ink < 0) ink = 0;
+        else ink = Ink.Ink;
+        if (Ink.maxInk < 0) maxink = 0;
+        else maxink = Ink.maxInk;
+        ink_text.text = (ink + "/" + maxink);
     }
 
     public void UpdateScore()

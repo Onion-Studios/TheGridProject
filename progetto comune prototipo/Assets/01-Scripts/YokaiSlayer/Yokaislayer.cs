@@ -125,8 +125,6 @@ public class Yokaislayer : MonoBehaviour
             case 10:
                 FinalizeSequence();
                 break;
-
-
         }
 
     }

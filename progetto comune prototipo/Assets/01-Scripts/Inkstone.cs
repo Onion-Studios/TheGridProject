@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Inkstone : MonoBehaviour
 {
     public int maxInk = 100;
-   // [Range(0, 100)]
     public int Ink = 100;
+    bool resetonending;
     public GameObject Layer1;
     public GameObject Layer2;
     public GameObject Layer3;
@@ -20,36 +20,43 @@ public class Inkstone : MonoBehaviour
 
     void Start()
     {
-            Layer1.SetActive(true);
-            Layer2.SetActive(true);
-            Layer3.SetActive(true);
-            Layer4.SetActive(true);
-            Layer5.SetActive(true);
+        Layer1.SetActive(true);
+        Layer2.SetActive(true);
+        Layer3.SetActive(true);
+        Layer4.SetActive(true);
+        Layer5.SetActive(true);
         PointSystem = FindObjectOfType<PointSystem>();
         endSequence = FindObjectOfType<StartEndSequence>();
+        resetonending = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Ink < 0)
+        UpdateInk();
+    }
+
+    void UpdateInk()
+    {
+        if (Ink < 0)
         {
             Ink = 0;
         }
-        if(maxInk < 0)
+        if (maxInk < 0)
         {
             maxInk = 0;
         }
-        if(Ink == 0)
+        if (Ink == 0)
         {
-            endSequence.EndSequence();
+            endSequence.ending = true;
+            resetonending = true;
         }
         if (Ink == 1)
         {
             Layer1.SetActive(true);
             Layer2.SetActive(false);
         }
-        if(Ink < 25 && Ink >= 2)
+        if (Ink < 25 && Ink >= 2)
         {
             Layer2.SetActive(true);
             Layer3.SetActive(false);
@@ -74,6 +81,10 @@ public class Inkstone : MonoBehaviour
         if (Ink > maxInk)
         {
             Ink = maxInk;
+        }
+        if (resetonending == true)
+        {
+            Ink = 0;
         }
     }
 }
