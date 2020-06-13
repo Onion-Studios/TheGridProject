@@ -6472,8 +6472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89346b26f8bedc644b4fdbe62ace305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInk: 100
-  Ink: 100
+  maxInk: 10000
+  Ink: 10000
   Layer1: {fileID: 172065574}
   Layer2: {fileID: 485894071}
   Layer3: {fileID: 490766976}

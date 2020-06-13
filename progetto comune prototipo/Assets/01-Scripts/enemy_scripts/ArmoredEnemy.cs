@@ -20,7 +20,13 @@ public class ArmoredEnemy : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
     [SerializeField]
-    private GameObject armor;
+    private GameObject armor1;
+    [SerializeField]
+    private GameObject armor2;
+    [SerializeField]
+    private GameObject armor3;
+    [SerializeField]
+    private GameObject armor4;
     [SerializeField]
     private GameObject bandana;
     [SerializeField]
@@ -31,12 +37,17 @@ public class ArmoredEnemy : MonoBehaviour
     public float stopTime, waitTime;
     IEnumerator deathforendgrid;
     bool destinationReached;
+    private Animator armoredAnimator;
 
     #endregion
 
-
+    private void Awake()
+    {
+        armoredAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
+        armoredAnimator.SetBool("ArmorBroken", false);
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -96,6 +107,7 @@ public class ArmoredEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        armoredAnimator.SetFloat("CurrentPosition", transform.position.x);
         if (destinationReached == false)
         {
             Enemymove();
@@ -167,6 +179,7 @@ public class ArmoredEnemy : MonoBehaviour
         {
             speed = baseSpeedMax + GM.intensitySpeedIncrease;
             armoredLife -= 1;
+            armoredAnimator.SetBool("ArmorBroken", true);
             foreach (GameObject segno in signarmoredenemy)
             {
                 segno.SetActive(false);
@@ -178,7 +191,10 @@ public class ArmoredEnemy : MonoBehaviour
         {
             inkDeath.Play();
             enemy.GetComponent<Renderer>().material.color = Color.black;
-            armor.GetComponent<Renderer>().material.color = Color.black;
+            armor1.GetComponent<Renderer>().material.color = Color.black;
+            armor2.GetComponent<Renderer>().material.color = Color.black;
+            armor3.GetComponent<Renderer>().material.color = Color.black;
+            armor4.GetComponent<Renderer>().material.color = Color.black;
             bandana.GetComponent<Renderer>().material.color = Color.black;
             Invoke("Death", BlackToDeath);
         }
@@ -196,7 +212,10 @@ public class ArmoredEnemy : MonoBehaviour
         }
         this.gameObject.SetActive(false);
         enemy.GetComponent<Renderer>().material.color = Color.white;
-        armor.GetComponent<Renderer>().material.color = Color.white;
+        armor1.GetComponent<Renderer>().material.color = Color.white;
+        armor2.GetComponent<Renderer>().material.color = Color.white;
+        armor3.GetComponent<Renderer>().material.color = Color.white;
+        armor4.GetComponent<Renderer>().material.color = Color.white;
         bandana.GetComponent<Renderer>().material.color = Color.white;
         AudioManager.Instance.PlaySound("EnemyDeath");
 
