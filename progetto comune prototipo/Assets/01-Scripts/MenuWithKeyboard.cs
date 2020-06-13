@@ -207,24 +207,24 @@ public class MenuWithKeyboard : MonoBehaviour
         {
             case 0:
                 MM.GoToLevel();
-                OM.ConfirmSound();
-                OM.StopMenuMusic();
+                AudioManager.Instance.PlaySound("MenuConfirm");
+                AudioManager.Instance.StopSound("MenuTheme");
                 break;
             case 1:
-                OM.ConfirmSound();
+                AudioManager.Instance.PlaySound("MenuConfirm");
                 break;
             case 2:
-                OM.ConfirmSound();
+                AudioManager.Instance.PlaySound("MenuConfirm");
                 CurrentState = MenuStates.Options;
                 ExistingList = false;
                 mainMenu.SetActive(false);
                 OptionsMenu.SetActive(true);
                 break;
             case 3:
-                OM.ConfirmSound();
+                AudioManager.Instance.PlaySound("MenuConfirm");
                 break;
             case 4:
-                OM.ConfirmSound();
+                AudioManager.Instance.PlaySound("MenuConfirm");
                 ExistingList = false;
                 break;
         }
