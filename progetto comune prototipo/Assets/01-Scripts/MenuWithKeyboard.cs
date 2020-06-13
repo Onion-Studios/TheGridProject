@@ -216,7 +216,7 @@ public class MenuWithKeyboard : MonoBehaviour
             case 2:
                 AudioManager.Instance.PlaySound("MenuConfirm");
                 CurrentState = MenuStates.Options;
-                ExistingList = false;
+                ResetList();
                 mainMenu.SetActive(false);
                 OptionsMenu.SetActive(true);
                 break;
@@ -225,7 +225,9 @@ public class MenuWithKeyboard : MonoBehaviour
                 break;
             case 4:
                 AudioManager.Instance.PlaySound("MenuConfirm");
-                ExistingList = false;
+                CurrentState = MenuStates.ExitGame;
+                ResetList();
+                ExitDialogue.SetActive(true);
                 break;
         }
 
@@ -244,5 +246,13 @@ public class MenuWithKeyboard : MonoBehaviour
                 SelectedImages[i].SetActive(false);
             }
         }
+    }
+
+    public void ResetList()
+    {
+        ExistingList = false;
+        CurrentStateMenuButtons = new List<GameObject>();
+        SelectedImages = new List<GameObject>();
+        Index = 0;
     }
 }
