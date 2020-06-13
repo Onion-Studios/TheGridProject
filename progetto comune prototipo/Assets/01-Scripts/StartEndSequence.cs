@@ -21,6 +21,7 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator lightsON;
     IEnumerator lightsOFF;
     IEnumerator blackScreen;
+    IEnumerator loading;
     public float lightsStopTime;
     public float closedTime;
     public GameObject tenda, tenda2;
@@ -32,6 +33,8 @@ public class StartEndSequence : MonoBehaviour
     public GameObject endImage;
     public float time;
     public Vector3 closeCurtain2;
+    public float LoadingTime;
+    public GameObject LoadImage;
     #endregion
 
     void Awake()
@@ -79,6 +82,7 @@ public class StartEndSequence : MonoBehaviour
         playerLight = null;
         switchui = true;
         lightsON = null;
+        loading = null;
 
     }
 
@@ -88,7 +92,7 @@ public class StartEndSequence : MonoBehaviour
         {
             StartSequence();
         }
-        if(skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return))
+        if(skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return)&&startSequencePosition>=1)
         {
             skipping = true;
         }
@@ -108,13 +112,25 @@ public class StartEndSequence : MonoBehaviour
         switch (startSequencePosition)
         {
             case 0:
+                if(loading==null)
+                {
+                    loading = Loading();
+                    StartCoroutine(loading);
+                }
+                break;
+            case 1:
+                if (loading != null)
+                {
+                    StopCoroutine(loading);
+                    loading = null;
+                }
                 if (playerLight == null)
                 {
                     playerLight = PlayerLight();
                     StartCoroutine(playerLight);
                 }
                 break;
-            case 1:
+            case 2:
                 if (playerLight != null)
                 {
                     StopCoroutine(playerLight);
@@ -122,20 +138,20 @@ public class StartEndSequence : MonoBehaviour
                 }
                 Bowing();
                 break;
-            case 2:
+            case 3:
                 SwitchUI();
                 break;
-            case 3:
+            case 4:
                 startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                 break;
-            case 4:
+            case 5:
                 if (lightsON == null)
                 {
                     lightsON = LightsON();
                     StartCoroutine(lightsON);
                 }
                 break;
-            case 5:
+            case 6:
                 if (lightsON != null)
                 {
                     StopCoroutine(lightsON);
@@ -143,13 +159,13 @@ public class StartEndSequence : MonoBehaviour
                 }
                 PlayerToCenter();
                 break;
-            case 6:
+            case 7:
                 startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
                 break;
-            case 7:
+            case 8:
                 SwitchUI();
                 break;
-            case 8:
+            case 9:
                 StartUP();
                 break;
 
@@ -308,6 +324,13 @@ public class StartEndSequence : MonoBehaviour
         lightObjects[2].SetActive(false);
         lightObjects[0].SetActive(true);
         lightObjects[1].SetActive(true);
+        startSequencePosition++;
+    }
+
+    IEnumerator Loading()
+    {
+        yield return new WaitForSeconds(LoadingTime);
+        LoadImage.SetActive(false);
         startSequencePosition++;
     }
 
