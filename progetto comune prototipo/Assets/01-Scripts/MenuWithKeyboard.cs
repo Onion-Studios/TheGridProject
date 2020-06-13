@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MenuWithKeyboard : MonoBehaviour
 {
-    //public GameObject MainMenu, OptionsMenu, AudioMenu, VideoMenu, ControlsMenu, ExitDialogue, Record, PointsTag;
+    public GameObject mainMenu, OptionsMenu, AudioMenu, VideoMenu, ControlsMenu, ExitDialogue, Record, PointsTag;
     //public GameObject FirstOptionsButton, CloseOptionsButton, FirstCloseButton, CloseCloseButton, AudioSlider, CloseAudioButton, VideoResolution, CloseVideoButton, FirstControlsButton, CloseControlsButton;
     public GameObject CurrentStateMenu;
     public List<GameObject> CurrentStateMenuButtons;
@@ -123,6 +123,10 @@ public class MenuWithKeyboard : MonoBehaviour
         {
             case MenuStates.MainMenu:
                 StateOperations();
+                if(Input.GetKeyDown(KeyCode.Return)||Input.GetKeyDown(KeyCode.Space))
+                {
+                    MainMenu();
+                }
                 break;
             case MenuStates.HowToPlay:
                 StateOperations();
@@ -211,12 +215,17 @@ public class MenuWithKeyboard : MonoBehaviour
                 break;
             case 2:
                 OM.ConfirmSound();
+                CurrentState = MenuStates.Options;
+                ExistingList = false;
+                mainMenu.SetActive(false);
+                OptionsMenu.SetActive(true);
                 break;
             case 3:
                 OM.ConfirmSound();
                 break;
             case 4:
                 OM.ConfirmSound();
+                ExistingList = false;
                 break;
         }
 

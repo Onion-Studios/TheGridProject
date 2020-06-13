@@ -12390,6 +12390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121cff74ca1f24a45a45ab2ba87d7e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 473787530}
+  OptionsMenu: {fileID: 874667077}
+  AudioMenu: {fileID: 1126282091}
+  VideoMenu: {fileID: 1405434840}
+  ControlsMenu: {fileID: 1285999549}
+  ExitDialogue: {fileID: 942681828}
+  Record: {fileID: 1908395683}
+  PointsTag: {fileID: 112505190}
   CurrentStateMenu: {fileID: 0}
   CurrentStateMenuButtons: []
   SelectedImages: []
