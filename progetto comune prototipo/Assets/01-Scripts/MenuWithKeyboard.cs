@@ -261,7 +261,7 @@ public class MenuWithKeyboard : MonoBehaviour
             case 2:
                 AudioManager.Instance.PlaySound("MenuConfirm");
                 CurrentState = MenuStates.Options;
-                ResetList();
+                ExistingList = false;
                 mainMenu.SetActive(false);
                 OptionsMenu.SetActive(true);
                 break;
