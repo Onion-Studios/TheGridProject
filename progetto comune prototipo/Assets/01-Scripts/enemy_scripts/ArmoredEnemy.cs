@@ -52,6 +52,20 @@ public class ArmoredEnemy : MonoBehaviour
     private GameObject armorPiece6;
     [SerializeField]
     private GameObject armorPiece7;
+    private Vector3 armorPiecePos1;
+    private Vector3 armorPiecePos2;
+    private Vector3 armorPiecePos3;
+    private Vector3 armorPiecePos4;
+    private Vector3 armorPiecePos5;
+    private Vector3 armorPiecePos6;
+    private Vector3 armorPiecePos7;
+    private Quaternion armorPieceRotation1;
+    private Quaternion armorPieceRotation2;
+    private Quaternion armorPieceRotation3;
+    private Quaternion armorPieceRotation4;
+    private Quaternion armorPieceRotation5;
+    private Quaternion armorPieceRotation6;
+    private Quaternion armorPieceRotation7;
     [SerializeField]
     private Transform armorPieceParent1;
     [SerializeField]
@@ -72,9 +86,40 @@ public class ArmoredEnemy : MonoBehaviour
     private void Awake()
     {
         armoredAnimator = GetComponentInChildren<Animator>();
+        armorPiecePos1 = armorPiece1.transform.localPosition;
+        armorPiecePos2 = armorPiece2.transform.localPosition;
+        armorPiecePos3 = armorPiece3.transform.localPosition;
+        armorPiecePos4 = armorPiece4.transform.localPosition;
+        armorPiecePos5 = armorPiece5.transform.localPosition;
+        armorPiecePos6 = armorPiece6.transform.localPosition;
+        armorPiecePos7 = armorPiece7.transform.localPosition;
+
+        armorPieceRotation1 = armorPiece1.transform.localRotation;
+        armorPieceRotation2 = armorPiece2.transform.localRotation;
+        armorPieceRotation3 = armorPiece3.transform.localRotation;
+        armorPieceRotation4 = armorPiece4.transform.localRotation;
+        armorPieceRotation5 = armorPiece5.transform.localRotation;
+        armorPieceRotation6 = armorPiece6.transform.localRotation;
+        armorPieceRotation7 = armorPiece7.transform.localRotation;
+
+        armorPiece1.AddComponent<Rigidbody>();
+        armorPiece2.AddComponent<Rigidbody>();
+        armorPiece3.AddComponent<Rigidbody>();
+        armorPiece4.AddComponent<Rigidbody>();
+        armorPiece5.AddComponent<Rigidbody>();
+        armorPiece6.AddComponent<Rigidbody>();
+        armorPiece7.AddComponent<Rigidbody>();
     }
     private void OnEnable()
     {
+        armorPiece1.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece2.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece3.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece4.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece5.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece6.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece7.GetComponent<Rigidbody>().isKinematic = true;
+
         armoredAnimator.SetBool("ArmorBroken", false);
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -191,11 +236,13 @@ public class ArmoredEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         this.gameObject.SetActive(false);
+        ArmorReset();
     }
 
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
+        ArmorReset();
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
         enemyspawnmanager.enemykilled = 0;
@@ -228,19 +275,19 @@ public class ArmoredEnemy : MonoBehaviour
             armoredAnimator.SetBool("ArmorBroken", true);
 
             armorPiece1.transform.SetParent(null);
-            armorPiece1.AddComponent<Rigidbody>();
+            armorPiece1.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece2.transform.SetParent(null);
-            armorPiece2.AddComponent<Rigidbody>();
+            armorPiece2.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece3.transform.SetParent(null);
-            armorPiece3.AddComponent<Rigidbody>();
+            armorPiece3.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece4.transform.SetParent(null);
-            armorPiece4.AddComponent<Rigidbody>();
+            armorPiece4.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece5.transform.SetParent(null);
-            armorPiece5.AddComponent<Rigidbody>();
+            armorPiece5.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece6.transform.SetParent(null);
-            armorPiece6.AddComponent<Rigidbody>();
+            armorPiece6.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece7.transform.SetParent(null);
-            armorPiece7.AddComponent<Rigidbody>();
+            armorPiece7.GetComponent<Rigidbody>().isKinematic = false;
 
 
             foreach (GameObject segno in signarmoredenemy)
@@ -275,13 +322,7 @@ public class ArmoredEnemy : MonoBehaviour
         }
         this.gameObject.SetActive(false);
 
-        armorPiece1.SetActive(false);
-        armorPiece2.SetActive(false);
-        armorPiece3.SetActive(false);
-        armorPiece4.SetActive(false);
-        armorPiece5.SetActive(false);
-        armorPiece6.SetActive(false);
-        armorPiece7.SetActive(false);
+        ArmorReset();
 
         enemy.GetComponent<Renderer>().material.color = Color.white;
         armor1.GetComponent<Renderer>().material.color = Color.white;
@@ -297,6 +338,41 @@ public class ArmoredEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
+    }
+
+    private void ArmorReset()
+    {
+        armorPiece1.SetActive(false);
+        armorPiece2.SetActive(false);
+        armorPiece3.SetActive(false);
+        armorPiece4.SetActive(false);
+        armorPiece5.SetActive(false);
+        armorPiece6.SetActive(false);
+        armorPiece7.SetActive(false);
+
+        armorPiece1.transform.SetParent(armorPieceParent1);
+        armorPiece2.transform.SetParent(armorPieceParent2);
+        armorPiece3.transform.SetParent(armorPieceParent3);
+        armorPiece4.transform.SetParent(armorPieceParent4);
+        armorPiece5.transform.SetParent(armorPieceParent5);
+        armorPiece6.transform.SetParent(armorPieceParent6);
+        armorPiece7.transform.SetParent(armorPieceParent7);
+
+        armorPiece1.transform.localPosition = armorPiecePos1;
+        armorPiece2.transform.localPosition = armorPiecePos2;
+        armorPiece3.transform.localPosition = armorPiecePos3;
+        armorPiece4.transform.localPosition = armorPiecePos4;
+        armorPiece5.transform.localPosition = armorPiecePos5;
+        armorPiece6.transform.localPosition = armorPiecePos6;
+        armorPiece7.transform.localPosition = armorPiecePos7;
+
+        armorPiece1.transform.localRotation = armorPieceRotation1;
+        armorPiece2.transform.localRotation = armorPieceRotation2;
+        armorPiece3.transform.localRotation = armorPieceRotation3;
+        armorPiece4.transform.localRotation = armorPieceRotation4;
+        armorPiece5.transform.localRotation = armorPieceRotation5;
+        armorPiece6.transform.localRotation = armorPieceRotation6;
+        armorPiece7.transform.localRotation = armorPieceRotation7;
     }
 
     void PointOverDistance()
