@@ -122,40 +122,71 @@ public class MenuWithKeyboard : MonoBehaviour
         switch (CurrentState)
         {
             case MenuStates.MainMenu:
-                StateOperations();
-                if(Input.GetKeyDown(KeyCode.Return)||Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
                 {
                     MainMenu();
                 }
+                StateOperations();
                 break;
             case MenuStates.HowToPlay:
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    HowToPlay();
+                }
                 StateOperations();
                 break;
             case MenuStates.Credits:
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    Credits();
+                }
                 StateOperations();
                 break;
             case MenuStates.ExitGame:
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    ExitGame();
+                }
                 StateOperations();
                 break;
             case MenuStates.Options:
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    Options();
+                }
                 StateOperations();
                 break;
             case MenuStates.Controls:
                 StateOperations();
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    Controls();
+                }
                 break;
             case MenuStates.Audio:
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    Audio();
+                }
                 StateOperations();
                 break;
             case MenuStates.Video:
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    Video();
+                }
                 StateOperations();
                 break;
         }
     }
 
+    #region All Generic State Operations
     public void GetGameObject()
     {
         if (ExistingList == false)
         {
+            CurrentStateMenuButtons = new List<GameObject>();
+            SelectedImages = new List<GameObject>();
             Button[] ButtonArray;
             CurrentStateMenu = gameObject.transform.Find(CurrentState.ToString()).gameObject;
             ButtonArray = CurrentStateMenu.GetComponentsInChildren<Button>();
@@ -170,13 +201,12 @@ public class MenuWithKeyboard : MonoBehaviour
         }
 
     }
-
     public void CycleButtons()
     {
         if (ExistingList == true)
         {
             ActivateImage();
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 Index--;
                 if (Index < 0)
@@ -184,7 +214,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     Index = CurrentStateMenuButtons.Count - 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 Index++;
                 if (Index == CurrentStateMenuButtons.Count)
@@ -194,13 +224,28 @@ public class MenuWithKeyboard : MonoBehaviour
             }
         }
     }
-
     public void StateOperations()
     {
         GetGameObject();
         CycleButtons();
     }
+    public void ActivateImage()
+    {
+        for (int i = 0; i < SelectedImages.Count; i++)
+        {
+            if (i == Index)
+            {
+                SelectedImages[i].SetActive(true);
+            }
+            else
+            {
+                SelectedImages[i].SetActive(false);
+            }
+        }
+    }
+    #endregion
 
+    #region All Menus Buttons Functions
     public void MainMenu()
     {
         switch (Index)
@@ -225,24 +270,69 @@ public class MenuWithKeyboard : MonoBehaviour
                 break;
             case 4:
                 AudioManager.Instance.PlaySound("MenuConfirm");
+                CurrentState = MenuStates.ExitGame;
                 ExistingList = false;
+                ExitDialogue.SetActive(true);
                 break;
         }
 
     }
 
-    public void ActivateImage()
+    public void HowToPlay()
     {
-        for (int i = 0; i < SelectedImages.Count; i++)
+
+    }
+
+    public void Credits()
+    {
+
+    }
+
+    public void ExitGame()
+    {
+        switch (Index)
         {
-            if(i==Index)
-            {
-                SelectedImages[i].SetActive(true);
-            }
-            else
-            {
-                SelectedImages[i].SetActive(false);
-            }
+            case 0:
+                MM.QuitGame();
+                break;
+            case 1:
+                ExitDialogue.SetActive(false);
+                CurrentState = MenuStates.MainMenu;
+                ExistingList = false;
+                break;
         }
     }
+
+    public void Options()
+    {
+        switch (Index)
+        {
+
+        }
+    }
+
+    public void Controls()
+    {
+        switch (Index)
+        {
+
+        }
+    }
+
+    public void Audio()
+    {
+        switch (Index)
+        {
+
+        }
+    }
+
+    public void Video()
+    {
+        switch (Index)
+        {
+
+        }
+    }
+    #endregion
 }
