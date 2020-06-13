@@ -209,6 +209,7 @@ public class UndyingEnemy : MonoBehaviour
             attackTimer = maxAttacktimer;
             Inkstone.Ink -= inkDamage;
             Inkstone.maxInk -= maxInkDamage;
+            AudioManager.Instance.PlaySound("Playertakedamage");
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar = 0;
             enemyspawnmanager.enemykilled = 0;

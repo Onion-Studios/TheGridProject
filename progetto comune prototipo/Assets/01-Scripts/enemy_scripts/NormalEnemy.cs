@@ -129,6 +129,7 @@ public class NormalEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         Inkstone.Ink -= inkstoneDamage;
+        AudioManager.Instance.PlaySound("Backwash");
         foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
@@ -141,6 +142,7 @@ public class NormalEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
+        AudioManager.Instance.PlaySound("Playertakedamage");
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signnormalenemy)
         {

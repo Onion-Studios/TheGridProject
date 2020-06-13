@@ -134,6 +134,7 @@ public class FrighteningEnemy : MonoBehaviour
         inkAbsorb.Stop();
         playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkstoneDamage;
+        AudioManager.Instance.PlaySound("Backwash");
         foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);
@@ -148,6 +149,7 @@ public class FrighteningEnemy : MonoBehaviour
         playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
+        AudioManager.Instance.PlaySound("Playertakedamage");
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signfrighteningenemy)
         {

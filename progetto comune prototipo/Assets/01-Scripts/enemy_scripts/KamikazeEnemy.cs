@@ -92,6 +92,7 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.Play();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= 10;
+        AudioManager.Instance.PlaySound("Backwash");
         foreach (GameObject segno in signkamikazenemy)
         {
             segno.SetActive(false);
@@ -106,6 +107,7 @@ public class KamikazeEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
+        AudioManager.Instance.PlaySound("Playertakedamage");
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signkamikazenemy)
         {
