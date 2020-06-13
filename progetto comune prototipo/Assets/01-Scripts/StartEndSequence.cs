@@ -331,6 +331,8 @@ public class StartEndSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(LoadingTime);
         LoadImage.SetActive(false);
+        AudioManager.Instance.PlaySound("Yoo");
+        AudioManager.Instance.PlaySound("MainTrack");
         startSequencePosition++;
     }
 

@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlaySound("MainTrack");
+        
     }
 
     private void Update()
