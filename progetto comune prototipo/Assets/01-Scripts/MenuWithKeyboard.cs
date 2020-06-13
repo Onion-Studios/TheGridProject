@@ -296,6 +296,7 @@ public class MenuWithKeyboard : MonoBehaviour
                 MM.QuitGame();
                 break;
             case 1:
+                AudioManager.Instance.PlaySound("MenuCancel");
                 ExitDialogue.SetActive(false);
                 CurrentState = MenuStates.MainMenu;
                 ExistingList = false;
@@ -307,7 +308,34 @@ public class MenuWithKeyboard : MonoBehaviour
     {
         switch (Index)
         {
-
+            case 0:
+                AudioManager.Instance.PlaySound("MenuConfirm");
+                CurrentState = MenuStates.Audio;
+                AudioMenu.SetActive(true);
+                ExistingList = false;
+                break;
+            case 1:
+                AudioManager.Instance.PlaySound("MenuConfirm");
+                CurrentState = MenuStates.Video;
+                VideoMenu.SetActive(true);
+                ExistingList = false;
+                break;
+            case 2:
+                AudioManager.Instance.PlaySound("MenuConfirm");
+                CurrentState = MenuStates.Controls;
+                ControlsMenu.SetActive(true);
+                OptionsMenu.SetActive(false);
+                Record.SetActive(false);
+                PointsTag.SetActive(false);
+                ExistingList = false;
+                break;
+            case 3:
+                AudioManager.Instance.PlaySound("MenuCancel");
+                CurrentState = MenuStates.MainMenu;
+                ExistingList = false;
+                OptionsMenu.SetActive(false);
+                mainMenu.SetActive(true);
+                break;
         }
     }
 
@@ -315,7 +343,15 @@ public class MenuWithKeyboard : MonoBehaviour
     {
         switch (Index)
         {
-
+            default:
+                AudioManager.Instance.PlaySound("MenuCancel");
+                ControlsMenu.SetActive(false);
+                OptionsMenu.SetActive(true);
+                Record.SetActive(true);
+                PointsTag.SetActive(true);
+                CurrentState = MenuStates.Options;
+                ExistingList = false;
+                break;
         }
     }
 
@@ -323,7 +359,15 @@ public class MenuWithKeyboard : MonoBehaviour
     {
         switch (Index)
         {
+            case 0:
 
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
         }
     }
 
