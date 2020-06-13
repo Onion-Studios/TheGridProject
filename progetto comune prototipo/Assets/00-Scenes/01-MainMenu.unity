@@ -3237,7 +3237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &292349039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4826,11 +4826,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1843711911}
-  - {fileID: 1478271029}
-  - {fileID: 1043606785}
-  - {fileID: 1178314336}
-  - {fileID: 1709624268}
   - {fileID: 973337074}
+  - {fileID: 1709624268}
+  - {fileID: 1178314336}
+  - {fileID: 1043606785}
+  - {fileID: 1478271029}
   - {fileID: 1042044814}
   - {fileID: 1072432572}
   m_Father: {fileID: 1286029701}
@@ -8856,7 +8856,7 @@ RectTransform:
   - {fileID: 240115804}
   - {fileID: 292349039}
   m_Father: {fileID: 473787533}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9676,7 +9676,7 @@ RectTransform:
   - {fileID: 1412988001}
   - {fileID: 487571531}
   m_Father: {fileID: 473787533}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12390,24 +12390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121cff74ca1f24a45a45ab2ba87d7e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenu: {fileID: 473787530}
-  OptionsMenu: {fileID: 874667077}
-  AudioMenu: {fileID: 1126282091}
-  VideoMenu: {fileID: 1405434840}
-  ControlsMenu: {fileID: 1285999549}
-  ExitDialogue: {fileID: 942681828}
-  Record: {fileID: 1908395683}
-  PointsTag: {fileID: 112505190}
-  FirstOptionsButton: {fileID: 1666990024}
-  CloseOptionsButton: {fileID: 1178314335}
-  FirstCloseButton: {fileID: 2061352811}
-  CloseCloseButton: {fileID: 1478271028}
-  AudioSlider: {fileID: 107715833}
-  CloseAudioButton: {fileID: 1470931434}
-  VideoResolution: {fileID: 1970651345}
-  CloseVideoButton: {fileID: 344135449}
-  FirstControlsButton: {fileID: 1847994969}
-  CloseControlsButton: {fileID: 874667077}
+  CurrentStateMenu: {fileID: 0}
+  CurrentStateMenuButtons: []
+  ExistingList: 0
 --- !u!1 &1291377812
 GameObject:
   m_ObjectHideFlags: 0
@@ -14339,7 +14324,7 @@ RectTransform:
   - {fileID: 1360680499}
   - {fileID: 1053534304}
   m_Father: {fileID: 473787533}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16499,7 +16484,7 @@ RectTransform:
   - {fileID: 1138860458}
   - {fileID: 117311519}
   m_Father: {fileID: 473787533}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
