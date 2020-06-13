@@ -28,6 +28,7 @@ public class Playerbehaviour : MonoBehaviour
     public ParticleSystem smokeBombCenter;
     private Vector3 confirmPosition;
     public Animator kitsuneAnimator;
+    private int layerMask;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -63,6 +64,7 @@ public class Playerbehaviour : MonoBehaviour
 
         waitTimer = maxWaitTimer;
         audioManager = AudioManager.Instance;
+        layerMask = 1 << 11;
     }
 
     // Update is called once per frame
@@ -278,7 +280,7 @@ public class Playerbehaviour : MonoBehaviour
         originray = (istanze.transform.position - new Vector3(0f, 0.5f, 0f));
         downraycheck = new Ray(originray, Vector3.down);
         float raydistance = 10f;
-        if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance))
+        if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance, layerMask))
         {
             hit.collider.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = grigliamanager.inksplash;
 

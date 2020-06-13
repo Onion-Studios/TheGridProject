@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3974691659459395349}
   - component: {fileID: 4994744551584288623}
   - component: {fileID: -4044075731463968891}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Griglia6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +70,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Griglia06
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 765326f6ae7831e499060625fa24f758,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 765326f6ae7831e499060625fa24f758,
         type: 3}

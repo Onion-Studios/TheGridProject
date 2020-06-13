@@ -2378,7 +2378,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a7045ac9cad68bb4aa9ecb1b76b0682c, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2776,8 +2776,8 @@ MonoBehaviour:
   Activewave_intensity: 0
   Activewave_number: 0
   TEST_WaveActive: 0
-  TEST_waveintesity: 2
-  TEST_wavenumber: 1
+  TEST_waveintesity: 1
+  TEST_wavenumber: 4
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -3202,6 +3202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lain
       objectReference: {fileID: 0}
+    - target: {fileID: -6236743471014415788, guid: 1a6ea754951beb84388fc72e3cfc5ad1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1a6ea754951beb84388fc72e3cfc5ad1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3279,6 +3284,25 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e90c95cdb2de9bd4f88b4016ece68e1f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6ea754951beb84388fc72e3cfc5ad1, type: 3}
+--- !u!1 &770233576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6236743471014415788, guid: 1a6ea754951beb84388fc72e3cfc5ad1,
+    type: 3}
+  m_PrefabInstance: {fileID: 770233575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &770233577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770233576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2415.746, y: 87.63096, z: 728.75024}
+  m_Center: {x: -736.0985, y: -50.343357, z: -48.81111}
 --- !u!1 &775004625
 GameObject:
   m_ObjectHideFlags: 0
@@ -13181,7 +13205,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 3383
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
