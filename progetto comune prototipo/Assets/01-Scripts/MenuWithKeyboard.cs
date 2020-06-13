@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuWithKeyboard : MonoBehaviour
@@ -13,7 +11,9 @@ public class MenuWithKeyboard : MonoBehaviour
     public List<GameObject> SelectedImages;
     public bool ExistingList = false;
     public int Index;
-    enum MenuStates { MainMenu,
+    enum MenuStates
+    {
+        MainMenu,
         HowToPlay,
         Credits,
         ExitGame,
@@ -115,7 +115,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void MenuStateMachine()
     {
-       switch (CurrentState)
+        switch (CurrentState)
         {
             case MenuStates.MainMenu:
                 MainMenu();
@@ -143,10 +143,10 @@ public class MenuWithKeyboard : MonoBehaviour
                 break;
         }
     }
-    
+
     public void GetGameObject()
     {
-        if(ExistingList==false)
+        if (ExistingList == false)
         {
             Button[] ButtonArray;
             CurrentStateMenu = gameObject.transform.Find(CurrentState.ToString()).gameObject;
@@ -160,19 +160,27 @@ public class MenuWithKeyboard : MonoBehaviour
             Index = 0;
             ExistingList = true;
         }
-        
+
     }
 
     public void CycleButtons()
     {
-        if(ExistingList==true)
+        if (ExistingList == true)
         {
-            if(Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 Index--;
-                if(Index<0)
+                if (Index < 0)
                 {
-                    Index = CurrentStateMenuButtons.Count;
+                    Index = CurrentStateMenuButtons.Count - 1;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Index++;
+                if (Index == CurrentStateMenuButtons.Count)
+                {
+                    Index = 0;
                 }
             }
         }
@@ -181,5 +189,6 @@ public class MenuWithKeyboard : MonoBehaviour
     public void MainMenu()
     {
         GetGameObject();
+        CycleButtons();
     }
 }
