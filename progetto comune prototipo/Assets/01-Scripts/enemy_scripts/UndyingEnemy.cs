@@ -92,6 +92,7 @@ public class UndyingEnemy : MonoBehaviour
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
         }
+        wavePositionSet = false;
     }
 
 
@@ -107,11 +108,11 @@ public class UndyingEnemy : MonoBehaviour
         switch (laneID)
         {
             case 0:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(90, -10, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, -55, 0);
                 StopSlashPlayed();
                 break;
             case 1:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 0, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, -45, 0);
                 StopSlashPlayed();
                 break;
             case 2:
@@ -123,7 +124,7 @@ public class UndyingEnemy : MonoBehaviour
                 StopSlashPlayed();
                 break;
             case 4:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 10, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 5, 0);
                 StopSlashPlayed();
                 break;
             default:
@@ -160,6 +161,7 @@ public class UndyingEnemy : MonoBehaviour
     {
         undyingSlashWave.Stop();
         stopSlashPlayed = true;
+        wavePositionSet = false;
     }
 
     public void Enemymove()
@@ -196,7 +198,7 @@ public class UndyingEnemy : MonoBehaviour
             undyingAnimator.SetBool("Attacking", true);
             Invoke("AnimationDelayAttack", 0.5f);
 
-            /*if (wavePositionSet == false && attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
+            if (wavePositionSet == false && attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
             {
                 switch (laneID)
                 {
@@ -209,11 +211,11 @@ public class UndyingEnemy : MonoBehaviour
                         wavePositionSet = true;
                         break;
                     case 2:
-                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        undyingSlashWave.transform.localPosition = new Vector3(waveSlashPosition.x, waveSlashPosition.y, waveSlashPosition.z + 2);
                         wavePositionSet = true;
                         break;
                     case 3:
-                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        undyingSlashWave.transform.localPosition = new Vector3(waveSlashPosition.x, waveSlashPosition.y, waveSlashPosition.z + 1);
                         wavePositionSet = true;
                         break;
                     case 4:
@@ -223,8 +225,7 @@ public class UndyingEnemy : MonoBehaviour
                     default:
                         break;
                 }
-            }*/
-            undyingSlashWave.transform.localPosition = waveSlashPosition;
+            }
             stopSlashPlayed = false;
             if (SecretT.bar == 100)
             {
