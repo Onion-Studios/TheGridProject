@@ -20,9 +20,14 @@ public class MalevolentEnemy : MonoBehaviour
     public Vector3 position;
     public float spawntimer;
     public float maxspawntimer;
+    private Animator malevolentAnimator;
 
     #endregion
 
+    private void Awake()
+    {
+        malevolentAnimator = GetComponentInChildren<Animator>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +69,7 @@ public class MalevolentEnemy : MonoBehaviour
     {
         AudioManager.Instance.PlaySound("MalevolentSpawn");
         StartCoroutine("MalevolentSound");
+        malevolentAnimator.SetBool("MalevolentDeath", false);
     }
 
     // Update is called once per frame
@@ -83,6 +89,12 @@ public class MalevolentEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        malevolentAnimator.SetBool("MalevolentDeath", true);
+        Invoke("Death", 3);
+    }
+
+    private void Death()
+    {
         this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
@@ -93,7 +105,6 @@ public class MalevolentEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+
     }
-
-
 }

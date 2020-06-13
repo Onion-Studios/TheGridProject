@@ -204,22 +204,22 @@ AnimationClip:
     - time: 0.016666668
       value: {fileID: -5785399797381193648, guid: 738c4554b42ed9445a0813e396f1c036,
         type: 3}
-    - time: 1.3333334
+    - time: 1
       value: {fileID: 8055802041954822105, guid: 738c4554b42ed9445a0813e396f1c036,
         type: 3}
-    - time: 1.5
+    - time: 1.1666666
       value: {fileID: 8556857732453498649, guid: 738c4554b42ed9445a0813e396f1c036,
         type: 3}
-    - time: 1.6666666
+    - time: 1.3333334
       value: {fileID: -8710281174317259702, guid: 738c4554b42ed9445a0813e396f1c036,
         type: 3}
-    - time: 2.25
+    - time: 2.6666667
       value: {fileID: 5517249533864438374, guid: 738c4554b42ed9445a0813e396f1c036,
         type: 3}
-    - time: 2.4166667
+    - time: 2.8333333
       value: {fileID: -1439073830315644458, guid: 738c4554b42ed9445a0813e396f1c036,
         type: 3}
-    - time: 2.5833333
+    - time: 3
       value: {fileID: -5785399797381193648, guid: 738c4554b42ed9445a0813e396f1c036,
         type: 3}
     attribute: m_Sprite
