@@ -21,6 +21,7 @@ public class MalevolentEnemy : MonoBehaviour
     public float spawntimer;
     public float maxspawntimer;
     private Animator malevolentAnimator;
+    private bool playerDeathPlayed;
 
     #endregion
 
@@ -76,6 +77,11 @@ public class MalevolentEnemy : MonoBehaviour
     void Update()
     {
         transform.position = position;
+        if (Inkstone.Ink == 0 && playerDeathPlayed == false)
+        {
+            PlayerDeath();
+            playerDeathPlayed = true;
+        }
     }
 
     private IEnumerator MalevolentSound()
@@ -106,5 +112,10 @@ public class MalevolentEnemy : MonoBehaviour
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
 
+    }
+
+    private void PlayerDeath()
+    {
+        malevolentAnimator.SetBool("MalevolentDeath", true);
     }
 }

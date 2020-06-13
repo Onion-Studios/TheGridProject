@@ -23,7 +23,7 @@ public class BufferEnemy : MonoBehaviour
     private ParticleSystem inkDeath;
     [SerializeField]
     private ParticleSystem buffPower;
-    private Animator bufferAnimator;
+    public Animator bufferAnimator;
     #endregion
 
     private void Start()

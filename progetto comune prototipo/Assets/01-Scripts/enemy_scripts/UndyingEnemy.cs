@@ -38,7 +38,7 @@ public class UndyingEnemy : MonoBehaviour
     private bool stopSlashPlayed;
     private bool destinationReached;
     public int laneID;
-    private Animator undyingAnimator;
+    public Animator undyingAnimator;
     private bool alreadyDead;
     private bool wavePositionSet;
 

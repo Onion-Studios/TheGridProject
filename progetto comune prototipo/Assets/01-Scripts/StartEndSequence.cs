@@ -33,6 +33,8 @@ public class StartEndSequence : MonoBehaviour
     public Vector3 closeCurtain2;
     private bool startSequencePositionPlayed;
     private bool endSequencePositionPlayed;
+    [SerializeField]
+    private GameObject particlesCamera;
     #endregion
 
     void Awake()
@@ -233,36 +235,42 @@ public class StartEndSequence : MonoBehaviour
                             {
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 NormalEnemy.speed = 0;
+                                NormalEnemy.normalAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 1:
                             {
                                 KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
                                 KamikazeEnemy.speed = 0;
+                                KamikazeEnemy.kamikazeAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 2:
                             {
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 ArmoredEnemy.speed = 0;
+                                ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 3:
                             {
                                 UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
                                 UndiyngEnemy.speed = 0;
+                                UndiyngEnemy.undyingAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 5:
                             {
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
                                 frighteningEnemy.speed = 0;
+                                frighteningEnemy.frighteningAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 6:
                             {
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
                                 bufferEnemy.speed = 0;
+                                bufferEnemy.bufferAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
 
@@ -278,6 +286,7 @@ public class StartEndSequence : MonoBehaviour
         lightObjects[1].SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
         lightObjects[0].SetActive(false);
+        particlesCamera.SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
         lightObjects[3].SetActive(true);
         AudioManager.Instance.PlaySound("Spotlight");

@@ -26,8 +26,13 @@ public class KamikazeEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem explosion;
     public ParticleSystem buffEffect;
+    public Animator kamikazeAnimator;
     #endregion
 
+    private void Awake()
+    {
+        kamikazeAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();

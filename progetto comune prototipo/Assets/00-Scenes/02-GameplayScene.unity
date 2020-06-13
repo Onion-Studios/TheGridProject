@@ -3994,6 +3994,7 @@ MonoBehaviour:
   endImage: {fileID: 1447169287}
   time: 1
   closeCurtain2: {x: -11.45, y: 4.3, z: 4.93}
+  particlesCamera: {fileID: 238996071}
 --- !u!114 &986519609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13205,7 +13206,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3383
+    m_Bits: 7479
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

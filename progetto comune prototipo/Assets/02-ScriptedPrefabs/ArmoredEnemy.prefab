@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5151981327707805868}
   - component: {fileID: 8455817614354356842}
   - component: {fileID: 125870219631744970}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hat_low
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051069425151267326}
   m_LocalRotation: {x: 0.043619387, y: -9.6837875e-17, z: 2.0224162e-16, w: 0.99904823}
-  m_LocalPosition: {x: 0, y: -0.012, z: 0.095}
+  m_LocalPosition: {x: 0, y: -0.083, z: 0.089}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1735161641787511609}
@@ -104,9 +104,9 @@ GameObject:
   - component: {fileID: 3073259313593380641}
   - component: {fileID: 1323607019240946032}
   - component: {fileID: 6523458933427387545}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shoulder_R
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236892367305788006}
   m_LocalRotation: {x: 0.06082122, y: -0.029639427, z: 0.06714703, w: 0.99544644}
-  m_LocalPosition: {x: -0.014, y: -0.008, z: 0.13}
+  m_LocalPosition: {x: -0.004, y: -0.078, z: 0.122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2379541020652696528}
@@ -196,9 +196,9 @@ GameObject:
   - component: {fileID: 5307027887859074377}
   - component: {fileID: 848845180161606367}
   - component: {fileID: 6536986717106055430}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shoulder_L
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371972065356629436}
   m_LocalRotation: {x: 0.008713931, y: -0.0073815933, z: -0.009176054, w: 0.9998927}
-  m_LocalPosition: {x: -0.007, y: 0.022, z: 0.131}
+  m_LocalPosition: {x: -0.008, y: -0.049, z: 0.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5585060749797548232}
@@ -487,9 +487,9 @@ GameObject:
   - component: {fileID: 3758221289638244392}
   - component: {fileID: 7775377159955399695}
   - component: {fileID: 6020279317781978138}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arm_R
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,7 +502,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3450663677555334661}
   m_LocalRotation: {x: 0.06386171, y: 0.016432893, z: 0.06426018, w: 0.99575216}
-  m_LocalPosition: {x: -0.002, y: 0.009, z: 0.133}
+  m_LocalPosition: {x: 0.007, y: -0.061, z: 0.124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9144569089659020602}
@@ -654,9 +654,9 @@ GameObject:
   - component: {fileID: 6268307992200837336}
   - component: {fileID: 268333641166758438}
   - component: {fileID: 1679524934822715832}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Leg_L
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -669,7 +669,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665494021184323089}
   m_LocalRotation: {x: 0.03765171, y: -0.0070492164, z: 0.060264166, w: 0.9974472}
-  m_LocalPosition: {x: -0.008, y: -0.001, z: 0.131}
+  m_LocalPosition: {x: 0.001, y: -0.071, z: 0.126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 715264513585159252}
@@ -821,9 +821,9 @@ GameObject:
   - component: {fileID: 5169241747334423656}
   - component: {fileID: 1334594493973870711}
   - component: {fileID: 4378474911869679524}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arm_L
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -836,7 +836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4850715366996983908}
   m_LocalRotation: {x: 0.009175792, y: -0.054035466, z: -0.014476057, w: 0.998392}
-  m_LocalPosition: {x: -0.017, y: 0.004, z: 0.109}
+  m_LocalPosition: {x: -0.019, y: -0.067, z: 0.108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6676727479285785668}
@@ -1066,9 +1066,9 @@ GameObject:
   - component: {fileID: 7181462414138017332}
   - component: {fileID: 1039121672507293078}
   - component: {fileID: 6658403092501843029}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Leg_R
-  m_TagString: Untagged
+  m_TagString: Armor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1081,7 +1081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7462908802900391605}
   m_LocalRotation: {x: 0.037644416, y: 0.00704371, z: -0.060264517, w: 0.9974475}
-  m_LocalPosition: {x: -0.003, y: 0, z: 0.131}
+  m_LocalPosition: {x: -0.011, y: -0.07, z: 0.126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3183465818116066832}

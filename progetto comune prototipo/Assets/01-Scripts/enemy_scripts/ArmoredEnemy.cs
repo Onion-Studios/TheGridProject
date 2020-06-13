@@ -37,7 +37,7 @@ public class ArmoredEnemy : MonoBehaviour
     public float stopTime, waitTime;
     IEnumerator deathforendgrid;
     bool destinationReached;
-    private Animator armoredAnimator;
+    public Animator armoredAnimator;
     [SerializeField]
     private GameObject armorPiece1;
     [SerializeField]
