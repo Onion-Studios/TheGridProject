@@ -11,6 +11,8 @@ public class MenuWithKeyboard : MonoBehaviour
     public List<GameObject> SelectedImages;
     public bool ExistingList = false;
     public int Index;
+    MainMenu MM;
+    OptionMenu OM;
     enum MenuStates
     {
         MainMenu,
@@ -27,6 +29,8 @@ public class MenuWithKeyboard : MonoBehaviour
     void Start()
     {
         CurrentState = MenuStates.MainMenu;
+        MM = FindObjectOfType<MainMenu>();
+        OM = FindObjectOfType<OptionMenu>();
     }
 
     // Update is called once per frame
@@ -118,28 +122,28 @@ public class MenuWithKeyboard : MonoBehaviour
         switch (CurrentState)
         {
             case MenuStates.MainMenu:
-                MainMenu();
+                StateOperations();
                 break;
             case MenuStates.HowToPlay:
-
+                StateOperations();
                 break;
             case MenuStates.Credits:
-
+                StateOperations();
                 break;
             case MenuStates.ExitGame:
-
+                StateOperations();
                 break;
             case MenuStates.Options:
-
+                StateOperations();
                 break;
             case MenuStates.Controls:
-
+                StateOperations();
                 break;
             case MenuStates.Audio:
-
+                StateOperations();
                 break;
             case MenuStates.Video:
-
+                StateOperations();
                 break;
         }
     }
@@ -167,6 +171,7 @@ public class MenuWithKeyboard : MonoBehaviour
     {
         if (ExistingList == true)
         {
+            ActivateImage();
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 Index--;
@@ -186,9 +191,49 @@ public class MenuWithKeyboard : MonoBehaviour
         }
     }
 
-    public void MainMenu()
+    public void StateOperations()
     {
         GetGameObject();
         CycleButtons();
+    }
+
+    public void MainMenu()
+    {
+        switch (Index)
+        {
+            case 0:
+                MM.GoToLevel();
+                OM.ConfirmSound();
+                OM.StopMenuMusic();
+                break;
+            case 1:
+                OM.ConfirmSound();
+                break;
+            case 2:
+                OM.ConfirmSound();
+                break;
+            case 3:
+                OM.ConfirmSound();
+                break;
+            case 4:
+                OM.ConfirmSound();
+                break;
+        }
+
+    }
+
+    public void ActivateImage()
+    {
+        for (int i = 0; i < SelectedImages.Count; i++)
+        {
+            if(i==Index)
+            {
+                SelectedImages[i].SetActive(true);
+            }
+            else
+            {
+                SelectedImages[i].SetActive(false);
+            }
+        }
     }
 }

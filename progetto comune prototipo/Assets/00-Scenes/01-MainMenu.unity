@@ -8568,7 +8568,7 @@ GameObject:
   - component: {fileID: 942681830}
   - component: {fileID: 942681829}
   m_Layer: 5
-  m_Name: Dialogue exit
+  m_Name: ExitGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8836,7 +8836,7 @@ GameObject:
   - component: {fileID: 973337076}
   - component: {fileID: 973337075}
   m_Layer: 5
-  m_Name: Start Game
+  m_Name: StartGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9656,7 +9656,7 @@ GameObject:
   - component: {fileID: 1043606787}
   - component: {fileID: 1043606786}
   m_Layer: 5
-  m_Name: Credits
+  m_Name: CreditsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10553,7 +10553,7 @@ GameObject:
   - component: {fileID: 1126282093}
   - component: {fileID: 1126282092}
   m_Layer: 5
-  m_Name: AudioMenu
+  m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11068,7 +11068,7 @@ GameObject:
   - component: {fileID: 1178314338}
   - component: {fileID: 1178314337}
   m_Layer: 5
-  m_Name: Options
+  m_Name: OptionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12218,7 +12218,7 @@ GameObject:
   - component: {fileID: 1285999551}
   - component: {fileID: 1285999550}
   m_Layer: 0
-  m_Name: ControlsMenu
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12392,7 +12392,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentStateMenu: {fileID: 0}
   CurrentStateMenuButtons: []
+  SelectedImages: []
   ExistingList: 0
+  Index: 0
 --- !u!1 &1291377812
 GameObject:
   m_ObjectHideFlags: 0
@@ -13077,7 +13079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405434841}
   m_Layer: 5
-  m_Name: VideoMenu
+  m_Name: Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14304,7 +14306,7 @@ GameObject:
   - component: {fileID: 1478271031}
   - component: {fileID: 1478271030}
   m_Layer: 5
-  m_Name: Exit Game
+  m_Name: ExitGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16464,7 +16466,7 @@ GameObject:
   - component: {fileID: 1709624270}
   - component: {fileID: 1709624269}
   m_Layer: 5
-  m_Name: How to play
+  m_Name: HowToPlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
