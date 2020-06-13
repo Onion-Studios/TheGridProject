@@ -71,11 +71,14 @@ public class KamikazeEnemy : MonoBehaviour
     void Update()
     {
         Enemymove();
-
+        if (AudioManager.Instance.IsPlaying("Kamikazesound") == false)
+        {
+            InvokeRepeating("playkamikazesound", 2.0f, 4.0f);
+        }
         PointOverDistance();
-    }
+    }                                                                                          
 
-
+                                                                   
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
@@ -92,7 +95,6 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.Play();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= 10;
-        AudioManager.Instance.PlaySound("Backwash");
         foreach (GameObject segno in signkamikazenemy)
         {
             segno.SetActive(false);
@@ -205,5 +207,8 @@ public class KamikazeEnemy : MonoBehaviour
             }
         }
     }
-
+    void playkamikazesound()
+    {
+        AudioManager.Instance.PlaySound("Kamikazesound");
+    }
 }

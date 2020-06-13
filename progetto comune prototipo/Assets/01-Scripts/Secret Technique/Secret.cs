@@ -100,6 +100,7 @@ public class Secret : MonoBehaviour
     public void Death()
     {
         inkStroke.Play();
+        AudioManager.Instance.PlaySound("Secretsignsuccessfull");
         for (int i = 0; i < 7; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])

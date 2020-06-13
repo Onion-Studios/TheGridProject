@@ -98,6 +98,10 @@ public class NormalEnemy : MonoBehaviour
         if (destinationReached == false)
         {
             Enemymove();
+            if (AudioManager.Instance.IsPlaying("Normalsound") == false)
+            {
+                InvokeRepeating("playnormalsound",2.0f,4.0f);
+            }
         }
         else
         {
@@ -114,7 +118,6 @@ public class NormalEnemy : MonoBehaviour
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
-
         if (this.transform.localPosition.x > 3.75)
         {
             Invoke("DeathForEndGrid", timeToDespawn);
@@ -211,5 +214,9 @@ public class NormalEnemy : MonoBehaviour
             extrapointsoverdistance = scoreEnemy;
         }
 
+    }
+    void playnormalsound()
+    {
+        AudioManager.Instance.PlaySound("Normalsound");
     }
 }
