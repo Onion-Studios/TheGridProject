@@ -265,7 +265,7 @@ public class UndyingEnemy : MonoBehaviour
         {
             repelled = false;
             undyingStopped = true;
-            Invoke("RestartMovement", 1f);
+            Invoke("RestartMovement", 0.7f);
             speed = baseSpeed;
             undyingAnimator.SetBool("IsRepelled", false);
         }
