@@ -102,6 +102,7 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         ExplosionWork(this.transform.position);
+        Invoke("ParentReassignment", explosionDelay);
     }
 
     public void Deathforgriglia()
@@ -132,6 +133,7 @@ public class KamikazeEnemy : MonoBehaviour
 
         SecretT.bar = 0;
         ExplosionWork(this.transform.position);
+        Invoke("ParentReassignment", explosionDelay);
     }
 
     public void Deathforsign()

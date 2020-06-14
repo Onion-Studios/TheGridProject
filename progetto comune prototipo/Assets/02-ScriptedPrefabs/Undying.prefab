@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.3399999}
+  m_AnchoredPosition: {x: 0, y: 1.83}
   m_SizeDelta: {x: 0.9, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3171173455595584612
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.3399999}
+  m_AnchoredPosition: {x: 0, y: 1.8299999}
   m_SizeDelta: {x: 0.9, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2220503078287879238
@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.34}
+  m_AnchoredPosition: {x: 0, y: 1.83}
   m_SizeDelta: {x: 0.75, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2987982613095046998
@@ -452,7 +452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.3399999}
+  m_AnchoredPosition: {x: 0, y: 1.8299999}
   m_SizeDelta: {x: 0.9, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7404162902646941896
@@ -527,7 +527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.3399999}
+  m_AnchoredPosition: {x: 0, y: 1.8299999}
   m_SizeDelta: {x: 0.9, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5518135683166130725
@@ -602,7 +602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.34}
+  m_AnchoredPosition: {x: 0, y: 1.83}
   m_SizeDelta: {x: 0.75, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5829311012425676662
@@ -655,16 +655,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: undying_Animation
       objectReference: {fileID: 0}
-    - target: {fileID: -6125793729360417898, guid: e73a136e8a3de7042b60a652419f5638,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: dfcf44ca3609cde42847b2fce587944e, type: 2}
-    - target: {fileID: -6057140222963153312, guid: e73a136e8a3de7042b60a652419f5638,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f7ad007a0a741c749960b62bfc27a6ff, type: 2}
     - target: {fileID: -4216859302048453862, guid: e73a136e8a3de7042b60a652419f5638,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -720,6 +710,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6125793729360417898, guid: e73a136e8a3de7042b60a652419f5638,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dfcf44ca3609cde42847b2fce587944e, type: 2}
+    - target: {fileID: -6057140222963153312, guid: e73a136e8a3de7042b60a652419f5638,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f7ad007a0a741c749960b62bfc27a6ff, type: 2}
     - target: {fileID: -2293481609411916828, guid: e73a136e8a3de7042b60a652419f5638,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

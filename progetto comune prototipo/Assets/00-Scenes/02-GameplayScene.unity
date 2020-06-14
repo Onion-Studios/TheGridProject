@@ -11391,8 +11391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89346b26f8bedc644b4fdbe62ace305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInk: 100
-  Ink: 100
+  maxInk: 10000
+  Ink: 10000
   Layer1: {fileID: 172065574}
   Layer2: {fileID: 485894071}
   Layer3: {fileID: 490766976}
@@ -12847,6 +12847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: charge
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: symbolShowDuration
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2653412836388115624, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}
