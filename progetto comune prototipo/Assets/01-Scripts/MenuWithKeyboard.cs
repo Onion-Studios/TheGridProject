@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class MenuWithKeyboard : MonoBehaviour
 {
-    public GameObject mainMenu, OptionsMenu, AudioMenu, VideoMenu, ControlsMenu, ExitDialogue, Record, PointsTag, howToPlay, credits;
-    //public GameObject FirstOptionsButton, CloseOptionsButton, FirstCloseButton, CloseCloseButton, AudioSlider, CloseAudioButton, VideoResolution, CloseVideoButton, FirstControlsButton, CloseControlsButton;
+    public GameObject mainMenu, OptionsMenu, AudioMenu, VideoMenu, ControlsMenu, ExitDialogue, Record, PointsTag, howToPlay, credits, tutorial;
     public GameObject CurrentStateMenu;
     public List<GameObject> CurrentStateMenuButtons;
     public List<GameObject> SelectedImages;
     public GameObject currentButtonOver, check;
     public bool ExistingList;
     public bool mouseClick;
-    public int Index;
+    public int Index, howToPlayIndex;
     MainMenu MM;
-    OptionMenu OM;
+    public GameObject howToPlayBG;
+    public GameObject[] howToPlayImages;
+    public GameObject[] howToPlayTexts;
     enum MenuStates
     {
         MainMenu,
@@ -33,7 +34,6 @@ public class MenuWithKeyboard : MonoBehaviour
     {
         CurrentState = MenuStates.MainMenu;
         MM = FindObjectOfType<MainMenu>();
-        OM = FindObjectOfType<OptionMenu>();
         ExistingList = false;
         mouseClick = false;
     }
@@ -246,6 +246,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     ExistingList = false;
                     AudioManager.Instance.PlaySound("MenuConfirm");
                     CurrentState = MenuStates.HowToPlay;
+                    howToPlayIndex = 0;
                     howToPlay.SetActive(true);
                     mainMenu.SetActive(false);
                     OptionsMenu.SetActive(false);
@@ -292,6 +293,8 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void HowToPlay()
     {
+        howToPlayBG.SetActive(true);
+        HowToPlayCycleImages(false);
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
@@ -299,16 +302,27 @@ public class MenuWithKeyboard : MonoBehaviour
                 case 0:
                     //left arrow
                     AudioManager.Instance.PlaySound("MenuConfirm");
+                    howToPlayIndex--;
+                    if (howToPlayIndex < 0)
+                    {
+                        howToPlayIndex = howToPlayImages.Length - 1;
+                    }
                     break;
                 case 1:
                     //right arrow
                     AudioManager.Instance.PlaySound("MenuConfirm");
+                    howToPlayIndex++;
+                    if (howToPlayIndex >= howToPlayImages.Length)
+                    {
+                        howToPlayIndex = 0;
+                    }
                     break;
                 case 2:
                     //back
                     ExistingList = false;
                     AudioManager.Instance.PlaySound("MenuCancel");
                     CurrentState = MenuStates.MainMenu;
+                    HowToPlayCycleImages(true);
                     mainMenu.SetActive(true);
                     howToPlay.SetActive(false);
                     OptionsMenu.SetActive(false);
@@ -323,11 +337,42 @@ public class MenuWithKeyboard : MonoBehaviour
             ExistingList = false;
             AudioManager.Instance.PlaySound("MenuCancel");
             CurrentState = MenuStates.MainMenu;
+            HowToPlayCycleImages(true);
             mainMenu.SetActive(true);
             howToPlay.SetActive(false);
             OptionsMenu.SetActive(false);
             credits.SetActive(false);
             ExitDialogue.SetActive(false);
+        }
+    }
+
+    public void HowToPlayCycleImages(bool alloff)
+    {
+        if (alloff == false)
+        {
+            for (int i = 0; i < howToPlayImages.Length; i++)
+            {
+                if (i == howToPlayIndex)
+                {
+                    howToPlayImages[i].SetActive(true);
+                    howToPlayTexts[i].SetActive(true);
+                }
+                else
+                {
+                    howToPlayImages[i].SetActive(false);
+                    howToPlayTexts[i].SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < howToPlayImages.Length; i++)
+            {
+                howToPlayImages[i].SetActive(false);
+                howToPlayTexts[i].SetActive(false);
+            }
+            howToPlayBG.SetActive(false);
+            howToPlayIndex = 0;
         }
     }
 
