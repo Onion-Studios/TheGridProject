@@ -252,6 +252,8 @@ public class MenuWithKeyboard : MonoBehaviour
                     OptionsMenu.SetActive(false);
                     ExitDialogue.SetActive(false);
                     credits.SetActive(false);
+                    Record.SetActive(false);
+                    PointsTag.SetActive(false);
                     break;
                 case 2:
                     //Options
@@ -291,6 +293,7 @@ public class MenuWithKeyboard : MonoBehaviour
         }
     }
 
+    #region HowToPlay
     public void HowToPlay()
     {
         howToPlayBG.SetActive(true);
@@ -328,6 +331,8 @@ public class MenuWithKeyboard : MonoBehaviour
                     OptionsMenu.SetActive(false);
                     credits.SetActive(false);
                     ExitDialogue.SetActive(false);
+                    Record.SetActive(true);
+                    PointsTag.SetActive(true);
                     break;
             }
             mouseClick = false;
@@ -343,6 +348,8 @@ public class MenuWithKeyboard : MonoBehaviour
             OptionsMenu.SetActive(false);
             credits.SetActive(false);
             ExitDialogue.SetActive(false);
+            Record.SetActive(true);
+            PointsTag.SetActive(true);
         }
     }
 
@@ -375,6 +382,7 @@ public class MenuWithKeyboard : MonoBehaviour
             howToPlayIndex = 0;
         }
     }
+    #endregion
 
     public void Credits()
     {
@@ -515,6 +523,36 @@ public class MenuWithKeyboard : MonoBehaviour
         {
             switch (Index)
             {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    break;
                 case 28:
                     //back
                     ExistingList = false;
