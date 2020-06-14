@@ -10,8 +10,9 @@ public class MenuWithKeyboard : MonoBehaviour
     public GameObject CurrentStateMenu;
     public List<GameObject> CurrentStateMenuButtons;
     public List<GameObject> SelectedImages;
-    public GameObject currentButtonOver;
-    public bool ExistingList = false;
+    public GameObject currentButtonOver, check;
+    public bool ExistingList;
+    public bool mouseClick;
     public int Index;
     MainMenu MM;
     OptionMenu OM;
@@ -33,6 +34,8 @@ public class MenuWithKeyboard : MonoBehaviour
         CurrentState = MenuStates.MainMenu;
         MM = FindObjectOfType<MainMenu>();
         OM = FindObjectOfType<OptionMenu>();
+        ExistingList = false;
+        mouseClick = false;
     }
 
     // Update is called once per frame
@@ -228,7 +231,7 @@ public class MenuWithKeyboard : MonoBehaviour
     #region All Menus Buttons Functions
     public void MainMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -283,12 +286,13 @@ public class MenuWithKeyboard : MonoBehaviour
                     howToPlay.SetActive(false);
                     break;
             }
+            mouseClick = false;
         }
     }
 
     public void HowToPlay()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -312,6 +316,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     ExitDialogue.SetActive(false);
                     break;
             }
+            mouseClick = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -328,7 +333,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void Credits()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -344,6 +349,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     ExitDialogue.SetActive(false);
                     break;
             }
+            mouseClick = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -360,7 +366,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void ExitGame()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -380,6 +386,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     ExitDialogue.SetActive(false);
                     break;
             }
+            mouseClick = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -396,7 +403,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void Options()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -442,6 +449,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     ExitDialogue.SetActive(false);
                     break;
             }
+            mouseClick = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -458,7 +466,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void Controls()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -473,6 +481,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     CurrentState = MenuStates.Options;
                     break;
             }
+            mouseClick = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -488,7 +497,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void Audio()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -503,6 +512,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     CurrentState = MenuStates.Options;
                     break;
             }
+            mouseClick = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -518,7 +528,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void Video()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
         {
             switch (Index)
             {
@@ -533,6 +543,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     CurrentState = MenuStates.Options;
                     break;
             }
+            mouseClick = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -555,6 +566,7 @@ public class MenuWithKeyboard : MonoBehaviour
 
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointer, raycastResults);
+        bool checkBool = false;
 
         if (raycastResults.Count > 0)
         {
@@ -563,17 +575,31 @@ public class MenuWithKeyboard : MonoBehaviour
                 if (go.gameObject.GetComponent<Button>() != null)
                 {
                     currentButtonOver = go.gameObject;
+                    if (currentButtonOver != check)
+                    {
+                        check = currentButtonOver;
+                        checkBool = true;
+                    }
                 }
             }
         }
 
-        for (int i = 0; i < CurrentStateMenuButtons.Count; i++)
+        if (checkBool == true)
         {
-            if (CurrentStateMenuButtons[i].name == currentButtonOver.name)
+            for (int i = 0; i < CurrentStateMenuButtons.Count; i++)
             {
-                Index = i;
+                if (CurrentStateMenuButtons[i].name == currentButtonOver.name)
+                {
+                    Index = i;
+                }
             }
+            checkBool = false;
         }
+    }
+
+    public void MouseClick()
+    {
+        mouseClick = true;
     }
     #endregion
 }

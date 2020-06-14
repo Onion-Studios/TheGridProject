@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
+using UnityEngine.UI;
 
 public class StartEndSequence : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class StartEndSequence : MonoBehaviour
     PointSystem pointSystem;
     Enemyspawnmanager enemyspawnmanager;
     Curtains curtains;
-    int startSequencePosition;
+    public int startSequencePosition;
     int endSequencePosition;
     public GameObject[] lightObjects;
     public float activateLight;
@@ -62,7 +61,7 @@ public class StartEndSequence : MonoBehaviour
         }
 
         pointSystem = FindObjectOfType<PointSystem>();
-        if(pointSystem == null)
+        if (pointSystem == null)
         {
             Debug.LogError("PointSystem is NULL!");
         }
@@ -92,11 +91,11 @@ public class StartEndSequence : MonoBehaviour
         {
             StartSequence();
         }
-        if(skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return)&&startSequencePosition>=1)
+        if (skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return) && startSequencePosition >= 1)
         {
             skipping = true;
         }
-        if(skipping == true)
+        if (skipping == true)
         {
             Skip();
             AudioManager.Instance.StopSound("Yoo");
@@ -112,7 +111,7 @@ public class StartEndSequence : MonoBehaviour
         switch (startSequencePosition)
         {
             case 0:
-                if(loading==null)
+                if (loading == null)
                 {
                     loading = Loading();
                     StartCoroutine(loading);
@@ -173,22 +172,22 @@ public class StartEndSequence : MonoBehaviour
 
     }
 
-   public void EndSequence()
-   {
+    public void EndSequence()
+    {
         switch (endSequencePosition)
         {
             case 0:
                 StopAllEnemies();
                 break;
             case 1:
-                if(lightsOFF == null)
+                if (lightsOFF == null)
                 {
                     lightsOFF = LightsOFF();
                     StartCoroutine(lightsOFF);
                 }
                 break;
             case 2:
-                if(lightsOFF != null)
+                if (lightsOFF != null)
                 {
                     StopCoroutine(lightsOFF);
                     lightsOFF = null;
@@ -202,14 +201,14 @@ public class StartEndSequence : MonoBehaviour
                 endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
                 break;
             case 5:
-                if(blackScreen == null)
+                if (blackScreen == null)
                 {
                     blackScreen = BlackScreen();
                     StartCoroutine(blackScreen);
                 }
                 break;
             case 6:
-                if(blackScreen != null)
+                if (blackScreen != null)
                 {
                     StopCoroutine(blackScreen);
                     blackScreen = null;
@@ -217,7 +216,7 @@ public class StartEndSequence : MonoBehaviour
                 GameOver();
                 break;
         }
-   }
+    }
 
     void GameOver()
     {
@@ -365,7 +364,7 @@ public class StartEndSequence : MonoBehaviour
 
     void Skip()
     {
-        if(switchui == true)
+        if (switchui == true)
         {
             SwitchUI();
         }

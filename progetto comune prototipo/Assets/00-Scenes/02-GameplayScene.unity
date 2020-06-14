@@ -4072,6 +4072,7 @@ MonoBehaviour:
   dragon1: {fileID: 170796334}
   dragon2: {fileID: 170796333}
   dragon3: {fileID: 170796332}
+  loadImage: {fileID: 1335605564}
   intensitySpeed: 0.3
   intensitySpeedIncrease: 0
 --- !u!4 &986519607
@@ -5212,7 +5213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1335605565
 RectTransform:
   m_ObjectHideFlags: 0
