@@ -1009,8 +1009,8 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: Kamikazelaugh
-    clip: {fileID: 0}
+  - clipName: Frighteningsound
+    clip: {fileID: 8300000, guid: bb9d95809f8f193429cf406cee27dccb, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -1035,22 +1035,6 @@ MonoBehaviour:
       type: 2}
   - clipName: undyingrepelled
     clip: {fileID: 8300000, guid: 81499f0759ee4af4a9e88892c1884194, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
-  - clipName: 
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
-  - clipName: 
-    clip: {fileID: 0}
     volume: 1
     pitch: 1
     loop: 0

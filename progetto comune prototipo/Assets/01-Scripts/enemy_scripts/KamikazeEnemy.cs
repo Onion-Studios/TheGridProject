@@ -26,6 +26,8 @@ public class KamikazeEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem explosion;
     public ParticleSystem buffEffect;
+    bool Kamikazelaugh = false;
+    bool Kamikazesound = false;
     #endregion
 
     private void OnEnable()
@@ -65,16 +67,17 @@ public class KamikazeEnemy : MonoBehaviour
 
         startPosition = transform.position.x;
 
+        if (AudioManager.Instance.IsPlaying("Kamikazesound") == false)
+        {
+            Invoke("playkamikazesound",2.0f);
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Enemymove();
-        if (AudioManager.Instance.IsPlaying("Kamikazesound") == false)
-        {
-            InvokeRepeating("playkamikazesound", 2.0f, 4.0f);
-        }
         PointOverDistance();
     }                                                                                          
 

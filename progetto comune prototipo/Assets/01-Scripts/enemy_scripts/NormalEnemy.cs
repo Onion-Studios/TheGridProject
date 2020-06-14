@@ -81,6 +81,11 @@ public class NormalEnemy : MonoBehaviour
         startPosition = transform.position.x;
 
         deathforendgrid = null;
+
+        if (AudioManager.Instance.IsPlaying("Normalsound") == false)
+        {
+            Invoke("playnormalsound", 0.65f);
+        }
     }
 
     private void OnDisable()
@@ -98,10 +103,6 @@ public class NormalEnemy : MonoBehaviour
         if (destinationReached == false)
         {
             Enemymove();
-            if (AudioManager.Instance.IsPlaying("Normalsound") == false)
-            {
-                InvokeRepeating("playnormalsound",2.0f,4.0f);
-            }
         }
         else
         {
