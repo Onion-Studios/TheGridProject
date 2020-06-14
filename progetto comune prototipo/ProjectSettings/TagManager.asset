@@ -18,6 +18,7 @@ TagManager:
   - MalevolentEnemy
   - BufferEnemy
   - Armor
+  - Fuse
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Floor
   - Grid
   - Armor
-  - 
+  - Fuse
   - 
   - 
   - 
