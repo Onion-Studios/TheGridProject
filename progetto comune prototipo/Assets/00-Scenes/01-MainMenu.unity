@@ -13908,6 +13908,7 @@ MonoBehaviour:
   CurrentStateMenuButtons: []
   SelectedImages: []
   currentButtonOver: {fileID: 973337073}
+  check: {fileID: 0}
   ExistingList: 0
   mouseClick: 0
   Index: 0
