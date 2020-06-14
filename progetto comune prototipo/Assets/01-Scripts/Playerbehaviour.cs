@@ -96,35 +96,35 @@ public class Playerbehaviour : MonoBehaviour
             if (movementState == "readystate")
             {
 
-                if (Input.GetKey(KeyCode.W) && istanze.transform.position.z > 0.9)
+                if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && istanze.transform.position.z > 0.9)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z - 1;
                     movementState = "movingforward";
 
                 }
-                if (Input.GetKey(KeyCode.S) && istanze.transform.position.z < 3.1)
+                if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && istanze.transform.position.z < 3.1)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z + 1;
                     movementState = "movingback";
 
                 }
-                if (Input.GetKey(KeyCode.A) && istanze.transform.position.x < 3.1)
+                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && istanze.transform.position.x < 3.1)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x + 1;
                     movementState = "movingleft";
 
                 }
-                if (Input.GetKey(KeyCode.D) && istanze.transform.position.x > 0.9)
+                if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && istanze.transform.position.x > 0.9)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x - 1;
                     movementState = "movingright";
 
                 }
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
                 {
                     confirmPosition = istanze.transform.position;
                     smokeBomb.transform.position = confirmPosition;
