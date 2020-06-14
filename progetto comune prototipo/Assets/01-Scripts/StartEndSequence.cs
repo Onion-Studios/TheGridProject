@@ -288,6 +288,7 @@ public class StartEndSequence : MonoBehaviour
         lightObjects[0].SetActive(false);
         particlesCamera.SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
+        lightObjects[3].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[3].transform.position.y, playerbehaviour.istanze.transform.position.z);
         lightObjects[3].SetActive(true);
         AudioManager.Instance.PlaySound("Spotlight");
         yield return new WaitForSeconds(lightsStopTime);
