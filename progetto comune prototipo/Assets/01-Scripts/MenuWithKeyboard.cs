@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuWithKeyboard : MonoBehaviour
@@ -9,6 +10,7 @@ public class MenuWithKeyboard : MonoBehaviour
     public GameObject CurrentStateMenu;
     public List<GameObject> CurrentStateMenuButtons;
     public List<GameObject> SelectedImages;
+    public GameObject currentButtonOver;
     public bool ExistingList = false;
     public int Index;
     MainMenu MM;
@@ -37,6 +39,7 @@ public class MenuWithKeyboard : MonoBehaviour
     void Update()
     {
         MenuStateMachine();
+        MouseOverButtons();
     }
     #region Old Code
     /*
@@ -540,6 +543,36 @@ public class MenuWithKeyboard : MonoBehaviour
             Record.SetActive(true);
             PointsTag.SetActive(true);
             CurrentState = MenuStates.Options;
+        }
+    }
+    #endregion
+
+    #region Mouse Functionality
+    private void MouseOverButtons()
+    {
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach (var go in raycastResults)
+            {
+                if (go.gameObject.GetComponent<Button>() != null)
+                {
+                    currentButtonOver = go.gameObject;
+                }
+            }
+        }
+
+        for (int i = 0; i < CurrentStateMenuButtons.Count; i++)
+        {
+            if (CurrentStateMenuButtons[i].name == currentButtonOver.name)
+            {
+                Index = i;
+            }
         }
     }
     #endregion
