@@ -364,7 +364,7 @@ public class StartEndSequence : MonoBehaviour
 
     void Skip()
     {
-        if (switchui == true)
+        if (switchui == false)
         {
             SwitchUI();
         }
