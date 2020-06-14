@@ -14,7 +14,7 @@ public class Curtains : MonoBehaviour
 
     private void Awake()
     {
-        AudioManager.Instance.PlaySound("Yoo");
+        
         openedCurtainLeft = curtainLeft.transform.position;
         openedCurtainRight = curtainRight.transform.position;
     }

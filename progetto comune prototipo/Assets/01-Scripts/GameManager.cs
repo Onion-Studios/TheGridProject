@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject dragon1;
     public GameObject dragon2;
     public GameObject dragon3;
+    public GameObject loadImage;
     public float intensitySpeed, intensitySpeedIncrease;
 
     private bool soundPlayed1;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlaySound("MainTrack");
+        loadImage.SetActive(true);
     }
 
     private void Update()
