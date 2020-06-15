@@ -76,7 +76,7 @@ public class FrighteningEnemy : MonoBehaviour
 
         if (AudioManager.Instance.IsPlaying("Frighteningsound") == false)
         {
-            InvokeRepeating("playscarysound", 3.1f,4.0f);
+            InvokeRepeating("playscarysound", 3.1f, 4.0f);
         }
     }
 
@@ -145,9 +145,18 @@ public class FrighteningEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         playerbehaviour.speed = playerSpeed;
-        this.gameObject.SetActive(false);
+        Die();
     }
 
+    void Die()
+    {
+        if (deathforendgrid != null)
+        {
+            StopCoroutine(deathforendgrid);
+            deathforendgrid = null;
+        }
+        this.gameObject.SetActive(false);
+    }
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);

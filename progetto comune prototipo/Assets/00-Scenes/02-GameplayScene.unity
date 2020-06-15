@@ -996,80 +996,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &238996071
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 238996075}
-  - component: {fileID: 238996074}
-  m_Layer: 0
-  m_Name: Particles Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!20 &238996074
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238996071}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 53
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 8704
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &238996075
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238996071}
-  m_LocalRotation: {x: 0.00000007228672, y: 0.9668829, z: -0.25522062, w: 0.00000027141903}
-  m_LocalPosition: {x: -3.05, y: 7.42, z: 10.85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 29.573002, y: 180.00002, z: 0}
 --- !u!1 &261373722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,9 +2806,9 @@ MonoBehaviour:
   SignGroupwave3_6: 0500000002000000040000000100000001000000030000000100000005000000020000000500000004000000
   Activewave_intensity: 0
   Activewave_number: 0
-  TEST_WaveActive: 0
-  TEST_waveintesity: 1
-  TEST_wavenumber: 4
+  TEST_WaveActive: 1
+  TEST_waveintesity: 3
+  TEST_wavenumber: 5
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -4202,9 +4128,9 @@ MonoBehaviour:
   endImage: {fileID: 1447169287}
   time: 1
   closeCurtain2: {x: -11.45, y: 4.3, z: 4.93}
-  particlesCamera: {fileID: 238996071}
   LoadingTime: 5
   LoadImage: {fileID: 1335605564}
+  particlesCamera: {fileID: 0}
 --- !u!114 &986519609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4316,6 +4242,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1058032370}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061293695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061293697}
+  - component: {fileID: 1061293696}
+  m_Layer: 0
+  m_Name: Particles Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &1061293696
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061293695}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 53
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 8704
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1061293697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061293695}
+  m_LocalRotation: {x: 0.00000007228672, y: 0.9668829, z: -0.25522062, w: 0.00000027141903}
+  m_LocalPosition: {x: -3.05, y: 7.42, z: 10.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 29.573002, y: 180.00002, z: 0}
 --- !u!1 &1063131925
 GameObject:
   m_ObjectHideFlags: 0
@@ -13589,7 +13589,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 29.573002, y: 180.00002, z: 0}
 --- !u!1 &5663952131858811522
 GameObject:
@@ -13645,7 +13645,6 @@ GameObject:
   - component: {fileID: 6539381000972644842}
   - component: {fileID: 5676569597194104331}
   - component: {fileID: 2996341733604826912}
-  - component: {fileID: 6441519076496892786}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13653,20 +13652,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6441519076496892786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6441519076496892785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17540c68833d13645833ed652d46e757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaintainWidth: 1
-  AdaptPosition: 0
 --- !u!4 &6504152142443714281
 Transform:
   m_ObjectHideFlags: 0

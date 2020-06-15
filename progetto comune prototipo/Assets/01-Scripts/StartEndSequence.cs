@@ -34,11 +34,6 @@ public class StartEndSequence : MonoBehaviour
     public Vector3 closeCurtain2;
     public float LoadingTime;
     public GameObject LoadImage;
-    bool soundNotLooping;
-    public int enemynumber;
-    public GameObject endImage;
-    public float time;
-    public Vector3 closeCurtain2;
     private bool startSequencePositionPlayed;
     private bool endSequencePositionPlayed;
     [SerializeField]

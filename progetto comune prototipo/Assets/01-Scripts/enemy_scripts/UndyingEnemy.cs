@@ -194,7 +194,6 @@ public class UndyingEnemy : MonoBehaviour
 
         if (attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
         {
-            AudioManager.Instance.PlaySound("undyingslash");
             undyingAnimator.SetBool("Attacking", true);
             Invoke("AnimationDelayAttack", 0.5f);
 

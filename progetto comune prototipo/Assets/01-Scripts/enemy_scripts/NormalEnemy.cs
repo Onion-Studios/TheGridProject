@@ -138,6 +138,16 @@ public class NormalEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+        Die();
+    }
+
+    void Die()
+    {
+        if (deathforendgrid != null)
+        {
+            StopCoroutine(deathforendgrid);
+            deathforendgrid = null;
+        }
         this.gameObject.SetActive(false);
     }
 
