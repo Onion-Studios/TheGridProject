@@ -73,6 +73,11 @@ public class FrighteningEnemy : MonoBehaviour
         startPosition = transform.position.x;
 
         deathforendgrid = null;
+
+        if (AudioManager.Instance.IsPlaying("Frighteningsound") == false)
+        {
+            InvokeRepeating("playscarysound", 3.1f,4.0f);
+        }
     }
 
     private void OnDisable()
@@ -134,6 +139,7 @@ public class FrighteningEnemy : MonoBehaviour
         inkAbsorb.Stop();
         playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkstoneDamage;
+        AudioManager.Instance.PlaySound("Backwash");
         foreach (GameObject segno in signfrighteningenemy)
         {
             segno.SetActive(false);
@@ -148,6 +154,7 @@ public class FrighteningEnemy : MonoBehaviour
         playerbehaviour.frightenedPlayer.Stop();
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
+        AudioManager.Instance.PlaySound("Playertakedamage");
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signfrighteningenemy)
         {
@@ -218,5 +225,9 @@ public class FrighteningEnemy : MonoBehaviour
         {
             extrapointsoverdistance = scoreEnemy;
         }
+    }
+    void playscarysound()
+    {
+        AudioManager.Instance.PlaySound("Frighteningsound");
     }
 }

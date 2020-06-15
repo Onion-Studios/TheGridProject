@@ -81,6 +81,11 @@ public class NormalEnemy : MonoBehaviour
         startPosition = transform.position.x;
 
         deathforendgrid = null;
+
+        if (AudioManager.Instance.IsPlaying("Normalsound") == false)
+        {
+            Invoke("playnormalsound", 0.65f);
+        }
     }
 
     private void OnDisable()
@@ -114,7 +119,6 @@ public class NormalEnemy : MonoBehaviour
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
-
         if (this.transform.localPosition.x > 3.75)
         {
             Invoke("DeathForEndGrid", timeToDespawn);
@@ -129,6 +133,7 @@ public class NormalEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         Inkstone.Ink -= inkstoneDamage;
+        AudioManager.Instance.PlaySound("Backwash");
         foreach (GameObject segno in signnormalenemy)
         {
             segno.SetActive(false);
@@ -141,6 +146,7 @@ public class NormalEnemy : MonoBehaviour
         this.gameObject.SetActive(false);
         Inkstone.Ink -= inkDamage;
         Inkstone.maxInk -= maxInkDamage;
+        AudioManager.Instance.PlaySound("Playertakedamage");
         enemyspawnmanager.enemykilled = 0;
         foreach (GameObject segno in signnormalenemy)
         {
@@ -209,5 +215,9 @@ public class NormalEnemy : MonoBehaviour
             extrapointsoverdistance = scoreEnemy;
         }
 
+    }
+    void playnormalsound()
+    {
+        AudioManager.Instance.PlaySound("Normalsound");
     }
 }

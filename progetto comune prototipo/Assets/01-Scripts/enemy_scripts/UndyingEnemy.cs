@@ -127,7 +127,6 @@ public class UndyingEnemy : MonoBehaviour
 
         if (repelled == false)
         {
-
             Enemymove();
         }
         else
@@ -188,6 +187,7 @@ public class UndyingEnemy : MonoBehaviour
 
         if (attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
         {
+            AudioManager.Instance.PlaySound("undyingslash");
             undyingAnimator.SetBool("Attacking", true);
             Invoke("AnimationDelayAttack", 0.5f);
             undyingSlashWave.transform.localPosition = waveSlashPosition;
@@ -209,6 +209,7 @@ public class UndyingEnemy : MonoBehaviour
             attackTimer = maxAttacktimer;
             Inkstone.Ink -= inkDamage;
             Inkstone.maxInk -= maxInkDamage;
+            AudioManager.Instance.PlaySound("Playertakedamage");
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar = 0;
             enemyspawnmanager.enemykilled = 0;
@@ -246,7 +247,7 @@ public class UndyingEnemy : MonoBehaviour
         repelled = true;
         undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;
-
+        AudioManager.Instance.PlaySound("undyingrepelled");
     }
 
 
