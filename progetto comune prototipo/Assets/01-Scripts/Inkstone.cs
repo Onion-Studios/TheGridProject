@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Inkstone : MonoBehaviour
 {
@@ -16,10 +13,12 @@ public class Inkstone : MonoBehaviour
     public static int FinalScore;
     PointSystem PointSystem;
     StartEndSequence endSequence;
-    
+    private Playerbehaviour playerBehaviour;
+
 
     void Start()
     {
+        playerBehaviour = FindObjectOfType<Playerbehaviour>();
         Layer1.SetActive(true);
         Layer2.SetActive(true);
         Layer3.SetActive(true);
@@ -48,6 +47,8 @@ public class Inkstone : MonoBehaviour
         }
         if (Ink == 0)
         {
+            playerBehaviour.kitsuneAnimator.SetBool("MovementKeyPressed", false);
+            playerBehaviour.istanze.transform.rotation = Quaternion.Euler(0, -180, 0);
             endSequence.ending = true;
             resetonending = true;
         }

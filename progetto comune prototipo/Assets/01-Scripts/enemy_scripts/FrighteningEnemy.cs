@@ -28,7 +28,7 @@ public class FrighteningEnemy : MonoBehaviour
     public float stopTime, waitTime;
     IEnumerator deathforendgrid;
     bool destinationReached;
-    private Animator frighteningAnimator;
+    public Animator frighteningAnimator;
 
     #endregion
 

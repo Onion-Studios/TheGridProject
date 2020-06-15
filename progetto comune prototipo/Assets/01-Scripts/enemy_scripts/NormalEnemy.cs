@@ -22,7 +22,7 @@ public class NormalEnemy : MonoBehaviour
     public float extrapointsoverdistance;
     public float startGrid;
     public float timeToDespawn = 2f;
-    private Animator normalAnimator;
+    public Animator normalAnimator;
     private bool destinationReached;
     public float BlackToDeath;
     [SerializeField]

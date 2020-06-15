@@ -26,10 +26,13 @@ public class KamikazeEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem explosion;
     public ParticleSystem buffEffect;
-    bool Kamikazelaugh = false;
-    bool Kamikazesound = false;
+    public Animator kamikazeAnimator;
     #endregion
 
+    private void Awake()
+    {
+        kamikazeAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
@@ -103,6 +106,7 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         ExplosionWork(this.transform.position);
+        Invoke("ParentReassignment", explosionDelay);
     }
 
     public void Deathforgriglia()
@@ -134,6 +138,7 @@ public class KamikazeEnemy : MonoBehaviour
 
         SecretT.bar = 0;
         ExplosionWork(this.transform.position);
+        Invoke("ParentReassignment", explosionDelay);
     }
 
     public void Deathforsign()

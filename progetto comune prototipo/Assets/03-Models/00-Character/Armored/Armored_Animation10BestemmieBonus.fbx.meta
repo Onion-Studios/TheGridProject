@@ -1,14 +1,20 @@
 fileFormatVersion: 2
-guid: 98cf6d77af28e704aa763f86dbc14245
+guid: d62911fb550e3224fb20c4e9579e5b85
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 2667949614841947897
-    second: Walk
+      74: -7299334741386329138
+    second: Bastone nel culo
   - first:
-      74: -4624059130466941540
-    second: Risucchio
+      74: 1322957400641694323
+    second: heavy_walk01
+  - first:
+      74: 8606258397752818781
+    second: run01
+  - first:
+      74: 2791707724692328085
+    second: risucchio01
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -38,11 +44,40 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk
-      takeName: Walk
-      internalID: 2667949614841947897
-      firstFrame: 1
-      lastFrame: 30
+      name: Bastone nel culo
+      takeName: Bastone nel culo
+      internalID: -7299334741386329138
+      firstFrame: -1
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: heavy_walk01
+      takeName: heavy_walk01
+      internalID: 1322957400641694323
+      firstFrame: 2
+      lastFrame: 51
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -67,11 +102,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Risucchio
-      takeName: Risucchio
-      internalID: -4624059130466941540
-      firstFrame: 31
-      lastFrame: 63
+      name: run01
+      takeName: run01
+      internalID: 8606258397752818781
+      firstFrame: 52
+      lastFrame: 69
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: risucchio01
+      takeName: risucchio01
+      internalID: 2791707724692328085
+      firstFrame: 70
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -94,11 +158,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 31
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 6
+    globalScale: 20
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -145,7 +209,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 6
+    globalScale: 20
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

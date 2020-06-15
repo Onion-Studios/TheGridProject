@@ -34,6 +34,15 @@ public class StartEndSequence : MonoBehaviour
     public Vector3 closeCurtain2;
     public float LoadingTime;
     public GameObject LoadImage;
+    bool soundNotLooping;
+    public int enemynumber;
+    public GameObject endImage;
+    public float time;
+    public Vector3 closeCurtain2;
+    private bool startSequencePositionPlayed;
+    private bool endSequencePositionPlayed;
+    [SerializeField]
+    private GameObject particlesCamera;
     #endregion
 
     void Awake()
@@ -253,36 +262,42 @@ public class StartEndSequence : MonoBehaviour
                             {
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 NormalEnemy.speed = 0;
+                                NormalEnemy.normalAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 1:
                             {
                                 KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
                                 KamikazeEnemy.speed = 0;
+                                KamikazeEnemy.kamikazeAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 2:
                             {
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 ArmoredEnemy.speed = 0;
+                                ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 3:
                             {
                                 UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
                                 UndiyngEnemy.speed = 0;
+                                UndiyngEnemy.undyingAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 5:
                             {
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
                                 frighteningEnemy.speed = 0;
+                                frighteningEnemy.frighteningAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
                         case 6:
                             {
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
                                 bufferEnemy.speed = 0;
+                                bufferEnemy.bufferAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
 
@@ -298,7 +313,9 @@ public class StartEndSequence : MonoBehaviour
         lightObjects[1].SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
         lightObjects[0].SetActive(false);
+        particlesCamera.SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
+        lightObjects[3].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[3].transform.position.y, playerbehaviour.istanze.transform.position.z);
         lightObjects[3].SetActive(true);
         AudioManager.Instance.PlaySound("Spotlight");
         yield return new WaitForSeconds(lightsStopTime);
@@ -402,11 +419,32 @@ public class StartEndSequence : MonoBehaviour
     //TODO Animazione kitsune 
     void Bowing()
     {
+        if (startSequencePositionPlayed == false)
+        {
+            Invoke("StartSequencePosition", 3);
+            startSequencePositionPlayed = true;
+        }
+        playerbehaviour.kitsuneAnimator.SetBool("Bowing", true);
+    }
+
+    void StartSequencePosition()
+    {
+        playerbehaviour.kitsuneAnimator.SetBool("Bowing", false);
         startSequencePosition++;
     }
 
     //TODO Animazione seppuku
     void Seppuku()
+    {
+        if (endSequencePositionPlayed == false)
+        {
+            Invoke("EndSequencePosition", 5);
+            endSequencePositionPlayed = true;
+        }
+        playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
+    }
+
+    void EndSequencePosition()
     {
         endSequencePosition++;
     }
