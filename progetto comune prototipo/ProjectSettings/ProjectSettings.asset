@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: "1.5.0 \u03B1"
+  bundleVersion: "1.0.0 \u03B2"
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}

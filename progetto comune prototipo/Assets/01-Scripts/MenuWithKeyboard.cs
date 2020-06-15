@@ -16,7 +16,6 @@ public class MenuWithKeyboard : MonoBehaviour
     MainMenu MM;
     public GameObject howToPlayBG;
     public GameObject[] howToPlayImages;
-    public GameObject[] howToPlayTexts;
     enum MenuStates
     {
         MainMenu,
@@ -282,12 +281,10 @@ public class MenuWithKeyboard : MonoBehaviour
                 if (i == howToPlayIndex)
                 {
                     howToPlayImages[i].SetActive(true);
-                    howToPlayTexts[i].SetActive(true);
                 }
                 else
                 {
                     howToPlayImages[i].SetActive(false);
-                    howToPlayTexts[i].SetActive(false);
                 }
             }
         }
@@ -296,7 +293,6 @@ public class MenuWithKeyboard : MonoBehaviour
             for (int i = 0; i < howToPlayImages.Length; i++)
             {
                 howToPlayImages[i].SetActive(false);
-                howToPlayTexts[i].SetActive(false);
             }
             howToPlayBG.SetActive(false);
             howToPlayIndex = 0;
