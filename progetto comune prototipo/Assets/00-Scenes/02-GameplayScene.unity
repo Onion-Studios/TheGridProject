@@ -2806,9 +2806,9 @@ MonoBehaviour:
   SignGroupwave3_6: 0500000002000000040000000100000001000000030000000100000005000000020000000500000004000000
   Activewave_intensity: 0
   Activewave_number: 0
-  TEST_WaveActive: 1
-  TEST_waveintesity: 3
-  TEST_wavenumber: 5
+  TEST_WaveActive: 0
+  TEST_waveintesity: 0
+  TEST_wavenumber: 0
 --- !u!4 &629502101
 Transform:
   m_ObjectHideFlags: 0
@@ -11602,8 +11602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89346b26f8bedc644b4fdbe62ace305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxInk: 10000
-  Ink: 10000
+  maxInk: 100
+  Ink: 100
   Layer1: {fileID: 172065574}
   Layer2: {fileID: 485894071}
   Layer3: {fileID: 490766976}
