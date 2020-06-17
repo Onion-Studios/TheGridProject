@@ -12,11 +12,14 @@ public class NormalEnemy : MonoBehaviour
     public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signnormalenemy;
+    public GameObject[] SignNormalYokai;
+    public GameObject[] SignIntensity1Normal;
+    public GameObject[] SignIntensity1PlusNormal;
     public float baseSpeed;
     public float startPosition;
     public float extrapointsoverdistance;
@@ -74,6 +77,12 @@ public class NormalEnemy : MonoBehaviour
         if (pointsystem == null)
         {
             Debug.LogError("PointSystem is NULL");
+        }
+
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
         }
 
         speed = baseSpeed;
@@ -134,9 +143,26 @@ public class NormalEnemy : MonoBehaviour
         inkAbsorb.Stop();
         Inkstone.Ink -= inkstoneDamage;
         AudioManager.Instance.PlaySound("Backwash");
-        foreach (GameObject segno in signnormalenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignNormalYokai)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1Normal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity1PlusNormal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
         Die();
     }
@@ -158,9 +184,26 @@ public class NormalEnemy : MonoBehaviour
         Inkstone.maxInk -= maxInkDamage;
         AudioManager.Instance.PlaySound("Playertakedamage");
         enemyspawnmanager.enemykilled = 0;
-        foreach (GameObject segno in signnormalenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignNormalYokai)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1Normal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity1PlusNormal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
 
         if (SecretT.bar == 100)
@@ -198,11 +241,27 @@ public class NormalEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signnormalenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignNormalYokai)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1Normal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity1PlusNormal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
-
 
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;

@@ -68,7 +68,7 @@ public class MalevolentEnemy : MonoBehaviour
 
     private void OnEnable()
     {
-        AudioManager.Instance.PlaySound("MalevolentSpawn");
+        //AudioManager.Instance.PlaySound("MalevolentSpawn");
         StartCoroutine("MalevolentSound");
         malevolentAnimator.SetBool("MalevolentDeath", false);
     }

@@ -10,11 +10,12 @@ public class UndyingEnemy : MonoBehaviour
     public int maxInkDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signundyingenemy;
+    public GameObject[] SignIntensity3Undying;
     public float endPosition;
     public float currentTime;
     public float maxTime;
@@ -81,6 +82,14 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+
+
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
+        }
+
         speed = baseSpeed;
 
         currentTime = maxTime;
@@ -88,11 +97,12 @@ public class UndyingEnemy : MonoBehaviour
         alreadyDead = false;
         startingPosition = this.transform.localPosition;
         undyingAnimator.SetBool("UndyingDeath", false);
-        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        /*if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
         }
         wavePositionSet = false;
+        }*/
     }
 
 
@@ -316,9 +326,17 @@ public class UndyingEnemy : MonoBehaviour
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            foreach (GameObject segno in signundyingenemy)
+            if (GameManager.GameIntensity == 3)
+
             {
-                segno.SetActive(false);
+
+                foreach (GameObject segno in SignIntensity3Undying)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
 
             }
 

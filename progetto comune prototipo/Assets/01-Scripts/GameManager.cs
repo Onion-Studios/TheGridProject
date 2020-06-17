@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public UIManager UI;
     public Playerbehaviour ActualPlayer;
+    public WaveManager WaveManager;
     public int GameIntensity = 1;
     Enemyspawnmanager Enemyspawnmanager;
     public int StartIntensity2 = 15;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         ActualPlayer = FindObjectOfType<Playerbehaviour>();
         Enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        WaveManager = FindObjectOfType<WaveManager>();
         firstGameStart = true;
     }
 
@@ -67,59 +69,67 @@ public class GameManager : MonoBehaviour
 
     void ChangeIntensity(int enemykilled)
     {
-        if (enemykilled >= 0 && enemykilled < StartIntensity2 && soundPlayed1 == false)
+        if(WaveManager.TEST_WaveActive == false)
         {
-            GameIntensity = 1;
-            if (firstGameStart)
+            if (enemykilled >= 0 && enemykilled < StartIntensity2 && soundPlayed1 == false)
             {
-                firstGameStart = false;
+                GameIntensity = 1;
+                if (firstGameStart)
+                {
+                    firstGameStart = false;
+                }
+                else
+                {
+                    dragon1.SetActive(true);
+                    dragon2.SetActive(false);
+                    dragon3.SetActive(false);
+                    dragonTimeline.Play();
+                    AudioManager.Instance.SetLoop("BooSound", false);
+                    AudioManager.Instance.PlaySound("BooSound");
+
+                }
+
+                soundPlayed1 = true;
+                soundPlayed2 = false;
+                soundPlayed3 = false;
+
             }
-            else
+            else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
             {
-                dragon1.SetActive(true);
-                dragon2.SetActive(false);
+                GameIntensity = 2;
+
+                //AudioManager.Instance.SetLoop("ClappingSound", false);
+                //AudioManager.Instance.PlaySound("ClappingSound");
+                soundPlayed2 = true;
+                soundPlayed1 = false;
+                soundPlayed3 = false;
+
+                dragon1.SetActive(false);
+                dragon2.SetActive(true);
                 dragon3.SetActive(false);
                 dragonTimeline.Play();
-                AudioManager.Instance.SetLoop("BooSound", false);
-                AudioManager.Instance.PlaySound("BooSound");
-
             }
+            else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
+            {
+                GameIntensity = 3;
 
-            soundPlayed1 = true;
-            soundPlayed2 = false;
-            soundPlayed3 = false;
+                //AudioManager.Instance.SetLoop("ClappingSound", false);
+                //AudioManager.Instance.PlaySound("ClappingSound");
+                soundPlayed3 = true;
+                soundPlayed1 = false;
+                soundPlayed2 = false;
 
+                dragon1.SetActive(false);
+                dragon2.SetActive(false);
+                dragon3.SetActive(true);
+                dragonTimeline.Play();
+            }
         }
-        else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
+        else if(WaveManager.TEST_WaveActive == true)
         {
-            GameIntensity = 2;
-
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
-            soundPlayed2 = true;
-            soundPlayed1 = false;
-            soundPlayed3 = false;
-
-            dragon1.SetActive(false);
-            dragon2.SetActive(true);
-            dragon3.SetActive(false);
-            dragonTimeline.Play();
+            GameIntensity = WaveManager.TEST_WaveIntensity;
         }
-        else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
-        {
-            GameIntensity = 3;
-
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
-            soundPlayed3 = true;
-            soundPlayed1 = false;
-            soundPlayed2 = false;
-
-            dragon1.SetActive(false);
-            dragon2.SetActive(false);
-            dragon3.SetActive(true);
-            dragonTimeline.Play();
-        }
+        
         intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
     }
 }

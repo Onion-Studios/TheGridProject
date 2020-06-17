@@ -10,11 +10,14 @@ public class KamikazeEnemy : MonoBehaviour
     public int maxInkDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signkamikazenemy;
+    public GameObject[] SignIntensity1Kamikaze;
+    public GameObject[] SignIntensity1PlusKamikaze;
+    public GameObject[] SignIntensity2Kamikaze;
     public float baseSpeed;
     private Collider[] hitColliders;
     public float blastRadius;
@@ -65,6 +68,11 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
+        }
 
         speed = baseSpeed;
 
@@ -101,9 +109,26 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.Play();
         this.gameObject.SetActive(false);
         Inkstone.Ink -= 10;
-        foreach (GameObject segno in signkamikazenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignIntensity1Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusKamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
@@ -118,9 +143,26 @@ public class KamikazeEnemy : MonoBehaviour
         Inkstone.maxInk -= maxInkDamage;
         AudioManager.Instance.PlaySound("Playertakedamage");
         enemyspawnmanager.enemykilled = 0;
-        foreach (GameObject segno in signkamikazenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignIntensity1Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusKamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
 
         if (SecretT.bar == 100)
@@ -149,9 +191,26 @@ public class KamikazeEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signkamikazenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignIntensity1Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusKamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
 
         ExplosionWork(this.transform.position);
@@ -189,7 +248,7 @@ public class KamikazeEnemy : MonoBehaviour
 
     void ExplosionWork(Vector3 explosionPoint)
     {
-        AudioManager.Instance.PlaySound("KamikazeExplosion");
+        //AudioManager.Instance.PlaySound("KamikazeExplosion");
         hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius);
         foreach (Collider hitCol in hitColliders)
         {
