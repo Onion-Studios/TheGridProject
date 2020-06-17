@@ -225,26 +225,26 @@ public class NormalEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        switch (GameManager.GameIntensity)
-        {
-            case 1:
-                foreach (GameObject segno in SignNormalYokai)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1Normal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity1PlusNormal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+        switch (GameManager.GameIntensity)
+        {
+            case 1:
+                foreach (GameObject segno in SignNormalYokai)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1Normal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity1PlusNormal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
 
         pointsystem.currentTimer = pointsystem.maxTimer;
