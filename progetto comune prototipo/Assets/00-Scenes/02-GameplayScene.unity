@@ -2338,7 +2338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &606684538
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4188,6 +4188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 81641522}
   ActualPlayer: {fileID: 0}
+  WaveManager: {fileID: 0}
   GameIntensity: 1
   StartIntensity2: 15
   StartIntensity3: 25
