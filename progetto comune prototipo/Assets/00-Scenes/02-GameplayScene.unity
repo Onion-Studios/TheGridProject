@@ -4252,7 +4252,7 @@ MonoBehaviour:
   closeCurtain2: {x: -11.45, y: 4.3, z: 4.93}
   LoadingTime: 5
   LoadImage: {fileID: 1335605564}
-  particlesCamera: {fileID: 0}
+  particlesCamera: {fileID: 1061293695}
 --- !u!114 &986519609
 MonoBehaviour:
   m_ObjectHideFlags: 0
