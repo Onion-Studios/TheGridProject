@@ -306,6 +306,7 @@ public class StartEndSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(lightsStopTime);
         lightObjects[1].SetActive(false);
+        lightObjects[2].SetActive(false);
         yield return new WaitForSeconds(lightsStopTime);
         lightObjects[0].SetActive(false);
         particlesCamera.SetActive(false);
@@ -326,7 +327,6 @@ public class StartEndSequence : MonoBehaviour
             AudioManager.Instance.PlaySound("Spotlight");
         }
         startSequencePosition++;
-
     }
 
     IEnumerator LightsON()
