@@ -11170,6 +11170,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioMixer: {fileID: 24100000, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   ResolutionDropdown: {fileID: 1970651347}
+  VoiceSlider: {fileID: 1881917564}
+  MusicSlider: {fileID: 1484992938}
+  SFXSlider: {fileID: 945782686}
+  BrightnessSlider: {fileID: 0}
 --- !u!114 &1286029703
 MonoBehaviour:
   m_ObjectHideFlags: 0
