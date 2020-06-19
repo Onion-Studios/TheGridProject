@@ -11,8 +11,8 @@ public class Yokaislayer : MonoBehaviour
     StartEndSequence startendsequence;
     Inkstone inkStone_;
     Curtains curtains;
-    public Vector3 closecurtain;
     bool active, switchui;
+    [HideInInspector]
     public GameObject tenda, tenda2;
     private int yokaiSlayerSequenceNumber;
     public float curtainspeed;

@@ -5,21 +5,14 @@ public class MalevolentEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 4;
-    [SerializeField]
-    public float speed;
-    public int inkDamage;
-    public int maxInkDamage;
-    public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signmalevolentenemy;
+    [HideInInspector]
     public Vector3 position;
-    public float spawntimer;
-    public float maxspawntimer;
     private Animator malevolentAnimator;
     private bool playerDeathPlayed;
 

@@ -11,12 +11,19 @@ public class GameManager : MonoBehaviour
     Enemyspawnmanager Enemyspawnmanager;
     public int StartIntensity2 = 15;
     public int StartIntensity3 = 25;
+    [HideInInspector]
     public PlayableDirector dragonTimeline;
+    [HideInInspector]
     public GameObject dragon1;
+    [HideInInspector]
     public GameObject dragon2;
+    [HideInInspector]
     public GameObject dragon3;
+    [HideInInspector]
     public GameObject loadImage;
-    public float intensitySpeed, intensitySpeedIncrease;
+    public float intensitySpeed;
+    [HideInInspector]
+    public float intensitySpeedIncrease;
 
     private bool soundPlayed1;
     private bool soundPlayed2;
@@ -69,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     void ChangeIntensity(int enemykilled)
     {
-        if(WaveManager.TEST_WaveActive == false)
+        if (WaveManager.TEST_WaveActive == false)
         {
             if (enemykilled >= 0 && enemykilled < StartIntensity2 && soundPlayed1 == false)
             {
@@ -125,11 +132,18 @@ public class GameManager : MonoBehaviour
                 dragonTimeline.Play();
             }
         }
-        else if(WaveManager.TEST_WaveActive == true)
+        else if (WaveManager.TEST_WaveActive == true)
         {
             GameIntensity = WaveManager.TEST_WaveIntensity;
         }
-        
-        intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
+
+        if (WaveManager.TEST_WaveActive == false)
+        {
+            intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
+        }
+        else
+        {
+            intensitySpeedIncrease = intensitySpeed * (WaveManager.TEST_WaveIntensity - 1);
+        }
     }
 }

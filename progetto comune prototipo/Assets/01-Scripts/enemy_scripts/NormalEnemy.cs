@@ -5,7 +5,7 @@ public class NormalEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 0;
-    [SerializeField]
+    [HideInInspector]
     public float speed;
     public int inkDamage;
     public int maxInkDamage;
@@ -21,8 +21,11 @@ public class NormalEnemy : MonoBehaviour
     public GameObject[] SignIntensity1Normal;
     public GameObject[] SignIntensity1PlusNormal;
     public float baseSpeed;
+    [HideInInspector]
     public float startPosition;
+    [HideInInspector]
     public float extrapointsoverdistance;
+    [HideInInspector]
     public float startGrid;
     public float timeToDespawn = 2f;
     public Animator normalAnimator;

@@ -15,18 +15,24 @@ public class Playerbehaviour : MonoBehaviour
     Inkstone Inkstone;
     StartEndSequence startEndSequence;
     public Vector3 LastCubeChecked;
+    [HideInInspector]
     public int yokaislayercount;
-    public string movementState;
-    public float finalDestination;
-    public float waitTimer;
+    private string movementState;
+    private float finalDestination;
+    private float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
+    [HideInInspector]
     public Vector3 gridCenter;
     private AudioManager audioManager;
+    [HideInInspector]
     public ParticleSystem frightenedPlayer;
+    [HideInInspector]
     public ParticleSystem smokeBomb;
+    [HideInInspector]
     public ParticleSystem smokeBombCenter;
     private Vector3 confirmPosition;
+    [HideInInspector]
     public Animator kitsuneAnimator;
     private int layerMask;
     #endregion

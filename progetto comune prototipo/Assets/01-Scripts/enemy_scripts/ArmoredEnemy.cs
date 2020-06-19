@@ -15,6 +15,7 @@ public class ArmoredEnemy : MonoBehaviour
     Secret SecretT;
     PointSystem pointsystem;
     GameManager GM;
+    WaveManager WM;
     public int scoreEnemy, armoredLife;
     public GameObject[] signarmoredenemy;
     public float baseSpeed, startPosition, extrapointsoverdistance, startGrid, BlackToDeath;
@@ -155,8 +156,6 @@ public class ArmoredEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-
-
         GameManager = FindObjectOfType<GameManager>();
         if (GameManager == null)
         {
@@ -164,9 +163,15 @@ public class ArmoredEnemy : MonoBehaviour
         }
 
         GM = FindObjectOfType<GameManager>();
-        if (pointsystem == null)
+        if (GM == null)
         {
             Debug.LogError("GameManager is NULL");
+        }
+
+        WM = FindObjectOfType<WaveManager>();
+        if (WM == null)
+        {
+            Debug.LogError("Wave Manager is NULL");
         }
 
         speed = baseSpeed;
@@ -425,7 +430,15 @@ public class ArmoredEnemy : MonoBehaviour
                     break;
 
             }
-            int randomsegno = Random.Range(0, 6);
+            int randomsegno;
+            if (GM.GameIntensity != 3 || WM.TEST_WaveIntensity != 3)
+            {
+                randomsegno = Random.Range(0, 6);
+            }
+            else
+            {
+                randomsegno = Random.Range(0, 4);
+            }
             int randomsegnofour = Random.Range(0, 4);
             switch (GameManager.GameIntensity)
 
