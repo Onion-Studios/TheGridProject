@@ -15,7 +15,7 @@ public class StartEndSequence : MonoBehaviour
     int endSequencePosition;
     public GameObject[] lightObjects;
     public float activateLight;
-    public bool starting, ending, switchui, skipping;
+    public bool starting, ending, skipping;
     IEnumerator playerLight;
     IEnumerator lightsON;
     IEnumerator lightsOFF;
@@ -83,10 +83,8 @@ public class StartEndSequence : MonoBehaviour
         }
 
         playerLight = null;
-        switchui = true;
         lightsON = null;
         loading = null;
-
     }
 
     void Update()
@@ -142,19 +140,16 @@ public class StartEndSequence : MonoBehaviour
                 Bowing();
                 break;
             case 3:
-                SwitchUI();
-                break;
-            case 4:
                 startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                 break;
-            case 5:
+            case 4:
                 if (lightsON == null)
                 {
                     lightsON = LightsON();
                     StartCoroutine(lightsON);
                 }
                 break;
-            case 6:
+            case 5:
                 if (lightsON != null)
                 {
                     StopCoroutine(lightsON);
@@ -162,18 +157,13 @@ public class StartEndSequence : MonoBehaviour
                 }
                 PlayerToCenter();
                 break;
-            case 7:
+            case 6:
                 startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
                 break;
-            case 8:
-                SwitchUI();
-                break;
-            case 9:
+            case 7:
                 StartUP();
                 break;
-
         }
-
     }
 
     public void EndSequence()
@@ -199,19 +189,16 @@ public class StartEndSequence : MonoBehaviour
                 Seppuku();
                 break;
             case 3:
-                SwitchUI();
-                break;
-            case 4:
                 endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
                 break;
-            case 5:
+            case 4:
                 if (blackScreen == null)
                 {
                     blackScreen = BlackScreen();
                     StartCoroutine(blackScreen);
                 }
                 break;
-            case 6:
+            case 5:
                 if (blackScreen != null)
                 {
                     StopCoroutine(blackScreen);
@@ -295,7 +282,6 @@ public class StartEndSequence : MonoBehaviour
                                 bufferEnemy.bufferAnimator.SetFloat("SpeedMultiplier", 0);
                             }
                             break;
-
                     }
                 }
             }
@@ -376,10 +362,6 @@ public class StartEndSequence : MonoBehaviour
 
     void Skip()
     {
-        if (switchui == false)
-        {
-            SwitchUI();
-        }
         curtains.CloseTeleport();
 
         lightObjects[2].SetActive(false);
@@ -391,25 +373,6 @@ public class StartEndSequence : MonoBehaviour
         startSequencePosition = 3;
 
     }
-
-    void SwitchUI()
-    {
-        switchui = !switchui;
-        ink_text.gameObject.SetActive(switchui);
-        score_text.gameObject.SetActive(switchui);
-        counter_text.gameObject.SetActive(switchui);
-        scoremultiplier_text.gameObject.SetActive(switchui);
-
-        if (starting == true && skipping == false)
-        {
-            startSequencePosition++;
-        }
-        if (ending == true)
-        {
-            endSequencePosition++;
-        }
-    }
-
 
     //TODO Animazione kitsune 
     void Bowing()

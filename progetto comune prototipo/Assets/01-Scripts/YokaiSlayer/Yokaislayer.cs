@@ -12,7 +12,7 @@ public class Yokaislayer : MonoBehaviour
     Inkstone inkStone_;
     Curtains curtains;
     public Vector3 closecurtain;
-    bool active, switchui;
+    bool active;
     public GameObject tenda, tenda2;
     private int yokaiSlayerSequenceNumber;
     public float curtainspeed;
@@ -56,8 +56,6 @@ public class Yokaislayer : MonoBehaviour
         }
         active = false;
 
-        switchui = true;
-
         yokaiSlayerSequenceNumber = 0;
     }
 
@@ -82,30 +80,27 @@ public class Yokaislayer : MonoBehaviour
         switch (yokaiSlayerSequenceNumber)
         {
             case 0:
-                SwitchUI();
-                break;
-            case 1:
                 SaveInk();
                 break;
-            case 2:
+            case 1:
                 yokaiSlayerSequenceNumber = curtains.CloseCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
-            case 3:
+            case 2:
                 TimeStop();
                 AudioManager.Instance.PlaySound("YokaiSlayerBrawl");
                 break;
-            case 4:
+            case 3:
                 ActivateYokaiSlayer();
                 SignYS();
                 break;
-            case 5:
+            case 4:
                 if (waiting == null)
                 {
                     waiting = Waiting();
                     StartCoroutine(waiting);
                 }
                 break;
-            case 6:
+            case 5:
                 if (waiting != null)
                 {
                     StopCoroutine(waiting);
@@ -113,16 +108,13 @@ public class Yokaislayer : MonoBehaviour
                 }
                 ResumeTime();
                 break;
-            case 7:
+            case 6:
                 yokaiSlayerSequenceNumber = curtains.OpenCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
-            case 8:
+            case 7:
                 ReloadInk();
                 break;
-            case 9:
-                SwitchUI();
-                break;
-            case 10:
+            case 8:
                 FinalizeSequence();
                 break;
         }
@@ -154,16 +146,6 @@ public class Yokaislayer : MonoBehaviour
     {
         inkStone_.Ink = ink;
         inkStone_.maxInk = maxInk;
-        yokaiSlayerSequenceNumber++;
-    }
-
-    void SwitchUI()
-    {
-        switchui = !switchui;
-        ink_text.gameObject.SetActive(switchui);
-        score_text.gameObject.SetActive(switchui);
-        counter_text.gameObject.SetActive(switchui);
-        scoremultiplier_text.gameObject.SetActive(switchui);
         yokaiSlayerSequenceNumber++;
     }
 
