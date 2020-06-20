@@ -4249,6 +4249,7 @@ MonoBehaviour:
   LoadingTime: 5
   LoadImage: {fileID: 1335605564}
   particlesCamera: {fileID: 1061293695}
+  mainCamera: {fileID: 6441519076496892785}
 --- !u!114 &986519609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13938,13 +13939,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6441519076496892785}
-  m_LocalRotation: {x: 0.00000007228672, y: 0.9668829, z: -0.25522062, w: 0.00000027141903}
-  m_LocalPosition: {x: -3.05, y: 7.42, z: 10.85}
+  m_LocalRotation: {x: -0.0000000070335604, y: 0.99962866, z: 0.027251491, w: 0.00000028079208}
+  m_LocalPosition: {x: -3.2, y: 1.46, z: 6.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 29.573002, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.1230001, y: 180.00002, z: 0}
 --- !u!1 &5663952131858811522
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,6 +38,9 @@ public class StartEndSequence : MonoBehaviour
     private bool endSequencePositionPlayed;
     [SerializeField]
     private GameObject particlesCamera;
+    [SerializeField]
+    private GameObject mainCamera;
+
     #endregion
 
     void Awake()
@@ -140,6 +143,8 @@ public class StartEndSequence : MonoBehaviour
                 Bowing();
                 break;
             case 3:
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
+                mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
                 startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                 break;
             case 4:
