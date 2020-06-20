@@ -156,4 +156,20 @@ public class AudioManager : MonoBehaviour
             s.StopAudio();
         }
     }
+    /// <summary>
+    /// Stop all sounds with exceptions
+    /// </summary>
+    /// <param name="exception"></param>
+    public void StopAllSounds(params string[] exception)
+    {
+        foreach (Sound s in sounds)
+        {
+            for (int i = 0; i < exception.Length; i++)
+            {
+                if (s.clipName == exception[i]) continue;
+
+                s.StopAudio();
+            }
+        }
+    }
 }
