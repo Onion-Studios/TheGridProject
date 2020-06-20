@@ -40,6 +40,7 @@ public class StartEndSequence : MonoBehaviour
     private GameObject particlesCamera;
     [SerializeField]
     private GameObject mainCamera;
+    private Vector3 finalPosition;
 
     #endregion
 
@@ -88,6 +89,7 @@ public class StartEndSequence : MonoBehaviour
         playerLight = null;
         lightsON = null;
         loading = null;
+
     }
 
     void Update()
@@ -184,6 +186,8 @@ public class StartEndSequence : MonoBehaviour
                     lightsOFF = LightsOFF();
                     StartCoroutine(lightsOFF);
                 }
+                finalPosition = new Vector3(playerbehaviour.istanze.transform.position.x, playerbehaviour.istanze.transform.position.y + 3, playerbehaviour.istanze.transform.position.z + 5);
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, finalPosition, 3 * Time.deltaTime);
                 break;
             case 2:
                 if (lightsOFF != null)
@@ -295,13 +299,13 @@ public class StartEndSequence : MonoBehaviour
 
     IEnumerator LightsOFF()
     {
-        yield return new WaitForSeconds(lightsStopTime);
+        //yield return new WaitForSeconds(lightsStopTime);
         lightObjects[1].SetActive(false);
         lightObjects[2].SetActive(false);
-        yield return new WaitForSeconds(lightsStopTime);
+        //yield return new WaitForSeconds(lightsStopTime);
         lightObjects[0].SetActive(false);
         particlesCamera.SetActive(false);
-        yield return new WaitForSeconds(lightsStopTime);
+        //yield return new WaitForSeconds(lightsStopTime);
         lightObjects[3].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[3].transform.position.y, playerbehaviour.istanze.transform.position.z);
         lightObjects[3].SetActive(true);
         AudioManager.Instance.PlaySound("Spotlight");
