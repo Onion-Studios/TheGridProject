@@ -4250,6 +4250,7 @@ MonoBehaviour:
   LoadImage: {fileID: 1335605564}
   particlesCamera: {fileID: 1061293695}
   mainCamera: {fileID: 6441519076496892785}
+  crowd: {fileID: 606684539}
 --- !u!114 &986519609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4544,7 +4545,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 25088
+    m_Bits: 25120
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -14056,7 +14057,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 7479
+    m_Bits: 7447
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

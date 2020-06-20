@@ -41,11 +41,17 @@ public class StartEndSequence : MonoBehaviour
     [SerializeField]
     private GameObject mainCamera;
     private Vector3 finalPosition;
+    [SerializeField]
+    private Image crowd;
+    private Color alpha1Crowd;
+
 
     #endregion
 
     void Awake()
     {
+        crowd.color = new Color(0, 0, 0, 0);
+        alpha1Crowd = new Color(0, 0, 0, 1);
         startSequencePosition = 0;
         endSequencePosition = 0;
         starting = true;
@@ -148,6 +154,8 @@ public class StartEndSequence : MonoBehaviour
                 mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
                 mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
                 startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
+                crowd.color = Color.Lerp(crowd.color, alpha1Crowd, 3 * Time.deltaTime);
+                print(crowd.color.a);
                 break;
             case 4:
                 if (lightsON == null)
@@ -178,6 +186,7 @@ public class StartEndSequence : MonoBehaviour
         switch (endSequencePosition)
         {
             case 0:
+                crowd.enabled = false;
                 StopAllEnemies();
                 break;
             case 1:
@@ -254,6 +263,7 @@ public class StartEndSequence : MonoBehaviour
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 NormalEnemy.speed = 0;
                                 NormalEnemy.normalAnimator.SetFloat("SpeedMultiplier", 0);
+                                NormalEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 1:
@@ -261,6 +271,7 @@ public class StartEndSequence : MonoBehaviour
                                 KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
                                 KamikazeEnemy.speed = 0;
                                 KamikazeEnemy.kamikazeAnimator.SetFloat("SpeedMultiplier", 0);
+                                KamikazeEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 2:
@@ -268,6 +279,7 @@ public class StartEndSequence : MonoBehaviour
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 ArmoredEnemy.speed = 0;
                                 ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
+                                ArmoredEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 3:
@@ -275,6 +287,7 @@ public class StartEndSequence : MonoBehaviour
                                 UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
                                 UndiyngEnemy.speed = 0;
                                 UndiyngEnemy.undyingAnimator.SetFloat("SpeedMultiplier", 0);
+                                UndiyngEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 5:
@@ -282,6 +295,7 @@ public class StartEndSequence : MonoBehaviour
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
                                 frighteningEnemy.speed = 0;
                                 frighteningEnemy.frighteningAnimator.SetFloat("SpeedMultiplier", 0);
+                                frighteningEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 6:
@@ -289,6 +303,7 @@ public class StartEndSequence : MonoBehaviour
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
                                 bufferEnemy.speed = 0;
                                 bufferEnemy.bufferAnimator.SetFloat("SpeedMultiplier", 0);
+                                bufferEnemy.gameObject.SetActive(false);
                             }
                             break;
                     }
@@ -376,6 +391,9 @@ public class StartEndSequence : MonoBehaviour
         lightObjects[2].SetActive(false);
         lightObjects[0].SetActive(true);
         lightObjects[1].SetActive(true);
+
+        mainCamera.transform.SetPositionAndRotation(particlesCamera.transform.position, particlesCamera.transform.rotation);
+        crowd.color = alpha1Crowd;
 
         skipping = false;
 
