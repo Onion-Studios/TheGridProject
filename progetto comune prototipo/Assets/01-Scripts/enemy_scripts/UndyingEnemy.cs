@@ -236,27 +236,10 @@ public class UndyingEnemy : MonoBehaviour
                 }
             }
             stopSlashPlayed = false;
-            if (SecretT.bar == 100)
-            {
-                AudioManager.Instance.PlaySound("PlayerGetsHit");
-                SecretT.paintParticles.Stop();
-                SecretT.active = false;
-                SecretT.currentTime = SecretT.timeMax;
-                SecretT.symbol.SetActive(false);
-            }
-            else
-            {
-                // Insert THUD Sound
-            }
             undyingSlash.Play();
             undyingSlashWave.Play();
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
             attackTimer = maxAttacktimer;
-            Inkstone.Ink -= inkDamage;
-            Inkstone.maxInk -= maxInkDamage;
-            AudioManager.Instance.PlaySound("Playertakedamage");
-            Inkstone.Ink += playerbehaviour.inkGained;
-            SecretT.bar = 0;
-            enemyspawnmanager.enemykilled = 0;
         }
     }
 
