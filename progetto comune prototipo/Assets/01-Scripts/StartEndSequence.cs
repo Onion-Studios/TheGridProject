@@ -153,9 +153,9 @@ public class StartEndSequence : MonoBehaviour
             case 3:
                 mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
                 mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
+
                 startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                 crowd.color = Color.Lerp(crowd.color, alpha1Crowd, 3 * Time.deltaTime);
-                print(crowd.color.a);
                 break;
             case 4:
                 if (lightsON == null)
