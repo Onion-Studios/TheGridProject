@@ -4,18 +4,24 @@ using UnityEngine.UI;
 
 public class PointSystem : MonoBehaviour
 {
+    [HideInInspector]
     public float score;
-    public float scoreSeconds;
+    public float[] scoreSeconds;
+    [HideInInspector]
     public int scoreMultiplier;
+    [HideInInspector]
     public float currentTimer;
     public float maxTimer;
     public int threshold1, threshold2, threshold3, threshold4;
+    [HideInInspector]
     public int countercombo = 0;
+    [HideInInspector]
     public float floatscore;
     StartEndSequence startEndSequence;
     public Image fuse;
     public ParticleSystem sparkle;
     private PlayableDirector sparkleDirector;
+    GameManager gameManager;
 
 
     // Start is called before the first frame update
@@ -25,6 +31,11 @@ public class PointSystem : MonoBehaviour
         if (startEndSequence == null)
         {
             Debug.LogError("StartEndSequence is NULL!");
+        }
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogError("Game Manager is NULL!");
         }
         sparkleDirector = sparkle.GetComponent<PlayableDirector>();
         fuse.fillAmount = 0;
@@ -38,14 +49,14 @@ public class PointSystem : MonoBehaviour
         {
             IncreaseOverTime();
         }
-            Timer();
+        Timer();
     }
 
     void IncreaseOverTime()
     {
         if (PauseMenu.GameIsPaused == false)
         {
-            score += scoreSeconds / 60;
+            score += scoreSeconds[gameManager.GameIntensity - 1] / 60;
         }
     }
 

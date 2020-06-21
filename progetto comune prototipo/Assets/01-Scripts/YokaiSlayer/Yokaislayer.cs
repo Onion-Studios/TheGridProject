@@ -13,6 +13,7 @@ public class Yokaislayer : MonoBehaviour
     Curtains curtains;
     public Vector3 closecurtain;
     bool active;
+    [HideInInspector]
     public GameObject tenda, tenda2;
     private int yokaiSlayerSequenceNumber;
     public float curtainspeed;

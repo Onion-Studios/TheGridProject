@@ -247,6 +247,7 @@ public class WaveManager : MonoBehaviour
             if (TEST_WaveActive == false)
             {
                 StartCoroutine(normalWaves);
+                TEST_WaveIntensity = 1;
             }
             else
             {

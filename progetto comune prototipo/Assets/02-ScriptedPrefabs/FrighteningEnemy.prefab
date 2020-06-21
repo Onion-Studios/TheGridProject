@@ -658,12 +658,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2960878769954685549}
-  - {fileID: 4010820654717684767}
   - {fileID: 690123986147233074}
   - {fileID: 3860730936742416093}
   - {fileID: 820446279729681877}
   - {fileID: 1256278433973511129}
   - {fileID: 2427490435468496651}
+  - {fileID: 4010820654717684767}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -697,19 +697,10 @@ MonoBehaviour:
   playerSpeed: 10
   reduceSpeed: 7
   inkDamage: 20
-  maxInkDamage: 10
-  inkstoneDamage: 15
-  scoreEnemy: 1000
-  SignIntensity2Frightening:
-  - {fileID: 5345055861864070863}
-  - {fileID: 9142380103723695192}
-  - {fileID: 2782886742440452456}
-  - {fileID: 2996467458276947971}
-  SignIntensity2PlusFrightening:
-  - {fileID: 5844610545469857570}
-  - {fileID: 3159962081828934469}
-  - {fileID: 1836841529062404832}
-  - {fileID: 335298426883746210}
+  maxInkDamage: 20
+  inkstoneDamage: 20
+  scoreEnemy: 6000
+  signfrighteningenemy: []
   baseSpeed: 1.6
   startPosition: 0
   extrapointsoverdistance: 0
@@ -722,6 +713,17 @@ MonoBehaviour:
   inkAbsorb: {fileID: 2427490435468496648}
   stopTime: 1.5
   waitTime: 3
+  frighteningAnimator: {fileID: 0}
+  SignIntensity2Frightening:
+  - {fileID: 5345055861864070863}
+  - {fileID: 9142380103723695192}
+  - {fileID: 2782886742440452456}
+  - {fileID: 2996467458276947971}
+  SignIntensity2PlusFrightening:
+  - {fileID: 5844610545469857570}
+  - {fileID: 3159962081828934469}
+  - {fileID: 1836841529062404832}
+  - {fileID: 335298426883746210}
 --- !u!54 &1734876840858482977
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -773,7 +775,7 @@ RectTransform:
   - {fileID: 6589855133815407699}
   - {fileID: 7381998887265981594}
   m_Father: {fileID: 1610379253688785732}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1241,9 +1243,9 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 4001f66d90798a44cbaaf44cbe5695fc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeb9a7e3320aec46aa6357487527472, type: 3}
---- !u!4 &690123986147233074 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: edeb9a7e3320aec46aa6357487527472,
+--- !u!1 &6080265764749343450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7455685359145607950, guid: edeb9a7e3320aec46aa6357487527472,
     type: 3}
   m_PrefabInstance: {fileID: 5542071684138395176}
   m_PrefabAsset: {fileID: 0}
@@ -1253,9 +1255,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5542071684138395176}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6080265764749343450 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -7455685359145607950, guid: edeb9a7e3320aec46aa6357487527472,
+--- !u!4 &690123986147233074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: edeb9a7e3320aec46aa6357487527472,
     type: 3}
   m_PrefabInstance: {fileID: 5542071684138395176}
   m_PrefabAsset: {fileID: 0}
@@ -1328,15 +1330,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0fded562c89ecf4aa6d74dc7bc672eb, type: 3}
---- !u!4 &820446279729681877 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6748548307750283500, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
-    type: 3}
-  m_PrefabInstance: {fileID: 6252517342732942649}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &820446279729681876 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6748548307750283501, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 6252517342732942649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &820446279729681877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6748548307750283500, guid: f0fded562c89ecf4aa6d74dc7bc672eb,
     type: 3}
   m_PrefabInstance: {fileID: 6252517342732942649}
   m_PrefabAsset: {fileID: 0}

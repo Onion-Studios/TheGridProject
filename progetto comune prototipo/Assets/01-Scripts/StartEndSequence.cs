@@ -11,7 +11,9 @@ public class StartEndSequence : MonoBehaviour
     PointSystem pointSystem;
     Enemyspawnmanager enemyspawnmanager;
     Curtains curtains;
+    [HideInInspector]
     public int startSequencePosition;
+    [HideInInspector]
     int endSequencePosition;
     public GameObject[] lightObjects;
     public float activateLight;

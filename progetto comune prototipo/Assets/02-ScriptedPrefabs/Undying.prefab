@@ -63,16 +63,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 3
   speed: 1
-  inkDamage: 5
-  maxInkDamage: 25
-  scoreEnemy: 1000
+  inkDamage: 0
+  maxInkDamage: 30
+  scoreEnemy: 10000
   SignIntensity3Undying:
   - {fileID: 1898558322258090333}
   - {fileID: 8997602691345140520}
   - {fileID: 2419941019155885725}
   endPosition: -0.7
   currentTime: 0
-  maxTime: 15
+  maxTime: 40
   attackTimer: 0
   maxAttacktimer: 2
   repelled: 0

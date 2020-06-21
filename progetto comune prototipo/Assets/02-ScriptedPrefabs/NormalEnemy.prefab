@@ -809,12 +809,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6864621856004397938}
-  - {fileID: 5015069956079523239}
-  - {fileID: 3232970996515127720}
   - {fileID: 8964691258519763119}
   - {fileID: 3187032530340888285}
   - {fileID: 2371019089992959932}
   - {fileID: 3412729282858146510}
+  - {fileID: 5015069956079523239}
+  - {fileID: 3232970996515127720}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -832,9 +832,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 0
   speed: 1
-  inkDamage: 20
+  inkDamage: 5
   maxInkDamage: 10
-  inkstoneDamage: 15
+  inkstoneDamage: 10
   scoreEnemy: 1000
   SignNormalYokai:
   - {fileID: 5860084195970591250}
@@ -1296,7 +1296,7 @@ RectTransform:
   - {fileID: 1768788150539285012}
   - {fileID: 5707930087520101737}
   m_Father: {fileID: 3721451648942152997}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1700,7 +1700,7 @@ RectTransform:
   - {fileID: 6064045155147749264}
   - {fileID: 6410904819906576698}
   m_Father: {fileID: 3721451648942152997}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1836,15 +1836,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df27e923b87ad7548ab20fefb1d41a7f, type: 3}
---- !u!4 &2371019089992959932 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2913130311404328408, guid: df27e923b87ad7548ab20fefb1d41a7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 615315129472307812}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &2371019089992959933 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2913130311404328409, guid: df27e923b87ad7548ab20fefb1d41a7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 615315129472307812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2371019089992959932 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2913130311404328408, guid: df27e923b87ad7548ab20fefb1d41a7f,
     type: 3}
   m_PrefabInstance: {fileID: 615315129472307812}
   m_PrefabAsset: {fileID: 0}
@@ -1941,11 +1941,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal_Animation
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 5356aac46990f974cb5af3c702a1f7c1,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 113765e8abf2dfb4abeccaaec5a577d8, type: 2}
     - target: {fileID: -4216859302048453862, guid: 5356aac46990f974cb5af3c702a1f7c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2001,16 +1996,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -3009262505537723617, guid: 5356aac46990f974cb5af3c702a1f7c1,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4c60ff57049efc84cba02cd0b69c6f9e, type: 2}
     - target: {fileID: 898606835246669508, guid: 5356aac46990f974cb5af3c702a1f7c1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4c60ff57049efc84cba02cd0b69c6f9e, type: 2}
+    - target: {fileID: -3009262505537723617, guid: 5356aac46990f974cb5af3c702a1f7c1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c60ff57049efc84cba02cd0b69c6f9e, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 5356aac46990f974cb5af3c702a1f7c1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 113765e8abf2dfb4abeccaaec5a577d8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5356aac46990f974cb5af3c702a1f7c1, type: 3}
 --- !u!4 &8964691258519763119 stripped
