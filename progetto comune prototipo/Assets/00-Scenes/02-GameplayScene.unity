@@ -1022,6 +1022,9 @@ MonoBehaviour:
   yokaislayercount: 3
   maxWaitTimer: 0.04
   inkGained: 7
+  inkGainedIntensity1: 5
+  inkGainedIntensity2: 7
+  inkGainedIntensity3: 9
   gridCenter: {x: 2, y: 1.05, z: 2}
   frightenedPlayer: {fileID: 0}
   smokeBomb: {fileID: 0}

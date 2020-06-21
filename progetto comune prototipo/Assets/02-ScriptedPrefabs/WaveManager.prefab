@@ -454,5 +454,5 @@ MonoBehaviour:
   SignGroupwave3_10: 0100000028030000030000000200000003000000280300000200000001000000030000000200000028030000
   Activewave_intensity: 3
   Activewave_number: 0
-  TEST_WaveActive: 1
+  TEST_WaveActive: 0
   TEST_WaveIntensity: 2

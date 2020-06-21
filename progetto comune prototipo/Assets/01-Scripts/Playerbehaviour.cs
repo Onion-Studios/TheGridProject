@@ -24,6 +24,9 @@ public class Playerbehaviour : MonoBehaviour
     private float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
+    public int inkGainedIntensity1;
+    public int inkGainedIntensity2;
+    public int inkGainedIntensity3;
     [HideInInspector]
     public Vector3 gridCenter;
     private AudioManager audioManager;

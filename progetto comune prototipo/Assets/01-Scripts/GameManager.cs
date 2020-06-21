@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         Enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         WaveManager = FindObjectOfType<WaveManager>();
         firstGameStart = true;
+        ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
     }
 
     private void Start()
@@ -93,7 +94,7 @@ public class GameManager : MonoBehaviour
                     dragonTimeline.Play();
                     AudioManager.Instance.SetLoop("BooSound", false);
                     AudioManager.Instance.PlaySound("BooSound");
-
+                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
                 }
 
                 soundPlayed1 = true;
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour
                 dragon2.SetActive(true);
                 dragon3.SetActive(false);
                 dragonTimeline.Play();
+                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity2;
             }
             else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
             {
@@ -130,6 +132,7 @@ public class GameManager : MonoBehaviour
                 dragon2.SetActive(false);
                 dragon3.SetActive(true);
                 dragonTimeline.Play();
+                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity3;
             }
         }
         else if (WaveManager.TEST_WaveActive == true)

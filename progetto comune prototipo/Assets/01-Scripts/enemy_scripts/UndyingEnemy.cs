@@ -284,14 +284,9 @@ public class UndyingEnemy : MonoBehaviour
         {
             currentTime -= 1 * Time.deltaTime;
         }
-
-        if (currentTime < 0)
+        else
         {
             currentTime = 0;
-        }
-
-        if (currentTime == 0)
-        {
             undyingAnimator.SetBool("UndyingDeath", true);
             Invoke("Death", 2.6f);
         }
