@@ -191,7 +191,6 @@ public class WaveManager : MonoBehaviour
 
     Enemyspawnmanager enemyspawnmanager;
     GameManager gamemanager;
-
     StartEndSequence startEndSequence;
     public int Activewave_intensity;
     public int Activewave_number;
@@ -205,23 +204,18 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TEMP();
         //referenza spawnmanager + null check
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         if (enemyspawnmanager == null)
-
         {
-
             Debug.Log("enemyspawnmanager is null");
-
         }
         //referenza gamemanager + null check
         gamemanager = FindObjectOfType<GameManager>();
         if (gamemanager == null)
-
         {
-
             Debug.Log("gamemanager is null");
-
         }
 
         startEndSequence = FindObjectOfType<StartEndSequence>();
@@ -268,6 +262,33 @@ public class WaveManager : MonoBehaviour
             count++;
         }
     }
+    void TEMP()
+    {
+        if (TEMPSTART.forceStartIntensity != 0)
+        {
+            Playerbehaviour player;
+            player = FindObjectOfType<Playerbehaviour>();
+            if (player == null)
+            {
+                Debug.LogError("Playerbehaviour is NULL!");
+            }
+            int temp = TEMPSTART.forceStartIntensity;
+            TEST_WaveActive = true;
+            TEST_WaveIntensity = TEMPSTART.forceStartIntensity;
+            switch (temp)
+            {
+                case 1:
+                    player.inkGained = player.inkGainedIntensity1;
+                    break;
+                case 2:
+                    player.inkGained = player.inkGainedIntensity2;
+                    break;
+                case 3:
+                    player.inkGained = player.inkGainedIntensity3;
+                    break;
+            }
+        }
+    }
 
     //algoritmo di shuffle di fisher-yates per un array finito
     void ShuffleAlgorithm(int[] array)
@@ -280,6 +301,7 @@ public class WaveManager : MonoBehaviour
             array[j] = tempvariable;
         }
     }
+
 
     //inizializza le wave mettendo i dati delle wave al loro interno
     void Initializewaves()
@@ -352,7 +374,6 @@ public class WaveManager : MonoBehaviour
     //inizializza le wave di determinata intensita con la loro key di relativa intensita
     void Initializedictionarywaves()
     {
-
         dictionarywaves.Add(1, waveintensity1);
         dictionarywaves.Add(2, waveintensity2);
         dictionarywaves.Add(3, waveintensity3);
