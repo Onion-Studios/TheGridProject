@@ -8,7 +8,6 @@ public class KamikazeEnemy : MonoBehaviour
     public float speed;
     public int inkDamage;
     public int maxInkDamage;
-    public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     GameManager GameManager;
@@ -109,7 +108,6 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.transform.SetParent(null);
         explosion.Play();
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkstoneDamage;
         switch (GameManager.GameIntensity)
         {
             case 1:

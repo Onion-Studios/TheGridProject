@@ -303,7 +303,11 @@ public class Playerbehaviour : MonoBehaviour
             {
                 // Insert THUD Sound
             }
-            SecretT.bar = 0;
+            SecretT.bar -= SecretT.chargeLoss;
+            if (SecretT.bar < 0)
+            {
+                SecretT.bar = 0;
+            }
         }
     }
 

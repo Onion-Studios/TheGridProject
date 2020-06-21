@@ -7,6 +7,7 @@ public class Secret : MonoBehaviour
     [HideInInspector]
     [Range(0, 100)] public float bar;
     public float charge;
+    public float chargeLoss;
     public Material startMaterial;
     public Material endMaterial;
     Renderer renderer_;
