@@ -149,8 +149,7 @@ public class FrighteningEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         playerbehaviour.frightenedPlayer.Stop();
-        Inkstone.Ink -= inkstoneDamage;
-        AudioManager.Instance.PlaySound("Backwash");
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
         switch (GameManager.GameIntensity)
         {
 
@@ -175,9 +174,7 @@ public class FrighteningEnemy : MonoBehaviour
                     segno.SetActive(false);
 
                 }
-
                 break;
-
         }
         playerbehaviour.speed = playerSpeed;
         Die();
@@ -196,10 +193,7 @@ public class FrighteningEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         playerbehaviour.frightenedPlayer.Stop();
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        AudioManager.Instance.PlaySound("Playertakedamage");
-        enemyspawnmanager.enemykilled = 0;
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
         switch (GameManager.GameIntensity)
 
         {
@@ -229,27 +223,8 @@ public class FrighteningEnemy : MonoBehaviour
                 break;
 
         }
-
         playerbehaviour.speed = playerSpeed;
-
-        if (SecretT.bar == 100)
-        {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
-            SecretT.paintParticles.Stop();
-            SecretT.active = false;
-            SecretT.currentTime = SecretT.timeMax;
-            SecretT.symbol.SetActive(false);
-        }
-        else
-        {
-
-            // Insert THUD Sound
-        }
-
-        SecretT.bar = 0;
         AudioManager.Instance.PlaySound("EnemyDeath");
-
-
     }
 
     public void Deathforsign()

@@ -14,6 +14,8 @@ public class Playerbehaviour : MonoBehaviour
     Managercombo managercombo;
     Inkstone Inkstone;
     StartEndSequence startEndSequence;
+    Enemyspawnmanager enemyspawnmanager;
+    Secret SecretT;
     public Vector3 LastCubeChecked;
     public int yokaislayercount;
     public string movementState;
@@ -52,12 +54,22 @@ public class Playerbehaviour : MonoBehaviour
             Debug.LogError("Inkstone is NULL!");
         }
 
-
-
         startEndSequence = FindObjectOfType<StartEndSequence>();
         if (startEndSequence == null)
         {
             Debug.LogError("StartEndSequence is NULL!");
+        }
+
+        enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        if (enemyspawnmanager == null)
+        {
+            Debug.LogError("EnemySpawnManager is NULL!");
+        }
+
+        SecretT = FindObjectOfType<Secret>();
+        if (SecretT == null)
+        {
+            Debug.LogError("Secret is NULL!");
         }
 
         movementState = "readystate";
@@ -261,6 +273,33 @@ public class Playerbehaviour : MonoBehaviour
 
     }
 
+    public void ReceiveDamage(int inkDamage, int maxInkDamage)
+    {
+        Inkstone.Ink = Inkstone.Ink - maxInkDamage - inkDamage;
+        if (maxInkDamage == 0)
+        {
+            AudioManager.Instance.PlaySound("Backwash");
+        }
+        else
+        {
+            Inkstone.maxInk -= maxInkDamage;
+            AudioManager.Instance.PlaySound("Playertakedamage");
+            enemyspawnmanager.enemykilled = 0;
+            if (SecretT.bar == 100)
+            {
+                AudioManager.Instance.PlaySound("PlayerGetsHit");
+                SecretT.paintParticles.Stop();
+                SecretT.active = false;
+                SecretT.currentTime = SecretT.timeMax;
+                SecretT.symbol.SetActive(false);
+            }
+            else
+            {
+                // Insert THUD Sound
+            }
+            SecretT.bar = 0;
+        }
+    }
 
     #region SPAWN PLAYER
     // metodo spawn che istanzia il player prefab e lo pone in una variabile di riferimento
