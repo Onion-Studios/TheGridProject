@@ -108,7 +108,7 @@ public class Managercombo : MonoBehaviour
         //documento segni n6
         NormalYokaiMatrix[10] = new nodes[3] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2) };
         NormalYokaiMatrix[11] = new nodes[3] { new nodes(1, 0), new nodes(-1, 1), new nodes(-1, -2) };
-        #endregion
+        #endregion
         #region Intensity1
         //2 casi del segno L
         Intensity1Matrix[0] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(2, -2) };
@@ -154,7 +154,7 @@ public class Managercombo : MonoBehaviour
         Intensity2Matrix[0] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
         Intensity2Matrix[1] = new nodes[6] { new nodes(0, 1), new nodes(0, 2), new nodes(1, 2), new nodes(1, 1), new nodes(1, 0), new nodes(2, 0) };
         //documento segni n2
-        Intensity2Matrix[2] = new nodes[6] { new nodes(0, 1), new nodes(1, 1), new nodes(1, 0), new nodes(2, 0), new nodes(2, 1), new nodes(2, 2) };
+        Intensity2Matrix[2] = new nodes[6] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-1, -1), new nodes(-2, -2), new nodes(-2, -1) };
         Intensity2Matrix[3] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1), new nodes(0, 1), new nodes(0, 2) };
         //documento segni n3
         Intensity2Matrix[4] = new nodes[6] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
@@ -264,7 +264,7 @@ public class Managercombo : MonoBehaviour
                     //casi angoli 
                     if (x == Angle1.X && z == Angle1.Z)
                     {
-                        if (grid[x + 1, z] == true || grid[x, z + 1] == true)
+                        if (grid[x + 1, z] == true ^ grid[x, z + 1] == true)
                         {
                             extremity.X = x;
                             extremity.Z = z;
@@ -273,7 +273,7 @@ public class Managercombo : MonoBehaviour
                     }
                     else if (x == Angle2.X && z == Angle2.Z)
                     {
-                        if (grid[x, z + 1] == true || grid[x - 1, z] == true)
+                        if (grid[x, z + 1] == true ^ grid[x - 1, z] == true)
                         {
                             extremity.X = x;
                             extremity.Z = z;
@@ -282,7 +282,7 @@ public class Managercombo : MonoBehaviour
                     }
                     else if (x == Angle3.X && z == Angle3.Z)
                     {
-                        if (grid[x + 1, z] == true || grid[x, z - 1] == true)
+                        if (grid[x + 1, z] == true ^ grid[x, z - 1] == true)
                         {
                             extremity.X = x;
                             extremity.Z = z;
@@ -291,7 +291,7 @@ public class Managercombo : MonoBehaviour
                     }
                     else if (x == Angle4.X && z == Angle4.Z)
                     {
-                        if (grid[x, z - 1] == true || grid[x - 1, z] == true)
+                        if (grid[x, z - 1] == true ^ grid[x - 1, z] == true)
                         {
                             extremity.X = x;
                             extremity.Z = z;

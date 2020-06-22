@@ -92,7 +92,7 @@ public class Playerbehaviour : MonoBehaviour
     void Update()
     {
         if (startEndSequence.starting == false && startEndSequence.ending == false)
-        {
+         {
             MovementHandler();
             if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
             {
