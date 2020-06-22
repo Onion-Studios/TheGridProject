@@ -152,27 +152,16 @@ public class FrighteningEnemy : MonoBehaviour
         playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
         switch (GameManager.GameIntensity)
         {
-
             case 2:
-
                 foreach (GameObject segno in SignIntensity2Frightening)
-
                 {
-
                     segno.SetActive(false);
-
                 }
-
                 break;
-
             case 3:
-
                 foreach (GameObject segno in SignIntensity2PlusFrightening)
-
                 {
-
                     segno.SetActive(false);
-
                 }
                 break;
         }
@@ -195,33 +184,19 @@ public class FrighteningEnemy : MonoBehaviour
         playerbehaviour.frightenedPlayer.Stop();
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
         switch (GameManager.GameIntensity)
-
         {
-
             case 2:
-
                 foreach (GameObject segno in SignIntensity2Frightening)
-
                 {
-
                     segno.SetActive(false);
-
                 }
-
                 break;
-
             case 3:
-
                 foreach (GameObject segno in SignIntensity2PlusFrightening)
-
                 {
-
                     segno.SetActive(false);
-
                 }
-
                 break;
-
         }
         playerbehaviour.speed = playerSpeed;
         AudioManager.Instance.PlaySound("EnemyDeath");
@@ -244,33 +219,19 @@ public class FrighteningEnemy : MonoBehaviour
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         switch (GameManager.GameIntensity)
-
         {
-
             case 2:
-
                 foreach (GameObject segno in SignIntensity2Frightening)
-
                 {
-
                     segno.SetActive(false);
-
                 }
-
                 break;
-
             case 3:
-
                 foreach (GameObject segno in SignIntensity2PlusFrightening)
-
                 {
-
                     segno.SetActive(false);
-
                 }
-
                 break;
-
         }
 
         playerbehaviour.speed = playerSpeed;

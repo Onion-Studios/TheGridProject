@@ -1020,7 +1020,7 @@ MonoBehaviour:
   originray: {x: 0, y: 0, z: 0}
   LastCubeChecked: {x: 0, y: 0, z: 0}
   yokaislayercount: 3
-  maxWaitTimer: 0.04
+  maxWaitTimer: 0.03
   inkGained: 7
   inkGainedIntensity1: 5
   inkGainedIntensity2: 7
@@ -10605,6 +10605,9 @@ MonoBehaviour:
   - -13
   - -13
   - -13
+  undyingInstances: 2
+  malevolentInstances: 3
+  genericInstances: 10
 --- !u!4 &1471647699
 Transform:
   m_ObjectHideFlags: 0

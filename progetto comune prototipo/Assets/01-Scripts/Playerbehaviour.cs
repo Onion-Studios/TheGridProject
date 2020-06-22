@@ -92,7 +92,7 @@ public class Playerbehaviour : MonoBehaviour
     void Update()
     {
         if (startEndSequence.starting == false && startEndSequence.ending == false)
-         {
+        {
             MovementHandler();
             if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
             {
@@ -168,16 +168,10 @@ public class Playerbehaviour : MonoBehaviour
                 if (waitTimer > 0)
                 {
                     waitTimer -= 1 * Time.deltaTime;
-
-
                 }
-                if (waitTimer < 0)
+                else
                 {
                     waitTimer = 0;
-
-                }
-                if (waitTimer == 0)
-                {
                     waitTimer = maxWaitTimer;
                     movementState = "readystate";
                 }

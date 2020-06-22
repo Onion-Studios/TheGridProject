@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemyspawnmanager : MonoBehaviour
@@ -17,6 +16,12 @@ public class Enemyspawnmanager : MonoBehaviour
     public float spawntimer = 2.5f;
     public Transform enemyparent;
     public float[] positionpossible = new float[5];
+    [SerializeField]
+    int undyingInstances;
+    [SerializeField]
+    int malevolentInstances;
+    [SerializeField]
+    int genericInstances;
     #endregion
 
 
@@ -54,7 +59,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 enemyID = prefabarray[0].GetComponent<NormalEnemy>().enemyID;
                 List<GameObject> listaenemyNormale = new List<GameObject>();
                 poolenemy.Add(enemyID, listaenemyNormale);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < genericInstances; i++)
                 {
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolenemy[enemyID].Add(enemyinscene);
@@ -66,7 +71,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 enemyID = prefabarray[1].GetComponent<KamikazeEnemy>().enemyID;
                 List<GameObject> listaenemykamikaze = new List<GameObject>();
                 poolenemy.Add(enemyID, listaenemykamikaze);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < genericInstances; i++)
                 {
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolenemy[enemyID].Add(enemyinscene);
@@ -78,7 +83,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 enemyID = prefabarray[2].GetComponent<ArmoredEnemy>().enemyID;
                 List<GameObject> listaenemyarmored = new List<GameObject>();
                 poolenemy.Add(enemyID, listaenemyarmored);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < genericInstances; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
@@ -90,7 +95,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 enemyID = prefabarray[3].GetComponent<UndyingEnemy>().enemyID;
                 List<GameObject> listaenemyundying = new List<GameObject>();
                 poolenemy.Add(enemyID, listaenemyundying);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < undyingInstances; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
@@ -102,7 +107,7 @@ public class Enemyspawnmanager : MonoBehaviour
                 enemyID = prefabarray[4].GetComponent<MalevolentEnemy>().enemyID;
                 List<GameObject> listaenemymalevolent = new List<GameObject>();
                 poolenemy.Add(enemyID, listaenemymalevolent);
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < malevolentInstances; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
@@ -114,19 +119,19 @@ public class Enemyspawnmanager : MonoBehaviour
                 enemyID = prefabarray[5].GetComponent<FrighteningEnemy>().enemyID;
                 List<GameObject> listaenemyfrightening = new List<GameObject>();
                 poolenemy.Add(enemyID, listaenemyfrightening);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < genericInstances; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
                     poolenemy[enemyID].Add(enemyinscene);
                 }
             }
-            else if(enemytospawn == prefabarray[6])
+            else if (enemytospawn == prefabarray[6])
             {
                 enemyID = prefabarray[6].GetComponent<BufferEnemy>().enemyID;
                 List<GameObject> listaenemybuffer = new List<GameObject>();
                 poolenemy.Add(enemyID, listaenemybuffer);
-                for(int i = 0; i < 10; i++)
+                for (int i = 0; i < genericInstances; i++)
                 {
                     //Vector3 posizionetospawn = new Vector3(-9f, 1.3f, Random.Range(0, 5));
                     GameObject enemyinscene = Instantiate(enemytospawn, Vector3.zero, Quaternion.identity, enemyparent);
