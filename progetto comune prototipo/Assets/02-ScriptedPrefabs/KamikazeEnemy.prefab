@@ -1007,11 +1007,11 @@ Transform:
   m_Children:
   - {fileID: 7077032556310652638}
   - {fileID: 9105331183560878298}
-  - {fileID: 5531107963414736250}
-  - {fileID: 4593735971560377364}
   - {fileID: 5190828446537657185}
   - {fileID: 2135336544219491853}
   - {fileID: 4979675139936788799}
+  - {fileID: 4593735971560377364}
+  - {fileID: 5531107963414736250}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1047,7 +1047,8 @@ MonoBehaviour:
   speed: 1
   inkDamage: 40
   maxInkDamage: 10
-  scoreEnemy: 1000
+  inkstoneDamage: 0
+  scoreEnemy: 1500
   SignIntensity1Kamikaze:
   - {fileID: 4099398823793450687}
   - {fileID: 79447015872752735}
@@ -1068,7 +1069,7 @@ MonoBehaviour:
   - {fileID: 2561030840322819357}
   - {fileID: 4687735638460166508}
   baseSpeed: 1.6
-  blastRadius: 2
+  blastRadius: 1.9
   startPosition: 0
   extrapointsoverdistance: 0
   startGrid: -1
@@ -1453,7 +1454,7 @@ RectTransform:
   - {fileID: 8972793843212639865}
   - {fileID: 3830977012105130583}
   m_Father: {fileID: 6873361951499052415}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1797,6 +1798,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6873361951499052415}
     m_Modifications:
+    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
+        type: 3}
+      propertyPath: m_Name
+      value: BufferParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 2913130311404328408, guid: df27e923b87ad7548ab20fefb1d41a7f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1851,11 +1857,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
-        type: 3}
-      propertyPath: m_Name
-      value: BufferParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df27e923b87ad7548ab20fefb1d41a7f, type: 3}
@@ -1926,12 +1927,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: af756046a3053f545b61b01941fda32d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: af756046a3053f545b61b01941fda32d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: af756046a3053f545b61b01941fda32d,
         type: 3}

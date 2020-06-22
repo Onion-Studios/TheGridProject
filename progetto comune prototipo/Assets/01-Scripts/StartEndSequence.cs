@@ -11,11 +11,13 @@ public class StartEndSequence : MonoBehaviour
     PointSystem pointSystem;
     Enemyspawnmanager enemyspawnmanager;
     Curtains curtains;
+    [HideInInspector]
     public int startSequencePosition;
+    [HideInInspector]
     int endSequencePosition;
     public GameObject[] lightObjects;
     public float activateLight;
-    public bool starting, ending, switchui, skipping;
+    public bool starting, ending, skipping;
     IEnumerator playerLight;
     IEnumerator lightsON;
     IEnumerator lightsOFF;
@@ -38,10 +40,20 @@ public class StartEndSequence : MonoBehaviour
     private bool endSequencePositionPlayed;
     [SerializeField]
     private GameObject particlesCamera;
+    [SerializeField]
+    private GameObject mainCamera;
+    private Vector3 finalPosition;
+    [SerializeField]
+    private Image crowd;
+    private Color alpha1Crowd;
+
+
     #endregion
 
     void Awake()
     {
+        crowd.color = new Color(0, 0, 0, 0);
+        alpha1Crowd = new Color(0, 0, 0, 1);
         startSequencePosition = 0;
         endSequencePosition = 0;
         starting = true;
@@ -83,7 +95,6 @@ public class StartEndSequence : MonoBehaviour
         }
 
         playerLight = null;
-        switchui = true;
         lightsON = null;
         loading = null;
 
@@ -142,19 +153,20 @@ public class StartEndSequence : MonoBehaviour
                 Bowing();
                 break;
             case 3:
-                SwitchUI();
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
+                mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
+
+                startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
+                crowd.color = Color.Lerp(crowd.color, alpha1Crowd, 3 * Time.deltaTime);
                 break;
             case 4:
-                startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
-                break;
-            case 5:
                 if (lightsON == null)
                 {
                     lightsON = LightsON();
                     StartCoroutine(lightsON);
                 }
                 break;
-            case 6:
+            case 5:
                 if (lightsON != null)
                 {
                     StopCoroutine(lightsON);
@@ -162,18 +174,13 @@ public class StartEndSequence : MonoBehaviour
                 }
                 PlayerToCenter();
                 break;
-            case 7:
+            case 6:
                 startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
                 break;
-            case 8:
-                SwitchUI();
-                break;
-            case 9:
+            case 7:
                 StartUP();
                 break;
-
         }
-
     }
 
     public void EndSequence()
@@ -181,6 +188,7 @@ public class StartEndSequence : MonoBehaviour
         switch (endSequencePosition)
         {
             case 0:
+                crowd.enabled = false;
                 StopAllEnemies();
                 break;
             case 1:
@@ -189,6 +197,8 @@ public class StartEndSequence : MonoBehaviour
                     lightsOFF = LightsOFF();
                     StartCoroutine(lightsOFF);
                 }
+                finalPosition = new Vector3(playerbehaviour.istanze.transform.position.x, playerbehaviour.istanze.transform.position.y + 3, playerbehaviour.istanze.transform.position.z + 5);
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, finalPosition, 3 * Time.deltaTime);
                 break;
             case 2:
                 if (lightsOFF != null)
@@ -199,19 +209,16 @@ public class StartEndSequence : MonoBehaviour
                 Seppuku();
                 break;
             case 3:
-                SwitchUI();
-                break;
-            case 4:
                 endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
                 break;
-            case 5:
+            case 4:
                 if (blackScreen == null)
                 {
                     blackScreen = BlackScreen();
                     StartCoroutine(blackScreen);
                 }
                 break;
-            case 6:
+            case 5:
                 if (blackScreen != null)
                 {
                     StopCoroutine(blackScreen);
@@ -258,6 +265,7 @@ public class StartEndSequence : MonoBehaviour
                                 NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
                                 NormalEnemy.speed = 0;
                                 NormalEnemy.normalAnimator.SetFloat("SpeedMultiplier", 0);
+                                NormalEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 1:
@@ -265,6 +273,7 @@ public class StartEndSequence : MonoBehaviour
                                 KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
                                 KamikazeEnemy.speed = 0;
                                 KamikazeEnemy.kamikazeAnimator.SetFloat("SpeedMultiplier", 0);
+                                KamikazeEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 2:
@@ -272,6 +281,7 @@ public class StartEndSequence : MonoBehaviour
                                 ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                 ArmoredEnemy.speed = 0;
                                 ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
+                                ArmoredEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 3:
@@ -279,6 +289,7 @@ public class StartEndSequence : MonoBehaviour
                                 UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
                                 UndiyngEnemy.speed = 0;
                                 UndiyngEnemy.undyingAnimator.SetFloat("SpeedMultiplier", 0);
+                                UndiyngEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 5:
@@ -286,6 +297,7 @@ public class StartEndSequence : MonoBehaviour
                                 FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
                                 frighteningEnemy.speed = 0;
                                 frighteningEnemy.frighteningAnimator.SetFloat("SpeedMultiplier", 0);
+                                frighteningEnemy.gameObject.SetActive(false);
                             }
                             break;
                         case 6:
@@ -293,9 +305,9 @@ public class StartEndSequence : MonoBehaviour
                                 BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
                                 bufferEnemy.speed = 0;
                                 bufferEnemy.bufferAnimator.SetFloat("SpeedMultiplier", 0);
+                                bufferEnemy.gameObject.SetActive(false);
                             }
                             break;
-
                     }
                 }
             }
@@ -304,13 +316,13 @@ public class StartEndSequence : MonoBehaviour
 
     IEnumerator LightsOFF()
     {
-        yield return new WaitForSeconds(lightsStopTime);
+        //yield return new WaitForSeconds(lightsStopTime);
         lightObjects[1].SetActive(false);
         lightObjects[2].SetActive(false);
-        yield return new WaitForSeconds(lightsStopTime);
+        //yield return new WaitForSeconds(lightsStopTime);
         lightObjects[0].SetActive(false);
         particlesCamera.SetActive(false);
-        yield return new WaitForSeconds(lightsStopTime);
+        //yield return new WaitForSeconds(lightsStopTime);
         lightObjects[3].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[3].transform.position.y, playerbehaviour.istanze.transform.position.z);
         lightObjects[3].SetActive(true);
         AudioManager.Instance.PlaySound("Spotlight");
@@ -376,40 +388,20 @@ public class StartEndSequence : MonoBehaviour
 
     void Skip()
     {
-        if (switchui == false)
-        {
-            SwitchUI();
-        }
         curtains.CloseTeleport();
 
         lightObjects[2].SetActive(false);
         lightObjects[0].SetActive(true);
         lightObjects[1].SetActive(true);
 
+        mainCamera.transform.SetPositionAndRotation(particlesCamera.transform.position, particlesCamera.transform.rotation);
+        crowd.color = alpha1Crowd;
+
         skipping = false;
 
         startSequencePosition = 3;
 
     }
-
-    void SwitchUI()
-    {
-        switchui = !switchui;
-        ink_text.gameObject.SetActive(switchui);
-        score_text.gameObject.SetActive(switchui);
-        counter_text.gameObject.SetActive(switchui);
-        scoremultiplier_text.gameObject.SetActive(switchui);
-
-        if (starting == true && skipping == false)
-        {
-            startSequencePosition++;
-        }
-        if (ending == true)
-        {
-            endSequencePosition++;
-        }
-    }
-
 
     //TODO Animazione kitsune 
     void Bowing()

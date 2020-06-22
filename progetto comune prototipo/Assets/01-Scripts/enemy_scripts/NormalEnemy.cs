@@ -5,7 +5,7 @@ public class NormalEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 0;
-    [SerializeField]
+    [HideInInspector]
     public float speed;
     public int inkDamage;
     public int maxInkDamage;
@@ -21,8 +21,11 @@ public class NormalEnemy : MonoBehaviour
     public GameObject[] SignIntensity1Normal;
     public GameObject[] SignIntensity1PlusNormal;
     public float baseSpeed;
+    [HideInInspector]
     public float startPosition;
+    [HideInInspector]
     public float extrapointsoverdistance;
+    [HideInInspector]
     public float startGrid;
     public float timeToDespawn = 2f;
     public Animator normalAnimator;
@@ -141,8 +144,7 @@ public class NormalEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        Inkstone.Ink -= inkstoneDamage;
-        AudioManager.Instance.PlaySound("Backwash");
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
         switch (GameManager.GameIntensity)
         {
             case 1:
@@ -180,10 +182,7 @@ public class NormalEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        AudioManager.Instance.PlaySound("Playertakedamage");
-        enemyspawnmanager.enemykilled = 0;
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
         switch (GameManager.GameIntensity)
         {
             case 1:
@@ -205,24 +204,7 @@ public class NormalEnemy : MonoBehaviour
                 }
                 break;
         }
-
-        if (SecretT.bar == 100)
-        {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
-            SecretT.paintParticles.Stop();
-            SecretT.active = false;
-            SecretT.currentTime = SecretT.timeMax;
-            SecretT.symbol.SetActive(false);
-        }
-        else
-        {
-            // Insert THUD Sound
-        }
-
-        SecretT.bar = 0;
-
         AudioManager.Instance.PlaySound("EnemyDeath");
-
     }
 
     public void Deathforsign()

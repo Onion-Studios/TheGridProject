@@ -80,7 +80,7 @@ public class KamikazeEnemy : MonoBehaviour
 
         if (AudioManager.Instance.IsPlaying("Kamikazesound") == false)
         {
-            Invoke("playkamikazesound",2.0f);
+            Invoke("playkamikazesound", 2.0f);
         }
 
     }
@@ -90,9 +90,9 @@ public class KamikazeEnemy : MonoBehaviour
     {
         Enemymove();
         PointOverDistance();
-    }                                                                                          
+    }
 
-                                                                   
+
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
@@ -108,7 +108,6 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.transform.SetParent(null);
         explosion.Play();
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= 10;
         switch (GameManager.GameIntensity)
         {
             case 1:
@@ -139,10 +138,7 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.transform.SetParent(null);
         explosion.Play();
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        AudioManager.Instance.PlaySound("Playertakedamage");
-        enemyspawnmanager.enemykilled = 0;
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
         switch (GameManager.GameIntensity)
         {
             case 1:
@@ -164,21 +160,6 @@ public class KamikazeEnemy : MonoBehaviour
                 }
                 break;
         }
-
-        if (SecretT.bar == 100)
-        {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
-            SecretT.paintParticles.Stop();
-            SecretT.active = false;
-            SecretT.currentTime = SecretT.timeMax;
-            SecretT.symbol.SetActive(false);
-        }
-        else
-        {
-            // Insert THUD Sound
-        }
-
-        SecretT.bar = 0;
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
     }
