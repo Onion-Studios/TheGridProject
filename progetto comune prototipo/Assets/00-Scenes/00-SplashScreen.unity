@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 908351468a7d6ad43a67da361cea08e9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -278,12 +278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -951,16 +951,14 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: SingsongBuffer
     clip: {fileID: 8300000, guid: 5c59bc03fcae87246aea02f3c3fb38f6, type: 3}
     volume: 0.38
     pitch: 1
     loop: 1
     playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Spotlight
     clip: {fileID: 8300000, guid: ae956b05d505c974bbc8a2b25fc30b6c, type: 3}
     volume: 1
@@ -980,6 +978,59 @@ MonoBehaviour:
   - clipName: Yoo
     clip: {fileID: 8300000, guid: fca4cd83b070da4468fd32409c9c48da, type: 3}
     volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Playertakedamage
+    clip: {fileID: 8300000, guid: 81499f0759ee4af4a9e88892c1884194, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Backwash
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Normalsound
+    clip: {fileID: 8300000, guid: f42af6327ab1cb94fbb8cd92ec4e2e0c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Frighteningsound
+    clip: {fileID: 8300000, guid: bb9d95809f8f193429cf406cee27dccb, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Kamikazesound
+    clip: {fileID: 8300000, guid: b7cc535dc2027a94e97a4eecb488db89, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Secretsignsuccessfull
+    clip: {fileID: 8300000, guid: 22989c695529a624185ced83926ceae0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: undyingrepelled
+    clip: {fileID: 8300000, guid: 81499f0759ee4af4a9e88892c1884194, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0

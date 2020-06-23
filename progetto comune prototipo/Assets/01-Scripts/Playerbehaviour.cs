@@ -14,20 +14,32 @@ public class Playerbehaviour : MonoBehaviour
     Managercombo managercombo;
     Inkstone Inkstone;
     StartEndSequence startEndSequence;
+    Enemyspawnmanager enemyspawnmanager;
+    Secret SecretT;
     public Vector3 LastCubeChecked;
+    [HideInInspector]
     public int yokaislayercount;
-    public string movementState;
-    public float finalDestination;
-    public float waitTimer;
+    private string movementState;
+    private float finalDestination;
+    private float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
+    public int inkGainedIntensity1;
+    public int inkGainedIntensity2;
+    public int inkGainedIntensity3;
+    [HideInInspector]
     public Vector3 gridCenter;
     private AudioManager audioManager;
+    [HideInInspector]
     public ParticleSystem frightenedPlayer;
+    [HideInInspector]
     public ParticleSystem smokeBomb;
+    [HideInInspector]
     public ParticleSystem smokeBombCenter;
     private Vector3 confirmPosition;
+    [HideInInspector]
     public Animator kitsuneAnimator;
+    private int layerMask;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -51,18 +63,29 @@ public class Playerbehaviour : MonoBehaviour
             Debug.LogError("Inkstone is NULL!");
         }
 
-
-
         startEndSequence = FindObjectOfType<StartEndSequence>();
         if (startEndSequence == null)
         {
             Debug.LogError("StartEndSequence is NULL!");
         }
 
+        enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        if (enemyspawnmanager == null)
+        {
+            Debug.LogError("EnemySpawnManager is NULL!");
+        }
+
+        SecretT = FindObjectOfType<Secret>();
+        if (SecretT == null)
+        {
+            Debug.LogError("Secret is NULL!");
+        }
+
         movementState = "readystate";
 
         waitTimer = maxWaitTimer;
         audioManager = AudioManager.Instance;
+        layerMask = 1 << 11;
     }
 
     // Update is called once per frame
@@ -96,35 +119,35 @@ public class Playerbehaviour : MonoBehaviour
             if (movementState == "readystate")
             {
 
-                if (Input.GetKey(KeyCode.W) && istanze.transform.position.z > 0.9)
+                if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && istanze.transform.position.z > 0.9)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z - 1;
                     movementState = "movingforward";
 
                 }
-                if (Input.GetKey(KeyCode.S) && istanze.transform.position.z < 3.1)
+                if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && istanze.transform.position.z < 3.1)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z + 1;
                     movementState = "movingback";
 
                 }
-                if (Input.GetKey(KeyCode.A) && istanze.transform.position.x < 3.1)
+                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && istanze.transform.position.x < 3.1)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x + 1;
                     movementState = "movingleft";
 
                 }
-                if (Input.GetKey(KeyCode.D) && istanze.transform.position.x > 0.9)
+                if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && istanze.transform.position.x > 0.9)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x - 1;
                     movementState = "movingright";
 
                 }
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
                 {
                     confirmPosition = istanze.transform.position;
                     smokeBomb.transform.position = confirmPosition;
@@ -145,16 +168,10 @@ public class Playerbehaviour : MonoBehaviour
                 if (waitTimer > 0)
                 {
                     waitTimer -= 1 * Time.deltaTime;
-
-
                 }
-                if (waitTimer < 0)
+                else
                 {
                     waitTimer = 0;
-
-                }
-                if (waitTimer == 0)
-                {
                     waitTimer = maxWaitTimer;
                     movementState = "readystate";
                 }
@@ -259,6 +276,42 @@ public class Playerbehaviour : MonoBehaviour
 
     }
 
+    public void ReceiveDamage(int inkDamage, int maxInkDamage)
+    {
+        if (maxInkDamage == 0)
+        {
+            Inkstone.Ink -= inkDamage;
+            AudioManager.Instance.PlaySound("Backwash");
+        }
+        else
+        {
+            Inkstone.maxInk -= maxInkDamage;
+            if (Inkstone.Ink > Inkstone.maxInk)
+            {
+                Inkstone.Ink = Inkstone.maxInk;
+            }
+            Inkstone.Ink -= inkDamage;
+            AudioManager.Instance.PlaySound("Playertakedamage");
+            enemyspawnmanager.enemykilled = 0;
+            if (SecretT.bar == 100)
+            {
+                AudioManager.Instance.PlaySound("PlayerGetsHit");
+                SecretT.paintParticles.Stop();
+                SecretT.active = false;
+                SecretT.currentTime = SecretT.timeMax;
+                SecretT.symbol.SetActive(false);
+            }
+            else
+            {
+                // Insert THUD Sound
+            }
+            SecretT.bar -= SecretT.chargeLoss;
+            if (SecretT.bar < 0)
+            {
+                SecretT.bar = 0;
+            }
+        }
+    }
 
     #region SPAWN PLAYER
     // metodo spawn che istanzia il player prefab e lo pone in una variabile di riferimento
@@ -278,7 +331,7 @@ public class Playerbehaviour : MonoBehaviour
         originray = (istanze.transform.position - new Vector3(0f, 0.5f, 0f));
         downraycheck = new Ray(originray, Vector3.down);
         float raydistance = 10f;
-        if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance))
+        if (Physics.Raycast(downraycheck, out RaycastHit hit, raydistance, layerMask))
         {
             hit.collider.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = grigliamanager.inksplash;
 

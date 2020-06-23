@@ -17,6 +17,8 @@ TagManager:
   - FrighteningEnemy
   - MalevolentEnemy
   - BufferEnemy
+  - Armor
+  - Fuse
   layers:
   - Default
   - TransparentFX
@@ -28,12 +30,12 @@ TagManager:
   - 
   - PostProcessing
   - Particles
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor
+  - Grid
+  - Armor
+  - Fuse
+  - SceneText
+  - Curtain
   - 
   - 
   - 

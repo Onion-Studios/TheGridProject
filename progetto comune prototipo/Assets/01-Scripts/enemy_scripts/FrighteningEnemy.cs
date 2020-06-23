@@ -10,6 +10,7 @@ public class FrighteningEnemy : MonoBehaviour
     public int inkDamage, maxInkDamage, inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
@@ -28,8 +29,10 @@ public class FrighteningEnemy : MonoBehaviour
     public float stopTime, waitTime;
     IEnumerator deathforendgrid;
     bool destinationReached;
-    private Animator frighteningAnimator;
+    public Animator frighteningAnimator;
 
+    public GameObject[] SignIntensity2Frightening;
+    public GameObject[] SignIntensity2PlusFrightening;
     #endregion
 
     private void Start()
@@ -68,11 +71,24 @@ public class FrighteningEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
+        }
+
         speed = baseSpeed;
 
         startPosition = transform.position.x;
 
         deathforendgrid = null;
+
+        destinationReached = false;
+
+        if (AudioManager.Instance.IsPlaying("Frighteningsound") == false)
+        {
+            InvokeRepeating("playscarysound", 3.1f, 4.0f);
+        }
     }
 
     private void OnDisable()
@@ -133,47 +149,58 @@ public class FrighteningEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         playerbehaviour.frightenedPlayer.Stop();
-        Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in signfrighteningenemy)
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 2:
+                foreach (GameObject segno in SignIntensity2Frightening)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2PlusFrightening)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
         playerbehaviour.speed = playerSpeed;
+        Die();
+    }
+
+    void Die()
+    {
+        if (deathforendgrid != null)
+        {
+            StopCoroutine(deathforendgrid);
+            deathforendgrid = null;
+        }
         this.gameObject.SetActive(false);
     }
 
     public void Deathforgriglia()
     {
-        this.gameObject.SetActive(false);
         playerbehaviour.frightenedPlayer.Stop();
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        enemyspawnmanager.enemykilled = 0;
-        foreach (GameObject segno in signfrighteningenemy)
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 2:
+                foreach (GameObject segno in SignIntensity2Frightening)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2PlusFrightening)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
-
         playerbehaviour.speed = playerSpeed;
-
-        if (SecretT.bar == 100)
-        {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
-            SecretT.paintParticles.Stop();
-            SecretT.active = false;
-            SecretT.currentTime = SecretT.timeMax;
-            SecretT.symbol.SetActive(false);
-        }
-        else
-        {
-
-            // Insert THUD Sound
-        }
-
-        SecretT.bar = 0;
         AudioManager.Instance.PlaySound("EnemyDeath");
-
-
+        Die();
     }
 
     public void Deathforsign()
@@ -186,15 +213,25 @@ public class FrighteningEnemy : MonoBehaviour
     }
     public void Death()
     {
-        this.gameObject.SetActive(false);
         enemy.GetComponent<Renderer>().material.color = Color.white;
         hair.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signfrighteningenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 2:
+                foreach (GameObject segno in SignIntensity2Frightening)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2PlusFrightening)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
 
         playerbehaviour.speed = playerSpeed;
@@ -206,6 +243,7 @@ public class FrighteningEnemy : MonoBehaviour
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
         AudioManager.Instance.PlaySound("EnemyDeath");
+        Die();
     }
 
     void PointOverDistance()
@@ -218,5 +256,9 @@ public class FrighteningEnemy : MonoBehaviour
         {
             extrapointsoverdistance = scoreEnemy;
         }
+    }
+    void playscarysound()
+    {
+        AudioManager.Instance.PlaySound("Frighteningsound");
     }
 }

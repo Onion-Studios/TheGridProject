@@ -10,9 +10,21 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer AudioMixer;
     Resolution[] Resolutions;
     public TMP_Dropdown ResolutionDropdown;
+    public Slider VoiceSlider;
+    public Slider MusicSlider;
+    public Slider SFXSlider;
+    public Slider BrightnessSlider;
+    public static float Voice;
+    public static float Music;
+    public static float SFX;
+    public static float Brightness;
 
     void Start()
     {
+        VoiceSlider.value = PlayerPrefs.GetFloat("VoicE");
+        MusicSlider.value = PlayerPrefs.GetFloat("MusiC");
+        SFXSlider.value = PlayerPrefs.GetFloat("SfX");
+
         Resolutions=Screen.resolutions;
         ResolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
@@ -32,12 +44,20 @@ public class SettingsMenu : MonoBehaviour
         ResolutionDropdown.RefreshShownValue();
     }
 
+    public void Update()
+    {
+        PlayerPrefs.SetFloat("VoicE", VoiceSlider.value);
+        PlayerPrefs.SetFloat("MusiC", MusicSlider.value);
+        PlayerPrefs.SetFloat("SfX", SFXSlider.value);
+    }
+
     public void SetResolution(int ResolutionIndex)
     {
         Resolution resolution = Resolutions[ResolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    #region Audio
     public void SetVoice (float voice)
     {
         AudioMixer.SetFloat("Voice", voice);
@@ -50,7 +70,7 @@ public class SettingsMenu : MonoBehaviour
     {
         AudioMixer.SetFloat("SFX", sfx);
     }
-
+    #endregion
     public void SetFullScreen(bool IsFullScreen)
     {
         Screen.fullScreen = IsFullScreen;

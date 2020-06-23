@@ -10,11 +10,12 @@ public class UndyingEnemy : MonoBehaviour
     public int maxInkDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signundyingenemy;
+    public GameObject[] SignIntensity3Undying;
     public float endPosition;
     public float currentTime;
     public float maxTime;
@@ -38,8 +39,9 @@ public class UndyingEnemy : MonoBehaviour
     private bool stopSlashPlayed;
     private bool destinationReached;
     public int laneID;
-    private Animator undyingAnimator;
+    public Animator undyingAnimator;
     private bool alreadyDead;
+    private bool wavePositionSet;
 
     #endregion
 
@@ -80,6 +82,14 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+
+
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
+        }
+
         speed = baseSpeed;
 
         currentTime = maxTime;
@@ -87,35 +97,44 @@ public class UndyingEnemy : MonoBehaviour
         alreadyDead = false;
         startingPosition = this.transform.localPosition;
         undyingAnimator.SetBool("UndyingDeath", false);
-        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        /*if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
         }
+        wavePositionSet = false;
+        }*/
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        WaveSlashRotation();
+    }
+
+    private void WaveSlashRotation()
+    {
+
         switch (laneID)
         {
             case 0:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, -45, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, -55, 0);
                 StopSlashPlayed();
                 break;
             case 1:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, -30, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, -45, 0);
                 StopSlashPlayed();
                 break;
             case 2:
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 0, 0);
                 StopSlashPlayed();
                 break;
             case 3:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, 30, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 0, 0);
                 StopSlashPlayed();
                 break;
             case 4:
-                undyingSlashWave.transform.rotation = Quaternion.Euler(0, 45, 0);
+                undyingSlashWave.transform.rotation = Quaternion.Euler(90, 5, 0);
                 StopSlashPlayed();
                 break;
             default:
@@ -127,16 +146,12 @@ public class UndyingEnemy : MonoBehaviour
 
         if (repelled == false)
         {
-
             Enemymove();
         }
         else
         {
             UndyingRepelled();
         }
-
-
-
     }
 
     private void StopSlashPlayed()
@@ -155,6 +170,7 @@ public class UndyingEnemy : MonoBehaviour
     {
         undyingSlashWave.Stop();
         stopSlashPlayed = true;
+        wavePositionSet = false;
     }
 
     public void Enemymove()
@@ -190,28 +206,40 @@ public class UndyingEnemy : MonoBehaviour
         {
             undyingAnimator.SetBool("Attacking", true);
             Invoke("AnimationDelayAttack", 0.5f);
-            undyingSlashWave.transform.localPosition = waveSlashPosition;
+
+            if (wavePositionSet == false && attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
+            {
+                switch (laneID)
+                {
+                    case 0:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    case 1:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    case 2:
+                        undyingSlashWave.transform.localPosition = new Vector3(waveSlashPosition.x, waveSlashPosition.y, waveSlashPosition.z + 2);
+                        wavePositionSet = true;
+                        break;
+                    case 3:
+                        undyingSlashWave.transform.localPosition = new Vector3(waveSlashPosition.x, waveSlashPosition.y, waveSlashPosition.z + 1);
+                        wavePositionSet = true;
+                        break;
+                    case 4:
+                        undyingSlashWave.transform.localPosition = waveSlashPosition;
+                        wavePositionSet = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
             stopSlashPlayed = false;
-            if (SecretT.bar == 100)
-            {
-                AudioManager.Instance.PlaySound("PlayerGetsHit");
-                SecretT.paintParticles.Stop();
-                SecretT.active = false;
-                SecretT.currentTime = SecretT.timeMax;
-                SecretT.symbol.SetActive(false);
-            }
-            else
-            {
-                // Insert THUD Sound
-            }
             undyingSlash.Play();
             undyingSlashWave.Play();
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
             attackTimer = maxAttacktimer;
-            Inkstone.Ink -= inkDamage;
-            Inkstone.maxInk -= maxInkDamage;
-            Inkstone.Ink += playerbehaviour.inkGained;
-            SecretT.bar = 0;
-            enemyspawnmanager.enemykilled = 0;
         }
     }
 
@@ -230,7 +258,7 @@ public class UndyingEnemy : MonoBehaviour
         {
             repelled = false;
             undyingStopped = true;
-            Invoke("RestartMovement", 1f);
+            Invoke("RestartMovement", 0.7f);
             speed = baseSpeed;
             undyingAnimator.SetBool("IsRepelled", false);
         }
@@ -246,7 +274,7 @@ public class UndyingEnemy : MonoBehaviour
         repelled = true;
         undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;
-
+        AudioManager.Instance.PlaySound("undyingrepelled");
     }
 
 
@@ -256,14 +284,9 @@ public class UndyingEnemy : MonoBehaviour
         {
             currentTime -= 1 * Time.deltaTime;
         }
-
-        if (currentTime < 0)
+        else
         {
             currentTime = 0;
-        }
-
-        if (currentTime == 0)
-        {
             undyingAnimator.SetBool("UndyingDeath", true);
             Invoke("Death", 2.6f);
         }
@@ -281,9 +304,17 @@ public class UndyingEnemy : MonoBehaviour
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            foreach (GameObject segno in signundyingenemy)
+            if (GameManager.GameIntensity == 3)
+
             {
-                segno.SetActive(false);
+
+                foreach (GameObject segno in SignIntensity3Undying)
+
+                {
+
+                    segno.SetActive(false);
+
+                }
 
             }
 

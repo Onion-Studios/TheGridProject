@@ -5,24 +5,30 @@ public class NormalEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 0;
-    [SerializeField]
+    [HideInInspector]
     public float speed;
     public int inkDamage;
     public int maxInkDamage;
     public int inkstoneDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signnormalenemy;
+    public GameObject[] SignNormalYokai;
+    public GameObject[] SignIntensity1Normal;
+    public GameObject[] SignIntensity1PlusNormal;
     public float baseSpeed;
+    [HideInInspector]
     public float startPosition;
+    [HideInInspector]
     public float extrapointsoverdistance;
+    [HideInInspector]
     public float startGrid;
     public float timeToDespawn = 2f;
-    private Animator normalAnimator;
+    public Animator normalAnimator;
     private bool destinationReached;
     public float BlackToDeath;
     [SerializeField]
@@ -76,11 +82,22 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
+        }
+
         speed = baseSpeed;
 
         startPosition = transform.position.x;
 
         deathforendgrid = null;
+
+        if (AudioManager.Instance.IsPlaying("Normalsound") == false)
+        {
+            Invoke("playnormalsound", 0.65f);
+        }
     }
 
     private void OnDisable()
@@ -114,7 +131,6 @@ public class NormalEnemy : MonoBehaviour
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
-
         if (this.transform.localPosition.x > 3.75)
         {
             Invoke("DeathForEndGrid", timeToDespawn);
@@ -128,10 +144,37 @@ public class NormalEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        Inkstone.Ink -= inkstoneDamage;
-        foreach (GameObject segno in signnormalenemy)
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignNormalYokai)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1Normal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity1PlusNormal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+        }
+        Die();
+    }
+
+    void Die()
+    {
+        if (deathforendgrid != null)
+        {
+            StopCoroutine(deathforendgrid);
+            deathforendgrid = null;
         }
         this.gameObject.SetActive(false);
     }
@@ -139,31 +182,29 @@ public class NormalEnemy : MonoBehaviour
     public void Deathforgriglia()
     {
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        enemyspawnmanager.enemykilled = 0;
-        foreach (GameObject segno in signnormalenemy)
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignNormalYokai)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1Normal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity1PlusNormal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
-
-        if (SecretT.bar == 100)
-        {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
-            SecretT.paintParticles.Stop();
-            SecretT.active = false;
-            SecretT.currentTime = SecretT.timeMax;
-            SecretT.symbol.SetActive(false);
-        }
-        else
-        {
-            // Insert THUD Sound
-        }
-
-        SecretT.bar = 0;
-
         AudioManager.Instance.PlaySound("EnemyDeath");
-
     }
 
     public void Deathforsign()
@@ -182,11 +223,27 @@ public class NormalEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signnormalenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignNormalYokai)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1Normal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity1PlusNormal)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
-
 
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
@@ -209,5 +266,9 @@ public class NormalEnemy : MonoBehaviour
             extrapointsoverdistance = scoreEnemy;
         }
 
+    }
+    void playnormalsound()
+    {
+        AudioManager.Instance.PlaySound("Normalsound");
     }
 }

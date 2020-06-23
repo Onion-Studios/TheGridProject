@@ -4,19 +4,22 @@ using UnityEngine;
 public class Secret : MonoBehaviour
 {
     #region VARIABLES
-    [Range(0, 100)] public int bar;
-    public int charge;
+    [HideInInspector]
+    [Range(0, 100)] public float bar;
+    public float charge;
+    public float chargeLoss;
     public Material startMaterial;
     public Material endMaterial;
     Renderer renderer_;
     Enemyspawnmanager enemyspawnmanager;
     public GameObject symbol;
-    Playerbehaviour playerbehaviour;
+    [HideInInspector]
     public float currentTime;
     public float timeMax;
     public bool active;
     [SerializeField]
     float symbolShowDuration;
+    [HideInInspector]
     public GameObject secretSymbol;
     IEnumerator symboldisplay;
     [SerializeField]
@@ -29,7 +32,6 @@ public class Secret : MonoBehaviour
     {
         bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
-        playerbehaviour = FindObjectOfType<Playerbehaviour>();
 
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
@@ -100,6 +102,7 @@ public class Secret : MonoBehaviour
     public void Death()
     {
         inkStroke.Play();
+        AudioManager.Instance.PlaySound("Secretsignsuccessfull");
         for (int i = 0; i < 7; i++)
         {
             foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])

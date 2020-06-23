@@ -6,15 +6,24 @@ public class GameManager : MonoBehaviour
 {
     public UIManager UI;
     public Playerbehaviour ActualPlayer;
+    public WaveManager WaveManager;
     public int GameIntensity = 1;
     Enemyspawnmanager Enemyspawnmanager;
     public int StartIntensity2 = 15;
     public int StartIntensity3 = 25;
+    [HideInInspector]
     public PlayableDirector dragonTimeline;
+    [HideInInspector]
     public GameObject dragon1;
+    [HideInInspector]
     public GameObject dragon2;
+    [HideInInspector]
     public GameObject dragon3;
-    public float intensitySpeed, intensitySpeedIncrease;
+    [HideInInspector]
+    public GameObject loadImage;
+    public float intensitySpeed;
+    [HideInInspector]
+    public float intensitySpeedIncrease;
 
     private bool soundPlayed1;
     private bool soundPlayed2;
@@ -25,12 +34,14 @@ public class GameManager : MonoBehaviour
     {
         ActualPlayer = FindObjectOfType<Playerbehaviour>();
         Enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        WaveManager = FindObjectOfType<WaveManager>();
         firstGameStart = true;
+        ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
     }
 
     private void Start()
     {
-        AudioManager.Instance.PlaySound("MainTrack");
+        loadImage.SetActive(true);
     }
 
     private void Update()
@@ -66,59 +77,76 @@ public class GameManager : MonoBehaviour
 
     void ChangeIntensity(int enemykilled)
     {
-        if (enemykilled >= 0 && enemykilled < StartIntensity2 && soundPlayed1 == false)
+        if (WaveManager.TEST_WaveActive == false)
         {
-            GameIntensity = 1;
-            if (firstGameStart)
+            if (enemykilled >= 0 && enemykilled < StartIntensity2 && soundPlayed1 == false)
             {
-                firstGameStart = false;
+                GameIntensity = 1;
+                if (firstGameStart)
+                {
+                    firstGameStart = false;
+                }
+                else
+                {
+                    dragon1.SetActive(true);
+                    dragon2.SetActive(false);
+                    dragon3.SetActive(false);
+                    dragonTimeline.Play();
+                    AudioManager.Instance.SetLoop("BooSound", false);
+                    AudioManager.Instance.PlaySound("BooSound");
+                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
+                }
+
+                soundPlayed1 = true;
+                soundPlayed2 = false;
+                soundPlayed3 = false;
+
             }
-            else
+            else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
             {
-                dragon1.SetActive(true);
-                dragon2.SetActive(false);
+                GameIntensity = 2;
+
+                //AudioManager.Instance.SetLoop("ClappingSound", false);
+                //AudioManager.Instance.PlaySound("ClappingSound");
+                soundPlayed2 = true;
+                soundPlayed1 = false;
+                soundPlayed3 = false;
+
+                dragon1.SetActive(false);
+                dragon2.SetActive(true);
                 dragon3.SetActive(false);
                 dragonTimeline.Play();
-                AudioManager.Instance.SetLoop("BooSound", false);
-                AudioManager.Instance.PlaySound("BooSound");
-
+                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity2;
             }
+            else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
+            {
+                GameIntensity = 3;
 
-            soundPlayed1 = true;
-            soundPlayed2 = false;
-            soundPlayed3 = false;
+                //AudioManager.Instance.SetLoop("ClappingSound", false);
+                //AudioManager.Instance.PlaySound("ClappingSound");
+                soundPlayed3 = true;
+                soundPlayed1 = false;
+                soundPlayed2 = false;
 
+                dragon1.SetActive(false);
+                dragon2.SetActive(false);
+                dragon3.SetActive(true);
+                dragonTimeline.Play();
+                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity3;
+            }
         }
-        else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
+        else if (WaveManager.TEST_WaveActive == true)
         {
-            GameIntensity = 2;
-
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
-            soundPlayed2 = true;
-            soundPlayed1 = false;
-            soundPlayed3 = false;
-
-            dragon1.SetActive(false);
-            dragon2.SetActive(true);
-            dragon3.SetActive(false);
-            dragonTimeline.Play();
+            GameIntensity = WaveManager.TEST_WaveIntensity;
         }
-        else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
+
+        if (WaveManager.TEST_WaveActive == false)
         {
-            GameIntensity = 3;
-
-            AudioManager.Instance.SetLoop("ClappingSound", false);
-            AudioManager.Instance.PlaySound("ClappingSound");
-            soundPlayed3 = true;
-            soundPlayed1 = false;
-            soundPlayed2 = false;
-
-            dragon1.SetActive(false);
-            dragon2.SetActive(false);
-            dragon3.SetActive(true);
-            dragonTimeline.Play();
+            intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
         }
-        intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
+        else
+        {
+            intensitySpeedIncrease = intensitySpeed * (WaveManager.TEST_WaveIntensity - 1);
+        }
     }
 }

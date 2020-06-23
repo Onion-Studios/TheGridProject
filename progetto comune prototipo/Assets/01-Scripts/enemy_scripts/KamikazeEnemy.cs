@@ -10,11 +10,14 @@ public class KamikazeEnemy : MonoBehaviour
     public int maxInkDamage;
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
+    GameManager GameManager;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
     public int scoreEnemy;
-    public GameObject[] signkamikazenemy;
+    public GameObject[] SignIntensity1Kamikaze;
+    public GameObject[] SignIntensity1PlusKamikaze;
+    public GameObject[] SignIntensity2Kamikaze;
     public float baseSpeed;
     private Collider[] hitColliders;
     public float blastRadius;
@@ -26,8 +29,13 @@ public class KamikazeEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem explosion;
     public ParticleSystem buffEffect;
+    public Animator kamikazeAnimator;
     #endregion
 
+    private void Awake()
+    {
+        kamikazeAnimator = GetComponentInChildren<Animator>();
+    }
     private void OnEnable()
     {
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
@@ -60,10 +68,20 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("Gamemanager is NULL");
+        }
 
         speed = baseSpeed;
 
         startPosition = transform.position.x;
+
+        if (AudioManager.Instance.IsPlaying("Kamikazesound") == false)
+        {
+            Invoke("playkamikazesound", 2.0f);
+        }
 
     }
 
@@ -71,7 +89,6 @@ public class KamikazeEnemy : MonoBehaviour
     void Update()
     {
         Enemymove();
-
         PointOverDistance();
     }
 
@@ -91,12 +108,29 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.transform.SetParent(null);
         explosion.Play();
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= 10;
-        foreach (GameObject segno in signkamikazenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignIntensity1Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusKamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
         ExplosionWork(this.transform.position);
+        Invoke("ParentReassignment", explosionDelay);
     }
 
     public void Deathforgriglia()
@@ -104,29 +138,30 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.transform.SetParent(null);
         explosion.Play();
         this.gameObject.SetActive(false);
-        Inkstone.Ink -= inkDamage;
-        Inkstone.maxInk -= maxInkDamage;
-        enemyspawnmanager.enemykilled = 0;
-        foreach (GameObject segno in signkamikazenemy)
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignIntensity1Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusKamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
-
-        if (SecretT.bar == 100)
-        {
-            AudioManager.Instance.PlaySound("PlayerGetsHit");
-            SecretT.paintParticles.Stop();
-            SecretT.active = false;
-            SecretT.currentTime = SecretT.timeMax;
-            SecretT.symbol.SetActive(false);
-        }
-        else
-        {
-            // Insert THUD Sound
-        }
-
-        SecretT.bar = 0;
         ExplosionWork(this.transform.position);
+        Invoke("ParentReassignment", explosionDelay);
     }
 
     public void Deathforsign()
@@ -137,9 +172,26 @@ public class KamikazeEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signkamikazenemy)
+        switch (GameManager.GameIntensity)
         {
-            segno.SetActive(false);
+            case 1:
+                foreach (GameObject segno in SignIntensity1Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 2:
+                foreach (GameObject segno in SignIntensity1PlusKamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
+            case 3:
+                foreach (GameObject segno in SignIntensity2Kamikaze)
+                {
+                    segno.SetActive(false);
+                }
+                break;
         }
 
         ExplosionWork(this.transform.position);
@@ -177,7 +229,7 @@ public class KamikazeEnemy : MonoBehaviour
 
     void ExplosionWork(Vector3 explosionPoint)
     {
-        AudioManager.Instance.PlaySound("KamikazeExplosion");
+        //AudioManager.Instance.PlaySound("KamikazeExplosion");
         hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius);
         foreach (Collider hitCol in hitColliders)
         {
@@ -203,5 +255,8 @@ public class KamikazeEnemy : MonoBehaviour
             }
         }
     }
-
+    void playkamikazesound()
+    {
+        AudioManager.Instance.PlaySound("Kamikazesound");
+    }
 }
