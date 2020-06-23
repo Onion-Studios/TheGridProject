@@ -278,14 +278,19 @@ public class Playerbehaviour : MonoBehaviour
 
     public void ReceiveDamage(int inkDamage, int maxInkDamage)
     {
-        Inkstone.Ink = Inkstone.Ink - maxInkDamage - inkDamage;
         if (maxInkDamage == 0)
         {
+            Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Backwash");
         }
         else
         {
             Inkstone.maxInk -= maxInkDamage;
+            if (Inkstone.Ink > Inkstone.maxInk)
+            {
+                Inkstone.Ink = Inkstone.maxInk;
+            }
+            Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Playertakedamage");
             enemyspawnmanager.enemykilled = 0;
             if (SecretT.bar == 100)
