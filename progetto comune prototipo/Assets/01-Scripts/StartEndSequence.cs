@@ -52,8 +52,8 @@ public class StartEndSequence : MonoBehaviour
 
     void Awake()
     {
-        crowd.color = new Color(0, 0, 0, 0);
-        alpha1Crowd = new Color(0, 0, 0, 1);
+        crowd.color = new Color(1, 1, 1, 0);
+        alpha1Crowd = new Color(1, 1, 1, 1);
         startSequencePosition = 0;
         endSequencePosition = 0;
         starting = true;
@@ -157,7 +157,6 @@ public class StartEndSequence : MonoBehaviour
                 mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
 
                 startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
-                crowd.color = Color.Lerp(crowd.color, alpha1Crowd, 3 * Time.deltaTime);
                 break;
             case 4:
                 if (lightsON == null)
@@ -165,6 +164,7 @@ public class StartEndSequence : MonoBehaviour
                     lightsON = LightsON();
                     StartCoroutine(lightsON);
                 }
+                crowd.color = Color.Lerp(crowd.color, alpha1Crowd, 3 * Time.deltaTime);
                 break;
             case 5:
                 if (lightsON != null)
@@ -176,6 +176,7 @@ public class StartEndSequence : MonoBehaviour
                 break;
             case 6:
                 startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
+
                 break;
             case 7:
                 StartUP();
