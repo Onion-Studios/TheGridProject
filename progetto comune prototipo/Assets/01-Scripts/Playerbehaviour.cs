@@ -92,7 +92,7 @@ public class Playerbehaviour : MonoBehaviour
     void Update()
     {
         if (startEndSequence.starting == false && startEndSequence.ending == false)
-         {
+        {
             MovementHandler();
             if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
             {
@@ -168,16 +168,10 @@ public class Playerbehaviour : MonoBehaviour
                 if (waitTimer > 0)
                 {
                     waitTimer -= 1 * Time.deltaTime;
-
-
                 }
-                if (waitTimer < 0)
+                else
                 {
                     waitTimer = 0;
-
-                }
-                if (waitTimer == 0)
-                {
                     waitTimer = maxWaitTimer;
                     movementState = "readystate";
                 }
@@ -284,14 +278,19 @@ public class Playerbehaviour : MonoBehaviour
 
     public void ReceiveDamage(int inkDamage, int maxInkDamage)
     {
-        Inkstone.Ink = Inkstone.Ink - maxInkDamage - inkDamage;
         if (maxInkDamage == 0)
         {
+            Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Backwash");
         }
         else
         {
             Inkstone.maxInk -= maxInkDamage;
+            if (Inkstone.Ink > Inkstone.maxInk)
+            {
+                Inkstone.Ink = Inkstone.maxInk;
+            }
+            Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Playertakedamage");
             enemyspawnmanager.enemykilled = 0;
             if (SecretT.bar == 100)

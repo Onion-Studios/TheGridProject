@@ -1020,7 +1020,7 @@ MonoBehaviour:
   originray: {x: 0, y: 0, z: 0}
   LastCubeChecked: {x: 0, y: 0, z: 0}
   yokaislayercount: 3
-  maxWaitTimer: 0.04
+  maxWaitTimer: 0.03
   inkGained: 7
   inkGainedIntensity1: 5
   inkGainedIntensity2: 7
@@ -3831,7 +3831,7 @@ MonoBehaviour:
   dragon2: {fileID: 170796333}
   dragon3: {fileID: 170796332}
   loadImage: {fileID: 1335605564}
-  intensitySpeed: 0.3
+  intensitySpeed: 0.1
   intensitySpeedIncrease: 0
 --- !u!4 &986519607
 Transform:
@@ -10605,6 +10605,9 @@ MonoBehaviour:
   - -13
   - -13
   - -13
+  undyingInstances: 2
+  malevolentInstances: 3
+  genericInstances: 10
 --- !u!4 &1471647699
 Transform:
   m_ObjectHideFlags: 0
@@ -13137,6 +13140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511655499594568253, guid: 3da923c4d8b16c14ca6bc53897d3da74,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2511655499594568251, guid: 3da923c4d8b16c14ca6bc53897d3da74,
         type: 3}
