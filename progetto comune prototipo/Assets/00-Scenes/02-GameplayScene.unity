@@ -13141,6 +13141,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2511655499594568253, guid: 3da923c4d8b16c14ca6bc53897d3da74,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2511655499594568251, guid: 3da923c4d8b16c14ca6bc53897d3da74,
         type: 3}
       propertyPath: m_LocalPosition.x
