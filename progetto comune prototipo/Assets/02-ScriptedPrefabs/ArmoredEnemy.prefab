@@ -522,7 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyID: 2
   speed: 1
-  baseSpeedMax: 1.6
+  baseSpeedMax: 1.2
   inkDamage: 10
   maxInkDamage: 10
   inkstoneDamage: 15
@@ -2538,6 +2538,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6253756492134926068}
     m_Modifications:
+    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
+        type: 3}
+      propertyPath: m_Name
+      value: BufferParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 2913130311404328408, guid: df27e923b87ad7548ab20fefb1d41a7f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2593,11 +2598,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2913130311404328415, guid: df27e923b87ad7548ab20fefb1d41a7f,
-        type: 3}
-      propertyPath: m_Name
-      value: BufferParticle
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df27e923b87ad7548ab20fefb1d41a7f, type: 3}
 --- !u!198 &3764715829142674677 stripped
@@ -2619,6 +2619,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6253756492134926068}
     m_Modifications:
+    - target: {fileID: 1345089895595821025, guid: 5fdfd9298948c1e4b98da12f0d150643,
+        type: 3}
+      propertyPath: m_Name
+      value: Inkflow
+      objectReference: {fileID: 0}
     - target: {fileID: 1345089895595821037, guid: 5fdfd9298948c1e4b98da12f0d150643,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2673,11 +2678,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345089895595821025, guid: 5fdfd9298948c1e4b98da12f0d150643,
-        type: 3}
-      propertyPath: m_Name
-      value: Inkflow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fdfd9298948c1e4b98da12f0d150643, type: 3}
