@@ -30,6 +30,10 @@ public class Secret : MonoBehaviour
     private ParticleSystem inkStroke;
     public ParticleSystem paintParticles;
     private bool symbolInitialized;
+    [SerializeField]
+    Vector3 symbolPosition;
+    [SerializeField]
+    Quaternion symbolRotation;
     #endregion
 
     // Start is called before the first frame update
@@ -41,6 +45,8 @@ public class Secret : MonoBehaviour
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
         active = false;
+        symbolPosition = symbol.transform.localPosition;
+        symbolRotation = symbol.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -152,9 +158,7 @@ public class Secret : MonoBehaviour
         else
         {
 
-            if (symbolTransform.localPosition.x < secretSymbolEndPosition.x &&
-                symbolTransform.localPosition.y < secretSymbolEndPosition.y &&
-                symbolTransform.localPosition.z < secretSymbolEndPosition.z)
+            if (symbolTransform.localPosition.z > secretSymbolEndPosition.z)
             {
                 symbolTransform.Translate(secretSymbolEndPosition * symbolTranslateSpeed * Time.deltaTime);
                 symbolTransform.Rotate(secretSymbolEndRotation * symbolTranslateSpeed * Time.deltaTime);
