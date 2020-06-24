@@ -29,6 +29,7 @@ public class Secret : MonoBehaviour
     [SerializeField]
     private ParticleSystem inkStroke;
     public ParticleSystem paintParticles;
+    private bool symbolInitialized;
     #endregion
 
     // Start is called before the first frame update
@@ -78,6 +79,7 @@ public class Secret : MonoBehaviour
                 else
                 {
                     currentTime = 0;
+                    symbolInitialized = false;
                     AudioManager.Instance.PlaySound("PaintingReset");
                     paintParticles.Stop();
                     bar = 0;
@@ -139,23 +141,30 @@ public class Secret : MonoBehaviour
 
     private void SymbolMovement()
     {
-        var pos = symbol.transform.localPosition;
-        var rot = symbol.transform.localRotation;
-        symbol.transform.localPosition = secretSymbolStartPosition;
-        symbol.transform.localRotation = Quaternion.Euler(secretSymbolStartRotation);
-        symbol.SetActive(true);
-        if (pos.x < secretSymbolEndPosition.x &&
-            pos.y < secretSymbolEndPosition.y &&
-            pos.z < secretSymbolEndPosition.z)
+        var symbolTransform = symbol.transform;
+        if (symbolInitialized == false)
         {
-            symbol.transform.Translate(secretSymbolEndPosition * symbolTranslateSpeed * Time.deltaTime);
-            symbol.transform.Rotate(secretSymbolEndRotation * symbolTranslateSpeed * Time.deltaTime);
+            symbolTransform.localPosition = secretSymbolStartPosition;
+            symbolTransform.localRotation = Quaternion.Euler(secretSymbolStartRotation);
+            symbol.SetActive(true);
+            symbolInitialized = true;
         }
         else
         {
-            symbol.transform.localPosition = secretSymbolEndPosition;
-            symbol.transform.localRotation = Quaternion.Euler(secretSymbolEndRotation);
-            active = true;
+
+            if (symbolTransform.localPosition.x < secretSymbolEndPosition.x &&
+                symbolTransform.localPosition.y < secretSymbolEndPosition.y &&
+                symbolTransform.localPosition.z < secretSymbolEndPosition.z)
+            {
+                symbolTransform.Translate(secretSymbolEndPosition * symbolTranslateSpeed * Time.deltaTime);
+                symbolTransform.Rotate(secretSymbolEndRotation * symbolTranslateSpeed * Time.deltaTime);
+            }
+            else
+            {
+                symbolTransform.localPosition = secretSymbolEndPosition;
+                symbolTransform.localRotation = Quaternion.Euler(secretSymbolEndRotation);
+                active = true;
+            }
         }
     }
 
