@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Secret : MonoBehaviour
 {
@@ -18,10 +17,15 @@ public class Secret : MonoBehaviour
     public float timeMax;
     public bool active;
     [SerializeField]
-    float symbolShowDuration;
-    [HideInInspector]
-    public GameObject secretSymbol;
-    IEnumerator symboldisplay;
+    float symbolTranslateSpeed;
+    [SerializeField]
+    Vector3 secretSymbolStartPosition;
+    [SerializeField]
+    Vector3 secretSymbolStartRotation;
+    [SerializeField]
+    Vector3 secretSymbolEndPosition;
+    [SerializeField]
+    Vector3 secretSymbolEndRotation;
     [SerializeField]
     private ParticleSystem inkStroke;
     public ParticleSystem paintParticles;
@@ -36,7 +40,6 @@ public class Secret : MonoBehaviour
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
         active = false;
-
     }
 
     // Update is called once per frame
@@ -45,7 +48,6 @@ public class Secret : MonoBehaviour
         Color();
         Timer();
     }
-
 
     void Timer()
     {
@@ -60,27 +62,16 @@ public class Secret : MonoBehaviour
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
             {
-                if (symboldisplay != null)
-                {
-                    StopCoroutine(symboldisplay);
-                    symboldisplay = null;
-                }
                 AudioManager.Instance.PlaySound("PaintingCompleted");
                 paintParticles.Play();
-                active = true;
-                symbol.SetActive(active);
                 currentTime = timeMax;
+                SymbolMovement();
             }
             else
             {
                 //Timer
                 if (currentTime > 0)
                 {
-                    if (symboldisplay == null)
-                    {
-                        symboldisplay = SymbolDisplay();
-                        StartCoroutine(symboldisplay);
-                    }
                     currentTime -= 1 * Time.deltaTime;
                 }
                 //reset barra e si disattiva la secret 
@@ -91,8 +82,8 @@ public class Secret : MonoBehaviour
                     paintParticles.Stop();
                     bar = 0;
 
+                    symbol.SetActive(false);
                     active = false;
-                    symbol.SetActive(active);
                 }
             }
         }
@@ -146,15 +137,27 @@ public class Secret : MonoBehaviour
         }
     }
 
-    private IEnumerator SymbolDisplay()
+    private void SymbolMovement()
     {
-        secretSymbol.SetActive(true);
-        Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(symbolShowDuration);
-        Time.timeScale = 1f;
-        secretSymbol.SetActive(false);
+        var pos = symbol.transform.localPosition;
+        var rot = symbol.transform.localRotation;
+        symbol.transform.localPosition = secretSymbolStartPosition;
+        symbol.transform.localRotation = Quaternion.Euler(secretSymbolStartRotation);
+        symbol.SetActive(true);
+        if (pos.x < secretSymbolEndPosition.x &&
+            pos.y < secretSymbolEndPosition.y &&
+            pos.z < secretSymbolEndPosition.z)
+        {
+            symbol.transform.Translate(secretSymbolEndPosition * symbolTranslateSpeed * Time.deltaTime);
+            symbol.transform.Rotate(secretSymbolEndRotation * symbolTranslateSpeed * Time.deltaTime);
+        }
+        else
+        {
+            symbol.transform.localPosition = secretSymbolEndPosition;
+            symbol.transform.localRotation = Quaternion.Euler(secretSymbolEndRotation);
+            active = true;
+        }
     }
-
 
     void Color()
     {
