@@ -13058,11 +13058,11 @@ PrefabInstance:
       propertyPath: secretSymbolStartRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4430029920275224170, guid: 7655c98483d4dd84f98bb883106f5087,
+    - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: playableDirector
+      value: 
+      objectReference: {fileID: 2083101322549782335}
     - target: {fileID: 5502862462664689284, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -13117,6 +13117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430029920275224170, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 156484861843223400, guid: 7655c98483d4dd84f98bb883106f5087,
         type: 3}
@@ -13231,7 +13236,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: c63172adb35dd6c4eb9bc007352128aa, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 
 public class Secret : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Secret : MonoBehaviour
     Vector3 symbolPosition;
     [SerializeField]
     Quaternion symbolRotation;
+    public PlayableDirector playableDirector;
     #endregion
 
     // Start is called before the first frame update
@@ -147,29 +149,8 @@ public class Secret : MonoBehaviour
 
     private void SymbolMovement()
     {
-        var symbolTransform = symbol.transform;
-        if (symbolInitialized == false)
-        {
-            symbolTransform.localPosition = secretSymbolStartPosition;
-            symbolTransform.localRotation = Quaternion.Euler(secretSymbolStartRotation);
-            symbol.SetActive(true);
-            symbolInitialized = true;
-        }
-        else
-        {
-
-            if (symbolTransform.localPosition.z > secretSymbolEndPosition.z)
-            {
-                symbolTransform.Translate(secretSymbolEndPosition * symbolTranslateSpeed * Time.deltaTime);
-                symbolTransform.Rotate(secretSymbolEndRotation * symbolTranslateSpeed * Time.deltaTime);
-            }
-            else
-            {
-                symbolTransform.localPosition = secretSymbolEndPosition;
-                symbolTransform.localRotation = Quaternion.Euler(secretSymbolEndRotation);
-                active = true;
-            }
-        }
+        playableDirector.Play();
+        active = true;
     }
 
     void Color()
