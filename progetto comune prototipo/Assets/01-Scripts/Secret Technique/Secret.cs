@@ -18,23 +18,8 @@ public class Secret : MonoBehaviour
     public float timeMax;
     public bool active;
     [SerializeField]
-    float symbolTranslateSpeed;
-    [SerializeField]
-    Vector3 secretSymbolStartPosition;
-    [SerializeField]
-    Vector3 secretSymbolStartRotation;
-    [SerializeField]
-    Vector3 secretSymbolEndPosition;
-    [SerializeField]
-    Vector3 secretSymbolEndRotation;
-    [SerializeField]
     private ParticleSystem inkStroke;
     public ParticleSystem paintParticles;
-    private bool symbolInitialized;
-    [SerializeField]
-    Vector3 symbolPosition;
-    [SerializeField]
-    Quaternion symbolRotation;
     public PlayableDirector playableDirector;
     #endregion
 
@@ -47,8 +32,6 @@ public class Secret : MonoBehaviour
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
         active = false;
-        symbolPosition = symbol.transform.localPosition;
-        symbolRotation = symbol.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -87,7 +70,6 @@ public class Secret : MonoBehaviour
                 else
                 {
                     currentTime = 0;
-                    symbolInitialized = false;
                     AudioManager.Instance.PlaySound("PaintingReset");
                     paintParticles.Stop();
                     bar = 0;
@@ -156,5 +138,15 @@ public class Secret : MonoBehaviour
     void Color()
     {
         this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
+    }
+
+    public void StopTime()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeTime()
+    {
+        Time.timeScale = 1f;
     }
 }
