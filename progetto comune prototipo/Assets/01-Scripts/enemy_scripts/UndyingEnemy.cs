@@ -43,6 +43,7 @@ public class UndyingEnemy : MonoBehaviour
     public Animator undyingAnimator;
     private bool alreadyDead;
     private bool wavePositionSet;
+    private float enemyZPos;
 
     #endregion
 
@@ -50,6 +51,27 @@ public class UndyingEnemy : MonoBehaviour
     {
         waveSlashPosition = GetComponentsInChildren<Transform>()[2].localPosition;
         undyingAnimator = GetComponentInChildren<Animator>();
+        enemyZPos = transform.position.z;
+        if (enemyZPos == 0)
+        {
+            laneID = 0;
+        }
+        else if (enemyZPos == 1)
+        {
+            laneID = 1;
+        }
+        else if (enemyZPos == 2)
+        {
+            laneID = 2;
+        }
+        else if (enemyZPos == 3)
+        {
+            laneID = 3;
+        }
+        else if (enemyZPos == 4)
+        {
+            laneID = 4;
+        }
     }
     private void OnEnable()
     {
