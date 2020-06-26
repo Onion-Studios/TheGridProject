@@ -304,7 +304,15 @@ public class ArmoredEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        this.gameObject.SetActive(false);
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        armor1.GetComponent<Renderer>().material.color = Color.black;
+        armor2.GetComponent<Renderer>().material.color = Color.black;
+        armor3.GetComponent<Renderer>().material.color = Color.black;
+        armor4.GetComponent<Renderer>().material.color = Color.black;
+        bandana.GetComponent<Renderer>().material.color = Color.black;
+        Invoke("Death", BlackToDeath);
+
         ArmorReset();
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
         switch (GameManager.GameIntensity)
@@ -493,7 +501,6 @@ public class ArmoredEnemy : MonoBehaviour
                     break;
 
             }
-            this.gameObject.SetActive(false);
             inkDeath.Play();
             enemy.GetComponent<Renderer>().material.color = Color.black;
             armor1.GetComponent<Renderer>().material.color = Color.black;
@@ -503,6 +510,17 @@ public class ArmoredEnemy : MonoBehaviour
             bandana.GetComponent<Renderer>().material.color = Color.black;
             Invoke("Death", BlackToDeath);
         }
+    }
+    public void DeathForCollision()
+    {
+        this.gameObject.SetActive(false);
+
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        armor1.GetComponent<Renderer>().material.color = Color.white;
+        armor2.GetComponent<Renderer>().material.color = Color.white;
+        armor3.GetComponent<Renderer>().material.color = Color.white;
+        armor4.GetComponent<Renderer>().material.color = Color.white;
+        bandana.GetComponent<Renderer>().material.color = Color.white;
     }
 
     public void Death()

@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Playables;
 
 public class Secret : MonoBehaviour
 {
@@ -18,13 +18,9 @@ public class Secret : MonoBehaviour
     public float timeMax;
     public bool active;
     [SerializeField]
-    float symbolShowDuration;
-    [HideInInspector]
-    public GameObject secretSymbol;
-    IEnumerator symboldisplay;
-    [SerializeField]
     private ParticleSystem inkStroke;
     public ParticleSystem paintParticles;
+    public PlayableDirector playableDirector;
     #endregion
 
     // Start is called before the first frame update
@@ -36,7 +32,6 @@ public class Secret : MonoBehaviour
         renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
         renderer_.material = startMaterial;
         active = false;
-
     }
 
     // Update is called once per frame
@@ -45,7 +40,6 @@ public class Secret : MonoBehaviour
         Color();
         Timer();
     }
-
 
     void Timer()
     {
@@ -60,27 +54,16 @@ public class Secret : MonoBehaviour
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
             {
-                if (symboldisplay != null)
-                {
-                    StopCoroutine(symboldisplay);
-                    symboldisplay = null;
-                }
                 AudioManager.Instance.PlaySound("PaintingCompleted");
                 paintParticles.Play();
-                active = true;
-                symbol.SetActive(active);
                 currentTime = timeMax;
+                SymbolMovement();
             }
             else
             {
                 //Timer
                 if (currentTime > 0)
                 {
-                    if (symboldisplay == null)
-                    {
-                        symboldisplay = SymbolDisplay();
-                        StartCoroutine(symboldisplay);
-                    }
                     currentTime -= 1 * Time.deltaTime;
                 }
                 //reset barra e si disattiva la secret 
@@ -91,8 +74,8 @@ public class Secret : MonoBehaviour
                     paintParticles.Stop();
                     bar = 0;
 
+                    symbol.SetActive(false);
                     active = false;
-                    symbol.SetActive(active);
                 }
             }
         }
@@ -146,18 +129,24 @@ public class Secret : MonoBehaviour
         }
     }
 
-    private IEnumerator SymbolDisplay()
+    private void SymbolMovement()
     {
-        secretSymbol.SetActive(true);
-        Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(symbolShowDuration);
-        Time.timeScale = 1f;
-        secretSymbol.SetActive(false);
+        playableDirector.Play();
+        active = true;
     }
-
 
     void Color()
     {
         this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
+    }
+
+    public void StopTime()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeTime()
+    {
+        Time.timeScale = 1f;
     }
 }

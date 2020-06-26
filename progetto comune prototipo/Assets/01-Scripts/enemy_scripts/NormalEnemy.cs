@@ -181,7 +181,11 @@ public class NormalEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        this.gameObject.SetActive(false);
+        inkDeath.Play();
+        enemy.GetComponent<Renderer>().material.color = Color.black;
+        band.GetComponent<Renderer>().material.color = Color.black;
+        Invoke("DeathForCollision", BlackToDeath);
+
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
         switch (GameManager.GameIntensity)
         {
@@ -205,6 +209,13 @@ public class NormalEnemy : MonoBehaviour
                 break;
         }
         AudioManager.Instance.PlaySound("EnemyDeath");
+    }
+
+    public void DeathForCollision()
+    {
+        this.gameObject.SetActive(false);
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        band.GetComponent<Renderer>().material.color = Color.white;
     }
 
     public void Deathforsign()
