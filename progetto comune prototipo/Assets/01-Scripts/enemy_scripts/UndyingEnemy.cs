@@ -11,6 +11,7 @@ public class UndyingEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     GameManager GameManager;
+    Managercombo Managercombo;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
@@ -82,7 +83,11 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-
+        Managercombo = FindObjectOfType<Managercombo>();
+        if (Managercombo == null)
+        {
+            Debug.LogError("Managercombo is NULL");
+        }
 
         GameManager = FindObjectOfType<GameManager>();
         if (GameManager == null)
@@ -304,17 +309,11 @@ public class UndyingEnemy : MonoBehaviour
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            if (GameManager.GameIntensity == 3)
+            foreach (GameObject segno in SignIntensity3Undying)
 
             {
 
-                foreach (GameObject segno in SignIntensity3Undying)
-
-                {
-
-                    segno.SetActive(false);
-
-                }
+                segno.SetActive(false);
 
             }
 

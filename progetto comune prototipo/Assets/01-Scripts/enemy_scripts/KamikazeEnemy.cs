@@ -11,6 +11,7 @@ public class KamikazeEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     GameManager GameManager;
+    Managercombo Managercombo;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
@@ -74,6 +75,12 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
+        Managercombo = FindObjectOfType<Managercombo>();
+        if (Managercombo == null)
+        {
+            Debug.LogError("Managercombo is NULL");
+        }
+
         speed = baseSpeed;
 
         startPosition = transform.position.x;
@@ -108,26 +115,17 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.transform.SetParent(null);
         explosion.Play();
         this.gameObject.SetActive(false);
-        switch (GameManager.GameIntensity)
+        foreach (GameObject segno in SignIntensity1Kamikaze)
         {
-            case 1:
-                foreach (GameObject segno in SignIntensity1Kamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1PlusKamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity2Kamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusKamikaze)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity2Kamikaze)
+        {
+            segno.SetActive(false);
         }
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
@@ -139,26 +137,17 @@ public class KamikazeEnemy : MonoBehaviour
         explosion.Play();
         this.gameObject.SetActive(false);
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
-        switch (GameManager.GameIntensity)
+        foreach (GameObject segno in SignIntensity1Kamikaze)
         {
-            case 1:
-                foreach (GameObject segno in SignIntensity1Kamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1PlusKamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity2Kamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusKamikaze)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity2Kamikaze)
+        {
+            segno.SetActive(false);
         }
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
@@ -172,26 +161,17 @@ public class KamikazeEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        switch (GameManager.GameIntensity)
+        foreach (GameObject segno in SignIntensity1Kamikaze)
         {
-            case 1:
-                foreach (GameObject segno in SignIntensity1Kamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1PlusKamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity2Kamikaze)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusKamikaze)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity2Kamikaze)
+        {
+            segno.SetActive(false);
         }
 
         ExplosionWork(this.transform.position);

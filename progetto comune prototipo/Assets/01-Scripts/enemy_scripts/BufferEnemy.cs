@@ -7,6 +7,7 @@ public class BufferEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     GameManager GameManager;
+    Managercombo Managercombo;
     Inkstone Inkstone;
     PointSystem pointsystem;
     Secret SecretT;
@@ -64,7 +65,11 @@ public class BufferEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-
+        Managercombo = FindObjectOfType<Managercombo>();
+        if (Managercombo == null)
+        {
+            Debug.LogError("Managercombo is NULL");
+        }
 
         GameManager = FindObjectOfType<GameManager>();
         if (pointsystem == null)
@@ -279,35 +284,27 @@ public class BufferEnemy : MonoBehaviour
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
-
-
-        this.gameObject.SetActive(false);
         enemy.GetComponent<Renderer>().material.color = Color.white;
         hat.GetComponent<Renderer>().material.color = Color.white;
+        this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        switch (GameManager.GameIntensity)
+        //elimina segni int 1
+        foreach (GameObject segno in SignIntensity1Buffer)
         {
-            case 1:
-                foreach (GameObject segno in SignIntensity1Buffer)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1PlusBuffer)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity2Buffer)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+            segno.SetActive(false);
         }
+        //elimina segni int 1 plus
+        foreach (GameObject segno in SignIntensity1PlusBuffer)
+        {
+            segno.SetActive(false);
+        }
+        //elimina segni int 2
+        foreach (GameObject segno in SignIntensity2Buffer)
+        {
+            segno.SetActive(false);
+        }       
         SpeedReset();
         AudioManager.Instance.StopSound("SingsongBuffer");
         AudioManager.Instance.PlaySound("EnemyDeath");

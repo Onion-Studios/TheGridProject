@@ -11,6 +11,7 @@ public class ArmoredEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     GameManager GameManager;
+    Managercombo Managercombo;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
@@ -174,6 +175,12 @@ public class ArmoredEnemy : MonoBehaviour
             Debug.LogError("Wave Manager is NULL");
         }
 
+        Managercombo = FindObjectOfType<Managercombo>();
+        if (Managercombo == null)
+        {
+            Debug.LogError("Managercombo is NULL");
+        }
+
         speed = baseSpeed;
 
         startPosition = transform.position.x;
@@ -248,44 +255,28 @@ public class ArmoredEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
-        switch (GameManager.GameIntensity)
+        //foreach segni intensity 1
+        foreach (GameObject segno in SignIntensity1Armored)
+
         {
 
-            case 1:
+            segno.SetActive(false);
 
-                foreach (GameObject segno in SignIntensity1Armored)
+        }
+        //foreach segni intensity 1 plus
+        foreach (GameObject segno in SignIntensity1PlusArmored)
 
-                {
+        {
 
-                    segno.SetActive(false);
+            segno.SetActive(false);
 
-                }
+        }
+        //foreach segni intensity 2
+        foreach (GameObject segno in SignIntensity2Armored)
 
-                break;
+        {
 
-            case 2:
-
-                foreach (GameObject segno in SignIntensity1PlusArmored)
-
-                {
-
-                    segno.SetActive(false);
-
-                }
-
-                break;
-
-            case 3:
-
-                foreach (GameObject segno in SignIntensity2Armored)
-
-                {
-
-                    segno.SetActive(false);
-
-                }
-
-                break;
+            segno.SetActive(false);
 
         }
         Die();
@@ -315,45 +306,28 @@ public class ArmoredEnemy : MonoBehaviour
 
         ArmorReset();
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
-        switch (GameManager.GameIntensity)
+        //foreach segni intensity 1
+        foreach (GameObject segno in SignIntensity1Armored)
 
         {
 
-            case 1:
+            segno.SetActive(false);
 
-                foreach (GameObject segno in SignIntensity1Armored)
+        }
+        //foreach segni intensity 1 plus
+        foreach (GameObject segno in SignIntensity1PlusArmored)
 
-                {
+        {
 
-                    segno.SetActive(false);
+            segno.SetActive(false);
 
-                }
+        }
+        //foreach segni intensity 2
+        foreach (GameObject segno in SignIntensity2Armored)
 
-                break;
+        {
 
-            case 2:
-
-                foreach (GameObject segno in SignIntensity1PlusArmored)
-
-                {
-
-                    segno.SetActive(false);
-
-                }
-
-                break;
-
-            case 3:
-
-                foreach (GameObject segno in SignIntensity2Armored)
-
-                {
-
-                    segno.SetActive(false);
-
-                }
-
-                break;
+            segno.SetActive(false);
 
         }
         AudioManager.Instance.PlaySound("EnemyDeath");
@@ -380,44 +354,28 @@ public class ArmoredEnemy : MonoBehaviour
             armorPiece6.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece7.transform.SetParent(null);
             armorPiece7.GetComponent<Rigidbody>().isKinematic = false;
-            switch (GameManager.GameIntensity)
+            //foreach segni intensity 1
+            foreach (GameObject segno in SignIntensity1Armored)
+
             {
 
-                case 1:
+                segno.SetActive(false);
 
-                    foreach (GameObject segno in SignIntensity1Armored)
+            }
+            //foreach segni intensity 1 plus
+            foreach (GameObject segno in SignIntensity1PlusArmored)
 
-                    {
+            {
 
-                        segno.SetActive(false);
+                segno.SetActive(false);
 
-                    }
+            }
+            //foreach segni intensity 2
+            foreach (GameObject segno in SignIntensity2Armored)
 
-                    break;
+            {
 
-                case 2:
-
-                    foreach (GameObject segno in SignIntensity1PlusArmored)
-
-                    {
-
-                        segno.SetActive(false);
-
-                    }
-
-                    break;
-
-                case 3:
-
-                    foreach (GameObject segno in SignIntensity2Armored)
-
-                    {
-
-                        segno.SetActive(false);
-
-                    }
-
-                    break;
+                segno.SetActive(false);
 
             }
             int randomsegno;
@@ -460,45 +418,28 @@ public class ArmoredEnemy : MonoBehaviour
             enemyspawnmanager.enemykilled += 2;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            switch (GameManager.GameIntensity)
+            //foreach segni intensity 1
+            foreach (GameObject segno in SignIntensity1Armored)
 
             {
 
-                case 1:
+                segno.SetActive(false);
 
-                    foreach (GameObject segno in SignIntensity1Armored)
+            }
+            //foreach segni intensity 1 plus
+            foreach (GameObject segno in SignIntensity1PlusArmored)
 
-                    {
+            {
 
-                        segno.SetActive(false);
+                segno.SetActive(false);
 
-                    }
+            }
+            //foreach segni intensity 2
+            foreach (GameObject segno in SignIntensity2Armored)
 
-                    break;
+            {
 
-                case 2:
-
-                    foreach (GameObject segno in SignIntensity1PlusArmored)
-
-                    {
-
-                        segno.SetActive(false);
-
-                    }
-
-                    break;
-
-                case 3:
-
-                    foreach (GameObject segno in SignIntensity2Armored)
-
-                    {
-
-                        segno.SetActive(false);
-
-                    }
-
-                    break;
+                segno.SetActive(false);
 
             }
             inkDeath.Play();
@@ -529,9 +470,29 @@ public class ArmoredEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 2;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in signarmoredenemy)
+        //foreach segni intensity 1
+        foreach (GameObject segno in SignIntensity1Armored)
+
         {
+
             segno.SetActive(false);
+
+        }
+        //foreach segni intensity 1 plus
+        foreach (GameObject segno in SignIntensity1PlusArmored)
+
+        {
+
+            segno.SetActive(false);
+
+        }
+        //foreach segni intensity 2
+        foreach (GameObject segno in SignIntensity2Armored)
+
+        {
+
+            segno.SetActive(false);
+
         }
         this.gameObject.SetActive(false);
 

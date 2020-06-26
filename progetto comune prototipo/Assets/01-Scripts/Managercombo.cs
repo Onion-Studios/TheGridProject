@@ -199,7 +199,13 @@ public class Managercombo : MonoBehaviour
     public void CheckSign()
     {
         CheckCountBoxesLogicGrid();
-        CheckIntensity(CountBoxesActive);       
+        Searchextremity(grigliamanager.logicgrid);
+
+        if (foundextremity == true)
+        {
+            CheckCorrectSign(CountBoxesActive);
+
+        }
     }
 
     void CheckCountBoxesLogicGrid()
@@ -211,46 +217,6 @@ public class Managercombo : MonoBehaviour
                 CountBoxesActive++;
             }
         }
-    }
-
-    void CheckIntensity(int CaselleAttive)
-    {
-        switch (Gamemanager.GameIntensity)
-        {
-            case 1:
-                if(CaselleAttive == 4 || CaselleAttive == 5 || CaselleAttive == 7 || CaselleAttive == 8)
-                {
-                    Searchextremity(grigliamanager.logicgrid);
-                    if (foundextremity == true)
-                    {
-                        CheckCorrectSignIntensity1(CaselleAttive);
-                    }
-
-                }
-                break;
-            case 2:
-                if (CaselleAttive == 5 || CaselleAttive == 6 || CaselleAttive == 7 || CaselleAttive == 8)
-                {
-                    Searchextremity(grigliamanager.logicgrid);
-                    if (foundextremity == true)
-                    {
-                        CheckCorrectSignIntensity2(CaselleAttive);
-                    }
-
-                }
-                break;
-            case 3:
-                if (CaselleAttive == 6 || CaselleAttive == 7 || CaselleAttive == 8 || CaselleAttive == 9)
-                {
-                    Searchextremity(grigliamanager.logicgrid);
-                    if (foundextremity == true)
-                    {
-                        CheckCorrectSignIntensity3(CaselleAttive);
-                    }
-
-                }
-                break;
-        }
     }
 
     void Searchextremity(bool[,] grid)
@@ -440,1400 +406,1433 @@ public class Managercombo : MonoBehaviour
         }
     }
 
-    void CheckCorrectSignIntensity1(int caselleattive)
+    void CheckCorrectSign(int caselleattive)
     {
         int countercorrectbox = 0;
 
-        switch (caselleattive)
-        {
-            case 4:
-                //prendi dalla normal yokai
-                for (int i = 0; i < NormalYokaiMatrix.Length; i++)
-                {
-                    foreach (var nodo in NormalYokaiMatrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
+        switch (caselleattive)
+        {
+            case 4:
+                for (int i = 0; i < NormalYokaiMatrix.Length; i++)
+                {
+                    foreach (var nodo in NormalYokaiMatrix[i])
+                    {
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
+                        {
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                            {
+                                countercorrectbox++;
+
+                                if (countercorrectbox == NormalYokaiMatrix[0].Length)
+                                {
+                                    Kill4SignEnemies(i);
+                                }
+                            }
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (countercorrectbox == NormalYokaiMatrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                }
+                break;
+            case 5:
+                for (int i = 0; i < Intensity1Matrix.Length; i++)
+                {
+                    foreach (var nodo in Intensity1Matrix[i])
+                    {
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
+                        {
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                            {
+                                countercorrectbox++;
+
+                                if (countercorrectbox == Intensity1Matrix[0].Length)
+                                {
+                                    Kill5SignEnemies(i);
+                                }
+                            }
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (countercorrectbox == Intensity1Matrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                }
+                break;
+            case 6:
+                for (int i = 0; i < Intensity1PlusMatrix.Length; i++)
+                {
+                    foreach (var nodo in Intensity1PlusMatrix[i])
+                    {
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
+                        {
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                            {
+                                countercorrectbox++;
+
+                                if (countercorrectbox == Intensity1PlusMatrix[0].Length)
+                                {
+                                    Kill6SignEnemies(i);
+                                }
+                            }
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (countercorrectbox == Intensity1PlusMatrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                }
+                break;
+            case 7:
+                //prende dai segni di intensity2
+                for (int i = 0; i < Intensity2Matrix.Length; i++)
+                {
+                    foreach (var nodo in Intensity2Matrix[i])
+                    {
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
+                        {
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                            {
+                                countercorrectbox++;
+
+                                if (countercorrectbox == Intensity2Matrix[0].Length)
+                                {
+                                    Kill7SignEnemies(i);
+                                }
+                            }
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (countercorrectbox == Intensity2Matrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                }
+                //prendi dai segni speciali, segno malevolent in questo caso primi due elementi dell'array
+                for (int i = 0; i < 2; i++)
+                {
+                    foreach (var nodo in SpecialSignMatrix[i])
+                    {
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
+                        {
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                            {
+                                countercorrectbox++;
+
+                                if (countercorrectbox == SpecialSignMatrix[0].Length)
+                                {
+                                    KillMalevolentEnemy(i);
+                                }
+                            }
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (countercorrectbox == Intensity1Matrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                }
+                break;
+            case 8:
+                //prende dall'intensity 2 plus
+                for (int i = 0; i < Intensity2PlusMatrix.Length; i++)
+                {
+                    foreach (var nodo in Intensity2PlusMatrix[i])
+                    {
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
+                        {
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                            {
+                                countercorrectbox++;
+
+                                if (countercorrectbox == Intensity2PlusMatrix[0].Length)
+                                {
+                                    Kill8SignEnemies(i);
+                                }
+                            }
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (countercorrectbox == Intensity2PlusMatrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                }
+                //prendi dai segni speciali, segno secret in questo caso terzo e quarto elemento dell'array
+                if (secretscript.active == true)
+                {
+                    for (int i = 2; i < 4; i++)
+                    {
+                        foreach (var nodo in SpecialSignMatrix[i])
+                        {
+                            if (extremity.X + nodo.X >= 0 &&
+                                extremity.X + nodo.X <= 4 &&
+                                extremity.Z + nodo.Z >= 0 &&
+                                extremity.Z + nodo.Z <= 4)
+                            {
+                                if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                                {
+                                    countercorrectbox++;
+
+                                    if (countercorrectbox == SpecialSignMatrix[0].Length)
+                                    {
+                                        KillWithSecretTecnique(i);
+                                    }
+                                }
+                                else
+                                {
+                                    foundextremity = false;
+                                    countercorrectbox = 0;
+                                    break;
+                                }
+                            }
+                        }
+                        if (countercorrectbox == Intensity1Matrix[0].Length)
+                        {
+                            countercorrectbox = 0;
+                            break;
+                        }
+                    }
+                }
+                break;
+            case 9:
+                for (int i = 0; i < Intensity3Matrix.Length; i++)
+                {
+                    foreach (var nodo in Intensity3Matrix[i])
+                    {
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
+                        {
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
+                            {
                                 countercorrectbox++;
-
-                                if(countercorrectbox == NormalYokaiMatrix[0].Length)
-                                {
-                                    KillEnemiesIntensity1(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == NormalYokaiMatrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 5:
-                //prendi dalla intensity 1
-                for (int i = 0; i < Intensity1Matrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity1Matrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity1Matrix[0].Length)
-                                {
-                                    KillEnemiesIntensity1(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity1Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 7:
-                //prendi dai segni speciali, segno malevolent in questo caso primi due elementi dell'array
-                for (int i = 0; i < 2; i++)
-                {
-                    foreach (var nodo in SpecialSignMatrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == SpecialSignMatrix[0].Length)
-                                {
-                                    KillEnemiesIntensity1(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity1Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 8:
-                if(secretscript.active == true) 
-                {
-                    for (int i = 2; i < 4; i++)
-                    {
-                        foreach (var nodo in SpecialSignMatrix[i])
-                        {
-                            if (extremity.X + nodo.X >= 0 &&
-                                extremity.X + nodo.X <= 4 &&
-                                extremity.Z + nodo.Z >= 0 &&
-                                extremity.Z + nodo.Z <= 4)
-                            {
-                                if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                                {
-                                    countercorrectbox++;
-
-                                    if (countercorrectbox == SpecialSignMatrix[0].Length)
-                                    {
-                                        KillEnemiesIntensity1(caselleattive, i);
-                                    }
-                                }
-                                else
-                                {
-
-                                    foundextremity = false;
-                                    countercorrectbox = 0;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (countercorrectbox == Intensity1Matrix[0].Length)
-                        {
-                            countercorrectbox = 0;
-                            break;
-                        }
-                    }
-                }
-                break;
+                                if (countercorrectbox == Intensity3Matrix[0].Length)
+                                {
+                                    Kill9SignEnemies(i);
+                                }
+                            }
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (countercorrectbox == Intensity3Matrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                }
+                break;
         }
     }
 
-    void KillEnemiesIntensity1(int caselleattive, int numerosegno)
-    {
-        switch (caselleattive)
-        {
-            case 4:
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[0])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
-                        if(numerosegno == 0 || numerosegno == 1)
-                        {
-                            if (normalenemy.SignNormalYokai[0].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 2 || numerosegno == 3)
-                        {
-                            if (normalenemy.SignNormalYokai[1].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 4 || numerosegno == 5)
-                        {
-                            if (normalenemy.SignNormalYokai[2].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 6 || numerosegno == 7)
-                        {
-                            if (normalenemy.SignNormalYokai[3].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 8 || numerosegno == 9)
-                        {
-                            if (normalenemy.SignNormalYokai[4].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 10 || numerosegno == 11)
-                        {
-                            if (normalenemy.SignNormalYokai[5].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-
-                    }
-                }
-                break;
-            case 5:
-                for(int i = 0; i < 7; i++)
-                {
-                    if(i == 1)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                KamikazeEnemy kamikazeEnemy = enemytodestroy.GetComponent<KamikazeEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1Kamikaze[0].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1Kamikaze[1].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1Kamikaze[2].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1Kamikaze[3].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1Kamikaze[4].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1Kamikaze[5].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                    else if(i == 2)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                ArmoredEnemy armoredEnemy = enemytodestroy.GetComponent<ArmoredEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (armoredEnemy.SignIntensity1Armored[0].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (armoredEnemy.SignIntensity1Armored[1].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (armoredEnemy.SignIntensity1Armored[2].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (armoredEnemy.SignIntensity1Armored[3].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (armoredEnemy.SignIntensity1Armored[4].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (armoredEnemy.SignIntensity1Armored[5].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                    else if(i == 6)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                BufferEnemy bufferEnemy = enemytodestroy.GetComponent<BufferEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (bufferEnemy.SignIntensity1Buffer[0].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (bufferEnemy.SignIntensity1Buffer[1].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (bufferEnemy.SignIntensity1Buffer[2].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (bufferEnemy.SignIntensity1Buffer[3].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (bufferEnemy.SignIntensity1Buffer[4].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (bufferEnemy.SignIntensity1Buffer[5].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-                break;
-            case 7:
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[4])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        MalevolentEnemy malevolentEnemy = enemytodestroy.GetComponent<MalevolentEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            malevolentEnemy.Deathforsign();
-                        }
-                    }
-                }
-                break;
-            case 8:
-                secretscript.Death();
-                break;
-        }
+    void Kill4SignEnemies(int numerosegno)
+    {
+        //foreach normal enemies 4 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[0])
+        {
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+                NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
+                if (numerosegno == 0 || numerosegno == 1)
+                {
+                    if (normalenemy.SignNormalYokai[0].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 2 || numerosegno == 3)
+                {
+                    if (normalenemy.SignNormalYokai[1].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 4 || numerosegno == 5)
+                {
+                    if (normalenemy.SignNormalYokai[2].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 6 || numerosegno == 7)
+                {
+                    if (normalenemy.SignNormalYokai[3].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 8 || numerosegno == 9)
+                {
+                    if (normalenemy.SignNormalYokai[4].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 10 || numerosegno == 11)
+                {
+                    if (normalenemy.SignNormalYokai[5].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+            }
+        }
     }
 
-    void CheckCorrectSignIntensity2(int caselleattive)
-    {
-        int countercorrectbox = 0;
-
-        switch (caselleattive)
-        {
-            case 5:
-                for (int i = 0; i < Intensity1Matrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity1Matrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity1Matrix[0].Length)
-                                {
-                                    KillEnemiesIntensity2(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity1Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 6:
-                for (int i = 0; i < Intensity1PlusMatrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity1PlusMatrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity1PlusMatrix[0].Length)
-                                {
-                                    KillEnemiesIntensity2(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity1PlusMatrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 7:
-                //for per check dei segni dell'intensita 2
-                for (int i = 0; i < Intensity2Matrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity2Matrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity2Matrix[0].Length)
-                                {
-                                    KillEnemiesIntensity2(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity2Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                //for per check del malevolent sign
-                for (int i = 0; i < 2; i++)
-                {
-                    foreach (var nodo in SpecialSignMatrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == SpecialSignMatrix[0].Length)
-                                {
-                                    KillEnemiesIntensity2(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity1Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 8:
-                //check per la special 
-                if (secretscript.active == true)
-                {
-                    for (int i = 2; i < 4; i++)
-                    {
-                        foreach (var nodo in SpecialSignMatrix[i])
-                        {
-                            if (extremity.X + nodo.X >= 0 &&
-                                extremity.X + nodo.X <= 4 &&
-                                extremity.Z + nodo.Z >= 0 &&
-                                extremity.Z + nodo.Z <= 4)
-                            {
-                                if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                                {
-                                    countercorrectbox++;
-
-                                    if (countercorrectbox == SpecialSignMatrix[0].Length)
-                                    {
-                                        KillEnemiesIntensity2(caselleattive, i);
-                                    }
-                                }
-                                else
-                                {
-
-                                    foundextremity = false;
-                                    countercorrectbox = 0;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (countercorrectbox == Intensity1Matrix[0].Length)
-                        {
-                            countercorrectbox = 0;
-                            break;
-                        }
-                    }
-                }
-                break;
-        }
+    void Kill5SignEnemies(int numerosegno)
+    {
+        //foreach normal enemies 5 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[0])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+
+                NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (normalenemy.SignIntensity1Normal[0].activeInHierarchy == true)
+
+                    {
+
+                        normalenemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (normalenemy.SignIntensity1Normal[1].activeInHierarchy == true)
+
+                    {
+
+                        normalenemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (normalenemy.SignIntensity1Normal[2].activeInHierarchy == true)
+
+                    {
+
+                        normalenemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (normalenemy.SignIntensity1Normal[3].activeInHierarchy == true)
+
+                    {
+
+                        normalenemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 8 || numerosegno == 9)
+
+                {
+
+                    if (normalenemy.SignIntensity1Normal[4].activeInHierarchy == true)
+
+                    {
+
+                        normalenemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 10 || numerosegno == 11)
+
+                {
+
+                    if (normalenemy.SignIntensity1Normal[5].activeInHierarchy == true)
+
+                    {
+
+                        normalenemy.Deathforsign();
+
+                    }
+
+                }
+
+
+
+            }
+
+        }
+        //foreach kamikaze enemies 5 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[1])
+        {
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+                KamikazeEnemy kamikazeEnemy = enemytodestroy.GetComponent<KamikazeEnemy>();
+                if (numerosegno == 0 || numerosegno == 1)
+                {
+                    if (kamikazeEnemy.SignIntensity1Kamikaze[0].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 2 || numerosegno == 3)
+                {
+                    if (kamikazeEnemy.SignIntensity1Kamikaze[1].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 4 || numerosegno == 5)
+                {
+                    if (kamikazeEnemy.SignIntensity1Kamikaze[2].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 6 || numerosegno == 7)
+                {
+                    if (kamikazeEnemy.SignIntensity1Kamikaze[3].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 8 || numerosegno == 9)
+                {
+                    if (kamikazeEnemy.SignIntensity1Kamikaze[4].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 10 || numerosegno == 11)
+                {
+                    if (kamikazeEnemy.SignIntensity1Kamikaze[5].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+            }
+        }
+        //foreach armored enemies 5 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[2])
+        {
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+                ArmoredEnemy armoredEnemy = enemytodestroy.GetComponent<ArmoredEnemy>();
+                if (numerosegno == 0 || numerosegno == 1)
+                {
+                    if (armoredEnemy.SignIntensity1Armored[0].activeInHierarchy == true)
+                    {
+                        armoredEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 2 || numerosegno == 3)
+                {
+                    if (armoredEnemy.SignIntensity1Armored[1].activeInHierarchy == true)
+                    {
+                        armoredEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 4 || numerosegno == 5)
+                {
+                    if (armoredEnemy.SignIntensity1Armored[2].activeInHierarchy == true)
+                    {
+                        armoredEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 6 || numerosegno == 7)
+                {
+                    if (armoredEnemy.SignIntensity1Armored[3].activeInHierarchy == true)
+                    {
+                        armoredEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 8 || numerosegno == 9)
+                {
+                    if (armoredEnemy.SignIntensity1Armored[4].activeInHierarchy == true)
+                    {
+                        armoredEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 10 || numerosegno == 11)
+                {
+                    if (armoredEnemy.SignIntensity1Armored[5].activeInHierarchy == true)
+                    {
+                        armoredEnemy.Deathforsign();
+                    }
+                }
+            }
+        }
+        //foreach buffer enemies 5 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[6])
+        {
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+                BufferEnemy bufferEnemy = enemytodestroy.GetComponent<BufferEnemy>();
+                if (numerosegno == 0 || numerosegno == 1)
+                {
+                    if (bufferEnemy.SignIntensity1Buffer[0].activeInHierarchy == true)
+                    {
+                        bufferEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 2 || numerosegno == 3)
+                {
+                    if (bufferEnemy.SignIntensity1Buffer[1].activeInHierarchy == true)
+                    {
+                        bufferEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 4 || numerosegno == 5)
+                {
+                    if (bufferEnemy.SignIntensity1Buffer[2].activeInHierarchy == true)
+                    {
+                        bufferEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 6 || numerosegno == 7)
+                {
+                    if (bufferEnemy.SignIntensity1Buffer[3].activeInHierarchy == true)
+                    {
+                        bufferEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 8 || numerosegno == 9)
+                {
+                    if (bufferEnemy.SignIntensity1Buffer[4].activeInHierarchy == true)
+                    {
+                        bufferEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 10 || numerosegno == 11)
+                {
+                    if (bufferEnemy.SignIntensity1Buffer[5].activeInHierarchy == true)
+                    {
+                        bufferEnemy.Deathforsign();
+                    }
+                }
+            }
+        }
     }
 
-    void KillEnemiesIntensity2(int caselleattive, int numerosegno)
-    {
-        switch (caselleattive)
-        {
-            case 5:
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[0])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            if (normalenemy.SignIntensity1Normal[0].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 2 || numerosegno == 3)
-                        {
-                            if (normalenemy.SignIntensity1Normal[1].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 4 || numerosegno == 5)
-                        {
-                            if (normalenemy.SignIntensity1Normal[2].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 6 || numerosegno == 7)
-                        {
-                            if (normalenemy.SignIntensity1Normal[3].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 8 || numerosegno == 9)
-                        {
-                            if (normalenemy.SignIntensity1Normal[4].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 10 || numerosegno == 11)
-                        {
-                            if (normalenemy.SignIntensity1Normal[5].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-
-                    }
-                }
-                break;
-            case 6:
-                for (int i = 0; i < 7; i++)
-                {
-                    if (i == 1)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                KamikazeEnemy kamikazeEnemy = enemytodestroy.GetComponent<KamikazeEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[0].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[1].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[2].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[3].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[4].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[5].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                    else if (i == 2)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                ArmoredEnemy armoredEnemy = enemytodestroy.GetComponent<ArmoredEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (armoredEnemy.SignIntensity1PlusArmored[0].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (armoredEnemy.SignIntensity1PlusArmored[1].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (armoredEnemy.SignIntensity1PlusArmored[2].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (armoredEnemy.SignIntensity1PlusArmored[3].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (armoredEnemy.SignIntensity1PlusArmored[4].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (armoredEnemy.SignIntensity1PlusArmored[5].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                    else if (i == 6)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                BufferEnemy bufferEnemy = enemytodestroy.GetComponent<BufferEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (bufferEnemy.SignIntensity1PlusBuffer[0].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (bufferEnemy.SignIntensity1PlusBuffer[1].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (bufferEnemy.SignIntensity1PlusBuffer[2].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (bufferEnemy.SignIntensity1PlusBuffer[3].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (bufferEnemy.SignIntensity1PlusBuffer[4].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (bufferEnemy.SignIntensity1PlusBuffer[5].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-                break;
-            case 7:
-                //caso frightening
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[5])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        FrighteningEnemy frighteningEnemy = enemytodestroy.GetComponent<FrighteningEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            if (frighteningEnemy.SignIntensity2Frightening[0].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 2 || numerosegno == 3)
-                        {
-                            if (frighteningEnemy.SignIntensity2Frightening[1].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 4 || numerosegno == 5)
-                        {
-                            if (frighteningEnemy.SignIntensity2Frightening[2].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 6 || numerosegno == 7)
-                        {
-                            if (frighteningEnemy.SignIntensity2Frightening[3].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                    }
-                }
-                //caso malevolent
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[4])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        MalevolentEnemy malevolentEnemy = enemytodestroy.GetComponent<MalevolentEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            malevolentEnemy.Deathforsign();
-                        }
-                    }
-                }
-                break;
-            case 8:
-                //caso secret
-                secretscript.Death();
-                break;
-        }
+    void Kill6SignEnemies(int numerosegno)
+    {
+        //foreach normal enemies 6 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[0])
+        {
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+                NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
+                if (numerosegno == 0 || numerosegno == 1)
+                {
+                    if (normalenemy.SignIntensity1PlusNormal[0].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 2 || numerosegno == 3)
+                {
+                    if (normalenemy.SignIntensity1PlusNormal[1].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 4 || numerosegno == 5)
+                {
+                    if (normalenemy.SignIntensity1PlusNormal[2].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 6 || numerosegno == 7)
+                {
+                    if (normalenemy.SignIntensity1PlusNormal[3].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 8 || numerosegno == 9)
+                {
+                    if (normalenemy.SignIntensity1PlusNormal[4].activeInHierarchy == true)
+                    {
+                        normalenemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 10 || numerosegno == 11)
+                {
+                    if (normalenemy.SignIntensity1PlusNormal[5].activeInHierarchy == true)
+                    { 
+                        normalenemy.Deathforsign();
+                    }
+                }
+            }
+        }
+        //foreach kamikaze enemies 6 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[1])
+        {
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+                KamikazeEnemy kamikazeEnemy = enemytodestroy.GetComponent<KamikazeEnemy>();
+                if (numerosegno == 0 || numerosegno == 1)
+                {
+                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[0].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 2 || numerosegno == 3)
+                {
+                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[1].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 4 || numerosegno == 5)
+                {
+                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[2].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 6 || numerosegno == 7)
+                {
+                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[3].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 8 || numerosegno == 9)
+                {
+                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[4].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+                if (numerosegno == 10 || numerosegno == 11)
+                {
+                    if (kamikazeEnemy.SignIntensity1PlusKamikaze[5].activeInHierarchy == true)
+                    {
+                        kamikazeEnemy.Deathforsign();
+                    }
+                }
+            }
+        }
+        //foreach armored enemies 6 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[2])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+
+            {
+
+                ArmoredEnemy armoredEnemy = enemytodestroy.GetComponent<ArmoredEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (armoredEnemy.SignIntensity1PlusArmored[0].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (armoredEnemy.SignIntensity1PlusArmored[1].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (armoredEnemy.SignIntensity1PlusArmored[2].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (armoredEnemy.SignIntensity1PlusArmored[3].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 8 || numerosegno == 9)
+
+                {
+
+                    if (armoredEnemy.SignIntensity1PlusArmored[4].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 10 || numerosegno == 11)
+
+                {
+
+                    if (armoredEnemy.SignIntensity1PlusArmored[5].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+
+
+            }
+
+        }
+        //foreach buffer enemies 6 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[6])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+
+            {
+
+                BufferEnemy bufferEnemy = enemytodestroy.GetComponent<BufferEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (bufferEnemy.SignIntensity1PlusBuffer[0].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (bufferEnemy.SignIntensity1PlusBuffer[1].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (bufferEnemy.SignIntensity1PlusBuffer[2].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (bufferEnemy.SignIntensity1PlusBuffer[3].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 8 || numerosegno == 9)
+
+                {
+
+                    if (bufferEnemy.SignIntensity1PlusBuffer[4].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 10 || numerosegno == 11)
+
+                {
+
+                    if (bufferEnemy.SignIntensity1PlusBuffer[5].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+
+
+            }
+
+        }
     }
 
-    void CheckCorrectSignIntensity3(int caselleattive)
-    {
-        int countercorrectbox = 0;
-
-        switch (caselleattive)
-        {
-            case 6:
-                for (int i = 0; i < Intensity1PlusMatrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity1PlusMatrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity1PlusMatrix[0].Length)
-                                {
-                                    KillEnemiesIntensity3(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity1PlusMatrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 7:
-                for (int i = 0; i < Intensity2Matrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity2Matrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity2Matrix[0].Length)
-                                {
-                                    KillEnemiesIntensity3(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity2Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                //caso malevolent
-                for (int i = 0; i < 2; i++)
-                {
-                    foreach (var nodo in SpecialSignMatrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == SpecialSignMatrix[0].Length)
-                                {
-                                    KillEnemiesIntensity3(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity1Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 8:
-                //caso secret
-                if (secretscript.active == true)
-                {
-                    for (int i = 2; i < 4; i++)
-                    {
-                        foreach (var nodo in SpecialSignMatrix[i])
-                        {
-                            if (extremity.X + nodo.X >= 0 &&
-                                extremity.X + nodo.X <= 4 &&
-                                extremity.Z + nodo.Z >= 0 &&
-                                extremity.Z + nodo.Z <= 4)
-                            {
-                                if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                                {
-                                    countercorrectbox++;
-
-                                    if (countercorrectbox == SpecialSignMatrix[0].Length)
-                                    {
-                                        secretscript.Death();
-                                    }
-                                }
-                                else
-                                {
-
-                                    foundextremity = false;
-                                    countercorrectbox = 0;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (countercorrectbox == Intensity1Matrix[0].Length)
-                        {
-                            countercorrectbox = 0;
-                            break;
-                        }
-                    }
-                }
-                //caso segni intensita 2 plus
-                for (int i = 0; i < Intensity2PlusMatrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity2PlusMatrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity2PlusMatrix[0].Length)
-                                {
-                                    KillEnemiesIntensity3(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity2PlusMatrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-            case 9:
-                for (int i = 0; i < Intensity3Matrix.Length; i++)
-                {
-                    foreach (var nodo in Intensity3Matrix[i])
-                    {
-                        if (extremity.X + nodo.X >= 0 &&
-                            extremity.X + nodo.X <= 4 &&
-                            extremity.Z + nodo.Z >= 0 &&
-                            extremity.Z + nodo.Z <= 4)
-                        {
-                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                            {
-                                countercorrectbox++;
-
-                                if (countercorrectbox == Intensity3Matrix[0].Length)
-                                {
-                                    KillEnemiesIntensity3(caselleattive, i);
-                                }
-                            }
-                            else
-                            {
-
-                                foundextremity = false;
-                                countercorrectbox = 0;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (countercorrectbox == Intensity3Matrix[0].Length)
-                    {
-                        countercorrectbox = 0;
-                        break;
-                    }
-                }
-                break;
-        }
+    void Kill7SignEnemies(int numerosegno)
+    {
+        //foreach frightening enemies 7 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[5])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+
+                FrighteningEnemy frighteningEnemy = enemytodestroy.GetComponent<FrighteningEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2Frightening[0].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2Frightening[1].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2Frightening[2].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2Frightening[3].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+            }
+
+        }
+        //foreach kamikaze enemies 7 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[1])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+
+            {
+
+                KamikazeEnemy kamikazeEnemy = enemytodestroy.GetComponent<KamikazeEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (kamikazeEnemy.SignIntensity2Kamikaze[0].activeInHierarchy == true)
+
+                    {
+
+                        kamikazeEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (kamikazeEnemy.SignIntensity2Kamikaze[1].activeInHierarchy == true)
+
+                    {
+
+                        kamikazeEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (kamikazeEnemy.SignIntensity2Kamikaze[2].activeInHierarchy == true)
+
+                    {
+
+                        kamikazeEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (kamikazeEnemy.SignIntensity2Kamikaze[3].activeInHierarchy == true)
+
+                    {
+
+                        kamikazeEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 8 || numerosegno == 9)
+
+                {
+
+                    if (kamikazeEnemy.SignIntensity2Kamikaze[4].activeInHierarchy == true)
+
+                    {
+
+                        kamikazeEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 10 || numerosegno == 11)
+
+                {
+
+                    if (kamikazeEnemy.SignIntensity2Kamikaze[5].activeInHierarchy == true)
+
+                    {
+
+                        kamikazeEnemy.Deathforsign();
+
+                    }
+
+                }
+
+
+
+            }
+
+        }
+        //foreach armored enemies 7 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[2])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+
+            {
+
+                ArmoredEnemy armoredEnemy = enemytodestroy.GetComponent<ArmoredEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (armoredEnemy.SignIntensity2Armored[0].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (armoredEnemy.SignIntensity2Armored[1].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (armoredEnemy.SignIntensity2Armored[2].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (armoredEnemy.SignIntensity2Armored[3].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 8 || numerosegno == 9)
+
+                {
+
+                    if (armoredEnemy.SignIntensity2Armored[4].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 10 || numerosegno == 11)
+
+                {
+
+                    if (armoredEnemy.SignIntensity2Armored[5].activeInHierarchy == true)
+
+                    {
+
+                        armoredEnemy.Deathforsign();
+
+                    }
+
+                }
+
+
+
+            }
+
+        }
+        //foreach buffer enemies 7 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[6])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+
+            {
+
+                BufferEnemy bufferEnemy = enemytodestroy.GetComponent<BufferEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (bufferEnemy.SignIntensity2Buffer[0].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (bufferEnemy.SignIntensity2Buffer[1].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (bufferEnemy.SignIntensity2Buffer[2].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (bufferEnemy.SignIntensity2Buffer[3].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 8 || numerosegno == 9)
+
+                {
+
+                    if (bufferEnemy.SignIntensity2Buffer[4].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 10 || numerosegno == 11)
+
+                {
+
+                    if (bufferEnemy.SignIntensity2Buffer[5].activeInHierarchy == true)
+
+                    {
+
+                        bufferEnemy.Deathforsign();
+
+                    }
+
+                }
+
+
+
+            }
+
+        }
     }
 
-    void KillEnemiesIntensity3(int caselleattive, int numerosegno)
-    {
-        switch (caselleattive)
-        {
-            case 6:
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[0])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        NormalEnemy normalenemy = enemytodestroy.GetComponent<NormalEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            if (normalenemy.SignIntensity1PlusNormal[0].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 2 || numerosegno == 3)
-                        {
-                            if (normalenemy.SignIntensity1PlusNormal[1].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 4 || numerosegno == 5)
-                        {
-                            if (normalenemy.SignIntensity1PlusNormal[2].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 6 || numerosegno == 7)
-                        {
-                            if (normalenemy.SignIntensity1PlusNormal[3].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 8 || numerosegno == 9)
-                        {
-                            if (normalenemy.SignIntensity1PlusNormal[4].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 10 || numerosegno == 11)
-                        {
-                            if (normalenemy.SignIntensity1PlusNormal[5].activeInHierarchy == true)
-                            {
-                                normalenemy.Deathforsign();
-                            }
-                        }
-
-                    }
-                }
-                break;
-            case 7:
-                //caso malevolent
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[4])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        MalevolentEnemy malevolentEnemy = enemytodestroy.GetComponent<MalevolentEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            malevolentEnemy.Deathforsign();
-                        }
-                    }
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    if (i == 1)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                KamikazeEnemy kamikazeEnemy = enemytodestroy.GetComponent<KamikazeEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (kamikazeEnemy.SignIntensity2Kamikaze[0].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (kamikazeEnemy.SignIntensity2Kamikaze[1].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (kamikazeEnemy.SignIntensity2Kamikaze[2].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (kamikazeEnemy.SignIntensity2Kamikaze[3].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (kamikazeEnemy.SignIntensity2Kamikaze[4].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (kamikazeEnemy.SignIntensity2Kamikaze[5].activeInHierarchy == true)
-                                    {
-                                        kamikazeEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                    else if (i == 2)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                ArmoredEnemy armoredEnemy = enemytodestroy.GetComponent<ArmoredEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (armoredEnemy.SignIntensity2Armored[0].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (armoredEnemy.SignIntensity2Armored[1].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (armoredEnemy.SignIntensity2Armored[2].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (armoredEnemy.SignIntensity2Armored[3].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (armoredEnemy.SignIntensity2Armored[4].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (armoredEnemy.SignIntensity2Armored[5].activeInHierarchy == true)
-                                    {
-                                        armoredEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                    else if (i == 6)
-                    {
-                        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[i])
-                        {
-                            if (enemytodestroy.activeInHierarchy == true)
-                            {
-                                BufferEnemy bufferEnemy = enemytodestroy.GetComponent<BufferEnemy>();
-                                if (numerosegno == 0 || numerosegno == 1)
-                                {
-                                    if (bufferEnemy.SignIntensity2Buffer[0].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 2 || numerosegno == 3)
-                                {
-                                    if (bufferEnemy.SignIntensity2Buffer[1].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 4 || numerosegno == 5)
-                                {
-                                    if (bufferEnemy.SignIntensity2Buffer[2].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 6 || numerosegno == 7)
-                                {
-                                    if (bufferEnemy.SignIntensity2Buffer[3].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 8 || numerosegno == 9)
-                                {
-                                    if (bufferEnemy.SignIntensity2Buffer[4].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-                                if (numerosegno == 10 || numerosegno == 11)
-                                {
-                                    if (bufferEnemy.SignIntensity2Buffer[5].activeInHierarchy == true)
-                                    {
-                                        bufferEnemy.Deathforsign();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-                break;
-            case 8:
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[5])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        FrighteningEnemy frighteningEnemy = enemytodestroy.GetComponent<FrighteningEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            if (frighteningEnemy.SignIntensity2PlusFrightening[0].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 2 || numerosegno == 3)
-                        {
-                            if (frighteningEnemy.SignIntensity2PlusFrightening[1].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 4 || numerosegno == 5)
-                        {
-                            if (frighteningEnemy.SignIntensity2PlusFrightening[2].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 6 || numerosegno == 7)
-                        {
-                            if (frighteningEnemy.SignIntensity2PlusFrightening[3].activeInHierarchy == true)
-                            {
-                                frighteningEnemy.Deathforsign();
-                            }
-                        }
-                    }
-                }
-                break;
-            case 9:
-                foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[3])
-                {
-                    if (enemytodestroy.activeInHierarchy == true)
-                    {
-                        UndyingEnemy undyingEnemy = enemytodestroy.GetComponent<UndyingEnemy>();
-                        if (numerosegno == 0 || numerosegno == 1)
-                        {
-                            if (undyingEnemy.SignIntensity3Undying[0].activeInHierarchy == true)
-                            {
-                                undyingEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 2 || numerosegno == 3)
-                        {
-                            if (undyingEnemy.SignIntensity3Undying[1].activeInHierarchy == true)
-                            {
-                                undyingEnemy.Deathforsign();
-                            }
-                        }
-                        if (numerosegno == 4)
-                        {
-                            if (undyingEnemy.SignIntensity3Undying[2].activeInHierarchy == true)
-                            {
-                                undyingEnemy.Deathforsign();
-                            }
-                        }
-                    }
-                }
-                break;
-        }
+    void Kill8SignEnemies(int numerosegno)
+    {
+        //foreach frightening enemies 8 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[5])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+
+                FrighteningEnemy frighteningEnemy = enemytodestroy.GetComponent<FrighteningEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2PlusFrightening[0].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2PlusFrightening[1].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4 || numerosegno == 5)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2PlusFrightening[2].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 6 || numerosegno == 7)
+
+                {
+
+                    if (frighteningEnemy.SignIntensity2PlusFrightening[3].activeInHierarchy == true)
+
+                    {
+
+                        frighteningEnemy.Deathforsign();
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+    void Kill9SignEnemies(int numerosegno)
+    {
+        //foreach undying enemies 9 sign
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[3])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+            {
+
+                UndyingEnemy undyingEnemy = enemytodestroy.GetComponent<UndyingEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    if (undyingEnemy.SignIntensity3Undying[0].activeInHierarchy == true)
+
+                    {
+
+                        undyingEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 2 || numerosegno == 3)
+
+                {
+
+                    if (undyingEnemy.SignIntensity3Undying[1].activeInHierarchy == true)
+
+                    {
+
+                        undyingEnemy.Deathforsign();
+
+                    }
+
+                }
+
+                if (numerosegno == 4)
+
+                {
+
+                    if (undyingEnemy.SignIntensity3Undying[2].activeInHierarchy == true)
+
+                    {
+
+                        undyingEnemy.Deathforsign();
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+    void KillMalevolentEnemy(int numerosegno)
+    {
+        //foreach caso malevolent
+        foreach (GameObject enemytodestroy in enemyspawnmanager.poolenemy[4])
+
+        {
+
+            if (enemytodestroy.activeInHierarchy == true)
+
+            {
+
+                MalevolentEnemy malevolentEnemy = enemytodestroy.GetComponent<MalevolentEnemy>();
+
+                if (numerosegno == 0 || numerosegno == 1)
+
+                {
+
+                    malevolentEnemy.Deathforsign();
+
+                }
+
+            }
+
+        }
+    }
+
+    void KillWithSecretTecnique(int numerosegno)
+    {
+        secretscript.Death();
     }
 }
