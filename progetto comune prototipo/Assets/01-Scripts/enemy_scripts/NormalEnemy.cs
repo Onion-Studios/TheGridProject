@@ -13,6 +13,7 @@ public class NormalEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     GameManager GameManager;
+    Managercombo Managercombo;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
@@ -88,6 +89,12 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
+        Managercombo = FindObjectOfType<Managercombo>();
+        if (Managercombo == null)
+        {
+            Debug.LogError("Managercombo is NULL");
+        }
+
         speed = baseSpeed;
 
         startPosition = transform.position.x;
@@ -145,26 +152,17 @@ public class NormalEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
-        switch (GameManager.GameIntensity)
+        foreach (GameObject segno in SignNormalYokai)
         {
-            case 1:
-                foreach (GameObject segno in SignNormalYokai)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1Normal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity1PlusNormal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1Normal)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusNormal)
+        {
+            segno.SetActive(false);
         }
         Die();
     }
@@ -183,26 +181,17 @@ public class NormalEnemy : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
-        switch (GameManager.GameIntensity)
+        foreach (GameObject segno in SignNormalYokai)
         {
-            case 1:
-                foreach (GameObject segno in SignNormalYokai)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1Normal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity1PlusNormal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1Normal)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusNormal)
+        {
+            segno.SetActive(false);
         }
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
@@ -223,26 +212,17 @@ public class NormalEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        switch (GameManager.GameIntensity)
+        foreach (GameObject segno in SignNormalYokai)
         {
-            case 1:
-                foreach (GameObject segno in SignNormalYokai)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 2:
-                foreach (GameObject segno in SignIntensity1Normal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
-            case 3:
-                foreach (GameObject segno in SignIntensity1PlusNormal)
-                {
-                    segno.SetActive(false);
-                }
-                break;
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1Normal)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusNormal)
+        {
+            segno.SetActive(false);
         }
 
         pointsystem.currentTimer = pointsystem.maxTimer;
