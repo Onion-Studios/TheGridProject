@@ -204,7 +204,6 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TEMP();
         //referenza spawnmanager + null check
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         if (enemyspawnmanager == null)
@@ -260,33 +259,6 @@ public class WaveManager : MonoBehaviour
                 StopCoroutine(testWaves);
             }
             count++;
-        }
-    }
-    void TEMP()
-    {
-        if (TEMPSTART.forceStartIntensity != 0)
-        {
-            Playerbehaviour player;
-            player = FindObjectOfType<Playerbehaviour>();
-            if (player == null)
-            {
-                Debug.LogError("Playerbehaviour is NULL!");
-            }
-            int temp = TEMPSTART.forceStartIntensity;
-            TEST_WaveActive = true;
-            TEST_WaveIntensity = TEMPSTART.forceStartIntensity;
-            switch (temp)
-            {
-                case 1:
-                    player.inkGained = player.inkGainedIntensity1;
-                    break;
-                case 2:
-                    player.inkGained = player.inkGainedIntensity2;
-                    break;
-                case 3:
-                    player.inkGained = player.inkGainedIntensity3;
-                    break;
-            }
         }
     }
 
