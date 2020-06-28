@@ -192,6 +192,7 @@ public class WaveManager : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     GameManager gamemanager;
     StartEndSequence startEndSequence;
+    public IntensityReset intensityReset;
     public int Activewave_intensity;
     public int Activewave_number;
     public bool TEST_WaveActive = false;
@@ -235,7 +236,7 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startEndSequence.starting == false && count == 0)
+        if (startEndSequence.starting == false && count == 0 && intensityReset.intensityReset == false)
         {
             if (TEST_WaveActive == false)
             {

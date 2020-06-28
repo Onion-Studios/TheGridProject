@@ -16,6 +16,7 @@ public class Playerbehaviour : MonoBehaviour
     StartEndSequence startEndSequence;
     Enemyspawnmanager enemyspawnmanager;
     Secret SecretT;
+    public IntensityReset intensityreset;
     public Vector3 LastCubeChecked;
     [HideInInspector]
     public int yokaislayercount;
@@ -292,6 +293,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Playertakedamage");
+            intensityreset.intensityReset = true;
             enemyspawnmanager.enemykilled = 0;
             if (SecretT.bar == 100)
             {
