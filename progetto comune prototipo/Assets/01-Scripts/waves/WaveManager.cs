@@ -192,6 +192,7 @@ public class WaveManager : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     GameManager gamemanager;
     StartEndSequence startEndSequence;
+    public Yokaislayer YS;
     public IntensityReset intensityReset;
     public int Activewave_intensity;
     public int Activewave_number;
@@ -236,7 +237,7 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startEndSequence.starting == false && count == 0 && intensityReset.intensityReset == false)
+        if (startEndSequence.starting == false && count == 0 && intensityReset.intensityReset == false && YS.active == false)
         {
             if (TEST_WaveActive == false)
             {
