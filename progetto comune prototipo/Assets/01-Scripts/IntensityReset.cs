@@ -4,29 +4,20 @@ using UnityEngine.UI;
 public class IntensityReset : MonoBehaviour
 {
     #region Variables
-    StartEndSequence startendsequence;
     Enemyspawnmanager enemyspawnmanager;
     public bool intensityReset;
     int intensityResetIndex;
     public GameObject particleCamera;
     public Image blackPanel;
-    [SerializeField]
-    float blackPanelAlphaSpeed;
+    public float blackPanelAlphaSpeed;
     Color blackPanelAlpha1;
     Color blackPanelAlpha0;
-    public float pippo;
-    [SerializeField]
-    float maxTimer;
+    public float maxTimer;
     float timer;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        startendsequence = FindObjectOfType<StartEndSequence>();
-        if (startendsequence == null)
-        {
-            Debug.LogError("StartEndSequence is NULL");
-        }
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         if (enemyspawnmanager == null)
         {
@@ -66,9 +57,69 @@ public class IntensityReset : MonoBehaviour
 
     void PreBlackScreen()
     {
-        startendsequence.StopEnemiesMovement();
+        StopEnemiesMovement();
         AudioManager.Instance.PlaySound("resetgong");
         intensityResetIndex++;
+    }
+
+    void StopEnemiesMovement()
+    {
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                foreach (GameObject enemy in enemyspawnmanager.poolenemy[i])
+                {
+                    if (enemy.activeInHierarchy == true)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                {
+                                    NormalEnemy NormalEnemy = enemy.GetComponent<NormalEnemy>();
+                                    NormalEnemy.speed = 0;
+                                    NormalEnemy.normalAnimator.SetFloat("SpeedMultiplier", 0);
+                                }
+                                break;
+                            case 1:
+                                {
+                                    KamikazeEnemy KamikazeEnemy = enemy.GetComponent<KamikazeEnemy>();
+                                    KamikazeEnemy.speed = 0;
+                                    KamikazeEnemy.kamikazeAnimator.SetFloat("SpeedMultiplier", 0);
+                                }
+                                break;
+                            case 2:
+                                {
+                                    ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
+                                    ArmoredEnemy.speed = 0;
+                                    ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
+                                }
+                                break;
+                            case 3:
+                                {
+                                    UndyingEnemy UndiyngEnemy = enemy.GetComponent<UndyingEnemy>();
+                                    UndiyngEnemy.speed = 0;
+                                    UndiyngEnemy.undyingAnimator.SetFloat("SpeedMultiplier", 0);
+                                }
+                                break;
+                            case 5:
+                                {
+                                    FrighteningEnemy frighteningEnemy = enemy.GetComponent<FrighteningEnemy>();
+                                    frighteningEnemy.speed = 0;
+                                    frighteningEnemy.frighteningAnimator.SetFloat("SpeedMultiplier", 0);
+                                }
+                                break;
+                            case 6:
+                                {
+                                    BufferEnemy bufferEnemy = enemy.GetComponent<BufferEnemy>();
+                                    bufferEnemy.speed = 0;
+                                    bufferEnemy.bufferAnimator.SetFloat("SpeedMultiplier", 0);
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void FadeToBlack()
@@ -76,7 +127,6 @@ public class IntensityReset : MonoBehaviour
         if (blackPanel.color.a < 0.95)
         {
             blackPanel.color = Color.Lerp(blackPanel.color, blackPanelAlpha1, blackPanelAlphaSpeed * Time.deltaTime);
-            pippo = blackPanel.color.a;
         }
         else
         {
@@ -133,7 +183,7 @@ public class IntensityReset : MonoBehaviour
                                 {
                                     segno.SetActive(false);
                                 }
-                                kamikazenemy.gameObject.SetActive(false);
+                                nemici.gameObject.SetActive(false);
                                 break;
                             case 2:
                                 ArmoredEnemy armoredenemy = nemici.GetComponent<ArmoredEnemy>();
@@ -149,7 +199,7 @@ public class IntensityReset : MonoBehaviour
                                 {
                                     segno.SetActive(false);
                                 }
-                                armoredenemy.gameObject.SetActive(false);
+                                nemici.gameObject.SetActive(false);
                                 break;
                             case 3:
                                 UndyingEnemy undyingenemy = nemici.GetComponent<UndyingEnemy>();
@@ -157,7 +207,7 @@ public class IntensityReset : MonoBehaviour
                                 {
                                     segno.SetActive(false);
                                 }
-                                undyingenemy.gameObject.SetActive(false);
+                                nemici.gameObject.SetActive(false);
                                 break;
                             case 4:
                                 MalevolentEnemy malevolentenemy = nemici.GetComponent<MalevolentEnemy>();
@@ -173,7 +223,7 @@ public class IntensityReset : MonoBehaviour
                                 {
                                     segno.SetActive(false);
                                 }
-                                frighteningenemy.gameObject.SetActive(false);
+                                nemici.gameObject.SetActive(false);
                                 break;
                             case 6:
                                 BufferEnemy bufferenemy = nemici.GetComponent<BufferEnemy>();
@@ -189,7 +239,7 @@ public class IntensityReset : MonoBehaviour
                                 {
                                     segno.SetActive(false);
                                 }
-                                bufferenemy.gameObject.SetActive(false);
+                                nemici.gameObject.SetActive(false);
                                 break;
                         }
                     }

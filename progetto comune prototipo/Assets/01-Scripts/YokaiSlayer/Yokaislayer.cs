@@ -12,7 +12,7 @@ public class Yokaislayer : MonoBehaviour
     Inkstone inkStone_;
     Curtains curtains;
     public Vector3 closecurtain;
-    bool active;
+    public bool active;
     [HideInInspector]
     public GameObject tenda, tenda2;
     private int yokaiSlayerSequenceNumber;
@@ -63,7 +63,12 @@ public class Yokaislayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C)) && playerbehaviour.yokaislayercount > 0 && active == false && startendsequence.starting == false && startendsequence.ending == false)
+        if ((Input.GetKeyDown(KeyCode.LeftShift)
+            || Input.GetKeyDown(KeyCode.C))
+            && playerbehaviour.yokaislayercount > 0
+            && active == false
+            && startendsequence.starting == false
+            && startendsequence.ending == false)
         {
             active = true;
         }

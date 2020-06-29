@@ -15,6 +15,7 @@ public class Playerbehaviour : MonoBehaviour
     Inkstone Inkstone;
     StartEndSequence startEndSequence;
     Enemyspawnmanager enemyspawnmanager;
+    Yokaislayer YS;
     Secret SecretT;
     public IntensityReset intensityreset;
     public Vector3 LastCubeChecked;
@@ -81,6 +82,8 @@ public class Playerbehaviour : MonoBehaviour
         {
             Debug.LogError("Secret is NULL!");
         }
+
+        YS = this.gameObject.GetComponent<Yokaislayer>();
 
         movementState = "readystate";
 
@@ -293,8 +296,11 @@ public class Playerbehaviour : MonoBehaviour
             }
             Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Playertakedamage");
-            intensityreset.intensityReset = true;
-            enemyspawnmanager.enemykilled = 0;
+            if (Inkstone.Ink > 0 && YS.active == false)
+            {
+                intensityreset.intensityReset = true;
+                enemyspawnmanager.enemykilled = 0;
+            }
             if (SecretT.bar == 100)
             {
                 AudioManager.Instance.PlaySound("PlayerGetsHit");
