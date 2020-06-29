@@ -568,7 +568,10 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void MouseClick()
     {
-        mouseClick = true;
+        if (EventSystem.current.currentSelectedGameObject.gameObject.name == CurrentStateMenuButtons[Index].name)
+        {
+            mouseClick = true;
+        }
     }
     #endregion
 }
