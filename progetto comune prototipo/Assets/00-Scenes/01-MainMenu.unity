@@ -11019,6 +11019,8 @@ MonoBehaviour:
   howToPlay: {fileID: 194174956}
   credits: {fileID: 1634568957}
   tutorial: {fileID: 0}
+  audioSelectedImage: {fileID: 848572487}
+  videoSelectedImage: {fileID: 1600592384}
   CurrentStateMenu: {fileID: 0}
   CurrentStateMenuButtons: []
   SelectedImages: []

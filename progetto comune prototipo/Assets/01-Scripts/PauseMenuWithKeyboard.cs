@@ -14,6 +14,7 @@ public class PauseMenuWithKeyboard : MonoBehaviour
     public GameObject firstMenu, areYouSure, PauseText;
     public bool ExistingList;
     public bool mouseClick;
+    bool changingState;
     public int Index;
     PauseMenu PM;
     enum MenuStates
@@ -31,6 +32,7 @@ public class PauseMenuWithKeyboard : MonoBehaviour
         startendsequence = FindObjectOfType<StartEndSequence>();
         ExistingList = false;
         mouseClick = false;
+        changingState = false;
     }
 
     // Update is called once per frame
@@ -124,86 +126,6 @@ public class PauseMenuWithKeyboard : MonoBehaviour
 
     #endregion
 
-    #region All Menus Button Functions
-    public void GameInPlay()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && startendsequence.starting == false && startendsequence.ending == false)
-        {
-            ExistingList = false;
-            CurrentState = MenuStates.FirstPauseMenu;
-            firstMenu.SetActive(true);
-            PauseText.SetActive(true);
-            PM.Pause();
-        }
-    }
-    public void FirstPauseMenu()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //resume
-                    PM.Resume();
-                    ExistingList = false;
-                    CurrentState = MenuStates.GameInPlay;
-                    firstMenu.SetActive(false);
-                    PauseText.SetActive(false);
-                    break;
-                case 1:
-                    //back to menu
-                    ExistingList = false;
-                    CurrentState = MenuStates.AreYouSure;
-                    firstMenu.SetActive(false);
-                    areYouSure.SetActive(true);
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PM.Resume();
-            ExistingList = false;
-            CurrentState = MenuStates.GameInPlay;
-            PauseText.SetActive(false);
-            firstMenu.SetActive(false);
-        }
-    }
-    public void AreYouSure()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //yes
-                    AudioManager.Instance.StopSound("MainTrack");
-                    AudioManager.Instance.StopSound("Yoo");
-                    AudioManager.Instance.StopSound("GongSound");
-                    AudioManager.Instance.PlaySound("MenuTheme");
-                    PM.Resume();
-                    SceneManager.LoadScene(1);
-                    break;
-                case 1:
-                    //no
-                    ExistingList = false;
-                    CurrentState = MenuStates.FirstPauseMenu;
-                    areYouSure.SetActive(false);
-                    firstMenu.SetActive(true);
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            CurrentState = MenuStates.FirstPauseMenu;
-            areYouSure.SetActive(false);
-            firstMenu.SetActive(true);
-        }
-    }
-    #endregion
-
     #region Mouse Functionality
     private void MouseOverButtons()
     {
@@ -245,7 +167,111 @@ public class PauseMenuWithKeyboard : MonoBehaviour
 
     public void MouseClick()
     {
-        mouseClick = true;
+        if (EventSystem.current.currentSelectedGameObject.gameObject.name == CurrentStateMenuButtons[Index].name)
+        {
+            mouseClick = true;
+        }
     }
     #endregion
+
+    #region All Menus Button Functions
+    public void GameInPlay()
+    {
+        //GameInPlay characteristics
+        if (changingState == true)
+        {
+            ExistingList = false;
+            PM.Resume();
+            firstMenu.SetActive(false);
+            PauseText.SetActive(false);
+            changingState = false;
+            Cursor.visible = false;
+        }
+        //Key Press
+        if (Input.GetKeyDown(KeyCode.Escape) && startendsequence.starting == false && startendsequence.ending == false)
+        {
+            changingState = true;
+            CurrentState = MenuStates.FirstPauseMenu;
+        }
+    }
+    public void FirstPauseMenu()
+    {
+        //FirstPauseMenu characteristics
+        if (changingState == true)
+        {
+            ExistingList = false;
+            firstMenu.SetActive(true);
+            PauseText.SetActive(true);
+            PM.Pause();
+            changingState = false;
+            Cursor.visible = true;
+        }
+        //Buttons
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //resume
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.GameInPlay;
+                    break;
+                case 1:
+                    //back to menu
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.AreYouSure;
+                    break;
+            }
+            mouseClick = false;
+        }
+        //Key Press
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.GameInPlay;
+        }
+    }
+    public void AreYouSure()
+    {
+        //AreYouSure characteristics
+        if (changingState == true)
+        {
+            ExistingList = false;
+            firstMenu.SetActive(false);
+            areYouSure.SetActive(true);
+            changingState = false;
+            Cursor.visible = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //yes
+                    AudioManager.Instance.StopAllSounds();
+                    AudioManager.Instance.PlaySound("MenuTheme");
+                    PM.Resume();
+                    SceneManager.LoadScene(1);
+                    break;
+                case 1:
+                    //no
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.FirstPauseMenu;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.FirstPauseMenu;
+        }
+    }
+    #endregion
+
 }
