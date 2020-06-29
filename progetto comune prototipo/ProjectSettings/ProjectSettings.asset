@@ -14,8 +14,8 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Onion Studios
   productName: The Sinking Theater
-  defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
+  defaultCursor: {fileID: 2800000, guid: 71482420ac6c8c846a74c373b9b23033, type: 3}
+  cursorHotspot: {x: 148.5, y: 148.5}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: "1.0.0 \u03B2"
+  bundleVersion: "1.0.1 \u03B2"
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
