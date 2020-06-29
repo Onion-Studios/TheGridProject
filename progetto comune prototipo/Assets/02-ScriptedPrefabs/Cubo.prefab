@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 5076169320254237458}
   - component: {fileID: 176633809110978456}
   - component: {fileID: 2723531541313749468}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cubo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3951852901229340384
 Transform:
@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736bd398e93c426459e5dd9d6b5354fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iscoloured: 0
