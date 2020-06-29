@@ -192,6 +192,7 @@ public class WaveManager : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     GameManager gamemanager;
     StartEndSequence startEndSequence;
+    public IntensityReset intensityReset;
     public int Activewave_intensity;
     public int Activewave_number;
     public bool TEST_WaveActive = false;
@@ -204,7 +205,6 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TEMP();
         //referenza spawnmanager + null check
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         if (enemyspawnmanager == null)
@@ -236,7 +236,7 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startEndSequence.starting == false && count == 0)
+        if (startEndSequence.starting == false && count == 0 && intensityReset.intensityReset == false)
         {
             if (TEST_WaveActive == false)
             {
@@ -260,33 +260,6 @@ public class WaveManager : MonoBehaviour
                 StopCoroutine(testWaves);
             }
             count++;
-        }
-    }
-    void TEMP()
-    {
-        if (TEMPSTART.forceStartIntensity != 0)
-        {
-            Playerbehaviour player;
-            player = FindObjectOfType<Playerbehaviour>();
-            if (player == null)
-            {
-                Debug.LogError("Playerbehaviour is NULL!");
-            }
-            int temp = TEMPSTART.forceStartIntensity;
-            TEST_WaveActive = true;
-            TEST_WaveIntensity = TEMPSTART.forceStartIntensity;
-            switch (temp)
-            {
-                case 1:
-                    player.inkGained = player.inkGainedIntensity1;
-                    break;
-                case 2:
-                    player.inkGained = player.inkGainedIntensity2;
-                    break;
-                case 3:
-                    player.inkGained = player.inkGainedIntensity3;
-                    break;
-            }
         }
     }
 

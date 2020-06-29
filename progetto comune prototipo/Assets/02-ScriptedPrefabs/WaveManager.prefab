@@ -452,6 +452,7 @@ MonoBehaviour:
   - 3
   - 5
   SignGroupwave3_10: 0100000028030000030000000200000003000000280300000200000001000000030000000200000028030000
+  intensityReset: {fileID: 0}
   Activewave_intensity: 3
   Activewave_number: 0
   TEST_WaveActive: 0

@@ -11,6 +11,7 @@ public class UndyingEnemy : MonoBehaviour
     Playerbehaviour playerbehaviour;
     Enemyspawnmanager enemyspawnmanager;
     GameManager GameManager;
+    Managercombo Managercombo;
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
@@ -42,6 +43,7 @@ public class UndyingEnemy : MonoBehaviour
     public Animator undyingAnimator;
     private bool alreadyDead;
     private bool wavePositionSet;
+    private float enemyZPos;
 
     #endregion
 
@@ -49,6 +51,27 @@ public class UndyingEnemy : MonoBehaviour
     {
         waveSlashPosition = GetComponentsInChildren<Transform>()[2].localPosition;
         undyingAnimator = GetComponentInChildren<Animator>();
+        enemyZPos = transform.position.z;
+        if (enemyZPos == 0)
+        {
+            laneID = 0;
+        }
+        else if (enemyZPos == 1)
+        {
+            laneID = 1;
+        }
+        else if (enemyZPos == 2)
+        {
+            laneID = 2;
+        }
+        else if (enemyZPos == 3)
+        {
+            laneID = 3;
+        }
+        else if (enemyZPos == 4)
+        {
+            laneID = 4;
+        }
     }
     private void OnEnable()
     {
@@ -82,7 +105,11 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
-
+        Managercombo = FindObjectOfType<Managercombo>();
+        if (Managercombo == null)
+        {
+            Debug.LogError("Managercombo is NULL");
+        }
 
         GameManager = FindObjectOfType<GameManager>();
         if (GameManager == null)
@@ -304,17 +331,11 @@ public class UndyingEnemy : MonoBehaviour
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            if (GameManager.GameIntensity == 3)
+            foreach (GameObject segno in SignIntensity3Undying)
 
             {
 
-                foreach (GameObject segno in SignIntensity3Undying)
-
-                {
-
-                    segno.SetActive(false);
-
-                }
+                segno.SetActive(false);
 
             }
 

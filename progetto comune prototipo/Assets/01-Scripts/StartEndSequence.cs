@@ -46,6 +46,9 @@ public class StartEndSequence : MonoBehaviour
     [SerializeField]
     private Image crowd;
     private Color alpha1Crowd;
+    [SerializeField]
+    private GameObject skipButton;
+
 
 
     #endregion
@@ -64,6 +67,7 @@ public class StartEndSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -175,8 +179,8 @@ public class StartEndSequence : MonoBehaviour
                 PlayerToCenter();
                 break;
             case 6:
+                skipButton.SetActive(false);
                 startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
-
                 break;
             case 7:
                 StartUP();
@@ -251,7 +255,7 @@ public class StartEndSequence : MonoBehaviour
         endSequencePosition++;
     }
 
-    void StopEnemiesMovement()
+    public void StopEnemiesMovement()
     {
         for (int i = 0; i < enemynumber; i++)
         {
@@ -355,6 +359,7 @@ public class StartEndSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(LoadingTime);
         LoadImage.SetActive(false);
+        skipButton.SetActive(true);
         AudioManager.Instance.PlaySound("Yoo");
         AudioManager.Instance.PlaySound("MainTrack");
         startSequencePosition++;
