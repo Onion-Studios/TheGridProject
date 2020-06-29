@@ -304,7 +304,7 @@ public class BufferEnemy : MonoBehaviour
         foreach (GameObject segno in SignIntensity2Buffer)
         {
             segno.SetActive(false);
-        }       
+        }
         SpeedReset();
         AudioManager.Instance.StopSound("SingsongBuffer");
         AudioManager.Instance.PlaySound("EnemyDeath");

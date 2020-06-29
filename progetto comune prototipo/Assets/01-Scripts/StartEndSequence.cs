@@ -255,7 +255,7 @@ public class StartEndSequence : MonoBehaviour
         endSequencePosition++;
     }
 
-    void StopEnemiesMovement()
+    public void StopEnemiesMovement()
     {
         for (int i = 0; i < enemynumber; i++)
         {
