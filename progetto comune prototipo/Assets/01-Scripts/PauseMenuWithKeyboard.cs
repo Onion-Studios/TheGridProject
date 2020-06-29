@@ -180,12 +180,12 @@ public class PauseMenuWithKeyboard : MonoBehaviour
         //GameInPlay characteristics
         if (changingState == true)
         {
+            Cursor.visible = false;
             ExistingList = false;
             PM.Resume();
             firstMenu.SetActive(false);
             PauseText.SetActive(false);
             changingState = false;
-            Cursor.visible = false;
         }
         //Key Press
         if (Input.GetKeyDown(KeyCode.Escape) && startendsequence.starting == false && startendsequence.ending == false)
@@ -214,13 +214,13 @@ public class PauseMenuWithKeyboard : MonoBehaviour
                 case 0:
                     //resume
                     changingState = true;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    AudioManager.Instance.PlaySound("MenuCancel");
                     CurrentState = MenuStates.GameInPlay;
                     break;
                 case 1:
                     //back to menu
                     changingState = true;
-                    AudioManager.Instance.PlaySound("MenuCancel");
+                    AudioManager.Instance.PlaySound("MenuConfirm");
                     CurrentState = MenuStates.AreYouSure;
                     break;
             }
