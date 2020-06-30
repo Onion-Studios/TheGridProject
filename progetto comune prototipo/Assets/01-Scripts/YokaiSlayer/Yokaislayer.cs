@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class Yokaislayer : MonoBehaviour
@@ -18,7 +19,7 @@ public class Yokaislayer : MonoBehaviour
     public float curtainspeed;
     public float timeStop;
     float timer;
-    public GameObject signYS1, signYS2, signYS3;
+    public PlayableDirector[] YokaiSlayerTimelines;
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
     [SerializeField]
     #endregion
@@ -96,7 +97,6 @@ public class Yokaislayer : MonoBehaviour
             case 2:
                 AudioManager.Instance.PlaySound("YokaiSlayerBrawl");
                 ActivateYokaiSlayer();
-                SignYS();
                 break;
             case 3:
                 Waiting();
@@ -108,6 +108,7 @@ public class Yokaislayer : MonoBehaviour
                 ReloadInk();
                 break;
             case 6:
+                SignMovement();
                 Waiting();
                 break;
             case 7:
@@ -133,20 +134,9 @@ public class Yokaislayer : MonoBehaviour
         yokaiSlayerSequenceNumber++;
     }
 
-    void SignYS()
+    void SignMovement()
     {
-        if (playerbehaviour.yokaislayercount == 2)
-        {
-            signYS3.SetActive(false);
-        }
-        if (playerbehaviour.yokaislayercount == 1)
-        {
-            signYS2.SetActive(false);
-        }
-        if (playerbehaviour.yokaislayercount == 0)
-        {
-            signYS1.SetActive(false);
-        }
+        YokaiSlayerTimelines[playerbehaviour.yokaislayercount - 1].Play();
     }
 
 
@@ -165,7 +155,6 @@ public class Yokaislayer : MonoBehaviour
 
     void ActivateYokaiSlayer()
     {
-        playerbehaviour.yokaislayercount--;
 
         for (int i = 0; i < 7; i++)
         {
@@ -213,7 +202,7 @@ public class Yokaislayer : MonoBehaviour
 
     void FinalizeSequence()
     {
-
+        playerbehaviour.yokaislayercount--;
         yokaiSlayerSequenceNumber = 0;
 
         active = false;

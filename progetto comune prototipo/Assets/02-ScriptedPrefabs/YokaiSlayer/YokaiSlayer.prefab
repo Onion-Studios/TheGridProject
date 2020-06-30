@@ -1,0 +1,566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3040630970744968594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3040630970744968593}
+  - component: {fileID: 3040630970744968592}
+  m_Layer: 0
+  m_Name: YokaiSlayerTimeline (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3040630970744968593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630970744968594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3040630971211261168}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &3040630970744968592
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630970744968594}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 8f69e23b02c8b6a439539caeda82d2db, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -3782230484535261187, guid: 8f69e23b02c8b6a439539caeda82d2db, type: 2}
+    value: {fileID: 3040630972211033209}
+  - key: {fileID: -6963564128837006134, guid: 8f69e23b02c8b6a439539caeda82d2db, type: 2}
+    value: {fileID: 3040630970969594163}
+  - key: {fileID: -2430622623466953724, guid: 8f69e23b02c8b6a439539caeda82d2db, type: 2}
+    value: {fileID: 3040630971315558196}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &3040630970969594163
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418633136216653884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &3040630971211261169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3040630971211261168}
+  m_Layer: 0
+  m_Name: YokaiSlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3040630971211261168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630971211261169}
+  m_LocalRotation: {x: -0.059747018, y: -0.25103188, z: 0.024625642, w: 0.9658193}
+  m_LocalPosition: {x: -1.0654442, y: -1.4155059, z: -1.0734437}
+  m_LocalScale: {x: 1.2, y: 1.1999998, z: 1.2000002}
+  m_Children:
+  - {fileID: 3040630972435677862}
+  - {fileID: 3040630972504638924}
+  - {fileID: 3040630970744968593}
+  - {fileID: 3040630971612334473}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -5.9150004, y: -29.371002, z: 4.472}
+--- !u!95 &3040630971315558196
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418633135287684671}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &3040630971612334474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3040630971612334473}
+  - component: {fileID: 3040630971612334472}
+  m_Layer: 0
+  m_Name: YokaiSlayerTimeline (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3040630971612334473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630971612334474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3040630971211261168}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &3040630971612334472
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630971612334474}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: bcff4146952123c4c9c9179f2bae461c, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 330546024070238520, guid: bcff4146952123c4c9c9179f2bae461c, type: 2}
+    value: {fileID: 3040630972211033209}
+  - key: {fileID: 2893025270188956733, guid: bcff4146952123c4c9c9179f2bae461c, type: 2}
+    value: {fileID: 3040630971315558196}
+  - key: {fileID: 6919465986191853041, guid: bcff4146952123c4c9c9179f2bae461c, type: 2}
+    value: {fileID: 3040630970969594163}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &3040630972211033209
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418633134975167858}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &3040630972435677912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3040630972435677862}
+  - component: {fileID: 3040630972435677863}
+  m_Layer: 0
+  m_Name: Signs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3040630972435677862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630972435677912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8018880193637244769}
+  - {fileID: 8018880192395620911}
+  - {fileID: 8018880192792050732}
+  m_Father: {fileID: 3040630971211261168}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3040630972435677863
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630972435677912}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &3040630972504638925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3040630972504638924}
+  - component: {fileID: 3040630972504638923}
+  m_Layer: 0
+  m_Name: YokaiSlayerTimeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3040630972504638924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630972504638925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3040630971211261168}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &3040630972504638923
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040630972504638925}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: b329cbfc18af24c42a5cc2442907426c, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1510166780123390923, guid: b329cbfc18af24c42a5cc2442907426c, type: 2}
+    value: {fileID: 3040630972211033209}
+  - key: {fileID: -2557404218235205071, guid: b329cbfc18af24c42a5cc2442907426c, type: 2}
+    value: {fileID: 3040630970969594163}
+  - key: {fileID: -6469801017689208349, guid: b329cbfc18af24c42a5cc2442907426c, type: 2}
+    value: {fileID: 3040630971315558196}
+  m_ExposedReferences:
+    m_References: []
+--- !u!1001 &3040630970969594165
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3040630972435677862}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_Name
+      value: 02YokaiSlayercartelloLow01
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.3757806
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.1778693
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03796815
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000018626451
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8874c8f68bb43ce4e9be634b056a9bb6, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10668f7a3e080194690a64d45602c388, type: 3}
+--- !u!1 &6418633136216653884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 10668f7a3e080194690a64d45602c388,
+    type: 3}
+  m_PrefabInstance: {fileID: 3040630970969594165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8018880192395620911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+    type: 3}
+  m_PrefabInstance: {fileID: 3040630970969594165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3040630971315558198
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3040630972435677862}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_Name
+      value: 02YokaiSlayercartelloLow02
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.3757806
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.3778677
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.037968002
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000018626451
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8874c8f68bb43ce4e9be634b056a9bb6, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10668f7a3e080194690a64d45602c388, type: 3}
+--- !u!1 &6418633135287684671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 10668f7a3e080194690a64d45602c388,
+    type: 3}
+  m_PrefabInstance: {fileID: 3040630971315558198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8018880192792050732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+    type: 3}
+  m_PrefabInstance: {fileID: 3040630971315558198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3040630972211033211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3040630972435677862}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_Name
+      value: 02YokaiSlayercartelloLow
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.3757806
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.5778694
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.037968103
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000018626451
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 10668f7a3e080194690a64d45602c388,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8874c8f68bb43ce4e9be634b056a9bb6, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10668f7a3e080194690a64d45602c388, type: 3}
+--- !u!1 &6418633134975167858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 10668f7a3e080194690a64d45602c388,
+    type: 3}
+  m_PrefabInstance: {fileID: 3040630972211033211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8018880193637244769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 10668f7a3e080194690a64d45602c388,
+    type: 3}
+  m_PrefabInstance: {fileID: 3040630972211033211}
+  m_PrefabAsset: {fileID: 0}
