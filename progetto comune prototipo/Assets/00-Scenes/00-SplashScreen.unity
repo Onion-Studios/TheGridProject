@@ -1036,7 +1036,7 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
-  - clipName: resetgong
+  - clipName: Resetgong
     clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
     volume: 0.5
     pitch: 1

@@ -58,7 +58,7 @@ public class IntensityReset : MonoBehaviour
     void PreBlackScreen()
     {
         StopEnemiesMovement();
-        AudioManager.Instance.PlaySound("resetgong");
+        AudioManager.Instance.PlaySound("Resetgong");
         intensityResetIndex++;
     }
 
