@@ -100,11 +100,6 @@ public class NormalEnemy : MonoBehaviour
         startPosition = transform.position.x;
 
         deathforendgrid = null;
-
-        if (AudioManager.Instance.IsPlaying("Normalsound") == false)
-        {
-            Invoke("playnormalsound", 0.65f);
-        }
     }
 
     private void OnDisable()
@@ -243,7 +238,6 @@ public class NormalEnemy : MonoBehaviour
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
         AudioManager.Instance.PlaySound("EnemyDeath");
-
     }
 
     void PointOverDistance()
@@ -257,9 +251,5 @@ public class NormalEnemy : MonoBehaviour
             extrapointsoverdistance = scoreEnemy;
         }
 
-    }
-    void playnormalsound()
-    {
-        AudioManager.Instance.PlaySound("Normalsound");
     }
 }

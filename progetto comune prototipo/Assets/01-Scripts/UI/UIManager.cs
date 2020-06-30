@@ -82,7 +82,7 @@ public class UIManager : MonoBehaviour
     public void UpdateScore()
     {
         int convertedscore = (int)pointsystem.score;
-        score_text.text = convertedscore.ToString();
+        score_text.text = convertedscore.ToString("{0:0,0}");
     }
 
     void UpdateScoreMultiplier()

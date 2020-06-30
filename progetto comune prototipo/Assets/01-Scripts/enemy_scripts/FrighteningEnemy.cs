@@ -91,11 +91,6 @@ public class FrighteningEnemy : MonoBehaviour
         deathforendgrid = null;
 
         destinationReached = false;
-
-        if (AudioManager.Instance.IsPlaying("Frighteningsound") == false)
-        {
-            InvokeRepeating("playscarysound", 3.1f, 4.0f);
-        }
     }
 
     private void OnDisable()
@@ -269,9 +264,5 @@ public class FrighteningEnemy : MonoBehaviour
         {
             extrapointsoverdistance = scoreEnemy;
         }
-    }
-    void playscarysound()
-    {
-        AudioManager.Instance.PlaySound("Frighteningsound");
     }
 }

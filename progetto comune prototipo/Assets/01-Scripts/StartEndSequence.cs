@@ -435,6 +435,7 @@ public class StartEndSequence : MonoBehaviour
             endSequencePositionPlayed = true;
         }
         playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
+        AudioManager.Instance.StopAllSounds();
     }
 
     void EndSequencePosition()
