@@ -24,6 +24,7 @@ public class GameOverKeyboard : MonoBehaviour
         CurrentState = MenuStates.GameOver;
         ExistingList = false;
         mouseClick = false;
+        Cursor.visible = true;
     }
 
     void Update()

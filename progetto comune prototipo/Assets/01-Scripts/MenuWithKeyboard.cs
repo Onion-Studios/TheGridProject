@@ -37,7 +37,7 @@ public class MenuWithKeyboard : MonoBehaviour
         MM = FindObjectOfType<MainMenu>();
         ExistingList = false;
         mouseClick = false;
-        changingState = false;
+        changingState = true;
     }
 
     // Update is called once per frame

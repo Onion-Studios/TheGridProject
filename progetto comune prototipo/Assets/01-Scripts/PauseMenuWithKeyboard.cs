@@ -185,6 +185,7 @@ public class PauseMenuWithKeyboard : MonoBehaviour
             PM.Resume();
             firstMenu.SetActive(false);
             PauseText.SetActive(false);
+            areYouSure.SetActive(false);
             changingState = false;
         }
         //Key Press
@@ -202,6 +203,7 @@ public class PauseMenuWithKeyboard : MonoBehaviour
             ExistingList = false;
             firstMenu.SetActive(true);
             PauseText.SetActive(true);
+            areYouSure.SetActive(false);
             PM.Pause();
             changingState = false;
             Cursor.visible = true;
@@ -241,6 +243,7 @@ public class PauseMenuWithKeyboard : MonoBehaviour
         {
             ExistingList = false;
             firstMenu.SetActive(false);
+            PauseText.SetActive(true);
             areYouSure.SetActive(true);
             changingState = false;
             Cursor.visible = true;
