@@ -18,7 +18,6 @@ public class StartEndSequence : MonoBehaviour
     public GameObject[] lightObjects;
     public float activateLight;
     public bool starting, ending, skipping;
-    IEnumerator playerLight;
     IEnumerator lightsON;
     IEnumerator lightsOFF;
     IEnumerator blackScreen;
@@ -48,6 +47,7 @@ public class StartEndSequence : MonoBehaviour
     private Color alpha1Crowd;
     [SerializeField]
     private GameObject skipButton;
+    float timer;
 
 
 
@@ -97,8 +97,6 @@ public class StartEndSequence : MonoBehaviour
         {
             Debug.LogError("Curtains is NULL!");
         }
-
-        playerLight = null;
         lightsON = null;
         loading = null;
 
@@ -116,8 +114,8 @@ public class StartEndSequence : MonoBehaviour
         }
         if (skipping == true)
         {
-            Skip();
             AudioManager.Instance.StopSound("Yoo");
+            Skip();
         }
         if (ending == true)
         {
@@ -142,18 +140,9 @@ public class StartEndSequence : MonoBehaviour
                     StopCoroutine(loading);
                     loading = null;
                 }
-                if (playerLight == null)
-                {
-                    playerLight = PlayerLight();
-                    StartCoroutine(playerLight);
-                }
+                PlayerLight();
                 break;
             case 2:
-                if (playerLight != null)
-                {
-                    StopCoroutine(playerLight);
-                    playerLight = null;
-                }
                 Bowing();
                 break;
             case 3:
@@ -194,16 +183,24 @@ public class StartEndSequence : MonoBehaviour
         AudioManager.Instance.PlaySound("Yoo");
         AudioManager.Instance.PlaySound("MainTrack");
         startSequencePosition++;
+        timer = activateLight;
     }
-    IEnumerator PlayerLight()
+    void PlayerLight()
     {
-        yield return new WaitForSeconds(activateLight);
-        lightObjects[2].SetActive(true);
-        if (skipping == false)
+        if (timer > 0)
         {
-            AudioManager.Instance.PlaySound("Spotlight");
+            timer -= Time.deltaTime;
         }
-        startSequencePosition++;
+        else
+        {
+            timer = 0;
+            lightObjects[2].SetActive(true);
+            if (skipping == false)
+            {
+                AudioManager.Instance.PlaySound("Spotlight");
+            }
+            startSequencePosition++;
+        }
     }
     void Bowing()
     {
@@ -254,6 +251,7 @@ public class StartEndSequence : MonoBehaviour
     }
     void StartSequencePosition()
     {
+
         playerbehaviour.kitsuneAnimator.SetBool("Bowing", false);
         startSequencePosition++;
     }
