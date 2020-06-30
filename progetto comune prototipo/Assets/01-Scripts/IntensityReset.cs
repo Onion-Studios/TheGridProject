@@ -14,10 +14,12 @@ public class IntensityReset : MonoBehaviour
     Color blackPanelAlpha0;
     public float maxTimer;
     float timer;
+    private ArmoredEnemy armoredEnemy;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
+        armoredEnemy = FindObjectOfType<ArmoredEnemy>();
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         if (enemyspawnmanager == null)
         {
@@ -92,6 +94,7 @@ public class IntensityReset : MonoBehaviour
                                     ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                     ArmoredEnemy.speed = 0;
                                     ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
+                                    ArmoredEnemy.ArmorReset();
                                 }
                                 break;
                             case 3:
