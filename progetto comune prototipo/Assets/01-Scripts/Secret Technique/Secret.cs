@@ -8,9 +8,6 @@ public class Secret : MonoBehaviour
     [Range(0, 100)] public float bar;
     public float charge;
     public float chargeLoss;
-    public Material startMaterial;
-    public Material endMaterial;
-    Renderer renderer_;
     Enemyspawnmanager enemyspawnmanager;
     public GameObject symbol;
     [HideInInspector]
@@ -21,6 +18,9 @@ public class Secret : MonoBehaviour
     private ParticleSystem inkStroke;
     public ParticleSystem paintParticles;
     public PlayableDirector playableDirector;
+
+    public GameObject bloodMoon;
+    public Color defaultColorAlpha1;
     #endregion
 
     // Start is called before the first frame update
@@ -28,16 +28,14 @@ public class Secret : MonoBehaviour
     {
         bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
-
-        renderer_ = this.transform.Find("Painting").gameObject.GetComponent<Renderer>();
-        renderer_.material = startMaterial;
-        active = false;
+        bloodMoon.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
+        defaultColorAlpha1 = new Color(1, 1, 1, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Color();
+        ChangeColor();
         Timer();
     }
 
@@ -135,9 +133,10 @@ public class Secret : MonoBehaviour
         active = true;
     }
 
-    void Color()
+    void ChangeColor()
     {
-        this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
+        //this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
+        bloodMoon.GetComponent<Renderer>().material.color = Color.Lerp(bloodMoon.GetComponent<Renderer>().material.color, defaultColorAlpha1, 0f + bar / 100f);
     }
 
     public void StopTime()
