@@ -157,9 +157,7 @@ public class StartEndSequence : MonoBehaviour
                 Bowing();
                 break;
             case 3:
-                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
-                mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
-
+                ReduceCameraZoom();
                 startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                 break;
             case 4:
@@ -187,6 +185,79 @@ public class StartEndSequence : MonoBehaviour
                 break;
         }
     }
+    #region Start Sequence Functions
+    IEnumerator Loading()
+    {
+        yield return new WaitForSeconds(LoadingTime);
+        LoadImage.SetActive(false);
+        skipButton.SetActive(true);
+        AudioManager.Instance.PlaySound("Yoo");
+        AudioManager.Instance.PlaySound("MainTrack");
+        startSequencePosition++;
+    }
+    IEnumerator PlayerLight()
+    {
+        yield return new WaitForSeconds(activateLight);
+        lightObjects[2].SetActive(true);
+        if (skipping == false)
+        {
+            AudioManager.Instance.PlaySound("Spotlight");
+        }
+        startSequencePosition++;
+    }
+    void Bowing()
+    {
+        if (startSequencePositionPlayed == false)
+        {
+            Invoke("StartSequencePosition", 3);
+            startSequencePositionPlayed = true;
+        }
+        playerbehaviour.kitsuneAnimator.SetBool("Bowing", true);
+    }
+    void ReduceCameraZoom()
+    {
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
+        mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
+    }
+    IEnumerator LightsON()
+    {
+        yield return new WaitForSeconds(closedTime);
+        lightObjects[2].SetActive(false);
+        lightObjects[0].SetActive(true);
+        lightObjects[1].SetActive(true);
+        startSequencePosition++;
+    }
+    void PlayerToCenter()
+    {
+        playerbehaviour.istanze.transform.position = centerGrid;
+        playerbehaviour.istanze.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+        startSequencePosition++;
+    }
+    void StartUP()
+    {
+        starting = false;
+
+        if (soundNotLooping == false)
+        {
+            AudioManager.Instance.SetLoop("GongSound", false);
+            AudioManager.Instance.PlaySound("GongSound");
+            soundNotLooping = true;
+        }
+
+        GM.dragon1.SetActive(true);
+        GM.dragon2.SetActive(false);
+        GM.dragon3.SetActive(false);
+        GM.dragonTimeline.Play();
+        startSequencePosition++;
+
+    }
+    void StartSequencePosition()
+    {
+        playerbehaviour.kitsuneAnimator.SetBool("Bowing", false);
+        startSequencePosition++;
+    }
+    #endregion
 
     public void EndSequence()
     {
@@ -234,27 +305,13 @@ public class StartEndSequence : MonoBehaviour
         }
     }
 
-    void GameOver()
-    {
-        Inkstone.FinalScore = (int)pointSystem.score;
-        SceneManager.LoadScene(3);
-    }
-
-    IEnumerator BlackScreen()
-    {
-        yield return new WaitForSeconds(time);
-        endImage.SetActive(true);
-        yield return new WaitForSeconds(time);
-        endSequencePosition++;
-    }
-
+    #region End Sequence Functions
     void StopAllEnemies()
     {
         ending = true;
         StopEnemiesMovement();
         endSequencePosition++;
     }
-
     public void StopEnemiesMovement()
     {
         for (int i = 0; i < enemynumber; i++)
@@ -318,7 +375,6 @@ public class StartEndSequence : MonoBehaviour
             }
         }
     }
-
     IEnumerator LightsOFF()
     {
         //yield return new WaitForSeconds(lightsStopTime);
@@ -334,64 +390,32 @@ public class StartEndSequence : MonoBehaviour
         yield return new WaitForSeconds(lightsStopTime);
         endSequencePosition++;
     }
-
-    IEnumerator PlayerLight()
+    void Seppuku()
     {
-        yield return new WaitForSeconds(activateLight);
-        lightObjects[2].SetActive(true);
-        if (skipping == false)
+        if (endSequencePositionPlayed == false)
         {
-            AudioManager.Instance.PlaySound("Spotlight");
+            Invoke("EndSequencePosition", 5);
+            endSequencePositionPlayed = true;
         }
-        startSequencePosition++;
+        playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
     }
-
-    IEnumerator LightsON()
+    IEnumerator BlackScreen()
     {
-        yield return new WaitForSeconds(closedTime);
-        lightObjects[2].SetActive(false);
-        lightObjects[0].SetActive(true);
-        lightObjects[1].SetActive(true);
-        startSequencePosition++;
+        yield return new WaitForSeconds(time);
+        endImage.SetActive(true);
+        yield return new WaitForSeconds(time);
+        endSequencePosition++;
     }
-
-    IEnumerator Loading()
+    void GameOver()
     {
-        yield return new WaitForSeconds(LoadingTime);
-        LoadImage.SetActive(false);
-        skipButton.SetActive(true);
-        AudioManager.Instance.PlaySound("Yoo");
-        AudioManager.Instance.PlaySound("MainTrack");
-        startSequencePosition++;
+        Inkstone.FinalScore = (int)pointSystem.score;
+        SceneManager.LoadScene(3);
     }
-
-    void PlayerToCenter()
+    void EndSequencePosition()
     {
-        playerbehaviour.istanze.transform.position = centerGrid;
-        playerbehaviour.istanze.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-
-        startSequencePosition++;
+        endSequencePosition++;
     }
-
-    void StartUP()
-    {
-        starting = false;
-
-        if (soundNotLooping == false)
-        {
-            AudioManager.Instance.SetLoop("GongSound", false);
-            AudioManager.Instance.PlaySound("GongSound");
-            soundNotLooping = true;
-        }
-
-        GM.dragon1.SetActive(true);
-        GM.dragon2.SetActive(false);
-        GM.dragon3.SetActive(false);
-        GM.dragonTimeline.Play();
-        startSequencePosition++;
-
-    }
-
+    #endregion
     void Skip()
     {
         curtains.CloseTeleport();
@@ -407,38 +431,5 @@ public class StartEndSequence : MonoBehaviour
 
         startSequencePosition = 3;
 
-    }
-
-    //TODO Animazione kitsune 
-    void Bowing()
-    {
-        if (startSequencePositionPlayed == false)
-        {
-            Invoke("StartSequencePosition", 3);
-            startSequencePositionPlayed = true;
-        }
-        playerbehaviour.kitsuneAnimator.SetBool("Bowing", true);
-    }
-
-    void StartSequencePosition()
-    {
-        playerbehaviour.kitsuneAnimator.SetBool("Bowing", false);
-        startSequencePosition++;
-    }
-
-    //TODO Animazione seppuku
-    void Seppuku()
-    {
-        if (endSequencePositionPlayed == false)
-        {
-            Invoke("EndSequencePosition", 5);
-            endSequencePositionPlayed = true;
-        }
-        playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
-    }
-
-    void EndSequencePosition()
-    {
-        endSequencePosition++;
     }
 }
