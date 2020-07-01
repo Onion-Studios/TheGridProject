@@ -114,19 +114,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        this.gameObject.SetActive(false);
-        foreach (GameObject segno in SignIntensity1Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusKamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity2Kamikaze)
-        {
-            segno.SetActive(false);
-        }
+        TrueDeath();
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
     }
@@ -135,20 +123,8 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        this.gameObject.SetActive(false);
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
-        foreach (GameObject segno in SignIntensity1Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusKamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity2Kamikaze)
-        {
-            segno.SetActive(false);
-        }
+        TrueDeath();
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
     }
@@ -157,25 +133,11 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in SignIntensity1Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusKamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity2Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-
+        TrueDeath();
         ExplosionWork(this.transform.position);
-
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
 
@@ -238,5 +200,22 @@ public class KamikazeEnemy : MonoBehaviour
     void playkamikazesound()
     {
         AudioManager.Instance.PlaySound("Kamikazesound");
+    }
+
+    public void TrueDeath()
+    {
+        foreach (GameObject segno in SignIntensity1Kamikaze)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusKamikaze)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity2Kamikaze)
+        {
+            segno.SetActive(false);
+        }
+        this.gameObject.SetActive(false);
     }
 }

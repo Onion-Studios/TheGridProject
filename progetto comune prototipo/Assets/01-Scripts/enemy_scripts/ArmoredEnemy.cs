@@ -255,30 +255,7 @@ public class ArmoredEnemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
         playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
-        //foreach segni intensity 1
-        foreach (GameObject segno in SignIntensity1Armored)
 
-        {
-
-            segno.SetActive(false);
-
-        }
-        //foreach segni intensity 1 plus
-        foreach (GameObject segno in SignIntensity1PlusArmored)
-
-        {
-
-            segno.SetActive(false);
-
-        }
-        //foreach segni intensity 2
-        foreach (GameObject segno in SignIntensity2Armored)
-
-        {
-
-            segno.SetActive(false);
-
-        }
         Die();
     }
 
@@ -289,8 +266,7 @@ public class ArmoredEnemy : MonoBehaviour
             StopCoroutine(deathforendgrid);
             deathforendgrid = null;
         }
-        this.gameObject.SetActive(false);
-        ArmorReset();
+        TrueDeath();
     }
 
     public void Deathforgriglia()
@@ -302,34 +278,9 @@ public class ArmoredEnemy : MonoBehaviour
         armor3.GetComponent<Renderer>().material.color = Color.black;
         armor4.GetComponent<Renderer>().material.color = Color.black;
         bandana.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("Death", BlackToDeath);
+        Invoke("DeathForCollision", BlackToDeath);
 
-        ArmorReset();
         playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
-        //foreach segni intensity 1
-        foreach (GameObject segno in SignIntensity1Armored)
-
-        {
-
-            segno.SetActive(false);
-
-        }
-        //foreach segni intensity 1 plus
-        foreach (GameObject segno in SignIntensity1PlusArmored)
-
-        {
-
-            segno.SetActive(false);
-
-        }
-        //foreach segni intensity 2
-        foreach (GameObject segno in SignIntensity2Armored)
-
-        {
-
-            segno.SetActive(false);
-
-        }
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
     public void Deathforsign()
@@ -354,30 +305,7 @@ public class ArmoredEnemy : MonoBehaviour
             armorPiece6.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece7.transform.SetParent(null);
             armorPiece7.GetComponent<Rigidbody>().isKinematic = false;
-            //foreach segni intensity 1
-            foreach (GameObject segno in SignIntensity1Armored)
-
-            {
-
-                segno.SetActive(false);
-
-            }
-            //foreach segni intensity 1 plus
-            foreach (GameObject segno in SignIntensity1PlusArmored)
-
-            {
-
-                segno.SetActive(false);
-
-            }
-            //foreach segni intensity 2
-            foreach (GameObject segno in SignIntensity2Armored)
-
-            {
-
-                segno.SetActive(false);
-
-            }
+            DeactivateSymbols();
             int randomsegno;
             if (GM.GameIntensity != 3 || WM.TEST_WaveIntensity != 3)
             {
@@ -389,59 +317,24 @@ public class ArmoredEnemy : MonoBehaviour
             }
             int randomsegnofour = Random.Range(0, 4);
             switch (GameManager.GameIntensity)
-
             {
-
                 case 1:
-
                     SignIntensity1Armored[randomsegno].gameObject.SetActive(true);
-
                     break;
-
                 case 2:
-
                     SignIntensity1PlusArmored[randomsegno].gameObject.SetActive(true);
-
                     break;
-
                 case 3:
-
                     SignIntensity2Armored[randomsegnofour].gameObject.SetActive(true);
-
                     break;
-
             }
         }
         else
         {
             armoredLife = 2;
-            enemyspawnmanager.enemykilled += 2;
+            enemyspawnmanager.enemykilled++;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            //foreach segni intensity 1
-            foreach (GameObject segno in SignIntensity1Armored)
-
-            {
-
-                segno.SetActive(false);
-
-            }
-            //foreach segni intensity 1 plus
-            foreach (GameObject segno in SignIntensity1PlusArmored)
-
-            {
-
-                segno.SetActive(false);
-
-            }
-            //foreach segni intensity 2
-            foreach (GameObject segno in SignIntensity2Armored)
-
-            {
-
-                segno.SetActive(false);
-
-            }
             inkDeath.Play();
             enemy.GetComponent<Renderer>().material.color = Color.black;
             armor1.GetComponent<Renderer>().material.color = Color.black;
@@ -454,14 +347,7 @@ public class ArmoredEnemy : MonoBehaviour
     }
     public void DeathForCollision()
     {
-        this.gameObject.SetActive(false);
-
-        enemy.GetComponent<Renderer>().material.color = Color.white;
-        armor1.GetComponent<Renderer>().material.color = Color.white;
-        armor2.GetComponent<Renderer>().material.color = Color.white;
-        armor3.GetComponent<Renderer>().material.color = Color.white;
-        armor4.GetComponent<Renderer>().material.color = Color.white;
-        bandana.GetComponent<Renderer>().material.color = Color.white;
+        TrueDeath();
     }
 
     public void Death()
@@ -470,40 +356,8 @@ public class ArmoredEnemy : MonoBehaviour
         enemyspawnmanager.enemykilled += 2;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        //foreach segni intensity 1
-        foreach (GameObject segno in SignIntensity1Armored)
+        TrueDeath();
 
-        {
-
-            segno.SetActive(false);
-
-        }
-        //foreach segni intensity 1 plus
-        foreach (GameObject segno in SignIntensity1PlusArmored)
-
-        {
-
-            segno.SetActive(false);
-
-        }
-        //foreach segni intensity 2
-        foreach (GameObject segno in SignIntensity2Armored)
-
-        {
-
-            segno.SetActive(false);
-
-        }
-        this.gameObject.SetActive(false);
-
-        ArmorReset();
-
-        enemy.GetComponent<Renderer>().material.color = Color.white;
-        armor1.GetComponent<Renderer>().material.color = Color.white;
-        armor2.GetComponent<Renderer>().material.color = Color.white;
-        armor3.GetComponent<Renderer>().material.color = Color.white;
-        armor4.GetComponent<Renderer>().material.color = Color.white;
-        bandana.GetComponent<Renderer>().material.color = Color.white;
         AudioManager.Instance.PlaySound("EnemyDeath");
 
         pointsystem.currentTimer = pointsystem.maxTimer;
@@ -561,4 +415,35 @@ public class ArmoredEnemy : MonoBehaviour
         }
     }
 
+    void Recolor()
+    {
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+        armor1.GetComponent<Renderer>().material.color = Color.white;
+        armor2.GetComponent<Renderer>().material.color = Color.white;
+        armor3.GetComponent<Renderer>().material.color = Color.white;
+        armor4.GetComponent<Renderer>().material.color = Color.white;
+        bandana.GetComponent<Renderer>().material.color = Color.white;
+    }
+    public void TrueDeath()
+    {
+        DeactivateSymbols();
+        ArmorReset();
+        Recolor();
+        this.gameObject.SetActive(false);
+    }
+    void DeactivateSymbols()
+    {
+        foreach (GameObject segno in SignIntensity1Armored)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusArmored)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity2Armored)
+        {
+            segno.SetActive(false);
+        }
+    }
 }

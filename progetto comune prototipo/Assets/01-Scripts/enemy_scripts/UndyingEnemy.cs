@@ -324,20 +324,13 @@ public class UndyingEnemy : MonoBehaviour
         if (alreadyDead == false)
         {
             alreadyDead = true;
-            this.gameObject.SetActive(false);
+
 
             attackTimer = 0;
             currentTime = maxTime;
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            foreach (GameObject segno in SignIntensity3Undying)
-
-            {
-
-                segno.SetActive(false);
-
-            }
 
             pointsystem.currentTimer = pointsystem.maxTimer;
             pointsystem.countercombo++;
@@ -345,6 +338,16 @@ public class UndyingEnemy : MonoBehaviour
             pointsystem.Combo();
 
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+            TrueDeath();
         }
+    }
+
+    public void TrueDeath()
+    {
+        foreach (GameObject segno in SignIntensity3Undying)
+        {
+            segno.SetActive(false);
+        }
+        this.gameObject.SetActive(false);
     }
 }

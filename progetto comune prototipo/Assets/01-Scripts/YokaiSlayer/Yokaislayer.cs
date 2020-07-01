@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class Yokaislayer : MonoBehaviour
@@ -17,10 +17,11 @@ public class Yokaislayer : MonoBehaviour
     public GameObject tenda, tenda2;
     private int yokaiSlayerSequenceNumber;
     public float curtainspeed;
-    IEnumerator waiting;
-    public float timestop;
-    public GameObject signYS1, signYS2, signYS3;
+    public float timeStop;
+    float timer;
+    public PlayableDirector[] YokaiSlayerTimelines;
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
+    [SerializeField]
     #endregion
 
     // Start is called before the first frame update
@@ -58,6 +59,8 @@ public class Yokaislayer : MonoBehaviour
         active = false;
 
         yokaiSlayerSequenceNumber = 0;
+
+        timer = timeStop;
     }
 
     // Update is called once per frame
@@ -92,51 +95,27 @@ public class Yokaislayer : MonoBehaviour
                 yokaiSlayerSequenceNumber = curtains.CloseCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
             case 2:
-                TimeStop();
                 AudioManager.Instance.PlaySound("YokaiSlayerBrawl");
+                ActivateYokaiSlayer();
                 break;
             case 3:
-                ActivateYokaiSlayer();
-                SignYS();
+                Waiting();
                 break;
             case 4:
-                if (waiting == null)
-                {
-                    waiting = Waiting();
-                    StartCoroutine(waiting);
-                }
-                break;
-            case 5:
-                if (waiting != null)
-                {
-                    StopCoroutine(waiting);
-                    waiting = null;
-                }
-                ResumeTime();
-                break;
-            case 6:
                 yokaiSlayerSequenceNumber = curtains.OpenCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
-            case 7:
+            case 5:
                 ReloadInk();
                 break;
-            case 8:
+            case 6:
+                SignMovement();
+                Waiting();
+                break;
+            case 7:
                 FinalizeSequence();
                 break;
         }
 
-    }
-
-    void TimeStop()
-    {
-        Time.timeScale = 0f;
-        yokaiSlayerSequenceNumber++;
-    }
-
-    void ResumeTime()
-    {
-        Time.timeScale = 1f;
-        yokaiSlayerSequenceNumber++;
     }
 
     void SaveInk()
@@ -155,33 +134,27 @@ public class Yokaislayer : MonoBehaviour
         yokaiSlayerSequenceNumber++;
     }
 
-    void SignYS()
+    void SignMovement()
     {
-        if (playerbehaviour.yokaislayercount == 2)
-        {
-            signYS3.SetActive(false);
-        }
-        if (playerbehaviour.yokaislayercount == 1)
-        {
-            signYS2.SetActive(false);
-        }
-        if (playerbehaviour.yokaislayercount == 0)
-        {
-            signYS1.SetActive(false);
-        }
+        YokaiSlayerTimelines[playerbehaviour.yokaislayercount - 1].Play();
     }
 
 
-    IEnumerator Waiting()
+    void Waiting()
     {
-        yield return new WaitForSecondsRealtime(timestop);
-        yokaiSlayerSequenceNumber++;
-
+        if (timer > 0)
+        {
+            timer -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            timer = timeStop;
+            yokaiSlayerSequenceNumber++;
+        }
     }
 
     void ActivateYokaiSlayer()
     {
-        playerbehaviour.yokaislayercount--;
 
         for (int i = 0; i < 7; i++)
         {
@@ -229,7 +202,7 @@ public class Yokaislayer : MonoBehaviour
 
     void FinalizeSequence()
     {
-
+        playerbehaviour.yokaislayercount--;
         yokaiSlayerSequenceNumber = 0;
 
         active = false;

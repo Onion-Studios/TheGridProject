@@ -12,16 +12,23 @@ public struct nodes
 
 }
 public class Managercombo : MonoBehaviour
-{
+{
+
     #region VARIABLES
     #region MATRIXSIGNS
     public nodes[][] NormalYokaiMatrix = new nodes[12][];
-    public nodes[][] Intensity1Matrix = new nodes[12][];
-    public nodes[][] Intensity1PlusMatrix = new nodes[12][];
-    public nodes[][] Intensity2Matrix = new nodes[8][];
-    public nodes[][] Intensity2PlusMatrix = new nodes[7][];
-    public nodes[][] Intensity3Matrix = new nodes[5][];
-    public nodes[][] SpecialSignMatrix = new nodes[4][];
+    public nodes[][] Intensity1Matrix = new nodes[12][];
+
+    public nodes[][] Intensity1PlusMatrix = new nodes[12][];
+
+    public nodes[][] Intensity2Matrix = new nodes[8][];
+
+    public nodes[][] Intensity2PlusMatrix = new nodes[7][];
+
+    public nodes[][] Intensity3Matrix = new nodes[5][];
+
+    public nodes[][] SpecialSignMatrix = new nodes[4][];
+
     #endregion
     #region GRID CORNERS
     nodes Angle1 = new nodes(0, 0);
@@ -88,29 +95,50 @@ public class Managercombo : MonoBehaviour
     }
 
     public void SetupMatrixSign()
-    {
-        #region NormalYokai
-        //documento segni n1
-        NormalYokaiMatrix[0] = new nodes[3] { new nodes(0, -1), new nodes(0, -2), new nodes(1, -2) };
-        NormalYokaiMatrix[1] = new nodes[3] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2) };
-        //documento segni n2
-        NormalYokaiMatrix[2] = new nodes[3] { new nodes(0, -1), new nodes(1, -1), new nodes(2, -1) };
-        NormalYokaiMatrix[3] = new nodes[3] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1) };
-        //documento segni n3
-        NormalYokaiMatrix[4] = new nodes[3] { new nodes(0, 1), new nodes(-1, 1), new nodes(-2, 1) };
-        NormalYokaiMatrix[5] = new nodes[3] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1) };
-        //documento segni n4
-        NormalYokaiMatrix[6] = new nodes[3] { new nodes(0, 1), new nodes(1, 1), new nodes(1, 2) };
-        NormalYokaiMatrix[7] = new nodes[3] { new nodes(0, -1), new nodes(-1, -1), new nodes(-1, -2) };
-        //documento segni n5
-        NormalYokaiMatrix[8] = new nodes[3] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1) };
-        NormalYokaiMatrix[9] = new nodes[3] { new nodes(1, 0), new nodes(1, 1), new nodes(2, 1) };
-        //documento segni n6
-        NormalYokaiMatrix[10] = new nodes[3] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2) };
-        NormalYokaiMatrix[11] = new nodes[3] { new nodes(1, 0), new nodes(-1, 1), new nodes(-1, -2) };
+    {
+
+        #region NormalYokai
+
+        //documento segni n1
+
+        NormalYokaiMatrix[0] = new nodes[3] { new nodes(0, -1), new nodes(0, -2), new nodes(1, -2) };
+
+        NormalYokaiMatrix[1] = new nodes[3] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2) };
+
+        //documento segni n2
+
+        NormalYokaiMatrix[2] = new nodes[3] { new nodes(0, -1), new nodes(1, -1), new nodes(2, -1) };
+
+        NormalYokaiMatrix[3] = new nodes[3] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1) };
+
+        //documento segni n3
+
+        NormalYokaiMatrix[4] = new nodes[3] { new nodes(0, 1), new nodes(-1, 1), new nodes(-2, 1) };
+
+        NormalYokaiMatrix[5] = new nodes[3] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1) };
+
+        //documento segni n4
+
+        NormalYokaiMatrix[6] = new nodes[3] { new nodes(0, 1), new nodes(1, 1), new nodes(1, 2) };
+
+        NormalYokaiMatrix[7] = new nodes[3] { new nodes(0, -1), new nodes(-1, -1), new nodes(-1, -2) };
+
+        //documento segni n5
+
+        NormalYokaiMatrix[8] = new nodes[3] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1) };
+
+        NormalYokaiMatrix[9] = new nodes[3] { new nodes(1, 0), new nodes(1, 1), new nodes(2, 1) };
+
+        //documento segni n6
+
+        NormalYokaiMatrix[10] = new nodes[3] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2) };
+
+        NormalYokaiMatrix[11] = new nodes[3] { new nodes(1, 0), new nodes(-1, 1), new nodes(-1, -2) };
+
         #endregion
         #region Intensity1
-        //2 casi del segno L
+        //2 casi del segno L
+
         Intensity1Matrix[0] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(2, -2) };
         Intensity1Matrix[1] = new nodes[4] { new nodes(0, 1), new nodes(0, 2), new nodes(-1, 2), new nodes(-2, 2) };
         //2 casi del segno C
@@ -127,7 +155,8 @@ public class Managercombo : MonoBehaviour
         Intensity1Matrix[9] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, -1) };
         //2 casi del segno S
         Intensity1Matrix[10] = new nodes[4] { new nodes(-1, 0), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
-        Intensity1Matrix[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
+        Intensity1Matrix[11] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2) };
+
         #endregion
         #region Intensity1Plus
         //documento segni n1
@@ -151,48 +180,68 @@ public class Managercombo : MonoBehaviour
         #endregion
         #region Intensity2
         //documento segni n1
-        Intensity2Matrix[0] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
-        Intensity2Matrix[1] = new nodes[6] { new nodes(0, 1), new nodes(0, 2), new nodes(1, 2), new nodes(1, 1), new nodes(1, 0), new nodes(2, 0) };
+        Intensity2Matrix[0] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1), new nodes(-1, 2), new nodes(-2, 2) };
+
+        Intensity2Matrix[1] = new nodes[6] { new nodes(0, 1), new nodes(0, 2), new nodes(1, 2), new nodes(1, 1), new nodes(1, 0), new nodes(2, 0) };
+
         //documento segni n2
-        Intensity2Matrix[2] = new nodes[6] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-1, -1), new nodes(-2, -2), new nodes(-2, -1) };
-        Intensity2Matrix[3] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1), new nodes(0, 1), new nodes(0, 2) };
+        Intensity2Matrix[2] = new nodes[6] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-1, -1), new nodes(-2, -2), new nodes(-2, -1) };
+
+        Intensity2Matrix[3] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1), new nodes(0, 1), new nodes(0, 2) };
+
         //documento segni n3
-        Intensity2Matrix[4] = new nodes[6] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
-        Intensity2Matrix[5] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(2, 1), new nodes(2, 2), new nodes(1, 2), new nodes(0, 2) };
+        Intensity2Matrix[4] = new nodes[6] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
+
+        Intensity2Matrix[5] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(2, 1), new nodes(2, 2), new nodes(1, 2), new nodes(0, 2) };
+
         //documento segni n4
-        Intensity2Matrix[6] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, -1), new nodes(-2, -2), new nodes(-1, -2), new nodes(0, -2) };
-        Intensity2Matrix[7] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(-1, 2), new nodes(0, 2) };
+        Intensity2Matrix[6] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, -1), new nodes(-2, -2), new nodes(-1, -2), new nodes(0, -2) };
+
+        Intensity2Matrix[7] = new nodes[6] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(-1, 2), new nodes(0, 2) };
+
         #endregion
         #region Intensity2Plus
         //documento segni n1
-        Intensity2PlusMatrix[0] = new nodes[7] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1) };
-        Intensity2PlusMatrix[1] = new nodes[7] { new nodes(0, -1), new nodes(0, -2), new nodes(0, -3), new nodes(1, -3), new nodes(2, -3), new nodes(2, -2), new nodes(2, -1) };
+        Intensity2PlusMatrix[0] = new nodes[7] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1) };
+
+        Intensity2PlusMatrix[1] = new nodes[7] { new nodes(0, -1), new nodes(0, -2), new nodes(0, -3), new nodes(1, -3), new nodes(2, -3), new nodes(2, -2), new nodes(2, -1) };
+
         //documento segni n2
-        Intensity2PlusMatrix[2] = new nodes[7] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2), new nodes(-1, -2), new nodes(-1, -1), new nodes(-2, -1) };
-        Intensity2PlusMatrix[3] = new nodes[7] { new nodes(1, 0), new nodes(1, -1), new nodes(2, -1), new nodes(3, -1), new nodes(3, 0), new nodes(2, 0), new nodes(2, 1) };
+        Intensity2PlusMatrix[2] = new nodes[7] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2), new nodes(-1, -2), new nodes(-1, -1), new nodes(-2, -1) };
+
+        Intensity2PlusMatrix[3] = new nodes[7] { new nodes(1, 0), new nodes(1, -1), new nodes(2, -1), new nodes(3, -1), new nodes(3, 0), new nodes(2, 0), new nodes(2, 1) };
+
         //documento segni n3
-        Intensity2PlusMatrix[4] = new nodes[7] { new nodes(1, 0), new nodes(2, 0), new nodes(2, 1), new nodes(2, 2), new nodes(2, 3), new nodes(1, 3), new nodes(1, 2) };
+        Intensity2PlusMatrix[4] = new nodes[7] { new nodes(1, 0), new nodes(2, 0), new nodes(2, 1), new nodes(2, 2), new nodes(2, 3), new nodes(1, 3), new nodes(1, 2) };
+
         //documento segni n4
-        Intensity2PlusMatrix[5] = new nodes[7] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2), new nodes(2, -1), new nodes(2, 0), new nodes(2, 1) };
-        Intensity2PlusMatrix[6] = new nodes[7] { new nodes(0, -1), new nodes(0, -2), new nodes(0, -3), new nodes(-1, -3), new nodes(-1, -2), new nodes(-2, -2), new nodes(-2, -1) };
+        Intensity2PlusMatrix[5] = new nodes[7] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2), new nodes(2, -2), new nodes(2, -1), new nodes(2, 0), new nodes(2, 1) };
+
+        Intensity2PlusMatrix[6] = new nodes[7] { new nodes(0, -1), new nodes(0, -2), new nodes(0, -3), new nodes(-1, -3), new nodes(-1, -2), new nodes(-2, -2), new nodes(-2, -1) };
+
         #endregion
         #region Intensity3
         //documento segni n1
-        Intensity3Matrix[0] = new nodes[8] { new nodes(0, 1), new nodes(0, 2), new nodes(0, 3), new nodes(0, 4), new nodes(-1, 4), new nodes(-2, 4), new nodes(-2, 3), new nodes(-2, 2) };
+        Intensity3Matrix[0] = new nodes[8] { new nodes(0, 1), new nodes(0, 2), new nodes(0, 3), new nodes(0, 4), new nodes(-1, 4), new nodes(-2, 4), new nodes(-2, 3), new nodes(-2, 2) };
+
         Intensity3Matrix[1] = new nodes[8] { new nodes(0, 1), new nodes(0, 2), new nodes(1, 2), new nodes(2, 2), new nodes(2, 1), new nodes(2, 0), new nodes(2, -1), new nodes(2, -2) };
         //documento segni n2
-        Intensity3Matrix[2] = new nodes[8] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1) };
+        Intensity3Matrix[2] = new nodes[8] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-1, 1) };
+
         Intensity3Matrix[3] = new nodes[8] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-1, -2), new nodes(-1, -3), new nodes(0, -3), new nodes(1, -3), new nodes(1, -2), new nodes(1, -1) };
         //documento segni n3
-        Intensity3Matrix[4] = new nodes[8] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-3, 0), new nodes(-3, -1), new nodes(-3, -2), new nodes(-3, -3), new nodes(-2, -3), new nodes(-2, -2) };
+        Intensity3Matrix[4] = new nodes[8] { new nodes(-1, 0), new nodes(-2, 0), new nodes(-3, 0), new nodes(-3, -1), new nodes(-3, -2), new nodes(-3, -3), new nodes(-2, -3), new nodes(-2, -2) };
+
         #endregion
         #region SpecialSign
-        //2 casi segno Malevolent
+        //2 casi segno Malevolent
+
         SpecialSignMatrix[0] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1, 1) };
         SpecialSignMatrix[1] = new nodes[6] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 0), new nodes(2, -1), new nodes(1, -1) };
         //2 casi di secret tecnique
         SpecialSignMatrix[2] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(1, -2) };
-        SpecialSignMatrix[3] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-1, -2), new nodes(-1, -3), new nodes(0, -3), new nodes(0, -2), new nodes(1, -2) };
+        SpecialSignMatrix[3] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-1, -2), new nodes(-1, -3), new nodes(0, -3), new nodes(0, -2), new nodes(1, -2) };
+
         #endregion
     }
 
@@ -205,6 +254,10 @@ public class Managercombo : MonoBehaviour
         {
             CheckCorrectSign(CountBoxesActive);
 
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound("BooSound");
         }
     }
 
@@ -409,11 +462,11 @@ public class Managercombo : MonoBehaviour
     void CheckCorrectSign(int caselleattive)
     {
         int countercorrectbox = 0;
-
+        int i;
         switch (caselleattive)
         {
             case 4:
-                for (int i = 0; i < NormalYokaiMatrix.Length; i++)
+                for (i = 0; i < NormalYokaiMatrix.Length; i++)
                 {
                     foreach (var nodo in NormalYokaiMatrix[i])
                     {
@@ -429,7 +482,8 @@ public class Managercombo : MonoBehaviour
                                 if (countercorrectbox == NormalYokaiMatrix[0].Length)
                                 {
                                     Kill4SignEnemies(i);
-                                }
+                                }
+
                             }
                             else
                             {
@@ -443,11 +497,16 @@ public class Managercombo : MonoBehaviour
                     {
                         countercorrectbox = 0;
                         break;
-                    }
+                    }
+
+                }
+                if (i == NormalYokaiMatrix.Length)
+                {
+                    AudioManager.Instance.PlaySound("BooSound");
                 }
                 break;
             case 5:
-                for (int i = 0; i < Intensity1Matrix.Length; i++)
+                for (i = 0; i < Intensity1Matrix.Length; i++)
                 {
                     foreach (var nodo in Intensity1Matrix[i])
                     {
@@ -479,9 +538,13 @@ public class Managercombo : MonoBehaviour
                         break;
                     }
                 }
+                if (i == Intensity1Matrix.Length)
+                {
+                    AudioManager.Instance.PlaySound("BooSound");
+                }
                 break;
             case 6:
-                for (int i = 0; i < Intensity1PlusMatrix.Length; i++)
+                for (i = 0; i < Intensity1PlusMatrix.Length; i++)
                 {
                     foreach (var nodo in Intensity1PlusMatrix[i])
                     {
@@ -513,10 +576,14 @@ public class Managercombo : MonoBehaviour
                         break;
                     }
                 }
+                if (i == Intensity1PlusMatrix.Length)
+                {
+                    AudioManager.Instance.PlaySound("BooSound");
+                }
                 break;
             case 7:
                 //prende dai segni di intensity2
-                for (int i = 0; i < Intensity2Matrix.Length; i++)
+                for (i = 0; i < Intensity2Matrix.Length; i++)
                 {
                     foreach (var nodo in Intensity2Matrix[i])
                     {
@@ -549,7 +616,7 @@ public class Managercombo : MonoBehaviour
                     }
                 }
                 //prendi dai segni speciali, segno malevolent in questo caso primi due elementi dell'array
-                for (int i = 0; i < 2; i++)
+                for (i = 0; i < 2; i++)
                 {
                     foreach (var nodo in SpecialSignMatrix[i])
                     {
@@ -581,10 +648,14 @@ public class Managercombo : MonoBehaviour
                         break;
                     }
                 }
+                if (i == 2)
+                {
+                    AudioManager.Instance.PlaySound("BooSound");
+                }
                 break;
             case 8:
                 //prende dall'intensity 2 plus
-                for (int i = 0; i < Intensity2PlusMatrix.Length; i++)
+                for (i = 0; i < Intensity2PlusMatrix.Length; i++)
                 {
                     foreach (var nodo in Intensity2PlusMatrix[i])
                     {
@@ -619,7 +690,7 @@ public class Managercombo : MonoBehaviour
                 //prendi dai segni speciali, segno secret in questo caso terzo e quarto elemento dell'array
                 if (secretscript.active == true)
                 {
-                    for (int i = 2; i < 4; i++)
+                    for (i = 2; i < 4; i++)
                     {
                         foreach (var nodo in SpecialSignMatrix[i])
                         {
@@ -652,9 +723,13 @@ public class Managercombo : MonoBehaviour
                         }
                     }
                 }
+                if (i == 4)
+                {
+                    AudioManager.Instance.PlaySound("BooSound");
+                }
                 break;
             case 9:
-                for (int i = 0; i < Intensity3Matrix.Length; i++)
+                for (i = 0; i < Intensity3Matrix.Length; i++)
                 {
                     foreach (var nodo in Intensity3Matrix[i])
                     {
@@ -665,7 +740,8 @@ public class Managercombo : MonoBehaviour
                         {
                             if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
                             {
-                                countercorrectbox++;
+                                countercorrectbox++;
+
                                 if (countercorrectbox == Intensity3Matrix[0].Length)
                                 {
                                     Kill9SignEnemies(i);
@@ -685,6 +761,13 @@ public class Managercombo : MonoBehaviour
                         break;
                     }
                 }
+                if (i == Intensity3Matrix.Length)
+                {
+                    AudioManager.Instance.PlaySound("BooSound");
+                }
+                break;
+            default:
+                AudioManager.Instance.PlaySound("BooSound");
                 break;
         }
     }
@@ -1042,7 +1125,7 @@ public class Managercombo : MonoBehaviour
                 if (numerosegno == 10 || numerosegno == 11)
                 {
                     if (normalenemy.SignIntensity1PlusNormal[5].activeInHierarchy == true)
-                    { 
+                    {
                         normalenemy.Deathforsign();
                     }
                 }

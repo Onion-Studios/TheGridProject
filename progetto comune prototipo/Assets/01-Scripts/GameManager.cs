@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         WaveManager = FindObjectOfType<WaveManager>();
         firstGameStart = true;
         ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
+        Cursor.visible = false;
     }
 
     private void Start()
