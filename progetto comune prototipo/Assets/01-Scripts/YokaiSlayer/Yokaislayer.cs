@@ -95,8 +95,8 @@ public class Yokaislayer : MonoBehaviour
                 yokaiSlayerSequenceNumber = curtains.CloseCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
             case 2:
-                AudioManager.Instance.PlaySound("YokaiSlayerBrawl");
                 ActivateYokaiSlayer();
+                AudioManager.Instance.PlaySound("YokaiSlayerBrawl");
                 break;
             case 3:
                 Waiting();

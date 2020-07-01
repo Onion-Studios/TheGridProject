@@ -938,7 +938,7 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: YokaiSlayerBrawl
-    clip: {fileID: 8300000, guid: 26953638157284f4f914ef9968f37298, type: 3}
+    clip: {fileID: 8300000, guid: 58a97a845f78fbb4b94cb5308a19e5a0, type: 3}
     volume: 0.38
     pitch: 1
     loop: 0
@@ -1020,19 +1020,20 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Seppuku
-    clip: {fileID: 0}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 77d4a8a663dfd5842bc570b21b2df555, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Armordestroyed
-    clip: {fileID: 0}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: d328cc729947b484591fcd572fbedc34, type: 3}
+    volume: 0.2
     pitch: 1
     loop: 0
     playOnAwake: 0
-    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
   - clipName: Undyingenemydeath
     clip: {fileID: 0}
     volume: 0.5
@@ -1041,7 +1042,7 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Undyingslash
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: bf6d8f3284cc7e04ba0add82fc36ade1, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
