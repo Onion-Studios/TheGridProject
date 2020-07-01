@@ -45,19 +45,19 @@ public class ArmoredEnemy : MonoBehaviour
     public GameObject[] SignIntensity2Armored;
     public Animator armoredAnimator;
     [SerializeField]
-    private GameObject armorPiece1;
+    public GameObject armorPiece1;
     [SerializeField]
-    private GameObject armorPiece2;
+    public GameObject armorPiece2;
     [SerializeField]
-    private GameObject armorPiece3;
+    public GameObject armorPiece3;
     [SerializeField]
-    private GameObject armorPiece4;
+    public GameObject armorPiece4;
     [SerializeField]
-    private GameObject armorPiece5;
+    public GameObject armorPiece5;
     [SerializeField]
-    private GameObject armorPiece6;
+    public GameObject armorPiece6;
     [SerializeField]
-    private GameObject armorPiece7;
+    public GameObject armorPiece7;
     private Vector3 armorPiecePos1;
     private Vector3 armorPiecePos2;
     private Vector3 armorPiecePos3;
@@ -369,7 +369,7 @@ public class ArmoredEnemy : MonoBehaviour
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
     }
 
-    private void ArmorReset()
+    public void ArmorReset()
     {
         armorPiece1.SetActive(false);
         armorPiece2.SetActive(false);

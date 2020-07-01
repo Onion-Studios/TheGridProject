@@ -68,7 +68,6 @@ public class StartEndSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -386,6 +385,14 @@ public class StartEndSequence : MonoBehaviour
                                 ArmoredEnemy.speed = 0;
                                 ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
                                 ArmoredEnemy.gameObject.SetActive(false);
+                                ArmoredEnemy.armorPiece1.SetActive(false);
+                                ArmoredEnemy.armorPiece2.SetActive(false);
+                                ArmoredEnemy.armorPiece3.SetActive(false);
+                                ArmoredEnemy.armorPiece4.SetActive(false);
+                                ArmoredEnemy.armorPiece5.SetActive(false);
+                                ArmoredEnemy.armorPiece6.SetActive(false);
+                                ArmoredEnemy.armorPiece7.SetActive(false);
+
                             }
                             break;
                         case 3:
