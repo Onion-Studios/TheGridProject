@@ -141,6 +141,7 @@ public class FrighteningEnemy : MonoBehaviour
         if (this.transform.localPosition.x > 2.75)
         {
             inkAbsorb.Play();
+            AudioManager.Instance.PlaySound("Backwash");
             Invoke("DeathForEndGrid", stopTime);
             destinationReached = true;
         }

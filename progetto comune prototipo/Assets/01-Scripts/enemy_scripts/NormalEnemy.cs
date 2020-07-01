@@ -136,6 +136,7 @@ public class NormalEnemy : MonoBehaviour
         if (this.transform.localPosition.x > 3.75)
         {
             Invoke("DeathForEndGrid", timeToDespawn);
+            AudioManager.Instance.PlaySound("Backwash");
             inkAbsorb.Play();
             destinationReached = true;
         }

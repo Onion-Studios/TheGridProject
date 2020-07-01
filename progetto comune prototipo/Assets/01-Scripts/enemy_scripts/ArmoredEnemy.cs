@@ -245,6 +245,7 @@ public class ArmoredEnemy : MonoBehaviour
         if (this.transform.localPosition.x > 3.75)
         {
             inkAbsorb.Play();
+            AudioManager.Instance.PlaySound("Backwash");
             Invoke("DeathForEndGrid", stopTime);
             destinationReached = true;
         }

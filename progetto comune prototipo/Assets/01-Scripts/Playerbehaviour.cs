@@ -285,7 +285,6 @@ public class Playerbehaviour : MonoBehaviour
         if (maxInkDamage == 0)
         {
             Inkstone.Ink -= inkDamage;
-            AudioManager.Instance.PlaySound("Backwash");
         }
         else
         {

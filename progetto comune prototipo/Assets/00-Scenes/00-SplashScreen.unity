@@ -992,13 +992,12 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: Backwash
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 99be53594f1876646b102484fe393adb, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Secretsignsuccessfull
     clip: {fileID: 8300000, guid: 627e32736a433dd4abd227f44a230248, type: 3}
     volume: 0.5
@@ -1015,6 +1014,34 @@ MonoBehaviour:
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: resetgong
     clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Seppuku
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Armordestroyed
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Undyingenemydeath
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Undyingslash
+    clip: {fileID: 0}
     volume: 0.5
     pitch: 1
     loop: 0
