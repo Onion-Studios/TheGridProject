@@ -440,6 +440,7 @@ public class StartEndSequence : MonoBehaviour
             endSequencePositionPlayed = true;
         }
         playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
+        AudioManager.Instance.StopAllSounds();
     }
     IEnumerator BlackScreen()
     {
@@ -462,7 +463,6 @@ public class StartEndSequence : MonoBehaviour
     {
         if (skipping == true)
         {
-
             AudioManager.Instance.StopSound("Yoo");
             curtains.CloseTeleport();
 
@@ -477,5 +477,4 @@ public class StartEndSequence : MonoBehaviour
             skipping = false;
         }
     }
-        AudioManager.Instance.StopAllSounds();
 }
