@@ -48,8 +48,8 @@ public class StartEndSequence : MonoBehaviour
     [SerializeField]
     private GameObject skipButton;
     float timer;
-
-
+    float timePlayed;
+    public static int secondsPlayed, minutesPlayed, hoursPlayed;
 
     #endregion
 
@@ -62,6 +62,7 @@ public class StartEndSequence : MonoBehaviour
         starting = true;
         ending = false;
         skipping = false;
+        timePlayed = 0;
     }
 
     // Start is called before the first frame update
@@ -104,74 +105,114 @@ public class StartEndSequence : MonoBehaviour
 
     void Update()
     {
-        if (starting == true)
-        {
-            StartSequence();
-        }
+        StartSequence();
         if (skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return) && startSequencePosition >= 1)
         {
             skipping = true;
         }
-        if (skipping == true)
+        Skip();
+        EndSequence();
+        CountTimePlayed();
+    }
+
+    void CountTimePlayed()
+    {
+        int seconds;
+        int minutes;
+        int hours;
+        if (starting == false && ending == false)
         {
-            AudioManager.Instance.StopSound("Yoo");
-            Skip();
+            timePlayed += Time.deltaTime;
         }
-        if (ending == true)
+        else if (starting == false && ending == true)
         {
-            EndSequence();
+            seconds = (int)timePlayed;
+            if (seconds >= 60)
+            {
+                minutes = seconds / 60;
+                for (int i = 0; i < minutes; i++)
+                {
+                    seconds -= 60;
+                }
+                if (minutes >= 60)
+                {
+                    hours = minutes / 60;
+                    for (int i = 0; i < hours; i++)
+                    {
+                        minutes -= 60;
+                    }
+                    secondsPlayed = seconds;
+                    minutesPlayed = minutes;
+                    hoursPlayed = hours;
+                }
+                else
+                {
+                    secondsPlayed = seconds;
+                    minutesPlayed = minutes;
+                    hoursPlayed = 0;
+                }
+            }
+            else
+            {
+                secondsPlayed = seconds;
+                minutesPlayed = 0;
+                hoursPlayed = 0;
+            }
         }
     }
 
     void StartSequence()
     {
-        switch (startSequencePosition)
+        if (starting == true)
         {
-            case 0:
-                if (loading == null)
-                {
-                    loading = Loading();
-                    StartCoroutine(loading);
-                }
-                break;
-            case 1:
-                if (loading != null)
-                {
-                    StopCoroutine(loading);
-                    loading = null;
-                }
-                PlayerLight();
-                break;
-            case 2:
-                Bowing();
-                break;
-            case 3:
-                ReduceCameraZoom();
-                startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
-                break;
-            case 4:
-                if (lightsON == null)
-                {
-                    lightsON = LightsON();
-                    StartCoroutine(lightsON);
-                }
-                crowd.color = Color.Lerp(crowd.color, alpha1Crowd, 3 * Time.deltaTime);
-                break;
-            case 5:
-                if (lightsON != null)
-                {
-                    StopCoroutine(lightsON);
-                    lightsON = null;
-                }
-                PlayerToCenter();
-                break;
-            case 6:
-                skipButton.SetActive(false);
-                startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
-                break;
-            case 7:
-                StartUP();
-                break;
+            switch (startSequencePosition)
+            {
+                case 0:
+                    if (loading == null)
+                    {
+                        loading = Loading();
+                        StartCoroutine(loading);
+                    }
+                    break;
+                case 1:
+                    if (loading != null)
+                    {
+                        StopCoroutine(loading);
+                        loading = null;
+                    }
+                    PlayerLight();
+                    break;
+                case 2:
+                    Bowing();
+                    break;
+                case 3:
+                    ReduceCameraZoom();
+                    startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
+                    break;
+                case 4:
+                    if (lightsON == null)
+                    {
+                        lightsON = LightsON();
+                        StartCoroutine(lightsON);
+                    }
+                    crowd.color = Color.Lerp(crowd.color, alpha1Crowd, 3 * Time.deltaTime);
+                    break;
+                case 5:
+                    if (lightsON != null)
+                    {
+                        StopCoroutine(lightsON);
+                        lightsON = null;
+                    }
+                    PlayerToCenter();
+                    break;
+                case 6:
+                    skipButton.SetActive(false);
+                    startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
+                    break;
+                case 7:
+                    StartUP();
+                    break;
+            }
         }
     }
     #region Start Sequence Functions
@@ -259,47 +300,50 @@ public class StartEndSequence : MonoBehaviour
 
     public void EndSequence()
     {
-        switch (endSequencePosition)
+        if (ending == true)
         {
-            case 0:
-                crowd.enabled = false;
-                StopAllEnemies();
-                break;
-            case 1:
-                if (lightsOFF == null)
-                {
-                    lightsOFF = LightsOFF();
-                    StartCoroutine(lightsOFF);
-                }
-                finalPosition = new Vector3(playerbehaviour.istanze.transform.position.x, playerbehaviour.istanze.transform.position.y + 3, playerbehaviour.istanze.transform.position.z + 5);
-                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, finalPosition, 3 * Time.deltaTime);
-                break;
-            case 2:
-                if (lightsOFF != null)
-                {
-                    StopCoroutine(lightsOFF);
-                    lightsOFF = null;
-                }
-                Seppuku();
-                break;
-            case 3:
-                endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
-                break;
-            case 4:
-                if (blackScreen == null)
-                {
-                    blackScreen = BlackScreen();
-                    StartCoroutine(blackScreen);
-                }
-                break;
-            case 5:
-                if (blackScreen != null)
-                {
-                    StopCoroutine(blackScreen);
-                    blackScreen = null;
-                }
-                GameOver();
-                break;
+            switch (endSequencePosition)
+            {
+                case 0:
+                    crowd.enabled = false;
+                    StopAllEnemies();
+                    break;
+                case 1:
+                    if (lightsOFF == null)
+                    {
+                        lightsOFF = LightsOFF();
+                        StartCoroutine(lightsOFF);
+                    }
+                    finalPosition = new Vector3(playerbehaviour.istanze.transform.position.x, playerbehaviour.istanze.transform.position.y + 3, playerbehaviour.istanze.transform.position.z + 5);
+                    mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, finalPosition, 3 * Time.deltaTime);
+                    break;
+                case 2:
+                    if (lightsOFF != null)
+                    {
+                        StopCoroutine(lightsOFF);
+                        lightsOFF = null;
+                    }
+                    Seppuku();
+                    break;
+                case 3:
+                    endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
+                    break;
+                case 4:
+                    if (blackScreen == null)
+                    {
+                        blackScreen = BlackScreen();
+                        StartCoroutine(blackScreen);
+                    }
+                    break;
+                case 5:
+                    if (blackScreen != null)
+                    {
+                        StopCoroutine(blackScreen);
+                        blackScreen = null;
+                    }
+                    GameOver();
+                    break;
+            }
         }
     }
 
@@ -416,18 +460,21 @@ public class StartEndSequence : MonoBehaviour
     #endregion
     void Skip()
     {
-        curtains.CloseTeleport();
+        if (skipping == true)
+        {
 
-        lightObjects[2].SetActive(false);
-        lightObjects[0].SetActive(true);
-        lightObjects[1].SetActive(true);
+            AudioManager.Instance.StopSound("Yoo");
+            curtains.CloseTeleport();
 
-        mainCamera.transform.SetPositionAndRotation(particlesCamera.transform.position, particlesCamera.transform.rotation);
-        crowd.color = alpha1Crowd;
+            lightObjects[2].SetActive(false);
+            lightObjects[0].SetActive(true);
+            lightObjects[1].SetActive(true);
 
-        skipping = false;
+            mainCamera.transform.SetPositionAndRotation(particlesCamera.transform.position, particlesCamera.transform.rotation);
+            crowd.color = alpha1Crowd;
 
-        startSequencePosition = 3;
-
+            startSequencePosition = 3;
+            skipping = false;
+        }
     }
 }
