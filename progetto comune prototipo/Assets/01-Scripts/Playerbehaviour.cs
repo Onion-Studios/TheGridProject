@@ -299,7 +299,6 @@ public class Playerbehaviour : MonoBehaviour
             if (Inkstone.Ink > 0 && YS.active == false)
             {
                 intensityreset.intensityReset = true;
-                enemyspawnmanager.enemykilled = 0;
             }
             if (SecretT.bar == 100)
             {

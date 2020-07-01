@@ -155,91 +155,31 @@ public class IntensityReset : MonoBehaviour
                         {
                             case 0:
                                 NormalEnemy normalenemy = nemici.GetComponent<NormalEnemy>();
-                                foreach (GameObject segno in normalenemy.SignNormalYokai)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in normalenemy.SignIntensity1Normal)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in normalenemy.SignIntensity1PlusNormal)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                normalenemy.gameObject.SetActive(false);
+                                normalenemy.TrueDeath();
                                 break;
                             case 1:
                                 KamikazeEnemy kamikazenemy = nemici.GetComponent<KamikazeEnemy>();
-                                foreach (GameObject segno in kamikazenemy.SignIntensity1Kamikaze)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in kamikazenemy.SignIntensity1PlusKamikaze)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in kamikazenemy.SignIntensity2Kamikaze)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                nemici.gameObject.SetActive(false);
+                                kamikazenemy.TrueDeath();
                                 break;
                             case 2:
                                 ArmoredEnemy armoredenemy = nemici.GetComponent<ArmoredEnemy>();
-                                foreach (GameObject segno in armoredenemy.SignIntensity1Armored)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in armoredenemy.SignIntensity1PlusArmored)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in armoredenemy.SignIntensity2Armored)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                nemici.gameObject.SetActive(false);
+                                armoredenemy.TrueDeath();
                                 break;
                             case 3:
                                 UndyingEnemy undyingenemy = nemici.GetComponent<UndyingEnemy>();
-                                foreach (GameObject segno in undyingenemy.SignIntensity3Undying)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                nemici.gameObject.SetActive(false);
+                                undyingenemy.TrueDeath();
                                 break;
                             case 4:
                                 MalevolentEnemy malevolentenemy = nemici.GetComponent<MalevolentEnemy>();
-                                malevolentenemy.gameObject.SetActive(false);
+                                malevolentenemy.TrueDeath();
                                 break;
                             case 5:
                                 FrighteningEnemy frighteningenemy = nemici.GetComponent<FrighteningEnemy>();
-                                foreach (GameObject segno in frighteningenemy.SignIntensity2Frightening)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in frighteningenemy.SignIntensity2PlusFrightening)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                nemici.gameObject.SetActive(false);
+                                frighteningenemy.TrueDeath();
                                 break;
                             case 6:
                                 BufferEnemy bufferenemy = nemici.GetComponent<BufferEnemy>();
-                                foreach (GameObject segno in bufferenemy.SignIntensity1Buffer)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in bufferenemy.SignIntensity1PlusBuffer)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                foreach (GameObject segno in bufferenemy.SignIntensity2Buffer)
-                                {
-                                    segno.SetActive(false);
-                                }
-                                nemici.gameObject.SetActive(false);
+                                bufferenemy.TrueDeath();
                                 break;
                         }
                     }
@@ -262,6 +202,7 @@ public class IntensityReset : MonoBehaviour
             particleCamera.SetActive(true);
             intensityResetIndex = 0;
             intensityReset = false;
+            enemyspawnmanager.enemykilled = 0;
         }
     }
 }

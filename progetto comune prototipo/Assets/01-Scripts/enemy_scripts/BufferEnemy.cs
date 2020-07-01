@@ -270,8 +270,6 @@ public class BufferEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
-        buffPower.Stop();
-        inkDeath.Play();
         enemy.GetComponent<Renderer>().material.color = Color.black;
         hat.GetComponent<Renderer>().material.color = Color.black;
         Invoke("Death", BlackToDeath);
@@ -286,27 +284,33 @@ public class BufferEnemy : MonoBehaviour
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
         enemy.GetComponent<Renderer>().material.color = Color.white;
         hat.GetComponent<Renderer>().material.color = Color.white;
-        this.gameObject.SetActive(false);
+
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        //elimina segni int 1
+
+        AudioManager.Instance.PlaySound("EnemyDeath");
+
+        TrueDeath();
+    }
+
+    public void TrueDeath()
+    {
         foreach (GameObject segno in SignIntensity1Buffer)
         {
             segno.SetActive(false);
         }
-        //elimina segni int 1 plus
         foreach (GameObject segno in SignIntensity1PlusBuffer)
         {
             segno.SetActive(false);
         }
-        //elimina segni int 2
         foreach (GameObject segno in SignIntensity2Buffer)
         {
             segno.SetActive(false);
         }
+        buffPower.Stop();
         SpeedReset();
         AudioManager.Instance.StopSound("SingsongBuffer");
-        AudioManager.Instance.PlaySound("EnemyDeath");
+        this.gameObject.SetActive(false);
     }
 }
