@@ -94,7 +94,6 @@ public class IntensityReset : MonoBehaviour
                                     ArmoredEnemy ArmoredEnemy = enemy.GetComponent<ArmoredEnemy>();
                                     ArmoredEnemy.speed = 0;
                                     ArmoredEnemy.armoredAnimator.SetFloat("SpeedMultiplier", 0);
-                                    ArmoredEnemy.ArmorReset();
                                 }
                                 break;
                             case 3:
