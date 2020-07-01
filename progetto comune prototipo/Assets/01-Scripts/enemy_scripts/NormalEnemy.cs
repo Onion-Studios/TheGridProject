@@ -100,11 +100,6 @@ public class NormalEnemy : MonoBehaviour
         startPosition = transform.position.x;
 
         deathforendgrid = null;
-
-        if (AudioManager.Instance.IsPlaying("Normalsound") == false)
-        {
-            Invoke("playnormalsound", 0.65f);
-        }
     }
 
     private void OnDisable()
@@ -141,6 +136,7 @@ public class NormalEnemy : MonoBehaviour
         if (this.transform.localPosition.x > 3.75)
         {
             Invoke("DeathForEndGrid", timeToDespawn);
+            AudioManager.Instance.PlaySound("Backwash");
             inkAbsorb.Play();
             destinationReached = true;
         }
@@ -222,11 +218,6 @@ public class NormalEnemy : MonoBehaviour
         }
 
     }
-    void playnormalsound()
-    {
-        AudioManager.Instance.PlaySound("Normalsound");
-    }
-
     public void TrueDeath()
     {
         foreach (GameObject segno in SignNormalYokai)

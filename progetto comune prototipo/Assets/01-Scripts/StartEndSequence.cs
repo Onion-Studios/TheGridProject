@@ -477,4 +477,5 @@ public class StartEndSequence : MonoBehaviour
             skipping = false;
         }
     }
+        AudioManager.Instance.StopAllSounds();
 }

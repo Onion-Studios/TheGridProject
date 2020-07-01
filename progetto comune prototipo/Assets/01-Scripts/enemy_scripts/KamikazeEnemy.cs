@@ -85,11 +85,6 @@ public class KamikazeEnemy : MonoBehaviour
 
         startPosition = transform.position.x;
 
-        if (AudioManager.Instance.IsPlaying("Kamikazesound") == false)
-        {
-            Invoke("playkamikazesound", 2.0f);
-        }
-
     }
 
     // Update is called once per frame
@@ -197,15 +192,10 @@ public class KamikazeEnemy : MonoBehaviour
             }
         }
     }
-    void playkamikazesound()
-    {
-        AudioManager.Instance.PlaySound("Kamikazesound");
-    }
-
     public void TrueDeath()
     {
-        foreach (GameObject segno in SignIntensity1Kamikaze)
         {
+        foreach (GameObject segno in SignIntensity1Kamikaze)
             segno.SetActive(false);
         }
         foreach (GameObject segno in SignIntensity1PlusKamikaze)
