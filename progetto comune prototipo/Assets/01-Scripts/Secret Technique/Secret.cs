@@ -20,7 +20,6 @@ public class Secret : MonoBehaviour
     public PlayableDirector playableDirector;
 
     public GameObject bloodMoon;
-    public Color defaultColorAlpha1;
     #endregion
 
     // Start is called before the first frame update
@@ -28,8 +27,6 @@ public class Secret : MonoBehaviour
     {
         bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
-        bloodMoon.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0);
-        defaultColorAlpha1 = new Color(1, 1, 1, 1);
     }
 
     // Update is called once per frame
@@ -135,8 +132,7 @@ public class Secret : MonoBehaviour
 
     void ChangeColor()
     {
-        //this.renderer_.material.Lerp(startMaterial, endMaterial, 0f + bar / 100f);
-        bloodMoon.GetComponent<Renderer>().material.color = Color.Lerp(bloodMoon.GetComponent<Renderer>().material.color, defaultColorAlpha1, 0f + bar / 100f);
+        bloodMoon.GetComponent<Renderer>().material.color = new Color(1, 1, 1, bar / 100);
     }
 
     public void StopTime()
