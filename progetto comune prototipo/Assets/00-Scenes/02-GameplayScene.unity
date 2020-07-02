@@ -756,6 +756,7 @@ GameObject:
   - component: {fileID: 81641522}
   - component: {fileID: 81641527}
   - component: {fileID: 81641528}
+  - component: {fileID: 81641529}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -909,6 +910,24 @@ MonoBehaviour:
   ExistingList: 0
   mouseClick: 0
   Index: 0
+--- !u!114 &81641529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81641521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a12ef046cafd34781a083121deb77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingCrowd: {fileID: 606684539}
+  stillCrowd: {fileID: 1134859635}
+  joyEffect: {fileID: 1348662649}
+  frenzyEffect: {fileID: 110333245}
+  disappointmentMistEffect: {fileID: 1016095451}
+  disappointmentEffect: {fileID: 1477243288}
 --- !u!1 &110333242
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &110333243
 RectTransform:
   m_ObjectHideFlags: 0
@@ -973,7 +992,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110333242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -4079,6 +4098,7 @@ MonoBehaviour:
   UI: {fileID: 81641522}
   ActualPlayer: {fileID: 0}
   WaveManager: {fileID: 0}
+  crowdFeedbacks: {fileID: 81641529}
   GameIntensity: 1
   StartIntensity2: 25
   StartIntensity3: 75
@@ -4179,7 +4199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1016095449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4225,7 +4245,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016095448}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -9501,7 +9521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1134859634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9528,7 +9548,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134859633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -10653,7 +10673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1348662647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10699,7 +10719,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348662646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -11512,7 +11532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1477243286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11558,7 +11578,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477243285}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -14229,6 +14249,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 2083101323204500054, guid: 7655c98483d4dd84f98bb883106f5087,
+        type: 3}
+      propertyPath: crowdFeedbacks
+      value: 
+      objectReference: {fileID: 81641529}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7655c98483d4dd84f98bb883106f5087, type: 3}
 --- !u!4 &2106107538706341742
@@ -14327,6 +14352,11 @@ PrefabInstance:
       propertyPath: YS
       value: 
       objectReference: {fileID: 228951400}
+    - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
+        type: 3}
+      propertyPath: TEST_WaveIntensity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da923c4d8b16c14ca6bc53897d3da74, type: 3}
 --- !u!108 &2723262268495300402

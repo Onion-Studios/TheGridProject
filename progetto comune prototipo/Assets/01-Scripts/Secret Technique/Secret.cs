@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Playables;
 
 public class Secret : MonoBehaviour
 {
     #region VARIABLES
+    [SerializeField]
+    private CrowdFeedbacks crowdFeedbacks;
     [HideInInspector]
     [Range(0, 100)] public float bar;
     public float charge;
@@ -20,6 +23,8 @@ public class Secret : MonoBehaviour
     public PlayableDirector playableDirector;
 
     public GameObject bloodMoon;
+
+    public IEnumerator frenzyEffectCO;
     #endregion
 
     // Start is called before the first frame update
@@ -46,10 +51,12 @@ public class Secret : MonoBehaviour
         //se la barra arriva a 100 
         if (bar == 100)
         {
+            crowdFeedbacks.FrenzyEffect(true);
             //attiva il timer la prima volta che arriva a 100
             if (active == false)
             {
                 AudioManager.Instance.PlaySound("PaintingCompleted");
+
                 paintParticles.Play();
                 currentTime = timeMax;
                 SymbolMovement();
@@ -66,6 +73,7 @@ public class Secret : MonoBehaviour
                 {
                     currentTime = 0;
                     AudioManager.Instance.PlaySound("PaintingReset");
+                    crowdFeedbacks.FrenzyEffect(false);
                     paintParticles.Stop();
                     bar = 0;
 
