@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
     public UIManager UI;
     public Playerbehaviour ActualPlayer;
     public WaveManager WaveManager;
+    public CrowdFeedbacks crowdFeedbacks;
     public int GameIntensity = 1;
     Enemyspawnmanager Enemyspawnmanager;
     public int StartIntensity2 = 15;
@@ -29,6 +31,9 @@ public class GameManager : MonoBehaviour
     private bool soundPlayed2;
     private bool soundPlayed3;
     private bool firstGameStart;
+
+    public IEnumerator joyEffectCO;
+
 
     private void Awake()
     {
@@ -109,6 +114,14 @@ public class GameManager : MonoBehaviour
 
                 //AudioManager.Instance.SetLoop("ClappingSound", false);
                 //AudioManager.Instance.PlaySound("ClappingSound");
+                if (joyEffectCO != null)
+                {
+                    StopCoroutine(joyEffectCO);
+                    joyEffectCO = null;
+                }
+                joyEffectCO = crowdFeedbacks.JoyEffect();
+                StartCoroutine(joyEffectCO);
+
                 soundPlayed2 = true;
                 soundPlayed1 = false;
                 soundPlayed3 = false;
@@ -125,6 +138,15 @@ public class GameManager : MonoBehaviour
 
                 //AudioManager.Instance.SetLoop("ClappingSound", false);
                 //AudioManager.Instance.PlaySound("ClappingSound");
+
+                if (joyEffectCO != null)
+                {
+                    StopCoroutine(joyEffectCO);
+                    joyEffectCO = null;
+                }
+                joyEffectCO = crowdFeedbacks.JoyEffect();
+                StartCoroutine(joyEffectCO);
+
                 soundPlayed3 = true;
                 soundPlayed1 = false;
                 soundPlayed2 = false;
@@ -150,4 +172,5 @@ public class GameManager : MonoBehaviour
             intensitySpeedIncrease = intensitySpeed * (WaveManager.TEST_WaveIntensity - 1);
         }
     }
+
 }

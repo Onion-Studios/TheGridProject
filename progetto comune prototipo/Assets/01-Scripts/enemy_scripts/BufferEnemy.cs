@@ -270,6 +270,7 @@ public class BufferEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        inkDeath.Play();
         enemy.GetComponent<Renderer>().material.color = Color.black;
         hat.GetComponent<Renderer>().material.color = Color.black;
         Invoke("Death", BlackToDeath);
