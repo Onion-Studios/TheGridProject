@@ -194,6 +194,7 @@ public class StartEndSequence : MonoBehaviour
                     startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                     break;
                 case 4:
+                    skipButton.SetActive(false);
                     if (lightsON == null)
                     {
                         lightsON = LightsON();
@@ -259,7 +260,6 @@ public class StartEndSequence : MonoBehaviour
     {
         mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
         mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
-        skipButton.SetActive(false);
     }
     IEnumerator LightsON()
     {
