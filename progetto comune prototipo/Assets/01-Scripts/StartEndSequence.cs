@@ -210,7 +210,6 @@ public class StartEndSequence : MonoBehaviour
                     PlayerToCenter();
                     break;
                 case 6:
-                    skipButton.SetActive(false);
                     startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
                     break;
                 case 7:
@@ -260,6 +259,7 @@ public class StartEndSequence : MonoBehaviour
     {
         mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, particlesCamera.transform.position, 3 * Time.deltaTime);
         mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, particlesCamera.transform.rotation, 3 * Time.deltaTime);
+        skipButton.SetActive(false);
     }
     IEnumerator LightsON()
     {
