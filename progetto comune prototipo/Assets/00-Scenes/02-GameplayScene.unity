@@ -4165,6 +4165,45 @@ MonoBehaviour:
   mainCamera: {fileID: 6441519076496892785}
   crowd: {fileID: 606684539}
   skipButton: {fileID: 1681248800}
+  randomCuriosity: {fileID: 1846950036}
+  curiosityArray:
+  - 'Did you know that the Amefurikozo appears during rainy nights? Be careful on
+    the stage: his buff makes his friends very... slippery.'
+  - Samurais are very honourable and gentle warriors! But don't make them angry...
+  - Hey, Tengus look cool right? I wonder what will you think when they'll chase you
+    in the woods forever.
+  - Some wishes are pretty dreamy and... explosive. The Daruma doll knows it for good.
+  - She's cute until she crawls at your bedside... nah, the Onryo's ugly and that's
+    it.
+  - A dragon is not only a majestic creature, but also a guide! So be careful at its
+    signals!
+  - When the gong goes "dong" it's time to be strong! Good luck!
+  - I don't like that Normal guy... He's too mainstream! But who knows...
+  - 'The Frightening Onryo seeks for vengeance: what have you done, man?'
+  - 'Have you ever tasted dishonor and fear? Try Seppuku then. '
+  - 'A Kitsune is a symbol of luck and good things, but will this be enough to save
+    you? '
+  - What's that little scoundrel in front of me? Keep him away... And watch his back!
+  - 'When in a bad situation you must show off your true power! KOROSE THEM ALL! '
+  - 'Poor Kuroko... Always helping on the stage but no one looks at him... But the
+    ink sign! '
+  - So colorful and deep are our little stories... The Kabuki Theatre explains many
+    lives.
+  - This holy Torii arc will take us to a better place! But first... We must get rid
+    of "them".
+  - 'Be careful: that Buffer guy looks suspicious and magical! '
+  - 'Daruma dolls were meant to expose granted wishes... What happened to these? '
+  - 'Did you know that exorcists existed since ancient times? They were called Onmyougi!  '
+  - 'Not every Yokai is an evil spirit... But these dudes look angry as hell. '
+  - 'Kill them! Kill them! Write the special sign you''ll see on the screen! '
+  - Seppuku consisted in suicide plus a dear friend cutting your head, you have no
+    one, don't you?
+  - 'Life teaches the ONLY rule: kill or be killed. '
+  - 'Protect your Suzuri full of ink or they will drain it! '
+  - 'Ink is like life: you must use it wisely and dosed or you will succumb to a dread
+    fate. '
+  - 'Trace signs to exorcise the evil spirits: you will be unstoppable! ... Or maybe
+    not. '
 --- !u!114 &986519609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10597,7 +10636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1335605565
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10608,14 +10647,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1846950035}
   m_Father: {fileID: 81641526}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1920, y: 1090}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335605566
 MonoBehaviour:
@@ -11136,12 +11176,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6294
       objectReference: {fileID: 0}
-    - target: {fileID: 6444777763475162493, guid: 1de7b1bd56255e946a0e4b673f000e34,
+    - target: {fileID: -824042528006585846, guid: 1de7b1bd56255e946a0e4b673f000e34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bad430d68e9bfab478b056f0ef065d4e, type: 2}
-    - target: {fileID: -824042528006585846, guid: 1de7b1bd56255e946a0e4b673f000e34,
+    - target: {fileID: 6444777763475162493, guid: 1de7b1bd56255e946a0e4b673f000e34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -12945,6 +12985,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1814544924}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1846950034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1846950035}
+  - component: {fileID: 1846950037}
+  - component: {fileID: 1846950036}
+  m_Layer: 5
+  m_Name: RandomCuriosity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1846950035
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846950034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1335605565}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 35}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1846950036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846950034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1802594529324104b9ef69265af48a51, type: 3}
+    m_FontSize: 48
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 72
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1846950037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846950034}
+  m_CullTransparentMesh: 0
 --- !u!1 &1883591716
 GameObject:
   m_ObjectHideFlags: 0

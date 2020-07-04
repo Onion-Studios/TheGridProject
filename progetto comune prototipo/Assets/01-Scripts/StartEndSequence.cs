@@ -50,8 +50,10 @@ public class StartEndSequence : MonoBehaviour
     float timer;
     float timePlayed;
     public static int secondsPlayed, minutesPlayed, hoursPlayed;
-    
-
+    [SerializeField]
+    private Text randomCuriosity;
+    [SerializeField]
+    private string[] curiosityArray;
     #endregion
 
     void Awake()
@@ -101,6 +103,8 @@ public class StartEndSequence : MonoBehaviour
         lightsON = null;
         loading = null;
 
+        int randomCuriosityNumber = Random.Range(0, curiosityArray.Length - 1);
+        randomCuriosity.text = curiosityArray[randomCuriosityNumber].ToUpper();
     }
 
     void Update()
