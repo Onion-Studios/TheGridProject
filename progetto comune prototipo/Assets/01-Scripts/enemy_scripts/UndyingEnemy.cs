@@ -326,7 +326,6 @@ public class UndyingEnemy : MonoBehaviour
         {
             alreadyDead = true;
 
-
             attackTimer = 0;
             currentTime = maxTime;
             enemyspawnmanager.enemykilled += 1;
