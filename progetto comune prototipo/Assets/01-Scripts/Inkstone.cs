@@ -17,6 +17,7 @@ public class Inkstone : MonoBehaviour
     [SerializeField]
     float maxTimer;
     float timer;
+    public ParticleSystem inkSplash;
     void Start()
     {
         inkLevel.GetComponent<Renderer>().material = inkMaterials[0];

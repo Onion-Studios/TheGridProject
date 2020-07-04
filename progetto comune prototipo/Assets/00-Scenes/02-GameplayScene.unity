@@ -1288,11 +1288,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d75bbd6109fab64daa10eb9a6818767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inkStone: {fileID: 833458095924189351}
   intensityReset: 0
   particleCamera: {fileID: 1061293695}
   blackPanel: {fileID: 1484441648}
   blackPanelAlphaSpeed: 5
   maxTimer: 1
+  maxWaitTimer: 0.4
 --- !u!1 &260930347
 GameObject:
   m_ObjectHideFlags: 0
@@ -13472,6 +13474,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e1215ef3b94c5479245bafaa6b30ed, type: 3}
+--- !u!114 &833458095924189351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 833458094260430244, guid: e6e1215ef3b94c5479245bafaa6b30ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 833458095924189350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89346b26f8bedc644b4fdbe62ace305f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1030578482244386283
 MonoBehaviour:
   m_ObjectHideFlags: 0

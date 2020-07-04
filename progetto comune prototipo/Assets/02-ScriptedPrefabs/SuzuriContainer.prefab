@@ -58,6 +58,7 @@ MonoBehaviour:
   inkStartLocalPos: -30
   inkEndLocalPos: -70
   maxTimer: 0.1
+  inkSplash: {fileID: 6212330129442755848}
 --- !u!1001 &833458094500527589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +161,12 @@ PrefabInstance:
 --- !u!4 &6212330129442755849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6748548307750283500, guid: 2242cff4b1258734da155a4687954764,
+    type: 3}
+  m_PrefabInstance: {fileID: 833458094500527589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6212330129442755848 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6748548307750283501, guid: 2242cff4b1258734da155a4687954764,
     type: 3}
   m_PrefabInstance: {fileID: 833458094500527589}
   m_PrefabAsset: {fileID: 0}
