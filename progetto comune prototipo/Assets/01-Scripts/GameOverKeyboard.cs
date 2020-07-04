@@ -79,6 +79,7 @@ public class GameOverKeyboard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 Index--;
+                AudioManager.Instance.PlaySound("Hightonetick");
                 if (Index < 0)
                 {
                     Index = CurrentStateMenuButtons.Count - 1;
@@ -87,6 +88,7 @@ public class GameOverKeyboard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 Index++;
+                AudioManager.Instance.PlaySound("Hightonetick");
                 if (Index == CurrentStateMenuButtons.Count)
                 {
                     Index = 0;

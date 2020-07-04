@@ -50,6 +50,7 @@ public class StartEndSequence : MonoBehaviour
     float timer;
     float timePlayed;
     public static int secondsPlayed, minutesPlayed, hoursPlayed;
+    
 
     #endregion
 
@@ -323,6 +324,7 @@ public class StartEndSequence : MonoBehaviour
                         lightsOFF = null;
                     }
                     Seppuku();
+                    AudioManager.Instance.PlaySound("Seppuku");
                     break;
                 case 3:
                     endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
@@ -446,8 +448,10 @@ public class StartEndSequence : MonoBehaviour
             Invoke("EndSequencePosition", 5);
             endSequencePositionPlayed = true;
         }
-        playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
         AudioManager.Instance.StopAllSounds();
+        playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
+
+
     }
     IEnumerator BlackScreen()
     {

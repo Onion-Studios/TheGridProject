@@ -291,6 +291,7 @@ public class ArmoredEnemy : MonoBehaviour
             speed = baseSpeedMax + GM.intensitySpeedIncrease;
             armoredLife -= 1;
             armoredAnimator.SetBool("ArmorBroken", true);
+            AudioManager.Instance.PlaySound("Armordestroyed");
 
             armorPiece1.transform.SetParent(null);
             armorPiece1.GetComponent<Rigidbody>().isKinematic = false;
