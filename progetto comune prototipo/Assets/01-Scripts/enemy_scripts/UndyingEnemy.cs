@@ -117,8 +117,6 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
-        speed = baseSpeed;
-
         currentTime = maxTime;
         repelled = false;
         alreadyDead = false;

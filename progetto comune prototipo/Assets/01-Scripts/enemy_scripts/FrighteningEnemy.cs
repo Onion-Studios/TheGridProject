@@ -84,8 +84,6 @@ public class FrighteningEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
-        speed = baseSpeed;
-
         startPosition = transform.position.x;
 
         deathforendgrid = null;

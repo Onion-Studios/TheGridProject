@@ -5,7 +5,7 @@ public class NormalEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public float speed;
     public int inkDamage;
     public int maxInkDamage;
@@ -94,8 +94,6 @@ public class NormalEnemy : MonoBehaviour
         {
             Debug.LogError("Managercombo is NULL");
         }
-
-        speed = baseSpeed;
 
         startPosition = transform.position.x;
 

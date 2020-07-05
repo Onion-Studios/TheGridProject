@@ -1309,7 +1309,7 @@ MonoBehaviour:
   inkGained: 7
   inkGainedIntensity1: 5
   inkGainedIntensity2: 7
-  inkGainedIntensity3: 9
+  inkGainedIntensity3: 20
   gridCenter: {x: 2, y: 1.05, z: 2}
   frightenedPlayer: {fileID: 0}
   smokeBomb: {fileID: 0}
@@ -4107,8 +4107,8 @@ MonoBehaviour:
   dragon2: {fileID: 170796333}
   dragon3: {fileID: 170796332}
   loadImage: {fileID: 1335605564}
-  intensitySpeed: 0.1
-  intensitySpeedIncrease: 0
+  intensitySpeed: 5
+  intensitySpeedIncrease: 0.15
 --- !u!4 &986519607
 Transform:
   m_ObjectHideFlags: 0

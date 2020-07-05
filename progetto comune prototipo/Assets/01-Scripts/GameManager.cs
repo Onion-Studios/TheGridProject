@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject loadImage;
     public float intensitySpeed;
-    [HideInInspector]
+    //[HideInInspector]
     public float intensitySpeedIncrease;
 
     private bool soundPlayed1;
@@ -162,15 +162,7 @@ public class GameManager : MonoBehaviour
         {
             GameIntensity = WaveManager.TEST_WaveIntensity;
         }
-
-        if (WaveManager.TEST_WaveActive == false)
-        {
-            intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
-        }
-        else
-        {
-            intensitySpeedIncrease = intensitySpeed * (WaveManager.TEST_WaveIntensity - 1);
-        }
+        intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
     }
 
 }

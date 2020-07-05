@@ -72,7 +72,7 @@ MonoBehaviour:
   - {fileID: 2419941019155885725}
   endPosition: -0.7
   currentTime: 0
-  maxTime: 40
+  maxTime: 30
   attackTimer: 0
   maxAttacktimer: 2
   repelled: 0

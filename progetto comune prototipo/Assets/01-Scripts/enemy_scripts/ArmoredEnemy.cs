@@ -181,8 +181,6 @@ public class ArmoredEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
-        speed = baseSpeed;
-
         startPosition = transform.position.x;
 
         armoredLife = 2;
