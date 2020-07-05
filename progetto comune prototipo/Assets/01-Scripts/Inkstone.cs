@@ -18,6 +18,8 @@ public class Inkstone : MonoBehaviour
     float maxTimer;
     float timer;
     public ParticleSystem inkSplash;
+    public StartEndSequence SES;
+    public Playerbehaviour PB;
     void Start()
     {
         inkLevel.GetComponent<Renderer>().material = inkMaterials[0];
@@ -36,17 +38,24 @@ public class Inkstone : MonoBehaviour
 
     void UpdateInk()
     {
-        if (Ink < 0)
+        if (Ink > maxInk)
         {
-            Ink = 0;
+            Ink = maxInk;
         }
         if (maxInk < 0)
         {
             maxInk = 0;
         }
-        if (Ink > maxInk)
+        if (Ink < 0)
         {
-            Ink = maxInk;
+            Ink = 0;
+        }
+        if (Ink == 0)
+        {
+            PB.kitsuneAnimator.SetBool("MovementKeyPressed", false);
+            PB.istanze.transform.rotation = Quaternion.Euler(0, -180, 0);
+            SES.ending = true;
+            resetonending = true;
         }
         if (resetonending == true)
         {
