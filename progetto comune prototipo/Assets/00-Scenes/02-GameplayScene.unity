@@ -13417,11 +13417,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuzuriContainer
       objectReference: {fileID: 0}
-    - target: {fileID: 8696702320280239279, guid: e6e1215ef3b94c5479245bafaa6b30ed,
-        type: 3}
-      propertyPath: m_Layer
-      value: 19
-      objectReference: {fileID: 0}
     - target: {fileID: 5686847269157506748, guid: e6e1215ef3b94c5479245bafaa6b30ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13487,31 +13482,6 @@ PrefabInstance:
       propertyPath: PB
       value: 
       objectReference: {fileID: 228951398}
-    - target: {fileID: 3336112699542789041, guid: e6e1215ef3b94c5479245bafaa6b30ed,
-        type: 3}
-      propertyPath: m_Layer
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619759292651581757, guid: e6e1215ef3b94c5479245bafaa6b30ed,
-        type: 3}
-      propertyPath: m_Layer
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 6212330129442755854, guid: e6e1215ef3b94c5479245bafaa6b30ed,
-        type: 3}
-      propertyPath: m_Layer
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 6212330129907254550, guid: e6e1215ef3b94c5479245bafaa6b30ed,
-        type: 3}
-      propertyPath: m_Layer
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 6212330130260180573, guid: e6e1215ef3b94c5479245bafaa6b30ed,
-        type: 3}
-      propertyPath: m_Layer
-      value: 19
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e1215ef3b94c5479245bafaa6b30ed, type: 3}
 --- !u!114 &833458095924189351 stripped
