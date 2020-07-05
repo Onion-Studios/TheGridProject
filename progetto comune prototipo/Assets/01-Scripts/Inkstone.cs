@@ -2,90 +2,123 @@
 
 public class Inkstone : MonoBehaviour
 {
-    public int maxInk = 100;
-    public int Ink = 100;
+    public int maxInk;
+    public int Ink;
     bool resetonending;
-    public GameObject Layer1;
-    public GameObject Layer2;
-    public GameObject Layer3;
-    public GameObject Layer4;
-    public GameObject Layer5;
+    public GameObject inkLevel;
+    public Material[] inkMaterials;
     public static int FinalScore;
-    PointSystem PointSystem;
-    StartEndSequence endSequence;
-    private Playerbehaviour playerBehaviour;
-
-
+    [SerializeField]
+    float inkStartLocalPos, inkEndLocalPos;
+    float inkDistance;
+    float inkOffset;
+    int relativeInk;
+    float relativeInkPosition;
+    [SerializeField]
+    float maxTimer;
+    float timer;
+    public ParticleSystem inkSplash;
+    public StartEndSequence SES;
+    public Playerbehaviour PB;
     void Start()
     {
-        playerBehaviour = FindObjectOfType<Playerbehaviour>();
-        Layer1.SetActive(true);
-        Layer2.SetActive(true);
-        Layer3.SetActive(true);
-        Layer4.SetActive(true);
-        Layer5.SetActive(true);
-        PointSystem = FindObjectOfType<PointSystem>();
-        endSequence = FindObjectOfType<StartEndSequence>();
+        inkLevel.GetComponent<Renderer>().material = inkMaterials[0];
         resetonending = false;
+        inkDistance = Mathf.Abs(Mathf.Abs(inkStartLocalPos) - Mathf.Abs(inkEndLocalPos));
+        inkOffset = inkDistance / 100;
+        relativeInk = Ink;
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateInk();
+        UpdateInkPosition();
     }
 
     void UpdateInk()
     {
-        if (Ink < 0)
+        if (Ink > maxInk)
         {
-            Ink = 0;
+            Ink = maxInk;
         }
         if (maxInk < 0)
         {
             maxInk = 0;
         }
+        if (Ink < 0)
+        {
+            Ink = 0;
+        }
         if (Ink == 0)
         {
-            playerBehaviour.kitsuneAnimator.SetBool("MovementKeyPressed", false);
-            playerBehaviour.istanze.transform.rotation = Quaternion.Euler(0, -180, 0);
-            endSequence.ending = true;
+            PB.kitsuneAnimator.SetBool("MovementKeyPressed", false);
+            PB.istanze.transform.rotation = Quaternion.Euler(0, -180, 0);
+            SES.ending = true;
             resetonending = true;
-        }
-        if (Ink == 1)
-        {
-            Layer1.SetActive(true);
-            Layer2.SetActive(false);
-        }
-        if (Ink < 25 && Ink >= 2)
-        {
-            Layer2.SetActive(true);
-            Layer3.SetActive(false);
-            Layer4.SetActive(false);
-            Layer5.SetActive(false);
-        }
-        if (Ink >= 25 && Ink < 50)
-        {
-            Layer3.SetActive(true);
-            Layer4.SetActive(false);
-            Layer5.SetActive(false);
-        }
-        if (Ink >= 50 && Ink < 75)
-        {
-            Layer4.SetActive(true);
-            Layer5.SetActive(false);
-        }
-        if (Ink >= 75 && Ink <= 100)
-        {
-            Layer5.SetActive(true);
-        }
-        if (Ink > maxInk)
-        {
-            Ink = maxInk;
         }
         if (resetonending == true)
         {
             Ink = 0;
+        }
+    }
+
+    void UpdateInkPosition()
+    {
+        if (relativeInk != Ink)
+        {
+            if (relativeInk > Ink)
+            {
+                relativeInk--;
+                relativeInkPosition = inkOffset * relativeInk + inkEndLocalPos;
+                inkLevel.transform.localPosition = new Vector3(inkLevel.transform.localPosition.x, relativeInkPosition, inkLevel.transform.localPosition.z);
+                TimerPlay();
+            }
+            else
+            {
+                relativeInk++;
+                relativeInkPosition = inkOffset * relativeInk + inkEndLocalPos;
+                inkLevel.transform.localPosition = new Vector3(inkLevel.transform.localPosition.x, relativeInkPosition, inkLevel.transform.localPosition.z);
+                TimerPlay();
+            }
+            MaterialCases();
+        }
+    }
+
+    void MaterialCases()
+    {
+        if (relativeInk >= 76 && relativeInk <= 100)
+        {
+            inkLevel.GetComponent<Renderer>().material = inkMaterials[0];
+        }
+        else if (relativeInk >= 51 && relativeInk <= 75)
+        {
+            inkLevel.GetComponent<Renderer>().material = inkMaterials[1];
+        }
+        else if (relativeInk >= 26 && relativeInk <= 50)
+        {
+            inkLevel.GetComponent<Renderer>().material = inkMaterials[2];
+        }
+        else if (relativeInk >= 2 && relativeInk <= 25)
+        {
+            inkLevel.GetComponent<Renderer>().material = inkMaterials[3];
+        }
+        else if (relativeInk == 1)
+        {
+            inkLevel.GetComponent<Renderer>().material = inkMaterials[4];
+        }
+    }
+
+    void TimerPlay()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            timer = 0;
+            timer = maxTimer;
         }
     }
 }

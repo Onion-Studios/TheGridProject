@@ -21,6 +21,7 @@ public class Yokaislayer : MonoBehaviour
     float timer;
     public PlayableDirector[] YokaiSlayerTimelines;
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
+    bool signMovement;
     [SerializeField]
     #endregion
 
@@ -59,7 +60,7 @@ public class Yokaislayer : MonoBehaviour
         active = false;
 
         yokaiSlayerSequenceNumber = 0;
-
+        signMovement = false;
         timer = timeStop;
     }
 
@@ -136,7 +137,11 @@ public class Yokaislayer : MonoBehaviour
 
     void SignMovement()
     {
-        YokaiSlayerTimelines[playerbehaviour.yokaislayercount - 1].Play();
+        if (signMovement == false)
+        {
+            YokaiSlayerTimelines[playerbehaviour.yokaislayercount - 1].Play();
+            signMovement = true;
+        }
     }
 
 
@@ -206,5 +211,6 @@ public class Yokaislayer : MonoBehaviour
         yokaiSlayerSequenceNumber = 0;
 
         active = false;
+        signMovement = false;
     }
 }

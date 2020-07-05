@@ -50,8 +50,10 @@ public class StartEndSequence : MonoBehaviour
     float timer;
     float timePlayed;
     public static int secondsPlayed, minutesPlayed, hoursPlayed;
-    
-
+    [SerializeField]
+    private Text randomCuriosity;
+    [SerializeField]
+    private string[] curiosityArray;
     #endregion
 
     void Awake()
@@ -101,6 +103,8 @@ public class StartEndSequence : MonoBehaviour
         lightsON = null;
         loading = null;
 
+        int randomCuriosityNumber = Random.Range(0, curiosityArray.Length - 1);
+        randomCuriosity.text = curiosityArray[randomCuriosityNumber].ToUpper();
     }
 
     void Update()
@@ -190,6 +194,7 @@ public class StartEndSequence : MonoBehaviour
                     startSequencePosition = curtains.CloseCurtains(startSequencePosition, curtainspeed);
                     break;
                 case 4:
+                    skipButton.SetActive(false);
                     if (lightsON == null)
                     {
                         lightsON = LightsON();
@@ -206,7 +211,6 @@ public class StartEndSequence : MonoBehaviour
                     PlayerToCenter();
                     break;
                 case 6:
-                    skipButton.SetActive(false);
                     startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
                     break;
                 case 7:

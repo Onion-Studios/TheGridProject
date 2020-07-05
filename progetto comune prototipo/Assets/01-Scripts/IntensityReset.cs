@@ -5,6 +5,8 @@ public class IntensityReset : MonoBehaviour
 {
     #region Variables
     Enemyspawnmanager enemyspawnmanager;
+    [SerializeField]
+    Inkstone inkStone;
     public bool intensityReset;
     int intensityResetIndex;
     public GameObject particleCamera;
@@ -12,14 +14,17 @@ public class IntensityReset : MonoBehaviour
     public float blackPanelAlphaSpeed;
     Color blackPanelAlpha1;
     Color blackPanelAlpha0;
-    public float maxTimer;
+    [SerializeField]
+    float maxTimer;
     float timer;
-    private ArmoredEnemy armoredEnemy;
+    [SerializeField]
+    float maxWaitTimer;
+    float waitTimer;
+    bool inkSplashIsPlaying;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        armoredEnemy = FindObjectOfType<ArmoredEnemy>();
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         if (enemyspawnmanager == null)
         {
@@ -28,6 +33,8 @@ public class IntensityReset : MonoBehaviour
         blackPanelAlpha1 = new Color(0, 0, 0, 1);
         blackPanelAlpha0 = new Color(0, 0, 0, 0);
         timer = maxTimer;
+        waitTimer = maxWaitTimer;
+        inkSplashIsPlaying = false;
     }
 
     private void Update()
@@ -61,7 +68,21 @@ public class IntensityReset : MonoBehaviour
     {
         StopEnemiesMovement();
         AudioManager.Instance.PlaySound("Resetgong");
-        intensityResetIndex++;
+        if (inkSplashIsPlaying == false)
+        {
+            inkStone.inkSplash.Play();
+            inkSplashIsPlaying = true;
+        }
+        if (waitTimer > 0)
+        {
+            waitTimer -= Time.deltaTime;
+        }
+        else
+        {
+            inkSplashIsPlaying = false;
+            waitTimer = maxWaitTimer;
+            intensityResetIndex++;
+        }
     }
 
     void StopEnemiesMovement()
@@ -134,6 +155,7 @@ public class IntensityReset : MonoBehaviour
         {
             blackPanel.color = new Color(0, 0, 0, 1);
             particleCamera.SetActive(false);
+            inkStone.inkSplash.Play();
             intensityResetIndex++;
         }
     }
