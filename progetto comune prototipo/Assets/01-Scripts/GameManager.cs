@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject dragon3;
     [HideInInspector]
     public GameObject loadImage;
-    public float intensitySpeed;
+    public float[] intensitySpeed;
     [HideInInspector]
     public float intensitySpeedIncrease;
 
@@ -43,23 +43,11 @@ public class GameManager : MonoBehaviour
         firstGameStart = true;
         if (WaveManager.TEST_WaveActive == false)
         {
-            ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
-
+            ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity[0];
         }
         else
         {
-            switch (WaveManager.TEST_WaveIntensity)
-            {
-                case 1:
-                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
-                    break;
-                case 2:
-                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity2;
-                    break;
-                case 3:
-                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity3;
-                    break;
-            }
+            ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity[WaveManager.TEST_WaveIntensity - 1];
         }
         Cursor.visible = false;
     }
@@ -119,7 +107,7 @@ public class GameManager : MonoBehaviour
                     dragonTimeline.Play();
                     AudioManager.Instance.SetLoop("BooSound", false);
                     AudioManager.Instance.PlaySound("BooSound");
-                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
+                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity[0];
                 }
 
                 soundPlayed1 = true;
@@ -149,7 +137,7 @@ public class GameManager : MonoBehaviour
                 dragon2.SetActive(true);
                 dragon3.SetActive(false);
                 dragonTimeline.Play();
-                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity2;
+                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity[1];
             }
             else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
             {
@@ -174,14 +162,14 @@ public class GameManager : MonoBehaviour
                 dragon2.SetActive(false);
                 dragon3.SetActive(true);
                 dragonTimeline.Play();
-                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity3;
+                ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity[2];
             }
         }
         else if (WaveManager.TEST_WaveActive == true)
         {
             GameIntensity = WaveManager.TEST_WaveIntensity;
         }
-        intensitySpeedIncrease = intensitySpeed * (GameIntensity - 1);
+        intensitySpeedIncrease = intensitySpeed[GameIntensity - 1];
     }
 
 }

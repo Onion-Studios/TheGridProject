@@ -1307,9 +1307,7 @@ MonoBehaviour:
   yokaislayercount: 3
   maxWaitTimer: 0.03
   inkGained: 7
-  inkGainedIntensity1: 5
-  inkGainedIntensity2: 7
-  inkGainedIntensity3: 9
+  inkGainedIntensity: 050000000700000009000000
   gridCenter: {x: 2, y: 1.05, z: 2}
   frightenedPlayer: {fileID: 0}
   smokeBomb: {fileID: 0}
@@ -4107,7 +4105,10 @@ MonoBehaviour:
   dragon2: {fileID: 170796333}
   dragon3: {fileID: 170796332}
   loadImage: {fileID: 1335605564}
-  intensitySpeed: 0.15
+  intensitySpeed:
+  - 0
+  - 0.3
+  - 0.3
   intensitySpeedIncrease: 0
 --- !u!4 &986519607
 Transform:
