@@ -297,6 +297,7 @@ public class UndyingEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        Inkstone.Ink += playerbehaviour.inkGained;
         repelled = true;
         undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;
