@@ -41,7 +41,26 @@ public class GameManager : MonoBehaviour
         Enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         WaveManager = FindObjectOfType<WaveManager>();
         firstGameStart = true;
-        ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
+        if (WaveManager.TEST_WaveActive == false)
+        {
+            ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
+
+        }
+        else
+        {
+            switch (WaveManager.TEST_WaveIntensity)
+            {
+                case 1:
+                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity1;
+                    break;
+                case 2:
+                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity2;
+                    break;
+                case 3:
+                    ActualPlayer.inkGained = ActualPlayer.inkGainedIntensity3;
+                    break;
+            }
+        }
         Cursor.visible = false;
     }
 
