@@ -181,8 +181,6 @@ public class ArmoredEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
-        speed = baseSpeed;
-
         startPosition = transform.position.x;
 
         armoredLife = 2;
@@ -255,7 +253,7 @@ public class ArmoredEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
 
         Die();
     }
@@ -281,7 +279,7 @@ public class ArmoredEnemy : MonoBehaviour
         bandana.GetComponent<Renderer>().material.color = Color.black;
         Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
     public void Deathforsign()

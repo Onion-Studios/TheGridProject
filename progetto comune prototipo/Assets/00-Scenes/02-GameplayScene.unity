@@ -1307,9 +1307,7 @@ MonoBehaviour:
   yokaislayercount: 3
   maxWaitTimer: 0.03
   inkGained: 7
-  inkGainedIntensity1: 5
-  inkGainedIntensity2: 7
-  inkGainedIntensity3: 9
+  inkGainedIntensity: 050000000700000009000000
   gridCenter: {x: 2, y: 1.05, z: 2}
   frightenedPlayer: {fileID: 0}
   smokeBomb: {fileID: 0}
@@ -4107,7 +4105,10 @@ MonoBehaviour:
   dragon2: {fileID: 170796333}
   dragon3: {fileID: 170796332}
   loadImage: {fileID: 1335605564}
-  intensitySpeed: 0.1
+  intensitySpeed:
+  - 0
+  - 0.3
+  - 0.3
   intensitySpeedIncrease: 0
 --- !u!4 &986519607
 Transform:
@@ -11136,12 +11137,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6294
       objectReference: {fileID: 0}
-    - target: {fileID: 6444777763475162493, guid: 1de7b1bd56255e946a0e4b673f000e34,
+    - target: {fileID: -824042528006585846, guid: 1de7b1bd56255e946a0e4b673f000e34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bad430d68e9bfab478b056f0ef065d4e, type: 2}
-    - target: {fileID: -824042528006585846, guid: 1de7b1bd56255e946a0e4b673f000e34,
+    - target: {fileID: 6444777763475162493, guid: 1de7b1bd56255e946a0e4b673f000e34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -14339,29 +14340,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
         type: 3}
-      propertyPath: intensityReset
-      value: 
-      objectReference: {fileID: 228951402}
-    - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
-        type: 3}
-      propertyPath: TEST_WaveActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
-        type: 3}
       propertyPath: YS
       value: 
       objectReference: {fileID: 228951400}
     - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
         type: 3}
-      propertyPath: TEST_WaveIntensity
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
-        type: 3}
-      propertyPath: TEST_WaveIntensity
-      value: 3
-      objectReference: {fileID: 0}
+      propertyPath: intensityReset
+      value: 
+      objectReference: {fileID: 228951402}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da923c4d8b16c14ca6bc53897d3da74, type: 3}
 --- !u!108 &2723262268495300402

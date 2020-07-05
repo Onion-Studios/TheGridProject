@@ -76,8 +76,6 @@ public class BufferEnemy : MonoBehaviour
         {
             Debug.LogError("GameManager is NULL");
         }
-
-        speed = baseSpeed;
     }
 
     // Update is called once per frame

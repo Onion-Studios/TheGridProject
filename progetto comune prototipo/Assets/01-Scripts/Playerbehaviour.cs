@@ -26,9 +26,7 @@ public class Playerbehaviour : MonoBehaviour
     private float waitTimer;
     public float maxWaitTimer;
     public int inkGained;
-    public int inkGainedIntensity1;
-    public int inkGainedIntensity2;
-    public int inkGainedIntensity3;
+    public int[] inkGainedIntensity;
     [HideInInspector]
     public Vector3 gridCenter;
     private AudioManager audioManager;
@@ -280,7 +278,7 @@ public class Playerbehaviour : MonoBehaviour
 
     }
 
-    public void ReceiveDamage(int inkDamage, int maxInkDamage)
+    public void ReceiveDamage(int inkDamage, int maxInkDamage, bool isUndying)
     {
         if (maxInkDamage == 0)
         {
@@ -295,7 +293,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Playertakedamage");
-            if (Inkstone.Ink > 0 && YS.active == false)
+            if (Inkstone.Ink > 0 && YS.active == false && isUndying == false)
             {
                 intensityreset.intensityReset = true;
             }

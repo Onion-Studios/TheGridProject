@@ -81,8 +81,6 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
-        speed = baseSpeed;
-
         startPosition = transform.position.x;
 
     }
@@ -118,7 +116,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
         TrueDeath();
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
@@ -195,8 +193,8 @@ public class KamikazeEnemy : MonoBehaviour
     public void TrueDeath()
     {
         {
-        foreach (GameObject segno in SignIntensity1Kamikaze)
-            segno.SetActive(false);
+            foreach (GameObject segno in SignIntensity1Kamikaze)
+                segno.SetActive(false);
         }
         foreach (GameObject segno in SignIntensity1PlusKamikaze)
         {

@@ -117,8 +117,6 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
-        speed = baseSpeed;
-
         currentTime = maxTime;
         repelled = false;
         alreadyDead = false;
@@ -266,7 +264,7 @@ public class UndyingEnemy : MonoBehaviour
             stopSlashPlayed = false;
             undyingSlash.Play();
             undyingSlashWave.Play();
-            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, true);
             attackTimer = maxAttacktimer;
         }
     }
@@ -299,6 +297,7 @@ public class UndyingEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        Inkstone.Ink += playerbehaviour.inkGained;
         repelled = true;
         undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;

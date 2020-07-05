@@ -5,7 +5,7 @@ public class NormalEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public float speed;
     public int inkDamage;
     public int maxInkDamage;
@@ -95,8 +95,6 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
-        speed = baseSpeed;
-
         startPosition = transform.position.x;
 
         deathforendgrid = null;
@@ -147,7 +145,7 @@ public class NormalEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
         Die();
     }
 
@@ -168,7 +166,7 @@ public class NormalEnemy : MonoBehaviour
         band.GetComponent<Renderer>().material.color = Color.black;
         Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
 
