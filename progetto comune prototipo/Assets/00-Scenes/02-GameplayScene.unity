@@ -4107,8 +4107,8 @@ MonoBehaviour:
   dragon2: {fileID: 170796333}
   dragon3: {fileID: 170796332}
   loadImage: {fileID: 1335605564}
-  intensitySpeed: 5
-  intensitySpeedIncrease: 0.15
+  intensitySpeed: 0.15
+  intensitySpeedIncrease: 0
 --- !u!4 &986519607
 Transform:
   m_ObjectHideFlags: 0

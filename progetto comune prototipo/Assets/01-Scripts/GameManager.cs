@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject loadImage;
     public float intensitySpeed;
-    //[HideInInspector]
+    [HideInInspector]
     public float intensitySpeedIncrease;
 
     private bool soundPlayed1;
