@@ -266,7 +266,7 @@ public class UndyingEnemy : MonoBehaviour
             stopSlashPlayed = false;
             undyingSlash.Play();
             undyingSlashWave.Play();
-            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, true);
             attackTimer = maxAttacktimer;
         }
     }

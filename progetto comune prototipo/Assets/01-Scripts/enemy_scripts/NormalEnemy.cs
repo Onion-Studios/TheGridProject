@@ -147,7 +147,7 @@ public class NormalEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
         Die();
     }
 
@@ -168,7 +168,7 @@ public class NormalEnemy : MonoBehaviour
         band.GetComponent<Renderer>().material.color = Color.black;
         Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
 

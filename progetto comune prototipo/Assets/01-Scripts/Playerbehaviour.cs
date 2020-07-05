@@ -280,7 +280,7 @@ public class Playerbehaviour : MonoBehaviour
 
     }
 
-    public void ReceiveDamage(int inkDamage, int maxInkDamage)
+    public void ReceiveDamage(int inkDamage, int maxInkDamage, bool isUndying)
     {
         if (maxInkDamage == 0)
         {
@@ -295,7 +295,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             Inkstone.Ink -= inkDamage;
             AudioManager.Instance.PlaySound("Playertakedamage");
-            if (Inkstone.Ink > 0 && YS.active == false)
+            if (Inkstone.Ink > 0 && YS.active == false && isUndying == false)
             {
                 intensityreset.intensityReset = true;
             }
