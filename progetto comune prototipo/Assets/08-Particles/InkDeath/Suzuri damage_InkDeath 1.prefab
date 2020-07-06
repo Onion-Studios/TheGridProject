@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6748548307422066930}
   - component: {fileID: 6748548307422066932}
   - component: {fileID: 6748548307422066933}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4840,8 +4840,8 @@ GameObject:
   - component: {fileID: 6748548307750283500}
   - component: {fileID: 6748548307750283501}
   - component: {fileID: 6748548307750283498}
-  m_Layer: 0
-  m_Name: Frighteningl_InkDeath
+  m_Layer: 19
+  m_Name: Suzuri damage_InkDeath 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4854,15 +4854,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6748548307750283499}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0.00000028088027}
   m_LocalPosition: {x: -0, y: 1, z: 0.25}
-  m_LocalScale: {x: 1.500001, y: 1.5, z: 1.500001}
+  m_LocalScale: {x: 105.48506, y: 203.4483, z: 261.3256}
   m_Children:
   - {fileID: 6748548308009845693}
   - {fileID: 6748548307422066930}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
 --- !u!198 &6748548307750283501
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -9595,7 +9595,7 @@ GameObject:
   - component: {fileID: 6748548308009845693}
   - component: {fileID: 6748548308009845690}
   - component: {fileID: 6748548308009845691}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Ink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10330,7 +10330,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.1
+      value: 0.4
       mode: 0
       spread: 0
       speed:
