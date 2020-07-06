@@ -51,27 +51,6 @@ public class UndyingEnemy : MonoBehaviour
     {
         waveSlashPosition = GetComponentsInChildren<Transform>()[2].localPosition;
         undyingAnimator = GetComponentInChildren<Animator>();
-        enemyZPos = transform.position.z;
-        if (enemyZPos == 0)
-        {
-            laneID = 0;
-        }
-        else if (enemyZPos == 1)
-        {
-            laneID = 1;
-        }
-        else if (enemyZPos == 2)
-        {
-            laneID = 2;
-        }
-        else if (enemyZPos == 3)
-        {
-            laneID = 3;
-        }
-        else if (enemyZPos == 4)
-        {
-            laneID = 4;
-        }
     }
     private void OnEnable()
     {
@@ -117,17 +96,40 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
+        //identifica la lane in cui l'undying viene spawnato
+        enemyZPos = transform.position.z;
+        if (enemyZPos == 0)
+        {
+            laneID = 0;
+        }
+        else if (enemyZPos == 1)
+        {
+            laneID = 1;
+        }
+        else if (enemyZPos == 2)
+        {
+            laneID = 2;
+        }
+        else if (enemyZPos == 3)
+        {
+            laneID = 3;
+        }
+        else if (enemyZPos == 4)
+        {
+            laneID = 4;
+        }
+
+
         currentTime = maxTime;
         repelled = false;
         alreadyDead = false;
         startingPosition = this.transform.localPosition;
         undyingAnimator.SetBool("UndyingDeath", false);
-        /*if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
         }
         wavePositionSet = false;
-        }*/
     }
 
 
