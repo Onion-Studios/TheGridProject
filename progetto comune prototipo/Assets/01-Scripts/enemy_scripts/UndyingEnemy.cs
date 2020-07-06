@@ -34,6 +34,8 @@ public class UndyingEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem undyingSlashWave;
     [SerializeField]
+    private ParticleSystem inkSplat;
+    [SerializeField]
     private float speedSlashWave;
     [SerializeField]
     private float stopSlashWaveTime;
@@ -304,6 +306,7 @@ public class UndyingEnemy : MonoBehaviour
         undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;
         AudioManager.Instance.PlaySound("undyingrepelled");
+        inkSplat.Play();
     }
 
 
