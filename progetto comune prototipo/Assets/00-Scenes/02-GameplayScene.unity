@@ -3715,8 +3715,8 @@ MonoBehaviour:
   WaveManager: {fileID: 0}
   crowdFeedbacks: {fileID: 81641529}
   GameIntensity: 1
-  StartIntensity2: 25
-  StartIntensity3: 75
+  StartIntensity2: 15
+  StartIntensity3: 60
   dragonTimeline: {fileID: 170796335}
   dragon1: {fileID: 170796334}
   dragon2: {fileID: 170796333}
@@ -10265,7 +10265,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: [{fileID: 1846950035}]
+  m_Children:
+  - {fileID: 1846950035}
   m_Father: {fileID: 81641526}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10793,12 +10794,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6294
       objectReference: {fileID: 0}
-    - target: {fileID: 6444777763475162493, guid: 1de7b1bd56255e946a0e4b673f000e34,
+    - target: {fileID: -824042528006585846, guid: 1de7b1bd56255e946a0e4b673f000e34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bad430d68e9bfab478b056f0ef065d4e, type: 2}
-    - target: {fileID: -824042528006585846, guid: 1de7b1bd56255e946a0e4b673f000e34,
+    - target: {fileID: 6444777763475162493, guid: 1de7b1bd56255e946a0e4b673f000e34,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
