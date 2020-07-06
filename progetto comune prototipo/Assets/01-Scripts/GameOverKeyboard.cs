@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameOverKeyboard : MonoBehaviour
 {
@@ -19,15 +18,15 @@ public class GameOverKeyboard : MonoBehaviour
         GameOver
     }
     MenuStates CurrentState;
-    // Start is called before the first frame update
+
     void Start()
     {
         CurrentState = MenuStates.GameOver;
         ExistingList = false;
         mouseClick = false;
+        Cursor.visible = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         GameOverStateMachine();
@@ -36,7 +35,7 @@ public class GameOverKeyboard : MonoBehaviour
 
     public void GameOverStateMachine()
     {
-        switch(CurrentState)
+        switch (CurrentState)
         {
             case MenuStates.GameOver:
                 StateOperations();
@@ -45,6 +44,7 @@ public class GameOverKeyboard : MonoBehaviour
         }
     }
 
+    #region State Operations
     public void StateOperations()
     {
         GetGameObject();
@@ -79,6 +79,7 @@ public class GameOverKeyboard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 Index--;
+                AudioManager.Instance.PlaySound("Hightonetick");
                 if (Index < 0)
                 {
                     Index = CurrentStateMenuButtons.Count - 1;
@@ -87,6 +88,7 @@ public class GameOverKeyboard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 Index++;
+                AudioManager.Instance.PlaySound("Hightonetick");
                 if (Index == CurrentStateMenuButtons.Count)
                 {
                     Index = 0;
@@ -109,25 +111,7 @@ public class GameOverKeyboard : MonoBehaviour
             }
         }
     }
-
-    public void GameOver()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch(Index)
-            {
-                case 0:
-                    SceneManager.LoadScene(2);
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    break;
-                case 1:
-                    SceneManager.LoadScene(1);
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    break;
-            }
-            mouseClick = false;
-        }
-    }
+    #endregion
 
     #region Mouse Functionality
     private void MouseOverButtons()
@@ -170,7 +154,31 @@ public class GameOverKeyboard : MonoBehaviour
 
     public void MouseClick()
     {
-        mouseClick = true;
+        if (EventSystem.current.currentSelectedGameObject.gameObject.name == CurrentStateMenuButtons[Index].name)
+        {
+            mouseClick = true;
+        }
+    }
+    #endregion
+
+    #region All Menus Button Functions
+    public void GameOver()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    SceneManager.LoadScene(2);
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    break;
+                case 1:
+                    SceneManager.LoadScene(1);
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    break;
+            }
+            mouseClick = false;
+        }
     }
     #endregion
 }

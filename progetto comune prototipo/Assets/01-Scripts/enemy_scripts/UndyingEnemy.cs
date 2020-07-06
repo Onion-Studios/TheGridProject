@@ -117,8 +117,6 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
-        speed = baseSpeed;
-
         currentTime = maxTime;
         repelled = false;
         alreadyDead = false;
@@ -232,6 +230,7 @@ public class UndyingEnemy : MonoBehaviour
         if (attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
         {
             undyingAnimator.SetBool("Attacking", true);
+            AudioManager.Instance.PlaySound("Undyingslash");
             Invoke("AnimationDelayAttack", 0.5f);
 
             if (wavePositionSet == false && attackTimer == 0 && undyingAnimator.GetBool("UndyingDeath") == false)
@@ -265,7 +264,7 @@ public class UndyingEnemy : MonoBehaviour
             stopSlashPlayed = false;
             undyingSlash.Play();
             undyingSlashWave.Play();
-            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, true);
             attackTimer = maxAttacktimer;
         }
     }
@@ -298,6 +297,7 @@ public class UndyingEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        Inkstone.Ink += playerbehaviour.inkGained;
         repelled = true;
         undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;
@@ -324,20 +324,12 @@ public class UndyingEnemy : MonoBehaviour
         if (alreadyDead == false)
         {
             alreadyDead = true;
-            this.gameObject.SetActive(false);
 
             attackTimer = 0;
             currentTime = maxTime;
             enemyspawnmanager.enemykilled += 1;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
-            foreach (GameObject segno in SignIntensity3Undying)
-
-            {
-
-                segno.SetActive(false);
-
-            }
 
             pointsystem.currentTimer = pointsystem.maxTimer;
             pointsystem.countercombo++;
@@ -345,6 +337,16 @@ public class UndyingEnemy : MonoBehaviour
             pointsystem.Combo();
 
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
+            TrueDeath();
         }
+    }
+
+    public void TrueDeath()
+    {
+        foreach (GameObject segno in SignIntensity3Undying)
+        {
+            segno.SetActive(false);
+        }
+        this.gameObject.SetActive(false);
     }
 }

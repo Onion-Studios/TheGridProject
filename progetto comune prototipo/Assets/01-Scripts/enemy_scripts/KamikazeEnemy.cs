@@ -81,14 +81,7 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
-        speed = baseSpeed;
-
         startPosition = transform.position.x;
-
-        if (AudioManager.Instance.IsPlaying("Kamikazesound") == false)
-        {
-            Invoke("playkamikazesound", 2.0f);
-        }
 
     }
 
@@ -114,19 +107,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        this.gameObject.SetActive(false);
-        foreach (GameObject segno in SignIntensity1Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusKamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity2Kamikaze)
-        {
-            segno.SetActive(false);
-        }
+        TrueDeath();
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
     }
@@ -135,20 +116,8 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        this.gameObject.SetActive(false);
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
-        foreach (GameObject segno in SignIntensity1Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusKamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity2Kamikaze)
-        {
-            segno.SetActive(false);
-        }
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+        TrueDeath();
         ExplosionWork(this.transform.position);
         Invoke("ParentReassignment", explosionDelay);
     }
@@ -157,25 +126,11 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        this.gameObject.SetActive(false);
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in SignIntensity1Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusKamikaze)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity2Kamikaze)
-        {
-            segno.SetActive(false);
-        }
-
+        TrueDeath();
         ExplosionWork(this.transform.position);
-
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
 
@@ -235,8 +190,20 @@ public class KamikazeEnemy : MonoBehaviour
             }
         }
     }
-    void playkamikazesound()
+    public void TrueDeath()
     {
-        AudioManager.Instance.PlaySound("Kamikazesound");
+        {
+            foreach (GameObject segno in SignIntensity1Kamikaze)
+                segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusKamikaze)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity2Kamikaze)
+        {
+            segno.SetActive(false);
+        }
+        this.gameObject.SetActive(false);
     }
 }

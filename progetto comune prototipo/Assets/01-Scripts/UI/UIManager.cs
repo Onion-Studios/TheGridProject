@@ -8,12 +8,12 @@ public class UIManager : MonoBehaviour
     Playerbehaviour Playerbehaviour;
     [SerializeField]
     Text Enemycounter_text;
-    [SerializeField]
-    Text yokaislayer_text;
     public Text ink_text;
     Inkstone Ink;
     Enemyspawnmanager Enemyspawnmanager;
     PointSystem pointsystem;
+    [SerializeField]
+    Yokaislayer YS;
     public Text score_text;
     public Text scoremultiplier_text;
     #endregion
@@ -71,18 +71,21 @@ public class UIManager : MonoBehaviour
 
     void UpdateInkCounter()
     {
-        int ink, maxink;
-        if (Ink.Ink < 0) ink = 0;
-        else ink = Ink.Ink;
-        if (Ink.maxInk < 0) maxink = 0;
-        else maxink = Ink.maxInk;
-        ink_text.text = (ink + "/" + maxink);
+        if (YS.active == false)
+        {
+            int ink, maxink;
+            if (Ink.Ink < 0) ink = 0;
+            else ink = Ink.Ink;
+            if (Ink.maxInk < 0) maxink = 0;
+            else maxink = Ink.maxInk;
+            ink_text.text = (ink + "/" + maxink);
+        }
     }
 
     public void UpdateScore()
     {
         int convertedscore = (int)pointsystem.score;
-        score_text.text = convertedscore.ToString();
+        score_text.text = convertedscore.ToString("{0:0,0}");
     }
 
     void UpdateScoreMultiplier()

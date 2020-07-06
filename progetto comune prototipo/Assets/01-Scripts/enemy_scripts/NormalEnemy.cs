@@ -5,7 +5,7 @@ public class NormalEnemy : MonoBehaviour
 {
     #region VARIABLES
     public int enemyID = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public float speed;
     public int inkDamage;
     public int maxInkDamage;
@@ -95,16 +95,9 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
-        speed = baseSpeed;
-
         startPosition = transform.position.x;
 
         deathforendgrid = null;
-
-        if (AudioManager.Instance.IsPlaying("Normalsound") == false)
-        {
-            Invoke("playnormalsound", 0.65f);
-        }
     }
 
     private void OnDisable()
@@ -141,6 +134,7 @@ public class NormalEnemy : MonoBehaviour
         if (this.transform.localPosition.x > 3.75)
         {
             Invoke("DeathForEndGrid", timeToDespawn);
+            AudioManager.Instance.PlaySound("Backwash");
             inkAbsorb.Play();
             destinationReached = true;
         }
@@ -151,19 +145,7 @@ public class NormalEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0);
-        foreach (GameObject segno in SignNormalYokai)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1Normal)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusNormal)
-        {
-            segno.SetActive(false);
-        }
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
         Die();
     }
 
@@ -174,7 +156,7 @@ public class NormalEnemy : MonoBehaviour
             StopCoroutine(deathforendgrid);
             deathforendgrid = null;
         }
-        this.gameObject.SetActive(false);
+        TrueDeath();
     }
 
     public void Deathforgriglia()
@@ -184,27 +166,15 @@ public class NormalEnemy : MonoBehaviour
         band.GetComponent<Renderer>().material.color = Color.black;
         Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage);
-        foreach (GameObject segno in SignNormalYokai)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1Normal)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusNormal)
-        {
-            segno.SetActive(false);
-        }
+        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
         AudioManager.Instance.PlaySound("EnemyDeath");
     }
 
     public void DeathForCollision()
     {
-        this.gameObject.SetActive(false);
         enemy.GetComponent<Renderer>().material.color = Color.white;
         band.GetComponent<Renderer>().material.color = Color.white;
+        TrueDeath();
     }
 
     public void Deathforsign()
@@ -217,24 +187,12 @@ public class NormalEnemy : MonoBehaviour
 
     private void Death()
     {
-        this.gameObject.SetActive(false);
         enemy.GetComponent<Renderer>().material.color = Color.white;
         band.GetComponent<Renderer>().material.color = Color.white;
         enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
-        foreach (GameObject segno in SignNormalYokai)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1Normal)
-        {
-            segno.SetActive(false);
-        }
-        foreach (GameObject segno in SignIntensity1PlusNormal)
-        {
-            segno.SetActive(false);
-        }
+
 
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
@@ -243,7 +201,7 @@ public class NormalEnemy : MonoBehaviour
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
         AudioManager.Instance.PlaySound("EnemyDeath");
-
+        TrueDeath();
     }
 
     void PointOverDistance()
@@ -258,8 +216,20 @@ public class NormalEnemy : MonoBehaviour
         }
 
     }
-    void playnormalsound()
+    public void TrueDeath()
     {
-        AudioManager.Instance.PlaySound("Normalsound");
+        foreach (GameObject segno in SignNormalYokai)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1Normal)
+        {
+            segno.SetActive(false);
+        }
+        foreach (GameObject segno in SignIntensity1PlusNormal)
+        {
+            segno.SetActive(false);
+        }
+        this.gameObject.SetActive(false);
     }
 }

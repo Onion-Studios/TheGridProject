@@ -36,14 +36,14 @@ TagManager:
   - Fuse
   - SceneText
   - Curtain
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LightingSigns
+  - LightingGrid
+  - LightingLane
+  - LightingEnv
+  - LightingCharacters
+  - LightingDragons
+  - LightingUndying
+  - LightingProps
   - 
   - 
   - 

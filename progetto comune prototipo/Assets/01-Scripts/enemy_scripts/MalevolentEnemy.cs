@@ -89,26 +89,24 @@ public class MalevolentEnemy : MonoBehaviour
     public void Deathforsign()
     {
         malevolentAnimator.SetBool("MalevolentDeath", true);
-        Invoke("Death", 3);
-    }
-
-    private void Death()
-    {
-        this.gameObject.SetActive(false);
-        enemyspawnmanager.enemykilled += 1;
         Inkstone.Ink += playerbehaviour.inkGained;
+        enemyspawnmanager.enemykilled += 1;
         SecretT.bar += SecretT.charge;
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
-
         pointsystem.Combo();
 
         pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
-
+        Invoke("TrueDeath", 3);
     }
 
     private void PlayerDeath()
     {
         malevolentAnimator.SetBool("MalevolentDeath", true);
+    }
+
+    public void TrueDeath()
+    {
+        this.gameObject.SetActive(false);
     }
 }

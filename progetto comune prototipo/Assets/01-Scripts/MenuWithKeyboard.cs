@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class MenuWithKeyboard : MonoBehaviour
 {
     public GameObject mainMenu, OptionsMenu, AudioMenu, VideoMenu, ControlsMenu, ExitDialogue, Record, PointsTag, howToPlay, credits, tutorial;
+    public GameObject audioSelectedImage, videoSelectedImage;
     public GameObject CurrentStateMenu;
     public List<GameObject> CurrentStateMenuButtons;
     public List<GameObject> SelectedImages;
     public GameObject currentButtonOver, check;
     public bool ExistingList;
     public bool mouseClick;
+    bool changingState;
     public int Index, howToPlayIndex;
     MainMenu MM;
     public GameObject howToPlayBG;
@@ -35,6 +37,7 @@ public class MenuWithKeyboard : MonoBehaviour
         MM = FindObjectOfType<MainMenu>();
         ExistingList = false;
         mouseClick = false;
+        changingState = true;
     }
 
     // Update is called once per frame
@@ -111,6 +114,7 @@ public class MenuWithKeyboard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 Index--;
+                AudioManager.Instance.PlaySound("Hightonetick");
                 if (Index < 0)
                 {
                     Index = CurrentStateMenuButtons.Count - 1;
@@ -119,6 +123,7 @@ public class MenuWithKeyboard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 Index++;
+                AudioManager.Instance.PlaySound("Hightonetick");
                 if (Index == CurrentStateMenuButtons.Count)
                 {
                     Index = 0;
@@ -143,386 +148,6 @@ public class MenuWithKeyboard : MonoBehaviour
             {
                 SelectedImages[i].SetActive(false);
             }
-        }
-    }
-    #endregion
-
-    #region All Menus Buttons Functions
-    public void MainMenu()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //Start Game
-                    MM.GoToLevel();
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    AudioManager.Instance.StopSound("MenuTheme");
-                    break;
-                case 1:
-                    //How to play
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    CurrentState = MenuStates.HowToPlay;
-                    howToPlayIndex = 0;
-                    howToPlay.SetActive(true);
-                    mainMenu.SetActive(false);
-                    OptionsMenu.SetActive(false);
-                    ExitDialogue.SetActive(false);
-                    credits.SetActive(false);
-                    Record.SetActive(false);
-                    PointsTag.SetActive(false);
-                    break;
-                case 2:
-                    //Options
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    CurrentState = MenuStates.Options;
-                    OptionsMenu.SetActive(true);
-                    mainMenu.SetActive(false);
-                    ExitDialogue.SetActive(false);
-                    howToPlay.SetActive(false);
-                    credits.SetActive(false);
-                    break;
-                case 3:
-                    //Credits
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    CurrentState = MenuStates.Credits;
-                    credits.SetActive(true);
-                    mainMenu.SetActive(false);
-                    OptionsMenu.SetActive(false);
-                    howToPlay.SetActive(false);
-                    ExitDialogue.SetActive(false);
-                    break;
-                case 4:
-                    //Exit Game
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    CurrentState = MenuStates.ExitGame;
-                    ExitDialogue.SetActive(true);
-                    mainMenu.SetActive(true);
-                    OptionsMenu.SetActive(false);
-                    credits.SetActive(false);
-                    howToPlay.SetActive(false);
-                    break;
-            }
-            mouseClick = false;
-        }
-    }
-
-    #region HowToPlay
-    public void HowToPlay()
-    {
-        howToPlayBG.SetActive(true);
-        HowToPlayCycleImages(false);
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //left arrow
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    howToPlayIndex--;
-                    if (howToPlayIndex < 0)
-                    {
-                        howToPlayIndex = howToPlayImages.Length - 1;
-                    }
-                    break;
-                case 1:
-                    //right arrow
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    howToPlayIndex++;
-                    if (howToPlayIndex >= howToPlayImages.Length)
-                    {
-                        howToPlayIndex = 0;
-                    }
-                    break;
-                case 2:
-                    //back
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    CurrentState = MenuStates.MainMenu;
-                    HowToPlayCycleImages(true);
-                    mainMenu.SetActive(true);
-                    howToPlay.SetActive(false);
-                    OptionsMenu.SetActive(false);
-                    credits.SetActive(false);
-                    ExitDialogue.SetActive(false);
-                    Record.SetActive(true);
-                    PointsTag.SetActive(true);
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            AudioManager.Instance.PlaySound("MenuCancel");
-            CurrentState = MenuStates.MainMenu;
-            HowToPlayCycleImages(true);
-            mainMenu.SetActive(true);
-            howToPlay.SetActive(false);
-            OptionsMenu.SetActive(false);
-            credits.SetActive(false);
-            ExitDialogue.SetActive(false);
-            Record.SetActive(true);
-            PointsTag.SetActive(true);
-        }
-    }
-
-    public void HowToPlayCycleImages(bool alloff)
-    {
-        if (alloff == false)
-        {
-            for (int i = 0; i < howToPlayImages.Length; i++)
-            {
-                if (i == howToPlayIndex)
-                {
-                    howToPlayImages[i].SetActive(true);
-                }
-                else
-                {
-                    howToPlayImages[i].SetActive(false);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < howToPlayImages.Length; i++)
-            {
-                howToPlayImages[i].SetActive(false);
-            }
-            howToPlayBG.SetActive(false);
-            howToPlayIndex = 0;
-        }
-    }
-    #endregion
-
-    public void Credits()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //back
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    CurrentState = MenuStates.MainMenu;
-                    mainMenu.SetActive(true);
-                    howToPlay.SetActive(false);
-                    OptionsMenu.SetActive(false);
-                    credits.SetActive(false);
-                    ExitDialogue.SetActive(false);
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            AudioManager.Instance.PlaySound("MenuCancel");
-            CurrentState = MenuStates.MainMenu;
-            mainMenu.SetActive(true);
-            howToPlay.SetActive(false);
-            OptionsMenu.SetActive(false);
-            credits.SetActive(false);
-            ExitDialogue.SetActive(false);
-        }
-    }
-
-    public void ExitGame()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //yes
-                    MM.QuitGame();
-                    break;
-                case 1:
-                    //no
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    CurrentState = MenuStates.MainMenu;
-                    mainMenu.SetActive(true);
-                    howToPlay.SetActive(false);
-                    OptionsMenu.SetActive(false);
-                    credits.SetActive(false);
-                    ExitDialogue.SetActive(false);
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            AudioManager.Instance.PlaySound("MenuCancel");
-            CurrentState = MenuStates.MainMenu;
-            mainMenu.SetActive(true);
-            howToPlay.SetActive(false);
-            OptionsMenu.SetActive(false);
-            credits.SetActive(false);
-            ExitDialogue.SetActive(false);
-        }
-    }
-
-    public void Options()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //audio
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    CurrentState = MenuStates.Audio;
-                    AudioMenu.SetActive(true);
-                    VideoMenu.SetActive(false);
-                    ControlsMenu.SetActive(false);
-                    break;
-                case 1:
-                    //video
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    CurrentState = MenuStates.Video;
-                    VideoMenu.SetActive(true);
-                    AudioMenu.SetActive(false);
-                    ControlsMenu.SetActive(false);
-                    break;
-                case 2:
-                    //controls
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuConfirm");
-                    CurrentState = MenuStates.Controls;
-                    ControlsMenu.SetActive(true);
-                    AudioMenu.SetActive(false);
-                    VideoMenu.SetActive(false);
-                    OptionsMenu.SetActive(false);
-                    Record.SetActive(false);
-                    PointsTag.SetActive(false);
-                    break;
-                case 3:
-                    //back
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    CurrentState = MenuStates.MainMenu;
-                    mainMenu.SetActive(true);
-                    howToPlay.SetActive(false);
-                    OptionsMenu.SetActive(false);
-                    credits.SetActive(false);
-                    ExitDialogue.SetActive(false);
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            AudioManager.Instance.PlaySound("MenuCancel");
-            CurrentState = MenuStates.MainMenu;
-            mainMenu.SetActive(true);
-            howToPlay.SetActive(false);
-            OptionsMenu.SetActive(false);
-            credits.SetActive(false);
-            ExitDialogue.SetActive(false);
-        }
-    }
-
-    public void Controls()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //back
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    ControlsMenu.SetActive(false);
-                    OptionsMenu.SetActive(true);
-                    Record.SetActive(true);
-                    PointsTag.SetActive(true);
-                    CurrentState = MenuStates.Options;
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            AudioManager.Instance.PlaySound("MenuCancel");
-            ControlsMenu.SetActive(false);
-            OptionsMenu.SetActive(true);
-            Record.SetActive(true);
-            PointsTag.SetActive(true);
-            CurrentState = MenuStates.Options;
-        }
-    }
-
-    public void Audio()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //back
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    AudioMenu.SetActive(false);
-                    OptionsMenu.SetActive(true);
-                    Record.SetActive(true);
-                    PointsTag.SetActive(true);
-                    CurrentState = MenuStates.Options;
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            AudioManager.Instance.PlaySound("MenuCancel");
-            AudioMenu.SetActive(false);
-            OptionsMenu.SetActive(true);
-            Record.SetActive(true);
-            PointsTag.SetActive(true);
-            CurrentState = MenuStates.Options;
-        }
-    }
-
-    public void Video()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
-        {
-            switch (Index)
-            {
-                case 0:
-                    //back
-                    ExistingList = false;
-                    AudioManager.Instance.PlaySound("MenuCancel");
-                    VideoMenu.SetActive(false);
-                    OptionsMenu.SetActive(true);
-                    Record.SetActive(true);
-                    PointsTag.SetActive(true);
-                    CurrentState = MenuStates.Options;
-                    break;
-            }
-            mouseClick = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExistingList = false;
-            AudioManager.Instance.PlaySound("MenuCancel");
-            VideoMenu.SetActive(false);
-            OptionsMenu.SetActive(true);
-            Record.SetActive(true);
-            PointsTag.SetActive(true);
-            CurrentState = MenuStates.Options;
         }
     }
     #endregion
@@ -568,7 +193,444 @@ public class MenuWithKeyboard : MonoBehaviour
 
     public void MouseClick()
     {
-        mouseClick = true;
+        string clickedButton = EventSystem.current.currentSelectedGameObject.gameObject.name;
+        if (clickedButton == CurrentStateMenuButtons[Index].name)
+        {
+            mouseClick = true;
+        }
+        else
+        {
+            switch (clickedButton)
+            {
+                case "StartGameButton":
+                    MM.GoToLevel();
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    AudioManager.Instance.StopSound("MenuTheme");
+                    break;
+                case "HowToPlayButton":
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.HowToPlay;
+                    break;
+                case "OptionsButton":
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Options;
+                    break;
+                case "CreditsButton":
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Credits;
+                    break;
+                case "ExitGameButton":
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.ExitGame;
+                    break;
+                case "AudioButton":
+                    changingState = true;
+                    audioSelectedImage.SetActive(true);
+                    videoSelectedImage.SetActive(false);
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Audio;
+                    break;
+                case "VideoButton":
+                    changingState = true;
+                    audioSelectedImage.SetActive(false);
+                    videoSelectedImage.SetActive(true);
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Video;
+                    break;
+                case "ControlsButton":
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Controls;
+                    break;
+                case "BackButton":
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.MainMenu;
+                    break;
+            }
+        }
+    }
+    #endregion
+
+    #region All Menus Buttons Functions
+    public void MainMenu()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            HowToPlayCycleImages(true);
+
+            mainMenu.SetActive(true);
+            howToPlay.SetActive(false);
+            OptionsMenu.SetActive(false);
+            credits.SetActive(false);
+            ExitDialogue.SetActive(false);
+            Record.SetActive(true);
+            PointsTag.SetActive(true);
+
+            changingState = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //Start Game
+                    MM.GoToLevel();
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    AudioManager.Instance.StopSound("MenuTheme");
+                    break;
+                case 1:
+                    //How to play
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.HowToPlay;
+                    break;
+                case 2:
+                    //Options
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Options;
+                    break;
+                case 3:
+                    //Credits
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Credits;
+                    break;
+                case 4:
+                    //Exit Game
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.ExitGame;
+                    break;
+            }
+            mouseClick = false;
+        }
+    }
+
+    #region HowToPlay
+    public void HowToPlay()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            howToPlayIndex = 0;
+            howToPlay.SetActive(true);
+            mainMenu.SetActive(false);
+            OptionsMenu.SetActive(false);
+            ExitDialogue.SetActive(false);
+            credits.SetActive(false);
+            Record.SetActive(false);
+            PointsTag.SetActive(false);
+
+            changingState = false;
+        }
+        howToPlayBG.SetActive(true);
+        HowToPlayCycleImages(false);
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //left arrow
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    howToPlayIndex--;
+                    if (howToPlayIndex < 0)
+                    {
+                        howToPlayIndex = howToPlayImages.Length - 1;
+                    }
+                    break;
+                case 1:
+                    //right arrow
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    howToPlayIndex++;
+                    if (howToPlayIndex >= howToPlayImages.Length)
+                    {
+                        howToPlayIndex = 0;
+                    }
+                    break;
+                case 2:
+                    //back
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.MainMenu;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.MainMenu;
+        }
+    }
+
+    public void HowToPlayCycleImages(bool alloff)
+    {
+        if (alloff == false)
+        {
+            for (int i = 0; i < howToPlayImages.Length; i++)
+            {
+                if (i == howToPlayIndex)
+                {
+                    howToPlayImages[i].SetActive(true);
+                }
+                else
+                {
+                    howToPlayImages[i].SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < howToPlayImages.Length; i++)
+            {
+                howToPlayImages[i].SetActive(false);
+            }
+            howToPlayBG.SetActive(false);
+            howToPlayIndex = 0;
+        }
+    }
+    #endregion
+
+    public void Credits()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            credits.SetActive(true);
+            mainMenu.SetActive(false);
+            OptionsMenu.SetActive(false);
+            howToPlay.SetActive(false);
+            ExitDialogue.SetActive(false);
+
+            changingState = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //back
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.MainMenu;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.MainMenu;
+        }
+    }
+
+    public void ExitGame()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            ExitDialogue.SetActive(true);
+            mainMenu.SetActive(true);
+            OptionsMenu.SetActive(false);
+            credits.SetActive(false);
+            howToPlay.SetActive(false);
+
+            changingState = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //yes
+                    MM.QuitGame();
+                    break;
+                case 1:
+                    //no
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.MainMenu;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.MainMenu;
+        }
+    }
+
+    public void Options()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            OptionsMenu.SetActive(true);
+            mainMenu.SetActive(false);
+            ExitDialogue.SetActive(false);
+            howToPlay.SetActive(false);
+            credits.SetActive(false);
+            AudioMenu.SetActive(false);
+            VideoMenu.SetActive(false);
+            ControlsMenu.SetActive(false);
+
+            changingState = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //audio
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Audio;
+                    break;
+                case 1:
+                    //video
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Video;
+                    break;
+                case 2:
+                    //controls
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuConfirm");
+                    CurrentState = MenuStates.Controls;
+                    break;
+                case 3:
+                    //back
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.MainMenu;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.MainMenu;
+        }
+    }
+
+    public void Controls()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            ControlsMenu.SetActive(true);
+            AudioMenu.SetActive(false);
+            VideoMenu.SetActive(false);
+            OptionsMenu.SetActive(false);
+            Record.SetActive(false);
+            PointsTag.SetActive(false);
+
+            changingState = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //back
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.Options;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.Options;
+        }
+    }
+
+    public void Audio()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            AudioMenu.SetActive(true);
+            VideoMenu.SetActive(false);
+            ControlsMenu.SetActive(false);
+
+            changingState = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //back
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.Options;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.Options;
+        }
+    }
+
+    public void Video()
+    {
+        if (changingState == true)
+        {
+            ExistingList = false;
+
+            VideoMenu.SetActive(true);
+            AudioMenu.SetActive(false);
+            ControlsMenu.SetActive(false);
+
+            changingState = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || mouseClick == true)
+        {
+            switch (Index)
+            {
+                case 0:
+                    //back
+                    changingState = true;
+                    AudioManager.Instance.PlaySound("MenuCancel");
+                    CurrentState = MenuStates.Options;
+                    break;
+            }
+            mouseClick = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            changingState = true;
+            AudioManager.Instance.PlaySound("MenuCancel");
+            CurrentState = MenuStates.Options;
+        }
     }
     #endregion
 }

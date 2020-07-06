@@ -57,7 +57,7 @@ LightmapSettings:
     serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 1024
+    m_AtlasSize: 512
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 843702934}
   - component: {fileID: 843702936}
   - component: {fileID: 843702935}
+  - component: {fileID: 843702937}
   m_Layer: 5
   m_Name: Press_any_key
   m_TagString: Untagged
@@ -422,6 +423,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843702933}
   m_CullTransparentMesh: 0
+--- !u!114 &843702937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843702933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2743df5a57df4284289f489769c768ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisText: {fileID: 0}
+  offsetSpeed: 1.5
+  alphaValue: 0
 --- !u!1 &1249678710
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +745,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 51dd4151a7a5e1148829a8a670ebd905, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f4f29bc71d375a46ac4dc45b59533a3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -938,7 +954,7 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: YokaiSlayerBrawl
-    clip: {fileID: 8300000, guid: 26953638157284f4f914ef9968f37298, type: 3}
+    clip: {fileID: 8300000, guid: 58a97a845f78fbb4b94cb5308a19e5a0, type: 3}
     volume: 0.38
     pitch: 1
     loop: 0
@@ -992,52 +1008,72 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: Backwash
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 474a5baf70627f842bfbb123d3c17ffd, type: 3}
     volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
-  - clipName: Normalsound
-    clip: {fileID: 8300000, guid: f42af6327ab1cb94fbb8cd92ec4e2e0c, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
-  - clipName: Frighteningsound
-    clip: {fileID: 8300000, guid: bb9d95809f8f193429cf406cee27dccb, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
-  - clipName: Kamikazesound
-    clip: {fileID: 8300000, guid: b7cc535dc2027a94e97a4eecb488db89, type: 3}
-    volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Secretsignsuccessfull
-    clip: {fileID: 8300000, guid: 22989c695529a624185ced83926ceae0, type: 3}
+    clip: {fileID: 8300000, guid: 627e32736a433dd4abd227f44a230248, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: undyingrepelled
     clip: {fileID: 8300000, guid: 81499f0759ee4af4a9e88892c1884194, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
-    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
-      type: 2}
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: resetgong
     clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Seppuku
+    clip: {fileID: 8300000, guid: 77d4a8a663dfd5842bc570b21b2df555, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Armordestroyed
+    clip: {fileID: 8300000, guid: d328cc729947b484591fcd572fbedc34, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Undyingenemydeath
+    clip: {fileID: 8300000, guid: 7b9c511da9ed0994a935a5ca0f3c1aa9, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Undyingslash
+    clip: {fileID: 8300000, guid: bf6d8f3284cc7e04ba0add82fc36ade1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+  - clipName: Resetgong
+    clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Hightonetick
+    clip: {fileID: 8300000, guid: 615f27b2c84d790429b4953499cba802, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
