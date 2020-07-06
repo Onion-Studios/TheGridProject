@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public struct nodes
 {
@@ -46,6 +47,9 @@ public class Managercombo : MonoBehaviour
     GameManager Gamemanager;
     Secret secretscript;
     public int CountBoxesActive = 0;
+    [SerializeField]
+    private CrowdFeedbacks crowdFeedbacks;
+    private IEnumerator disappointmentEffectCO;
     #endregion
 
     private void Start()
@@ -87,6 +91,17 @@ public class Managercombo : MonoBehaviour
         }
 
         SetupMatrixSign();
+    }
+
+    private void DisappointmentEffectActivation()
+    {
+        if (disappointmentEffectCO != null)
+        {
+            StopCoroutine(disappointmentEffectCO);
+            disappointmentEffectCO = null;
+        }
+        disappointmentEffectCO = crowdFeedbacks.DisappointmentEffect();
+        StartCoroutine(disappointmentEffectCO);
     }
 
     public void Init()
@@ -258,6 +273,7 @@ public class Managercombo : MonoBehaviour
         else
         {
             AudioManager.Instance.PlaySound("BooSound");
+            DisappointmentEffectActivation();
         }
     }
 
@@ -503,6 +519,7 @@ public class Managercombo : MonoBehaviour
                 if (i == NormalYokaiMatrix.Length)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
+                    DisappointmentEffectActivation();
                 }
                 break;
             case 5:
@@ -541,6 +558,7 @@ public class Managercombo : MonoBehaviour
                 if (i == Intensity1Matrix.Length)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
+                    DisappointmentEffectActivation();
                 }
                 break;
             case 6:
@@ -579,6 +597,7 @@ public class Managercombo : MonoBehaviour
                 if (i == Intensity1PlusMatrix.Length)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
+                    DisappointmentEffectActivation();
                 }
                 break;
             case 7:
@@ -651,6 +670,7 @@ public class Managercombo : MonoBehaviour
                 if (i == 2)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
+                    DisappointmentEffectActivation();
                 }
                 break;
             case 8:
@@ -726,6 +746,7 @@ public class Managercombo : MonoBehaviour
                 if (i == 4)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
+                    DisappointmentEffectActivation();
                 }
                 break;
             case 9:
@@ -764,10 +785,12 @@ public class Managercombo : MonoBehaviour
                 if (i == Intensity3Matrix.Length)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
+                    DisappointmentEffectActivation();
                 }
                 break;
             default:
                 AudioManager.Instance.PlaySound("BooSound");
+                DisappointmentEffectActivation();
                 break;
         }
     }

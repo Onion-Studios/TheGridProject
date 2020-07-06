@@ -923,11 +923,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCrowd: {fileID: 606684539}
-  stillCrowd: {fileID: 0}
+  stillCrowd: {fileID: 1573235936}
   joyEffect: {fileID: 1348662649}
   frenzyEffect: {fileID: 110333245}
-  disappointmentMistEffect: {fileID: 0}
-  disappointmentEffect: {fileID: 0}
+  disappointmentMistEffect: {fileID: 1174699771}
+  disappointmentEffect: {fileID: 1581938087}
 --- !u!1 &110333242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,6 +1680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountBoxesActive: 0
+  crowdFeedbacks: {fileID: 81641529}
 --- !u!4 &385580839
 Transform:
   m_ObjectHideFlags: 0
