@@ -7,6 +7,7 @@ public class IntensityReset : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     [SerializeField]
     Inkstone inkStone;
+    Playerbehaviour PB;
     public bool intensityReset;
     int intensityResetIndex;
     public GameObject particleCamera;
@@ -30,6 +31,7 @@ public class IntensityReset : MonoBehaviour
         {
             Debug.LogError("EnemySpawnManager is NULL");
         }
+        PB = this.gameObject.GetComponent<Playerbehaviour>();
         blackPanelAlpha1 = new Color(0, 0, 0, 1);
         blackPanelAlpha0 = new Color(0, 0, 0, 0);
         timer = maxTimer;
@@ -210,6 +212,7 @@ public class IntensityReset : MonoBehaviour
                 }
             }
             timer = maxTimer;
+            PB.ResetToCenter();
             intensityResetIndex++;
         }
     }

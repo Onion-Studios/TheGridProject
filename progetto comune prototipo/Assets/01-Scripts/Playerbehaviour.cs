@@ -151,18 +151,7 @@ public class Playerbehaviour : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
                 {
-                    confirmPosition = istanze.transform.position;
-                    smokeBomb.transform.position = confirmPosition;
-                    smokeBomb.Play();
-                    //smokeBomb.transform.SetParent(null);
-                    smokeBombCenter.Play();
-                    managercombo.CheckSign();
-                    istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    istanze.transform.position = gridCenter;
-                    grigliamanager.ResetColorGrid();
-                    grigliamanager.ResetGridLogic();
-                    AudioManager.Instance.PlaySound("ConfirmSound");
-                    //smokeBomb.transform.SetParent(istanze.transform);
+                    ResetToCenter();
                 }
             }
             else if (movementState == "waitstate")
@@ -278,6 +267,19 @@ public class Playerbehaviour : MonoBehaviour
 
     }
 
+    public void ResetToCenter()
+    {
+        confirmPosition = istanze.transform.position;
+        smokeBomb.transform.position = confirmPosition;
+        smokeBomb.Play();
+        smokeBombCenter.Play();
+        managercombo.CheckSign();
+        istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
+        istanze.transform.position = gridCenter;
+        grigliamanager.ResetColorGrid();
+        grigliamanager.ResetGridLogic();
+        AudioManager.Instance.PlaySound("ConfirmSound");
+    }
     public void ReceiveDamage(int inkDamage, int maxInkDamage, bool isUndying)
     {
         if (maxInkDamage == 0)
