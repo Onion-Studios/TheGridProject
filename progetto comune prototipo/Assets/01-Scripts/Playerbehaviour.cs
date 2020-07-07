@@ -93,7 +93,7 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.active == false && SecretT.timeStopped == false)
+        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.active == false && SecretT.timeStopped == false && intensityreset.intensityReset == false)
         {
             MovementHandler();
             if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
