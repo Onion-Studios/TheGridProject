@@ -67,14 +67,14 @@ public class Inkstone : MonoBehaviour
     {
         if (relativeInk != Ink)
         {
-            if (relativeInk > Ink)
+            if (relativeInk > Ink && relativeInk > 0)
             {
                 relativeInk--;
                 relativeInkPosition = inkOffset * relativeInk + inkEndLocalPos;
                 inkLevel.transform.localPosition = new Vector3(inkLevel.transform.localPosition.x, relativeInkPosition, inkLevel.transform.localPosition.z);
                 TimerPlay();
             }
-            else
+            else if (relativeInk < Ink && relativeInk < 100)
             {
                 relativeInk++;
                 relativeInkPosition = inkOffset * relativeInk + inkEndLocalPos;
