@@ -435,7 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2743df5a57df4284289f489769c768ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisText: {fileID: 0}
   offsetSpeed: 1.5
   alphaValue: 0
 --- !u!1 &1249678710
@@ -1051,7 +1050,7 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: Undyingenemydeath
-    clip: {fileID: 8300000, guid: 7b9c511da9ed0994a935a5ca0f3c1aa9, type: 3}
+    clip: {fileID: 8300000, guid: b0acdeb7e57e02242b28e741fe185413, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

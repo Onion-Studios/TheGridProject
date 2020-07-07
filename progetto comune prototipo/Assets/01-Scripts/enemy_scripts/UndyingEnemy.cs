@@ -122,12 +122,12 @@ public class UndyingEnemy : MonoBehaviour
         alreadyDead = false;
         startingPosition = this.transform.localPosition;
         undyingAnimator.SetBool("UndyingDeath", false);
-        /*if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
         }
         wavePositionSet = false;
-        }*/
+        
     }
 
 
@@ -307,6 +307,10 @@ public class UndyingEnemy : MonoBehaviour
 
     public void DeathForTimer()
     {
+        if (currentTime < 1.5f &&  currentTime > 0.5f)
+        {
+            AudioManager.Instance.PlaySound("Undyingenemydeath");
+        }
         if (currentTime > 0)
         {
             currentTime -= 1 * Time.deltaTime;

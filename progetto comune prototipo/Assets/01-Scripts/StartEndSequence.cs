@@ -328,7 +328,6 @@ public class StartEndSequence : MonoBehaviour
                         lightsOFF = null;
                     }
                     Seppuku();
-                    AudioManager.Instance.PlaySound("Seppuku");
                     break;
                 case 3:
                     endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
@@ -449,7 +448,7 @@ public class StartEndSequence : MonoBehaviour
     {
         if (endSequencePositionPlayed == false)
         {
-            Invoke("EndSequencePosition", 5);
+            Invoke("EndSequencePosition",5);
             endSequencePositionPlayed = true;
         }
         AudioManager.Instance.StopAllSounds();
@@ -472,6 +471,7 @@ public class StartEndSequence : MonoBehaviour
     void EndSequencePosition()
     {
         endSequencePosition++;
+        Invoke("Seppukusound", 0f);
     }
     #endregion
     void Skip()
@@ -491,5 +491,10 @@ public class StartEndSequence : MonoBehaviour
             startSequencePosition = 3;
             skipping = false;
         }
+    }
+
+    void Seppukusound()
+    {
+        AudioManager.Instance.PlaySound("Seppuku");
     }
 }
