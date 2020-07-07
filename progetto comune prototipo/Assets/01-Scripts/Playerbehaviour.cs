@@ -93,6 +93,10 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (intensityreset.intensityReset == true)
+        {
+            kitsuneAnimator.SetBool("MovementKeyPressed", false);
+        }
         if (startEndSequence.starting == false && startEndSequence.ending == false && YS.active == false && SecretT.timeStopped == false && intensityreset.intensityReset == false)
         {
             MovementHandler();
@@ -180,6 +184,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingforward")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, 90, 0);
 
                 if (istanze.transform.position.z > finalDestination)
@@ -203,6 +208,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingback")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, -90, 0);
 
                 if (istanze.transform.position.z < finalDestination)
@@ -226,6 +232,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingleft")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 if (istanze.transform.position.x < finalDestination)
@@ -249,6 +256,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingright")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
 
 
