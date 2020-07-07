@@ -16,6 +16,10 @@ public class StartEndSequence : MonoBehaviour
     [HideInInspector]
     int endSequencePosition;
     public GameObject[] lightObjects;
+    [SerializeField]
+    GameObject[] activeWithLight;
+    [SerializeField]
+    GameObject[] activeWithoutLight;
     public float activateLight;
     public bool starting, ending, skipping;
     IEnumerator lightsON;
@@ -24,7 +28,6 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator loading;
     public float lightsStopTime;
     public float closedTime;
-    public GameObject tenda, tenda2;
     public float curtainspeed;
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
     public Vector3 centerGrid;
@@ -103,9 +106,11 @@ public class StartEndSequence : MonoBehaviour
         }
         lightsON = null;
         loading = null;
+        lightObjects[1].SetActive(false);
 
         int randomCuriosityNumber = Random.Range(0, curiosityArray.Length - 1);
         randomCuriosity.text = curiosityArray[randomCuriosityNumber].ToUpper();
+        OnOffScene(false);
     }
 
     void Update()
@@ -241,7 +246,7 @@ public class StartEndSequence : MonoBehaviour
         else
         {
             timer = 0;
-            lightObjects[2].SetActive(true);
+            lightObjects[0].SetActive(true);
             if (skipping == false)
             {
                 AudioManager.Instance.PlaySound("Spotlight");
@@ -266,9 +271,9 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator LightsON()
     {
         yield return new WaitForSeconds(closedTime);
-        lightObjects[2].SetActive(false);
-        lightObjects[0].SetActive(true);
+        lightObjects[0].SetActive(false);
         lightObjects[1].SetActive(true);
+        OnOffScene(true);
         startSequencePosition++;
     }
     void PlayerToCenter()
@@ -434,15 +439,10 @@ public class StartEndSequence : MonoBehaviour
     }
     IEnumerator LightsOFF()
     {
-        //yield return new WaitForSeconds(lightsStopTime);
-        lightObjects[1].SetActive(false);
-        lightObjects[2].SetActive(false);
-        //yield return new WaitForSeconds(lightsStopTime);
-        lightObjects[0].SetActive(false);
+        OnOffScene(false);
         particlesCamera.SetActive(false);
         //yield return new WaitForSeconds(lightsStopTime);
-        lightObjects[3].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[3].transform.position.y, playerbehaviour.istanze.transform.position.z);
-        lightObjects[3].SetActive(true);
+        lightObjects[1].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[1].transform.position.y, playerbehaviour.istanze.transform.position.z);
         AudioManager.Instance.PlaySound("Spotlight");
         yield return new WaitForSeconds(lightsStopTime);
         endSequencePosition++;
@@ -483,15 +483,40 @@ public class StartEndSequence : MonoBehaviour
             AudioManager.Instance.StopSound("Yoo");
             curtains.CloseTeleport();
 
-            lightObjects[2].SetActive(false);
-            lightObjects[0].SetActive(true);
+            lightObjects[0].SetActive(false);
             lightObjects[1].SetActive(true);
-
+            OnOffScene(true);
             mainCamera.transform.SetPositionAndRotation(particlesCamera.transform.position, particlesCamera.transform.rotation);
             crowd.color = alpha1Crowd;
 
             startSequencePosition = 3;
             skipping = false;
+        }
+    }
+
+    void OnOffScene(bool lightOn)
+    {
+        if (lightOn == false)
+        {
+            for (int i = 0; i < activeWithoutLight.Length; i++)
+            {
+                activeWithoutLight[i].SetActive(true);
+            }
+            for (int i = 0; i < activeWithLight.Length; i++)
+            {
+                activeWithLight[i].SetActive(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < activeWithLight.Length; i++)
+            {
+                activeWithLight[i].SetActive(true);
+            }
+            for (int i = 0; i < activeWithoutLight.Length; i++)
+            {
+                activeWithoutLight[i].SetActive(false);
+            }
         }
     }
 }
