@@ -34,11 +34,7 @@ public class Yokaislayer : MonoBehaviour
             Debug.LogError("EnemySpawnManager is NULL!");
         }
 
-        playerbehaviour = FindObjectOfType<Playerbehaviour>();
-        if (playerbehaviour == null)
-        {
-            Debug.LogError("Playerbehaviour is NULL!");
-        }
+        playerbehaviour = this.gameObject.GetComponent<Playerbehaviour>();
 
         startendsequence = FindObjectOfType<StartEndSequence>();
         if (startendsequence == null)
@@ -160,7 +156,6 @@ public class Yokaislayer : MonoBehaviour
 
     void ActivateYokaiSlayer()
     {
-
         for (int i = 0; i < 7; i++)
         {
             foreach (GameObject nemici in enemyspawnmanager.poolenemy[i])
@@ -202,6 +197,7 @@ public class Yokaislayer : MonoBehaviour
                 }
             }
         }
+        playerbehaviour.ResetToCenter();
         yokaiSlayerSequenceNumber++;
     }
 

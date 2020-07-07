@@ -17,6 +17,7 @@ public class Secret : MonoBehaviour
     public float currentTime;
     public float timeMax;
     public bool active;
+    public bool timeStopped;
     [SerializeField]
     private ParticleSystem inkStroke;
     public ParticleSystem paintParticles;
@@ -32,6 +33,7 @@ public class Secret : MonoBehaviour
     {
         bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
+        timeStopped = false;
     }
 
     // Update is called once per frame
@@ -146,10 +148,12 @@ public class Secret : MonoBehaviour
     public void StopTime()
     {
         Time.timeScale = 0f;
+        timeStopped = true;
     }
 
     public void ResumeTime()
     {
         Time.timeScale = 1f;
+        timeStopped = false;
     }
 }

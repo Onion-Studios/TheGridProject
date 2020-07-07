@@ -93,7 +93,11 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.active == false)
+        if (intensityreset.intensityReset == true)
+        {
+            kitsuneAnimator.SetBool("MovementKeyPressed", false);
+        }
+        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.active == false && SecretT.timeStopped == false && intensityreset.intensityReset == false)
         {
             MovementHandler();
             if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
@@ -151,18 +155,7 @@ public class Playerbehaviour : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
                 {
-                    confirmPosition = istanze.transform.position;
-                    smokeBomb.transform.position = confirmPosition;
-                    smokeBomb.Play();
-                    //smokeBomb.transform.SetParent(null);
-                    smokeBombCenter.Play();
-                    managercombo.CheckSign();
-                    istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    istanze.transform.position = gridCenter;
-                    grigliamanager.ResetColorGrid();
-                    grigliamanager.ResetGridLogic();
-                    AudioManager.Instance.PlaySound("ConfirmSound");
-                    //smokeBomb.transform.SetParent(istanze.transform);
+                    ResetToCenter();
                 }
             }
             else if (movementState == "waitstate")
@@ -180,6 +173,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingforward")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, 90, 0);
 
                 if (istanze.transform.position.z > finalDestination)
@@ -203,6 +197,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingback")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, -90, 0);
 
                 if (istanze.transform.position.z < finalDestination)
@@ -226,6 +221,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingleft")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 if (istanze.transform.position.x < finalDestination)
@@ -249,6 +245,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else if (movementState == "movingright")
             {
+
                 istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
 
 
@@ -278,6 +275,19 @@ public class Playerbehaviour : MonoBehaviour
 
     }
 
+    public void ResetToCenter()
+    {
+        confirmPosition = istanze.transform.position;
+        smokeBomb.transform.position = confirmPosition;
+        smokeBomb.Play();
+        smokeBombCenter.Play();
+        managercombo.CheckSign();
+        istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
+        istanze.transform.position = gridCenter;
+        grigliamanager.ResetColorGrid();
+        grigliamanager.ResetGridLogic();
+        AudioManager.Instance.PlaySound("ConfirmSound");
+    }
     public void ReceiveDamage(int inkDamage, int maxInkDamage, bool isUndying)
     {
         if (maxInkDamage == 0)
