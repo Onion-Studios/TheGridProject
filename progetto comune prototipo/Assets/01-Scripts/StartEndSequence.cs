@@ -71,6 +71,7 @@ public class StartEndSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        particlesCamera.SetActive(false);
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -209,6 +210,7 @@ public class StartEndSequence : MonoBehaviour
                         lightsON = null;
                     }
                     PlayerToCenter();
+                    particlesCamera.SetActive(true);
                     break;
                 case 6:
                     startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);

@@ -7,29 +7,51 @@ public class CrowdFeedbacks : MonoBehaviour
     [SerializeField]
     private Image movingCrowd;
     [SerializeField]
-    private Image stillCrowd;
+    private GameObject stillCrowd;
     [SerializeField]
     private Image joyEffect;
     [SerializeField]
     private Image frenzyEffect;
     [SerializeField]
-    private Image disappointmentMistEffect;
+    private GameObject disappointmentMistEffect;
     [SerializeField]
-    private Image disappointmentEffect;
+    private GameObject disappointmentEffect;
 
     public void FrenzyEffect(bool active)
     {
         frenzyEffect.enabled = active;
     }
 
-    public void DisappointmentEffect(bool active)
+    public IEnumerator DisappointmentEffect()
     {
-        movingCrowd.enabled = !active;
-        stillCrowd.enabled = active;
-        disappointmentEffect.enabled = active;
-        disappointmentMistEffect.enabled = active;
+        if (frenzyEffect.enabled)
+        {
+            yield break;
+        }
+        else if (joyEffect.enabled)
+        {
+            yield break;
+        }
+        ActivateDisappointmentEffect();
+        yield return new WaitForSecondsRealtime(1.1f);
+        DeactivateDisappointmentEffect();
     }
 
+    private void ActivateDisappointmentEffect()
+    {
+        movingCrowd.enabled = false;
+        stillCrowd.SetActive(true);
+        disappointmentEffect.SetActive(true);
+        disappointmentMistEffect.SetActive(true);
+    }
+
+    private void DeactivateDisappointmentEffect()
+    {
+        movingCrowd.enabled = true;
+        stillCrowd.SetActive(false);
+        disappointmentEffect.SetActive(false);
+        disappointmentMistEffect.SetActive(false);
+    }
     public IEnumerator JoyEffect()
     {
         if (frenzyEffect.enabled)
@@ -37,7 +59,7 @@ public class CrowdFeedbacks : MonoBehaviour
             yield break;
         }
         joyEffect.enabled = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         joyEffect.enabled = false;
     }
 

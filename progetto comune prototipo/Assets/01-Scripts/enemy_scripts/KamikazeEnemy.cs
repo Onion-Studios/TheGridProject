@@ -143,6 +143,7 @@ public class KamikazeEnemy : MonoBehaviour
     public void ParentReassignment()
     {
         explosion.transform.SetParent(this.transform);
+        explosion.transform.localPosition = Vector3.zero;
     }
 
     void PointOverDistance()
@@ -192,9 +193,9 @@ public class KamikazeEnemy : MonoBehaviour
     }
     public void TrueDeath()
     {
+        foreach (GameObject segno in SignIntensity1Kamikaze)
         {
-            foreach (GameObject segno in SignIntensity1Kamikaze)
-                segno.SetActive(false);
+            segno.SetActive(false);
         }
         foreach (GameObject segno in SignIntensity1PlusKamikaze)
         {
