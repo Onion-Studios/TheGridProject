@@ -64,6 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyID: 6
+  scoreEnemy1: 2000
+  scoreEnemy2: 4000
+  scoreEnemy3: 6000
   scoreEnemy: 2000
   SignIntensity1Buffer:
   - {fileID: 8930077479501729272}

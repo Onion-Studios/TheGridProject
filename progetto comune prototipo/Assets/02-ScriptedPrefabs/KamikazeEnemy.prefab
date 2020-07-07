@@ -72,6 +72,9 @@ MonoBehaviour:
   speed: 1
   inkDamage: 40
   maxInkDamage: 10
+  scoreEnemy1: 1500
+  scoreEnemy2: 3000
+  scoreEnemy3: 4500
   scoreEnemy: 1500
   SignIntensity1Kamikaze:
   - {fileID: 7056808651674373629}

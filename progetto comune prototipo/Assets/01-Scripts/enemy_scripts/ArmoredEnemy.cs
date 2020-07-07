@@ -17,7 +17,15 @@ public class ArmoredEnemy : MonoBehaviour
     PointSystem pointsystem;
     GameManager GM;
     WaveManager WM;
-    public int scoreEnemy, armoredLife;
+    [SerializeField]
+    int scoreEnemy1;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
+    public int scoreEnemy;
+    [HideInInspector]
+    public int armoredLife;
     public GameObject[] signarmoredenemy;
     public float baseSpeed, startPosition, extrapointsoverdistance, startGrid, BlackToDeath;
     [SerializeField]
@@ -206,6 +214,7 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece6.SetActive(true);
         armorPiece7.SetActive(true);
 
+        SetScoreGiven();
     }
 
     private void OnDisable()
@@ -235,6 +244,30 @@ public class ArmoredEnemy : MonoBehaviour
         }
 
         PointOverDistance();
+    }
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 1:
+                scoreEnemy = scoreEnemy1;
+                break;
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
     }
 
     public void Enemymove()
