@@ -106,7 +106,9 @@ public class StartEndSequence : MonoBehaviour
         }
         lightsON = null;
         loading = null;
+        lightObjects[0].SetActive(false);
         lightObjects[1].SetActive(false);
+        lightObjects[2].SetActive(false);
 
         int randomCuriosityNumber = Random.Range(0, curiosityArray.Length - 1);
         randomCuriosity.text = curiosityArray[randomCuriosityNumber].ToUpper();
@@ -247,6 +249,8 @@ public class StartEndSequence : MonoBehaviour
         {
             timer = 0;
             lightObjects[0].SetActive(true);
+            lightObjects[1].SetActive(false);
+            lightObjects[2].SetActive(false);
             if (skipping == false)
             {
                 AudioManager.Instance.PlaySound("Spotlight");
@@ -273,6 +277,7 @@ public class StartEndSequence : MonoBehaviour
         yield return new WaitForSeconds(closedTime);
         lightObjects[0].SetActive(false);
         lightObjects[1].SetActive(true);
+        lightObjects[2].SetActive(false);
         OnOffScene(true);
         startSequencePosition++;
     }
@@ -440,9 +445,12 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator LightsOFF()
     {
         OnOffScene(false);
+        lightObjects[0].SetActive(false);
+        lightObjects[1].SetActive(false);
+        lightObjects[2].SetActive(true);
         particlesCamera.SetActive(false);
         //yield return new WaitForSeconds(lightsStopTime);
-        lightObjects[1].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[1].transform.position.y, playerbehaviour.istanze.transform.position.z);
+        lightObjects[2].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[2].transform.position.y, playerbehaviour.istanze.transform.position.z);
         AudioManager.Instance.PlaySound("Spotlight");
         yield return new WaitForSeconds(lightsStopTime);
         endSequencePosition++;
@@ -485,6 +493,7 @@ public class StartEndSequence : MonoBehaviour
 
             lightObjects[0].SetActive(false);
             lightObjects[1].SetActive(true);
+            lightObjects[2].SetActive(false);
             OnOffScene(true);
             mainCamera.transform.SetPositionAndRotation(particlesCamera.transform.position, particlesCamera.transform.rotation);
             crowd.color = alpha1Crowd;
