@@ -270,12 +270,16 @@ public class WaveManager : MonoBehaviour
         if (TEST_WaveActive == false)
         {
             StopCoroutine(normalWaves);
+            normalWaves = null;
+            normalWaves = SpawnWaveCoroutine();
             StartCoroutine(normalWaves);
             TEST_WaveIntensity = 1;
         }
         else
         {
             StopCoroutine(testWaves);
+            testWaves = null;
+            testWaves = Testspawncoroutine(TEST_WaveIntensity);
             StartCoroutine(testWaves);
         }
     }
