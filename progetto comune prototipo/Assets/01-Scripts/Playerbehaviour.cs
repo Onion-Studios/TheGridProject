@@ -302,7 +302,6 @@ public class Playerbehaviour : MonoBehaviour
                 Inkstone.Ink = Inkstone.maxInk;
             }
             Inkstone.Ink -= inkDamage;
-            AudioManager.Instance.PlaySound("Playertakedamage");
             if (Inkstone.Ink > 0 && YS.active == false && isUndying == false)
             {
                 intensityreset.intensityReset = true;
@@ -317,7 +316,7 @@ public class Playerbehaviour : MonoBehaviour
             }
             else
             {
-                // Insert THUD Sound
+                AudioManager.Instance.PlaySound("Playertakedamage");
             }
             SecretT.bar -= SecretT.chargeLoss;
             if (SecretT.bar < 0)

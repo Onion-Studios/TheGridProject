@@ -170,6 +170,9 @@ public class IntensityReset : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.StopSound("Track02");
+            AudioManager.Instance.StopSound("Track03");
+            AudioManager.Instance.PlaySound("MainTrack");
             timer = 0;
             for (int i = 0; i < 7; i++)
             {
