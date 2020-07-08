@@ -66,7 +66,7 @@ MonoBehaviour:
   speed: 1
   inkDamage: 0
   maxInkDamage: 30
-  scoreEnemy: 10000
+  scoreEnemy: 25000
   SignIntensity3Undying:
   - {fileID: 1898558322258090333}
   - {fileID: 8997602691345140520}

@@ -11,6 +11,13 @@ public class BufferEnemy : MonoBehaviour
     Inkstone Inkstone;
     PointSystem pointsystem;
     Secret SecretT;
+    WaveManager WM;
+    [SerializeField]
+    int scoreEnemy1;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
     public int scoreEnemy;
     public GameObject[] SignIntensity1Buffer;
     public GameObject[] SignIntensity1PlusBuffer;
@@ -76,6 +83,14 @@ public class BufferEnemy : MonoBehaviour
         {
             Debug.LogError("GameManager is NULL");
         }
+
+        WM = FindObjectOfType<WaveManager>();
+        if (WM == null)
+        {
+            Debug.LogError("Wave Manager is NULL");
+        }
+
+        SetScoreGiven();
     }
 
     // Update is called once per frame
@@ -85,6 +100,30 @@ public class BufferEnemy : MonoBehaviour
         bufferAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
 
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 1:
+                scoreEnemy = scoreEnemy1;
+                break;
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
+    }
     public void Enemymove()
     {
         if (this.transform.localPosition.x > endPosition)

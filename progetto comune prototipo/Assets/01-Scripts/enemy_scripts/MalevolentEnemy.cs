@@ -10,6 +10,12 @@ public class MalevolentEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    GameManager GameManager;
+    WaveManager WM;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
     public int scoreEnemy;
     [HideInInspector]
     public Vector3 position;
@@ -55,8 +61,19 @@ public class MalevolentEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("GameManager is NULL");
+        }
 
+        WM = FindObjectOfType<WaveManager>();
+        if (WM == null)
+        {
+            Debug.LogError("Wave Manager is NULL");
+        }
 
+        SetScoreGiven();
     }
 
     private void OnEnable()
@@ -76,7 +93,27 @@ public class MalevolentEnemy : MonoBehaviour
             playerDeathPlayed = true;
         }
     }
-
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
+    }
     private IEnumerator MalevolentSound()
     {
         while (this.isActiveAndEnabled)
