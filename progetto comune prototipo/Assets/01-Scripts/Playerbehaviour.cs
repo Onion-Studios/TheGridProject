@@ -348,7 +348,7 @@ public class Playerbehaviour : MonoBehaviour
                 }
                 else
                 {
-                    // Insert THUD Sound
+                    AudioManager.Instance.PlaySound("Playertakedamage");
                 }
                 SecretT.bar -= SecretT.chargeLoss;
                 if (SecretT.bar < 0)
@@ -356,7 +356,6 @@ public class Playerbehaviour : MonoBehaviour
                     SecretT.bar = 0;
                 }
             }
-                AudioManager.Instance.PlaySound("Playertakedamage");
         }
     }
 
