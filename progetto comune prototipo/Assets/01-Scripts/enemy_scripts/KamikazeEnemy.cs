@@ -118,7 +118,7 @@ public class KamikazeEnemy : MonoBehaviour
         {
             explosion.transform.SetParent(null);
             explosion.Play();
-            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, this.name);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
             TrueDeath();
             ExplosionWork(this.transform.position);
             Invoke("ParentReassignment", explosionDelay);

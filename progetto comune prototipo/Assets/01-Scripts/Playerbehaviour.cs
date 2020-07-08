@@ -317,7 +317,7 @@ public class Playerbehaviour : MonoBehaviour
         movementState = "readystate";
     }
 
-    public void ReceiveDamage(int inkDamage, int maxInkDamage, string enemyName)
+    public void ReceiveDamage(int inkDamage, int maxInkDamage, bool isUndying)
     {
         if (maxInkDamage == 0)
         {
@@ -325,7 +325,7 @@ public class Playerbehaviour : MonoBehaviour
         }
         else
         {
-            if (invincibilityActive == false || (invincibilityActive == true && enemyName == "UndyingEnemy"))
+            if (invincibilityActive == false || (invincibilityActive == true && isUndying == false))
             {
                 Inkstone.maxInk -= maxInkDamage;
                 if (Inkstone.Ink > Inkstone.maxInk)
@@ -334,7 +334,7 @@ public class Playerbehaviour : MonoBehaviour
                 }
                 Inkstone.Ink -= inkDamage;
                 AudioManager.Instance.PlaySound("Playertakedamage");
-                if (Inkstone.Ink > 0 && YS.active == false && enemyName != "UndyingEnemy")
+                if (Inkstone.Ink > 0 && YS.active == false && isUndying == false)
                 {
                     intensityreset.intensityReset = true;
                 }

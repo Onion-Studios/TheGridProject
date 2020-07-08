@@ -149,7 +149,7 @@ public class FrighteningEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, this.name);
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
         foreach (GameObject segno in SignIntensity2Frightening)
 
         {
@@ -184,7 +184,7 @@ public class FrighteningEnemy : MonoBehaviour
             hair.GetComponent<Renderer>().material.color = Color.black;
             Invoke("DeathForCollision", BlackToDeath);
 
-            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, this.name);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
 
             AudioManager.Instance.PlaySound("EnemyDeath");
         }

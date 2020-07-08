@@ -253,7 +253,7 @@ public class ArmoredEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, this.name);
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
 
         Die();
     }
@@ -281,7 +281,7 @@ public class ArmoredEnemy : MonoBehaviour
             bandana.GetComponent<Renderer>().material.color = Color.black;
             Invoke("DeathForCollision", BlackToDeath);
 
-            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, this.name);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
             AudioManager.Instance.PlaySound("EnemyDeath");
         }
     }
