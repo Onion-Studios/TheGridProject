@@ -1211,7 +1211,6 @@ MonoBehaviour:
   LastCubeChecked: {x: 0, y: 0, z: 0}
   yokaislayercount: 3
   maxWaitTimer: 0.03
-  timerResetMax: 0.03
   inkGained: 7
   inkGainedIntensity: 050000000700000009000000
   gridCenter: {x: 2, y: 1.05, z: 2}
@@ -1219,6 +1218,9 @@ MonoBehaviour:
   smokeBomb: {fileID: 0}
   smokeBombCenter: {fileID: 0}
   kitsuneAnimator: {fileID: 0}
+  invincibilityActive: 0
+  invTimerMax: 2
+  invTimerThreshold: 1
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0

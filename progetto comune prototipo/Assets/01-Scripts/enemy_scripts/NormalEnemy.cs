@@ -145,7 +145,7 @@ public class NormalEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, this.name);
         Die();
     }
 
@@ -161,13 +161,16 @@ public class NormalEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        inkDeath.Play();
-        enemy.GetComponent<Renderer>().material.color = Color.black;
-        band.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("DeathForCollision", BlackToDeath);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            band.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
-        AudioManager.Instance.PlaySound("EnemyDeath");
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, this.name);
+            AudioManager.Instance.PlaySound("EnemyDeath");
+        }
     }
 
     public void DeathForCollision()

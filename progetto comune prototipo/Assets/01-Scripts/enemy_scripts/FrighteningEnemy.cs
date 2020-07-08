@@ -149,7 +149,7 @@ public class FrighteningEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         inkAbsorb.Stop();
-        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, false);
+        playerbehaviour.ReceiveDamage(inkstoneDamage, 0, this.name);
         foreach (GameObject segno in SignIntensity2Frightening)
 
         {
@@ -177,14 +177,17 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        inkDeath.Play();
-        enemy.GetComponent<Renderer>().material.color = Color.black;
-        hair.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("DeathForCollision", BlackToDeath);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            hair.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, this.name);
 
-        AudioManager.Instance.PlaySound("EnemyDeath");
+            AudioManager.Instance.PlaySound("EnemyDeath");
+        }
     }
 
     public void DeathForCollision()
