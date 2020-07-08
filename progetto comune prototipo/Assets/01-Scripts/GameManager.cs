@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+                    WaveManager.RestartWaves();
                     dragon1.SetActive(true);
                     dragon2.SetActive(false);
                     dragon3.SetActive(false);
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
                 soundPlayed1 = false;
                 soundPlayed3 = false;
 
+                WaveManager.RestartWaves();
                 dragon1.SetActive(false);
                 dragon2.SetActive(true);
                 dragon3.SetActive(false);
@@ -158,6 +160,7 @@ public class GameManager : MonoBehaviour
                 soundPlayed1 = false;
                 soundPlayed2 = false;
 
+                WaveManager.RestartWaves();
                 dragon1.SetActive(false);
                 dragon2.SetActive(false);
                 dragon3.SetActive(true);

@@ -1211,6 +1211,7 @@ MonoBehaviour:
   LastCubeChecked: {x: 0, y: 0, z: 0}
   yokaislayercount: 3
   maxWaitTimer: 0.03
+  timerResetMax: 0.03
   inkGained: 7
   inkGainedIntensity: 050000000700000009000000
   gridCenter: {x: 2, y: 1.05, z: 2}
@@ -3812,7 +3813,7 @@ MonoBehaviour:
   crowdFeedbacks: {fileID: 81641529}
   GameIntensity: 1
   StartIntensity2: 15
-  StartIntensity3: 60
+  StartIntensity3: 20
   dragonTimeline: {fileID: 170796335}
   dragon1: {fileID: 170796334}
   dragon2: {fileID: 170796333}
