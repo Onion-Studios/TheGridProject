@@ -1220,7 +1220,7 @@ MonoBehaviour:
   kitsuneAnimator: {fileID: 0}
   invincibilityActive: 0
   invTimerMax: 1
-  invTimerThreshold: 0.35
+  invTimerThreshold: 0.2
   hitOnce: 0
 --- !u!4 &228951399
 Transform:
@@ -3816,7 +3816,7 @@ MonoBehaviour:
   crowdFeedbacks: {fileID: 81641529}
   GameIntensity: 1
   StartIntensity2: 15
-  StartIntensity3: 20
+  StartIntensity3: 60
   dragonTimeline: {fileID: 170796335}
   dragon1: {fileID: 170796334}
   dragon2: {fileID: 170796333}
