@@ -202,6 +202,7 @@ public class WaveManager : MonoBehaviour
     int casualwave;
     int count;
     IEnumerator normalWaves, testWaves;
+    bool restart;
 
     // Start is called before the first frame update
     void Start()
@@ -261,6 +262,21 @@ public class WaveManager : MonoBehaviour
                 StopCoroutine(testWaves);
             }
             count++;
+        }
+    }
+
+    public void RestartWaves()
+    {
+        if (TEST_WaveActive == false)
+        {
+            StopCoroutine(normalWaves);
+            StartCoroutine(normalWaves);
+            TEST_WaveIntensity = 1;
+        }
+        else
+        {
+            StopCoroutine(testWaves);
+            StartCoroutine(testWaves);
         }
     }
 
