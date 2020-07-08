@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour
             else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
             {
                 GameIntensity = 2;
+                AudioManager.Instance.StopSound("MainTrack");
+                AudioManager.Instance.PlaySound("Track02");
 
                 //AudioManager.Instance.SetLoop("ClappingSound", false);
                 //AudioManager.Instance.PlaySound("ClappingSound");
@@ -142,6 +144,8 @@ public class GameManager : MonoBehaviour
             else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
             {
                 GameIntensity = 3;
+                AudioManager.Instance.StopSound("Track02");
+                AudioManager.Instance.PlaySound("Track03");
 
                 //AudioManager.Instance.SetLoop("ClappingSound", false);
                 //AudioManager.Instance.PlaySound("ClappingSound");

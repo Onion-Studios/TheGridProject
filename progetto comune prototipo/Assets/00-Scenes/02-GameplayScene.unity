@@ -13902,6 +13902,11 @@ PrefabInstance:
     - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
         type: 3}
       propertyPath: TEST_WaveActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
+        type: 3}
+      propertyPath: TEST_WaveIntensity
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

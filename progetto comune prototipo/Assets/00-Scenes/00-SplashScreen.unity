@@ -793,8 +793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clipName: MainTrack
-    clip: {fileID: 8300000, guid: 8885eca846a872e42a504bb55d518332, type: 3}
-    volume: 0.05
+    clip: {fileID: 8300000, guid: 73ec4a1ebeac51e41a2f4bcc0d1ace14, type: 3}
+    volume: 0.07
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Seppuku
-    clip: {fileID: 8300000, guid: 77d4a8a663dfd5842bc570b21b2df555, type: 3}
+    clip: {fileID: 8300000, guid: 79ca77dfab830ce4d8e38ef159c3cd4b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -1062,7 +1062,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 0
-    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
   - clipName: Resetgong
     clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
     volume: 0.5
@@ -1076,6 +1077,22 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Track02
+    clip: {fileID: 8300000, guid: 3196aeb94f30c474989b417caccb84b8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Track03
+    clip: {fileID: 8300000, guid: 35c60bc639f2bbe4d8a0bfdcec055f64, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}

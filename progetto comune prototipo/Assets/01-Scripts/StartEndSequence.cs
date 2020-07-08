@@ -453,6 +453,8 @@ public class StartEndSequence : MonoBehaviour
         }
         AudioManager.Instance.StopAllSounds();
         playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
+        Invoke("Seppukusound", 0f);
+
 
 
     }
@@ -471,7 +473,6 @@ public class StartEndSequence : MonoBehaviour
     void EndSequencePosition()
     {
         endSequencePosition++;
-        Invoke("Seppukusound", 0f);
     }
     #endregion
     void Skip()
