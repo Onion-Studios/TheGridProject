@@ -1220,7 +1220,7 @@ MonoBehaviour:
   kitsuneAnimator: {fileID: 0}
   invincibilityActive: 0
   invTimerMax: 1
-  invTimerThreshold: 0.2
+  invTimerThreshold: 0.21
   hitOnce: 0
 --- !u!4 &228951399
 Transform:
