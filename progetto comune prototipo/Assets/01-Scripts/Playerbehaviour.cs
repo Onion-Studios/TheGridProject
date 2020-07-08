@@ -47,6 +47,8 @@ public class Playerbehaviour : MonoBehaviour
     private float invTimerMax;
     [SerializeField]
     private float invTimerThreshold;
+    [HideInInspector]
+    public bool hitOnce;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -96,6 +98,7 @@ public class Playerbehaviour : MonoBehaviour
         audioManager = AudioManager.Instance;
         layerMask = 1 << 11;
         invTimer = invTimerMax;
+        hitOnce = false;
     }
 
     // Update is called once per frame

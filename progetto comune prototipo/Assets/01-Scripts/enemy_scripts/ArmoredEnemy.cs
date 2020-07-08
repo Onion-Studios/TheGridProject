@@ -433,6 +433,7 @@ public class ArmoredEnemy : MonoBehaviour
         ArmorReset();
         Recolor();
         this.gameObject.SetActive(false);
+        playerbehaviour.hitOnce = false;
     }
     void DeactivateSymbols()
     {

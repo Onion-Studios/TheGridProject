@@ -245,5 +245,6 @@ public class FrighteningEnemy : MonoBehaviour
         playerbehaviour.speed = playerSpeed;
         playerbehaviour.frightenedPlayer.Stop();
         this.gameObject.SetActive(false);
+        playerbehaviour.hitOnce = false;
     }
 }

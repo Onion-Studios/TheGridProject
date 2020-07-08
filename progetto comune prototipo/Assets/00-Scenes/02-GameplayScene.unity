@@ -1219,8 +1219,9 @@ MonoBehaviour:
   smokeBombCenter: {fileID: 0}
   kitsuneAnimator: {fileID: 0}
   invincibilityActive: 0
-  invTimerMax: 2
-  invTimerThreshold: 1
+  invTimerMax: 1
+  invTimerThreshold: 0.35
+  hitOnce: 0
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0

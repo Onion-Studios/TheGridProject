@@ -234,5 +234,6 @@ public class NormalEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         this.gameObject.SetActive(false);
+        playerbehaviour.hitOnce = false;
     }
 }
