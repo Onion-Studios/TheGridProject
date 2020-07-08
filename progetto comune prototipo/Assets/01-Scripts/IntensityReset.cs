@@ -8,6 +8,7 @@ public class IntensityReset : MonoBehaviour
     [SerializeField]
     Inkstone inkStone;
     Playerbehaviour PB;
+    public WaveManager WM;
     public bool intensityReset;
     int intensityResetIndex;
     public GameObject particleCamera;
@@ -231,6 +232,7 @@ public class IntensityReset : MonoBehaviour
             blackPanel.color = new Color(0, 0, 0, 0);
             particleCamera.SetActive(true);
             intensityResetIndex = 0;
+            WM.RestartWaves();
             intensityReset = false;
             enemyspawnmanager.enemykilled = 0;
         }

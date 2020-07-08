@@ -200,13 +200,16 @@ public class NormalEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        inkDeath.Play();
-        enemy.GetComponent<Renderer>().material.color = Color.black;
-        band.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("DeathForCollision", BlackToDeath);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            band.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
-        AudioManager.Instance.PlaySound("EnemyDeath");
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            AudioManager.Instance.PlaySound("EnemyDeath");
+        }
     }
 
     public void DeathForCollision()
@@ -270,5 +273,6 @@ public class NormalEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         this.gameObject.SetActive(false);
+        playerbehaviour.hitOnce = false;
     }
 }

@@ -151,12 +151,15 @@ public class KamikazeEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        explosion.transform.SetParent(null);
-        explosion.Play();
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
-        TrueDeath();
-        ExplosionWork(this.transform.position);
-        Invoke("ParentReassignment", explosionDelay);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            explosion.transform.SetParent(null);
+            explosion.Play();
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            TrueDeath();
+            ExplosionWork(this.transform.position);
+            Invoke("ParentReassignment", explosionDelay);
+        }
     }
 
     public void Deathforsign()
@@ -243,5 +246,6 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         this.gameObject.SetActive(false);
+        playerbehaviour.hitOnce = false;
     }
 }

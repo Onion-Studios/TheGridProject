@@ -210,14 +210,17 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        inkDeath.Play();
-        enemy.GetComponent<Renderer>().material.color = Color.black;
-        hair.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("DeathForCollision", BlackToDeath);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            hair.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
 
-        AudioManager.Instance.PlaySound("EnemyDeath");
+            AudioManager.Instance.PlaySound("EnemyDeath");
+        }
     }
 
     public void DeathForCollision()
@@ -275,5 +278,6 @@ public class FrighteningEnemy : MonoBehaviour
         playerbehaviour.speed = playerSpeed;
         playerbehaviour.frightenedPlayer.Stop();
         this.gameObject.SetActive(false);
+        playerbehaviour.hitOnce = false;
     }
 }

@@ -11,6 +11,7 @@ public class Yokaislayer : MonoBehaviour
     StartEndSequence startendsequence;
     Inkstone inkStone_;
     Curtains curtains;
+    public WaveManager WM;
     public Vector3 closecurtain;
     public bool active;
     [HideInInspector]
@@ -205,7 +206,7 @@ public class Yokaislayer : MonoBehaviour
     {
         playerbehaviour.yokaislayercount--;
         yokaiSlayerSequenceNumber = 0;
-
+        WM.RestartWaves();
         active = false;
         signMovement = false;
     }

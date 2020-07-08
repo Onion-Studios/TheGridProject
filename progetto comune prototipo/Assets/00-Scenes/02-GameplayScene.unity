@@ -1503,6 +1503,10 @@ MonoBehaviour:
   smokeBomb: {fileID: 0}
   smokeBombCenter: {fileID: 0}
   kitsuneAnimator: {fileID: 0}
+  invincibilityActive: 0
+  invTimerMax: 1
+  invTimerThreshold: 0.21
+  hitOnce: 0
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0
@@ -1529,6 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb6bdf11f3fb6c4e80c0b0a507e477c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WM: {fileID: 2511655500189852335}
   closecurtain: {x: 0, y: 0, z: 0}
   active: 0
   tenda: {fileID: 1138158313}
@@ -1572,6 +1577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkStone: {fileID: 833458095924189351}
+  WM: {fileID: 2511655500189852335}
   intensityReset: 0
   particleCamera: {fileID: 1061293695}
   blackPanel: {fileID: 1484441648}
@@ -16224,6 +16230,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da923c4d8b16c14ca6bc53897d3da74, type: 3}
+--- !u!114 &2511655500189852335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
+    type: 3}
+  m_PrefabInstance: {fileID: 2511655500189852334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25403fdda95d3c143b4ef6378909e576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!108 &2723262268495300402
 Light:
   m_ObjectHideFlags: 0
