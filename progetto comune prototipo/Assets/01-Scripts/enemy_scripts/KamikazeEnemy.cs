@@ -166,7 +166,7 @@ public class KamikazeEnemy : MonoBehaviour
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         TrueDeath();

@@ -132,7 +132,7 @@ public class UndyingEnemy : MonoBehaviour
             AudioManager.Instance.PlaySound("UndyingWarcry");
         }
         wavePositionSet = false;
-        
+
     }
 
 
@@ -302,6 +302,7 @@ public class UndyingEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        AddCombo();
         Inkstone.Ink += playerbehaviour.inkGained;
         repelled = true;
         undyingAnimator.SetBool("IsRepelled", true);
@@ -313,7 +314,7 @@ public class UndyingEnemy : MonoBehaviour
 
     public void DeathForTimer()
     {
-        if (currentTime < 1.5f &&  currentTime > 0.5f)
+        if (currentTime < 1.5f && currentTime > 0.5f)
         {
             AudioManager.Instance.PlaySound("Undyingenemydeath");
         }
@@ -337,14 +338,11 @@ public class UndyingEnemy : MonoBehaviour
 
             attackTimer = 0;
             currentTime = maxTime;
-            enemyspawnmanager.enemykilled += 1;
+            enemyspawnmanager.enemykilled++;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
 
-            pointsystem.currentTimer = pointsystem.maxTimer;
-            pointsystem.countercombo++;
-
-            pointsystem.Combo();
+            AddCombo();
 
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
             TrueDeath();
@@ -358,5 +356,13 @@ public class UndyingEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         this.gameObject.SetActive(false);
+    }
+
+    void AddCombo()
+    {
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
     }
 }
