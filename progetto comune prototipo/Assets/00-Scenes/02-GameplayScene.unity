@@ -2380,6 +2380,10 @@ MonoBehaviour:
   - 200
   scoreMultiplier: 1
   currentTimer: 0
+  intensityFuseTimer:
+  - 6
+  - 6
+  - 6
   maxTimer: 4
   threshold1: 10
   threshold2: 25

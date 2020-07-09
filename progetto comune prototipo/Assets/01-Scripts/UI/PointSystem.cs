@@ -11,6 +11,9 @@ public class PointSystem : MonoBehaviour
     public int scoreMultiplier;
     [HideInInspector]
     public float currentTimer;
+    [SerializeField]
+    float[] intensityFuseTimer;
+    [HideInInspector]
     public float maxTimer;
     public int threshold1, threshold2, threshold3, threshold4;
     [HideInInspector]
@@ -62,6 +65,7 @@ public class PointSystem : MonoBehaviour
 
     void Timer()
     {
+        maxTimer = intensityFuseTimer[gameManager.GameIntensity - 1];
         if (currentTimer == maxTimer)
         {
             sparkleDirector.Stop();
@@ -88,8 +92,6 @@ public class PointSystem : MonoBehaviour
             sparkleDirector.Stop();
             sparkle.Stop();
         }
-
-
     }
 
     public void Combo()
