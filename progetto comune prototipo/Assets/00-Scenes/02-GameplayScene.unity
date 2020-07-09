@@ -2381,9 +2381,9 @@ MonoBehaviour:
   scoreMultiplier: 1
   currentTimer: 0
   intensityFuseTimer:
-  - 0
-  - 0
-  - 0
+  - 4.65
+  - 4.5
+  - 5
   maxTimer: 4
   threshold1: 10
   threshold2: 25
