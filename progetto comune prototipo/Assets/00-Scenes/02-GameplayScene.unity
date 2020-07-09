@@ -2383,8 +2383,8 @@ MonoBehaviour:
   scoreMultiplier: 1
   currentTimer: 0
   intensityFuseTimer:
-  - 6
-  - 4.5
+  - 5
+  - 5
   - 5
   maxTimer: 4
   threshold1: 10
@@ -3732,7 +3732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &737690509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3804,8 +3804,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1130943915}
   - {fileID: 2088701718}
+  - {fileID: 1130943915}
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10836,11 +10836,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130943912}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.78, y: 6.19, z: 0}
+  m_LocalPosition: {x: -2.804, y: 0.433, z: 0.435}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 737690512}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1130943916
 Animator:
@@ -10876,7 +10876,7 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 8809944279991397722, guid: 123ee5abebfa1ee44b10499c51bb8b14, type: 2}
+  - key: {fileID: -599476986973088837, guid: 123ee5abebfa1ee44b10499c51bb8b14, type: 2}
     value: {fileID: 1130943916}
   m_ExposedReferences:
     m_References: []
@@ -15697,7 +15697,7 @@ RectTransform:
   m_LocalScale: {x: 0.055, y: 0.05, z: 0}
   m_Children: []
   m_Father: {fileID: 737690512}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
