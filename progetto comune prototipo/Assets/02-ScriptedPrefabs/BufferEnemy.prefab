@@ -66,8 +66,8 @@ MonoBehaviour:
   enemyID: 6
   scoreEnemy1: 2000
   scoreEnemy2: 4000
-  scoreEnemy3: 6000
-  scoreEnemy: 2000
+  scoreEnemy3: 7000
+  scoreEnemy: 0
   SignIntensity1Buffer:
   - {fileID: 8930077479501729272}
   - {fileID: 1049005568354933781}

@@ -58,8 +58,8 @@ MonoBehaviour:
   inkstoneDamage: 10
   scoreEnemy1: 1000
   scoreEnemy2: 2000
-  scoreEnemy3: 3000
-  scoreEnemy: 1000
+  scoreEnemy3: 4000
+  scoreEnemy: 0
   SignNormalYokai:
   - {fileID: 5860084195970591250}
   - {fileID: 7006057979038324579}

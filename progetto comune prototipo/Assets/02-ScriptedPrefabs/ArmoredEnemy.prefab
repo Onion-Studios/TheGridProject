@@ -349,8 +349,8 @@ MonoBehaviour:
   inkstoneDamage: 15
   scoreEnemy1: 2500
   scoreEnemy2: 5000
-  scoreEnemy3: 7500
-  scoreEnemy: 2500
+  scoreEnemy3: 8500
+  scoreEnemy: 0
   armoredLife: 2
   signarmoredenemy: []
   baseSpeed: 0.8

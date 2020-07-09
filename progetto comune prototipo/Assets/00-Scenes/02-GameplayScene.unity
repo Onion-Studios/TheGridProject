@@ -2381,9 +2381,9 @@ MonoBehaviour:
   scoreMultiplier: 1
   currentTimer: 0
   intensityFuseTimer:
-  - 6
-  - 5
-  - 6
+  - 0
+  - 0
+  - 0
   maxTimer: 4
   threshold1: 10
   threshold2: 25
@@ -2393,6 +2393,7 @@ MonoBehaviour:
   floatscore: 0
   fuse: {fileID: 2088701719}
   sparkle: {fileID: 1130943914}
+  WM: {fileID: 2511655500189852335}
 --- !u!4 &305775847
 Transform:
   m_ObjectHideFlags: 0

@@ -74,7 +74,7 @@ MonoBehaviour:
   inkstoneDamage: 20
   scoreEnemy2: 6000
   scoreEnemy3: 12000
-  scoreEnemy: 6000
+  scoreEnemy: 0
   signfrighteningenemy: []
   baseSpeed: 1.6
   startPosition: 0
