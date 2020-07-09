@@ -2384,7 +2384,7 @@ MonoBehaviour:
   scoreMultiplier: 1
   currentTimer: 0
   intensityFuseTimer:
-  - 4.65
+  - 6
   - 4.5
   - 5
   maxTimer: 4
@@ -16310,6 +16310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: TEST_WaveIntensity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
+        type: 3}
+      propertyPath: TEST_WaveActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da923c4d8b16c14ca6bc53897d3da74, type: 3}
