@@ -16224,6 +16224,11 @@ PrefabInstance:
       propertyPath: intensityReset
       value: 
       objectReference: {fileID: 228951402}
+    - target: {fileID: 2511655499594568250, guid: 3da923c4d8b16c14ca6bc53897d3da74,
+        type: 3}
+      propertyPath: TEST_WaveIntensity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da923c4d8b16c14ca6bc53897d3da74, type: 3}
 --- !u!114 &2511655500189852335 stripped
