@@ -25,6 +25,7 @@ public class PointSystem : MonoBehaviour
     public ParticleSystem sparkle;
     private PlayableDirector sparkleDirector;
     GameManager gameManager;
+    public WaveManager WM;
 
 
     // Start is called before the first frame update
@@ -65,7 +66,15 @@ public class PointSystem : MonoBehaviour
 
     void Timer()
     {
-        maxTimer = intensityFuseTimer[gameManager.GameIntensity - 1];
+        if (WM.TEST_WaveActive == false)
+        {
+            maxTimer = intensityFuseTimer[gameManager.GameIntensity - 1];
+
+        }
+        else
+        {
+            maxTimer = intensityFuseTimer[WM.TEST_WaveIntensity - 1];
+        }
         if (currentTimer == maxTimer)
         {
             sparkleDirector.Stop();
