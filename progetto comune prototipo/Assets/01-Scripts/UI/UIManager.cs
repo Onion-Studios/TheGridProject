@@ -99,6 +99,7 @@ public class UIManager : MonoBehaviour
 
     void TEST_UpdateTimer()
     {
-        TEST_timer.text = PS.currentTimer.ToString();
+        int intTimer = (int)PS.currentTimer;
+        TEST_timer.text = intTimer.ToString();
     }
 }
