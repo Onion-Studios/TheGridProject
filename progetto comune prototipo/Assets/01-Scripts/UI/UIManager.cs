@@ -14,8 +14,10 @@ public class UIManager : MonoBehaviour
     PointSystem pointsystem;
     [SerializeField]
     Yokaislayer YS;
+    public PointSystem PS;
     public Text score_text;
     public Text scoremultiplier_text;
+    public Text TEST_timer;
     #endregion
 
 
@@ -61,6 +63,8 @@ public class UIManager : MonoBehaviour
         UpdateScore();
 
         UpdateScoreMultiplier();
+
+        TEST_UpdateTimer();
     }
 
 
@@ -93,4 +97,8 @@ public class UIManager : MonoBehaviour
         scoremultiplier_text.text = "x" + pointsystem.scoreMultiplier.ToString();
     }
 
+    void TEST_UpdateTimer()
+    {
+        TEST_timer.text = PS.currentTimer.ToString();
+    }
 }
