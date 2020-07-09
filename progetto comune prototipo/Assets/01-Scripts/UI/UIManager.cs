@@ -63,8 +63,6 @@ public class UIManager : MonoBehaviour
         UpdateScore();
 
         UpdateScoreMultiplier();
-
-        TEST_UpdateTimer();
     }
 
 
@@ -95,11 +93,5 @@ public class UIManager : MonoBehaviour
     void UpdateScoreMultiplier()
     {
         scoremultiplier_text.text = "x" + pointsystem.scoreMultiplier.ToString();
-    }
-
-    void TEST_UpdateTimer()
-    {
-        int intTimer = (int)PS.currentTimer;
-        TEST_timer.text = intTimer.ToString();
     }
 }
