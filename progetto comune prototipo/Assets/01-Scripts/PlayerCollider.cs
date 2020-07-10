@@ -3,7 +3,6 @@
 public class PlayerCollider : MonoBehaviour
 {
     Playerbehaviour PB;
-    bool hitOnce;
     private void Start()
     {
         PB = FindObjectOfType<Playerbehaviour>();
@@ -30,6 +29,9 @@ public class PlayerCollider : MonoBehaviour
             }
             PB.hitOnce = true;
         }
-
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        PB.hitOnce = false;
     }
 }

@@ -159,6 +159,7 @@ public class IntensityReset : MonoBehaviour
             blackPanel.color = new Color(0, 0, 0, 1);
             particleCamera.SetActive(false);
             inkStone.inkSplash.Play();
+            PB.hitOnce = false;
             intensityResetIndex++;
         }
     }
