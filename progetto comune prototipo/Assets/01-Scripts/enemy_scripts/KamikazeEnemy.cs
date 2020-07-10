@@ -198,11 +198,6 @@ public class KamikazeEnemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        Destroy(gameObject);
-    }
-
     void ExplosionWork(Vector3 explosionPoint)
     {
         //AudioManager.Instance.PlaySound("KamikazeExplosion");
@@ -246,6 +241,5 @@ public class KamikazeEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         this.gameObject.SetActive(false);
-        playerbehaviour.hitOnce = false;
     }
 }

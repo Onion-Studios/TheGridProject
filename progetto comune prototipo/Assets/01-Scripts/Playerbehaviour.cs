@@ -40,6 +40,7 @@ public class Playerbehaviour : MonoBehaviour
     [HideInInspector]
     public Animator kitsuneAnimator;
     private int layerMask;
+    [HideInInspector]
     public bool invincibilityActive;
     bool invincibilityTimerOn;
     private float invTimer;
