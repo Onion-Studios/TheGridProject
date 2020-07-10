@@ -57,6 +57,8 @@ public class StartEndSequence : MonoBehaviour
     private Text randomCuriosity;
     [SerializeField]
     private string[] curiosityArray;
+    [SerializeField]
+    private CrowdFeedbacks crowdFeedbacks;
     #endregion
 
     void Awake()
@@ -323,6 +325,7 @@ public class StartEndSequence : MonoBehaviour
                 case 0:
                     crowd.enabled = false;
                     StopAllEnemies();
+                    crowdFeedbacks.FrenzyEffect(false);
                     break;
                 case 1:
                     if (lightsOFF == null)
@@ -458,7 +461,7 @@ public class StartEndSequence : MonoBehaviour
     {
         if (endSequencePositionPlayed == false)
         {
-            Invoke("EndSequencePosition",5);
+            Invoke("EndSequencePosition", 5);
             endSequencePositionPlayed = true;
         }
         AudioManager.Instance.StopAllSounds();
