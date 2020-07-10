@@ -452,5 +452,5 @@ MonoBehaviour:
   intensityReset: {fileID: 0}
   Activewave_intensity: 3
   Activewave_number: 0
-  TEST_WaveActive: 1
-  TEST_WaveIntensity: 2
+  TEST_WaveActive: 0
+  TEST_WaveIntensity: 1
