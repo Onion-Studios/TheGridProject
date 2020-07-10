@@ -323,7 +323,7 @@ public class BufferEnemy : MonoBehaviour
         enemy.GetComponent<Renderer>().material.color = Color.white;
         hat.GetComponent<Renderer>().material.color = Color.white;
 
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
 

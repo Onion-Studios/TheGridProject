@@ -127,7 +127,7 @@ public class MalevolentEnemy : MonoBehaviour
     {
         malevolentAnimator.SetBool("MalevolentDeath", true);
         Inkstone.Ink += playerbehaviour.inkGained;
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         SecretT.bar += SecretT.charge;
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;

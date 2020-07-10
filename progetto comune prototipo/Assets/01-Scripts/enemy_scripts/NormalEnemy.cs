@@ -231,7 +231,7 @@ public class NormalEnemy : MonoBehaviour
     {
         enemy.GetComponent<Renderer>().material.color = Color.white;
         band.GetComponent<Renderer>().material.color = Color.white;
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
 

@@ -323,6 +323,9 @@ public class ArmoredEnemy : MonoBehaviour
         if (armoredLife == 2)
         {
             speed = baseSpeedMax + GM.intensitySpeedIncrease;
+
+            AddCombo();
+
             armoredLife -= 1;
             armoredAnimator.SetBool("ArmorBroken", true);
             AudioManager.Instance.PlaySound("Armordestroyed");
@@ -389,17 +392,14 @@ public class ArmoredEnemy : MonoBehaviour
     public void Death()
     {
         armoredLife = 2;
-        enemyspawnmanager.enemykilled += 2;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         TrueDeath();
 
         AudioManager.Instance.PlaySound("EnemyDeath");
 
-        pointsystem.currentTimer = pointsystem.maxTimer;
-        pointsystem.countercombo++;
-
-        pointsystem.Combo();
+        AddCombo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
     }
@@ -482,5 +482,13 @@ public class ArmoredEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+    }
+
+    void AddCombo()
+    {
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
     }
 }
