@@ -3094,6 +3094,7 @@ GameObject:
   - component: {fileID: 382773405}
   - component: {fileID: 382773407}
   - component: {fileID: 382773406}
+  - component: {fileID: 382773408}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3117,7 +3118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: 240}
+  m_AnchoredPosition: {x: -41, y: 217}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382773406
@@ -3153,9 +3154,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "THESE ARE THE LEFT USES OF THE YOKAI SLAYER,\nA POWERFUL SKILL THAT WIPES
-    OUT ALL THE \nENEMIES ON SCREEN. YOU CAN USE THAT ONLY 3 \nTIMES PER GAME BY PRESSING
-    SHIFT/C/***/***\r\n"
+  m_Text: "BY PRESSING SHIFT/C/***/*** YOU USE THE YOKAI SLAYER WHICH WIPES\nOUT ALL
+    THE ENEMIES ON THE SCREEN.\nIT'S LIMITED 3 TIMES FOR GAME these signs signal \nthe
+    remaining uses.\r\n\n"
 --- !u!222 &382773407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3164,6 +3165,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382773404}
   m_CullTransparentMesh: 0
+--- !u!114 &382773408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382773404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &409084331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3360,7 +3373,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 96cafc50e1260844ab0b4c44bc3f3bd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff166740dcd743c4e9a5deaa19248c7b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4528,6 +4541,8 @@ GameObject:
   - component: {fileID: 608627714}
   - component: {fileID: 608627716}
   - component: {fileID: 608627715}
+  - component: {fileID: 608627718}
+  - component: {fileID: 608627717}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -4587,10 +4602,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "USE WASD/\u2190 \u2191 \u2192 \u2193/   /    TO MOVE ON THE GRID TO TRACE
-    SYMBOLS.\n USE SPACE/Z/   /    TO CONFIRM THE SYMBOL.\nONCE CONFIRMED YOUR POSITION
-    IS RESET TO THE CENTER AND THE SCROLL\n RETURNS BLANK, READY FOR ANOTHER SYMBOL
-    TO BE TRACED."
+  m_Text: "Use WASD/\u2190 \u2191 \u2192 \u2193/***/ *** to move on the grid to trace
+    symbols.\nUse Space/Z/***/*** to confirm the symbol, \nreset to the center and
+    cleans the grid for another symbol.\r\n"
 --- !u!222 &608627716
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4599,6 +4613,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608627713}
   m_CullTransparentMesh: 0
+--- !u!114 &608627717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608627713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &608627718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608627713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619604447
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,6 +5368,7 @@ GameObject:
   - component: {fileID: 707723296}
   - component: {fileID: 707723298}
   - component: {fileID: 707723297}
+  - component: {fileID: 707723299}
   m_Layer: 5
   m_Name: Text 2
   m_TagString: Untagged
@@ -5353,7 +5392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -206, y: -63}
+  m_AnchoredPosition: {x: 256, y: -319}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707723297
@@ -5389,9 +5428,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "DEFEAT ENEMIES WITHOUT GETTING HIT DIRECTLY \nTO CHARGE UP THIS PAINTING.
-    WHEN FULLY CHARGED,\n IT SPARKLES AND A SPECIAL SYMBOL WILL APPEAR.\n TRACE IT
-    TO WIPE OUT ALL THE ENEMIES ON SCREEN"
+  m_Text: "The Secret Technique is a skill that when active lets you \ntrace a symbol
+    that wipes out all enemies.\r\nIt is charged by defeating enemies, getting hit
+    directly reduces the charge a lot.\r\n"
 --- !u!222 &707723298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5400,6 +5439,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707723295}
   m_CullTransparentMesh: 0
+--- !u!114 &707723299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707723295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &709666391
 GameObject:
   m_ObjectHideFlags: 0
@@ -7170,6 +7221,7 @@ GameObject:
   - component: {fileID: 952185012}
   - component: {fileID: 952185014}
   - component: {fileID: 952185013}
+  - component: {fileID: 952185015}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -7193,7 +7245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -580, y: 242}
+  m_AnchoredPosition: {x: -508, y: 63}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952185013
@@ -7229,9 +7281,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "THIS IS YOUR COMBO MULTIPLIER.\nDEFEATING ENEMIES BEFORE THE FUSE\nBURNS
-    OUT WILL CAUSE IT TO INCREASE.\nHIGHER THE MULTIPLIER, MORE ARE THE\n POINTS GAINED
-    WHEN ENEMIES ARE DEFEATED."
+  m_Text: "This is your combo multiplier, a higher multiplier \nmeans more points
+    on enemy defeat.\r\nKeep defeating enemies to increase it but don\u2019t \nlet
+    the fuse burn out or it will reset.\r\n"
 --- !u!222 &952185014
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7240,6 +7292,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952185011}
   m_CullTransparentMesh: 0
+--- !u!114 &952185015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952185011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &954807860
 GameObject:
   m_ObjectHideFlags: 0
@@ -9527,6 +9591,7 @@ GameObject:
   - component: {fileID: 1161663255}
   - component: {fileID: 1161663257}
   - component: {fileID: 1161663256}
+  - component: {fileID: 1161663258}
   m_Layer: 5
   m_Name: Text 3
   m_TagString: Untagged
@@ -9550,7 +9615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 595, y: -96}
+  m_AnchoredPosition: {x: 614, y: 15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1161663256
@@ -9586,8 +9651,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "THIS DRAGON APPEARS WHEN THE GAME\nBECOMES MORE DIFFICULT. HIGHER THE \nDIFFICULTY,
-    MORE ARE THE POINTS\nGAINED PASSIVELY OVER TIME."
+  m_Text: "This dragon appears \nwhen the game changes difficulty.\r\nHigher the difficulty,\n
+    more are the points gained.\r\n"
 --- !u!222 &1161663257
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9596,6 +9661,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161663254}
   m_CullTransparentMesh: 0
+--- !u!114 &1161663258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161663254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1163793223
 GameObject:
   m_ObjectHideFlags: 0
@@ -9656,7 +9733,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 017dc71f23348bc48b092a8aad546f49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3af3f48d1a673324780bcfdf1e2d64f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12352,6 +12429,7 @@ GameObject:
   - component: {fileID: 1467499416}
   - component: {fileID: 1467499418}
   - component: {fileID: 1467499417}
+  - component: {fileID: 1467499419}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -12375,7 +12453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -149, y: 276}
+  m_AnchoredPosition: {x: -526, y: 334}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467499417
@@ -12411,8 +12489,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "KEEP AN EYE AT THIS SIGN: IT SHOWS YOUR CURRENT AND MAX INK.\n IF YOU RUN
-    OUT OF IT YOU WILL LOSE THE GAME."
+  m_Text: "This sign shows your \nink and max ink quantity. \nIf you run out of it,
+    you lose."
 --- !u!222 &1467499418
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12421,6 +12499,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467499415}
   m_CullTransparentMesh: 0
+--- !u!114 &1467499419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467499415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1470931434
 GameObject:
   m_ObjectHideFlags: 0
@@ -13974,6 +14064,7 @@ GameObject:
   - component: {fileID: 1616994194}
   - component: {fileID: 1616994196}
   - component: {fileID: 1616994195}
+  - component: {fileID: 1616994197}
   m_Layer: 5
   m_Name: Text 2
   m_TagString: Untagged
@@ -13997,7 +14088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 584, y: 90}
+  m_AnchoredPosition: {x: 598, y: -215}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616994195
@@ -14033,9 +14124,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "LOOK AT THE SIGN ON THE ENEMIES\u2019 HEAD\n AND TRACE IT EXACTLY AS SHOWN
-    TO DEFEAT\n THEM.\rENEMIES SIGNS BECOME MORE DIFFICULT\n AFTER DEFEATING A LOT
-    OF THEM WITHOUT\n GETTING HIT DIRECTLY."
+  m_Text: "TRACE THE SYMBOL OVER \nTHE ENEMIES HEAD TO DEFEAT THEM.\n"
 --- !u!222 &1616994196
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14044,6 +14133,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616994193}
   m_CullTransparentMesh: 0
+--- !u!114 &1616994197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616994193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1628231142
 GameObject:
   m_ObjectHideFlags: 0
@@ -14304,6 +14405,7 @@ GameObject:
   - component: {fileID: 1644212386}
   - component: {fileID: 1644212388}
   - component: {fileID: 1644212387}
+  - component: {fileID: 1644212389}
   m_Layer: 5
   m_Name: Text 2
   m_TagString: Untagged
@@ -14327,7 +14429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270, y: 107}
+  m_AnchoredPosition: {x: -146, y: 140}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1644212387
@@ -14363,8 +14465,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "MOVING ON THE GRID DEPLETES\nTHE CURRENT INK HOWEVER YOU \nCAN STILL TRACE
-    SYMBOLS\nWITHOUT RUNNING OUT OF IT."
+  m_Text: "Moving on the grid depletes ink, \nyou won\u2019t lose by it since it remains
+    \nat a minimum of 1.\r\n"
 --- !u!222 &1644212388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14373,6 +14475,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644212385}
   m_CullTransparentMesh: 0
+--- !u!114 &1644212389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644212385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1645481734
 GameObject:
   m_ObjectHideFlags: 0
@@ -14946,7 +15060,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 50a267052986df3418f5c6160d41a3f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f29bfffd03f194a479e96852b5c5184b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -15417,6 +15531,7 @@ GameObject:
   - component: {fileID: 1754989202}
   - component: {fileID: 1754989204}
   - component: {fileID: 1754989203}
+  - component: {fileID: 1754989205}
   m_Layer: 5
   m_Name: Text 2
   m_TagString: Untagged
@@ -15440,7 +15555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: 157}
+  m_AnchoredPosition: {x: -80, y: 275}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754989203
@@ -15476,8 +15591,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "THESE ARE YOUR CURRENT POINTS. \nTHEY ARE GAINED BY DEFEATING ENEMIES\n
-    AND PASSIVELY OVER TIME. \nBEAT THE HIGHSCORE!"
+  m_Text: "These are your current points, \ngained from enemies and over time."
 --- !u!222 &1754989204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15486,6 +15600,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754989201}
   m_CullTransparentMesh: 0
+--- !u!114 &1754989205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754989201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1771665087
 GameObject:
   m_ObjectHideFlags: 0
@@ -15706,7 +15832,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6c465514a3dc3104d9a33ef6b99eb30c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c46882772927aa4785a5bc4a549e24c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -17248,6 +17374,7 @@ GameObject:
   - component: {fileID: 1972941607}
   - component: {fileID: 1972941609}
   - component: {fileID: 1972941608}
+  - component: {fileID: 1972941610}
   m_Layer: 5
   m_Name: Text 3
   m_TagString: Untagged
@@ -17271,7 +17398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: -154}
+  m_AnchoredPosition: {x: 354, y: 304}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972941608
@@ -17307,9 +17434,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "TAKING CONTACT DAMAGE FROM AN ENEMY\nREMOVES MAX INK CAPACITY AND SOME
-    \nCURRENT INK. IF AN ENEMY REACHES THE END\nOF THE GRID YOU LOSE CURRENT INK.
-    \nDEFEATING ENEMIES REFILLS A BIT OF INK"
+  m_Text: "Taking contact damage from an enemy reduces max ink quantity and some ink.\r\nIf
+    an enemy reaches the end of the grid you lose ink.\r\nDefeating enemies refills
+    a bit of ink.\r\n"
 --- !u!222 &1972941609
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17318,6 +17445,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972941606}
   m_CullTransparentMesh: 0
+--- !u!114 &1972941610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972941606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1978712782
 GameObject:
   m_ObjectHideFlags: 0
@@ -17933,7 +18072,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b3527b70c4cb5e944bc2b842e22d34f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d53b007dbefd33a409c8df82451d0e22, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -18037,6 +18176,7 @@ GameObject:
   - component: {fileID: 2045839365}
   - component: {fileID: 2045839367}
   - component: {fileID: 2045839366}
+  - component: {fileID: 2045839368}
   m_Layer: 5
   m_Name: Text 4
   m_TagString: Untagged
@@ -18060,7 +18200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -204, y: -285}
+  m_AnchoredPosition: {x: -281, y: -274}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045839366
@@ -18096,7 +18236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "DEFEAT ENEMIES TO GAIN POINTS.\n STRONGER ENEMIES ARE WORTH MORE POINTS."
+  m_Text: "Different enemies give \ndifferent points, based \non their strength."
 --- !u!222 &2045839367
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18105,6 +18245,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045839364}
   m_CullTransparentMesh: 0
+--- !u!114 &2045839368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045839364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0e7b5abc1389a4c9373098889297fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2050158043
 GameObject:
   m_ObjectHideFlags: 0
