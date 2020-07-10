@@ -49,6 +49,8 @@ public class Playerbehaviour : MonoBehaviour
     private float invTimerThreshold;
     [HideInInspector]
     public bool hitOnce;
+    [SerializeField]
+    private CrowdFeedbacks crowdFeedbacks;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -345,6 +347,7 @@ public class Playerbehaviour : MonoBehaviour
                     SecretT.active = false;
                     SecretT.currentTime = SecretT.timeMax;
                     SecretT.symbol.SetActive(false);
+                    crowdFeedbacks.FrenzyEffect(false);
                 }
                 else
                 {
