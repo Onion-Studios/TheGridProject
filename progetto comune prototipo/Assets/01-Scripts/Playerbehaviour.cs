@@ -108,7 +108,7 @@ public class Playerbehaviour : MonoBehaviour
         {
             kitsuneAnimator.SetBool("MovementKeyPressed", false);
         }
-        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.active == false && SecretT.timeStopped == false && intensityreset.intensityReset == false)
+        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.playerMovement == true && SecretT.timeStopped == false && intensityreset.intensityReset == false)
         {
             MovementHandler();
             if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
