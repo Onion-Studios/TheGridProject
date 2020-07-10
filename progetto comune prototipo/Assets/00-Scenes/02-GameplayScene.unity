@@ -1030,6 +1030,8 @@ MonoBehaviour:
   smokeBomb: {fileID: 0}
   smokeBombCenter: {fileID: 0}
   kitsuneAnimator: {fileID: 0}
+  Xpressed: 0
+  QUADRATOpressed: 0
 --- !u!4 &228951399
 Transform:
   m_ObjectHideFlags: 0

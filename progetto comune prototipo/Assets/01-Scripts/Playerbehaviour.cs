@@ -40,11 +40,16 @@ public class Playerbehaviour : MonoBehaviour
     [HideInInspector]
     public Animator kitsuneAnimator;
     private int layerMask;
+    public bool Xpressed = false;
+    public bool QUADRATOpressed = false;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
     void Start()
     {
+        Xpressed = Input.GetButton("Cross");
+        QUADRATOpressed = Input.GetButton("Square");
+
         managercombo = FindObjectOfType<Managercombo>();
         if (managercombo == null)
         {
@@ -91,6 +96,8 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Xpressed = Input.GetButton("Cross");
+        QUADRATOpressed = Input.GetButton("Square");
         if (startEndSequence.starting == false && startEndSequence.ending == false)
         {
             MovementHandler();
@@ -119,35 +126,35 @@ public class Playerbehaviour : MonoBehaviour
             if (movementState == "readystate")
             {
 
-                if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && istanze.transform.position.z > 0.9)
+                if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0 || Input.GetAxis("VerticalButtonsJoystick") == 0.1f) && istanze.transform.position.z > 0.9)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z - 1;
                     movementState = "movingforward";
 
                 }
-                if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && istanze.transform.position.z < 3.1)
+                if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.GetAxis("Vertical") < 0 || Input.GetAxis("VerticalButtonsJoystick") == -0.1f) && istanze.transform.position.z < 3.1)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.z + 1;
                     movementState = "movingback";
 
                 }
-                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && istanze.transform.position.x < 3.1)
+                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("HorizontalButtonsJoystick") == -0.1f) && istanze.transform.position.x < 3.1)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x + 1;
                     movementState = "movingleft";
 
                 }
-                if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && istanze.transform.position.x > 0.9)
+                if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("HorizontalButtonsJoystick") == 0.1f) && istanze.transform.position.x > 0.9)
                 {
                     audioManager.PlaySound("PlayerMovement");
                     finalDestination = istanze.transform.position.x - 1;
                     movementState = "movingright";
 
                 }
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Cross") || Input.GetButtonDown("RB"))
                 {
                     confirmPosition = istanze.transform.position;
                     smokeBomb.transform.position = confirmPosition;
