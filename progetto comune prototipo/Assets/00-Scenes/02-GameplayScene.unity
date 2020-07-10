@@ -1510,6 +1510,8 @@ MonoBehaviour:
   smokeBomb: {fileID: 0}
   smokeBombCenter: {fileID: 0}
   kitsuneAnimator: {fileID: 0}
+  Xpressed: 0
+  QUADRATOpressed: 0
   invincibilityActive: 0
   invTimerMax: 1
   invTimerThreshold: 0.21
@@ -12116,9 +12118,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1846950035}
-  - {fileID: 997513244}
+  m_Children: [{fileID: 1846950035}, {fileID: 997513244}]
   m_Father: {fileID: 81641526}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

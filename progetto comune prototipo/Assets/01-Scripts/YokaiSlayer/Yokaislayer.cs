@@ -66,6 +66,7 @@ public class Yokaislayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetAxis("RT") == 1 || Input.GetButtonDown("Square")) && playerbehaviour.yokaislayercount > 0 && active == false && startendsequence.starting == false && startendsequence.ending == false)
         if ((Input.GetKeyDown(KeyCode.LeftShift)
             || Input.GetKeyDown(KeyCode.C))
             && playerbehaviour.yokaislayercount > 0

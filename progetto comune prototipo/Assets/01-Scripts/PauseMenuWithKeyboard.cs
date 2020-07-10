@@ -50,11 +50,11 @@ public class PauseMenuWithKeyboard : MonoBehaviour
                 GameInPlay();
                 break;
             case MenuStates.FirstPauseMenu:
-                StateOperations();
+                //StateOperations();
                 FirstPauseMenu();
                 break;
             case MenuStates.AreYouSure:
-                StateOperations();
+                //StateOperations();
                 AreYouSure();
                 break;
         }
@@ -99,7 +99,7 @@ public class PauseMenuWithKeyboard : MonoBehaviour
         if (ExistingList == true)
         {
             ActivateImage();
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Vertical") == 1 || Input.GetAxis("VerticalButtonsJoystick") == 0.1f)
             {
                 Index--;
                 AudioManager.Instance.PlaySound("Hightonetick");
@@ -108,7 +108,7 @@ public class PauseMenuWithKeyboard : MonoBehaviour
                     Index = CurrentStateMenuButtons.Count - 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Vertical") == -1 || Input.GetAxis("VerticalButtonsJoystick") == -0.1f)
             {
                 Index++;
                 AudioManager.Instance.PlaySound("Hightonetick");

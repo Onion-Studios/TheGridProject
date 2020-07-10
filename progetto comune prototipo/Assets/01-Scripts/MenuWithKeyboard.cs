@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MenuWithKeyboard : MonoBehaviour
+/*public class MenuWithKeyboard : MonoBehaviour
 {
     public GameObject mainMenu, OptionsMenu, AudioMenu, VideoMenu, ControlsMenu, ExitDialogue, Record, PointsTag, howToPlay, credits, tutorial;
     public GameObject audioSelectedImage, videoSelectedImage;
@@ -111,7 +111,7 @@ public class MenuWithKeyboard : MonoBehaviour
         if (ExistingList == true)
         {
             ActivateImage();
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Vertical") > 0 || Input.GetAxis("VerticalButtonsJoystick") == 0.1f)
             {
                 Index--;
                 AudioManager.Instance.PlaySound("Hightonetick");
@@ -120,7 +120,7 @@ public class MenuWithKeyboard : MonoBehaviour
                     Index = CurrentStateMenuButtons.Count - 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Vertical") < 0 || Input.GetAxis("VerticalButtonsJoystick") == -0.1f)
             {
                 Index++;
                 AudioManager.Instance.PlaySound("Hightonetick");
@@ -634,3 +634,6 @@ public class MenuWithKeyboard : MonoBehaviour
     }
     #endregion
 }
+
+
+}*/
