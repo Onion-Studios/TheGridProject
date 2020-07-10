@@ -5254,6 +5254,7 @@ MonoBehaviour:
     fate. '
   - 'Trace signs to exorcise the evil spirits: you will be unstoppable! ... Or maybe
     not. '
+  crowdFeedbacks: {fileID: 81641529}
 --- !u!114 &986519609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15949,6 +15950,16 @@ PrefabInstance:
       propertyPath: PB
       value: 
       objectReference: {fileID: 228951398}
+    - target: {fileID: 833458094260430244, guid: e6e1215ef3b94c5479245bafaa6b30ed,
+        type: 3}
+      propertyPath: Ink
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 833458094260430244, guid: e6e1215ef3b94c5479245bafaa6b30ed,
+        type: 3}
+      propertyPath: maxInk
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e1215ef3b94c5479245bafaa6b30ed, type: 3}
 --- !u!114 &833458095924189351 stripped
