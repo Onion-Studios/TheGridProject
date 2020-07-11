@@ -122,8 +122,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.Instance.StopSound("MainTrack");
                 AudioManager.Instance.PlaySound("Track02");
 
-                //AudioManager.Instance.SetLoop("ClappingSound", false);
-                //AudioManager.Instance.PlaySound("ClappingSound");
+                AudioManager.Instance.PlaySound("ClappingSound");
                 if (joyEffectCO != null)
                 {
                     StopCoroutine(joyEffectCO);
@@ -149,8 +148,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.Instance.StopSound("Track02");
                 AudioManager.Instance.PlaySound("Track03");
 
-                //AudioManager.Instance.SetLoop("ClappingSound", false);
-                //AudioManager.Instance.PlaySound("ClappingSound");
+                AudioManager.Instance.PlaySound("ClappingSound");
 
                 if (joyEffectCO != null)
                 {
