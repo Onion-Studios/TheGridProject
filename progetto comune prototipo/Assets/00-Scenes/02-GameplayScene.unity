@@ -1544,6 +1544,7 @@ MonoBehaviour:
   WM: {fileID: 2511655500189852335}
   closecurtain: {x: 0, y: 0, z: 0}
   active: 0
+  playerMovement: 0
   tenda: {fileID: 1138158313}
   tenda2: {fileID: 554469085}
   curtainspeed: 10
@@ -1929,7 +1930,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268129724}
   m_LocalRotation: {x: 0.8762064, y: -0, z: -0, w: 0.48193616}
-  m_LocalPosition: {x: -3.18, y: 5.39, z: 6.37}
+  m_LocalPosition: {x: -3.235, y: 5.39, z: 6.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
