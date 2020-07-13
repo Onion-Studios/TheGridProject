@@ -16,8 +16,8 @@ public class Curtains : MonoBehaviour
 
     private void Awake()
     {
-        curtainLeft.GetComponent<Animator>();
-        curtainRight.GetComponent<Animator>();
+        leftCurtainAnimator = curtainLeft.GetComponent<Animator>();
+        rightCurtainAnimator = curtainRight.GetComponent<Animator>();
         openedCurtainLeft = curtainLeft.transform.position;
         openedCurtainRight = curtainRight.transform.position;
     }
@@ -33,8 +33,8 @@ public class Curtains : MonoBehaviour
             }
             leftCurtainAnimator.SetBool("Closing", true);
             rightCurtainAnimator.SetBool("Closing", true);
-            curtainLeft.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
-            curtainRight.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
+            curtainLeft.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
+            curtainRight.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
         }
         else
         {
@@ -59,8 +59,8 @@ public class Curtains : MonoBehaviour
             }
             leftCurtainAnimator.SetBool("Opening", true);
             rightCurtainAnimator.SetBool("Opening", true);
-            curtainLeft.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
-            curtainRight.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
+            curtainLeft.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
+            curtainRight.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
         }
         else
         {
