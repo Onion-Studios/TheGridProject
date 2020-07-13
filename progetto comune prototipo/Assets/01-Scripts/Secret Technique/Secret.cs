@@ -7,6 +7,7 @@ public class Secret : MonoBehaviour
     #region VARIABLES
     [SerializeField]
     private CrowdFeedbacks crowdFeedbacks;
+    Yokaislayer YS;
     [HideInInspector]
     [Range(0, 100)] public float bar;
     public float charge;
@@ -31,6 +32,7 @@ public class Secret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        YS = FindObjectOfType<Yokaislayer>();
         bar = 0;
         enemyspawnmanager = FindObjectOfType<Enemyspawnmanager>();
         timeStopped = false;
@@ -40,7 +42,10 @@ public class Secret : MonoBehaviour
     void Update()
     {
         ChangeColor();
-        Timer();
+        if (YS.active == false)
+        {
+            Timer();
+        }
     }
 
     void Timer()
