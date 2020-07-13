@@ -794,7 +794,7 @@ MonoBehaviour:
   sounds:
   - clipName: MainTrack
     clip: {fileID: 8300000, guid: 73ec4a1ebeac51e41a2f4bcc0d1ace14, type: 3}
-    volume: 0.07
+    volume: 0.7
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -842,7 +842,7 @@ MonoBehaviour:
       type: 2}
   - clipName: ClappingSound
     clip: {fileID: 8300000, guid: cecd8531f1d2f7743933fe25052e93c4, type: 3}
-    volume: 0.38
+    volume: 0.65
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -866,7 +866,7 @@ MonoBehaviour:
       type: 2}
   - clipName: BooSound
     clip: {fileID: 8300000, guid: f4b009b8ecc69024dbd13e9228656a83, type: 3}
-    volume: 0.6
+    volume: 0.65
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -1027,8 +1027,8 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
-  - clipName: resetgong
-    clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
+  - clipName: 
+    clip: {fileID: 0}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -1082,7 +1082,7 @@ MonoBehaviour:
       type: 2}
   - clipName: Track02
     clip: {fileID: 8300000, guid: 3196aeb94f30c474989b417caccb84b8, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
       type: 2}
   - clipName: Track03
     clip: {fileID: 8300000, guid: 35c60bc639f2bbe4d8a0bfdcec055f64, type: 3}
-    volume: 0.1
+    volume: 0.7
     pitch: 1
     loop: 1
     playOnAwake: 0
