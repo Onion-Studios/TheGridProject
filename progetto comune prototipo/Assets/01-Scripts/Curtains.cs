@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Curtains : MonoBehaviour
 {
@@ -10,11 +8,16 @@ public class Curtains : MonoBehaviour
     [SerializeField]
     Vector3 closedCurtainLeft, closedCurtainRight;
     private bool audioCurtainIsPlaying;
+    [HideInInspector]
+    public Animator leftCurtainAnimator;
+    [HideInInspector]
+    public Animator rightCurtainAnimator;
     #endregion
 
     private void Awake()
     {
-        
+        curtainLeft.GetComponent<Animator>();
+        curtainRight.GetComponent<Animator>();
         openedCurtainLeft = curtainLeft.transform.position;
         openedCurtainRight = curtainRight.transform.position;
     }
@@ -28,11 +31,15 @@ public class Curtains : MonoBehaviour
                 AudioManager.Instance.PlaySound("Curtains");
                 audioCurtainIsPlaying = true;
             }
+            leftCurtainAnimator.SetBool("Closing", true);
+            rightCurtainAnimator.SetBool("Closing", true);
             curtainLeft.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
             curtainRight.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
         }
         else
         {
+            leftCurtainAnimator.SetBool("Closing", false);
+            rightCurtainAnimator.SetBool("Closing", false);
             AudioManager.Instance.StopSound("Curtains");
             audioCurtainIsPlaying = false;
             curtainLeft.transform.position = closedCurtainLeft;
@@ -50,11 +57,15 @@ public class Curtains : MonoBehaviour
                 AudioManager.Instance.PlaySound("Curtains");
                 audioCurtainIsPlaying = true;
             }
+            leftCurtainAnimator.SetBool("Opening", true);
+            rightCurtainAnimator.SetBool("Opening", true);
             curtainLeft.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
             curtainRight.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
         }
         else
         {
+            leftCurtainAnimator.SetBool("Opening", false);
+            rightCurtainAnimator.SetBool("Opening", false);
             AudioManager.Instance.StopSound("Curtains");
             audioCurtainIsPlaying = false;
             curtainLeft.transform.position = openedCurtainLeft;
