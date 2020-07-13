@@ -1638,7 +1638,7 @@ MonoBehaviour:
   playerMovement: 0
   tenda: {fileID: 1138158313}
   tenda2: {fileID: 554469085}
-  curtainspeed: 10
+  curtainspeed: 5
   timeStop: 1
   YokaiSlayerTimelines:
   - {fileID: 200598255}
@@ -3290,7 +3290,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b8a58353cd95792438004e45652e4f70,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.95
+      value: -11.95
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b8a58353cd95792438004e45652e4f70,
         type: 3}
@@ -16583,7 +16583,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b8a58353cd95792438004e45652e4f70,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.17
+      value: 6.17
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b8a58353cd95792438004e45652e4f70,
         type: 3}

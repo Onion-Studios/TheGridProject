@@ -12,14 +12,15 @@ public class Curtains : MonoBehaviour
     public Animator leftCurtainAnimator;
     [HideInInspector]
     public Animator rightCurtainAnimator;
+
     #endregion
 
     private void Awake()
     {
         leftCurtainAnimator = curtainLeft.GetComponent<Animator>();
         rightCurtainAnimator = curtainRight.GetComponent<Animator>();
-        openedCurtainLeft = curtainLeft.transform.position;
-        openedCurtainRight = curtainRight.transform.position;
+        openedCurtainLeft = curtainLeft.transform.localPosition;
+        openedCurtainRight = curtainRight.transform.localPosition;
     }
 
     public int CloseCurtains(int counterIncrease, float curtainsSpeed)
@@ -42,7 +43,8 @@ public class Curtains : MonoBehaviour
             rightCurtainAnimator.SetBool("Closing", false);
             AudioManager.Instance.StopSound("Curtains");
             audioCurtainIsPlaying = false;
-            curtainLeft.transform.position = closedCurtainLeft;
+            //curtainLeft.transform.localPosition = closedCurtainLeft;
+            //curtainRight.transform.localPosition = closedCurtainRight;
             counterIncrease++;
         }
         return counterIncrease;
@@ -68,8 +70,8 @@ public class Curtains : MonoBehaviour
             rightCurtainAnimator.SetBool("Opening", false);
             AudioManager.Instance.StopSound("Curtains");
             audioCurtainIsPlaying = false;
-            curtainLeft.transform.position = openedCurtainLeft;
-            curtainRight.transform.position = openedCurtainRight;
+            curtainLeft.transform.localPosition = openedCurtainLeft;
+            curtainRight.transform.localPosition = openedCurtainRight;
             counterIncrease++;
         }
         return counterIncrease;
@@ -77,7 +79,7 @@ public class Curtains : MonoBehaviour
 
     public void CloseTeleport()
     {
-        curtainLeft.transform.position = closedCurtainLeft;
-        curtainRight.transform.position = closedCurtainRight;
+        curtainLeft.transform.localPosition = closedCurtainLeft;
+        curtainRight.transform.localPosition = closedCurtainRight;
     }
 }
