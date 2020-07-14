@@ -106,6 +106,8 @@ public class ArmoredEnemy : MonoBehaviour
     private Transform armorPieceParent8;
     [SerializeField]
     private Transform armorPieceParent9;
+    [HideInInspector]
+    public bool isBuffed;
 
     #endregion
 
@@ -144,6 +146,7 @@ public class ArmoredEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         armorPiece1.GetComponent<Rigidbody>().isKinematic = true;
         armorPiece2.GetComponent<Rigidbody>().isKinematic = true;
         armorPiece3.GetComponent<Rigidbody>().isKinematic = true;

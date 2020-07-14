@@ -36,6 +36,8 @@ public class FrighteningEnemy : MonoBehaviour
     IEnumerator deathforendgrid;
     bool destinationReached;
     public Animator frighteningAnimator;
+    [HideInInspector]
+    public bool isBuffed;
 
     public GameObject[] SignIntensity2Frightening;
     public GameObject[] SignIntensity2PlusFrightening;
@@ -47,6 +49,7 @@ public class FrighteningEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {

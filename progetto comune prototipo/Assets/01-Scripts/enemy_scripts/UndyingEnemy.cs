@@ -46,6 +46,8 @@ public class UndyingEnemy : MonoBehaviour
     private bool alreadyDead;
     private bool wavePositionSet;
     private float enemyZPos;
+    [HideInInspector]
+    public bool isBuffed;
 
     #endregion
 
@@ -56,6 +58,7 @@ public class UndyingEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {

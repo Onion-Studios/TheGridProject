@@ -38,6 +38,8 @@ public class KamikazeEnemy : MonoBehaviour
     private ParticleSystem explosion;
     public ParticleSystem buffEffect;
     public Animator kamikazeAnimator;
+    [HideInInspector]
+    public bool isBuffed;
     #endregion
 
     private void Awake()
@@ -46,6 +48,7 @@ public class KamikazeEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {

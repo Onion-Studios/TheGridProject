@@ -50,6 +50,8 @@ public class NormalEnemy : MonoBehaviour
     private ParticleSystem inkAbsorb;
     public float stopTime, waitTime;
     IEnumerator deathforendgrid;
+    [HideInInspector]
+    public bool isBuffed;
 
     #endregion
 
@@ -59,6 +61,7 @@ public class NormalEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         destinationReached = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
