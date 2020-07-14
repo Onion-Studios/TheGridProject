@@ -12,6 +12,7 @@ public class Curtains : MonoBehaviour
     public Animator leftCurtainAnimator;
     [HideInInspector]
     public Animator rightCurtainAnimator;
+    public float openingDelay;
 
     #endregion
 
@@ -39,8 +40,9 @@ public class Curtains : MonoBehaviour
         }
         else
         {
+            Invoke("OpeningDelay", openingDelay);
             leftCurtainAnimator.SetBool("Closing", false);
-            rightCurtainAnimator.SetBool("Closing", false);
+
             AudioManager.Instance.StopSound("Curtains");
             audioCurtainIsPlaying = false;
             //curtainLeft.transform.localPosition = closedCurtainLeft;
@@ -50,6 +52,10 @@ public class Curtains : MonoBehaviour
         return counterIncrease;
     }
 
+    private void OpeningDelay()
+    {
+        rightCurtainAnimator.SetBool("Closing", false);
+    }
     public int OpenCurtains(int counterIncrease, float curtainsSpeed)
     {
         if (curtainLeft.transform.localPosition.x < openedCurtainLeft.x)
