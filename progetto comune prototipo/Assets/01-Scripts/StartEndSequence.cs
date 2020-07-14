@@ -412,6 +412,8 @@ public class StartEndSequence : MonoBehaviour
                                 ArmoredEnemy.armorPiece5.SetActive(false);
                                 ArmoredEnemy.armorPiece6.SetActive(false);
                                 ArmoredEnemy.armorPiece7.SetActive(false);
+                                ArmoredEnemy.armorPiece8.SetActive(false);
+                                ArmoredEnemy.armorPiece9.SetActive(false);
 
                             }
                             break;
