@@ -793,7 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clipName: MainTrack
-    clip: {fileID: 8300000, guid: 73ec4a1ebeac51e41a2f4bcc0d1ace14, type: 3}
+    clip: {fileID: 8300000, guid: f5538242976e84544aa57a82fc7d5852, type: 3}
     volume: 0.7
     pitch: 1
     loop: 1
@@ -1089,7 +1089,7 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: Track03
-    clip: {fileID: 8300000, guid: 35c60bc639f2bbe4d8a0bfdcec055f64, type: 3}
+    clip: {fileID: 8300000, guid: de12efa07c1ac7041ace070b37fd8cd6, type: 3}
     volume: 0.7
     pitch: 1
     loop: 1
