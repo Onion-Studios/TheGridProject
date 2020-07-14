@@ -88,16 +88,10 @@ public class PointSystem : MonoBehaviour
             currentTimer -= 1 * Time.deltaTime;
             fuse.fillAmount = currentTimer / maxTimer;
         }
-
-        if (currentTimer < 0)
-        {
-            currentTimer = 0;
-
-        }
-
-        if (currentTimer == 0)
+        else
         {
             countercombo = 0;
+            Combo();
             sparkleDirector.Stop();
             sparkle.Stop();
         }

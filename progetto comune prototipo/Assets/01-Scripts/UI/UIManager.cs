@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     public PointSystem PS;
     public Text score_text;
     public Text scoremultiplier_text;
-    public Text TEST_timer;
     #endregion
 
 
