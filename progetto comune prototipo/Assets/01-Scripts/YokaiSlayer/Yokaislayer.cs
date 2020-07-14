@@ -11,6 +11,7 @@ public class Yokaislayer : MonoBehaviour
     StartEndSequence startendsequence;
     Inkstone inkStone_;
     Curtains curtains;
+    IntensityReset intensityReset;
     public WaveManager WM;
     public Vector3 closecurtain;
     public bool active;
@@ -49,11 +50,17 @@ public class Yokaislayer : MonoBehaviour
         {
             Debug.LogError("Inkstone is NULL!");
         }
-        curtains = FindObjectOfType<Curtains>();
 
+        curtains = FindObjectOfType<Curtains>();
         if (curtains == null)
         {
             Debug.LogError("Curtains is NULL!");
+        }
+
+        intensityReset = FindObjectOfType<IntensityReset>();
+        if (intensityReset == null)
+        {
+            Debug.LogError("IntensityReset is NULL");
         }
         active = false;
 
@@ -71,7 +78,8 @@ public class Yokaislayer : MonoBehaviour
             && playerbehaviour.yokaislayercount > 0
             && active == false
             && startendsequence.starting == false
-            && startendsequence.ending == false)
+            && startendsequence.ending == false
+            && intensityReset.intensityReset == false)
         {
             active = true;
         }
