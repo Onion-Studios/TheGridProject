@@ -254,7 +254,7 @@ public class Managercombo : MonoBehaviour
         SpecialSignMatrix[0] = new nodes[6] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2), new nodes(-1, 2), new nodes(-1, 1) };
         SpecialSignMatrix[1] = new nodes[6] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 0), new nodes(2, -1), new nodes(1, -1) };
         //2 casi di secret tecnique
-        SpecialSignMatrix[2] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(1, -2) };
+        SpecialSignMatrix[2] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, 0), new nodes(-2, 1), new nodes(-2, 2), new nodes(-1, 2) };
         SpecialSignMatrix[3] = new nodes[7] { new nodes(-1, 0), new nodes(-1, -1), new nodes(-1, -2), new nodes(-1, -3), new nodes(0, -3), new nodes(0, -2), new nodes(1, -2) };
 
         #endregion
