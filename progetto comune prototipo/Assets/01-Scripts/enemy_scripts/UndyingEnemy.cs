@@ -34,6 +34,8 @@ public class UndyingEnemy : MonoBehaviour
     [SerializeField]
     private ParticleSystem undyingSlashWave;
     [SerializeField]
+    private ParticleSystem inkSplat;
+    [SerializeField]
     private float speedSlashWave;
     [SerializeField]
     private float stopSlashWaveTime;
@@ -44,6 +46,8 @@ public class UndyingEnemy : MonoBehaviour
     private bool alreadyDead;
     private bool wavePositionSet;
     private float enemyZPos;
+    [HideInInspector]
+    public bool isBuffed;
 
     #endregion
 
@@ -51,30 +55,10 @@ public class UndyingEnemy : MonoBehaviour
     {
         waveSlashPosition = GetComponentsInChildren<Transform>()[2].localPosition;
         undyingAnimator = GetComponentInChildren<Animator>();
-        enemyZPos = transform.position.z;
-        if (enemyZPos == 0)
-        {
-            laneID = 0;
-        }
-        else if (enemyZPos == 1)
-        {
-            laneID = 1;
-        }
-        else if (enemyZPos == 2)
-        {
-            laneID = 2;
-        }
-        else if (enemyZPos == 3)
-        {
-            laneID = 3;
-        }
-        else if (enemyZPos == 4)
-        {
-            laneID = 4;
-        }
     }
     private void OnEnable()
     {
+        isBuffed = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -117,17 +101,41 @@ public class UndyingEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
+        //identifica la lane in cui l'undying viene spawnato
+        enemyZPos = transform.position.z;
+        if (enemyZPos == 0)
+        {
+            laneID = 0;
+        }
+        else if (enemyZPos == 1)
+        {
+            laneID = 1;
+        }
+        else if (enemyZPos == 2)
+        {
+            laneID = 2;
+        }
+        else if (enemyZPos == 3)
+        {
+            laneID = 3;
+        }
+        else if (enemyZPos == 4)
+        {
+            laneID = 4;
+        }
+
+
         currentTime = maxTime;
         repelled = false;
         alreadyDead = false;
         startingPosition = this.transform.localPosition;
         undyingAnimator.SetBool("UndyingDeath", false);
-        /*if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
+        if (AudioManager.Instance.IsPlaying("UndyingWarcry") == false)
         {
             AudioManager.Instance.PlaySound("UndyingWarcry");
         }
         wavePositionSet = false;
-        }*/
+
     }
 
 
@@ -297,16 +305,22 @@ public class UndyingEnemy : MonoBehaviour
 
     public void Deathforsign()
     {
+        AddCombo();
         Inkstone.Ink += playerbehaviour.inkGained;
         repelled = true;
         undyingAnimator.SetBool("IsRepelled", true);
         attackTimer = 0;
         AudioManager.Instance.PlaySound("undyingrepelled");
+        inkSplat.Play();
     }
 
 
     public void DeathForTimer()
     {
+        if (currentTime < 1.5f && currentTime > 0.5f)
+        {
+            AudioManager.Instance.PlaySound("Undyingenemydeath");
+        }
         if (currentTime > 0)
         {
             currentTime -= 1 * Time.deltaTime;
@@ -327,14 +341,11 @@ public class UndyingEnemy : MonoBehaviour
 
             attackTimer = 0;
             currentTime = maxTime;
-            enemyspawnmanager.enemykilled += 1;
+            enemyspawnmanager.enemykilled++;
             Inkstone.Ink += playerbehaviour.inkGained;
             SecretT.bar += SecretT.charge;
 
-            pointsystem.currentTimer = pointsystem.maxTimer;
-            pointsystem.countercombo++;
-
-            pointsystem.Combo();
+            AddCombo();
 
             pointsystem.score += scoreEnemy * pointsystem.scoreMultiplier;
             TrueDeath();
@@ -348,5 +359,13 @@ public class UndyingEnemy : MonoBehaviour
             segno.SetActive(false);
         }
         this.gameObject.SetActive(false);
+    }
+
+    void AddCombo()
+    {
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
     }
 }

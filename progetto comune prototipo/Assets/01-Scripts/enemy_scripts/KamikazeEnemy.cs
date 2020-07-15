@@ -15,6 +15,13 @@ public class KamikazeEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    WaveManager WM;
+    [SerializeField]
+    int scoreEnemy1;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
     public int scoreEnemy;
     public GameObject[] SignIntensity1Kamikaze;
     public GameObject[] SignIntensity1PlusKamikaze;
@@ -31,6 +38,8 @@ public class KamikazeEnemy : MonoBehaviour
     private ParticleSystem explosion;
     public ParticleSystem buffEffect;
     public Animator kamikazeAnimator;
+    [HideInInspector]
+    public bool isBuffed;
     #endregion
 
     private void Awake()
@@ -39,6 +48,7 @@ public class KamikazeEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -81,8 +91,15 @@ public class KamikazeEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
+        WM = FindObjectOfType<WaveManager>();
+        if (WM == null)
+        {
+            Debug.LogError("Wave Manager is NULL");
+        }
+
         startPosition = transform.position.x;
 
+        SetScoreGiven();
     }
 
     // Update is called once per frame
@@ -92,7 +109,30 @@ public class KamikazeEnemy : MonoBehaviour
         PointOverDistance();
     }
 
-
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 1:
+                scoreEnemy = scoreEnemy1;
+                break;
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
+    }
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
@@ -114,19 +154,22 @@ public class KamikazeEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        explosion.transform.SetParent(null);
-        explosion.Play();
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
-        TrueDeath();
-        ExplosionWork(this.transform.position);
-        Invoke("ParentReassignment", explosionDelay);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            explosion.transform.SetParent(null);
+            explosion.Play();
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            TrueDeath();
+            ExplosionWork(this.transform.position);
+            Invoke("ParentReassignment", explosionDelay);
+        }
     }
 
     public void Deathforsign()
     {
         explosion.transform.SetParent(null);
         explosion.Play();
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         TrueDeath();
@@ -143,6 +186,7 @@ public class KamikazeEnemy : MonoBehaviour
     public void ParentReassignment()
     {
         explosion.transform.SetParent(this.transform);
+        explosion.transform.localPosition = Vector3.zero;
     }
 
     void PointOverDistance()
@@ -155,11 +199,6 @@ public class KamikazeEnemy : MonoBehaviour
         {
             extrapointsoverdistance = scoreEnemy;
         }
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        Destroy(gameObject);
     }
 
     void ExplosionWork(Vector3 explosionPoint)
@@ -192,9 +231,9 @@ public class KamikazeEnemy : MonoBehaviour
     }
     public void TrueDeath()
     {
+        foreach (GameObject segno in SignIntensity1Kamikaze)
         {
-            foreach (GameObject segno in SignIntensity1Kamikaze)
-                segno.SetActive(false);
+            segno.SetActive(false);
         }
         foreach (GameObject segno in SignIntensity1PlusKamikaze)
         {

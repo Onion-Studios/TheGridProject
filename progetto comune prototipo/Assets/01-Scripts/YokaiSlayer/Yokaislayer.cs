@@ -11,8 +11,11 @@ public class Yokaislayer : MonoBehaviour
     StartEndSequence startendsequence;
     Inkstone inkStone_;
     Curtains curtains;
+    IntensityReset intensityReset;
+    public WaveManager WM;
     public Vector3 closecurtain;
     public bool active;
+    public bool playerMovement;
     [HideInInspector]
     public GameObject tenda, tenda2;
     private int yokaiSlayerSequenceNumber;
@@ -34,11 +37,7 @@ public class Yokaislayer : MonoBehaviour
             Debug.LogError("EnemySpawnManager is NULL!");
         }
 
-        playerbehaviour = FindObjectOfType<Playerbehaviour>();
-        if (playerbehaviour == null)
-        {
-            Debug.LogError("Playerbehaviour is NULL!");
-        }
+        playerbehaviour = this.gameObject.GetComponent<Playerbehaviour>();
 
         startendsequence = FindObjectOfType<StartEndSequence>();
         if (startendsequence == null)
@@ -51,28 +50,30 @@ public class Yokaislayer : MonoBehaviour
         {
             Debug.LogError("Inkstone is NULL!");
         }
-        curtains = FindObjectOfType<Curtains>();
 
+        curtains = FindObjectOfType<Curtains>();
         if (curtains == null)
         {
             Debug.LogError("Curtains is NULL!");
+        }
+
+        intensityReset = FindObjectOfType<IntensityReset>();
+        if (intensityReset == null)
+        {
+            Debug.LogError("IntensityReset is NULL");
         }
         active = false;
 
         yokaiSlayerSequenceNumber = 0;
         signMovement = false;
         timer = timeStop;
+        playerMovement = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.LeftShift)
-            || Input.GetKeyDown(KeyCode.C))
-            && playerbehaviour.yokaislayercount > 0
-            && active == false
-            && startendsequence.starting == false
-            && startendsequence.ending == false)
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetAxis("RT") == 1 || Input.GetButtonDown("Square")) && playerbehaviour.yokaislayercount > 0 && active == false && startendsequence.starting == false && startendsequence.ending == false && intensityReset.intensityReset == false)
         {
             active = true;
         }
@@ -80,6 +81,10 @@ public class Yokaislayer : MonoBehaviour
         if (active == true)
         {
             YokaiSlayerSequence();
+        }
+        if (active == false && yokaiSlayerSequenceNumber == 8)
+        {
+            PostYokaiSlayer();
         }
     }
 
@@ -96,17 +101,18 @@ public class Yokaislayer : MonoBehaviour
                 yokaiSlayerSequenceNumber = curtains.CloseCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
             case 2:
-                ActivateYokaiSlayer();
+                ActivateYokaiSlayer(true);
                 AudioManager.Instance.PlaySound("YokaiSlayerBrawl");
                 break;
             case 3:
                 Waiting();
                 break;
             case 4:
-                yokaiSlayerSequenceNumber = curtains.OpenCurtains(yokaiSlayerSequenceNumber, curtainspeed);
+                ReloadInk();
+                ActivateYokaiSlayer(false);
                 break;
             case 5:
-                ReloadInk();
+                yokaiSlayerSequenceNumber = curtains.OpenCurtains(yokaiSlayerSequenceNumber, curtainspeed);
                 break;
             case 6:
                 SignMovement();
@@ -121,11 +127,12 @@ public class Yokaislayer : MonoBehaviour
 
     void SaveInk()
     {
+        playerMovement = false;
         ink = inkStone_.Ink;
         maxInk = inkStone_.maxInk;
         yokaiSlayerSequenceNumber++;
-        inkStone_.maxInk = 1000;
-        inkStone_.Ink = 1000;
+        inkStone_.maxInk = 10000;
+        inkStone_.Ink = 10000;
     }
 
     void ReloadInk()
@@ -141,6 +148,7 @@ public class Yokaislayer : MonoBehaviour
         {
             YokaiSlayerTimelines[playerbehaviour.yokaislayercount - 1].Play();
             signMovement = true;
+            playerMovement = true;
         }
     }
 
@@ -149,7 +157,7 @@ public class Yokaislayer : MonoBehaviour
     {
         if (timer > 0)
         {
-            timer -= 1 * Time.deltaTime;
+            timer -= Time.deltaTime;
         }
         else
         {
@@ -158,9 +166,8 @@ public class Yokaislayer : MonoBehaviour
         }
     }
 
-    void ActivateYokaiSlayer()
+    void ActivateYokaiSlayer(bool advanceSequence)
     {
-
         for (int i = 0; i < 7; i++)
         {
             foreach (GameObject nemici in enemyspawnmanager.poolenemy[i])
@@ -202,15 +209,21 @@ public class Yokaislayer : MonoBehaviour
                 }
             }
         }
-        yokaiSlayerSequenceNumber++;
+        playerbehaviour.yokairesettocenter();
+        if (advanceSequence == true) { yokaiSlayerSequenceNumber++; }
     }
 
     void FinalizeSequence()
     {
         playerbehaviour.yokaislayercount--;
-        yokaiSlayerSequenceNumber = 0;
-
+        yokaiSlayerSequenceNumber++;
         active = false;
         signMovement = false;
+    }
+
+    void PostYokaiSlayer()
+    {
+        WM.RestartWaves();
+        yokaiSlayerSequenceNumber = 0;
     }
 }

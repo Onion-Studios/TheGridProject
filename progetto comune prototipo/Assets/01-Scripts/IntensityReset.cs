@@ -7,6 +7,8 @@ public class IntensityReset : MonoBehaviour
     Enemyspawnmanager enemyspawnmanager;
     [SerializeField]
     Inkstone inkStone;
+    Playerbehaviour PB;
+    public WaveManager WM;
     public bool intensityReset;
     int intensityResetIndex;
     public GameObject particleCamera;
@@ -30,6 +32,7 @@ public class IntensityReset : MonoBehaviour
         {
             Debug.LogError("EnemySpawnManager is NULL");
         }
+        PB = this.gameObject.GetComponent<Playerbehaviour>();
         blackPanelAlpha1 = new Color(0, 0, 0, 1);
         blackPanelAlpha0 = new Color(0, 0, 0, 0);
         timer = maxTimer;
@@ -156,6 +159,7 @@ public class IntensityReset : MonoBehaviour
             blackPanel.color = new Color(0, 0, 0, 1);
             particleCamera.SetActive(false);
             inkStone.inkSplash.Play();
+            PB.hitOnce = false;
             intensityResetIndex++;
         }
     }
@@ -168,6 +172,9 @@ public class IntensityReset : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.StopSound("Track02");
+            AudioManager.Instance.StopSound("Track03");
+            AudioManager.Instance.PlaySound("MainTrack");
             timer = 0;
             for (int i = 0; i < 7; i++)
             {
@@ -210,6 +217,7 @@ public class IntensityReset : MonoBehaviour
                 }
             }
             timer = maxTimer;
+            PB.ResetToCenter();
             intensityResetIndex++;
         }
     }
@@ -225,6 +233,7 @@ public class IntensityReset : MonoBehaviour
             blackPanel.color = new Color(0, 0, 0, 0);
             particleCamera.SetActive(true);
             intensityResetIndex = 0;
+            WM.RestartWaves();
             intensityReset = false;
             enemyspawnmanager.enemykilled = 0;
         }

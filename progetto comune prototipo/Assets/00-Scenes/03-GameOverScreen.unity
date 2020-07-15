@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 255352331}
   - component: {fileID: 255352334}
   - component: {fileID: 255352333}
+  - component: {fileID: 255352335}
   - component: {fileID: 255352332}
   m_Layer: 5
   m_Name: exit_button
@@ -291,7 +292,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
@@ -303,7 +304,8 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 4469907846065130128, guid: 3ccbaccea49e5104dabd27ef61e7b03b,
+      type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -316,8 +318,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 599485357}
-        m_MethodName: MouseClick
+      - m_Target: {fileID: 734584292}
+        m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -349,8 +351,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b6d7ccc3d9cfd5c4e83f65e93bf70e6d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -367,6 +369,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255352330}
   m_CullTransparentMesh: 0
+--- !u!114 &255352335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255352330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7068d4c08760f04289ce427f8e29e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &310018627
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +472,6 @@ GameObject:
   - component: {fileID: 599485355}
   - component: {fileID: 599485354}
   - component: {fileID: 599485353}
-  - component: {fileID: 599485357}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -549,26 +562,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &599485357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599485352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9577973d987cd9743b965aea1caac9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentStateMenu: {fileID: 0}
-  CurrentStateMenuButtons: []
-  SelectedImages: []
-  currentButtonOver: {fileID: 0}
-  check: {fileID: 0}
-  ExistingList: 0
-  mouseClick: 0
-  Index: 0
 --- !u!1 &613535076
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,8 +905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17540c68833d13645833ed652d46e757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaintainWidth: 1
-  AdaptPosition: 0
 --- !u!1 &1113414337
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +916,7 @@ GameObject:
   - component: {fileID: 1113414338}
   - component: {fileID: 1113414341}
   - component: {fileID: 1113414340}
+  - component: {fileID: 1113414342}
   - component: {fileID: 1113414339}
   m_Layer: 5
   m_Name: Retry_Button
@@ -972,7 +964,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
@@ -984,7 +976,8 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 4469907846065130128, guid: 3ccbaccea49e5104dabd27ef61e7b03b,
+      type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -997,8 +990,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 599485357}
-        m_MethodName: MouseClick
+      - m_Target: {fileID: 734584292}
+        m_MethodName: GoToGameplay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1030,8 +1023,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b6d7ccc3d9cfd5c4e83f65e93bf70e6d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1048,6 +1041,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113414337}
   m_CullTransparentMesh: 0
+--- !u!114 &1113414342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113414337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7068d4c08760f04289ce427f8e29e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1165098683
 GameObject:
   m_ObjectHideFlags: 0

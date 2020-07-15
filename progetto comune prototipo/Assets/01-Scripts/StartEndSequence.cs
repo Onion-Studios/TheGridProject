@@ -16,6 +16,10 @@ public class StartEndSequence : MonoBehaviour
     [HideInInspector]
     int endSequencePosition;
     public GameObject[] lightObjects;
+    [SerializeField]
+    GameObject[] activeWithLight;
+    [SerializeField]
+    GameObject[] activeWithoutLight;
     public float activateLight;
     public bool starting, ending, skipping;
     IEnumerator lightsON;
@@ -24,7 +28,6 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator loading;
     public float lightsStopTime;
     public float closedTime;
-    public GameObject tenda, tenda2;
     public float curtainspeed;
     public Text ink_text, counter_text, score_text, scoremultiplier_text;
     public Vector3 centerGrid;
@@ -54,6 +57,8 @@ public class StartEndSequence : MonoBehaviour
     private Text randomCuriosity;
     [SerializeField]
     private string[] curiosityArray;
+    [SerializeField]
+    private CrowdFeedbacks crowdFeedbacks;
     #endregion
 
     void Awake()
@@ -71,6 +76,7 @@ public class StartEndSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        particlesCamera.SetActive(false);
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -102,15 +108,19 @@ public class StartEndSequence : MonoBehaviour
         }
         lightsON = null;
         loading = null;
+        lightObjects[0].SetActive(false);
+        lightObjects[1].SetActive(false);
+        lightObjects[2].SetActive(false);
 
         int randomCuriosityNumber = Random.Range(0, curiosityArray.Length - 1);
         randomCuriosity.text = curiosityArray[randomCuriosityNumber].ToUpper();
+        OnOffScene(false);
     }
 
     void Update()
     {
         StartSequence();
-        if (skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return) && startSequencePosition >= 1)
+        if (skipping == false && startSequencePosition <= 3 && starting == true && Input.GetButtonDown("Submit") && startSequencePosition >= 1)
         {
             skipping = true;
         }
@@ -209,6 +219,7 @@ public class StartEndSequence : MonoBehaviour
                         lightsON = null;
                     }
                     PlayerToCenter();
+                    particlesCamera.SetActive(true);
                     break;
                 case 6:
                     startSequencePosition = curtains.OpenCurtains(startSequencePosition, curtainspeed);
@@ -239,7 +250,9 @@ public class StartEndSequence : MonoBehaviour
         else
         {
             timer = 0;
-            lightObjects[2].SetActive(true);
+            lightObjects[0].SetActive(true);
+            lightObjects[1].SetActive(false);
+            lightObjects[2].SetActive(false);
             if (skipping == false)
             {
                 AudioManager.Instance.PlaySound("Spotlight");
@@ -264,9 +277,10 @@ public class StartEndSequence : MonoBehaviour
     IEnumerator LightsON()
     {
         yield return new WaitForSeconds(closedTime);
-        lightObjects[2].SetActive(false);
-        lightObjects[0].SetActive(true);
+        lightObjects[0].SetActive(false);
         lightObjects[1].SetActive(true);
+        lightObjects[2].SetActive(false);
+        OnOffScene(true);
         startSequencePosition++;
     }
     void PlayerToCenter()
@@ -311,6 +325,7 @@ public class StartEndSequence : MonoBehaviour
                 case 0:
                     crowd.enabled = false;
                     StopAllEnemies();
+                    crowdFeedbacks.FrenzyEffect(false);
                     break;
                 case 1:
                     if (lightsOFF == null)
@@ -328,7 +343,6 @@ public class StartEndSequence : MonoBehaviour
                         lightsOFF = null;
                     }
                     Seppuku();
-                    AudioManager.Instance.PlaySound("Seppuku");
                     break;
                 case 3:
                     endSequencePosition = curtains.CloseCurtains(endSequencePosition, curtainspeed);
@@ -398,6 +412,8 @@ public class StartEndSequence : MonoBehaviour
                                 ArmoredEnemy.armorPiece5.SetActive(false);
                                 ArmoredEnemy.armorPiece6.SetActive(false);
                                 ArmoredEnemy.armorPiece7.SetActive(false);
+                                ArmoredEnemy.armorPiece8.SetActive(false);
+                                ArmoredEnemy.armorPiece9.SetActive(false);
 
                             }
                             break;
@@ -432,15 +448,13 @@ public class StartEndSequence : MonoBehaviour
     }
     IEnumerator LightsOFF()
     {
-        //yield return new WaitForSeconds(lightsStopTime);
-        lightObjects[1].SetActive(false);
-        lightObjects[2].SetActive(false);
-        //yield return new WaitForSeconds(lightsStopTime);
+        OnOffScene(false);
         lightObjects[0].SetActive(false);
+        lightObjects[1].SetActive(false);
+        lightObjects[2].SetActive(true);
         particlesCamera.SetActive(false);
         //yield return new WaitForSeconds(lightsStopTime);
-        lightObjects[3].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[3].transform.position.y, playerbehaviour.istanze.transform.position.z);
-        lightObjects[3].SetActive(true);
+        lightObjects[2].transform.position = new Vector3(playerbehaviour.istanze.transform.position.x, lightObjects[2].transform.position.y, playerbehaviour.istanze.transform.position.z);
         AudioManager.Instance.PlaySound("Spotlight");
         yield return new WaitForSeconds(lightsStopTime);
         endSequencePosition++;
@@ -454,6 +468,8 @@ public class StartEndSequence : MonoBehaviour
         }
         AudioManager.Instance.StopAllSounds();
         playerbehaviour.kitsuneAnimator.SetBool("Dead", true);
+        Invoke("Seppukusound", 0f);
+
 
 
     }
@@ -481,15 +497,46 @@ public class StartEndSequence : MonoBehaviour
             AudioManager.Instance.StopSound("Yoo");
             curtains.CloseTeleport();
 
-            lightObjects[2].SetActive(false);
-            lightObjects[0].SetActive(true);
+            lightObjects[0].SetActive(false);
             lightObjects[1].SetActive(true);
-
+            lightObjects[2].SetActive(false);
+            OnOffScene(true);
             mainCamera.transform.SetPositionAndRotation(particlesCamera.transform.position, particlesCamera.transform.rotation);
             crowd.color = alpha1Crowd;
 
             startSequencePosition = 3;
             skipping = false;
         }
+    }
+
+    void OnOffScene(bool lightOn)
+    {
+        if (lightOn == false)
+        {
+            for (int i = 0; i < activeWithoutLight.Length; i++)
+            {
+                activeWithoutLight[i].SetActive(true);
+            }
+            for (int i = 0; i < activeWithLight.Length; i++)
+            {
+                activeWithLight[i].SetActive(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < activeWithLight.Length; i++)
+            {
+                activeWithLight[i].SetActive(true);
+            }
+            for (int i = 0; i < activeWithoutLight.Length; i++)
+            {
+                activeWithoutLight[i].SetActive(false);
+            }
+        }
+    }
+
+    void Seppukusound()
+    {
+        AudioManager.Instance.PlaySound("Seppuku");
     }
 }

@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     PointSystem pointsystem;
     [SerializeField]
     Yokaislayer YS;
+    public PointSystem PS;
     public Text score_text;
     public Text scoremultiplier_text;
     #endregion
@@ -92,5 +93,4 @@ public class UIManager : MonoBehaviour
     {
         scoremultiplier_text.text = "x" + pointsystem.scoreMultiplier.ToString();
     }
-
 }

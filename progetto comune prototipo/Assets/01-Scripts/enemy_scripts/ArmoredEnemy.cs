@@ -17,7 +17,15 @@ public class ArmoredEnemy : MonoBehaviour
     PointSystem pointsystem;
     GameManager GM;
     WaveManager WM;
-    public int scoreEnemy, armoredLife;
+    [SerializeField]
+    int scoreEnemy1;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
+    public int scoreEnemy;
+    [HideInInspector]
+    public int armoredLife;
     public GameObject[] signarmoredenemy;
     public float baseSpeed, startPosition, extrapointsoverdistance, startGrid, BlackToDeath;
     [SerializeField]
@@ -58,6 +66,10 @@ public class ArmoredEnemy : MonoBehaviour
     public GameObject armorPiece6;
     [SerializeField]
     public GameObject armorPiece7;
+    [SerializeField]
+    public GameObject armorPiece8;
+    [SerializeField]
+    public GameObject armorPiece9;
     private Vector3 armorPiecePos1;
     private Vector3 armorPiecePos2;
     private Vector3 armorPiecePos3;
@@ -65,6 +77,8 @@ public class ArmoredEnemy : MonoBehaviour
     private Vector3 armorPiecePos5;
     private Vector3 armorPiecePos6;
     private Vector3 armorPiecePos7;
+    private Vector3 armorPiecePos8;
+    private Vector3 armorPiecePos9;
     private Quaternion armorPieceRotation1;
     private Quaternion armorPieceRotation2;
     private Quaternion armorPieceRotation3;
@@ -72,6 +86,8 @@ public class ArmoredEnemy : MonoBehaviour
     private Quaternion armorPieceRotation5;
     private Quaternion armorPieceRotation6;
     private Quaternion armorPieceRotation7;
+    private Quaternion armorPieceRotation8;
+    private Quaternion armorPieceRotation9;
     [SerializeField]
     private Transform armorPieceParent1;
     [SerializeField]
@@ -86,6 +102,12 @@ public class ArmoredEnemy : MonoBehaviour
     private Transform armorPieceParent6;
     [SerializeField]
     private Transform armorPieceParent7;
+    [SerializeField]
+    private Transform armorPieceParent8;
+    [SerializeField]
+    private Transform armorPieceParent9;
+    [HideInInspector]
+    public bool isBuffed;
 
     #endregion
 
@@ -99,6 +121,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiecePos5 = armorPiece5.transform.localPosition;
         armorPiecePos6 = armorPiece6.transform.localPosition;
         armorPiecePos7 = armorPiece7.transform.localPosition;
+        armorPiecePos8 = armorPiece8.transform.localPosition;
+        armorPiecePos9 = armorPiece9.transform.localPosition;
 
         armorPieceRotation1 = armorPiece1.transform.localRotation;
         armorPieceRotation2 = armorPiece2.transform.localRotation;
@@ -107,6 +131,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPieceRotation5 = armorPiece5.transform.localRotation;
         armorPieceRotation6 = armorPiece6.transform.localRotation;
         armorPieceRotation7 = armorPiece7.transform.localRotation;
+        armorPieceRotation8 = armorPiece8.transform.localRotation;
+        armorPieceRotation9 = armorPiece9.transform.localRotation;
 
         armorPiece1.AddComponent<Rigidbody>();
         armorPiece2.AddComponent<Rigidbody>();
@@ -115,9 +141,12 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.AddComponent<Rigidbody>();
         armorPiece6.AddComponent<Rigidbody>();
         armorPiece7.AddComponent<Rigidbody>();
+        armorPiece8.AddComponent<Rigidbody>();
+        armorPiece9.AddComponent<Rigidbody>();
     }
     private void OnEnable()
     {
+        isBuffed = false;
         armorPiece1.GetComponent<Rigidbody>().isKinematic = true;
         armorPiece2.GetComponent<Rigidbody>().isKinematic = true;
         armorPiece3.GetComponent<Rigidbody>().isKinematic = true;
@@ -125,6 +154,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.GetComponent<Rigidbody>().isKinematic = true;
         armorPiece6.GetComponent<Rigidbody>().isKinematic = true;
         armorPiece7.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece8.GetComponent<Rigidbody>().isKinematic = true;
+        armorPiece9.GetComponent<Rigidbody>().isKinematic = true;
 
         armoredAnimator.SetBool("ArmorBroken", false);
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
@@ -197,6 +228,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.transform.SetParent(armorPieceParent5);
         armorPiece6.transform.SetParent(armorPieceParent6);
         armorPiece7.transform.SetParent(armorPieceParent7);
+        armorPiece8.transform.SetParent(armorPieceParent8);
+        armorPiece9.transform.SetParent(armorPieceParent9);
 
         armorPiece1.SetActive(true);
         armorPiece2.SetActive(true);
@@ -205,7 +238,10 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.SetActive(true);
         armorPiece6.SetActive(true);
         armorPiece7.SetActive(true);
+        armorPiece8.SetActive(true);
+        armorPiece9.SetActive(true);
 
+        SetScoreGiven();
     }
 
     private void OnDisable()
@@ -235,6 +271,30 @@ public class ArmoredEnemy : MonoBehaviour
         }
 
         PointOverDistance();
+    }
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 1:
+                scoreEnemy = scoreEnemy1;
+                break;
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
     }
 
     public void Enemymove()
@@ -270,23 +330,29 @@ public class ArmoredEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        inkDeath.Play();
-        enemy.GetComponent<Renderer>().material.color = Color.black;
-        armor1.GetComponent<Renderer>().material.color = Color.black;
-        armor2.GetComponent<Renderer>().material.color = Color.black;
-        armor3.GetComponent<Renderer>().material.color = Color.black;
-        armor4.GetComponent<Renderer>().material.color = Color.black;
-        bandana.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("DeathForCollision", BlackToDeath);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            armor1.GetComponent<Renderer>().material.color = Color.black;
+            armor2.GetComponent<Renderer>().material.color = Color.black;
+            armor3.GetComponent<Renderer>().material.color = Color.black;
+            armor4.GetComponent<Renderer>().material.color = Color.black;
+            bandana.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
-        AudioManager.Instance.PlaySound("EnemyDeath");
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            AudioManager.Instance.PlaySound("EnemyDeath");
+        }
     }
     public void Deathforsign()
     {
         if (armoredLife == 2)
         {
             speed = baseSpeedMax + GM.intensitySpeedIncrease;
+
+            AddCombo();
+
             armoredLife -= 1;
             armoredAnimator.SetBool("ArmorBroken", true);
             AudioManager.Instance.PlaySound("Armordestroyed");
@@ -305,6 +371,10 @@ public class ArmoredEnemy : MonoBehaviour
             armorPiece6.GetComponent<Rigidbody>().isKinematic = false;
             armorPiece7.transform.SetParent(null);
             armorPiece7.GetComponent<Rigidbody>().isKinematic = false;
+            armorPiece8.transform.SetParent(null);
+            armorPiece8.GetComponent<Rigidbody>().isKinematic = false;
+            armorPiece9.transform.SetParent(null);
+            armorPiece9.GetComponent<Rigidbody>().isKinematic = false;
             DeactivateSymbols();
             int randomsegno;
             if (GM.GameIntensity != 3 || WM.TEST_WaveIntensity != 3)
@@ -353,17 +423,14 @@ public class ArmoredEnemy : MonoBehaviour
     public void Death()
     {
         armoredLife = 2;
-        enemyspawnmanager.enemykilled += 2;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
         TrueDeath();
 
         AudioManager.Instance.PlaySound("EnemyDeath");
 
-        pointsystem.currentTimer = pointsystem.maxTimer;
-        pointsystem.countercombo++;
-
-        pointsystem.Combo();
+        AddCombo();
 
         pointsystem.score += (extrapointsoverdistance + scoreEnemy) * pointsystem.scoreMultiplier;
     }
@@ -377,6 +444,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.SetActive(false);
         armorPiece6.SetActive(false);
         armorPiece7.SetActive(false);
+        armorPiece8.SetActive(false);
+        armorPiece9.SetActive(false);
 
         armorPiece1.transform.SetParent(armorPieceParent1);
         armorPiece2.transform.SetParent(armorPieceParent2);
@@ -385,6 +454,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.transform.SetParent(armorPieceParent5);
         armorPiece6.transform.SetParent(armorPieceParent6);
         armorPiece7.transform.SetParent(armorPieceParent7);
+        armorPiece8.transform.SetParent(armorPieceParent8);
+        armorPiece9.transform.SetParent(armorPieceParent9);
 
         armorPiece1.transform.localPosition = armorPiecePos1;
         armorPiece2.transform.localPosition = armorPiecePos2;
@@ -393,6 +464,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.transform.localPosition = armorPiecePos5;
         armorPiece6.transform.localPosition = armorPiecePos6;
         armorPiece7.transform.localPosition = armorPiecePos7;
+        armorPiece8.transform.localPosition = armorPiecePos8;
+        armorPiece9.transform.localPosition = armorPiecePos9;
 
         armorPiece1.transform.localRotation = armorPieceRotation1;
         armorPiece2.transform.localRotation = armorPieceRotation2;
@@ -401,6 +474,8 @@ public class ArmoredEnemy : MonoBehaviour
         armorPiece5.transform.localRotation = armorPieceRotation5;
         armorPiece6.transform.localRotation = armorPieceRotation6;
         armorPiece7.transform.localRotation = armorPieceRotation7;
+        armorPiece8.transform.localRotation = armorPieceRotation8;
+        armorPiece9.transform.localRotation = armorPieceRotation9;
     }
 
     void PointOverDistance()
@@ -445,5 +520,13 @@ public class ArmoredEnemy : MonoBehaviour
         {
             segno.SetActive(false);
         }
+    }
+
+    void AddCombo()
+    {
+        pointsystem.currentTimer = pointsystem.maxTimer;
+        pointsystem.countercombo++;
+
+        pointsystem.Combo();
     }
 }

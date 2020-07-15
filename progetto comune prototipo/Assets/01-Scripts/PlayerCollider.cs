@@ -1,38 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Playerbehaviour PB;
+    private void Start()
     {
-        
+        PB = FindObjectOfType<Playerbehaviour>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerStay(Collider other)
     {
-        
+        if (PB.invincibilityActive == false && PB.hitOnce == false)
+        {
+            if (other.gameObject.CompareTag("NormalEnemy"))
+            {
+                other.GetComponent<NormalEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
+            }
+            if (other.gameObject.CompareTag("KamikazeEnemy"))
+            {
+                other.GetComponent<KamikazeEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
+            }
+            if (other.gameObject.CompareTag("ArmoredEnemy"))
+            {
+                other.GetComponent<ArmoredEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
+            }
+            if (other.gameObject.CompareTag("FrighteningEnemy"))
+            {
+                other.GetComponent<FrighteningEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
+            }
+            
+        }
     }
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("NormalEnemy"))
-        {
-            other.GetComponent<NormalEnemy>().Deathforgriglia();
-        }
-        if (other.gameObject.CompareTag("KamikazeEnemy"))
-        {
-            other.GetComponent<KamikazeEnemy>().Deathforgriglia();
-        }
-        if (other.gameObject.CompareTag("ArmoredEnemy"))
-        {
-            other.GetComponent<ArmoredEnemy>().Deathforgriglia();
-        }
-        if (other.gameObject.CompareTag("FrighteningEnemy"))
-        {
-            other.GetComponent<FrighteningEnemy>().Deathforgriglia();
-        }
-
+        PB.hitOnce = false;
     }
 }

@@ -254,5 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyID: 4
-  scoreEnemy: 1000
+  scoreEnemy2: 1000
+  scoreEnemy3: 1000
+  scoreEnemy: 0
   position: {x: -3.1, y: 6.5, z: 9}

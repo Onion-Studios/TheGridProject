@@ -1,0 +1,991 @@
+fileFormatVersion: 2
+guid: 7ab2c9daae7207a4d9f6d1304002ea66
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8268828608535879110
+    second: icona caricamento _0
+  - first:
+      213: 223747026485477344
+    second: icona caricamento _1
+  - first:
+      213: 3910356628792397683
+    second: icona caricamento _2
+  - first:
+      213: 6635011480278514384
+    second: icona caricamento _3
+  - first:
+      213: 8195493685855395457
+    second: icona caricamento _4
+  - first:
+      213: 8979903147668460501
+    second: icona caricamento _5
+  - first:
+      213: -6921914768893141710
+    second: icona caricamento _6
+  - first:
+      213: -5274330861379996685
+    second: icona caricamento _7
+  - first:
+      213: 7942502314093435446
+    second: icona caricamento _8
+  - first:
+      213: -2266545251607057944
+    second: icona caricamento _9
+  - first:
+      213: -2387360533644163945
+    second: icona caricamento _10
+  - first:
+      213: -8602647654840399537
+    second: icona caricamento _11
+  - first:
+      213: 6910997198521802806
+    second: icona caricamento _12
+  - first:
+      213: 3520317688570304869
+    second: icona caricamento _13
+  - first:
+      213: -415816951155980705
+    second: icona caricamento _14
+  - first:
+      213: 4394165694385286023
+    second: icona caricamento _15
+  - first:
+      213: -945387117436749968
+    second: icona caricamento _16
+  - first:
+      213: -5507077732638835950
+    second: icona caricamento _17
+  - first:
+      213: 3602886271432285748
+    second: icona caricamento _18
+  - first:
+      213: -4099273614765989261
+    second: icona caricamento _19
+  - first:
+      213: -5361443265274103903
+    second: icona caricamento _20
+  - first:
+      213: 7407099737048080102
+    second: icona caricamento _21
+  - first:
+      213: 5108411047486536119
+    second: icona caricamento _22
+  - first:
+      213: 2251797230864535681
+    second: icona caricamento _23
+  - first:
+      213: 8469116566725165649
+    second: icona caricamento _24
+  - first:
+      213: 6813622548430010706
+    second: icona caricamento _25
+  - first:
+      213: -9057252498108940070
+    second: icona caricamento _26
+  - first:
+      213: -8456866511655380996
+    second: icona caricamento _27
+  - first:
+      213: -8656945642369523112
+    second: icona caricamento _28
+  - first:
+      213: -409080294814097485
+    second: icona caricamento _29
+  - first:
+      213: 4980131675112404127
+    second: icona caricamento _30
+  - first:
+      213: 5449240398868905139
+    second: icona caricamento _31
+  - first:
+      213: 92863355963582077
+    second: icona caricamento _32
+  - first:
+      213: 4846701987807648313
+    second: icona caricamento _33
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: icona caricamento _0
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 558
+        width: 814
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cfea92a6d152f4781fa6ee86804bbd
+      internalID: -8268828608535879110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _1
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 292
+        width: 281
+        height: 701
+      alignment: 9
+      pivot: {x: 0.0152097, y: 0.003377656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18e85ea8dc917a74387b005ffd35299b
+      internalID: 223747026485477344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _2
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 311
+        width: 786
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e6339be3b8c7ce4983dffbb2be1c7d3
+      internalID: 3910356628792397683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _3
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 212
+        width: 32
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1097bec5100dd0645badafa0c75fceb5
+      internalID: 6635011480278514384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _4
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 182
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a392fc830ec7d4f8b7d3ab41f867ba
+      internalID: 8195493685855395457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _5
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 115
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 085f60822b83ab3479cc5b34564e33cb
+      internalID: 8979903147668460501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _6
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 111
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab516e5ebb43c80419d980a1dc826d65
+      internalID: -6921914768893141710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _7
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 118
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9467fd1e9a1bb0459a9a916b9c55079
+      internalID: -5274330861379996685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _8
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 108
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0807b631c3ef55041b890634576ee432
+      internalID: 7942502314093435446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _9
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 98
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c90612f1ce0641b47b8284cfaf4128a1
+      internalID: -2266545251607057944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _10
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 113
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f148ac9b10cdc094b85d8f571a2087c9
+      internalID: -2387360533644163945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _11
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 81
+        width: 57
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476480a14474124459d61eabcad9d597
+      internalID: -8602647654840399537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _12
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 110
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1cdc0193428029488cac6221bcc8df5
+      internalID: 6910997198521802806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _13
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 109
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f51a94ba6a54f1e47867ffab3d7ecbaa
+      internalID: 3520317688570304869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _14
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 106
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c8f1cac63d563419613558926cb2cb
+      internalID: -415816951155980705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _15
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 87
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03cccafe2ad673448b8cb9f291eaef9
+      internalID: 4394165694385286023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _16
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 98
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fec9f7a6b71c8348a41bdd19d52d2cd
+      internalID: -945387117436749968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _17
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 97
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da0ee55a2508364497c6020fe71a1b6
+      internalID: -5507077732638835950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 101
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e24595c4fc37e48ae4e6a9f50e4877
+      internalID: 3602886271432285748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _19
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 98
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7daac479978286c46af7fa172a4d910e
+      internalID: -4099273614765989261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _20
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 91
+        width: 45
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd2827b60bd4904d878ac5fbcf44cc6
+      internalID: -5361443265274103903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _21
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 74
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 941014b5cbf938449b7467b77af6a4d4
+      internalID: 7407099737048080102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _22
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 80
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3159d8740240524bae1e643ab3c86d7
+      internalID: 5108411047486536119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _23
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 85
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5155b4256ffc5ff418b599816794d951
+      internalID: 2251797230864535681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _24
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 82
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6311ccbd330b54e8d476aca668b972
+      internalID: 8469116566725165649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _25
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 87
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e708550b879ed445abfdb1f069482c1
+      internalID: 6813622548430010706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _26
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 72
+        width: 98
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463ca8d593a25a14a8c8d799d921e81a
+      internalID: -9057252498108940070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _27
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 71
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 324e73a9e675461408adffca0917e00a
+      internalID: -8456866511655380996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _28
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 75
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251d80c7aba53cb479be3ac05c5441eb
+      internalID: -8656945642369523112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _29
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 80
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef828823fce76aa488cc9fcce71c3a75
+      internalID: -409080294814097485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _30
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 88
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38da8bc7c97967d479aecf7e0d9e78b5
+      internalID: 4980131675112404127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _31
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 79
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa62be79172ecf408ff7fa2c559b15a
+      internalID: 5449240398868905139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _32
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 64
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e6a9174ab709444a2de77a89c31c08
+      internalID: 92863355963582077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icona caricamento _33
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 64
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba434a0bcd740cb43aa9a8eadd666542
+      internalID: 4846701987807648313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d65e37794a4304e41a82daa77426acc8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

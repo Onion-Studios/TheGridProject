@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+                    WaveManager.RestartWaves();
                     dragon1.SetActive(true);
                     dragon2.SetActive(false);
                     dragon3.SetActive(false);
@@ -118,9 +119,10 @@ public class GameManager : MonoBehaviour
             else if (enemykilled >= StartIntensity2 && enemykilled < StartIntensity3 && soundPlayed2 == false)
             {
                 GameIntensity = 2;
+                AudioManager.Instance.StopSound("MainTrack");
+                AudioManager.Instance.PlaySound("Track02");
 
-                //AudioManager.Instance.SetLoop("ClappingSound", false);
-                //AudioManager.Instance.PlaySound("ClappingSound");
+                AudioManager.Instance.PlaySound("ClappingSound");
                 if (joyEffectCO != null)
                 {
                     StopCoroutine(joyEffectCO);
@@ -133,6 +135,7 @@ public class GameManager : MonoBehaviour
                 soundPlayed1 = false;
                 soundPlayed3 = false;
 
+                WaveManager.RestartWaves();
                 dragon1.SetActive(false);
                 dragon2.SetActive(true);
                 dragon3.SetActive(false);
@@ -142,9 +145,10 @@ public class GameManager : MonoBehaviour
             else if (enemykilled >= StartIntensity3 && soundPlayed3 == false)
             {
                 GameIntensity = 3;
+                AudioManager.Instance.StopSound("Track02");
+                AudioManager.Instance.PlaySound("Track03");
 
-                //AudioManager.Instance.SetLoop("ClappingSound", false);
-                //AudioManager.Instance.PlaySound("ClappingSound");
+                AudioManager.Instance.PlaySound("ClappingSound");
 
                 if (joyEffectCO != null)
                 {
@@ -158,6 +162,7 @@ public class GameManager : MonoBehaviour
                 soundPlayed1 = false;
                 soundPlayed2 = false;
 
+                WaveManager.RestartWaves();
                 dragon1.SetActive(false);
                 dragon2.SetActive(false);
                 dragon3.SetActive(true);

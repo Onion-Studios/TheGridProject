@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Curtains : MonoBehaviour
 {
@@ -10,13 +8,20 @@ public class Curtains : MonoBehaviour
     [SerializeField]
     Vector3 closedCurtainLeft, closedCurtainRight;
     private bool audioCurtainIsPlaying;
+    [HideInInspector]
+    public Animator leftCurtainAnimator;
+    [HideInInspector]
+    public Animator rightCurtainAnimator;
+    public float openingDelay;
+
     #endregion
 
     private void Awake()
     {
-        
-        openedCurtainLeft = curtainLeft.transform.position;
-        openedCurtainRight = curtainRight.transform.position;
+        leftCurtainAnimator = curtainLeft.GetComponent<Animator>();
+        rightCurtainAnimator = curtainRight.GetComponent<Animator>();
+        openedCurtainLeft = curtainLeft.transform.localPosition;
+        openedCurtainRight = curtainRight.transform.localPosition;
     }
 
     public int CloseCurtains(int counterIncrease, float curtainsSpeed)
@@ -28,19 +33,29 @@ public class Curtains : MonoBehaviour
                 AudioManager.Instance.PlaySound("Curtains");
                 audioCurtainIsPlaying = true;
             }
-            curtainLeft.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
-            curtainRight.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
+            leftCurtainAnimator.SetBool("Closing", true);
+            rightCurtainAnimator.SetBool("Closing", true);
+            curtainLeft.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
+            curtainRight.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
         }
         else
         {
+            Invoke("OpeningDelay", openingDelay);
+            leftCurtainAnimator.SetBool("Closing", false);
+
             AudioManager.Instance.StopSound("Curtains");
             audioCurtainIsPlaying = false;
-            curtainLeft.transform.position = closedCurtainLeft;
+            //curtainLeft.transform.localPosition = closedCurtainLeft;
+            //curtainRight.transform.localPosition = closedCurtainRight;
             counterIncrease++;
         }
         return counterIncrease;
     }
 
+    private void OpeningDelay()
+    {
+        rightCurtainAnimator.SetBool("Closing", false);
+    }
     public int OpenCurtains(int counterIncrease, float curtainsSpeed)
     {
         if (curtainLeft.transform.localPosition.x < openedCurtainLeft.x)
@@ -50,15 +65,19 @@ public class Curtains : MonoBehaviour
                 AudioManager.Instance.PlaySound("Curtains");
                 audioCurtainIsPlaying = true;
             }
-            curtainLeft.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
-            curtainRight.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
+            leftCurtainAnimator.SetBool("Opening", true);
+            rightCurtainAnimator.SetBool("Opening", true);
+            curtainLeft.transform.Translate(Vector3.left * curtainsSpeed * Time.deltaTime);
+            curtainRight.transform.Translate(Vector3.right * curtainsSpeed * Time.deltaTime);
         }
         else
         {
+            leftCurtainAnimator.SetBool("Opening", false);
+            rightCurtainAnimator.SetBool("Opening", false);
             AudioManager.Instance.StopSound("Curtains");
             audioCurtainIsPlaying = false;
-            curtainLeft.transform.position = openedCurtainLeft;
-            curtainRight.transform.position = openedCurtainRight;
+            curtainLeft.transform.localPosition = openedCurtainLeft;
+            curtainRight.transform.localPosition = openedCurtainRight;
             counterIncrease++;
         }
         return counterIncrease;
@@ -66,7 +85,7 @@ public class Curtains : MonoBehaviour
 
     public void CloseTeleport()
     {
-        curtainLeft.transform.position = closedCurtainLeft;
-        curtainRight.transform.position = closedCurtainRight;
+        curtainLeft.transform.localPosition = closedCurtainLeft;
+        curtainRight.transform.localPosition = closedCurtainRight;
     }
 }

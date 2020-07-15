@@ -10,6 +10,12 @@ public class MalevolentEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    GameManager GameManager;
+    WaveManager WM;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
     public int scoreEnemy;
     [HideInInspector]
     public Vector3 position;
@@ -55,13 +61,23 @@ public class MalevolentEnemy : MonoBehaviour
             Debug.LogError("PointSystem is NULL");
         }
 
+        GameManager = FindObjectOfType<GameManager>();
+        if (GameManager == null)
+        {
+            Debug.LogError("GameManager is NULL");
+        }
 
+        WM = FindObjectOfType<WaveManager>();
+        if (WM == null)
+        {
+            Debug.LogError("Wave Manager is NULL");
+        }
 
+        SetScoreGiven();
     }
 
     private void OnEnable()
     {
-        //AudioManager.Instance.PlaySound("MalevolentSpawn");
         StartCoroutine("MalevolentSound");
         malevolentAnimator.SetBool("MalevolentDeath", false);
     }
@@ -76,7 +92,27 @@ public class MalevolentEnemy : MonoBehaviour
             playerDeathPlayed = true;
         }
     }
-
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
+    }
     private IEnumerator MalevolentSound()
     {
         while (this.isActiveAndEnabled)
@@ -90,7 +126,7 @@ public class MalevolentEnemy : MonoBehaviour
     {
         malevolentAnimator.SetBool("MalevolentDeath", true);
         Inkstone.Ink += playerbehaviour.inkGained;
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         SecretT.bar += SecretT.charge;
         pointsystem.currentTimer = pointsystem.maxTimer;
         pointsystem.countercombo++;
@@ -103,6 +139,7 @@ public class MalevolentEnemy : MonoBehaviour
     private void PlayerDeath()
     {
         malevolentAnimator.SetBool("MalevolentDeath", true);
+        Invoke("TrueDeath", 3);
     }
 
     public void TrueDeath()

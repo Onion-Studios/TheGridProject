@@ -15,6 +15,11 @@ public class FrighteningEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    WaveManager WM;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
     public int scoreEnemy;
     public GameObject[] signfrighteningenemy;
     public float baseSpeed, startPosition, extrapointsoverdistance, startGrid, BlackToDeath;
@@ -31,6 +36,8 @@ public class FrighteningEnemy : MonoBehaviour
     IEnumerator deathforendgrid;
     bool destinationReached;
     public Animator frighteningAnimator;
+    [HideInInspector]
+    public bool isBuffed;
 
     public GameObject[] SignIntensity2Frightening;
     public GameObject[] SignIntensity2PlusFrightening;
@@ -42,6 +49,7 @@ public class FrighteningEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
         {
@@ -84,11 +92,19 @@ public class FrighteningEnemy : MonoBehaviour
             Debug.LogError("Gamemanager is NULL");
         }
 
+        WM = FindObjectOfType<WaveManager>();
+        if (WM == null)
+        {
+            Debug.LogError("Wave Manager is NULL");
+        }
+
         startPosition = transform.position.x;
 
         deathforendgrid = null;
 
         destinationReached = false;
+
+        SetScoreGiven();
     }
 
     private void OnDisable()
@@ -123,7 +139,27 @@ public class FrighteningEnemy : MonoBehaviour
         }
         frighteningAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
-
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
+    }
     public void Frightening()
     {
         if (reduceSpeed != playerbehaviour.speed)
@@ -177,14 +213,17 @@ public class FrighteningEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        inkDeath.Play();
-        enemy.GetComponent<Renderer>().material.color = Color.black;
-        hair.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("DeathForCollision", BlackToDeath);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            hair.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
 
-        AudioManager.Instance.PlaySound("EnemyDeath");
+            AudioManager.Instance.PlaySound("EnemyDeath");
+        }
     }
 
     public void DeathForCollision()
@@ -204,7 +243,7 @@ public class FrighteningEnemy : MonoBehaviour
     {
         enemy.GetComponent<Renderer>().material.color = Color.white;
         hair.GetComponent<Renderer>().material.color = Color.white;
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
 

@@ -435,7 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2743df5a57df4284289f489769c768ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisText: {fileID: 0}
   offsetSpeed: 1.5
   alphaValue: 0
 --- !u!1 &1249678710
@@ -794,8 +793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clipName: MainTrack
-    clip: {fileID: 8300000, guid: 8885eca846a872e42a504bb55d518332, type: 3}
-    volume: 0.05
+    clip: {fileID: 8300000, guid: f5538242976e84544aa57a82fc7d5852, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -842,10 +841,10 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: ClappingSound
-    clip: {fileID: 8300000, guid: 565de96a6dd238b499c9846853b105cb, type: 3}
-    volume: 0.38
+    clip: {fileID: 8300000, guid: cecd8531f1d2f7743933fe25052e93c4, type: 3}
+    volume: 0.65
     pitch: 1
-    loop: 1
+    loop: 0
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
@@ -867,7 +866,7 @@ MonoBehaviour:
       type: 2}
   - clipName: BooSound
     clip: {fileID: 8300000, guid: f4b009b8ecc69024dbd13e9228656a83, type: 3}
-    volume: 0.6
+    volume: 0.65
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -1028,15 +1027,15 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
-  - clipName: resetgong
-    clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
+  - clipName: 
+    clip: {fileID: 0}
     volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
     mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
   - clipName: Seppuku
-    clip: {fileID: 8300000, guid: 77d4a8a663dfd5842bc570b21b2df555, type: 3}
+    clip: {fileID: 8300000, guid: 79ca77dfab830ce4d8e38ef159c3cd4b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -1051,7 +1050,7 @@ MonoBehaviour:
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}
   - clipName: Undyingenemydeath
-    clip: {fileID: 8300000, guid: 7b9c511da9ed0994a935a5ca0f3c1aa9, type: 3}
+    clip: {fileID: 8300000, guid: b0acdeb7e57e02242b28e741fe185413, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -1063,7 +1062,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 0
-    mixer: {fileID: 3693272095115287762, guid: 26df92cc8f87f2d4ba47b84443289948, type: 2}
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
   - clipName: Resetgong
     clip: {fileID: 8300000, guid: 392b6c4e3c5c62544956bd8ea730d384, type: 3}
     volume: 0.5
@@ -1077,6 +1077,22 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Track02
+    clip: {fileID: 8300000, guid: 3196aeb94f30c474989b417caccb84b8, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
+      type: 2}
+  - clipName: Track03
+    clip: {fileID: 8300000, guid: de12efa07c1ac7041ace070b37fd8cd6, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
     playOnAwake: 0
     mixer: {fileID: -8509925957004897289, guid: 26df92cc8f87f2d4ba47b84443289948,
       type: 2}

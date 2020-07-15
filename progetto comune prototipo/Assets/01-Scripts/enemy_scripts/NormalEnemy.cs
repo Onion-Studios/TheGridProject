@@ -17,6 +17,13 @@ public class NormalEnemy : MonoBehaviour
     Inkstone Inkstone;
     Secret SecretT;
     PointSystem pointsystem;
+    WaveManager WM;
+    [SerializeField]
+    int scoreEnemy1;
+    [SerializeField]
+    int scoreEnemy2;
+    [SerializeField]
+    int scoreEnemy3;
     public int scoreEnemy;
     public GameObject[] SignNormalYokai;
     public GameObject[] SignIntensity1Normal;
@@ -43,6 +50,8 @@ public class NormalEnemy : MonoBehaviour
     private ParticleSystem inkAbsorb;
     public float stopTime, waitTime;
     IEnumerator deathforendgrid;
+    [HideInInspector]
+    public bool isBuffed;
 
     #endregion
 
@@ -52,6 +61,7 @@ public class NormalEnemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        isBuffed = false;
         destinationReached = false;
         playerbehaviour = FindObjectOfType<Playerbehaviour>();
         if (playerbehaviour == null)
@@ -95,9 +105,17 @@ public class NormalEnemy : MonoBehaviour
             Debug.LogError("Managercombo is NULL");
         }
 
+        WM = FindObjectOfType<WaveManager>();
+        if (WM == null)
+        {
+            Debug.LogError("Wave Manager is NULL");
+        }
+
         startPosition = transform.position.x;
 
         deathforendgrid = null;
+
+        SetScoreGiven();
     }
 
     private void OnDisable()
@@ -128,6 +146,31 @@ public class NormalEnemy : MonoBehaviour
         normalAnimator.SetFloat("CurrentPosition", transform.position.x);
     }
 
+    void SetScoreGiven()
+    {
+        int actualIntensity;
+        if (WM.TEST_WaveActive == true)
+        {
+            actualIntensity = WM.TEST_WaveIntensity;
+        }
+        else
+        {
+            actualIntensity = GameManager.GameIntensity;
+        }
+        switch (actualIntensity)
+        {
+            case 1:
+                scoreEnemy = scoreEnemy1;
+                break;
+            case 2:
+                scoreEnemy = scoreEnemy2;
+                break;
+            case 3:
+                scoreEnemy = scoreEnemy3;
+                break;
+        }
+    }
+
     public void Enemymove()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
@@ -139,7 +182,6 @@ public class NormalEnemy : MonoBehaviour
             destinationReached = true;
         }
     }
-
 
     public IEnumerator DeathForEndGrid()
     {
@@ -161,13 +203,16 @@ public class NormalEnemy : MonoBehaviour
 
     public void Deathforgriglia()
     {
-        inkDeath.Play();
-        enemy.GetComponent<Renderer>().material.color = Color.black;
-        band.GetComponent<Renderer>().material.color = Color.black;
-        Invoke("DeathForCollision", BlackToDeath);
+        if (playerbehaviour.invincibilityActive == false)
+        {
+            inkDeath.Play();
+            enemy.GetComponent<Renderer>().material.color = Color.black;
+            band.GetComponent<Renderer>().material.color = Color.black;
+            Invoke("DeathForCollision", BlackToDeath);
 
-        playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
-        AudioManager.Instance.PlaySound("EnemyDeath");
+            playerbehaviour.ReceiveDamage(inkDamage, maxInkDamage, false);
+            AudioManager.Instance.PlaySound("EnemyDeath");
+        }
     }
 
     public void DeathForCollision()
@@ -189,7 +234,7 @@ public class NormalEnemy : MonoBehaviour
     {
         enemy.GetComponent<Renderer>().material.color = Color.white;
         band.GetComponent<Renderer>().material.color = Color.white;
-        enemyspawnmanager.enemykilled += 1;
+        enemyspawnmanager.enemykilled++;
         Inkstone.Ink += playerbehaviour.inkGained;
         SecretT.bar += SecretT.charge;
 

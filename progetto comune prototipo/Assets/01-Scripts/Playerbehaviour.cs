@@ -40,6 +40,21 @@ public class Playerbehaviour : MonoBehaviour
     [HideInInspector]
     public Animator kitsuneAnimator;
     private int layerMask;
+    [HideInInspector]
+    public bool invincibilityActive;
+    bool invincibilityTimerOn;
+    private float invTimer;
+    [SerializeField]
+    private float invTimerMax;
+    [SerializeField]
+    private float invTimerThreshold;
+    [HideInInspector]
+    public bool hitOnce;
+    [SerializeField]
+    private CrowdFeedbacks crowdFeedbacks;
+    private PauseMenuUI pauseMenuUI;
+    public float orizzontale;
+    public float verticale;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -81,6 +96,12 @@ public class Playerbehaviour : MonoBehaviour
             Debug.LogError("Secret is NULL!");
         }
 
+        pauseMenuUI = FindObjectOfType<PauseMenuUI>();
+        if (pauseMenuUI == null)
+        {
+            Debug.LogError("pausemenuUI is NULL!");
+        }
+
         YS = this.gameObject.GetComponent<Yokaislayer>();
 
         movementState = "readystate";
@@ -88,12 +109,20 @@ public class Playerbehaviour : MonoBehaviour
         waitTimer = maxWaitTimer;
         audioManager = AudioManager.Instance;
         layerMask = 1 << 11;
+        invTimer = invTimerMax;
+        hitOnce = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.active == false)
+        orizzontale = Input.GetAxis("Horizontal");
+        verticale = Input.GetAxis("Vertical");
+        if (intensityreset.intensityReset == true)
+        {
+            kitsuneAnimator.SetBool("MovementKeyPressed", false);
+        }
+        if (startEndSequence.starting == false && startEndSequence.ending == false && YS.playerMovement == true && SecretT.timeStopped == false && intensityreset.intensityReset == false)
         {
             MovementHandler();
             if (movementState == "movingforward" || movementState == "movingback" || movementState == "movingleft" || movementState == "movingright")
@@ -106,6 +135,11 @@ public class Playerbehaviour : MonoBehaviour
                 Invoke("DashRecoveryTime", 0.1f);
             }
         }
+
+        if (invincibilityTimerOn == true)
+        {
+            InvincibilityTimer();
+        }
     }
 
     private void DashRecoveryTime()
@@ -116,166 +150,191 @@ public class Playerbehaviour : MonoBehaviour
     void MovementHandler()
     {
         gridCenter = new Vector3(2f, istanze.transform.position.y, 2f);
-        if (PauseMenu.GameIsPaused == false)
+        if (pauseMenuUI.IsGamePaused == false)
         {
-            if (movementState == "readystate")
+            switch (movementState)
             {
-
-                if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && istanze.transform.position.z > 0.9)
-                {
-                    audioManager.PlaySound("PlayerMovement");
-                    finalDestination = istanze.transform.position.z - 1;
-                    movementState = "movingforward";
-
-                }
-                if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && istanze.transform.position.z < 3.1)
-                {
-                    audioManager.PlaySound("PlayerMovement");
-                    finalDestination = istanze.transform.position.z + 1;
-                    movementState = "movingback";
-
-                }
-                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && istanze.transform.position.x < 3.1)
-                {
-                    audioManager.PlaySound("PlayerMovement");
-                    finalDestination = istanze.transform.position.x + 1;
-                    movementState = "movingleft";
-
-                }
-                if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && istanze.transform.position.x > 0.9)
-                {
-                    audioManager.PlaySound("PlayerMovement");
-                    finalDestination = istanze.transform.position.x - 1;
-                    movementState = "movingright";
-
-                }
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
-                {
-                    confirmPosition = istanze.transform.position;
-                    smokeBomb.transform.position = confirmPosition;
-                    smokeBomb.Play();
-                    //smokeBomb.transform.SetParent(null);
-                    smokeBombCenter.Play();
-                    managercombo.CheckSign();
-                    istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    istanze.transform.position = gridCenter;
-                    grigliamanager.ResetColorGrid();
-                    grigliamanager.ResetGridLogic();
-                    AudioManager.Instance.PlaySound("ConfirmSound");
-                    //smokeBomb.transform.SetParent(istanze.transform);
-                }
-            }
-            else if (movementState == "waitstate")
-            {
-                if (waitTimer > 0)
-                {
-                    waitTimer -= 1 * Time.deltaTime;
-                }
-                else
-                {
-                    waitTimer = 0;
-                    waitTimer = maxWaitTimer;
-                    movementState = "readystate";
-                }
-            }
-            else if (movementState == "movingforward")
-            {
-                istanze.transform.rotation = Quaternion.Euler(0, 90, 0);
-
-                if (istanze.transform.position.z > finalDestination)
-                {
-                    istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
-                }
-                else
-                {
-                    if (istanze.transform.position.z < finalDestination)
+                case "readystate":
+                    if ((Input.GetAxis("Vertical") > 0 || Input.GetAxis("VerticalButtonsJoystick") == 1f) && istanze.transform.position.z > 0.9)
                     {
-                        istanze.transform.position = new Vector3(istanze.transform.position.x, istanze.transform.position.y, finalDestination);
+                        audioManager.PlaySound("PlayerMovement");
+                        finalDestination = istanze.transform.position.z - 1;
+                        movementState = "movingforward";
+
                     }
-                    ColorGrid();
-                    if (Inkstone.Ink > 1)
+                    if ((Input.GetAxis("Vertical") < 0 || Input.GetAxis("VerticalButtonsJoystick") == -1f) && istanze.transform.position.z < 3.1)
                     {
-                        Inkstone.Ink -= 1;
+                        audioManager.PlaySound("PlayerMovement");
+                        finalDestination = istanze.transform.position.z + 1;
+                        movementState = "movingback";
                     }
+                    if ((Input.GetAxis("Horizontal") < 0 || Input.GetAxis("HorizontalButtonsJoystick") == -1f) && istanze.transform.position.x < 3.1)
+                    {
+                        audioManager.PlaySound("PlayerMovement");
+                        finalDestination = istanze.transform.position.x + 1;
+                        movementState = "movingleft";
+                    }
+                    if ((Input.GetAxis("Horizontal") > 0 || Input.GetAxis("HorizontalButtonsJoystick") == 1f) && istanze.transform.position.x > 0.9)
+                    {
+                        audioManager.PlaySound("PlayerMovement");
+                        finalDestination = istanze.transform.position.x - 1;
+                        movementState = "movingright";
 
-                    movementState = "waitstate";
-                }
-            }
-            else if (movementState == "movingback")
-            {
-                istanze.transform.rotation = Quaternion.Euler(0, -90, 0);
+                    }
+                    if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Submit") || Input.GetButtonDown("RB"))
+                    {
+                        movementState = "resetting";
+                    }
+                    break;
+                case "waitstate":
+                    if (waitTimer > 0)
+                    {
+                        waitTimer -= 1 * Time.deltaTime;
+                    }
+                    else
+                    {
+                        waitTimer = 0;
+                        waitTimer = maxWaitTimer;
+                        movementState = "readystate";
+                    }
+                    break;
+                case "resetting":
+                    ResetToCenter();
+                    break;
+                case "movingforward":
+                    istanze.transform.rotation = Quaternion.Euler(0, 90, 0);
 
-                if (istanze.transform.position.z < finalDestination)
-                {
-                    istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
-                }
-                else
-                {
                     if (istanze.transform.position.z > finalDestination)
                     {
-                        istanze.transform.position = new Vector3(istanze.transform.position.x, istanze.transform.position.y, finalDestination);
+                        istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
                     }
-                    ColorGrid();
-                    if (Inkstone.Ink > 1)
+                    else
                     {
-                        Inkstone.Ink -= 1;
+                        if (istanze.transform.position.z < finalDestination)
+                        {
+                            istanze.transform.position = new Vector3(istanze.transform.position.x, istanze.transform.position.y, finalDestination);
+                        }
+                        ColorGrid();
+                        if (Inkstone.Ink > 1)
+                        {
+                            Inkstone.Ink -= 1;
+                        }
+
+                        movementState = "waitstate";
                     }
+                    break;
+                case "movingback":
+                    istanze.transform.rotation = Quaternion.Euler(0, -90, 0);
 
-                    movementState = "waitstate";
-                }
-            }
-            else if (movementState == "movingleft")
-            {
-                istanze.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-                if (istanze.transform.position.x < finalDestination)
-                {
-                    istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
-                }
-                else
-                {
-                    if (istanze.transform.position.x > finalDestination)
+                    if (istanze.transform.position.z < finalDestination)
                     {
-                        istanze.transform.position = new Vector3(finalDestination, istanze.transform.position.y, istanze.transform.position.z);
+                        istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
                     }
-                    ColorGrid();
-                    if (Inkstone.Ink > 1)
+                    else
                     {
-                        Inkstone.Ink -= 1;
+                        if (istanze.transform.position.z > finalDestination)
+                        {
+                            istanze.transform.position = new Vector3(istanze.transform.position.x, istanze.transform.position.y, finalDestination);
+                        }
+                        ColorGrid();
+                        if (Inkstone.Ink > 1)
+                        {
+                            Inkstone.Ink -= 1;
+                        }
+
+                        movementState = "waitstate";
                     }
+                    break;
+                case "movingleft":
+                    istanze.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-                    movementState = "waitstate";
-                }
-            }
-            else if (movementState == "movingright")
-            {
-                istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
-
-
-                if (istanze.transform.position.x > finalDestination)
-                {
-                    istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
-                }
-                else
-                {
                     if (istanze.transform.position.x < finalDestination)
                     {
-                        istanze.transform.position = new Vector3(finalDestination, istanze.transform.position.y, istanze.transform.position.z);
+                        istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
                     }
-                    ColorGrid();
-                    if (Inkstone.Ink > 1)
+                    else
                     {
-                        Inkstone.Ink -= 1;
+                        if (istanze.transform.position.x > finalDestination)
+                        {
+                            istanze.transform.position = new Vector3(finalDestination, istanze.transform.position.y, istanze.transform.position.z);
+                        }
+                        ColorGrid();
+                        if (Inkstone.Ink > 1)
+                        {
+                            Inkstone.Ink -= 1;
+                        }
 
+                        movementState = "waitstate";
                     }
+                    break;
+                case "movingright":
+                    istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
 
-                    movementState = "waitstate";
-                }
-
-
+                    if (istanze.transform.position.x > finalDestination)
+                    {
+                        istanze.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        if (istanze.transform.position.x < finalDestination)
+                        {
+                            istanze.transform.position = new Vector3(finalDestination, istanze.transform.position.y, istanze.transform.position.z);
+                        }
+                        ColorGrid();
+                        if (Inkstone.Ink > 1)
+                        {
+                            Inkstone.Ink -= 1;
+                        }
+                        movementState = "waitstate";
+                    }
+                    break;
             }
         }
+    }
 
+    private void InvincibilityTimer()
+    {
+        if (invTimer > 0)
+        {
+            invTimer -= Time.deltaTime;
+            if (invTimer < (invTimerMax - invTimerThreshold))
+            {
+                invincibilityActive = false;
+            }
+        }
+        else
+        {
+            invTimer = invTimerMax;
+            invincibilityTimerOn = false;
+        }
+    }
+
+    public void ResetToCenter()
+    {
+        confirmPosition = istanze.transform.position;
+        smokeBomb.transform.position = confirmPosition;
+        smokeBomb.Play();
+        smokeBombCenter.Play();
+        managercombo.CheckSign();
+        istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
+        istanze.transform.position = gridCenter;
+        grigliamanager.ResetColorGrid();
+        grigliamanager.ResetGridLogic();
+        AudioManager.Instance.PlaySound("ConfirmSound");
+        if (invincibilityTimerOn == false)
+        {
+            invincibilityTimerOn = true;
+            invincibilityActive = true;
+        }
+        movementState = "readystate";
+    }
+
+    public void yokairesettocenter()
+    {
+        istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
+        istanze.transform.position = gridCenter;
+        grigliamanager.ResetColorGrid();
+        grigliamanager.ResetGridLogic();
     }
 
     public void ReceiveDamage(int inkDamage, int maxInkDamage, bool isUndying)
@@ -286,33 +345,37 @@ public class Playerbehaviour : MonoBehaviour
         }
         else
         {
-            Inkstone.maxInk -= maxInkDamage;
-            if (Inkstone.Ink > Inkstone.maxInk)
+            if (invincibilityActive == false || (invincibilityActive == true && isUndying == false))
             {
-                Inkstone.Ink = Inkstone.maxInk;
-            }
-            Inkstone.Ink -= inkDamage;
-            AudioManager.Instance.PlaySound("Playertakedamage");
-            if (Inkstone.Ink > 0 && YS.active == false && isUndying == false)
-            {
-                intensityreset.intensityReset = true;
-            }
-            if (SecretT.bar == 100)
-            {
-                AudioManager.Instance.PlaySound("PlayerGetsHit");
-                SecretT.paintParticles.Stop();
-                SecretT.active = false;
-                SecretT.currentTime = SecretT.timeMax;
-                SecretT.symbol.SetActive(false);
-            }
-            else
-            {
-                // Insert THUD Sound
-            }
-            SecretT.bar -= SecretT.chargeLoss;
-            if (SecretT.bar < 0)
-            {
-                SecretT.bar = 0;
+                Inkstone.maxInk -= maxInkDamage;
+                if (Inkstone.Ink > Inkstone.maxInk)
+                {
+                    Inkstone.Ink = Inkstone.maxInk;
+                }
+                Inkstone.Ink -= inkDamage;
+                AudioManager.Instance.PlaySound("Playertakedamage");
+                if (Inkstone.Ink > 0 && YS.active == false && isUndying == false)
+                {
+                    intensityreset.intensityReset = true;
+                }
+                if (SecretT.bar == 100)
+                {
+                    AudioManager.Instance.PlaySound("PlayerGetsHit");
+                    SecretT.paintParticles.Stop();
+                    SecretT.active = false;
+                    SecretT.currentTime = SecretT.timeMax;
+                    SecretT.symbol.SetActive(false);
+                    crowdFeedbacks.FrenzyEffect(false);
+                }
+                else
+                {
+                    AudioManager.Instance.PlaySound("Playertakedamage");
+                }
+                SecretT.bar -= SecretT.chargeLoss;
+                if (SecretT.bar < 0)
+                {
+                    SecretT.bar = 0;
+                }
             }
         }
     }

@@ -11,6 +11,9 @@ public class PointSystem : MonoBehaviour
     public int scoreMultiplier;
     [HideInInspector]
     public float currentTimer;
+    [SerializeField]
+    float[] intensityFuseTimer;
+    [HideInInspector]
     public float maxTimer;
     public int threshold1, threshold2, threshold3, threshold4;
     [HideInInspector]
@@ -22,12 +25,15 @@ public class PointSystem : MonoBehaviour
     public ParticleSystem sparkle;
     private PlayableDirector sparkleDirector;
     GameManager gameManager;
+    public WaveManager WM;
+    private PauseMenuUI pauseMenuUI;
 
 
     // Start is called before the first frame update
     void Start()
     {
         startEndSequence = FindObjectOfType<StartEndSequence>();
+        pauseMenuUI = FindObjectOfType<PauseMenuUI>();
         if (startEndSequence == null)
         {
             Debug.LogError("StartEndSequence is NULL!");
@@ -54,7 +60,7 @@ public class PointSystem : MonoBehaviour
 
     void IncreaseOverTime()
     {
-        if (PauseMenu.GameIsPaused == false)
+        if (pauseMenuUI.IsGamePaused == false)
         {
             score += scoreSeconds[gameManager.GameIntensity - 1] / 60;
         }
@@ -62,6 +68,15 @@ public class PointSystem : MonoBehaviour
 
     void Timer()
     {
+        if (WM.TEST_WaveActive == false)
+        {
+            maxTimer = intensityFuseTimer[gameManager.GameIntensity - 1];
+
+        }
+        else
+        {
+            maxTimer = intensityFuseTimer[WM.TEST_WaveIntensity - 1];
+        }
         if (currentTimer == maxTimer)
         {
             sparkleDirector.Stop();
@@ -75,21 +90,13 @@ public class PointSystem : MonoBehaviour
             currentTimer -= 1 * Time.deltaTime;
             fuse.fillAmount = currentTimer / maxTimer;
         }
-
-        if (currentTimer < 0)
-        {
-            currentTimer = 0;
-
-        }
-
-        if (currentTimer == 0)
+        else
         {
             countercombo = 0;
+            Combo();
             sparkleDirector.Stop();
             sparkle.Stop();
         }
-
-
     }
 
     public void Combo()
