@@ -607,7 +607,8 @@ public class Managercombo : MonoBehaviour
                 }               
                 break;
             case 7:
-                bool Sign7ControlNotFound = false;
+                bool Sign7FirstControlNotFound = false;
+                bool Sign7SecondControlNotFound = false;
                 //prende dai segni di intensity2
                 for (i = 0; i < Intensity2Matrix.Length; i++)
                 {
@@ -643,60 +644,56 @@ public class Managercombo : MonoBehaviour
                     }
                     if (i == Intensity2Matrix.Length - 1)
                     {
-                        Sign7ControlNotFound = true;
+                        Sign7FirstControlNotFound = true;
                     }
                 }
-                if(Sign7ControlNotFound == false)
+                //prendi dai segni speciali, segno malevolent in questo caso primi due elementi dell'array
+                for (i = 0; i < 2; i++)
                 {
-                    //prendi dai segni speciali, segno malevolent in questo caso primi due elementi dell'array
-                    for (i = 0; i < 2; i++)
+                    countercorrectbox = 0;
+                    foreach (var nodo in SpecialSignMatrix[i])
                     {
-                        countercorrectbox = 0;
-                        foreach (var nodo in SpecialSignMatrix[i])
+                        if (extremity.X + nodo.X >= 0 &&
+                            extremity.X + nodo.X <= 4 &&
+                            extremity.Z + nodo.Z >= 0 &&
+                            extremity.Z + nodo.Z <= 4)
                         {
-                            if (extremity.X + nodo.X >= 0 &&
-                                extremity.X + nodo.X <= 4 &&
-                                extremity.Z + nodo.Z >= 0 &&
-                                extremity.Z + nodo.Z <= 4)
+                            if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
                             {
-                                if (grigliamanager.logicgrid[extremity.X + nodo.X, extremity.Z + nodo.Z] == true)
-                                {
-                                    countercorrectbox++;
+                                countercorrectbox++;
 
-                                    if (countercorrectbox == SpecialSignMatrix[0].Length)
-                                    {
-                                        KillMalevolentEnemy(i);
-                                    }
-                                }
-                                else
+                                if (countercorrectbox == SpecialSignMatrix[0].Length)
                                 {
-                                    foundextremity = false;
-                                    countercorrectbox = 0;
-                                    break;
+                                    KillMalevolentEnemy(i);
                                 }
                             }
-                        }
-                        if (countercorrectbox == Intensity1Matrix[0].Length)
-                        {
-                            countercorrectbox = 0;
-                            break;
-                        }
-                        if (i == 1)
-                        {
-                            Sign7ControlNotFound = true;
+                            else
+                            {
+                                foundextremity = false;
+                                countercorrectbox = 0;
+                                break;
+                            }
                         }
                     }
-                }                           
-                if(Sign7ControlNotFound == true)
+                    if (countercorrectbox == SpecialSignMatrix[0].Length)
+                    {
+                        countercorrectbox = 0;
+                        break;
+                    }
+                    if (i == 1)
+                    {
+                        Sign7SecondControlNotFound = true;
+                    }
+                }
+                if (Sign7FirstControlNotFound == true && Sign7SecondControlNotFound == true)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
                     DisappointmentEffectActivation();
-                }
-
-                
+                }               
                 break;
             case 8:
-                bool Sign8ControlNotFound = false;
+                bool Sign8FirstControlNotFound = false;
+                bool Sign8SecondControlNotFound = false;
                 //prende dall'intensity 2 plus
                 for (i = 0; i < Intensity2PlusMatrix.Length; i++)
                 {
@@ -733,11 +730,11 @@ public class Managercombo : MonoBehaviour
                     }
                     if (i == Intensity2PlusMatrix.Length - 1)
                     {
-                        Sign8ControlNotFound = true;
+                        Sign8FirstControlNotFound = true;
                     }
                 }
                 //prendi dai segni speciali, segno secret in questo caso terzo e quarto elemento dell'array
-                if (secretscript.active == true && Sign8ControlNotFound == false)
+                if (secretscript.active == true)
                 {
                     for (i = 2; i < 4; i++)
                     {
@@ -753,7 +750,7 @@ public class Managercombo : MonoBehaviour
                                 {
                                     countercorrectbox++;
 
-                                    if (countercorrectbox == SpecialSignMatrix[0].Length)
+                                    if (countercorrectbox == SpecialSignMatrix[2].Length)
                                     {
                                         KillWithSecretTecnique(i);
                                     }
@@ -766,18 +763,18 @@ public class Managercombo : MonoBehaviour
                                 }
                             }
                         }
-                        if (countercorrectbox == Intensity1Matrix[0].Length)
+                        if (countercorrectbox == SpecialSignMatrix[2].Length)
                         {
                             countercorrectbox = 0;
                             break;
                         }
                         if (i == 3)
                         {
-                            Sign8ControlNotFound = true;
+                            Sign8SecondControlNotFound = true;
                         }
                     }
                 }
-                if (Sign8ControlNotFound == true)
+                if (Sign8FirstControlNotFound == true && Sign8SecondControlNotFound == true)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
                     DisappointmentEffectActivation();
