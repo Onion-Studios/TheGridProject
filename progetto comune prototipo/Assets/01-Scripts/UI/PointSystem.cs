@@ -26,12 +26,14 @@ public class PointSystem : MonoBehaviour
     private PlayableDirector sparkleDirector;
     GameManager gameManager;
     public WaveManager WM;
+    private PauseMenuUI pauseMenuUI;
 
 
     // Start is called before the first frame update
     void Start()
     {
         startEndSequence = FindObjectOfType<StartEndSequence>();
+        pauseMenuUI = FindObjectOfType<PauseMenuUI>();
         if (startEndSequence == null)
         {
             Debug.LogError("StartEndSequence is NULL!");
@@ -58,7 +60,7 @@ public class PointSystem : MonoBehaviour
 
     void IncreaseOverTime()
     {
-        if (PauseMenu.GameIsPaused == false)
+        if (pauseMenuUI.IsGamePaused == false)
         {
             score += scoreSeconds[gameManager.GameIntensity - 1] / 60;
         }

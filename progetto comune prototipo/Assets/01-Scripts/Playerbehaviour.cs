@@ -52,6 +52,9 @@ public class Playerbehaviour : MonoBehaviour
     public bool hitOnce;
     [SerializeField]
     private CrowdFeedbacks crowdFeedbacks;
+    private PauseMenuUI pauseMenuUI;
+    public float orizzontale;
+    public float verticale;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -93,6 +96,12 @@ public class Playerbehaviour : MonoBehaviour
             Debug.LogError("Secret is NULL!");
         }
 
+        pauseMenuUI = FindObjectOfType<PauseMenuUI>();
+        if (pauseMenuUI == null)
+        {
+            Debug.LogError("pausemenuUI is NULL!");
+        }
+
         YS = this.gameObject.GetComponent<Yokaislayer>();
 
         movementState = "readystate";
@@ -107,6 +116,8 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        orizzontale = Input.GetAxis("Horizontal");
+        verticale = Input.GetAxis("Vertical");
         if (intensityreset.intensityReset == true)
         {
             kitsuneAnimator.SetBool("MovementKeyPressed", false);
@@ -139,40 +150,38 @@ public class Playerbehaviour : MonoBehaviour
     void MovementHandler()
     {
         gridCenter = new Vector3(2f, istanze.transform.position.y, 2f);
-        if (PauseMenu.GameIsPaused == false)
+        if (pauseMenuUI.IsGamePaused == false)
         {
             switch (movementState)
             {
                 case "readystate":
-                    if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && istanze.transform.position.z > 0.9)
+                    if ((Input.GetAxis("Vertical") > 0 || Input.GetAxis("VerticalButtonsJoystick") == 1f) && istanze.transform.position.z > 0.9)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.z - 1;
                         movementState = "movingforward";
 
                     }
-                    if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && istanze.transform.position.z < 3.1)
+                    if ((Input.GetAxis("Vertical") < 0 || Input.GetAxis("VerticalButtonsJoystick") == -1f) && istanze.transform.position.z < 3.1)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.z + 1;
                         movementState = "movingback";
-
                     }
-                    if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && istanze.transform.position.x < 3.1)
+                    if ((Input.GetAxis("Horizontal") < 0 || Input.GetAxis("HorizontalButtonsJoystick") == -1f) && istanze.transform.position.x < 3.1)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.x + 1;
                         movementState = "movingleft";
-
                     }
-                    if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && istanze.transform.position.x > 0.9)
+                    if ((Input.GetAxis("Horizontal") > 0 || Input.GetAxis("HorizontalButtonsJoystick") == 1f) && istanze.transform.position.x > 0.9)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.x - 1;
                         movementState = "movingright";
 
                     }
-                    if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
+                    if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Submit") || Input.GetButtonDown("RB"))
                     {
                         movementState = "resetting";
                     }
@@ -318,6 +327,14 @@ public class Playerbehaviour : MonoBehaviour
             invincibilityActive = true;
         }
         movementState = "readystate";
+    }
+
+    public void yokairesettocenter()
+    {
+        istanze.transform.rotation = Quaternion.Euler(0, 180, 0);
+        istanze.transform.position = gridCenter;
+        grigliamanager.ResetColorGrid();
+        grigliamanager.ResetGridLogic();
     }
 
     public void ReceiveDamage(int inkDamage, int maxInkDamage, bool isUndying)

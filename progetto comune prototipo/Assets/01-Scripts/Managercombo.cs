@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[System.Serializable]
 public struct nodes
 {
     public int X;
@@ -146,26 +147,25 @@ public class Managercombo : MonoBehaviour
 
         //documento segni n6
 
-        NormalYokaiMatrix[10] = new nodes[3] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2) };
+        NormalYokaiMatrix[10] = new nodes[3] { new nodes(0, 1), new nodes(-1, 1), new nodes(-1, 2) };
 
-        NormalYokaiMatrix[11] = new nodes[3] { new nodes(1, 0), new nodes(-1, 1), new nodes(-1, -2) };
+        NormalYokaiMatrix[11] = new nodes[3] { new nodes(0, -1), new nodes(1, -1), new nodes(1, -2) };
 
         #endregion
         #region Intensity1
         //2 casi del segno L
-
         Intensity1Matrix[0] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, -1), new nodes(2, -2) };
         Intensity1Matrix[1] = new nodes[4] { new nodes(0, 1), new nodes(0, 2), new nodes(-1, 2), new nodes(-2, 2) };
         //2 casi del segno C
         Intensity1Matrix[2] = new nodes[4] { new nodes(1, 0), new nodes(1, 1), new nodes(1, 2), new nodes(0, 2) };
-        Intensity1Matrix[3] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2) };
+        Intensity1Matrix[3] = new nodes[4] { new nodes(1, 0), new nodes(1, -1), new nodes(1, -2), new nodes(0, -2)};
         //2 casi del segno S rovesciata
         Intensity1Matrix[4] = new nodes[4] { new nodes(0, -1), new nodes(-1, -1), new nodes(-2, -1), new nodes(-2, -2) };
         Intensity1Matrix[5] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, 2) };
         //2 casi del segno L capovolto
         Intensity1Matrix[6] = new nodes[4] { new nodes(0, -1), new nodes(0, -2), new nodes(-1, -2), new nodes(-2, -2) };
         Intensity1Matrix[7] = new nodes[4] { new nodes(1, 0), new nodes(2, 0), new nodes(2, 1), new nodes(2, 2) };
-        //2 casi del segno vasino (senza la cacca)
+        //2 casi del segno v
         Intensity1Matrix[8] = new nodes[4] { new nodes(0, 1), new nodes(-1, 1), new nodes(-2, 1), new nodes(-2, 0) };
         Intensity1Matrix[9] = new nodes[4] { new nodes(0, 1), new nodes(1, 1), new nodes(2, 1), new nodes(2, -1) };
         //2 casi del segno S
@@ -279,6 +279,7 @@ public class Managercombo : MonoBehaviour
 
     void CheckCountBoxesLogicGrid()
     {
+        CountBoxesActive = 0;
         foreach (bool box in grigliamanager.logicgrid)
         {
             if (box == true)
@@ -294,6 +295,8 @@ public class Managercombo : MonoBehaviour
         {
             for (int z = 0; z < grid.GetLength(1); z++)
             {
+                countactiveboxesaround = 0;
+
                 if (grid[x, z] == true)
                 {
                     //casi angoli 
@@ -409,7 +412,7 @@ public class Managercombo : MonoBehaviour
                         }
                         else
                         {
-                            countactiveboxesaround++;
+                            countactiveboxesaround = 0;
                         }
                     }
                     //lato sinistro
@@ -484,6 +487,7 @@ public class Managercombo : MonoBehaviour
             case 4:
                 for (i = 0; i < NormalYokaiMatrix.Length; i++)
                 {
+                    countercorrectbox = 0;
                     foreach (var nodo in NormalYokaiMatrix[i])
                     {
                         if (extremity.X + nodo.X >= 0 &&
@@ -514,17 +518,18 @@ public class Managercombo : MonoBehaviour
                         countercorrectbox = 0;
                         break;
                     }
-
-                }
-                if (i == NormalYokaiMatrix.Length)
-                {
-                    AudioManager.Instance.PlaySound("BooSound");
-                    DisappointmentEffectActivation();
+                    if(i == NormalYokaiMatrix.Length - 1)
+                    {
+                        AudioManager.Instance.PlaySound("BooSound");
+                        DisappointmentEffectActivation();
+                    }
+                    
                 }
                 break;
             case 5:
                 for (i = 0; i < Intensity1Matrix.Length; i++)
                 {
+                    countercorrectbox = 0;
                     foreach (var nodo in Intensity1Matrix[i])
                     {
                         if (extremity.X + nodo.X >= 0 &&
@@ -554,16 +559,17 @@ public class Managercombo : MonoBehaviour
                         countercorrectbox = 0;
                         break;
                     }
-                }
-                if (i == Intensity1Matrix.Length)
-                {
-                    AudioManager.Instance.PlaySound("BooSound");
-                    DisappointmentEffectActivation();
+                    if (i == Intensity1Matrix.Length - 1)
+                    {
+                        AudioManager.Instance.PlaySound("BooSound");
+                        DisappointmentEffectActivation();
+                    }
                 }
                 break;
             case 6:
                 for (i = 0; i < Intensity1PlusMatrix.Length; i++)
                 {
+                    countercorrectbox = 0;
                     foreach (var nodo in Intensity1PlusMatrix[i])
                     {
                         if (extremity.X + nodo.X >= 0 &&
@@ -593,17 +599,20 @@ public class Managercombo : MonoBehaviour
                         countercorrectbox = 0;
                         break;
                     }
-                }
-                if (i == Intensity1PlusMatrix.Length)
-                {
-                    AudioManager.Instance.PlaySound("BooSound");
-                    DisappointmentEffectActivation();
-                }
+                    if (i == Intensity1PlusMatrix.Length - 1)
+                    {
+                        AudioManager.Instance.PlaySound("BooSound");
+                        DisappointmentEffectActivation();
+                    }
+                }               
                 break;
             case 7:
+                bool Sign7FirstControlNotFound = false;
+                bool Sign7SecondControlNotFound = false;
                 //prende dai segni di intensity2
                 for (i = 0; i < Intensity2Matrix.Length; i++)
                 {
+                    countercorrectbox = 0;
                     foreach (var nodo in Intensity2Matrix[i])
                     {
                         if (extremity.X + nodo.X >= 0 &&
@@ -633,10 +642,15 @@ public class Managercombo : MonoBehaviour
                         countercorrectbox = 0;
                         break;
                     }
+                    if (i == Intensity2Matrix.Length - 1)
+                    {
+                        Sign7FirstControlNotFound = true;
+                    }
                 }
                 //prendi dai segni speciali, segno malevolent in questo caso primi due elementi dell'array
                 for (i = 0; i < 2; i++)
                 {
+                    countercorrectbox = 0;
                     foreach (var nodo in SpecialSignMatrix[i])
                     {
                         if (extremity.X + nodo.X >= 0 &&
@@ -661,22 +675,29 @@ public class Managercombo : MonoBehaviour
                             }
                         }
                     }
-                    if (countercorrectbox == Intensity1Matrix[0].Length)
+                    if (countercorrectbox == SpecialSignMatrix[0].Length)
                     {
                         countercorrectbox = 0;
                         break;
                     }
+                    if (i == 1)
+                    {
+                        Sign7SecondControlNotFound = true;
+                    }
                 }
-                if (i == 2)
+                if (Sign7FirstControlNotFound == true && Sign7SecondControlNotFound == true)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
                     DisappointmentEffectActivation();
-                }
+                }               
                 break;
             case 8:
+                bool Sign8FirstControlNotFound = false;
+                bool Sign8SecondControlNotFound = false;
                 //prende dall'intensity 2 plus
                 for (i = 0; i < Intensity2PlusMatrix.Length; i++)
                 {
+                    countercorrectbox = 0;
                     foreach (var nodo in Intensity2PlusMatrix[i])
                     {
                         if (extremity.X + nodo.X >= 0 &&
@@ -700,11 +721,16 @@ public class Managercombo : MonoBehaviour
                                 break;
                             }
                         }
+                        
                     }
                     if (countercorrectbox == Intensity2PlusMatrix[0].Length)
                     {
                         countercorrectbox = 0;
                         break;
+                    }
+                    if (i == Intensity2PlusMatrix.Length - 1)
+                    {
+                        Sign8FirstControlNotFound = true;
                     }
                 }
                 //prendi dai segni speciali, segno secret in questo caso terzo e quarto elemento dell'array
@@ -712,6 +738,7 @@ public class Managercombo : MonoBehaviour
                 {
                     for (i = 2; i < 4; i++)
                     {
+                        countercorrectbox = 0;
                         foreach (var nodo in SpecialSignMatrix[i])
                         {
                             if (extremity.X + nodo.X >= 0 &&
@@ -723,7 +750,7 @@ public class Managercombo : MonoBehaviour
                                 {
                                     countercorrectbox++;
 
-                                    if (countercorrectbox == SpecialSignMatrix[0].Length)
+                                    if (countercorrectbox == SpecialSignMatrix[2].Length)
                                     {
                                         KillWithSecretTecnique(i);
                                     }
@@ -736,14 +763,18 @@ public class Managercombo : MonoBehaviour
                                 }
                             }
                         }
-                        if (countercorrectbox == Intensity1Matrix[0].Length)
+                        if (countercorrectbox == SpecialSignMatrix[2].Length)
                         {
                             countercorrectbox = 0;
                             break;
                         }
+                        if (i == 3)
+                        {
+                            Sign8SecondControlNotFound = true;
+                        }
                     }
                 }
-                if (i == 4)
+                if (Sign8FirstControlNotFound == true && Sign8SecondControlNotFound == true)
                 {
                     AudioManager.Instance.PlaySound("BooSound");
                     DisappointmentEffectActivation();
@@ -752,6 +783,7 @@ public class Managercombo : MonoBehaviour
             case 9:
                 for (i = 0; i < Intensity3Matrix.Length; i++)
                 {
+                    countercorrectbox = 0;
                     foreach (var nodo in Intensity3Matrix[i])
                     {
                         if (extremity.X + nodo.X >= 0 &&
@@ -781,12 +813,12 @@ public class Managercombo : MonoBehaviour
                         countercorrectbox = 0;
                         break;
                     }
-                }
-                if (i == Intensity3Matrix.Length)
-                {
-                    AudioManager.Instance.PlaySound("BooSound");
-                    DisappointmentEffectActivation();
-                }
+                    if (i == Intensity3Matrix.Length - 1)
+                    {
+                        AudioManager.Instance.PlaySound("BooSound");
+                        DisappointmentEffectActivation();
+                    }
+                }                
                 break;
             default:
                 AudioManager.Instance.PlaySound("BooSound");

@@ -80,6 +80,7 @@ public class Yokaislayer : MonoBehaviour
             && startendsequence.starting == false
             && startendsequence.ending == false
             && intensityReset.intensityReset == false)
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetAxis("RT") == 1 || Input.GetButtonDown("Square")) && playerbehaviour.yokaislayercount > 0 && active == false && startendsequence.starting == false && startendsequence.ending == false)
         {
             active = true;
         }
@@ -215,7 +216,7 @@ public class Yokaislayer : MonoBehaviour
                 }
             }
         }
-        playerbehaviour.ResetToCenter();
+        playerbehaviour.yokairesettocenter();
         if (advanceSequence == true) { yokaiSlayerSequenceNumber++; }
     }
 

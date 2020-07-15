@@ -14,20 +14,24 @@ public class PlayerCollider : MonoBehaviour
             if (other.gameObject.CompareTag("NormalEnemy"))
             {
                 other.GetComponent<NormalEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
             }
             if (other.gameObject.CompareTag("KamikazeEnemy"))
             {
                 other.GetComponent<KamikazeEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
             }
             if (other.gameObject.CompareTag("ArmoredEnemy"))
             {
                 other.GetComponent<ArmoredEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
             }
             if (other.gameObject.CompareTag("FrighteningEnemy"))
             {
                 other.GetComponent<FrighteningEnemy>().Deathforgriglia();
+                PB.hitOnce = true;
             }
-            PB.hitOnce = true;
+            
         }
     }
     public void OnTriggerExit(Collider other)
