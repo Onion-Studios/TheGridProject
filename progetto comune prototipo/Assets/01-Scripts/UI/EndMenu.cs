@@ -18,6 +18,7 @@ public class EndMenu : MonoBehaviour
     public void BackToMenu()
     {
         AudioManager.Instance.PlaySound("MenuConfirm");
+        AudioManager.Instance.PlaySound("MenuTheme");
         SceneManager.LoadScene(1);
     }
 

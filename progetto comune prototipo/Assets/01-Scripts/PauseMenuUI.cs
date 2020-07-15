@@ -73,13 +73,13 @@ public class PauseMenuUI : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        AudioManager.Instance.PlaySound("MenuConfirm");
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
         IsGamePaused = false;
         AudioManager.Instance.StopAllSounds();
+        AudioManager.Instance.PlaySound("MenuConfirm");
         //main menu scene
         SceneManager.LoadScene(1);
-
+        AudioManager.Instance.PlaySound("MenuTheme");
     }
 }
