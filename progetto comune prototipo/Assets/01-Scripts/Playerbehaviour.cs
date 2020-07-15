@@ -53,6 +53,8 @@ public class Playerbehaviour : MonoBehaviour
     [SerializeField]
     private CrowdFeedbacks crowdFeedbacks;
     private PauseMenuUI pauseMenuUI;
+    public float orizzontale;
+    public float verticale;
     #endregion
 
     // prendo le referenze che mi servono quando inizia il gioco
@@ -114,6 +116,8 @@ public class Playerbehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        orizzontale = Input.GetAxis("Horizontal");
+        verticale = Input.GetAxis("Vertical");
         if (intensityreset.intensityReset == true)
         {
             kitsuneAnimator.SetBool("MovementKeyPressed", false);
@@ -151,26 +155,26 @@ public class Playerbehaviour : MonoBehaviour
             switch (movementState)
             {
                 case "readystate":
-                    if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0 || Input.GetAxis("VerticalButtonsJoystick") == 1f) && istanze.transform.position.z > 0.9)
+                    if ((Input.GetAxis("Vertical") > 0 || Input.GetAxis("VerticalButtonsJoystick") == 1f) && istanze.transform.position.z > 0.9)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.z - 1;
                         movementState = "movingforward";
 
                     }
-                    if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.GetAxis("Vertical") < 0 || Input.GetAxis("VerticalButtonsJoystick") == -1f) && istanze.transform.position.z < 3.1)
+                    if ((Input.GetAxis("Vertical") < 0 || Input.GetAxis("VerticalButtonsJoystick") == -1f) && istanze.transform.position.z < 3.1)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.z + 1;
                         movementState = "movingback";
                     }
-                    if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("HorizontalButtonsJoystick") == -1f) && istanze.transform.position.x < 3.1)
+                    if ((Input.GetAxis("Horizontal") < 0 || Input.GetAxis("HorizontalButtonsJoystick") == -1f) && istanze.transform.position.x < 3.1)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.x + 1;
                         movementState = "movingleft";
                     }
-                    if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("HorizontalButtonsJoystick") == 1f) && istanze.transform.position.x > 0.9)
+                    if ((Input.GetAxis("Horizontal") > 0 || Input.GetAxis("HorizontalButtonsJoystick") == 1f) && istanze.transform.position.x > 0.9)
                     {
                         audioManager.PlaySound("PlayerMovement");
                         finalDestination = istanze.transform.position.x - 1;

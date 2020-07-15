@@ -120,7 +120,7 @@ public class StartEndSequence : MonoBehaviour
     void Update()
     {
         StartSequence();
-        if (skipping == false && startSequencePosition <= 3 && starting == true && Input.GetKeyDown(KeyCode.Return) && startSequencePosition >= 1)
+        if (skipping == false && startSequencePosition <= 3 && starting == true && Input.GetButtonDown("Submit") && startSequencePosition >= 1)
         {
             skipping = true;
         }
