@@ -119,8 +119,6 @@ public class grigliamanager : MonoBehaviour
 
             }
         }
-
-        managercombo.CountBoxesActive = 0;
     }
 
 }
