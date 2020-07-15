@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class UITutorial : MonoBehaviour
 {
@@ -25,11 +22,12 @@ public class UITutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ActiveTutorialUI()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         MainMenu.SetActive(false);
         BGImage.SetActive(true);
         TutorialButton.SetActive(true);
@@ -40,12 +38,13 @@ public class UITutorial : MonoBehaviour
 
     public void ScrollRight()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         TutorialImage[TutorialImageIndex].SetActive(false);
-        if(TutorialImageIndex >= 0 && TutorialImageIndex <3 || TutorialImageIndex < 3)
+        if (TutorialImageIndex >= 0 && TutorialImageIndex < 3 || TutorialImageIndex < 3)
         {
             TutorialImageIndex++;
         }
-        else if(TutorialImageIndex == 3)
+        else if (TutorialImageIndex == 3)
         {
             TutorialImageIndex = 0;
         }
@@ -54,6 +53,7 @@ public class UITutorial : MonoBehaviour
 
     public void ScrollLeft()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         TutorialImage[TutorialImageIndex].SetActive(false);
         if (TutorialImageIndex > 0 || TutorialImageIndex <= 3 && TutorialImageIndex > 0)
         {
@@ -68,6 +68,7 @@ public class UITutorial : MonoBehaviour
 
     public void BackToMainMenuTutorial()
     {
+        AudioManager.Instance.PlaySound("MenuCancel");
         MainMenu.SetActive(true);
         BGImage.SetActive(false);
         TutorialButton.SetActive(false);

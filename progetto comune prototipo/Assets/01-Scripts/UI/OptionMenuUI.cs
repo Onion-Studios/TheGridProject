@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class OptionMenuUI : MonoBehaviour
 {
@@ -19,28 +16,18 @@ public class OptionMenuUI : MonoBehaviour
     public GameObject controlsback;
     public GameObject startgamebutton;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ActiveOptionUI()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         MainMenu.SetActive(false);
         OptionMenu.SetActive(true);
         eventsystem.SetSelectedGameObject(null);
-        eventsystem.SetSelectedGameObject(Audiobutton);     
+        eventsystem.SetSelectedGameObject(Audiobutton);
     }
 
     public void GoToMainMenu()
     {
+        AudioManager.Instance.PlaySound("MenuCancel");
         OptionMenu.SetActive(false);
         MainMenu.SetActive(true);
         eventsystem.SetSelectedGameObject(null);
@@ -51,6 +38,7 @@ public class OptionMenuUI : MonoBehaviour
     {
         if (AudioMenu.activeInHierarchy == true)
         {
+            AudioManager.Instance.PlaySound("MenuCancel");
             AudioMenu.SetActive(false);
             MainMenuUI.ActivateOptionsMenuButton();
             EventSystem.current.SetSelectedGameObject(null);
@@ -58,6 +46,7 @@ public class OptionMenuUI : MonoBehaviour
         }
         else if (VideoMenu.activeInHierarchy == true)
         {
+            AudioManager.Instance.PlaySound("MenuCancel");
             VideoMenu.SetActive(false);
             MainMenuUI.ActivateOptionsMenuButton();
             eventsystem.SetSelectedGameObject(null);
@@ -65,6 +54,7 @@ public class OptionMenuUI : MonoBehaviour
         }
         else if (ControlsMenu.activeInHierarchy == true)
         {
+            AudioManager.Instance.PlaySound("MenuCancel");
             ControlsMenu.SetActive(false);
             OptionMenu.SetActive(true);
             eventsystem.SetSelectedGameObject(null);
@@ -74,6 +64,7 @@ public class OptionMenuUI : MonoBehaviour
 
     public void GoToAudioMenu()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         AudioMenu.SetActive(true);
         MainMenuUI.DeactiveOptionsMenuButton();
         eventsystem.SetSelectedGameObject(null);
@@ -82,6 +73,7 @@ public class OptionMenuUI : MonoBehaviour
 
     public void GoToVideoMenu()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         VideoMenu.SetActive(true);
         MainMenuUI.DeactiveOptionsMenuButton();
         eventsystem.SetSelectedGameObject(null);
@@ -90,6 +82,7 @@ public class OptionMenuUI : MonoBehaviour
 
     public void GoToControlsMenu()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         OptionMenu.SetActive(false);
         ControlsMenu.SetActive(true);
         eventsystem.SetSelectedGameObject(null);

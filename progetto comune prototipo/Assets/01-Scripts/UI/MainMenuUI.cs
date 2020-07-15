@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -16,25 +14,15 @@ public class MainMenuUI : MonoBehaviour
     public GameObject StartGameButton;
     public GameObject ExitGameButton;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void ExitGame()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         Application.Quit();
     }
 
     public void ActiveExitGamePrompt()
     {
+        AudioManager.Instance.PlaySound("MenuCancel");
         ExitSurePrompt.SetActive(true);
         DeactiveMainMenuButton();
         EventSystem.SetSelectedGameObject(null);
@@ -50,6 +38,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void ActiveCreditsUI()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         CreditsUI.SetActive(true);
         DeactiveMainMenuButton();
         EventSystem.SetSelectedGameObject(null);
@@ -58,6 +47,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void BackToMainMenuCredits()
     {
+        AudioManager.Instance.PlaySound("MenuCancel");
         CreditsUI.SetActive(false);
         ActivateMainMenuButton();
         EventSystem.SetSelectedGameObject(null);
@@ -66,6 +56,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void BackToMainMenuExit()
     {
+        AudioManager.Instance.PlaySound("MenuCancel");
         ExitSurePrompt.SetActive(false);
         ActivateMainMenuButton();
         EventSystem.SetSelectedGameObject(null);
@@ -74,7 +65,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void DeactiveMainMenuButton()
     {
-        foreach(Button Buttons in MainMenuButtons)
+        foreach (Button Buttons in MainMenuButtons)
         {
             Buttons.interactable = false;
         }
