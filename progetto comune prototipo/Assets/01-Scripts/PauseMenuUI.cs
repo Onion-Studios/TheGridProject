@@ -1,9 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour
 {
@@ -18,7 +16,7 @@ public class PauseMenuUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,7 +31,7 @@ public class PauseMenuUI : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0f;
-        PauseMenu.SetActive(true);       
+        PauseMenu.SetActive(true);
         EventSystem.SetSelectedGameObject(null);
         EventSystem.SetSelectedGameObject(resumebutton);
         IsGamePaused = true;
@@ -41,21 +39,23 @@ public class PauseMenuUI : MonoBehaviour
     }
 
     public void RestartGame()
-    {        
+    {
         StartCoroutine(GamePausedCoroutine());
     }
 
     public IEnumerator GamePausedCoroutine()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
-        yield return new WaitForEndOfFrame();        
+        yield return new WaitForEndOfFrame();
         IsGamePaused = false;
         Cursor.visible = false;
     }
 
     public void ActiveExitPrompt()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         ExitPrompt.SetActive(true);
         ExitCancelText.SetActive(false);
         EventSystem.SetSelectedGameObject(null);
@@ -64,6 +64,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void BackToPauseMenu()
     {
+        AudioManager.Instance.PlaySound("MenuCancel");
         ExitPrompt.SetActive(false);
         ExitCancelText.SetActive(true);
         EventSystem.SetSelectedGameObject(null);
@@ -72,11 +73,13 @@ public class PauseMenuUI : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        AudioManager.Instance.PlaySound("MenuConfirm");
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
         IsGamePaused = false;
+        AudioManager.Instance.StopAllSounds();
         //main menu scene
         SceneManager.LoadScene(1);
-        
+
     }
 }
